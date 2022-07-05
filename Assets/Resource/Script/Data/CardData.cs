@@ -1,53 +1,38 @@
 using System;
 using System.IO;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Converters;
 
-public class cardData {
-    public List<Card> CardList = new List<Card>();
-
-    public cardData(int equipCard, List<Card> CardList){
-        this.CardList = CardList;
-    }
-}
-
-public class CardData : MonoBehaviour, IData
+public class CardData : MonoBehaviour
 {
-    private cardData cardData;
 
-    public bool saveData()
+    public bool saveData(List<Card> cardData, string DataName)
     {
         var converter = new StringEnumConverter();
         var pDataStringSave = JsonConvert.SerializeObject(cardData, converter);
-        File.WriteAllText(Path.Combine(Application.streamingAssetsPath, "CardData.json"), pDataStringSave);
+        File.WriteAllText(Path.Combine(Application.streamingAssetsPath, DataName), pDataStringSave);
         return true;
     }
 
-    public bool _load()
+    public List<Card> _load(string DataName)
     {
+        List<Card> cardData;
+        
         var converter = new StringEnumConverter();
-        var pDataStringLoad = File.ReadAllText(Path.Combine(Application.streamingAssetsPath, "CardData.json"));
-        cardData = JsonConvert.DeserializeObject<cardData>(pDataStringLoad, converter);
+        var pDataStringLoad = File.ReadAllText(Path.Combine(Application.streamingAssetsPath, DataName));
+        cardData = JsonConvert.DeserializeObject<List<Card>>(pDataStringLoad, converter);
 
-        foreach (var Card in cardData.CardList)
-        {
-            Debug.Log(Card.CardName);
-        }
-
-        return true;
+        return cardData;
     }
 
-    public bool _loadnew()
+    public bool _loadnew(string DataName)
     {
         var converter = new StringEnumConverter();
-        var pDataStringLoad = File.ReadAllText(Path.Combine(Application.streamingAssetsPath, "CardData.json"));
-        cardData = JsonConvert.DeserializeObject<cardData>(pDataStringLoad, converter);
-        saveData();
+        var pDataStringLoad = File.ReadAllText(Path.Combine(Application.streamingAssetsPath, "OriginCardData.json"));
+        List<Card> cardData = JsonConvert.DeserializeObject<List<Card>>(pDataStringLoad, converter);
+        saveData(cardData, DataName);
         return true;
     }
 }

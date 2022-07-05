@@ -12,17 +12,20 @@ public class PlayerManager : Singleton<PlayerManager>
     private int Hp;
     public IState state;
     public Queue<States> StatesQueue;
+    public List<Card> PlayerCard;
 
     void Start()
     {
         StatesQueue = new Queue<States>();
         state = new NormalState();
+        PlayerCard = new List<Card>();
         state.Enter();
     }
 
     void Update()
     {
-         
+         if(Input.GetMouseButton(0))
+             state.MouseEvent();
     }
 
     void FixedUpdate()
@@ -32,6 +35,8 @@ public class PlayerManager : Singleton<PlayerManager>
 
     public void ChangeStates()
     {
-        
+        state.Exit();
+        //state전환 과정
+        state.Enter();
     }
 }

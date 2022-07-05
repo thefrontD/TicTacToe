@@ -9,6 +9,7 @@ using Newtonsoft.Json.Converters;
 /// 각 Card들이 가져야하는 필수적인 부분은 Card class에 abstract method선언 후 작성 부탁드립니다.
 /// 실제로 Card를 Rendering 및 Animating 하는 부분은 CardUI라는 Script로 새로 작성 예정
 /// </summary>
+[JsonConverter(typeof(BaseConverter))]
 public abstract class Card {
     //
     private string cardName;

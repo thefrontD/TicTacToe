@@ -1,12 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 
-public interface IData
-{
-    public bool saveData();
-    public bool _load();
-}
-
 public interface IState
 {
     /// <summary>
