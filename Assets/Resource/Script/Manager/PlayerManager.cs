@@ -1,0 +1,37 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+/// <summary>
+/// Player의 데이터를 저장하는 부분으로 Player와 관련된 데이터, 메소드는 해당 Manager에 작성 바람
+/// States 역시 Player에 종속되는 부분으로 판정함
+/// </summary>
+public class PlayerManager : Singleton<PlayerManager>
+{
+    private int Hp;
+    public IState state;
+    public Queue<States> StatesQueue;
+
+    void Start()
+    {
+        StatesQueue = new Queue<States>();
+        state = new NormalState();
+        state.Enter();
+    }
+
+    void Update()
+    {
+         
+    }
+
+    void FixedUpdate()
+    {
+        state.Update();
+    }
+
+    public void ChangeStates()
+    {
+        
+    }
+}
