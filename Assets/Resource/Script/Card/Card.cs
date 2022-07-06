@@ -1,12 +1,14 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Converters;
+using UnityEngine;
 
 /// <summary>
 /// Card 기본 클래스, AttackCard를 비롯한 각종 Card로 나눌 예정
-/// 각 Card들이 가져야하는 필수적인 부분은 Card class에 abstract method선언 후 작성 부탁드립니다.
+/// 각 Card들이 가져야하는 필수적인 부분은 Card class에 abstract method선언 후 작성할 것
 /// 실제로 Card를 Rendering 및 Animating 하는 부분은 CardUI라는 Script로 새로 작성 예정
 /// </summary>
 [JsonConverter(typeof(BaseConverter))]
@@ -23,7 +25,6 @@ public abstract class Card {
     }
 
     private int cardCost;
-
     public int CardCost
     {
         get { return cardCost; }
@@ -37,10 +38,11 @@ public abstract class Card {
     [JsonConverter(typeof(StringEnumConverter))]
     public List<States> StatesList;
 
-    public Card(string cardName, string cardDesc, List<States> StatesList){
+    public Card(string cardName, string cardDesc, int cardCost, List<States> statesList){
         this.cardName = cardName;
         this.cardDesc = cardDesc;
-        this.StatesList = StatesList;
+        this.cardCost = cardCost;
+        this.StatesList = statesList;
     }
     
     /// <summary>
@@ -58,5 +60,22 @@ public abstract class Card {
         usingCardSpecific();
         
         PlayerManager.Instance.ChangeStates(PlayerManager.Instance.StatesQueue.Dequeue());
+    }
+}
+
+public class AttackCard : Card
+{
+    private AttackCardEffect AttackCardEffect;
+
+    public AttackCard(string cardName, string cardDesc, int cardCost, List<States> statesList, 
+        AttackCardEffect attackCardEffect) : base(cardName, cardDesc, cardCost, statesList)
+    {
+        this.AttackCardEffect = attackCardEffect;
+        Debug.Log(this.CardName);
+    }
+
+    public override void usingCardSpecific()
+    {
+        
     }
 }

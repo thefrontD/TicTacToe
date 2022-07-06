@@ -11,12 +11,12 @@ public class CardUI : MonoBehaviour
     
     [SerializeField] private SpriteRenderer CardBackground;
     private SpriteRenderer CardImage;
-    [SerializeField] private TextMeshProUGUI CardCostText;
-    [SerializeField] private TextMeshProUGUI CardNameText;
-    [SerializeField] private TextMeshProUGUI CardDescText;
-    [SerializeField] private TextMeshProUGUI CardEffectExplanation;
+    [SerializeField] private TextMeshPro CardCostText;
+    [SerializeField] private TextMeshPro CardNameText;
+    [SerializeField] private TextMeshPro CardDescText;
+    //[SerializeField] private TextMeshPro CardEffectExplanation;
 
-    void init(Card card)
+    public void init(Card card)
     {
         this.Card = card;
 

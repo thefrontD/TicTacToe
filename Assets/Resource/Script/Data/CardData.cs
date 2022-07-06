@@ -5,33 +5,37 @@ using UnityEngine;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
+public class HolderHolder
+{
+    public List<Card> Objects { get; set; }
+}
+
 public class CardData : Singleton<CardData>
 {
-    public bool saveData(List<Card> cardData, string DataName)
+    public bool saveData(List<Card> cardData, string dataName)
     {
         var converter = new StringEnumConverter();
         var pDataStringSave = JsonConvert.SerializeObject(cardData, converter);
-        File.WriteAllText(Path.Combine(Application.streamingAssetsPath, DataName), pDataStringSave);
+        Debug.Log(pDataStringSave);
+        File.WriteAllText(Path.Combine(Application.streamingAssetsPath, dataName), pDataStringSave);
         return true;
     }
 
-    public List<Card> _load(string DataName)
+    public List<Card> _load(string dataName)
     {
-        List<Card> cardData;
-        
         var converter = new StringEnumConverter();
-        var pDataStringLoad = File.ReadAllText(Path.Combine(Application.streamingAssetsPath, DataName));
-        cardData = JsonConvert.DeserializeObject<List<Card>>(pDataStringLoad, converter);
+        var pDataStringLoad = File.ReadAllText(Path.Combine(Application.streamingAssetsPath, dataName));
+        List<Card> cardData = JsonConvert.DeserializeObject<List<Card>>(pDataStringLoad, converter);
 
         return cardData;
     }
 
-    public bool _loadnew(string DataName)
+    public bool _loadnew(string dataName)
     {
         var converter = new StringEnumConverter();
         var pDataStringLoad = File.ReadAllText(Path.Combine(Application.streamingAssetsPath, "OriginCardData.json"));
         List<Card> cardData = JsonConvert.DeserializeObject<List<Card>>(pDataStringLoad, converter);
-        saveData(cardData, DataName);
+        saveData(cardData, dataName);
         return true;
     }
 }

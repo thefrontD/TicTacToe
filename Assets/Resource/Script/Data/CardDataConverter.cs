@@ -34,7 +34,7 @@ public class BaseConverter : JsonConverter
         switch (jo["ObjType"].Value<int>())
         {
             case 1:
-                //return JsonConvert.DeserializeObject<DerivedType1>(jo.ToString(), SpecifiedSubclassConversion);
+                return JsonConvert.DeserializeObject<AttackCard>(jo.ToString(), SpecifiedSubclassConversion);
             default:
                 throw new Exception();
         }

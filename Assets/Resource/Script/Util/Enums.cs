@@ -10,4 +10,4 @@ public enum BoardColor { None, Player, Enemy }
 public enum States{ Normal, Attack, Move, Color }
 
 [JsonConverter(typeof(StringEnumConverter))]
-public enum CardEffect { Alpha, Bravo, Charlie, Delta, Echo, None }
+public enum AttackCardEffect { Alpha, Bravo, Charlie, Delta, Echo, None }

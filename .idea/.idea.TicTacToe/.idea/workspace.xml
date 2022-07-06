@@ -2,16 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d3529374-01b1-433a-a73a-241952c1c846" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Resource/Script/Board.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TicTacToe/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TicTacToe/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resource/Material/New Material.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resource/Material/New Material.mat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resource/Script/Card/Card.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resource/Script/Card/Card.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resource/Script/Card/CardUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resource/Script/Card/CardUI.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resource/Script/Data/CardData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resource/Script/Data/CardData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resource/Script/Manager/BoardManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resource/Script/Manager/BoardManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resource/Script/Manager/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resource/Script/Manager/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resource/Script/Data/CardDataConverter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resource/Script/Data/CardDataConverter.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resource/Script/Manager/PlayerManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resource/Script/Manager/PlayerManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resource/Script/StateScript/States.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resource/Script/StateScript/States.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resource/Script/Util/Enums.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resource/Script/Util/Enums.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resource/Script/Util/Interface.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resource/Script/Util/Interface.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,6 +20,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Resource/Script/Card/Card.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Resource/Script/Data/CardData.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Resource/Script/Manager/CardManager.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -78,7 +78,7 @@
       <updated>1656510629098</updated>
       <workItem from="1656510631125" duration="2424000" />
       <workItem from="1657030044613" duration="10474000" />
-      <workItem from="1657075776753" duration="6410000" />
+      <workItem from="1657075776753" duration="12355000" />
     </task>
     <servers />
   </component>

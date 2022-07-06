@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 /// <summary>
@@ -9,17 +10,32 @@ using UnityEngine;
 /// </summary>
 public class PlayerManager : Singleton<PlayerManager>
 {
-    private int Hp;
-    public IState state;
+    [SerializeField] private int Hp;
+
+    public BaseState state;
     public Queue<States> StatesQueue;
     public List<Card> PlayerCard;
 
     void Start()
     {
+        PlayerCard = new List<Card>();
+        
+        List<States> statesList = new List<States>(){States.Attack};
+
+        PlayerCard.Add(new AttackCard("Alpha", "Alpha is Greek A", 1,
+            statesList,  AttackCardEffect.Alpha));
+
+        Debug.Log(PlayerCard.Count);
+        
         StatesQueue = new Queue<States>();
         state = new NormalState();
-        PlayerCard = CardData.Instance._load("PlayerCard.json");
+        //PlayerCard = CardData.Instance._load("PlayerCard.json");
         state.Enter();
+        //CardData.Instance.saveData(PlayerCard, "PlayerCard.json");
+        
+        CardManager.Instance.SetUp();
+        
+        Debug.Log(state);
     }
 
     void Update()
