@@ -13,15 +13,26 @@ public class BoardManager : Singleton<BoardManager>
     /// 일단은 간편하게 3 by 3 배열 사용중이지만 범용을 위해 List<List>로 전환예정
     /// -> Board 기획이 나와서 Json 파일이 나오면 전환 예정
     /// </summary>
+    [SerializeField] private GameObject BoardPrefab;
     //Board State Array
+    private GameObject[,] GameBoard = new GameObject[3, 3];
     private BoardStates[,] boardStates = new BoardStates[3, 3];
     //Board Color Array
     private BoardColor[,] boardColors = new BoardColor[3, 3];
+    //Actual Board Components in Game
     private int BoardSize = 3;
     
     void Start()
     {
         BoardLoading();
+        for (int i = 0; i < BoardSize; i++)
+        {
+            for (int j = 0; j < BoardSize; j++)
+            {
+                Vector3 pos = new Vector3(-2 + 2 * i, 2 - 2 * j, 0);
+                GameBoard[i, j] = Instantiate(BoardPrefab, pos, Quaternion.identity);
+            }
+        }
     }
 
     void Update()
@@ -54,8 +65,33 @@ public class BoardManager : Singleton<BoardManager>
     /// <summary>
     /// 빙고 체킹
     /// </summary>
-    public bool CheckBingo()
+    public int CheckBingo(int x, int y, BoardColor color)
     {
-        return true;
+        int ret = 0;
+        bool check = true;
+        
+        if (x >= BoardSize - 1 || y >= BoardSize - 1 || x < 0 || y < 0)
+            return 0;
+        else if (x == y)
+        { 
+            for (int i = 0; i < BoardSize; i++)
+                if (boardColors[i, i] != color)
+                    check = false;
+            if (check) ret++;
+        }
+
+        check = true;
+        for (int i = 0; i < BoardSize; i++)
+            if (boardColors[x, i] != color)
+                check = false;
+        if (check) ret++;
+        
+        check = true;
+        for (int i = 0; i < BoardSize; i++)
+            if (boardColors[i, y] != color)
+                check = false;
+        if (check) ret++;
+
+        return ret;
     } 
 }

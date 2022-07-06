@@ -7,6 +7,13 @@ using UnityEngine;
 /// </summary>
 public class NormalState : IState
 {
+    private int DrawNum;
+    
+    public NormalState(int DrawNum = 5)
+    {
+        this.DrawNum = DrawNum;
+    }
+
     public void DoAction(States state)
     {
         

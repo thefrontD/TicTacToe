@@ -11,17 +11,35 @@ using Newtonsoft.Json.Converters;
 /// </summary>
 [JsonConverter(typeof(BaseConverter))]
 public abstract class Card {
-    //
+    
     private string cardName;
     public string CardName{
         get { return cardName; }
+    }
+    
+    private string cardDesc;
+    public string CardDesc{
+        get { return cardDesc; }
+    }
+
+    private int cardCost;
+
+    public int CardCost
+    {
+        get { return cardCost; }
+        set
+        {
+            if (value < 0) cardCost = 0;
+            else cardCost = value;
+        }
     }
 
     [JsonConverter(typeof(StringEnumConverter))]
     public List<States> StatesList;
 
-    public Card(string cardName, List<States> StatesList){
+    public Card(string cardName, string cardDesc, List<States> StatesList){
         this.cardName = cardName;
+        this.cardDesc = cardDesc;
         this.StatesList = StatesList;
     }
     
@@ -33,12 +51,12 @@ public abstract class Card {
     public void usingCard()
     {
         foreach (States states in StatesList)
-        {
             PlayerManager.Instance.StatesQueue.Enqueue(states);
-        }
         
+        PlayerManager.Instance.StatesQueue.Enqueue(States.Normal);
+
         usingCardSpecific();
         
-        
+        PlayerManager.Instance.ChangeStates(PlayerManager.Instance.StatesQueue.Dequeue());
     }
 }

@@ -5,9 +5,8 @@ using UnityEngine;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-public class CardData : MonoBehaviour
+public class CardData : Singleton<CardData>
 {
-
     public bool saveData(List<Card> cardData, string DataName)
     {
         var converter = new StringEnumConverter();

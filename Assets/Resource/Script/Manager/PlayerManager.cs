@@ -18,7 +18,7 @@ public class PlayerManager : Singleton<PlayerManager>
     {
         StatesQueue = new Queue<States>();
         state = new NormalState();
-        PlayerCard = new List<Card>();
+        PlayerCard = CardData.Instance._load("PlayerCard.json");
         state.Enter();
     }
 
@@ -33,10 +33,10 @@ public class PlayerManager : Singleton<PlayerManager>
         state.Update();
     }
 
-    public void ChangeStates()
+    public void ChangeStates(States states)
     {
         state.Exit();
-        //state전환 과정
+        //state전환 과정 이 부분은 세부 State Constructor가 나와야 적용 가능할 것으로 예상됨
         state.Enter();
     }
 }
