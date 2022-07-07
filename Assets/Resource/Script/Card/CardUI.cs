@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -25,7 +26,12 @@ public class CardUI : MonoBehaviour
         CardCostText.text = Card.CardCost.ToString();
     }
 
-    private void OnMouseOver()
+    private void OnMouseEnter()
+    {
+        
+    }
+    
+    private void OnMouseExit()
     {
         
     }

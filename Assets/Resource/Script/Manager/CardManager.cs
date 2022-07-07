@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.XR;
 
 /// <summary>
 /// Card의 움직임에 대한 Manager
@@ -15,7 +16,9 @@ public class CardManager : Singleton<CardManager>
     private Quaternion backQuaternion;
     private Quaternion fronQuaternion;
 
-    private List<GameObject> CardList = new List<GameObject>();
+    private List<GameObject> HandCardList = new List<GameObject>();
+    private Queue<GameObject> DeckList = new Queue<GameObject>();
+    private List<GameObject> GraveList = new List<GameObject>();
 
     void Start()
     {
@@ -23,7 +26,6 @@ public class CardManager : Singleton<CardManager>
         fronQuaternion = Quaternion.Euler(Vector3.up * 180);
     }
 
-    // Update is called once per frame
     void Update()
     {
         
@@ -35,7 +37,48 @@ public class CardManager : Singleton<CardManager>
         {
             GameObject newCard = Instantiate(CardPrefab, DeckPos, backQuaternion);
             newCard.GetComponent<CardUI>().init(card);
-            CardList.Add(newCard);
+            DeckList.Enqueue(newCard);
         }
+    }
+
+    public void DrawCard(int drawNum)
+    {
+        for (int i = 0; i < drawNum; i++)
+        {
+            if (DeckList.Count != 0)
+            {
+                GameObject temp = DeckList.Dequeue();
+                HandCardList.Add(temp);
+                StartCoroutine(DrawCardAnimation(temp));
+            }
+            else
+            {
+                GraveToDeck();
+                GameObject temp = DeckList.Dequeue();
+                HandCardList.Add(temp);
+                StartCoroutine(DrawCardAnimation(temp));
+            }
+        }
+    }
+
+    private IEnumerator DrawCardAnimation(GameObject card)
+    {
+        return null;
+    }
+
+    public void GraveToDeck()
+    {
+        GraveList.Shuffle();
+        foreach (GameObject card in GraveList)
+        {
+            DeckList.Enqueue(card);
+            StartCoroutine(GraveToDeckAnimation(card));
+        }
+    }
+
+    private IEnumerator GraveToDeckAnimation(GameObject card)
+    {
+        card.transform.position = DeckPos;
+        return null;
     }
 }

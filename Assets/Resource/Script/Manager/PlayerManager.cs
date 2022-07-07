@@ -52,7 +52,7 @@ public class PlayerManager : Singleton<PlayerManager>
     public void ChangeStates(States states)
     {
         state.Exit();
-        //state전환 과정 이 부분은 세부 State Constructor가 나와야 적용 가능할 것으로 예상됨
+        //state전환 과정 이 부분은 세부 State 구현이 나와야 가능할 것으로 예상됨
         state.Enter();
     }
 }
