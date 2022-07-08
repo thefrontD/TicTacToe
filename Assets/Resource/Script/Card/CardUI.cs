@@ -9,7 +9,11 @@ using TMPro;
 public class CardUI : MonoBehaviour
 {
     public Card Card;
-    
+    [SerializeField] private float animationDuration;
+    [SerializeField] private Vector3 MouseOnPos;
+    [SerializeField] private Vector3 MouseOnScale;
+    private Vector3 originPos;
+    private Vector3 originScale;
     [SerializeField] private SpriteRenderer CardBackground;
     private SpriteRenderer CardImage;
     [SerializeField] private TextMeshPro CardCostText;
@@ -21,6 +25,8 @@ public class CardUI : MonoBehaviour
     {
         this.Card = card;
 
+        originScale = transform.localScale;
+
         CardNameText.text = Card.CardName;
         CardDescText.text = Card.CardDesc;
         CardCostText.text = Card.CardCost.ToString();
@@ -28,11 +34,14 @@ public class CardUI : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        
+        originPos = transform.position;
+        transform.DOMove(originPos + MouseOnPos, animationDuration);
+        transform.DOScale(MouseOnScale, animationDuration);
     }
     
     private void OnMouseExit()
     {
-        
+        transform.DOMove(originPos, animationDuration);
+        transform.DOScale(originScale, animationDuration);
     }
 }

@@ -25,7 +25,6 @@ public class PlayerManager : Singleton<PlayerManager>
         PlayerCard.Add(new AttackCard("Alpha", "Alpha is Greek A", 1,
             statesList,  AttackCardEffect.Alpha));
 
-        Debug.Log(PlayerCard.Count);
         
         StatesQueue = new Queue<States>();
         state = new NormalState();
@@ -34,8 +33,6 @@ public class PlayerManager : Singleton<PlayerManager>
         //CardData.Instance.saveData(PlayerCard, "PlayerCard.json");
         
         CardManager.Instance.SetUp();
-        
-        Debug.Log(state);
     }
 
     void Update()

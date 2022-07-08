@@ -15,7 +15,9 @@ public class BoardManager : Singleton<BoardManager>
     /// </summary>
     [SerializeField] private GameObject BoardPrefab;
     //Board State Array
-    private GameObject[,] GameBoard = new GameObject[3, 3];
+    [SerializeField] private GameObject PlayerPrefab;
+    private GameObject PlayerObject;
+    private GameObject[,] gameBoard = new GameObject[3, 3];
     private BoardStates[,] boardStates = new BoardStates[3, 3];
     //Board Color Array
     private BoardColor[,] boardColors = new BoardColor[3, 3];
@@ -25,14 +27,7 @@ public class BoardManager : Singleton<BoardManager>
     void Start()
     {
         BoardLoading();
-        for (int i = 0; i < BoardSize; i++)
-        {
-            for (int j = 0; j < BoardSize; j++)
-            {
-                Vector3 pos = new Vector3(-2 + 2 * i, 2 - 2 * j, 0);
-                GameBoard[i, j] = Instantiate(BoardPrefab, pos, Quaternion.identity);
-            }
-        }
+        InitPlayer(1, 1);
     }
 
     void Update()
@@ -45,7 +40,21 @@ public class BoardManager : Singleton<BoardManager>
     /// </summary>
     private void BoardLoading()
     {
-        
+        for (int i = 0; i < BoardSize; i++)
+        {
+            for (int j = 0; j < BoardSize; j++)
+            {
+                float size = BoardPrefab.transform.localScale.x;
+                Vector3 pos = new Vector3(-size + size * i, size - size * j, 0);
+                gameBoard[i, j] = Instantiate(BoardPrefab, pos, Quaternion.identity);
+            }
+        }
+    }
+
+    private void InitPlayer(int x, int y)
+    {
+        Vector3 initPos = gameBoard[x, y].transform.position - new Vector3(0, 0, PlayerPrefab.transform.localScale.z/2);
+        PlayerObject = Instantiate(PlayerPrefab, initPos, Quaternion.identity);
     }
 
     /// <summary>
@@ -53,13 +62,32 @@ public class BoardManager : Singleton<BoardManager>
     /// </summary>
     public bool ColoringBoard(int x, int y, BoardColor boardColor)
     {
-        if (x >= BoardSize - 1 || y >= BoardSize - 1 || x < 0 || y < 0)
+        if (x >= BoardSize || y >= BoardSize || x < 0 || y < 0)
             return false;
         else
         {
             boardColors[x, y] = boardColor;
+            gameBoard[x, y].GetComponent<Board>().SetBoardColor(boardColor);
             return true;
         }
+    }
+
+    public bool MovePlayer(int x, int y)
+    {
+        if (x >= BoardSize - 1 || y >= BoardSize - 1 || x < 0 || y < 0)
+            return false;
+        else
+        {
+            Vector3 nextPos = gameBoard[x, y].transform.position - new Vector3(0, 0, PlayerPrefab.transform.localScale.z/2);
+            StartCoroutine(MovingPlayerCoroutine(nextPos));
+            return true;
+        }
+    }
+
+    private IEnumerator MovingPlayerCoroutine(Vector3 nextPos)
+    {
+        PlayerObject.transform.position = nextPos;
+        return null;
     }
 
     /// <summary>
@@ -70,7 +98,7 @@ public class BoardManager : Singleton<BoardManager>
         int ret = 0;
         bool check = true;
         
-        if (x >= BoardSize - 1 || y >= BoardSize - 1 || x < 0 || y < 0)
+        if (x >= BoardSize || y >= BoardSize || x < 0 || y < 0)
             return 0;
         else if (x == y)
         { 
