@@ -449,9 +449,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24949ca41d37fb948b4657e55fd964dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationDuration: 0
+  animationDuration: 0.2
   MouseOnPos: {x: 0, y: 2, z: -0.5}
-  MouseOnScale: {x: 1.2, y: 1.2, z: 1}
+  MouseOnScale: 1.2
   CardBackground: {fileID: 225837844786194645}
   CardCostText: {fileID: 225837845296561811}
   CardNameText: {fileID: 225837844855087852}

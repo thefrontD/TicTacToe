@@ -11,7 +11,7 @@ public class CardUI : MonoBehaviour
     public Card Card;
     [SerializeField] private float animationDuration;
     [SerializeField] private Vector3 MouseOnPos;
-    [SerializeField] private Vector3 MouseOnScale;
+    [SerializeField] private float MouseOnScale;
     private Vector3 originPos;
     private Vector3 originScale;
     [SerializeField] private SpriteRenderer CardBackground;
@@ -20,12 +20,19 @@ public class CardUI : MonoBehaviour
     [SerializeField] private TextMeshPro CardNameText;
     [SerializeField] private TextMeshPro CardDescText;
     //[SerializeField] private TextMeshPro CardEffectExplanation;
+    private bool isDrag = false;
+
+    void Start()
+    {
+        originScale = transform.localScale;
+        setPos();
+    }
 
     public void init(Card card)
     {
         this.Card = card;
 
-        originScale = transform.localScale;
+        setPos();
 
         CardNameText.text = Card.CardName;
         CardDescText.text = Card.CardDesc;
@@ -34,13 +41,38 @@ public class CardUI : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        originPos = transform.position;
         transform.DOMove(originPos + MouseOnPos, animationDuration);
-        transform.DOScale(MouseOnScale, animationDuration);
+        transform.DOScale(originScale * MouseOnScale, animationDuration);
     }
     
     private void OnMouseExit()
     {
+        if(!isDrag)
+        {
+            transform.DOMove(originPos, animationDuration);
+            transform.DOScale(originScale, animationDuration);
+        }
+    }
+
+    private void setPos()
+    {
+        originPos = transform.position;
+    }
+
+    void OnMouseDown()
+    {
+        isDrag = true;
+    }
+
+    private void OnMouseDrag()
+    {
+        Vector3 trackPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        transform.position = new Vector3(trackPosition.x, trackPosition.y, -0.5f);
+    }
+    
+    void OnMouseUp()
+    {
+        isDrag = false;
         transform.DOMove(originPos, animationDuration);
         transform.DOScale(originScale, animationDuration);
     }
