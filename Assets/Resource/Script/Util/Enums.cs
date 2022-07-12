@@ -14,3 +14,7 @@ public enum States{ Normal, Attack, Move, Color }
 
 [JsonConverter(typeof(StringEnumConverter))]
 public enum AttackCardEffect { Alpha, Bravo, Charlie, Delta, Echo, None }
+
+public enum ColorCardEffect {Color1, Color2, BreakWallAndColor, None}
+
+public enum ColorTargetPosition {UpLeft, Up, UpRight, Left, Center, Right, DownLeft, Down, DownRight}

@@ -79,3 +79,48 @@ public class AttackCard : Card
         
     }
 }
+
+public class ColorCard : Card
+{
+    private ColorCardEffect ColorCardEffect;
+
+    private bool IsSelectable;
+
+    private bool IsMultiTarget;
+
+    //used when Target is not selectable
+    private ColorTargetPosition Target;
+
+    public ColorCard(string cardName, string cardDesc, int cardCost, List<States> statesList,
+        ColorCardEffect colorCardEffect, ColorTargetPosition Target) : base(cardName, cardDesc, cardCost, statesList)
+    {
+        this.ColorCardEffect = colorCardEffect;
+        Debug.Log(this.CardName);
+        Debug.Log(this.ColorCardEffect);
+    }
+
+    public override void usingCardSpecific()
+    {
+        //카드 사용 당시의 효과 당장은 무엇이 들어갈지 모른다.
+        if(this.ColorCardEffect == ColorCardEffect.Color1){
+            return;
+        }
+        if(this.ColorCardEffect == ColorCardEffect.Color2){
+            return;
+        }
+    }
+
+    public bool getIsSelectable(){
+        return IsSelectable;
+    }
+
+    public bool getIsMultiTarget(){
+        return IsMultiTarget;
+    }
+
+    public ColorTargetPosition getTarget(){
+        return Target;
+    }
+
+
+}
