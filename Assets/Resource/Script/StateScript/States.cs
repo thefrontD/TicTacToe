@@ -65,7 +65,7 @@ public class NormalState : BaseState
         
     }
 }
-public abstract class AttackState
+public abstract class AttackState : BaseState
 {
     /// <summary>
     /// 카드 사용시에 일어나야 하는 부분을 여기에 작성할 것
