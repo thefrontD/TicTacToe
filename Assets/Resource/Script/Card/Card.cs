@@ -79,3 +79,37 @@ public class AttackCard : Card
         
     }
 }
+
+public class MoveCard : Card
+{
+    private MoveCardEffect MoveCardEffect;
+    private TriggerCondition triggerCondition;
+    private MoveDirection moveDirection;     // 상하좌우로 이동, 대각선으로 이동, 어느 칸으로든 이동 등
+    private int moveAmount;  // 한 번에 이동하는 양
+    private Action afterPlayAction;
+
+    public MoveCard(string cardName, string cardDesc, int cardCost, List<States> statesList,
+        MoveCardEffect moveCardEffect, TriggerCondition triggerCondition, MoveDirection moveDirection, int moveAmount, Action afterPlayAction) : base(cardName, cardDesc, cardCost, statesList)
+    {
+        this.MoveCardEffect = moveCardEffect;
+        this.triggerCondition = triggerCondition;
+        this.moveDirection = moveDirection;
+        this.moveAmount = moveAmount;  // 기본 1
+        this.afterPlayAction = afterPlayAction;
+        Debug.Log(this.CardName);
+    }
+
+    public override void usingCardSpecific()
+    {
+        // 1초 동안 바람 이펙트
+        // 10개의 LinearWind, 4개의 LoopWind를 소환하여 1초 동안 애니메이션을 재생하다가 사라지도록 한다.
+        GameObject[] linearWinds = new GameObject[10];
+        for (int i = 0; i < linearWinds.Length; i++)
+        {
+            //linearWinds[i] = 
+        }
+        // 갈 수 있는 칸에 O 표시를 해 놓음
+        // 
+        //BoardManager.Instance.MovePlayer()
+    }
+}

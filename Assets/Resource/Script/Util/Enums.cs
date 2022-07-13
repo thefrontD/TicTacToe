@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Newtonsoft.Json;
@@ -14,3 +15,12 @@ public enum States{ Normal, Attack, Move, Color }
 
 [JsonConverter(typeof(StringEnumConverter))]
 public enum AttackCardEffect { Alpha, Bravo, Charlie, Delta, Echo, None }
+
+[JsonConverter(typeof(StringEnumConverter))]
+public enum MoveCardEffect { Run, Slide, Flash, None }
+
+[JsonConverter(typeof(StringEnumConverter)), Flags]
+public enum MoveDirection { All, UDLR, Diagonal, Colored, Dangerous }
+
+[JsonConverter(typeof(StringEnumConverter))]
+public enum TriggerCondition { Any, EnemyWillAttack, MoveCardInHand }

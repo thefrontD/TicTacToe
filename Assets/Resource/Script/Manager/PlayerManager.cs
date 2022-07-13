@@ -20,12 +20,16 @@ public class PlayerManager : Singleton<PlayerManager>
     {
         PlayerCard = new List<Card>();
         
-        List<States> statesList = new List<States>(){States.Attack};
+        //List<States> statesList = new List<States>(){States.Attack};
 
-        PlayerCard.Add(new AttackCard("Alpha", "Alpha is Greek A", 1,
-            statesList,  AttackCardEffect.Alpha));
+        //PlayerCard.Add(new AttackCard("Alpha", "Alpha is Greek A", 1,
+        //    statesList,  AttackCardEffect.Alpha));
 
-        
+        List<States> moveStatesList = new List<States>() { States.Move };
+        PlayerCard.Add(new MoveCard("Idong", "Move one space.", 1,
+            moveStatesList, MoveCardEffect.Run, TriggerCondition.Any, MoveDirection.UDLR, 1, () => Debug.Log("Well Played")));
+
+
         StatesQueue = new Queue<States>();
         state = new NormalState();
         //PlayerCard = CardData.Instance._load("PlayerCard.json");
