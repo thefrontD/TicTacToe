@@ -65,3 +65,42 @@ public class NormalState : BaseState
         
     }
 }
+
+public class ColorState : BaseState
+{
+    private bool Selectable;
+    private int TargetNum;
+    private ColorTargetPosition target;
+    
+    public ColorState(bool Selectable, int TargetNum, ColorTargetPosition Target)
+    {
+        this.Selectable = Selectable;
+        this.TargetNum = TargetNum;
+        this.Target = Target;
+    }
+
+    public override void DoAction(States state)
+    {
+        
+    }
+
+    public override void Enter()
+    {
+        
+    }
+
+    public override void MouseEvent()
+    {
+        
+    }
+
+    public override void Update()
+    {
+        
+    }
+
+    public override void Exit()
+    {
+        
+    }
+}

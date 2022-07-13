@@ -84,19 +84,34 @@ public class ColorCard : Card
 {
     private ColorCardEffect ColorCardEffect;
 
-    private bool IsSelectable;
+    private bool Selectable;
+    public bool getSelectable(){
+        return Selectable;
+    }
 
-    private bool IsMultiTarget;
+    private int TargetNum;
+    public int getTargetNum(){
+        return TargetNum;
+    }
 
     //used when Target is not selectable
     private ColorTargetPosition Target;
+    public ColorTargetPosition getTarget(){
+        return Target;
+    }
 
     public ColorCard(string cardName, string cardDesc, int cardCost, List<States> statesList,
-        ColorCardEffect colorCardEffect, ColorTargetPosition Target) : base(cardName, cardDesc, cardCost, statesList)
+        ColorCardEffect colorCardEffect, bool Selectable, int TargetNum, ColorTargetPosition Target) : base(cardName, cardDesc, cardCost, statesList)
     {
         this.ColorCardEffect = colorCardEffect;
-        Debug.Log(this.CardName);
-        Debug.Log(this.ColorCardEffect);
+        this.Selectable = Selectable;
+        this.TargetNum = TargetNum;
+        this.Target = Target;
+        Debug.Log(selectable);
+    }
+
+    public BaseState ColorCardState(){
+        return new ColorState(this.Selectable, this.TargetNum, this.Target);
     }
 
     public override void usingCardSpecific()
@@ -110,17 +125,8 @@ public class ColorCard : Card
         }
     }
 
-    public bool getIsSelectable(){
-        return IsSelectable;
-    }
 
-    public bool getIsMultiTarget(){
-        return IsMultiTarget;
-    }
-
-    public ColorTargetPosition getTarget(){
-        return Target;
-    }
+    
 
 
 }
