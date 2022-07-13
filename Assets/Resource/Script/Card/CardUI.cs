@@ -75,5 +75,6 @@ public class CardUI : MonoBehaviour
         isDrag = false;
         transform.DOMove(originPos, animationDuration);
         transform.DOScale(originScale, animationDuration);
+        this.Card.usingCardSpecific();
     }
 }
