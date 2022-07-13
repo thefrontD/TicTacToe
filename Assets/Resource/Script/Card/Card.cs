@@ -130,3 +130,51 @@ public class MoveCard : Card
         //BoardManager.Instance.MovePlayer()
     }
 }
+
+public class ColorCard : Card
+{
+    private ColorCardEffect ColorCardEffect;
+
+    private bool Selectable;
+    public bool getSelectable(){
+        return Selectable;
+    }
+
+    private int TargetNum;
+    public int getTargetNum(){
+        return TargetNum;
+    }
+
+    //used when Target is not selectable
+    private ColorTargetPosition Target;
+    public ColorTargetPosition getTarget(){
+        return Target;
+    }
+
+    public ColorCard(string cardName, string cardDesc, int cardCost, List<States> statesList,
+        ColorCardEffect colorCardEffect, bool Selectable, int TargetNum, ColorTargetPosition Target) : base(cardName, cardDesc, cardCost, statesList)
+    {
+        this.ColorCardEffect = colorCardEffect;
+        this.Selectable = Selectable;
+        this.TargetNum = TargetNum;
+        this.Target = Target;
+    }
+
+    public ColorState ColorState(){
+        return new ColorState(this.Selectable, this.TargetNum, this.Target);
+    }
+
+    public override void usingCardSpecific()
+    {
+                // 갈 수 있는 칸에 O 표시를 해 놓음
+        // 
+        //BoardManager.Instance.MovePlayer()
+        //카드 사용 당시의 효과 당장은 무엇이 들어갈지 모른다.
+        if(this.ColorCardEffect == ColorCardEffect.Color1){
+            return;
+        }
+        if(this.ColorCardEffect == ColorCardEffect.Color2){
+            return;
+        }
+    }
+}

@@ -24,3 +24,6 @@ public enum MoveDirection { All, UDLR, Diagonal, Colored, Dangerous }
 
 [JsonConverter(typeof(StringEnumConverter))]
 public enum TriggerCondition { Any, EnemyWillAttack, MoveCardInHand }
+public enum ColorCardEffect {Color1, Color2, BreakWallAndColor, None}
+
+public enum ColorTargetPosition {UpLeft, Up, UpRight, Left, Center, Right, DownLeft, Down, DownRight}
