@@ -35,8 +35,8 @@ public abstract class Card {
         }
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
-    public List<States> StatesList;
+    //[JsonConverter(typeof(StringEnumConverter))]
+    //public List<States> StatesList;
 
     public Card(string cardName, string cardDesc, int cardCost, List<States> statesList){
         this.cardName = cardName;
@@ -52,10 +52,10 @@ public abstract class Card {
 
     public void usingCard()
     {
-        foreach (States states in StatesList)
-            PlayerManager.Instance.StatesQueue.Enqueue(states);
+        //foreach (States states in StatesList)
+        //    PlayerManager.Instance.StatesQueue.Enqueue(states);
         
-        PlayerManager.Instance.StatesQueue.Enqueue(States.Normal);
+        //PlayerManager.Instance.StatesQueue.Enqueue(States.Normal);
 
         usingCardSpecific();
         
@@ -118,16 +118,24 @@ public class MoveCard : Card
 
     public override void usingCardSpecific()
     {
-        // 1초 동안 바람 이펙트
-        // 10개의 LinearWind, 4개의 LoopWind를 소환하여 1초 동안 애니메이션을 재생하다가 사라지도록 한다.
-        GameObject[] linearWinds = new GameObject[10];
-        for (int i = 0; i < linearWinds.Length; i++)
-        {
-            //linearWinds[i] = 
-        }
-        // 갈 수 있는 칸에 O 표시를 해 놓음
-        // 
-        //BoardManager.Instance.MovePlayer()
+        // 카드를 낼 수 있는지를 판정하는 부분
+
+
+        // 카드를 낼 때 나오는 이펙트 (이동 이펙트랑은 다름)
+        // 1초 동안 바람 이펙트 - 10개의 LinearWind, 4개의 LoopWind를 소환하여 1초 동안 애니메이션을 재생하다가 사라지도록 한다.
+        //GameObject[] linearWinds = new GameObject[10];
+        //for (int i = 0; i < linearWinds.Length; i++)
+        //{
+        //    //linearWinds[i] = 
+        //}
+
+        // State를 만드는 부분
+        MoveState state = new MoveState();
+        NormalState normal = new NormalState();  // 다 끝나고 다시 normal state로 돌아온다.
+
+        // 카드를 Enqueue하는 부분
+        PlayerManager.Instance.StatesQueue.Enqueue(state);
+        PlayerManager.Instance.StatesQueue.Enqueue(normal);
     }
 }
 

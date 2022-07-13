@@ -19,8 +19,9 @@ public class PlayerManager : Singleton<PlayerManager>
     void Start()
     {
         PlayerCard = new List<Card>();
-        
-        List<States> statesList = new List<States>(){States.Color};
+
+        //List<States> statesList = new List<States>(){States.Color};
+        List<States> statesList = new List<BaseState>() { new NormalState() };
 
         PlayerCard.Add(new ColorCard("Alpha", "Alpha is Greek A", 1,
             statesList,  ColorCardEffect.Color1, false, 1, ColorTargetPosition.Center));

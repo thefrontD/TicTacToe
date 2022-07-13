@@ -65,3 +65,38 @@ public class NormalState : BaseState
         
     }
 }
+
+public class MoveState : BaseState
+{
+    public MoveState()
+    {
+
+    }
+
+    public override void DoAction(States state)
+    {
+        
+    }
+
+    public override void Enter()
+    {
+        // 카메라 암전 등
+    }
+
+    public override void MouseEvent()
+    {
+        // 이동 가능한 곳을 클릭할 시 진행.
+    }
+
+    public override void Update()
+    {
+        // UI 상으로 이동 가능한 곳은 O 표시.
+    }
+
+    public override void Exit()
+    {
+        // 이동 모션?
+        // 카메라 다시 밝게
+        //BoardManager.Instance.MovePlayer()
+    }
+}
