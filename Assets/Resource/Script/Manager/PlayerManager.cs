@@ -23,7 +23,7 @@ public class PlayerManager : Singleton<PlayerManager>
         List<States> statesList = new List<States>(){States.Attack};
 
         PlayerCard.Add(new AttackCard("Alpha", "Alpha is Greek A", 1,
-            statesList,  AttackCardEffect.Alpha));
+            statesList,  AttackCardEffect.Alpha, 1, 1, 1, 1, 1, 1, 1));
 
         
         StatesQueue = new Queue<States>();
