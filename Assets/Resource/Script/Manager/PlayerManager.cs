@@ -20,11 +20,14 @@ public class PlayerManager : Singleton<PlayerManager>
     {
         PlayerCard = new List<Card>();
         
-        List<States> statesList = new List<States>(){States.Attack};
+        List<States> statesList = new List<States>(){States.Color};
 
-        PlayerCard.Add(new AttackCard("Alpha", "Alpha is Greek A", 1,
-            statesList,  AttackCardEffect.Alpha));
-
+        PlayerCard.Add(new ColorCard("Alpha", "Alpha is Greek A", 1,
+            statesList,  ColorCardEffect.Color1, false, 1, ColorTargetPosition.Center));
+        foreach (Card card in PlayerManager.Instance.PlayerCard)
+        {
+            ColorState state1 = ((ColorCard)card).ColorState();
+        }
         
         StatesQueue = new Queue<States>();
         state = new NormalState();
@@ -33,6 +36,7 @@ public class PlayerManager : Singleton<PlayerManager>
         //CardData.Instance.saveData(PlayerCard, "PlayerCard.json");
         
         CardManager.Instance.SetUp();
+
     }
 
     void Update()

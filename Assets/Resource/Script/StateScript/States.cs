@@ -70,13 +70,14 @@ public class ColorState : BaseState
 {
     private bool Selectable;
     private int TargetNum;
-    private ColorTargetPosition target;
+    private ColorTargetPosition Target;
     
     public ColorState(bool Selectable, int TargetNum, ColorTargetPosition Target)
     {
         this.Selectable = Selectable;
         this.TargetNum = TargetNum;
         this.Target = Target;
+        Debug.Log("Target is"+ Target);
     }
 
     public override void DoAction(States state)

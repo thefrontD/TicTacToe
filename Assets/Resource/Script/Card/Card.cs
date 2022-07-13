@@ -107,10 +107,9 @@ public class ColorCard : Card
         this.Selectable = Selectable;
         this.TargetNum = TargetNum;
         this.Target = Target;
-        Debug.Log(selectable);
     }
 
-    public BaseState ColorCardState(){
+    public ColorState ColorState(){
         return new ColorState(this.Selectable, this.TargetNum, this.Target);
     }
 
