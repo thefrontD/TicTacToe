@@ -66,34 +66,28 @@ public abstract class Card {
 public class AttackCard : Card
 {
     private AttackCardEffect AttackCardEffect;  //이펙트
-    private int TriggerCondition;               //발동 조건
     private int TargetType;                     //공격 가능한 대상의 종류
     private int TargetCount;                    //공격 가능한 대상의 수
     private int AttackCount;                    //공격 횟수
     private int Damage;                         //공격의 피해량
-    private int EffectTriggerCondition;         //추가 효과 발동 조건
-    private int Effect;                         //추가 효과
 
 
     public AttackCard(string cardName, string cardDesc, int cardCost, List<States> statesList, 
-        AttackCardEffect attackCardEffect, int triggerCondition, int targetType, int targetCount, int attackCount, int damage, int effectTriggerCondition, int effect) : base(cardName, cardDesc, cardCost, statesList)
+        AttackCardEffect attackCardEffect, int targetType, int targetCount, int attackCount, int damage) : base(cardName, cardDesc, cardCost, statesList)
         //카드 이름, 카드 설명, 카드 코스트, StatesList,
-        //이펙트, 발동 조건, 공격 가능한 대상의 종류, 공격 가능한 대상의 수, 공격 횟수, 공격의 피해량, 추가 효과 발동 조건, 추가 효과 
+        //공격 가능한 대상의 종류, 공격 가능한 대상의 수, 공격 횟수, 공격의 피해량
     {
         Debug.Log(this.CardName);
         this.AttackCardEffect = attackCardEffect;
-        this.TriggerCondition = triggerCondition;
         this.TargetType = targetType;
         this.TargetCount = targetCount;
         this.AttackCount = attackCount;
         this.Damage = damage;
-        this.EffectTriggerCondition = effectTriggerCondition;
-        this.Effect = effect;
     }
 
     public override void usingCardSpecific()
     {
-        
+        //발동조건, 이펙트
     }
 }
 
