@@ -122,4 +122,12 @@ public class BoardManager : Singleton<BoardManager>
 
         return ret;
     } 
+
+    //특정 타일의 주변 타일을 받아오는 함수
+    public List<Vector2Int> GetAdjacentCoord(Vector2Int coord)
+    {
+        List<Vector2Int> adjacentCoord = new List<Vector2Int>();
+        adjacentCoord.Add(Vector2Int.zero); //주변 타일 추가
+        return adjacentCoord;
+    }
 }

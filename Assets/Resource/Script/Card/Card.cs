@@ -66,12 +66,13 @@ public abstract class Card {
 public class AttackCard : Card
 {
     private AttackCardEffect AttackCardEffect;  //이펙트
+
     private int TargetType;                     //공격 가능한 대상의 종류
     private int TargetCount;                    //공격 가능한 대상의 수
     private int AttackCount;                    //공격 횟수
     private int Damage;                         //공격의 피해량
 
-
+    public int GetTargetType() => TargetType;
     public AttackCard(string cardName, string cardDesc, int cardCost, List<States> statesList, 
         AttackCardEffect attackCardEffect, int targetType, int targetCount, int attackCount, int damage) : base(cardName, cardDesc, cardCost, statesList)
         //카드 이름, 카드 설명, 카드 코스트, StatesList,
