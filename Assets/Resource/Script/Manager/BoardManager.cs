@@ -21,6 +21,7 @@ public class BoardManager : Singleton<BoardManager>
     private BoardStates[,] boardStates = new BoardStates[3, 3];
     //Board Color Array
     private BoardColor[,] boardColors = new BoardColor[3, 3];
+    public BoardColor[,] BoardColors { get => boardColors; }
     //Actual Board Components in Game
     private int BoardSize = 3;
     

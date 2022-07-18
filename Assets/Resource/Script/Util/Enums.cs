@@ -14,6 +14,9 @@ public enum BoardColor { None, Player, Enemy }
 public enum States{ Normal, Attack, Move, Color }
 
 [JsonConverter(typeof(StringEnumConverter))]
+public enum EnemyState { Normal, Attack, Color }
+
+[JsonConverter(typeof(StringEnumConverter))]
 public enum AttackCardEffect { Alpha, Bravo, Charlie, Delta, Echo, None }
 
 [JsonConverter(typeof(StringEnumConverter))]
@@ -23,7 +26,7 @@ public enum MoveCardEffect { Run, Slide, Flash, None }
 public enum MoveDirection { All, UDLR, Diagonal, Colored, Dangerous }
 
 [JsonConverter(typeof(StringEnumConverter))]
-public enum TriggerCondition { Any, EnemyWillAttack, MoveCardInHand }
+public enum TriggerCondition { None, ColoredSpaceExists, EnemyWillAttack, PlayerHealthExceeds30, MoveCardInHand }
 public enum ColorCardEffect {Color1, Color2, BreakWallAndColor, None}
 
 public enum ColorTargetPosition {UpLeft, Up, UpRight, Left, Center, Right, DownLeft, Down, DownRight}

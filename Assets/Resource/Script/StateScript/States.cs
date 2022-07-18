@@ -68,9 +68,95 @@ public class NormalState : BaseState
 
 public class MoveState : BaseState
 {
-    public MoveState()
+    bool[,] movableSpace;
+    public MoveState(MoveCard originalCard)
     {
+        switch (originalCard.moveDirection)
+        {
+            case MoveDirection.UDLR:
+                // 현재 위치로부터 상하좌우로 한 칸 이동
+                {
+                    this.movableSpace = new bool[3, 3];  // 모든 항이 false인 2D 배열
+                    (int, int)[] coords =
+                    {
+                        (PlayerManager.Instance.row - 1, PlayerManager.Instance.col),  // 위
+                        (PlayerManager.Instance.row, PlayerManager.Instance.col + 1),  // 오른쪽
+                        (PlayerManager.Instance.row + 1, PlayerManager.Instance.col),  // 아래
+                        (PlayerManager.Instance.row, PlayerManager.Instance.col - 1)   // 왼쪽
+                    };
+                    foreach ((int, int) coord in coords)
+                    {
+                        if (coord.Item1 >= 0 && coord.Item1 < 3 && coord.Item2 >= 0 && coord.Item2 < 3)
+                        {
+                            this.movableSpace[coord.Item1, coord.Item2] = true;
+                        }
+                    }
+                    break;
+                }
 
+            case MoveDirection.Diagonal:
+                // 현재 위치로부터 대각선으로 한 칸 이동
+                {
+                    this.movableSpace = new bool[3, 3];  // 모든 항이 false인 2D 배열
+                    (int, int)[] coords =
+                    {
+                        (PlayerManager.Instance.row - 1, PlayerManager.Instance.col - 1),  // 왼쪽 위
+                        (PlayerManager.Instance.row - 1, PlayerManager.Instance.col + 1),  // 오른쪽 위
+                        (PlayerManager.Instance.row + 1, PlayerManager.Instance.col + 1),  // 오른쪽 아래
+                        (PlayerManager.Instance.row + 1, PlayerManager.Instance.col - 1)   // 왼쪽 아래
+                    };
+                    foreach ((int, int) coord in coords)
+                    {
+                        if (coord.Item1 >= 0 && coord.Item1 < 3 && coord.Item2 >= 0 && coord.Item2 < 3)
+                        {
+                            this.movableSpace[coord.Item1, coord.Item2] = true;
+                        }
+                    }
+                    break;
+                }
+
+            case MoveDirection.Colored:
+                // 내가 색칠해 뒀던 칸으로 이동
+                {
+                    BoardColor[,] boardColors = BoardManager.Instance.BoardColors;
+
+                    for (int i = 0; i < boardColors.GetLength(0); i++)  // row
+                    {
+                        for (int j = 0; j < boardColors.GetLength(1); j++)  // col
+                        {
+                            if (boardColors[i, j] == BoardColor.Player)
+                            {
+                                this.movableSpace[i, j] = true;
+                            }
+                        }
+                    }
+                    break;
+                }
+
+            case MoveDirection.Dangerous:
+                // 적이 이번 턴에 공격할 칸으로 이동
+                {
+                    //List<Enemy> enemyList = EnemyManager.EnemyList;
+                    List<Enemy> enemyList = new List<Enemy>();
+
+                    foreach (Enemy enemy in enemyList)
+                        foreach ((int, int) coord in enemy.WhereToAttack)
+                            this.movableSpace[coord.Item1, coord.Item2] = true;
+                    break;
+                }
+
+            case MoveDirection.All:
+                // 원하는 칸으로 이동
+                this.movableSpace = new bool[,] {
+                    { true, true, true },
+                    { true, true, true },
+                    { true, true, true }
+                };
+                break;
+
+            default:
+                return;
+        }
     }
 
     public override void DoAction(States state)
