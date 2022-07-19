@@ -9,6 +9,7 @@ public class Board : MonoBehaviour
     [SerializeField] private Sprite PlayerSprite;
     [SerializeField] private SpriteRenderer spriteRenderer;
     public BoardColor currentBoardColor;
+    public BoardObject currentBoardObject;
 
     void Start()
     {
