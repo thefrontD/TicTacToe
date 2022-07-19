@@ -14,7 +14,9 @@ public class PlayerManager : Singleton<PlayerManager>
     public int Hp { get => hp; }
     [SerializeField] private int mana;
     public int Mana { get => mana; set => mana = value; }
-    public int row, col;  // 0: 왼쪽 위, 1: 가운데, 2: 오른쪽 아래
+    // public int Row {
+    //     get => BoardManager.Instance.playerRow;
+    // }
 
     public BaseState state;
     public Queue<BaseState> StatesQueue;

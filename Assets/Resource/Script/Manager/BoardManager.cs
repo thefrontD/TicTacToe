@@ -24,7 +24,10 @@ public class BoardManager : Singleton<BoardManager>
     public BoardColor[,] BoardColors { get => boardColors; }
     //Actual Board Components in Game
     private int BoardSize = 3;
+
+    public int playerRow, playerCol; 
     
+       
     void Start()
     {
         BoardLoading();
