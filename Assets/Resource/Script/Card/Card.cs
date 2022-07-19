@@ -127,6 +127,7 @@ public class MoveCard : Card
 public class ColorCard : Card
 {
     private ColorCardEffect ColorCardEffect;
+    private bool cardUseValidity;
 
     public ColorCard(string cardName, string cardDesc, int cardCost, List<States> statesList,
         ColorCardEffect colorCardEffect) : base(cardName, cardDesc, cardCost, statesList)
@@ -144,6 +145,7 @@ public class ColorCard : Card
     */
     public override void usingCardSpecific()
     {
+        this.cardUseValidity = true;
         //BoardManager.Instance.MovePlayer()
         //카드 사용 당시의 효과 당장은 무엇이 들어갈지 모른다.
         //이동/색칠
@@ -168,8 +170,18 @@ public class ColorCard : Card
         }
         //컬러 테이블 4번
         if(this.ColorCardEffect == ColorCardEffect.Color4){
-            ColorState newState = MakeState(false, ColorTargetPosition.P5);
-            PlayerManager.Instance.StatesQueue.Enqueue(newState);
+            if(/*BoardManager.IsWall(BoardManager.PlayerPosition + (0,0)) &&
+            BoardManager.IsWall(BoardManager.PlayerPosition + (1,0)) &&
+            BoardManager.IsWall(BoardManager.PlayerPosition + (-1,0)) &&
+            BoardManager.IsWall(BoardManager.PlayerPosition + (0,1))&&
+            BoardManager.IsWall(BoardManager.PlayerPosition + (0,-1)) */true)
+            {
+                ColorState newState = MakeState(false, ColorTargetPosition.P5);
+                PlayerManager.Instance.StatesQueue.Enqueue(newState);
+            }
+            else{
+                this.cardUseValidity = false;
+            }
             return;
         }
         //컬러 테이블 5번
@@ -200,18 +212,27 @@ public class ColorCard : Card
         if(this.ColorCardEffect == ColorCardEffect.Color9){
             ColorState newState = MakeState(false, ColorTargetPosition.P3V);
             PlayerManager.Instance.StatesQueue.Enqueue(newState);
+            if(/*카드의 사용 취소 가능할 경우 변경*/ true){
+                //PlayerManager.Instance.Damage(10);//Damage 10
+            }
             return;
         }
         //컬러 테이블 10번
         if(this.ColorCardEffect == ColorCardEffect.Color9){
             ColorState newState = MakeState(false, ColorTargetPosition.P3H);
             PlayerManager.Instance.StatesQueue.Enqueue(newState);
+            if(/*카드의 사용 취소 가능할 경우 변경*/ true){
+                //PlayerManager.Instance.Damage(10);//Damage 10
+            }
             return;
         }
         //컬러 테이블 11번
         if(this.ColorCardEffect == ColorCardEffect.Color9){
             ColorState newState = MakeState(false, ColorTargetPosition.All);
             PlayerManager.Instance.StatesQueue.Enqueue(newState);
+            if(/*카드의 사용 취소 가능할 경우 변경*/ true){
+                //PlayerManager.Instance.DumpAll;// DumpAll
+            }
             return;
         }
     }
