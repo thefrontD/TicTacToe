@@ -170,16 +170,7 @@ public class MoveState : BaseState
     public override void Enter()
     {
         // 카메라 암전 등
-    }
 
-    public override void MouseEvent()
-    {
-        // 이동 가능한 곳을 클릭할 시 진행.
-    }
-
-    public override void Update()
-    {
-        // UI 상으로 이동 가능한 곳은 O 표시.
     }
 
     public override void Exit()
@@ -188,4 +179,102 @@ public class MoveState : BaseState
         // 카메라 다시 밝게
         //BoardManager.Instance.MovePlayer()
     }
+
+    public override void MouseEvent()
+    {
+        // 이동 가능한 곳을 클릭할 시 진행.
+        
+    }
+
+    public override void Update()
+    {
+        // UI 상으로 이동 가능한 곳은 O 표시.
+    }
+
 }
+
+public class AttackState : BaseState
+{
+    private AttackCard Card;
+
+    public AttackState(AttackCard card)
+    {
+        this.Card = card;
+    }
+
+//취소하면 normal state로 돌아감
+    public override void DoAction(States state)
+    {
+        
+    }
+    public override void Enter()
+    {
+        //공격 가능한 대상의 테두리를 밝은 파란 테두리로 표시
+        //카드 데이터의 공격 가능한 대상의 종류
+        //몬스터 공격 가능한 경우(001)
+        int targetType = Card.GetTargetType();
+        bool isMonster = targetType % 10 != 0;
+        bool isWall = (targetType / 10) % 10 != 0;
+        bool isMinion = (targetType / 100) % 10 != 0;
+
+        if(isMonster)
+        {
+
+        }
+        if(isWall)
+        {
+            //플레이어 주변에 Wall이 있으면 하이라이트(Clickable)
+            //플레이어 위치 주변 4칸에 Wall이 있는지 체크
+
+        }
+        if(isMinion)
+        {
+            //하수인 공격 가능한 경우 -> 플레이어 주변의 하수인(100)
+        }
+
+    public override void Exit()
+    {
+    }
+
+    public override void MouseEvent()
+    {
+        
+    }
+    public override void Update()
+    {
+        // UI 상으로 이동 가능한 곳은 O 표시.
+    }
+}
+
+
+/*
+public class ColorState : BaseState
+{
+    public ColorState(bool Selectable, int TargetNum, ColorTargetPosition Target) { }
+    public override void DoAction(States state)
+    {
+        throw new NotImplementedException();
+    }
+
+    public override void Enter()
+    {
+        throw new NotImplementedException();
+    }
+
+    public override void Exit()
+    {
+        throw new NotImplementedException();
+    }
+
+    public override void MouseEvent()
+    {
+        throw new NotImplementedException();
+    }
+
+    public override void Update()
+    {
+        throw new NotImplementedException();
+    }
+}
+*/
+
