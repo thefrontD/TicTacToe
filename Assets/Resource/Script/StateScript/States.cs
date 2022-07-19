@@ -90,7 +90,7 @@ public class ColorState : BaseState
 
     public override void MouseEvent()
     {
-        
+        //마우스로 칸 선택
     }
 
     public override void Update()
