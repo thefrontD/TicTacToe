@@ -137,12 +137,15 @@ public class MoveState : BaseState
                 // 적이 이번 턴에 공격할 칸으로 이동
                 {
                     //List<Enemy> enemyList = EnemyManager.EnemyList;
+                    /*
                     List<Enemy> enemyList = new List<Enemy>();
 
                     foreach (Enemy enemy in enemyList)
                         foreach ((int, int) coord in enemy.WhereToAttack)
                             this.movableSpace[coord.Item1, coord.Item2] = true;
+                    */
                     break;
+                    
                 }
 
             case MoveDirection.All:

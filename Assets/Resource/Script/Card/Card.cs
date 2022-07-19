@@ -143,7 +143,7 @@ public class MoveCard : Card
                 List<Enemy> enemyList = new List<Enemy>();
 
                 foreach (Enemy enemy in enemyList)
-                    if (enemy.State = EnemyState.Attack)
+                    // if (enemy.State = EnemyState.Attack)
                         proceed = true;
                 break;
 
@@ -157,7 +157,7 @@ public class MoveCard : Card
                 // 패에 다른 이동 카드가 있는가?
                 foreach (Card card in PlayerManager.Instance.PlayerCard)
                 {
-                    if (card.GetType() == typeof(MoveCard) /* 또는 AttackMoveCard */)  // GetType은 실제 type을 반환한다.
+                    if (card is MoveCard /* 또는 AttackMoveCard */)  // GetType은 실제 type을 반환한다.
                     {
                         proceed = true;
                         break;
