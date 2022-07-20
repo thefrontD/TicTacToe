@@ -71,7 +71,7 @@ public class ColorState : BaseState
     
     private bool Selectable;
     private ColorTargetPosition Target;
-    
+    private int Cost;
     public ColorState(bool Selectable, ColorTargetPosition Target)
     {
         this.Selectable = Selectable;

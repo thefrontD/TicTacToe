@@ -146,10 +146,24 @@ public class ColorCard : Card
     public override void usingCardSpecific()
     {
         this.cardUseValidity = true;
+        /*
+        카드 사용이 취소되는 경우
+        카드 사용 > 조건 불만족 > 자동 취소
+        카드 사용 > 마우스 선택 과정에서 취소버튼?(아직 기획상에는 없는 기능)
+        구현
+        Card.usingCard -> ColorCard.usingCardSpecific
+        어디에서 처리하든, 마나 소모값, 카드 사용중에 플레이어가 소모하는 HP,
+        패 버림, 이동, 색칠 등의 값을, '돌이킬 수 있도록' 전달해야 함
+
+        **아직 카드사용 조건이 맞지 않는 경우 외의 취소 액션은 기획된 바 없음
+        일단은 단순하게 조건 확인->사용 으로 구현한 후 이후 해결
+        */
         //BoardManager.Instance.MovePlayer()
         //카드 사용 당시의 효과 당장은 무엇이 들어갈지 모른다.
+
         //이동/색칠
         if(this.ColorCardEffect == ColorCardEffect.ColorAndMove){
+            PlayerManager.Instance.Mana -= CardCost;
             ColorState newState = MakeState(true, ColorTargetPosition.All);
             PlayerManager.Instance.StatesQueue.Enqueue(newState);
             //MoveState newMoveState = MakeMoveState(false, TargetChoseBefore);
@@ -158,12 +172,14 @@ public class ColorCard : Card
         }
         //색칠
         if(this.ColorCardEffect == ColorCardEffect.Color){
+            PlayerManager.Instance.Mana -= CardCost;
             ColorState newState = MakeState(false, ColorTargetPosition.P1);
             PlayerManager.Instance.StatesQueue.Enqueue(newState);
             return;
         }
         //컬러 테이블 3번
         if(this.ColorCardEffect == ColorCardEffect.Color3){
+            PlayerManager.Instance.Mana -= CardCost;
             ColorState newState = MakeState(false, ColorTargetPosition.P4);
             PlayerManager.Instance.StatesQueue.Enqueue(newState);
             return;
@@ -176,6 +192,7 @@ public class ColorCard : Card
             BoardManager.IsWall(BoardManager.PlayerPosition + (0,1))&&
             BoardManager.IsWall(BoardManager.PlayerPosition + (0,-1)) */true)
             {
+                PlayerManager.Instance.Mana -= CardCost;
                 ColorState newState = MakeState(false, ColorTargetPosition.P5);
                 PlayerManager.Instance.StatesQueue.Enqueue(newState);
             }
@@ -186,48 +203,61 @@ public class ColorCard : Card
         }
         //컬러 테이블 5번
         if(this.ColorCardEffect == ColorCardEffect.Color5){
-            ColorState newState = MakeState(false, ColorTargetPosition.C);
-            PlayerManager.Instance.StatesQueue.Enqueue(newState);
+            if(/*BoardManager.CountBingo() > 0*/true){
+                PlayerManager.Instance.Mana -= CardCost;
+                ColorState newState = MakeState(false, ColorTargetPosition.C);
+                PlayerManager.Instance.StatesQueue.Enqueue(newState);
+            }
             return;
         }
         //컬러 테이블 6번
         if(this.ColorCardEffect == ColorCardEffect.Color6){
+            //조건에 따라 마나 소모량 변화
+            int cost = CardCost;
+            if(cost < 0)
+                cost = 0;
+            PlayerManager.Instance.Mana -= cost;
             ColorState newState = MakeState(false, ColorTargetPosition.All);
             PlayerManager.Instance.StatesQueue.Enqueue(newState);
             return;
         }
         //컬러 테이블 7번
         if(this.ColorCardEffect == ColorCardEffect.Color7){
-            ColorState newState = MakeState(false, ColorTargetPosition.V);
-            PlayerManager.Instance.StatesQueue.Enqueue(newState);
+            if(/*PlayerManager.Instance.AttackedBefore()*/ true){
+                PlayerManager.Instance.Mana -= CardCost;
+                ColorState newState = MakeState(false, ColorTargetPosition.V);
+                PlayerManager.Instance.StatesQueue.Enqueue(newState);
+            }
             return;
         }
         //컬러 테이블 8번
         if(this.ColorCardEffect == ColorCardEffect.Color8){
-            ColorState newState = MakeState(false, ColorTargetPosition.H);
-            PlayerManager.Instance.StatesQueue.Enqueue(newState);
+            if(/*PlayerManager.Instance.AttackedBefore()*/ true){
+                PlayerManager.Instance.Mana -= CardCost;
+                ColorState newState = MakeState(false, ColorTargetPosition.H);
+                PlayerManager.Instance.StatesQueue.Enqueue(newState);
+            }
             return;
         }
         //컬러 테이블 9번
         if(this.ColorCardEffect == ColorCardEffect.Color9){
+            PlayerManager.Instance.Mana -= CardCost;
             ColorState newState = MakeState(false, ColorTargetPosition.P3V);
             PlayerManager.Instance.StatesQueue.Enqueue(newState);
-            if(/*카드의 사용 취소 가능할 경우 변경*/ true){
-                //PlayerManager.Instance.Damage(10);//Damage 10
-            }
+            PlayerManager.Instance.Hp -= 10;//Damage 10
             return;
         }
         //컬러 테이블 10번
-        if(this.ColorCardEffect == ColorCardEffect.Color9){
+        if(this.ColorCardEffect == ColorCardEffect.Color10){
+            PlayerManager.Instance.Mana -= CardCost;
             ColorState newState = MakeState(false, ColorTargetPosition.P3H);
             PlayerManager.Instance.StatesQueue.Enqueue(newState);
-            if(/*카드의 사용 취소 가능할 경우 변경*/ true){
-                //PlayerManager.Instance.Damage(10);//Damage 10
-            }
+            PlayerManager.Instance.Hp -= 10;//Damage 10
             return;
         }
         //컬러 테이블 11번
-        if(this.ColorCardEffect == ColorCardEffect.Color9){
+        if(this.ColorCardEffect == ColorCardEffect.Color11){
+            PlayerManager.Instance.Mana -= CardCost;
             ColorState newState = MakeState(false, ColorTargetPosition.All);
             PlayerManager.Instance.StatesQueue.Enqueue(newState);
             if(/*카드의 사용 취소 가능할 경우 변경*/ true){
