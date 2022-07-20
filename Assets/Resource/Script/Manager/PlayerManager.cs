@@ -10,26 +10,33 @@ using UnityEngine;
 /// </summary>
 public class PlayerManager : Singleton<PlayerManager>
 {
-    [SerializeField] private int Hp;
+    [SerializeField] private int hp;
+    public int Hp { get => hp; }
+    [SerializeField] private int mana;
+    public int Mana { get => mana; set => mana = value; }
+    // public int Row {
+    //     get => BoardManager.Instance.playerRow;
+    // }
 
     public BaseState state;
-    public Queue<States> StatesQueue;
+    public Queue<BaseState> StatesQueue;
     public List<Card> PlayerCard;
 
     void Start()
     {
         PlayerCard = new List<Card>();
-        
-        List<States> statesList = new List<States>(){States.Color};
 
-        PlayerCard.Add(new ColorCard("Alpha", "Alpha is Greek A", 1,
-            statesList,  ColorCardEffect.Color1, false, 1, ColorTargetPosition.Center));
-        foreach (Card card in PlayerManager.Instance.PlayerCard)
-        {
-            ColorState state1 = ((ColorCard)card).ColorState();
-        }
+        //List<States> statesList = new List<States>(){States.Color};
+        List<BaseState> statesList = new List<BaseState>() { new NormalState() };
+
+        //PlayerCard.Add(new ColorCard("Alpha", "Alpha is Greek A", 1,
+        //    statesList,  ColorCardEffect.Color1, false, 1, ColorTargetPosition.Center));
+        //foreach (Card card in PlayerManager.Instance.PlayerCard)
+        //{
+        //    ColorState state1 = ((ColorCard)card).ColorState();
+        //}
         
-        StatesQueue = new Queue<States>();
+        StatesQueue = new Queue<BaseState>();
         state = new NormalState();
         //PlayerCard = CardData.Instance._load("PlayerCard.json");
         state.Enter();
@@ -50,7 +57,7 @@ public class PlayerManager : Singleton<PlayerManager>
         state.Update();
     }
 
-    public void ChangeStates(States states)
+    public void ChangeStates(BaseState newState)
     {
         state.Exit();
         //state전환 과정 이 부분은 세부 State 구현이 나와야 가능할 것으로 예상됨

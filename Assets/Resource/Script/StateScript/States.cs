@@ -66,6 +66,186 @@ public class NormalState : BaseState
     }
 }
 
+public class MoveState : BaseState
+{
+    bool[,] movableSpace;
+    public MoveState(MoveCard originalCard)
+    {
+        switch (originalCard.moveDirection)
+        {
+            case MoveDirection.UDLR:
+                // 현재 위치로부터 상하좌우로 한 칸 이동
+                {
+                    this.movableSpace = new bool[3, 3];  // 모든 항이 false인 2D 배열
+                    (int, int)[] coords =
+                    {
+                        (PlayerManager.Instance.row - 1, PlayerManager.Instance.col),  // 위
+                        (PlayerManager.Instance.row, PlayerManager.Instance.col + 1),  // 오른쪽
+                        (PlayerManager.Instance.row + 1, PlayerManager.Instance.col),  // 아래
+                        (PlayerManager.Instance.row, PlayerManager.Instance.col - 1)   // 왼쪽
+                    };
+                    foreach ((int, int) coord in coords)
+                    {
+                        if (coord.Item1 >= 0 && coord.Item1 < 3 && coord.Item2 >= 0 && coord.Item2 < 3)
+                        {
+                            this.movableSpace[coord.Item1, coord.Item2] = true;
+                        }
+                    }
+                    break;
+                }
+
+            case MoveDirection.Diagonal:
+                // 현재 위치로부터 대각선으로 한 칸 이동
+                {
+                    this.movableSpace = new bool[3, 3];  // 모든 항이 false인 2D 배열
+                    (int, int)[] coords =
+                    {
+                        (PlayerManager.Instance.row - 1, PlayerManager.Instance.col - 1),  // 왼쪽 위
+                        (PlayerManager.Instance.row - 1, PlayerManager.Instance.col + 1),  // 오른쪽 위
+                        (PlayerManager.Instance.row + 1, PlayerManager.Instance.col + 1),  // 오른쪽 아래
+                        (PlayerManager.Instance.row + 1, PlayerManager.Instance.col - 1)   // 왼쪽 아래
+                    };
+                    foreach ((int, int) coord in coords)
+                    {
+                        if (coord.Item1 >= 0 && coord.Item1 < 3 && coord.Item2 >= 0 && coord.Item2 < 3)
+                        {
+                            this.movableSpace[coord.Item1, coord.Item2] = true;
+                        }
+                    }
+                    break;
+                }
+
+            case MoveDirection.Colored:
+                // 내가 색칠해 뒀던 칸으로 이동
+                {
+                    BoardColor[,] boardColors = BoardManager.Instance.BoardColors;
+
+                    for (int i = 0; i < boardColors.GetLength(0); i++)  // row
+                    {
+                        for (int j = 0; j < boardColors.GetLength(1); j++)  // col
+                        {
+                            if (boardColors[i, j] == BoardColor.Player)
+                            {
+                                this.movableSpace[i, j] = true;
+                            }
+                        }
+                    }
+                    break;
+                }
+
+            case MoveDirection.Dangerous:
+                // 적이 이번 턴에 공격할 칸으로 이동
+                {
+                    //List<Enemy> enemyList = EnemyManager.EnemyList;
+                    /*
+                    List<Enemy> enemyList = new List<Enemy>();
+
+                    foreach (Enemy enemy in enemyList)
+                        foreach ((int, int) coord in enemy.WhereToAttack)
+                            this.movableSpace[coord.Item1, coord.Item2] = true;
+                    */
+                    break;
+                    
+                }
+
+            case MoveDirection.All:
+                // 원하는 칸으로 이동
+                this.movableSpace = new bool[,] {
+                    { true, true, true },
+                    { true, true, true },
+                    { true, true, true }
+                };
+                break;
+
+            default:
+                return;
+        }
+    }
+
+    public override void DoAction(States state)
+    {
+        
+    }
+
+    public override void Enter()
+    {
+        // 카메라 암전 등
+
+    }
+
+    public override void Exit()
+    {
+        // 이동 모션?
+        // 카메라 다시 밝게
+        //BoardManager.Instance.MovePlayer()
+    }
+
+    public override void MouseEvent()
+    {
+        // 이동 가능한 곳을 클릭할 시 진행.
+    }
+
+    public override void Update()
+    {
+        // UI 상으로 이동 가능한 곳은 O 표시.
+    }
+
+}
+
+public class AttackState : BaseState
+{
+    private AttackCard Card;
+
+    public AttackState(AttackCard card)
+    {
+        this.Card = card;
+    }
+
+//취소하면 normal state로 돌아감
+    public override void DoAction(States state)
+    {
+        
+    }
+    public override void Enter()
+    {
+        //공격 가능한 대상의 테두리를 밝은 파란 테두리로 표시
+        //카드 데이터의 공격 가능한 대상의 종류
+        //몬스터 공격 가능한 경우(001)
+        int targetType = Card.GetTargetType();
+        bool isMonster = targetType % 10 != 0;
+        bool isWall = (targetType / 10) % 10 != 0;
+        bool isMinion = (targetType / 100) % 10 != 0;
+
+        if(isMonster)
+        {
+
+        }
+        if(isWall)
+        {
+            //플레이어 주변에 Wall이 있으면 하이라이트(Clickable)
+            //플레이어 위치 주변 4칸에 Wall이 있는지 체크
+
+        }
+        if(isMinion)
+        {
+            //하수인 공격 가능한 경우 -> 플레이어 주변의 하수인(100)
+        }
+
+    public override void Exit()
+    {
+    }
+
+    public override void MouseEvent()
+    {
+        
+    }
+    public override void Update()
+    {
+        // UI 상으로 이동 가능한 곳은 O 표시.
+    }
+}
+
+
 public class ColorState : BaseState
 {
     
@@ -76,30 +256,30 @@ public class ColorState : BaseState
     {
         this.Selectable = Selectable;
         this.Target = Target;
-    }
-
+        
     public override void DoAction(States state)
     {
-        
+        throw new NotImplementedException();
     }
 
     public override void Enter()
     {
-        
-    }
-
-    public override void MouseEvent()
-    {
-        //마우스로 칸 선택
-    }
-
-    public override void Update()
-    {
-        
+        throw new NotImplementedException();
     }
 
     public override void Exit()
     {
-        
+        throw new NotImplementedException();
+    }
+
+    public override void MouseEvent()
+    {
+        throw new NotImplementedException();
+    }
+
+    public override void Update()
+    {
+        throw new NotImplementedException();
     }
 }
+

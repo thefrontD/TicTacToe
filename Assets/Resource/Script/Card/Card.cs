@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Converters;
@@ -35,14 +36,14 @@ public abstract class Card {
         }
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
-    public List<States> StatesList;
+    //[JsonConverter(typeof(StringEnumConverter))]
+    //public List<States> StatesList;
 
     public Card(string cardName, string cardDesc, int cardCost, List<States> statesList){
         this.cardName = cardName;
         this.cardDesc = cardDesc;
         this.cardCost = cardCost;
-        this.StatesList = statesList;
+        //this.StatesList = statesList;
     }
     
     /// <summary>
@@ -59,68 +60,126 @@ public abstract class Card {
 public class AttackCard : Card
 {
     private AttackCardEffect AttackCardEffect;  //이펙트
-    private int TriggerCondition;               //발동 조건
+
     private int TargetType;                     //공격 가능한 대상의 종류
     private int TargetCount;                    //공격 가능한 대상의 수
     private int AttackCount;                    //공격 횟수
     private int Damage;                         //공격의 피해량
-    private int EffectTriggerCondition;         //추가 효과 발동 조건
-    private int Effect;                         //추가 효과
 
-
+    public int GetTargetType() => TargetType;
     public AttackCard(string cardName, string cardDesc, int cardCost, List<States> statesList, 
-        AttackCardEffect attackCardEffect, int triggerCondition, int targetType, int targetCount, int attackCount, int damage, int effectTriggerCondition, int effect) : base(cardName, cardDesc, cardCost, statesList)
+        AttackCardEffect attackCardEffect, int targetType, int targetCount, int attackCount, int damage) : base(cardName, cardDesc, cardCost, statesList)
         //카드 이름, 카드 설명, 카드 코스트, StatesList,
-        //이펙트, 발동 조건, 공격 가능한 대상의 종류, 공격 가능한 대상의 수, 공격 횟수, 공격의 피해량, 추가 효과 발동 조건, 추가 효과 
+        //공격 가능한 대상의 종류, 공격 가능한 대상의 수, 공격 횟수, 공격의 피해량
     {
         Debug.Log(this.CardName);
         this.AttackCardEffect = attackCardEffect;
-        this.TriggerCondition = triggerCondition;
         this.TargetType = targetType;
         this.TargetCount = targetCount;
         this.AttackCount = attackCount;
         this.Damage = damage;
-        this.EffectTriggerCondition = effectTriggerCondition;
-        this.Effect = effect;
     }
 
     public override void usingCardSpecific()
     {
-        
+        //발동조건, 이펙트
     }
 }
 
 public class MoveCard : Card
 {
-    private MoveCardEffect MoveCardEffect;
-    private TriggerCondition triggerCondition;
-    private MoveDirection moveDirection;     // 상하좌우로 이동, 대각선으로 이동, 어느 칸으로든 이동 등
-    private int moveAmount;  // 한 번에 이동하는 양
-    private Action afterPlayAction;
+    public MoveCardEffect MoveCardEffect;
+    public TriggerCondition triggerCondition;
+    public MoveDirection moveDirection;     // 상하좌우로 이동, 대각선으로 이동, 어느 칸으로든 이동 등
 
     public MoveCard(string cardName, string cardDesc, int cardCost, List<States> statesList,
-        MoveCardEffect moveCardEffect, TriggerCondition triggerCondition, MoveDirection moveDirection, int moveAmount, Action afterPlayAction) : base(cardName, cardDesc, cardCost, statesList)
+        MoveCardEffect moveCardEffect, TriggerCondition triggerCondition, MoveDirection moveDirection, int moveAmount) : base(cardName, cardDesc, cardCost, statesList)
     {
         this.MoveCardEffect = moveCardEffect;
         this.triggerCondition = triggerCondition;
         this.moveDirection = moveDirection;
-        this.moveAmount = moveAmount;  // 기본 1
-        this.afterPlayAction = afterPlayAction;
         Debug.Log(this.CardName);
     }
 
     public override void usingCardSpecific()
     {
-        // 1초 동안 바람 이펙트
-        // 10개의 LinearWind, 4개의 LoopWind를 소환하여 1초 동안 애니메이션을 재생하다가 사라지도록 한다.
-        GameObject[] linearWinds = new GameObject[10];
-        for (int i = 0; i < linearWinds.Length; i++)
+        // 카드를 낼 수 있는지를 판정하는 부분
+        bool proceed = false;
+        switch (this.triggerCondition)
         {
-            //linearWinds[i] = 
+            case TriggerCondition.ColoredSpaceExists:
+                //색칠된 칸이 있는가?
+                BoardColor[,] boardColors = BoardManager.Instance.BoardColors;
+                
+                for (int i = 0; i < boardColors.GetLength(0); i++)  // row
+                {
+                    for (int j = 0; j < boardColors.GetLength(1); j++)  // col
+                    {
+                        if (boardColors[i, j] == BoardColor.Player)
+                        {
+                            proceed = true;
+                            break;
+                        }
+                    }
+                    if (proceed) break;
+                }
+                break;
+
+            case TriggerCondition.EnemyWillAttack:
+                // 적이 이번 턴에 공격을 하려고 하는가?
+                //List<Enemy> enemyList = EnemyManager.EnemyList;
+                List<Enemy> enemyList = new List<Enemy>();
+
+                foreach (Enemy enemy in enemyList)
+                    // if (enemy.State = EnemyState.Attack)
+                        proceed = true;
+                break;
+
+            case TriggerCondition.PlayerHealthExceeds30:
+                // 플레이어의 체력이 30을 초과하는가?
+                if (PlayerManager.Instance.Hp > 30)
+                    proceed = true;
+                break;
+
+            case TriggerCondition.MoveCardInHand:
+                // 패에 다른 이동 카드가 있는가?
+                foreach (Card card in PlayerManager.Instance.PlayerCard)
+                {
+                    if (card is MoveCard /* 또는 AttackMoveCard */)  // GetType은 실제 type을 반환한다.
+                    {
+                        proceed = true;
+                        break;
+                    }
+                }
+                break;
+
+            case TriggerCondition.None:
+                proceed = true;
+                break;
+
+            default:
+                return;
         }
-        // 갈 수 있는 칸에 O 표시를 해 놓음
-        // 
-        //BoardManager.Instance.MovePlayer()
+        if (!proceed) return;
+
+        // 카드를 낼 때 나오는 이펙트 (이동 이펙트랑은 다름)
+        // 1초 동안 바람 이펙트 - 10개의 LinearWind, 4개의 LoopWind를 소환하여 1초 동안 애니메이션을 재생하다가 사라지도록 한다.
+        //GameObject[] linearWinds = new GameObject[10];
+        //for (int i = 0; i < linearWinds.Length; i++)
+        //{
+        //    //linearWinds[i] = 
+        //}
+
+        // Player의 마나를 감소시키는 부분
+        PlayerManager.Instance.Mana -= 3;
+
+        // State를 만드는 부분
+        MoveState state = new MoveState(this);
+        NormalState normal = new NormalState();  // 다 끝나고 다시 normal state로 돌아온다.
+
+        // State를 Enqueue하는 부분
+        PlayerManager.Instance.StatesQueue.Enqueue(state);
+        PlayerManager.Instance.StatesQueue.Enqueue(normal);
     }
 }
 

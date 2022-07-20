@@ -21,9 +21,13 @@ public class BoardManager : Singleton<BoardManager>
     private BoardStates[,] boardStates = new BoardStates[3, 3];
     //Board Color Array
     private BoardColor[,] boardColors = new BoardColor[3, 3];
+    public BoardColor[,] BoardColors { get => boardColors; }
     //Actual Board Components in Game
     private int BoardSize = 3;
+
+    public int playerRow, playerCol; 
     
+       
     void Start()
     {
         BoardLoading();
@@ -122,4 +126,12 @@ public class BoardManager : Singleton<BoardManager>
 
         return ret;
     } 
+
+    //특정 타일의 주변 타일을 받아오는 함수
+    public List<Vector2Int> GetAdjacentCoord(Vector2Int coord)
+    {
+        List<Vector2Int> adjacentCoord = new List<Vector2Int>();
+        adjacentCoord.Add(Vector2Int.zero); //주변 타일 추가
+        return adjacentCoord;
+    }
 }
