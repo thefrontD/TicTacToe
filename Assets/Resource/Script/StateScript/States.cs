@@ -183,7 +183,6 @@ public class MoveState : BaseState
     public override void MouseEvent()
     {
         // 이동 가능한 곳을 클릭할 시 진행.
-        
     }
 
     public override void Update()
@@ -247,10 +246,17 @@ public class AttackState : BaseState
 }
 
 
-/*
 public class ColorState : BaseState
 {
-    public ColorState(bool Selectable, int TargetNum, ColorTargetPosition Target) { }
+    
+    private bool Selectable;
+    private ColorTargetPosition Target;
+    private int Cost;
+    public ColorState(bool Selectable, ColorTargetPosition Target)
+    {
+        this.Selectable = Selectable;
+        this.Target = Target;
+        
     public override void DoAction(States state)
     {
         throw new NotImplementedException();
@@ -276,5 +282,4 @@ public class ColorState : BaseState
         throw new NotImplementedException();
     }
 }
-*/
 
