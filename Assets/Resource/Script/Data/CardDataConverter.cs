@@ -31,10 +31,14 @@ public class BaseConverter : JsonConverter
     public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
     {
         JObject jo = JObject.Load(reader);
-        switch (jo["ObjType"].Value<int>())
+        switch (jo["cardType"].Value<string>())
         {
-            case 1:
+            case "Attack":
                 return JsonConvert.DeserializeObject<AttackCard>(jo.ToString(), SpecifiedSubclassConversion);
+            case "Move":
+                return JsonConvert.DeserializeObject<MoveCard>(jo.ToString(), SpecifiedSubclassConversion);
+            case "Color":
+                return JsonConvert.DeserializeObject<ColorCard>(jo.ToString(), SpecifiedSubclassConversion);
             default:
                 throw new Exception();
         }

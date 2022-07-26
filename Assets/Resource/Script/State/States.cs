@@ -31,40 +31,73 @@ public abstract class BaseState
     /// </summary>
     public abstract void Exit();
 }
+
 public class NormalState : BaseState
 {
     private int DrawNum;
+    private bool isNewPlayerTurn;
     
-    public NormalState(int DrawNum = 5)
+    public NormalState(int DrawNum = 5, bool isNewPlayerTurn = false)
     {
         this.DrawNum = DrawNum;
+        this.isNewPlayerTurn = isNewPlayerTurn;
     }
 
     public override void DoAction(States state)
     {
-        
+        return;
     }
 
     public override void Enter()
     {
-        
+        if(isNewPlayerTurn)
+            CardManager.Instance.DrawCard(DrawNum);
     }
 
     public override void MouseEvent()
     {
-        
+        return;
     }
 
     public override void Update()
     {
-        
+        return;
     }
 
     public override void Exit()
     {
-        
+        return;
     }
 }
+public class EnemyState : BaseState
+{
+    public override void DoAction(States state)
+    {
+        return;
+    }
+
+    public override void Enter()
+    {
+        //EnemyManager.Instance.EnemyAttack();
+        PlayerManager.Instance.ChangeStates(new NormalState(5, true));
+    }
+
+    public override void MouseEvent()
+    {
+        return;
+    }
+
+    public override void Update()
+    {
+        return;
+    }
+
+    public override void Exit()
+    {
+        return;
+    }
+}
+
 
 public class MoveState : BaseState
 {
@@ -79,10 +112,10 @@ public class MoveState : BaseState
                     this.movableSpace = new bool[3, 3];  // 모든 항이 false인 2D 배열
                     (int, int)[] coords =
                     {
-                        (PlayerManager.Instance.row - 1, PlayerManager.Instance.col),  // 위
-                        (PlayerManager.Instance.row, PlayerManager.Instance.col + 1),  // 오른쪽
-                        (PlayerManager.Instance.row + 1, PlayerManager.Instance.col),  // 아래
-                        (PlayerManager.Instance.row, PlayerManager.Instance.col - 1)   // 왼쪽
+                        (PlayerManager.Instance.Row - 1, PlayerManager.Instance.Col),  // 위
+                        (PlayerManager.Instance.Row, PlayerManager.Instance.Col + 1),  // 오른쪽
+                        (PlayerManager.Instance.Row + 1, PlayerManager.Instance.Col),  // 아래
+                        (PlayerManager.Instance.Row, PlayerManager.Instance.Col - 1)   // 왼쪽
                     };
                     foreach ((int, int) coord in coords)
                     {
@@ -100,10 +133,10 @@ public class MoveState : BaseState
                     this.movableSpace = new bool[3, 3];  // 모든 항이 false인 2D 배열
                     (int, int)[] coords =
                     {
-                        (PlayerManager.Instance.row - 1, PlayerManager.Instance.col - 1),  // 왼쪽 위
-                        (PlayerManager.Instance.row - 1, PlayerManager.Instance.col + 1),  // 오른쪽 위
-                        (PlayerManager.Instance.row + 1, PlayerManager.Instance.col + 1),  // 오른쪽 아래
-                        (PlayerManager.Instance.row + 1, PlayerManager.Instance.col - 1)   // 왼쪽 아래
+                        (PlayerManager.Instance.Row - 1, PlayerManager.Instance.Col - 1),  // 왼쪽 위
+                        (PlayerManager.Instance.Row - 1, PlayerManager.Instance.Col + 1),  // 오른쪽 위
+                        (PlayerManager.Instance.Row + 1, PlayerManager.Instance.Col + 1),  // 오른쪽 아래
+                        (PlayerManager.Instance.Row + 1, PlayerManager.Instance.Col - 1)   // 왼쪽 아래
                     };
                     foreach ((int, int) coord in coords)
                     {
@@ -118,13 +151,13 @@ public class MoveState : BaseState
             case MoveDirection.Colored:
                 // 내가 색칠해 뒀던 칸으로 이동
                 {
-                    BoardColor[,] boardColors = BoardManager.Instance.BoardColors;
+                    List<List<BoardColor>> boardColors = BoardManager.Instance.BoardColors;
 
-                    for (int i = 0; i < boardColors.GetLength(0); i++)  // row
+                    for (int i = 0; i < boardColors.Count; i++)  // row
                     {
-                        for (int j = 0; j < boardColors.GetLength(1); j++)  // col
+                        for (int j = 0; j < boardColors[0].Count; j++)  // col
                         {
-                            if (boardColors[i, j] == BoardColor.Player)
+                            if (boardColors[i][j] == BoardColor.Player)
                             {
                                 this.movableSpace[i, j] = true;
                             }
@@ -259,27 +292,27 @@ public class ColorState : BaseState
     }
     public override void DoAction(States state)
     {
-        throw new NotImplementedException();
+        
     }
 
     public override void Enter()
     {
-        throw new NotImplementedException();
+
     }
 
     public override void Exit()
     {
-        throw new NotImplementedException();
+
     }
 
     public override void MouseEvent()
     {
-        throw new NotImplementedException();
+        PlayerManager.Instance.ChangeStates(PlayerManager.Instance.StatesQueue.Dequeue());
     }
 
     public override void Update()
     {
-        throw new NotImplementedException();
+
     }
 }
 

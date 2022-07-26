@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyManager : MonoBehaviour
+public class EnemyManager : Singleton<EnemyManager>
 {
     private List<GameObject> EnemyObjectsList;
     private List<Enemy> EnemyList;
@@ -32,5 +32,27 @@ public class EnemyManager : MonoBehaviour
         {
             //EnemyObjectsList.Add(Instantiate(EnemyPrefab[name], Vector3));
         }
+    }
+
+    public void EnemyAttack()
+    {
+        StartCoroutine(EnemyAttackCoroutine());
+    }
+
+    private IEnumerator EnemyAttackCoroutine()
+    {
+        yield return new WaitForSeconds(1.0f);
+     
+        PlayerManager.Instance.StatesQueue.Enqueue(new NormalState(5, true));
+        
+        foreach (Enemy enemy in EnemyList)
+        {
+            enemy.EnemyAction();
+            yield return new WaitForSeconds(0.5f);
+        }
+        
+        yield return new WaitForSeconds(0.5f);
+        
+        PlayerManager.Instance.ChangeStates(PlayerManager.Instance.StatesQueue.Dequeue());
     }
 }

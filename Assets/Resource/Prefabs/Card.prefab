@@ -190,7 +190,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 225837844855087851}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -1}
+  m_LocalPosition: {x: 0, y: 0, z: -0.6}
   m_LocalScale: {x: 1, y: 1, z: 10}
   m_Children: []
   m_Father: {fileID: 225837845259513292}
@@ -365,7 +365,7 @@ Transform:
   m_GameObject: {fileID: 225837845259513303}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 6, y: 9, z: 0.05}
+  m_LocalScale: {x: 6, y: 9, z: 0.001}
   m_Children:
   - {fileID: 225837844855087854}
   - {fileID: 225837845479047772}
@@ -435,7 +435,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 0.75, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &225837845259513288
 MonoBehaviour:
@@ -450,12 +450,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animationDuration: 0.2
-  MouseOnPos: {x: 0, y: 2, z: -0.5}
+  MouseOnPos: {x: 0, y: 2, z: -2}
   MouseOnScale: 1.2
   CardBackground: {fileID: 225837844786194645}
   CardCostText: {fileID: 225837845296561811}
   CardNameText: {fileID: 225837844855087852}
   CardDescText: {fileID: 225837845479047770}
+  isHand: 0
 --- !u!1 &225837845296561810
 GameObject:
   m_ObjectHideFlags: 0
@@ -482,7 +483,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 225837845296561810}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -1}
+  m_LocalPosition: {x: 0, y: 0, z: -0.6}
   m_LocalScale: {x: 1, y: 1, z: 10}
   m_Children: []
   m_Father: {fileID: 225837845259513292}
@@ -654,7 +655,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 225837845479047769}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -1}
+  m_LocalPosition: {x: 0, y: 0, z: -0.6}
   m_LocalScale: {x: 1, y: 1, z: 10}
   m_Children: []
   m_Father: {fileID: 225837845259513292}

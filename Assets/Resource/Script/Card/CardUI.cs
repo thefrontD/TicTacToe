@@ -8,6 +8,9 @@ using TMPro;
 
 public class CardUI : MonoBehaviour
 {
+    private int idx;
+    public int Idx { get => idx; set => idx = (value >= 0) ? value : 0; }
+    
     public Card Card;
     [SerializeField] private float animationDuration;
     [SerializeField] private Vector3 MouseOnPos;
@@ -21,6 +24,7 @@ public class CardUI : MonoBehaviour
     [SerializeField] private TextMeshPro CardDescText;
     //[SerializeField] private TextMeshPro CardEffectExplanation;
     private bool isDrag = false;
+    public bool isHand = false;
 
     void Start()
     {
@@ -31,9 +35,7 @@ public class CardUI : MonoBehaviour
     public void init(Card card)
     {
         this.Card = card;
-
-        setPos();
-
+        
         CardNameText.text = Card.CardName;
         CardDescText.text = Card.CardDesc;
         CardCostText.text = Card.CardCost.ToString();
@@ -41,40 +43,59 @@ public class CardUI : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        transform.DOMove(originPos + MouseOnPos, animationDuration);
-        transform.DOScale(originScale * MouseOnScale, animationDuration);
+        if(isHand)
+        {
+            transform.DOMove(originPos + MouseOnPos, animationDuration);
+            transform.DOScale(originScale * MouseOnScale, animationDuration);
+        }
     }
     
     private void OnMouseExit()
     {
-        if(!isDrag)
+        if(isHand)
         {
             transform.DOMove(originPos, animationDuration);
             transform.DOScale(originScale, animationDuration);
         }
     }
 
-    private void setPos()
+    public void setPos()
     {
         originPos = transform.position;
+    }
+    
+    public void setPos(Vector3 pos)
+    {
+        originPos = pos;
     }
 
     void OnMouseDown()
     {
-        isDrag = true;
+        if (PlayerManager.Instance.state.GetType() == typeof(NormalState))
+        {
+            if(Card.usingCard())
+                CardManager.Instance.HandtoGrave(idx);
+        }
     }
 
+    /*
     private void OnMouseDrag()
     {
-        Vector3 trackPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        transform.position = new Vector3(trackPosition.x, trackPosition.y, -0.5f);
+        if(isHand)
+        {
+            Vector3 trackPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            transform.position = new Vector3(trackPosition.x, trackPosition.y, 0.5f);
+        }
     }
     
     void OnMouseUp()
     {
-        isDrag = false;
-        transform.DOMove(originPos, animationDuration);
-        transform.DOScale(originScale, animationDuration);
-        this.Card.usingCardSpecific();
-    }
+        if(isHand)
+        {
+            isDrag = false;
+            transform.DOMove(originPos, animationDuration);
+            transform.DOScale(originScale, animationDuration);
+            this.Card.usingCard();
+        }
+    }*/
 }

@@ -5,18 +5,12 @@ using UnityEngine;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-public class HolderHolder
-{
-    public List<Card> Objects { get; set; }
-}
-
 public class CardData : Singleton<CardData>
 {
     public bool saveData(List<Card> cardData, string dataName)
     {
         var converter = new StringEnumConverter();
         var pDataStringSave = JsonConvert.SerializeObject(cardData, converter);
-        Debug.Log(pDataStringSave);
         File.WriteAllText(Path.Combine(Application.streamingAssetsPath, dataName), pDataStringSave);
         return true;
     }

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JsonSchemaMappingsProjectConfiguration">
+    <state>
+      <map>
+        <entry key="UE4 common configuration">
+          <value>
+            <SchemaInfo>
+              <option name="name" value="UE4 common configuration" />
+              <option name="relativePathToSchema" value="jar://$APPLICATION_HOME_DIR$/plugins/rider-cpp/lib/rider-cpp.jar!/schemas/unrealEngine/unreal_engine_definitions.json" />
+              <option name="applicationDefined" value="true" />
+              <option name="patterns">
+                <list>
+                  <Item>
+                    <option name="path" value="Assets/StreamingAssets/PlayerCard.json" />
+                  </Item>
+                </list>
+              </option>
+            </SchemaInfo>
+          </value>
+        </entry>
+      </map>
+    </state>
+  </component>
+</project>

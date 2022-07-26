@@ -13,8 +13,10 @@ using UnityEngine;
 /// 실제로 Card를 Rendering 및 Animating 하는 부분은 CardUI라는 Script로 새로 작성 예정
 /// </summary>
 [JsonConverter(typeof(BaseConverter))]
-public abstract class Card {
-    
+public abstract class Card 
+{
+    protected CardType cardType;
+
     private string cardName;
     public string CardName{
         get { return cardName; }
@@ -39,7 +41,7 @@ public abstract class Card {
     //[JsonConverter(typeof(StringEnumConverter))]
     //public List<States> StatesList;
 
-    public Card(string cardName, string cardDesc, int cardCost, List<States> statesList){
+    public Card(string cardName, string cardDesc, int cardCost){
         this.cardName = cardName;
         this.cardDesc = cardDesc;
         this.cardCost = cardCost;
@@ -51,28 +53,33 @@ public abstract class Card {
     /// </summary>
     public abstract void usingCardSpecific();
 
-    public void usingCard()
+    public bool usingCard()
     {
         usingCardSpecific();
+        if (PlayerManager.Instance.StatesQueue.Count == 0) return false;
+        else PlayerManager.Instance.ChangeStates(PlayerManager.Instance.StatesQueue.Dequeue());
+        return true;
     }
 }
 
 public class AttackCard : Card
 {
-    private AttackCardEffect AttackCardEffect;  //이펙트
+    [JsonProperty] private AttackCardEffect AttackCardEffect;  //이펙트
 
-    private int TargetType;                     //공격 가능한 대상의 종류
-    private int TargetCount;                    //공격 가능한 대상의 수
-    private int AttackCount;                    //공격 횟수
-    private int Damage;                         //공격의 피해량
+    [JsonProperty] private int TargetType;                     //공격 가능한 대상의 종류
+    [JsonProperty] private int TargetCount;                    //공격 가능한 대상의 수
+    [JsonProperty] private int AttackCount;                    //공격 횟수
+    [JsonProperty] private int Damage;                         //공격의 피해량
 
     public int GetTargetType() => TargetType;
-    public AttackCard(string cardName, string cardDesc, int cardCost, List<States> statesList, 
-        AttackCardEffect attackCardEffect, int targetType, int targetCount, int attackCount, int damage) : base(cardName, cardDesc, cardCost, statesList)
+    public AttackCard(string cardName, string cardDesc, int cardCost, 
+        AttackCardEffect attackCardEffect, int targetType, int targetCount, int attackCount, int damage) 
+        : base(cardName, cardDesc, cardCost)
         //카드 이름, 카드 설명, 카드 코스트, StatesList,
         //공격 가능한 대상의 종류, 공격 가능한 대상의 수, 공격 횟수, 공격의 피해량
     {
         Debug.Log(this.CardName);
+        this.cardType = CardType.Attack;
         this.AttackCardEffect = attackCardEffect;
         this.TargetType = targetType;
         this.TargetCount = targetCount;
@@ -88,13 +95,15 @@ public class AttackCard : Card
 
 public class MoveCard : Card
 {
-    public MoveCardEffect MoveCardEffect;
-    public TriggerCondition triggerCondition;
-    public MoveDirection moveDirection;     // 상하좌우로 이동, 대각선으로 이동, 어느 칸으로든 이동 등
+    [JsonProperty] public MoveCardEffect MoveCardEffect;
+    [JsonProperty] public TriggerCondition triggerCondition;
+    [JsonProperty] public MoveDirection moveDirection;     // 상하좌우로 이동, 대각선으로 이동, 어느 칸으로든 이동 등
 
-    public MoveCard(string cardName, string cardDesc, int cardCost, List<States> statesList,
-        MoveCardEffect moveCardEffect, TriggerCondition triggerCondition, MoveDirection moveDirection, int moveAmount) : base(cardName, cardDesc, cardCost, statesList)
+    public MoveCard(string cardName, string cardDesc, int cardCost,
+        MoveCardEffect moveCardEffect, TriggerCondition triggerCondition, MoveDirection moveDirection)
+        : base(cardName, cardDesc, cardCost)
     {
+        this.cardType = CardType.Move;
         this.MoveCardEffect = moveCardEffect;
         this.triggerCondition = triggerCondition;
         this.moveDirection = moveDirection;
@@ -109,13 +118,13 @@ public class MoveCard : Card
         {
             case TriggerCondition.ColoredSpaceExists:
                 //색칠된 칸이 있는가?
-                BoardColor[,] boardColors = BoardManager.Instance.BoardColors;
+                List<List<BoardColor>> boardColors = BoardManager.Instance.BoardColors;
                 
-                for (int i = 0; i < boardColors.GetLength(0); i++)  // row
+                for (int i = 0; i < boardColors.Count; i++)  // row
                 {
-                    for (int j = 0; j < boardColors.GetLength(1); j++)  // col
+                    for (int j = 0; j < boardColors[0].Count; j++)  // col
                     {
-                        if (boardColors[i, j] == BoardColor.Player)
+                        if (boardColors[i][j] == BoardColor.Player)
                         {
                             proceed = true;
                             break;
@@ -171,7 +180,7 @@ public class MoveCard : Card
         //}
 
         // Player의 마나를 감소시키는 부분
-        PlayerManager.Instance.Mana -= 3;
+        if (PlayerManager.Instance.SetMana(-3)) return;
 
         // State를 만드는 부분
         MoveState state = new MoveState(this);
@@ -185,12 +194,13 @@ public class MoveCard : Card
 
 public class ColorCard : Card
 {
-    private ColorCardEffect ColorCardEffect;
+    [JsonProperty] private ColorCardEffect ColorCardEffect;
     private bool cardUseValidity;
 
-    public ColorCard(string cardName, string cardDesc, int cardCost, List<States> statesList,
-        ColorCardEffect colorCardEffect) : base(cardName, cardDesc, cardCost, statesList)
+    public ColorCard(string cardName, string cardDesc, int cardCost,
+        ColorCardEffect colorCardEffect) : base(cardName, cardDesc, cardCost)
     {
+        this.cardType = CardType.Color;
         this.ColorCardEffect = colorCardEffect;
     }
 
@@ -221,26 +231,30 @@ public class ColorCard : Card
         //카드 사용 당시의 효과 당장은 무엇이 들어갈지 모른다.
 
         //이동/색칠
-        if(this.ColorCardEffect == ColorCardEffect.ColorAndMove){
-            PlayerManager.Instance.Mana -= CardCost;
+        if(this.ColorCardEffect == ColorCardEffect.ColorAndMove)
+        {
+            if (!PlayerManager.Instance.SetMana(-CardCost)) return;
             ColorState newState = MakeState(true, ColorTargetPosition.All);
             PlayerManager.Instance.StatesQueue.Enqueue(newState);
+            PlayerManager.Instance.StatesQueue.Enqueue(new NormalState());
             //MoveState newMoveState = MakeMoveState(false, TargetChoseBefore);
             //PlayerManager.Instance.StatesQueue.Enqueue(newMoveState);
             return;
         }
         //색칠
         if(this.ColorCardEffect == ColorCardEffect.Color){
-            PlayerManager.Instance.Mana -= CardCost;
+            if (!PlayerManager.Instance.SetMana(-CardCost)) return;
             ColorState newState = MakeState(false, ColorTargetPosition.P1);
             PlayerManager.Instance.StatesQueue.Enqueue(newState);
+            PlayerManager.Instance.StatesQueue.Enqueue(new NormalState());
             return;
         }
         //컬러 테이블 3번
         if(this.ColorCardEffect == ColorCardEffect.Color3){
-            PlayerManager.Instance.Mana -= CardCost;
+            if (!PlayerManager.Instance.SetMana(-CardCost)) return;
             ColorState newState = MakeState(false, ColorTargetPosition.P4);
             PlayerManager.Instance.StatesQueue.Enqueue(newState);
+            PlayerManager.Instance.StatesQueue.Enqueue(new NormalState());
             return;
         }
         //컬러 테이블 4번
@@ -251,9 +265,10 @@ public class ColorCard : Card
             BoardManager.IsWall(BoardManager.PlayerPosition + (0,1))&&
             BoardManager.IsWall(BoardManager.PlayerPosition + (0,-1)) */true)
             {
-                PlayerManager.Instance.Mana -= CardCost;
+                if (!PlayerManager.Instance.SetMana(-CardCost)) return;
                 ColorState newState = MakeState(false, ColorTargetPosition.P5);
                 PlayerManager.Instance.StatesQueue.Enqueue(newState);
+                PlayerManager.Instance.StatesQueue.Enqueue(new NormalState());
             }
             else{
                 this.cardUseValidity = false;
@@ -263,9 +278,10 @@ public class ColorCard : Card
         //컬러 테이블 5번
         if(this.ColorCardEffect == ColorCardEffect.Color5){
             if(/*BoardManager.CountBingo() > 0*/true){
-                PlayerManager.Instance.Mana -= CardCost;
+                if (!PlayerManager.Instance.SetMana(-CardCost)) return;
                 ColorState newState = MakeState(false, ColorTargetPosition.C);
                 PlayerManager.Instance.StatesQueue.Enqueue(newState);
+                PlayerManager.Instance.StatesQueue.Enqueue(new NormalState());
             }
             return;
         }
@@ -275,50 +291,56 @@ public class ColorCard : Card
             int cost = CardCost;
             if(cost < 0)
                 cost = 0;
-            PlayerManager.Instance.Mana -= cost;
+            if (!PlayerManager.Instance.SetMana(-CardCost)) return;
             ColorState newState = MakeState(false, ColorTargetPosition.All);
             PlayerManager.Instance.StatesQueue.Enqueue(newState);
+            PlayerManager.Instance.StatesQueue.Enqueue(new NormalState());
             return;
         }
         //컬러 테이블 7번
         if(this.ColorCardEffect == ColorCardEffect.Color7){
             if(/*PlayerManager.Instance.AttackedBefore()*/ true){
-                PlayerManager.Instance.Mana -= CardCost;
-                ColorState newState = MakeState(false, ColorTargetPosition.V);
+                if (!PlayerManager.Instance.SetMana(-CardCost)) return;
+                ColorState newState = new ColorState(false, ColorTargetPosition.V);
                 PlayerManager.Instance.StatesQueue.Enqueue(newState);
+                PlayerManager.Instance.StatesQueue.Enqueue(new NormalState());
             }
             return;
         }
         //컬러 테이블 8번
         if(this.ColorCardEffect == ColorCardEffect.Color8){
             if(/*PlayerManager.Instance.AttackedBefore()*/ true){
-                PlayerManager.Instance.Mana -= CardCost;
+                if (!PlayerManager.Instance.SetMana(-CardCost)) return;
                 ColorState newState = MakeState(false, ColorTargetPosition.H);
                 PlayerManager.Instance.StatesQueue.Enqueue(newState);
+                PlayerManager.Instance.StatesQueue.Enqueue(new NormalState());
             }
             return;
         }
         //컬러 테이블 9번
         if(this.ColorCardEffect == ColorCardEffect.Color9){
-            PlayerManager.Instance.Mana -= CardCost;
+            if (!PlayerManager.Instance.SetMana(-CardCost)) return;
             ColorState newState = MakeState(false, ColorTargetPosition.P3V);
             PlayerManager.Instance.StatesQueue.Enqueue(newState);
-            PlayerManager.Instance.Hp -= 10;//Damage 10
+            PlayerManager.Instance.StatesQueue.Enqueue(new NormalState());
+            PlayerManager.Instance.SetHp(-10);//Damage 10
             return;
         }
         //컬러 테이블 10번
         if(this.ColorCardEffect == ColorCardEffect.Color10){
-            PlayerManager.Instance.Mana -= CardCost;
+            if (!PlayerManager.Instance.SetMana(-CardCost)) return;
             ColorState newState = MakeState(false, ColorTargetPosition.P3H);
             PlayerManager.Instance.StatesQueue.Enqueue(newState);
-            PlayerManager.Instance.Hp -= 10;//Damage 10
+            PlayerManager.Instance.StatesQueue.Enqueue(new NormalState());
+            PlayerManager.Instance.SetHp(-10);//Damage 10
             return;
         }
         //컬러 테이블 11번
         if(this.ColorCardEffect == ColorCardEffect.Color11){
-            PlayerManager.Instance.Mana -= CardCost;
+            if (!PlayerManager.Instance.SetMana(-CardCost)) return;
             ColorState newState = MakeState(false, ColorTargetPosition.All);
             PlayerManager.Instance.StatesQueue.Enqueue(newState);
+            PlayerManager.Instance.StatesQueue.Enqueue(new NormalState());
             if(/*카드의 사용 취소 가능할 경우 변경*/ true){
                 //PlayerManager.Instance.DumpAll;// DumpAll
             }
