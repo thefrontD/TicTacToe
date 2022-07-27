@@ -228,6 +228,16 @@ public class MoveState : BaseState
 public class AttackState : BaseState
 {
     private AttackCard Card;
+    bool[,] attackableTile;
+    struct coord {
+        public coord(int x, int y)
+        {
+            this.x = x;
+            this.y = y;
+        }
+        public int x;
+        public int y; 
+    }
 
     public AttackState(AttackCard card)
     {
@@ -248,24 +258,54 @@ public class AttackState : BaseState
         bool isMonster = targetType % 10 != 0;
         bool isWall = (targetType / 10) % 10 != 0;
         bool isMinion = (targetType / 100) % 10 != 0;
-
+        int playerRow = PlayerManager.Instance.Row;
+        int playerCol = PlayerManager.Instance.Col;
+        coord[] coords = {new coord(playerRow-1, playerCol), new coord(playerRow + 1, playerCol), new coord(playerRow, playerCol - 1), new coord(playerRow, playerCol + 1)};
+        
         if(isMonster)
         {
-
+            //몬스터 하이라이트
         }
         if(isWall)
         {
-            //플레이어 주변에 Wall이 있으면 하이라이트(Clickable)
-            //플레이어 위치 주변 4칸에 Wall이 있는지 체크
-
+            foreach (coord c in coords)
+            {
+                //row col이 0,3 미만이고, 그 좌표에 Wall이 있을 때
+                if (c.x >= 0 && c.x < 3 && c.y >= 0 && c.y < 3 && BoardManager.Instance.GetBoardObject(c.x, c.y) == BoardObject.Wall)
+                {
+                    if (BoardManager.Instance.GetBoardObject(c.x, c.y) == BoardObject.Wall)
+                    {
+                        attackableTile[c.x, c.y] = true;
+                    }
+                }
+            }
         }
         if(isMinion)
         {
-            //하수인 공격 가능한 경우 -> 플레이어 주변의 하수인(100)
+            foreach (coord c in coords)
+            {
+                //row col이 0,3 미만이고, 그 좌표에 Minion이 있을 때
+                if (c.x >= 0 && c.x < 3 && c.y >= 0 && c.y < 3 && BoardManager.Instance.GetBoardObject(c.x, c.y) == BoardObject.Minion)
+                {
+                    if (BoardManager.Instance.GetBoardObject(c.x, c.y) == BoardObject.Minion)
+                    {
+                        attackableTile[c.x, c.y] = true;
+                    }
+                }
+            }
         }
+        //attackableTile 이 true이면 click 가능(하이라이트)
     }
     public override void Exit()
     {
+        //attackableTile 초기화
+        for (int i = 0; i < 3; i++)
+        {
+            for (int j = 0; j < 3; j++)
+            {
+                attackableTile[i, j] = false;
+            }
+        }
     }
 
     public override void MouseEvent()
