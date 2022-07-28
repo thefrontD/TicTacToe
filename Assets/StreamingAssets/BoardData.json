@@ -1,1 +1,39 @@
-{"_boardSize":3,"_playerRow":1,"_playerCol":1,"_boardObjects":[["None","None","None"],["None","None","None"],["None","None","None"]],"_boardColors":[["None","None","None"],["None","None","None"],["None","None","None"]]}
+{
+  "_boardSize": 3,
+  "_playerRow": 1,
+  "_playerCol": 1,
+  "_boardObjects": [
+    [
+      "None",
+      "None",
+      "None"
+    ],
+    [
+      "None",
+      "None",
+      "None"
+    ],
+    [
+      "None",
+      "None",
+      "None"
+    ]
+  ],
+  "_boardColors": [
+    [
+      "Player",
+      "Enemy",
+      "None"
+    ],
+    [
+      "None",
+      "None",
+      "None"
+    ],
+    [
+      "None",
+      "None",
+      "None"
+    ]
+  ]
+}

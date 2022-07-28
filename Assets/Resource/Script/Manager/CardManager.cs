@@ -68,9 +68,6 @@ public class CardManager : Singleton<CardManager>
             DrawCardAnimation(HandCardList[HandCardList.Count-1]);
             yield return new WaitForSeconds(0.3f);
         }
-
-        foreach (GameObject card in HandCardList)
-            Debug.Log(card.GetComponent<CardUI>().Idx);    
     }
 
     private void CardPositionAdjust()

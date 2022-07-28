@@ -1,1 +1,12 @@
-["AllAttack","DamageIncrease","HpHealing"]
+[
+  {
+    "EnemyName" : "SampleEnemy",
+    "EnemyHP": 10,
+    "EnemyShield": 10,
+    "EnemyAction": [
+      "PowerIncrease",
+      "RowAttack",
+      "ColAttack"
+    ]
+  }
+]

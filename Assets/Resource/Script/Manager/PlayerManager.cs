@@ -18,15 +18,19 @@ public class PlayerManager : Singleton<PlayerManager>
     [SerializeField] private int mana = 10;
     public int Mana { get => mana; set => mana = (value >= 0) ? value : 0; }
     
-    [SerializeField] private int row;
+    private int row;
     public int Row { get => row; set => row = value; }
     
-    [SerializeField] private int col;
+    private int col;
     public int Col { get => col; set => col = value; }
+    
+    private int _nextTurnDrawNum = 5;
+    public int NextTrunDrawNum => _nextTurnDrawNum;
 
     [SerializeField] private TextMeshProUGUI hpText;
     [SerializeField] private TextMeshProUGUI manaText;
-    
+    private Dictionary<Debuff, (int, int)> _debuffDictionary;
+
     public BaseState state;
     public Queue<BaseState> StatesQueue;
     public List<Card> PlayerCard;
@@ -45,6 +49,8 @@ public class PlayerManager : Singleton<PlayerManager>
 
         SetMana();
         SetHp();
+
+        _debuffDictionary = new Dictionary<Debuff, (int, int)>();
         
         StatesQueue = new Queue<BaseState>();
         state = new NormalState(5, true);
@@ -62,6 +68,14 @@ public class PlayerManager : Singleton<PlayerManager>
         state.Update();
     }
 
+    private void InitDebuffDictionary()
+    {
+        _debuffDictionary[Debuff.DamageIncrease] = (0, 0);
+        _debuffDictionary[Debuff.PowerDecrease] = (0, 0);
+        _debuffDictionary[Debuff.CardCostIncrease] = (0, 0);
+        _debuffDictionary[Debuff.DrawCardDecrease] = (0, 0);
+    }
+    
     public void ChangeStates(BaseState newState)
     {
         StartCoroutine(ChangeStatesCoroutine(newState));

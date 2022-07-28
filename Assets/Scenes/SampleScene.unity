@@ -168,8 +168,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 50
   mana: 10
-  row: 1
-  col: 1
   hpText: {fileID: 946638001}
   manaText: {fileID: 1748634581}
 --- !u!1 &55102824
@@ -938,49 +936,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1472763221
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1472763223}
-  - component: {fileID: 1472763222}
-  m_Layer: 0
-  m_Name: EnemyData
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1472763222
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1472763221}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 127faefaed742e142a72f4282ca2261d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &1472763223
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1472763221}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.3024383, y: -2.886801, z: -13.832221}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1654969873
 GameObject:
   m_ObjectHideFlags: 0
@@ -1177,8 +1132,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnemyPrefab:
-    m_keys: []
-    m_values: []
+    m_keys:
+    - SampleEnemy
+    m_values:
+    - {fileID: 7995517874831428577, guid: 639cee557a16b0147a4840c4097c5ecf, type: 3}
 --- !u!1 &1748634579
 GameObject:
   m_ObjectHideFlags: 0
@@ -1409,7 +1366,7 @@ RectTransform:
   - {fileID: 1205073826}
   - {fileID: 487644146}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}

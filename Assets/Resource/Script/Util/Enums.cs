@@ -45,6 +45,7 @@ public enum EnemyAction
 {
     RowAttack, ColAttack, AllAttack, ColorAttack, UnColorAttack,
     WallSummon = 10, MobSummon,
-    DamageIncrease = 20, DamageDecrease, HpHealing, ArmorHealing,
-    PlayerDamageDecrease = 30, PlayerDamageIncrease, DrawCardDecrease, CardCostIncrease
+    PowerIncrease = 20, DamageDecrease, HpHealing, ArmorHealing,
+    PlayerPowerDecrease = 30, PlayerDamageIncrease, DrawCardDecrease, CardCostIncrease
 }
+public enum Debuff { PowerDecrease, DamageIncrease, DrawCardDecrease, CardCostIncrease }

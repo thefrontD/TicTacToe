@@ -31,7 +31,7 @@ public class BoardManager : Singleton<BoardManager>
     void Start()
     {
         BoardLoading();
-        InitPlayer(1, 1);
+        InitPlayer();
     }
 
     void Update()
@@ -60,13 +60,16 @@ public class BoardManager : Singleton<BoardManager>
                 float size = BoardPrefab.transform.localScale.x;
                 Vector3 pos = new Vector3(-size + size * i, size - size * j, 0);
                 gameBoard[i].Add(Instantiate(BoardPrefab, pos, Quaternion.identity));
+                ColoringBoard(i, j, boardColors[i][j]);
             }
         }
     }
 
-    private void InitPlayer(int x, int y)
+    private void InitPlayer()
     {
-        Vector3 initPos = gameBoard[PlayerManager.Instance.Row][PlayerManager.Instance.Col].transform.position - new Vector3(0, 0, PlayerPrefab.transform.localScale.z/2);
+        Vector3 initPos = gameBoard[PlayerManager.Instance.Row][PlayerManager.Instance.Col].transform.position 
+                          - new Vector3(0, 0, PlayerPrefab.transform.localScale.z/2);
+        boardObjects[PlayerManager.Instance.Row][PlayerManager.Instance.Col] = BoardObject.Player;
         PlayerObject = Instantiate(PlayerPrefab, initPos, Quaternion.identity);
     }
 

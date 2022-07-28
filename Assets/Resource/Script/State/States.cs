@@ -78,8 +78,7 @@ public class EnemyState : BaseState
 
     public override void Enter()
     {
-        //EnemyManager.Instance.EnemyAttack();
-        PlayerManager.Instance.ChangeStates(new NormalState(5, true));
+        EnemyManager.Instance.EnemyAttack();
     }
 
     public override void MouseEvent()

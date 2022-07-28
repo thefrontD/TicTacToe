@@ -4,25 +4,28 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    private int enemyShield;
+    private string _enemyName;
+    public string EnemyName => _enemyName;
+    
+    private int _enemyShield;
     public int EnemyShield
     {
-        get { return enemyShield; }
+        get { return _enemyShield; }
         set
         {
-            if (value < 0) enemyShield = 0;
-            else enemyShield = value;
+            if (value < 0) _enemyShield = 0;
+            else _enemyShield = value;
         }
     }
 
-    private int enemyHP;
+    private int _enemyHp;
     public int EnemyHP
     {
-        get { return enemyHP; }
+        get { return _enemyHp; }
         set
         {
-            if (value < 0) enemyHP = 0;
-            else enemyHP = value;
+            if (value < 0) _enemyHp = 0;
+            else _enemyHp = value;
         }
     }
 
@@ -30,9 +33,17 @@ public class Enemy : MonoBehaviour
     
     void Start()
     {
-        EnemyActions = EnemyData.Instance._load("EnemyData.json");
+        
     }
 
+    public void InitEnemyData(EnemyDataHolder enemyDataHolder)
+    {
+        _enemyName = enemyDataHolder.EnemyName;
+        _enemyHp = enemyDataHolder.EnemyHP;
+        _enemyShield = enemyDataHolder.EnemyShield;
+        EnemyActions = enemyDataHolder.EnemyAction;
+    }
+    
     public void EnemyAction()
     {
         EnemyAction enemyAction = EnemyActions.Dequeue();
@@ -88,7 +99,7 @@ public class Enemy : MonoBehaviour
     {
         switch (enemyAction)
         {
-            case global::EnemyAction.DamageIncrease:
+            case global::EnemyAction.PowerIncrease:
                 break;
             case global::EnemyAction.DamageDecrease:
                 break;
@@ -103,7 +114,7 @@ public class Enemy : MonoBehaviour
     {
         switch (enemyAction)
         {
-            case global::EnemyAction.PlayerDamageDecrease:
+            case global::EnemyAction.PlayerPowerDecrease:
                 break;
             case global::EnemyAction.PlayerDamageIncrease:
                 break;
