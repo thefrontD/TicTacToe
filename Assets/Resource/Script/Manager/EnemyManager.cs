@@ -58,4 +58,9 @@ public class EnemyManager : Singleton<EnemyManager>
         
         PlayerManager.Instance.ChangeStates(new NormalState(5, true));
     }
+
+    public List<Enemy> GetEnemyList()
+    {
+        return EnemyList;
+    }
 }
