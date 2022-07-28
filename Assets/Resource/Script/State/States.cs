@@ -225,10 +225,15 @@ public class MoveState : BaseState
 
 }
 
+public interface IAttackable    //선택 가능한 오브젝트들이 IAttackable을 갖는다
+{
+        
+}
+
 public class AttackState : BaseState
 {
     private AttackCard Card;
-    bool[,] attackableTile;
+    List<IAttackable> attackableList = new List<IAttackable>();
     struct coord {
         public coord(int x, int y)
         {
@@ -264,7 +269,8 @@ public class AttackState : BaseState
         
         if(isMonster)
         {
-            //몬스터 하이라이트
+            List<Enemy> enemyList = EnemyManager.Instance.GetEnemyList();
+            attackableList.AddRange(enemyList);
         }
         if(isWall)
         {
@@ -275,7 +281,7 @@ public class AttackState : BaseState
                 {
                     if (BoardManager.Instance.GetBoardObject(c.x, c.y) == BoardObject.Wall)
                     {
-                        attackableTile[c.x, c.y] = true;
+                        attackableList.Add(BoardManager.Instance.GetBoardAttackable(c.x, c.y));
                     }
                 }
             }
@@ -289,28 +295,25 @@ public class AttackState : BaseState
                 {
                     if (BoardManager.Instance.GetBoardObject(c.x, c.y) == BoardObject.Minion)
                     {
-                        attackableTile[c.x, c.y] = true;
+                        attackableList.Add(BoardManager.Instance.GetBoardAttackable(c.x, c.y));
                     }
                 }
             }
         }
-        //attackableTile 이 true이면 click 가능(하이라이트)
+        //모든 attack 가능한 오브젝트를 attackableList에 담았음
     }
     public override void Exit()
     {
-        //attackableTile 초기화
-        for (int i = 0; i < 3; i++)
-        {
-            for (int j = 0; j < 3; j++)
-            {
-                attackableTile[i, j] = false;
-            }
-        }
+        //attackableList 초기화
+        attackableList.Clear();
     }
 
     public override void MouseEvent()
     {
-        
+        //Physics.Raycast
+        //레이캐스트에 맞은 애 getcomponent Iattackable이 null이 아닌가?
+        //그렇다면 attackableList에 있는가?
+        //그렇다면 처리
     }
     public override void Update()
     {

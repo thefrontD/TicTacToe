@@ -27,6 +27,8 @@ public class BoardManager : Singleton<BoardManager>
     //Actual Board Components in Game
     private int BoardSize = 3;
 
+    private List<List<IAttackable>> boardAttackables = new List<List<IAttackable>>();
+
 
     void Start()
     {
@@ -55,11 +57,13 @@ public class BoardManager : Singleton<BoardManager>
         for (int i = 0; i < BoardSize; i++)
         {
             gameBoard.Add(new List<GameObject>());
+            boardAttackables.Add(new List<IAttackable>());
             for (int j = 0; j < BoardSize; j++)
             {
                 float size = BoardPrefab.transform.localScale.x;
                 Vector3 pos = new Vector3(-size + size * i, size - size * j, 0);
                 gameBoard[i].Add(Instantiate(BoardPrefab, pos, Quaternion.identity));
+                boardAttackables[i].Add(null);
             }
         }
     }
@@ -137,5 +141,10 @@ public class BoardManager : Singleton<BoardManager>
     public BoardObject GetBoardObject(int x, int y)
     {
         return boardObjects[x][y];
+    }
+
+    public IAttackable GetBoardAttackable(int x, int y)
+    {
+        return boardAttackables[x][y];
     }
 }

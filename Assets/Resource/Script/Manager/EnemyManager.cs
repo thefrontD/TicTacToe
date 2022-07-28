@@ -55,4 +55,9 @@ public class EnemyManager : Singleton<EnemyManager>
         
         PlayerManager.Instance.ChangeStates(PlayerManager.Instance.StatesQueue.Dequeue());
     }
+
+    public List<Enemy> GetEnemyList()
+    {
+        return EnemyList;
+    }
 }
