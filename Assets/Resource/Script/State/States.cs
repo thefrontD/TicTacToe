@@ -269,7 +269,7 @@ public class AttackState : BaseState
         
         if(isMonster)
         {
-            List<Enemy> enemyList = EnemyManager.Instance.GetEnemyList();
+            List<Enemy> enemyList = EnemyManager.Instance.EnemyList;
             attackableList.AddRange(enemyList);
         }
         if(isWall)
@@ -277,11 +277,11 @@ public class AttackState : BaseState
             foreach (coord c in coords)
             {
                 //row col이 0,3 미만이고, 그 좌표에 Wall이 있을 때
-                if (c.x >= 0 && c.x < 3 && c.y >= 0 && c.y < 3 && BoardManager.Instance.GetBoardObject(c.x, c.y) == BoardObject.Wall)
+                if (c.x >= 0 && c.x < 3 && c.y >= 0 && c.y < 3 && BoardManager.Instance.BoardObjects[c.x][c.y] == BoardObject.Wall)
                 {
-                    if (BoardManager.Instance.GetBoardObject(c.x, c.y) == BoardObject.Wall)
+                    if (BoardManager.Instance.BoardObjects[c.x][c.y] == BoardObject.Wall)
                     {
-                        attackableList.Add(BoardManager.Instance.GetBoardAttackable(c.x, c.y));
+                        attackableList.Add(BoardManager.Instance.BoardAttackables[c.x][c.y]);
                     }
                 }
             }
@@ -291,11 +291,11 @@ public class AttackState : BaseState
             foreach (coord c in coords)
             {
                 //row col이 0,3 미만이고, 그 좌표에 Minion이 있을 때
-                if (c.x >= 0 && c.x < 3 && c.y >= 0 && c.y < 3 && BoardManager.Instance.GetBoardObject(c.x, c.y) == BoardObject.Minion)
+                if (c.x >= 0 && c.x < 3 && c.y >= 0 && c.y < 3 && BoardManager.Instance.BoardObjects[c.x][c.y] == BoardObject.Minion)
                 {
-                    if (BoardManager.Instance.GetBoardObject(c.x, c.y) == BoardObject.Minion)
+                    if (BoardManager.Instance.BoardObjects[c.x][c.y] == BoardObject.Minion)
                     {
-                        attackableList.Add(BoardManager.Instance.GetBoardAttackable(c.x, c.y));
+                        attackableList.Add(BoardManager.Instance.BoardAttackables[c.x][c.y]);
                     }
                 }
             }
