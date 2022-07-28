@@ -310,16 +310,20 @@ public class AttackState : BaseState
 
     public override void MouseEvent()
     {
-        //레이캐스트에 맞은 애 getcomponent Iattackable이 null이 아닌가?
-        //그렇다면 attackableList에 있는가?
-        //그렇다면 처리
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hitData;
         if(Physics.Raycast(ray, out hitData))
         {
             GameObject hitObject = hitData.transform.gameObject;
             Debug.Log(hitObject);
-            IAttackable aa = hitObject.GetComponent<IAttackable>();
+            IAttackable iAttackable = hitObject.GetComponent<IAttackable>();
+            if(iAttackable != null) //레이캐스트에 맞은 오브젝트에 Iattackable 컴포넌트가 있는가?
+            {
+                if (attackableList.Contains(iAttackable))   //attackableList에 있는가?
+                {
+                    //처리
+                }
+            }
         }
     }
     public override void Update()
