@@ -3,32 +3,58 @@
   <component name="ChangeListManager">
     <list default="true" id="d3529374-01b1-433a-a73a-241952c1c846" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TicTacToe/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TicTacToe/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resource/Script/Board/Board.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resource/Script/Board/Board.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resource/Script/Card/Card.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resource/Script/Card/Card.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resource/Script/Enemy/Enemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resource/Script/Enemy/Enemy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resource/Script/Manager/BoardManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resource/Script/Manager/BoardManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resource/Script/Manager/CardManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resource/Script/Manager/CardManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resource/Script/Manager/EnemyManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resource/Script/Manager/EnemyManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resource/Script/Util/Enums.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resource/Script/Util/Enums.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/PlayerCard.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/PlayerCard.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JSON File" />
+      </list>
+    </option>
+  </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Resource/Script/Card/Card.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Resource/Script/Card/CardUI.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Resource/Script/Data/CardData.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Resource/Script/Data/EnemyData.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Resource/Script/Enemy/Enemy.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Resource/Script/Manager/BoardManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Resource/Script/Manager/CardManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Resource/Script/Util/Enums.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/SerializableDictionary/SerializableDictionary.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/StreamingAssets/EnemyData.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/StreamingAssets/PlayerCard.json" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2BFnJBzlDjulUtoSR9HBTdNbGp7" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
     &quot;Discover.Launch.Via.Unity&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;rider.run.widget.enabled.cache&quot;: &quot;false&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;settings.json.schema&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -76,6 +102,12 @@
       <workItem from="1657160470420" duration="137000" />
       <workItem from="1657181714908" duration="3227000" />
       <workItem from="1657367692090" duration="2429000" />
+      <workItem from="1658643605142" duration="13791000" />
+      <workItem from="1658725195799" duration="4681000" />
+      <workItem from="1658780838273" duration="3281000" />
+      <workItem from="1658890567381" duration="2417000" />
+      <workItem from="1658938038131" duration="1515000" />
+      <workItem from="1659069320082" duration="9310000" />
     </task>
     <servers />
   </component>
@@ -97,6 +129,11 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

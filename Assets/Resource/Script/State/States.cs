@@ -31,40 +31,72 @@ public abstract class BaseState
     /// </summary>
     public abstract void Exit();
 }
+
 public class NormalState : BaseState
 {
     private int DrawNum;
+    private bool isNewPlayerTurn;
     
-    public NormalState(int DrawNum = 5)
+    public NormalState(int DrawNum = 5, bool isNewPlayerTurn = false)
     {
         this.DrawNum = DrawNum;
+        this.isNewPlayerTurn = isNewPlayerTurn;
     }
 
     public override void DoAction(States state)
     {
-        
+        return;
     }
 
     public override void Enter()
     {
-        
+        if(isNewPlayerTurn)
+            CardManager.Instance.DrawCard(DrawNum);
     }
 
     public override void MouseEvent()
     {
-        
+        return;
     }
 
     public override void Update()
     {
-        
+        return;
     }
 
     public override void Exit()
     {
-        
+        return;
     }
 }
+public class EnemyState : BaseState
+{
+    public override void DoAction(States state)
+    {
+        return;
+    }
+
+    public override void Enter()
+    {
+        EnemyManager.Instance.EnemyAttack();
+    }
+
+    public override void MouseEvent()
+    {
+        return;
+    }
+
+    public override void Update()
+    {
+        return;
+    }
+
+    public override void Exit()
+    {
+        return;
+    }
+}
+
 
 public class MoveState : BaseState
 {
@@ -79,10 +111,10 @@ public class MoveState : BaseState
                     this.movableSpace = new bool[3, 3];  // 모든 항이 false인 2D 배열
                     (int, int)[] coords =
                     {
-                        (PlayerManager.Instance.row - 1, PlayerManager.Instance.col),  // 위
-                        (PlayerManager.Instance.row, PlayerManager.Instance.col + 1),  // 오른쪽
-                        (PlayerManager.Instance.row + 1, PlayerManager.Instance.col),  // 아래
-                        (PlayerManager.Instance.row, PlayerManager.Instance.col - 1)   // 왼쪽
+                        (PlayerManager.Instance.Row - 1, PlayerManager.Instance.Col),  // 위
+                        (PlayerManager.Instance.Row, PlayerManager.Instance.Col + 1),  // 오른쪽
+                        (PlayerManager.Instance.Row + 1, PlayerManager.Instance.Col),  // 아래
+                        (PlayerManager.Instance.Row, PlayerManager.Instance.Col - 1)   // 왼쪽
                     };
                     foreach ((int, int) coord in coords)
                     {
@@ -100,10 +132,10 @@ public class MoveState : BaseState
                     this.movableSpace = new bool[3, 3];  // 모든 항이 false인 2D 배열
                     (int, int)[] coords =
                     {
-                        (PlayerManager.Instance.row - 1, PlayerManager.Instance.col - 1),  // 왼쪽 위
-                        (PlayerManager.Instance.row - 1, PlayerManager.Instance.col + 1),  // 오른쪽 위
-                        (PlayerManager.Instance.row + 1, PlayerManager.Instance.col + 1),  // 오른쪽 아래
-                        (PlayerManager.Instance.row + 1, PlayerManager.Instance.col - 1)   // 왼쪽 아래
+                        (PlayerManager.Instance.Row - 1, PlayerManager.Instance.Col - 1),  // 왼쪽 위
+                        (PlayerManager.Instance.Row - 1, PlayerManager.Instance.Col + 1),  // 오른쪽 위
+                        (PlayerManager.Instance.Row + 1, PlayerManager.Instance.Col + 1),  // 오른쪽 아래
+                        (PlayerManager.Instance.Row + 1, PlayerManager.Instance.Col - 1)   // 왼쪽 아래
                     };
                     foreach ((int, int) coord in coords)
                     {
@@ -118,13 +150,13 @@ public class MoveState : BaseState
             case MoveDirection.Colored:
                 // 내가 색칠해 뒀던 칸으로 이동
                 {
-                    BoardColor[,] boardColors = BoardManager.Instance.BoardColors;
+                    List<List<BoardColor>> boardColors = BoardManager.Instance.BoardColors;
 
-                    for (int i = 0; i < boardColors.GetLength(0); i++)  // row
+                    for (int i = 0; i < boardColors.Count; i++)  // row
                     {
-                        for (int j = 0; j < boardColors.GetLength(1); j++)  // col
+                        for (int j = 0; j < boardColors[0].Count; j++)  // col
                         {
-                            if (boardColors[i, j] == BoardColor.Player)
+                            if (boardColors[i][j] == BoardColor.Player)
                             {
                                 this.movableSpace[i, j] = true;
                             }
@@ -192,9 +224,24 @@ public class MoveState : BaseState
 
 }
 
+public interface IAttackable    //선택 가능한 오브젝트들이 IAttackable을 갖는다
+{
+        
+}
+
 public class AttackState : BaseState
 {
     private AttackCard Card;
+    List<IAttackable> attackableList = new List<IAttackable>();
+    struct coord {
+        public coord(int x, int y)
+        {
+            this.x = x;
+            this.y = y;
+        }
+        public int x;
+        public int y; 
+    }
 
     public AttackState(AttackCard card)
     {
@@ -215,30 +262,68 @@ public class AttackState : BaseState
         bool isMonster = targetType % 10 != 0;
         bool isWall = (targetType / 10) % 10 != 0;
         bool isMinion = (targetType / 100) % 10 != 0;
-
+        int playerRow = PlayerManager.Instance.Row;
+        int playerCol = PlayerManager.Instance.Col;
+        coord[] coords = {new coord(playerRow-1, playerCol), new coord(playerRow + 1, playerCol), new coord(playerRow, playerCol - 1), new coord(playerRow, playerCol + 1)};
+        
         if(isMonster)
         {
-
+            List<Enemy> enemyList = EnemyManager.Instance.EnemyList;
+            attackableList.AddRange(enemyList);
         }
         if(isWall)
         {
-            //플레이어 주변에 Wall이 있으면 하이라이트(Clickable)
-            //플레이어 위치 주변 4칸에 Wall이 있는지 체크
-
+            foreach (coord c in coords)
+            {
+                //row col이 0,3 미만이고, 그 좌표에 Wall이 있을 때
+                if (c.x >= 0 && c.x < 3 && c.y >= 0 && c.y < 3 && BoardManager.Instance.BoardObjects[c.x][c.y] == BoardObject.Wall)
+                {
+                    if (BoardManager.Instance.BoardObjects[c.x][c.y] == BoardObject.Wall)
+                    {
+                        attackableList.Add(BoardManager.Instance.BoardAttackables[c.x][c.y]);
+                    }
+                }
+            }
         }
         if(isMinion)
         {
-            //하수인 공격 가능한 경우 -> 플레이어 주변의 하수인(100)
+            foreach (coord c in coords)
+            {
+                //row col이 0,3 미만이고, 그 좌표에 Minion이 있을 때
+                if (c.x >= 0 && c.x < 3 && c.y >= 0 && c.y < 3 && BoardManager.Instance.BoardObjects[c.x][c.y] == BoardObject.Minion)
+                {
+                    if (BoardManager.Instance.BoardObjects[c.x][c.y] == BoardObject.Minion)
+                    {
+                        attackableList.Add(BoardManager.Instance.BoardAttackables[c.x][c.y]);
+                    }
+                }
+            }
         }
+        //모든 attack 가능한 오브젝트를 attackableList에 담았음
     }
-
     public override void Exit()
     {
+        //attackableList 초기화
+        attackableList.Clear();
     }
 
     public override void MouseEvent()
     {
-        
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hitData;
+        if(Physics.Raycast(ray, out hitData))
+        {
+            GameObject hitObject = hitData.transform.gameObject;
+            Debug.Log(hitObject);
+            IAttackable iAttackable = hitObject.GetComponent<IAttackable>();
+            if(iAttackable != null) //레이캐스트에 맞은 오브젝트에 Iattackable 컴포넌트가 있는가?
+            {
+                if (attackableList.Contains(iAttackable))   //attackableList에 있는가?
+                {
+                    //처리
+                }
+            }
+        }
     }
     public override void Update()
     {
@@ -261,27 +346,27 @@ public class ColorState : BaseState
         
     public override void DoAction(States state)
     {
-        throw new NotImplementedException();
+        
     }
 
     public override void Enter()
     {
-        throw new NotImplementedException();
+
     }
 
     public override void Exit()
     {
-        throw new NotImplementedException();
+
     }
 
     public override void MouseEvent()
     {
-        throw new NotImplementedException();
+        PlayerManager.Instance.ChangeStates(PlayerManager.Instance.StatesQueue.Dequeue());
     }
 
     public override void Update()
     {
-        throw new NotImplementedException();
+
     }
 }
 
