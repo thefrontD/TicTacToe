@@ -90,6 +90,13 @@ public class AttackCard : Card
     public override void usingCardSpecific()
     {
         //발동조건, 이펙트
+        // State를 만드는 부분
+        AttackState state = new AttackState(this);
+        NormalState normal = new NormalState();  // 다 끝나고 다시 normal state로 돌아온다.
+
+        // State를 Enqueue하는 부분
+        PlayerManager.Instance.StatesQueue.Enqueue(state);
+        PlayerManager.Instance.StatesQueue.Enqueue(normal);
     }
 }
 

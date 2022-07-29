@@ -4,16 +4,20 @@ using UnityEngine;
 
 public class EnemyManager : Singleton<EnemyManager>
 {
-    private List<GameObject> EnemyObjectsList;
-    private List<Enemy> EnemyList;
+    private List<GameObject> _enemyObjectList;
+    private List<Enemy> _enemyList;
+
+    public List<GameObject> EnemyObjectList => _enemyObjectList;
+    public List<Enemy> EnemyList => _enemyList;
 
     [SerializeField] private StringGameObjectDictionary EnemyPrefab;
 
     void Start()
     {
-        EnemyObjectsList = new List<GameObject>();
-        EnemyList = new List<Enemy>();
         EnemyLoading("EnemyData.json");
+        _enemyObjectList = new List<GameObject>();
+        _enemyList = new List<Enemy>();
+        //EnemyLoading();
     }
 
     void Update()
@@ -48,7 +52,9 @@ public class EnemyManager : Singleton<EnemyManager>
     {
         yield return new WaitForSeconds(1.0f);
      
-        foreach (Enemy enemy in EnemyList)
+        PlayerManager.Instance.StatesQueue.Enqueue(new NormalState(5, true));
+        
+        foreach (Enemy enemy in _enemyList)
         {
             enemy.EnemyAction();
             yield return new WaitForSeconds(0.5f);
@@ -57,10 +63,5 @@ public class EnemyManager : Singleton<EnemyManager>
         yield return new WaitForSeconds(0.5f);
         
         PlayerManager.Instance.ChangeStates(new NormalState(5, true));
-    }
-
-    public List<Enemy> GetEnemyList()
-    {
-        return EnemyList;
     }
 }

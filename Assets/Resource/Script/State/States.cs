@@ -268,7 +268,7 @@ public class AttackState : BaseState
         
         if(isMonster)
         {
-            List<Enemy> enemyList = EnemyManager.Instance.GetEnemyList();
+            List<Enemy> enemyList = EnemyManager.Instance.EnemyList;
             attackableList.AddRange(enemyList);
         }
         if(isWall)
@@ -276,11 +276,11 @@ public class AttackState : BaseState
             foreach (coord c in coords)
             {
                 //row col이 0,3 미만이고, 그 좌표에 Wall이 있을 때
-                if (c.x >= 0 && c.x < 3 && c.y >= 0 && c.y < 3 && BoardManager.Instance.GetBoardObject(c.x, c.y) == BoardObject.Wall)
+                if (c.x >= 0 && c.x < 3 && c.y >= 0 && c.y < 3 && BoardManager.Instance.BoardObjects[c.x][c.y] == BoardObject.Wall)
                 {
-                    if (BoardManager.Instance.GetBoardObject(c.x, c.y) == BoardObject.Wall)
+                    if (BoardManager.Instance.BoardObjects[c.x][c.y] == BoardObject.Wall)
                     {
-                        attackableList.Add(BoardManager.Instance.GetBoardAttackable(c.x, c.y));
+                        attackableList.Add(BoardManager.Instance.BoardAttackables[c.x][c.y]);
                     }
                 }
             }
@@ -290,11 +290,11 @@ public class AttackState : BaseState
             foreach (coord c in coords)
             {
                 //row col이 0,3 미만이고, 그 좌표에 Minion이 있을 때
-                if (c.x >= 0 && c.x < 3 && c.y >= 0 && c.y < 3 && BoardManager.Instance.GetBoardObject(c.x, c.y) == BoardObject.Minion)
+                if (c.x >= 0 && c.x < 3 && c.y >= 0 && c.y < 3 && BoardManager.Instance.BoardObjects[c.x][c.y] == BoardObject.Minion)
                 {
-                    if (BoardManager.Instance.GetBoardObject(c.x, c.y) == BoardObject.Minion)
+                    if (BoardManager.Instance.BoardObjects[c.x][c.y] == BoardObject.Minion)
                     {
-                        attackableList.Add(BoardManager.Instance.GetBoardAttackable(c.x, c.y));
+                        attackableList.Add(BoardManager.Instance.BoardAttackables[c.x][c.y]);
                     }
                 }
             }
@@ -309,10 +309,21 @@ public class AttackState : BaseState
 
     public override void MouseEvent()
     {
-        //Physics.Raycast
-        //레이캐스트에 맞은 애 getcomponent Iattackable이 null이 아닌가?
-        //그렇다면 attackableList에 있는가?
-        //그렇다면 처리
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hitData;
+        if(Physics.Raycast(ray, out hitData))
+        {
+            GameObject hitObject = hitData.transform.gameObject;
+            Debug.Log(hitObject);
+            IAttackable iAttackable = hitObject.GetComponent<IAttackable>();
+            if(iAttackable != null) //레이캐스트에 맞은 오브젝트에 Iattackable 컴포넌트가 있는가?
+            {
+                if (attackableList.Contains(iAttackable))   //attackableList에 있는가?
+                {
+                    //처리
+                }
+            }
+        }
     }
     public override void Update()
     {
