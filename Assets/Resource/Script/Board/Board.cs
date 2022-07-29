@@ -8,6 +8,11 @@ public class Board : MonoBehaviour
     [SerializeField] private Sprite EnemySprite;
     [SerializeField] private Sprite PlayerSprite;
     [SerializeField] private SpriteRenderer spriteRenderer;
+    private int _row;
+    private int _col;
+
+    public int Row => _row;
+    public int Col => _col;
     public BoardColor currentBoardColor;
     public BoardObject currentBoardObject;
 
@@ -22,8 +27,10 @@ public class Board : MonoBehaviour
         
     }
 
-    public void init(BoardColor boardColor)
+    public void Init(BoardColor boardColor, int row, int col)
     {
+        _row = row;
+        _col = col;
         currentBoardColor = boardColor;
         SetBoardColor(currentBoardColor);
     }

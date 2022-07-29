@@ -35,7 +35,51 @@ public enum MoveDirection { All, UDLR, Diagonal, Colored, Dangerous }
 public enum ColorCardEffect {ColorAndMove, Color, Color3, Color4, Color5, Color6, Color7, Color8, Color9, Color10, Color11}
 
 [JsonConverter(typeof(StringEnumConverter))]
-public enum TriggerCondition { None, ColoredSpaceExists, EnemyWillAttack, PlayerHealthExceeds30, MoveCardInHand }
+public enum TriggerCondition
+{
+    None, 
+    Attacked,
+    PlayerInColoredSpace,
+    EnemyWillAttack, EnemyWillWall, EnemyWillMinion, EnemyWillShield,
+    PlayerWall, PlayerNotWall,
+    OnlyAttackCardInHand, OnlyMoveCardInHand, OnlyColorCardInHand,
+    ColoredSpaceExists,
+    Bingo1=31, Bingo2=32, Bingo3=33,
+    CardInHand1=41, CardInHand2=42, CardInHand3=43, CardInHand4=44, CardInHand5=45,
+    AttackCardInHand1=51, AttackCardInHand2=52, AttackCardInHand3=53, AttackCardInHand4=54, AttackCardInHand5=55,
+    ColorCardInHand1=61, ColorCardInHand2=62, ColorCardInHand3=63, ColorCardInHand4=64, ColorCardInHand5=65,
+    MoveCardInHand1=71, MoveCardInHand2=72, MoveCardInHand3=73, MoveCardInHand4=74, MoveCardInHand5=75,
+    PlayerHealthExceeds30=130
+}
+
+[JsonConverter(typeof(StringEnumConverter))]
+public enum AdditionalEffectCondition
+{
+    None, 
+    DestroyShield, DestroyWall, DestroyMinion, DestroyWallOrMinion,
+    MonsterWillAttack, MonsterWillWall, MonsterWillMinion, MonsterWillShield,
+    PlayerInColoredSpace,
+    MakeBingo
+}
+
+[JsonConverter(typeof(StringEnumConverter))]
+public enum AdditionalEffect
+{
+    None,
+    Shield10,
+    MonsterHp1,
+    PlayerHp10,
+    DMG10,
+    Move,
+    Color,
+    Re,
+    Mana1, 
+    Draw1, 
+    Mana1Draw1,
+    Dump1, DumpALL, DumpAttackCard1, DumpMoveCard1, DumpColorCard1,
+    Delete
+}
+
 
 [JsonConverter(typeof(StringEnumConverter))]
 public enum ColorTargetPosition {All, P1, P4, P5, C, V, H, P3V, P3H}
@@ -44,8 +88,8 @@ public enum ColorTargetPosition {All, P1, P4, P5, C, V, H, P3V, P3H}
 public enum EnemyAction
 {
     RowAttack, ColAttack, AllAttack, ColorAttack, UnColorAttack,
-    WallSummon = 10, MobSummon,
-    PowerIncrease = 20, DamageDecrease, HpHealing, ArmorHealing,
-    PlayerPowerDecrease = 30, PlayerDamageIncrease, DrawCardDecrease, CardCostIncrease
+    WallSummon=10, MobSummon,
+    PowerIncrease=20, DamageDecrease, HpHealing, ArmorHealing,
+    PlayerPowerDecrease=30, PlayerDamageIncrease, DrawCardDecrease, CardCostIncrease
 }
 public enum Debuff { PowerDecrease, DamageIncrease, DrawCardDecrease, CardCostIncrease }

@@ -36,9 +36,9 @@ public class EnemyManager : Singleton<EnemyManager>
 
         foreach (EnemyDataHolder enemyData in enemyDataHolders)
         {
-            EnemyObjectsList.Add(Instantiate(EnemyPrefab[enemyData.EnemyName],
+            _enemyObjectList.Add(Instantiate(EnemyPrefab[enemyData.EnemyName],
                 new Vector3(0, 20, 0), Quaternion.Euler(30, 0 ,0)));
-            EnemyList.Add(EnemyObjectsList[EnemyObjectsList.Count-1].GetComponent<Enemy>());
+            EnemyList.Add(_enemyObjectList[_enemyObjectList.Count-1].GetComponent<Enemy>());
             EnemyList[EnemyList.Count-1].InitEnemyData(enemyData);
         }
     }

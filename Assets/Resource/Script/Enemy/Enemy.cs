@@ -7,6 +7,17 @@ public class Enemy : MonoBehaviour, IAttackable
     private string _enemyName;
     public string EnemyName => _enemyName;
     
+    private int _enemyMaxShield;
+    public int EnemyMaxShield
+    {
+        get { return _enemyMaxShield; }
+        set
+        {
+            if (value < 0) _enemyMaxShield = 0;
+            else _enemyMaxShield = value;
+        }
+    }
+    
     private int _enemyShield;
     public int EnemyShield
     {
@@ -15,6 +26,17 @@ public class Enemy : MonoBehaviour, IAttackable
         {
             if (value < 0) _enemyShield = 0;
             else _enemyShield = value;
+        }
+    }
+    
+    private int _enemyMaxHp;
+    public int EnemyMaxHP
+    {
+        get { return _enemyMaxHp; }
+        set
+        {
+            if (value < 0) _enemyMaxHp = 0;
+            else _enemyMaxHp = value;
         }
     }
 
@@ -48,7 +70,7 @@ public class Enemy : MonoBehaviour, IAttackable
     {
         EnemyAction enemyAction = EnemyActions.Dequeue();
             
-        switch ((int)enemyAction % 10)
+        switch ((int)enemyAction / 10)
         {
             case 0:
                 EnemyAttack(enemyAction);

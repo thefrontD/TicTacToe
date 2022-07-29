@@ -23,10 +23,11 @@ public class BoardManager : Singleton<BoardManager>
     private List<List<BoardObject>> _boardObjects = new List<List<BoardObject>>();
     public List<List<BoardObject>> BoardObjects => _boardObjects;
     //Board Color Array
-    private List<List<BoardColor>> boardColors = new List<List<BoardColor>>();
-    public List<List<BoardColor>> BoardColors { get => boardColors; }
+    private List<List<BoardColor>> _boardColors = new List<List<BoardColor>>();
+    public List<List<BoardColor>> BoardColors => _boardColors;
     //Actual Board Components in Game
-    private int BoardSize = 3;
+    private int _boardSize = 3;
+    public int BoardSize => _boardSize;
 
     private List<List<IAttackable>> _boardAttackables = new List<List<IAttackable>>();
     public List<List<IAttackable>> BoardAttackables => _boardAttackables;
@@ -50,22 +51,22 @@ public class BoardManager : Singleton<BoardManager>
     {
         Holder holder = BoardData.Instance._load("BoardData.json");
         
-        BoardSize = holder._boardSize;
+        _boardSize = holder._boardSize;
         PlayerManager.Instance.Row = holder._playerRow;
         PlayerManager.Instance.Col = holder._playerCol;
         _boardObjects = holder._boardObjects;
-        boardColors = holder._boardColors;
+        _boardColors = holder._boardColors;
         
-        for (int i = 0; i < BoardSize; i++)
+        for (int i = 0; i < _boardSize; i++)
         {
             gameBoard.Add(new List<GameObject>());
             _boardAttackables.Add(new List<IAttackable>());
-            for (int j = 0; j < BoardSize; j++)
+            for (int j = 0; j < _boardSize; j++)
             {
                 float size = BoardPrefab.transform.localScale.x;
                 Vector3 pos = new Vector3(-size + size * i, size - size * j, 0);
                 gameBoard[i].Add(Instantiate(BoardPrefab, pos, Quaternion.identity));
-                ColoringBoard(i, j, boardColors[i][j]);
+                gameBoard[i][j].GetComponent<Board>().Init(_boardColors[i][j], i, j);
                 _boardAttackables[i].Add(null);
             }
         }
@@ -75,7 +76,7 @@ public class BoardManager : Singleton<BoardManager>
     {
         Vector3 initPos = gameBoard[PlayerManager.Instance.Row][PlayerManager.Instance.Col].transform.position 
                           - new Vector3(0, 0, PlayerPrefab.transform.localScale.z/2);
-        boardObjects[PlayerManager.Instance.Row][PlayerManager.Instance.Col] = BoardObject.Player;
+        _boardObjects[PlayerManager.Instance.Row][PlayerManager.Instance.Col] = BoardObject.Player;
         PlayerObject = Instantiate(PlayerPrefab, initPos, Quaternion.identity);
     }
 
@@ -85,11 +86,11 @@ public class BoardManager : Singleton<BoardManager>
 
     public bool ColoringBoard(int x, int y, BoardColor boardColor)
     {
-        if (x >= BoardSize || y >= BoardSize || x < 0 || y < 0)
+        if (x >= _boardSize || y >= _boardSize || x < 0 || y < 0)
             return false;
         else
         {
-            boardColors[x][y] = boardColor;
+            _boardColors[x][y] = boardColor;
             gameBoard[x][y].GetComponent<Board>().SetBoardColor(boardColor);
             return true;
         }
@@ -97,12 +98,12 @@ public class BoardManager : Singleton<BoardManager>
 
     public bool MovePlayer(int x, int y)
     {
-        if (x + PlayerManager.Instance.Row >= BoardSize - 1 || y + PlayerManager.Instance.Col >= BoardSize - 1 || x < 0 || y < 0)
+        if (x >= _boardSize - 1 || y >= _boardSize - 1 || x < 0 || y < 0)
             return false;
         else
         {
-            PlayerManager.Instance.Row += x;
-            PlayerManager.Instance.Col += y;
+            PlayerManager.Instance.Row = x;
+            PlayerManager.Instance.Col = y;
             Vector3 nextPos = gameBoard[PlayerManager.Instance.Row][PlayerManager.Instance.Col].transform.position - 
                               new Vector3(0, 0, PlayerPrefab.transform.localScale.z/2);
             PlayerObject.transform.DOMove(nextPos, 0.5f, false);
@@ -110,6 +111,47 @@ public class BoardManager : Singleton<BoardManager>
         }
     }
 
+    public int CheckBingo(BoardColor color)
+    {
+        int ret = 0;
+        bool check1, check2;
+        
+        for (int i = 0; i < _boardSize; i++)
+        {
+            check1 = check2 = true;            
+            
+            for (int j = 0; j < _boardSize; j++)
+            {
+                if (_boardColors[i][j] != color)
+                    check1 = false;
+                
+                if (_boardColors[j][i] != color)
+                    check2 = false;
+            } 
+
+            if (check1)
+                ret++;
+            if (check2)
+                ret++;
+        }
+
+        check1 = check2 = true;
+        for (int i = 0; i < _boardSize; i++)
+        {
+            if (_boardColors[i][i] != color)
+                check1 = false;
+            if (_boardColors[i][_boardSize - i + 1] != color)
+                check2 = false;
+        }
+        
+        if (check1)
+            ret++;
+        if (check2)
+            ret++;
+
+        return ret;
+    }
+    
     /// <summary>
     /// 빙고 체킹
     /// </summary>
@@ -118,25 +160,25 @@ public class BoardManager : Singleton<BoardManager>
         int ret = 0;
         bool check = true;
         
-        if (x >= BoardSize || y >= BoardSize || x < 0 || y < 0)
+        if (x >= _boardSize || y >= _boardSize || x < 0 || y < 0)
             return 0;
         else if (x == y)
         { 
-            for (int i = 0; i < BoardSize; i++)
-                if (boardColors[i][i] != color)
+            for (int i = 0; i < _boardSize; i++)
+                if (_boardColors[i][i] != color)
                     check = false;
             if (check) ret++;
         }
 
         check = true;
-        for (int i = 0; i < BoardSize; i++)
-            if (boardColors[x][i] != color)
+        for (int i = 0; i < _boardSize; i++)
+            if (_boardColors[x][i] != color)
                 check = false;
         if (check) ret++;
         
         check = true;
-        for (int i = 0; i < BoardSize; i++)
-            if (boardColors[i][y] != color)
+        for (int i = 0; i < _boardSize; i++)
+            if (_boardColors[i][y] != color)
                 check = false;
         if (check) ret++;
 

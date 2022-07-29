@@ -109,7 +109,7 @@ public class PlayerManager : Singleton<PlayerManager>
         return true;
     }
 
-    public bool MovePlayer(int x, int y )
+    public bool MovePlayer(int x, int y)
     {
         if (BoardManager.Instance.MovePlayer(x, y))
             return true;

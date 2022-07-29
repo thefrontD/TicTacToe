@@ -2,22 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d3529374-01b1-433a-a73a-241952c1c846" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Resource/Prefabs/SampleEnemy.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resource/Prefabs/SampleEnemy.prefab.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TicTacToe/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TicTacToe/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resource/Prefabs/Card.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resource/Prefabs/Card.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resource/Script/Data/EnemyData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resource/Script/Data/EnemyData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resource/Script/Board/Board.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resource/Script/Board/Board.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resource/Script/Card/Card.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resource/Script/Card/Card.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resource/Script/Enemy/Enemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resource/Script/Enemy/Enemy.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resource/Script/Manager/BoardManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resource/Script/Manager/BoardManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resource/Script/Manager/CardManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resource/Script/Manager/CardManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resource/Script/Manager/EnemyManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resource/Script/Manager/EnemyManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resource/Script/Manager/PlayerManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resource/Script/Manager/PlayerManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resource/Script/State/States.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resource/Script/State/States.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resource/Script/Util/Enums.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resource/Script/Util/Enums.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SerializableDictionary/Example/Editor/UserSerializableDictionaryPropertyDrawers.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SerializableDictionary/Example/Editor/UserSerializableDictionaryPropertyDrawers.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/BoardData.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/BoardData.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/EnemyData.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/EnemyData.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/PlayerCard.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/PlayerCard.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,6 +107,7 @@
       <workItem from="1658780838273" duration="3281000" />
       <workItem from="1658890567381" duration="2417000" />
       <workItem from="1658938038131" duration="1515000" />
+      <workItem from="1659069320082" duration="9310000" />
     </task>
     <servers />
   </component>

@@ -1,23 +1,32 @@
 [
   {
+    "TriggerCondition": "None",
+    "AdditionalEffectCondition": "None",
+    "AdditionalEffect": "None",
     "ColorCardEffect": "Color",
     "cardType": "Color",
-    "cardName": "Beta",
-    "cardDesc": "Beta is Greek B",
+    "cardName": "Alpha",
+    "cardDesc": "Alpha is Greek A",
     "cardCost": 1
   },
   {
+    "TriggerCondition": "None",
+    "AdditionalEffectCondition": "None",
+    "AdditionalEffect": "None",
     "AttackCardEffect": "Alpha",
     "TargetType": 1,
     "TargetCount": 2,
     "AttackCount": 3,
     "Damage": 4,
     "cardType": "Attack",
-    "cardName": "Alpha",
-    "cardDesc": "Alpha is Greek A",
+    "cardName": "Beta",
+    "cardDesc": "Beta is Greek B",
     "cardCost": 1
   },
   {
+    "TriggerCondition": "None",
+    "AdditionalEffectCondition": "None",
+    "AdditionalEffect": "None",
     "MoveCardEffect": "Flash",
     "triggerCondition": "EnemyWillAttack",
     "moveDirection": "Colored",
@@ -27,13 +36,19 @@
     "cardCost": 1
   },
   {
+    "TriggerCondition": "None",
+    "AdditionalEffectCondition": "None",
+    "AdditionalEffect": "None",
     "ColorCardEffect": "Color",
     "cardType": "Color",
-    "cardName": "Beta",
-    "cardDesc": "Beta is Greek B",
+    "cardName": "Alpha",
+    "cardDesc": "Alpha is Greek A",
     "cardCost": 1
   },
   {
+    "TriggerCondition": "None",
+    "AdditionalEffectCondition": "None",
+    "AdditionalEffect": "None",
     "AttackCardEffect": "Alpha",
     "TargetType": 1,
     "TargetCount": 2,
@@ -45,6 +60,9 @@
     "cardCost": 1
   },
   {
+    "TriggerCondition": "None",
+    "AdditionalEffectCondition": "None",
+    "AdditionalEffect": "None",
     "MoveCardEffect": "Flash",
     "triggerCondition": "EnemyWillAttack",
     "moveDirection": "Colored",
