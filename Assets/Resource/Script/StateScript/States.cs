@@ -230,6 +230,7 @@ public class AttackState : BaseState
         {
             //하수인 공격 가능한 경우 -> 플레이어 주변의 하수인(100)
         }
+    }
 
     public override void Exit()
     {
@@ -256,6 +257,7 @@ public class ColorState : BaseState
     {
         this.Selectable = Selectable;
         this.Target = Target;
+    }
         
     public override void DoAction(States state)
     {
