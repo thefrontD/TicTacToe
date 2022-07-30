@@ -49,7 +49,7 @@ public enum TriggerCondition
     AttackCardInHand1=51, AttackCardInHand2=52, AttackCardInHand3=53, AttackCardInHand4=54, AttackCardInHand5=55,
     ColorCardInHand1=61, ColorCardInHand2=62, ColorCardInHand3=63, ColorCardInHand4=64, ColorCardInHand5=65,
     MoveCardInHand1=71, MoveCardInHand2=72, MoveCardInHand3=73, MoveCardInHand4=74, MoveCardInHand5=75,
-    PlayerHealthExceeds30=130
+    PlayerHealthExceeds10 = 110, PlayerHealthExceeds30=130
 }
 
 [JsonConverter(typeof(StringEnumConverter))]
@@ -83,6 +83,10 @@ public enum AdditionalEffect
 
 [JsonConverter(typeof(StringEnumConverter))]
 public enum ColorTargetPosition {All, P1, P4, P5, C, V, H, P3V, P3H}
+[JsonConverter(typeof(StringEnumConverter))]
+public enum ColorTargetNum {1, 2, 3, 4, 5, T, Hand}
+
+
 
 [JsonConverter(typeof(StringEnumConverter))]
 public enum EnemyAction
