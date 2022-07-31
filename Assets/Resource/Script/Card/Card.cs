@@ -125,9 +125,9 @@ public abstract class Card
 
             case TriggerCondition.OnlyAttackCardInHand:
                 proceed = true;
-                foreach (GameObject card in CardManager.Instance.HandCardList)
+                foreach (CardUI card in CardManager.Instance.HandCardList)
                 {
-                    if (card.GetComponent<CardUI>().Card.cardType != CardType.Attack)
+                    if (card.Card.cardType != CardType.Attack)
                     {
                         proceed = false;
                         break;
@@ -136,9 +136,9 @@ public abstract class Card
                 break;
             case TriggerCondition.OnlyColorCardInHand:
                 proceed = true;
-                foreach (GameObject card in CardManager.Instance.HandCardList)
+                foreach (CardUI card in CardManager.Instance.HandCardList)
                 {
-                    if (card.GetComponent<CardUI>().Card.cardType != CardType.Color)
+                    if (card.Card.cardType != CardType.Color)
                     {
                         proceed = false;
                         break;
@@ -147,9 +147,9 @@ public abstract class Card
                 break;
             case TriggerCondition.OnlyMoveCardInHand:
                 proceed = true;
-                foreach (GameObject card in CardManager.Instance.HandCardList)
+                foreach (CardUI card in CardManager.Instance.HandCardList)
                 {
-                    if (card.GetComponent<CardUI>().Card.cardType != CardType.Move)
+                    if (card.Card.cardType != CardType.Move)
                     {
                         proceed = false;
                         break;
@@ -179,9 +179,9 @@ public abstract class Card
             case TriggerCondition.AttackCardInHand3:
             case TriggerCondition.AttackCardInHand4:
             case TriggerCondition.AttackCardInHand5:
-                foreach (GameObject card in CardManager.Instance.HandCardList)
+                foreach (CardUI card in CardManager.Instance.HandCardList)
                 {
-                    if (card.GetComponent<CardUI>().Card.cardType == CardType.Attack)
+                    if (card.Card.cardType == CardType.Attack)
                         cnt++;
                 }
 
@@ -194,9 +194,9 @@ public abstract class Card
             case TriggerCondition.ColorCardInHand3:
             case TriggerCondition.ColorCardInHand4:
             case TriggerCondition.ColorCardInHand5:  
-                foreach (GameObject card in CardManager.Instance.HandCardList)
+                foreach (CardUI card in CardManager.Instance.HandCardList)
                 {
-                    if (card.GetComponent<CardUI>().Card.cardType == CardType.Color)
+                    if (card.Card.cardType == CardType.Color)
                         cnt++;
                 }
 
@@ -209,9 +209,9 @@ public abstract class Card
             case TriggerCondition.MoveCardInHand3:
             case TriggerCondition.MoveCardInHand4:
             case TriggerCondition.MoveCardInHand5:  
-                foreach (GameObject card in CardManager.Instance.HandCardList)
+                foreach (CardUI card in CardManager.Instance.HandCardList)
                 {
-                    if (card.GetComponent<CardUI>().Card.cardType == CardType.Move)
+                    if (card.Card.cardType == CardType.Move)
                         cnt++;
                 }
 

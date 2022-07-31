@@ -19,13 +19,13 @@ public class CardManager : Singleton<CardManager>
     private Quaternion _backQuaternion;
     private Quaternion _fronQuaternion;
 
-    private List<GameObject> _handCardList = new List<GameObject>();
-    private Queue<GameObject> _deckList = new Queue<GameObject>();
-    private List<GameObject> _graveList = new List<GameObject>();
+    private List<CardUI> _handCardList = new List<CardUI>();
+    private Queue<CardUI> _deckList = new Queue<CardUI>();
+    private List<CardUI> _graveList = new List<CardUI>();
 
-    public List<GameObject> HandCardList => _handCardList;
-    public Queue<GameObject> DeckList => _deckList;
-    public List<GameObject> GraveList => _graveList;
+    public List<CardUI> HandCardList => _handCardList;
+    public Queue<CardUI> DeckList => _deckList;
+    public List<CardUI> GraveList => _graveList;
 
     void Start()
     {
@@ -45,8 +45,9 @@ public class CardManager : Singleton<CardManager>
         {
             GameObject newCard = Instantiate(cardPrefab, deckPos, _backQuaternion);
             newCard.transform.eulerAngles =  Vector3.up * 180;
-            newCard.GetComponent<CardUI>().init(card);
-            _deckList.Enqueue(newCard);
+            CardUI cardui = newCard.GetComponent<CardUI>();
+            cardui.init(card);
+            _deckList.Enqueue(cardui);
         }
     }
 
@@ -67,28 +68,31 @@ public class CardManager : Singleton<CardManager>
                 GraveToDeck();
                 yield return new WaitForSeconds(1f);
             }
-            _handCardList.Add(_deckList.Dequeue());
-            _handCardList[_handCardList.Count-1].GetComponent<CardUI>().isHand = true;
-            DrawCardAnimation(_handCardList[_handCardList.Count-1]);
+            CardUI drawCard = _deckList.Dequeue();
+            _handCardList.Add(drawCard);
+            drawCard.isHand = true;
+            DrawCardAnimation(drawCard);
             yield return new WaitForSeconds(0.3f);
         }
     }
 
     private void CardPositionAdjust()
     {
-        int CardNum = 0;
+        int cardNum = 0;
         int idx = 11 - _handCardList.Count;
 
-        foreach (GameObject card in _handCardList)
+        foreach (CardUI card in _handCardList)
         {
-            card.transform.DOMove(cardPositionList[idx], 0.1f, false);
-            card.GetComponent<CardUI>().Idx = CardNum++;
-            card.GetComponent<CardUI>().setPos(cardPositionList[idx]);
+            Vector3 cardPosition = cardPositionList[idx];
+            card.transform.DOMove(cardPosition, 0.1f, false);
+            card.Idx = cardNum;
+            card.setPos(cardPosition);
             idx += 2;
+            cardNum++;
         }
     }
 
-    private void DrawCardAnimation(GameObject card)
+    private void DrawCardAnimation(CardUI card)
     {
         CardPositionAdjust();
         
@@ -104,20 +108,21 @@ public class CardManager : Singleton<CardManager>
 
     public void HandtoGrave(int idx)
     {
-        _graveList.Add(_handCardList[idx]);
-
-        _handCardList[idx].GetComponent<CardUI>().isHand = false;
-        _handCardList[idx].transform.DOMove(gravePos, 0.2f, false);
-        _handCardList[idx].transform.DORotate(new Vector3(0, 180, 0), 0.2f, RotateMode.Fast);
+        CardUI card = _handCardList[idx];
+        card.isHand = false;
+        card.transform.DOMove(gravePos, 0.2f, false);
+        card.transform.DORotate(new Vector3(0, 180, 0), 0.2f, RotateMode.Fast);
         
+        _graveList.Add(card);
         _handCardList.RemoveAt(idx);
+
         CardPositionAdjust();
     }
 
     public void GraveToDeck()
     {
         _graveList.Shuffle();
-        foreach (GameObject card in _graveList)
+        foreach (CardUI card in _graveList)
         {
             _deckList.Enqueue(card);
             card.transform.DOMove(deckPos, 0.2f, false);

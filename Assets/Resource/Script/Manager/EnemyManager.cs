@@ -4,20 +4,16 @@ using UnityEngine;
 
 public class EnemyManager : Singleton<EnemyManager>
 {
-    private List<GameObject> _enemyObjectList;
     private List<Enemy> _enemyList;
 
-    public List<GameObject> EnemyObjectList => _enemyObjectList;
     public List<Enemy> EnemyList => _enemyList;
 
     [SerializeField] private StringGameObjectDictionary EnemyPrefab;
 
     void Start()
     {
-        EnemyLoading("EnemyData.json");
-        _enemyObjectList = new List<GameObject>();
         _enemyList = new List<Enemy>();
-        //EnemyLoading();
+        EnemyLoading("EnemyData.json");
     }
 
     void Update()
@@ -36,10 +32,10 @@ public class EnemyManager : Singleton<EnemyManager>
 
         foreach (EnemyDataHolder enemyData in enemyDataHolders)
         {
-            _enemyObjectList.Add(Instantiate(EnemyPrefab[enemyData.EnemyName],
-                new Vector3(0, 20, 0), Quaternion.Euler(30, 0 ,0)));
-            EnemyList.Add(_enemyObjectList[_enemyObjectList.Count-1].GetComponent<Enemy>());
-            EnemyList[EnemyList.Count-1].InitEnemyData(enemyData);
+            GameObject enemyObject = Instantiate(EnemyPrefab[enemyData.EnemyName], new Vector3(0, 20, 0), Quaternion.Euler(30, 0, 0));
+            Enemy enemy = enemyObject.GetComponent<Enemy>();
+            enemy.InitEnemyData(enemyData);
+            EnemyList.Add(enemy);
         }
     }
 
