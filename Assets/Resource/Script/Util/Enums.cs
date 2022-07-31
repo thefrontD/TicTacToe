@@ -26,7 +26,7 @@ public enum States{ Normal, Attack, Move, Color }
 public enum AttackCardEffect { Alpha, Bravo, Charlie, Delta, Echo, None }
 
 [JsonConverter(typeof(StringEnumConverter))]
-public enum MoveCardEffect { Run, Slide, Flash, None }
+public enum MoveCardEffect { None, Run, Slide, Flash }
 
 [JsonConverter(typeof(StringEnumConverter)), Flags]
 public enum MoveDirection { All, UDLR, Diagonal, Colored, Dangerous }

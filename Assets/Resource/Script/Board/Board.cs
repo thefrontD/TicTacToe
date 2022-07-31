@@ -15,6 +15,7 @@ public class Board : MonoBehaviour
     public int Col => _col;
     public BoardColor currentBoardColor;
     public BoardObject currentBoardObject;
+    public int row, col;
 
     void Start()
     {

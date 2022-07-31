@@ -59,8 +59,8 @@ public class PlayerManager : Singleton<PlayerManager>
 
     void Update()
     {
-         if(Input.GetMouseButtonDown(0))
-             state.MouseEvent();
+        if(Input.GetMouseButtonDown(0))
+            state.MouseEvent();
     }
 
     void FixedUpdate()

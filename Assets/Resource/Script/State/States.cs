@@ -103,12 +103,13 @@ public class MoveState : BaseState
     bool[,] movableSpace;
     public MoveState(MoveCard originalCard)
     {
+        int boardSize = BoardManager.Instance.BoardSize;
+        this.movableSpace = new bool[boardSize, boardSize];  // 모든 항이 false인 2D 배열
         switch (originalCard.moveDirection)
         {
             case MoveDirection.UDLR:
                 // 현재 위치로부터 상하좌우로 한 칸 이동
                 {
-                    this.movableSpace = new bool[3, 3];  // 모든 항이 false인 2D 배열
                     (int, int)[] coords =
                     {
                         (PlayerManager.Instance.Row - 1, PlayerManager.Instance.Col),  // 위
@@ -118,7 +119,7 @@ public class MoveState : BaseState
                     };
                     foreach ((int, int) coord in coords)
                     {
-                        if (coord.Item1 >= 0 && coord.Item1 < 3 && coord.Item2 >= 0 && coord.Item2 < 3)
+                        if (coord.Item1 >= 0 && coord.Item1 < boardSize && coord.Item2 >= 0 && coord.Item2 < boardSize)
                         {
                             this.movableSpace[coord.Item1, coord.Item2] = true;
                         }
@@ -129,7 +130,6 @@ public class MoveState : BaseState
             case MoveDirection.Diagonal:
                 // 현재 위치로부터 대각선으로 한 칸 이동
                 {
-                    this.movableSpace = new bool[3, 3];  // 모든 항이 false인 2D 배열
                     (int, int)[] coords =
                     {
                         (PlayerManager.Instance.Row - 1, PlayerManager.Instance.Col - 1),  // 왼쪽 위
@@ -139,7 +139,7 @@ public class MoveState : BaseState
                     };
                     foreach ((int, int) coord in coords)
                     {
-                        if (coord.Item1 >= 0 && coord.Item1 < 3 && coord.Item2 >= 0 && coord.Item2 < 3)
+                        if (coord.Item1 >= 0 && coord.Item1 < boardSize && coord.Item2 >= 0 && coord.Item2 < boardSize)
                         {
                             this.movableSpace[coord.Item1, coord.Item2] = true;
                         }
@@ -182,11 +182,9 @@ public class MoveState : BaseState
 
             case MoveDirection.All:
                 // 원하는 칸으로 이동
-                this.movableSpace = new bool[,] {
-                    { true, true, true },
-                    { true, true, true },
-                    { true, true, true }
-                };
+                for (int i = 0; i < boardSize; i++)
+                    for (int j = 0; j < boardSize; j++)
+                        this.movableSpace[i, j] = true;
                 break;
 
             default:
@@ -202,7 +200,7 @@ public class MoveState : BaseState
     public override void Enter()
     {
         // 카메라 암전 등
-
+        
     }
 
     public override void Exit()
@@ -215,6 +213,28 @@ public class MoveState : BaseState
     public override void MouseEvent()
     {
         // 이동 가능한 곳을 클릭할 시 진행.
+        // 코드 출처: https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&blogId=stizms&logNo=220226873659
+        Camera camera = Camera.main;
+        Vector3 mousePos = Input.mousePosition;
+        mousePos.z = camera.farClipPlane;
+
+        Vector3 dir = camera.ScreenToWorldPoint(mousePos);
+
+        if (Physics.Raycast(camera.transform.position, dir, out RaycastHit hit, mousePos.z))  // 맞췄다!
+        {
+            GameObject gameObject = hit.transform.gameObject;
+            Board board = gameObject.GetComponent<Board>();
+            if (board != null)
+            {
+                Debug.Log(gameObject);
+                int row = board.row;
+                int col = board.col;
+                if (this.movableSpace[row, col])
+                {
+                    Debug.Log("Move!");
+                }
+            }
+        }
     }
 
     public override void Update()
