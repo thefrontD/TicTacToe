@@ -107,6 +107,15 @@ public class MoveState : BaseState
         this.movableSpace = new bool[boardSize, boardSize];  // 모든 항이 false인 2D 배열
         switch (originalCard.moveDirection)
         {
+            case MoveDirection.All:
+                // 원하는 칸으로 이동
+                {
+                    for (int i = 0; i < boardSize; i++)
+                        for (int j = 0; j < boardSize; j++)
+                            this.movableSpace[i, j] = true;
+                    break;
+                }
+
             case MoveDirection.UDLR:
                 // 현재 위치로부터 상하좌우로 한 칸 이동
                 {
@@ -151,44 +160,60 @@ public class MoveState : BaseState
                 // 내가 색칠해 뒀던 칸으로 이동
                 {
                     List<List<BoardColor>> boardColors = BoardManager.Instance.BoardColors;
-
-                    for (int i = 0; i < boardColors.Count; i++)  // row
-                    {
-                        for (int j = 0; j < boardColors[0].Count; j++)  // col
-                        {
+                    for (int i = 0; i < boardSize; i++)  // row
+                        for (int j = 0; j < boardSize; j++)  // col
                             if (boardColors[i][j] == BoardColor.Player)
-                            {
                                 this.movableSpace[i, j] = true;
-                            }
-                        }
-                    }
                     break;
                 }
 
             case MoveDirection.Dangerous:
                 // 적이 이번 턴에 공격할 칸으로 이동
                 {
-                    //List<Enemy> enemyList = EnemyManager.EnemyList;
-                    /*
-                    List<Enemy> enemyList = new List<Enemy>();
+                    List<Enemy> enemyList = EnemyManager.Instance.EnemyList;
+                    int playerRow = PlayerManager.Instance.Row;
+                    int playerCol = PlayerManager.Instance.Col;
 
                     foreach (Enemy enemy in enemyList)
-                        foreach ((int, int) coord in enemy.WhereToAttack)
-                            this.movableSpace[coord.Item1, coord.Item2] = true;
-                    */
+                    {
+                        EnemyAction enemyAction = enemy.EnemyActions.Peek();
+                        switch (enemyAction)
+                        {
+                            case EnemyAction.RowAttack:
+                                for (int j = 0; j < boardSize; j++)
+                                    this.movableSpace[playerRow, j] = true;
+                                break;
+                            case EnemyAction.ColAttack:
+                                for (int i = 0; i < boardSize; i++)
+                                    this.movableSpace[i, playerCol] = true;
+                                break;
+                            case EnemyAction.AllAttack:
+                                for (int i = 0; i < boardSize; i++)
+                                    for (int j = 0; j < boardSize; j++)
+                                        this.movableSpace[i, j] = true;
+                                break;
+                            case EnemyAction.ColorAttack:  // TODO: ColorAttack은 Enemy로 색칠된 건지, Player로 색칠된 건지?
+                                {
+                                    List<List<BoardColor>> boardColors = BoardManager.Instance.BoardColors;
+                                    for (int i = 0; i < boardSize; i++)  // row
+                                        for (int j = 0; j < boardSize; j++)  // col
+                                            if (boardColors[i][j] == BoardColor.Player)
+                                                this.movableSpace[i, j] = true;
+                                    break;
+                                }
+                            case EnemyAction.UnColorAttack:
+                                {
+                                    List<List<BoardColor>> boardColors = BoardManager.Instance.BoardColors;
+                                    for (int i = 0; i < boardSize; i++)  // row
+                                        for (int j = 0; j < boardSize; j++)  // col
+                                            if (boardColors[i][j] != BoardColor.Player)
+                                                this.movableSpace[i, j] = true;
+                                    break;
+                                }
+                        }
+                    }
                     break;
-                    
                 }
-
-            case MoveDirection.All:
-                // 원하는 칸으로 이동
-                for (int i = 0; i < boardSize; i++)
-                    for (int j = 0; j < boardSize; j++)
-                        this.movableSpace[i, j] = true;
-                break;
-
-            default:
-                return;
         }
     }
 
@@ -224,11 +249,11 @@ public class MoveState : BaseState
         {
             GameObject gameObject = hit.transform.gameObject;
             Board board = gameObject.GetComponent<Board>();
-            if (board != null)
+            if (board != null)  // 클릭한 물체가 Board 칸 중 하나일 경우
             {
-                Debug.Log(gameObject);
-                int row = board.row;
-                int col = board.col;
+                int row = board.Row;
+                int col = board.Col;
+                Debug.Log($"{row}, {col}");
                 if (this.movableSpace[row, col])
                 {
                     Debug.Log("Move!");

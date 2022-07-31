@@ -66,6 +66,9 @@ public class Enemy : MonoBehaviour, IAttackable
         EnemyActions = enemyDataHolder.EnemyAction;
     }
     
+    /// <summary>
+    /// 이 Enemy의 EnemyActions Queue에서 EnemyAction 하나를 dequeue한 후, 해당 Action에 맞게 행동한 뒤, 다시 enqueue한다.
+    /// </summary>
     public void EnemyAction()
     {
         EnemyAction enemyAction = EnemyActions.Dequeue();
