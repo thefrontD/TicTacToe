@@ -370,19 +370,41 @@ public class ColorCard : Card
         //BoardManager.Instance.MovePlayer()
         //카드 사용 당시의 효과 당장은 무엇이 들어갈지 모른다.
         switch(this.costChangeCondition){
-            TriggerCondition.CountBingo:
-                int BingoNum = BoardManager.Instance.CheckBingo(BoardColor.Player)
+            case TriggerCondition.Bingo1:
+                int BingoNum = BoardManager.Instance.CheckBingo(BoardColor.Player);
                 CardCost = CardCost - BingoNum;
+                if(CardCost < 0)
+                    CardCost = 0;
                 break;
             default:
                 break;
         }
 
-        ColorState newState = MakeState(CardCost, this.colorTargetPosition, this.colorTargetNum);
+        ColorState newState = MakeState(this.colorTargetPosition, this.colorTargetNum);
         PlayerManager.Instance.StatesQueue.Enqueue(newState);
+        
+        //추가효과
+        bool additionalEffectQualified = true;
+
+        if(additionalEffectQualified){
+            switch(this.additionalEffect){
+                case AdditionalEffect.Move:
+                    MoveCard moveCard = new MoveCard("move", /*cardDesc*/ "movetocoloredblock", /*cardCost*/ 0,
+                        /*triggerCondition*/ TriggerCondition.None, /*additionalEffectCondition*/ AdditionalEffectCondition.None, 
+                        /*additionalEffect*/ AdditionalEffect.None, /*moveCardEffect*/ MoveCardEffect.Run, 
+                        /*movedirection*/ MoveDirection.Colored);
+                    MoveState moveState = new MoveState(moveCard);
+                    break;
+                case AdditionalEffect.PlayerHp10:
+                    PlayerManager.Instance.Hp -= 10;
+                    break;
+                case AdditionalEffect.DumpALL:
+                    CardManager.Instance.AllHandCardtoGrave();
+                    break;
+                default:
+                    break;
+            }
+        }
         PlayerManager.Instance.StatesQueue.Enqueue(new NormalState());
-
-
-
     }
 }

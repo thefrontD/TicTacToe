@@ -32,7 +32,21 @@ public enum MoveCardEffect { Run, Slide, Flash, None }
 public enum MoveDirection { All, UDLR, Diagonal, Colored, Dangerous }
 
 [JsonConverter(typeof(StringEnumConverter))]
-public enum ColorCardEffect {ColorAndMove, Color, Color3, Color4, Color5, Color6, Color7, Color8, Color9, Color10, Color11}
+public enum ColorCardEffect 
+{
+    ColorAnyAndMove,
+    Color, 
+    ColorCross, 
+    ColorCross2, 
+    ColorCloseBlock, 
+    ColorAny, 
+    ColorVertical, 
+    ColorHorizontal, 
+    ColorVertical2, 
+    ColorHorizontal2,
+    ColorAny2s
+}
+
 
 [JsonConverter(typeof(StringEnumConverter))]
 public enum TriggerCondition
@@ -84,7 +98,7 @@ public enum AdditionalEffect
 [JsonConverter(typeof(StringEnumConverter))]
 public enum ColorTargetPosition {All, P1, P4, P5, C, V, H, P3V, P3H}
 [JsonConverter(typeof(StringEnumConverter))]
-public enum ColorTargetNum {1, 2, 3, 4, 5, T, Hand}
+public enum ColorTargetNum {Target1, Target2, Target3, Target4, Target5, T, Hand}
 
 
 

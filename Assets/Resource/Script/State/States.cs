@@ -337,11 +337,12 @@ public class ColorState : BaseState
     
     private bool Selectable;
     private ColorTargetPosition Target;
+    private ColorTargetNum Num;
     private int Cost;
-    public ColorState(bool Selectable, ColorTargetPosition Target)
+    public ColorState(ColorTargetPosition Target, ColorTargetNum Num)
     {
-        this.Selectable = Selectable;
         this.Target = Target;
+        this.Num = Num;
     }
         
     public override void DoAction(States state)
