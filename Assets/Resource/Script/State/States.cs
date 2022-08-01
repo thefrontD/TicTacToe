@@ -336,23 +336,44 @@ public class ColorState : BaseState
 {
     
     private bool Selectable;
-    private ColorTargetPosition Target;
-    private ColorTargetNum Num;
-    private int Cost;
-    public ColorState(ColorTargetPosition Target, ColorTargetNum Num)
+    private ColorCard card;
+    List<Tuple<int,int>> colorables = new List<Tuple<int,int>>(); 
+    int boardsize;
+
+    public ColorState(ColorCard card)
     {
-        this.Target = Target;
-        this.Num = Num;
+        this.card = card;
     }
         
     public override void DoAction(States state)
     {
-        
+        //각 state에서 필요한 함수 작성(필수아님)
     }
 
     public override void Enter()
     {
+        boardsize = BoardManager.Instance.BoardSize;
+        //color 대상 list
+        //각각의 block 에 대해 IsColorable 함수 호출
 
+        colorables.Add(new Tuple<int,int>(1, 0));
+        foreach(Tuple<int,int> elem in colorables){
+            Debug.Log("printing colorable elems");
+            Debug.Log(elem.Item1);
+            Debug.Log(elem.Item2);
+        }
+
+        for(int i = 0; i<boardsize; i++){
+            for(int j = 0; j<boardsize; j++){
+                //if(BoardManager.Instance.BoardObjects[i][j] == BoardObject.None)
+                    //Debug.Log(i.ToString() + j.ToString() + "is none");
+                
+                //Debug.Log(BoardManager.Instance.BoardObjects[0][0]);
+                //if(IsColorable(i, j, card.colorTargetPosition))
+                //    colorables.Add(new Tuple<int,int>(i, j));
+            }
+        }
+        //color 대상 highlight
     }
 
     public override void Exit()
@@ -368,6 +389,19 @@ public class ColorState : BaseState
     public override void Update()
     {
 
+    }
+
+    private bool IsColorable(int i, int j, ColorTargetPosition target)
+    {
+        switch(target)
+        {
+            case ColorTargetPosition.All:
+                bool check;
+                //Debug.Log(BoardManager.Instance.BoardObjects[0][0]);
+                //if(BoardManager.BoardObjects[i][j])
+                break;
+        }
+        return true;
     }
 }
 

@@ -321,7 +321,7 @@ public class ColorCard : Card
     [JsonProperty] private ColorCardEffect ColorCardEffect;
     [JsonProperty] private TriggerCondition costChangeCondition;
     [JsonProperty] private TriggerCondition triggerCondition;
-    [JsonProperty] private ColorTargetPosition colorTargetPosition;
+    [JsonProperty] public ColorTargetPosition colorTargetPosition;
     [JsonProperty] private ColorTargetNum colorTargetNum;
     [JsonProperty] private AdditionalEffectCondition additionalEffectCondition;
     [JsonProperty] private AdditionalEffect additionalEffect;
@@ -343,10 +343,6 @@ public class ColorCard : Card
         this.additionalEffectCondition = additionalEffectCondition;
         this.additionalEffect = additionalEffect;
     }
-
-    public ColorState MakeState(ColorTargetPosition Target, ColorTargetNum Num){
-        return new ColorState(Target, Num);
-    }
     /*
     public MoveState MakeMoveState(bool Selectable, ColorTargetPosition Target){
         return new ColorState(this.Selectable, this.Target);
@@ -367,8 +363,9 @@ public class ColorCard : Card
         **아직 카드사용 조건이 맞지 않는 경우 외의 취소 액션은 기획된 바 없음
         일단은 단순하게 조건 확인->사용 으로 구현한 후 이후 해결
         */
-        //BoardManager.Instance.MovePlayer()
-        //카드 사용 당시의 효과 당장은 무엇이 들어갈지 모른다.
+
+        //CostChange Condition은 PlayerCard.json파일에 없다 없어서 직접 만들거나 변경 요청해야 테스트 할 수 있다.
+
         switch(this.costChangeCondition){
             case TriggerCondition.Bingo1:
                 int BingoNum = BoardManager.Instance.CheckBingo(BoardColor.Player);
@@ -380,25 +377,29 @@ public class ColorCard : Card
                 break;
         }
 
-        ColorState newState = MakeState(this.colorTargetPosition, this.colorTargetNum);
+        ColorState newState = new ColorState(this);
         PlayerManager.Instance.StatesQueue.Enqueue(newState);
         
-        //추가효과
+        //추가효과 
         bool additionalEffectQualified = true;
 
         if(additionalEffectQualified){
             switch(this.additionalEffect){
                 case AdditionalEffect.Move:
-                    MoveCard moveCard = new MoveCard("move", /*cardDesc*/ "movetocoloredblock", /*cardCost*/ 0,
-                        /*triggerCondition*/ TriggerCondition.None, /*additionalEffectCondition*/ AdditionalEffectCondition.None, 
-                        /*additionalEffect*/ AdditionalEffect.None, /*moveCardEffect*/ MoveCardEffect.Run, 
-                        /*movedirection*/ MoveDirection.Colored);
-                    MoveState moveState = new MoveState(moveCard);
+                    Debug.Log("AdditionalEffect : Move");
+                    /*MoveCard moveCard = new MoveCard("move", "movetocoloredblock", 0,
+                        TriggerCondition.None, AdditionalEffectCondition.None, 
+                        AdditionalEffect.None, MoveCardEffect.Run, 
+                        MoveDirection.Colored);
+                    MoveState moveState = new MoveState(moveCard);*/
+                    //movestate사용에 문제가 있음
                     break;
                 case AdditionalEffect.PlayerHp10:
+                    Debug.Log("AdditionalEffect : PlayerHp-10");
                     PlayerManager.Instance.Hp -= 10;
                     break;
                 case AdditionalEffect.DumpALL:
+                    Debug.Log("AdditionalEffect : Dumpall");
                     CardManager.Instance.AllHandCardtoGrave();
                     break;
                 default:
