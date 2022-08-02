@@ -259,7 +259,7 @@ public class AttackState : BaseState
         //공격 가능한 대상의 테두리를 밝은 파란 테두리로 표시
         //카드 데이터의 공격 가능한 대상의 종류
         //몬스터 공격 가능한 경우(001)
-        int targetType = Card.GetTargetType();
+        int targetType = Card.TargetType;
         bool isMonster = targetType % 10 != 0;
         bool isWall = (targetType / 10) % 10 != 0;
         bool isMinion = (targetType / 100) % 10 != 0;
