@@ -8,7 +8,7 @@ using Newtonsoft.Json.Converters;
 /// Card관련 enum의 경우에는 [JsonConverter(typeof(StringEnumConverter))] 를 위에 꼭 붙일것
 /// </summary>
 [JsonConverter(typeof(StringEnumConverter))]
-public enum CardType { Attack, Move, Color }
+public enum CardType { Attack, Move, Color, None }
 
 [JsonConverter(typeof(StringEnumConverter))]
 public enum BoardObject { None, Player, Wall, Minion }
@@ -87,9 +87,16 @@ public enum ColorTargetPosition {All, P1, P4, P5, C, V, H, P3V, P3H}
 [JsonConverter(typeof(StringEnumConverter))]
 public enum EnemyAction
 {
-    RowAttack, ColAttack, AllAttack, ColorAttack, UnColorAttack,
-    WallSummon=10, MobSummon,
+    H1Attack, V1Attack, H2Attack, V2Attack, AllAttack, ColoredAttack, NoColoredAttack,
+    WallSummon=10, WallsSummon, MobSummon,
     PowerIncrease=20, DamageDecrease, HpHealing, ArmorHealing,
-    PlayerPowerDecrease=30, PlayerDamageIncrease, DrawCardDecrease, CardCostIncrease
+    PlayerPowerDecrease=30, PlayerDamageIncrease, DrawCardDecrease, CardCostIncrease,
+    None=200
 }
-public enum Debuff { PowerDecrease, DamageIncrease, DrawCardDecrease, CardCostIncrease }
+public enum Debuff 
+{ 
+    PowerDecrease, PowerIncrease, DamageIncrease, 
+    Heal,
+    CardCostIncrease, AttackCardCostIncrease, MoveCardCostIncrease, ColorCardCostIncrease,
+    DrawCardDecrease 
+}

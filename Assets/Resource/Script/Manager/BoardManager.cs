@@ -17,6 +17,7 @@ public class BoardManager : Singleton<BoardManager>
     [SerializeField] private GameObject BoardPrefab;
     //Board State Array
     [SerializeField] private GameObject PlayerPrefab;
+    [SerializeField] private GameObject WallPrefabs;
     private GameObject PlayerObject;
     private List<List<GameObject>> gameBoard = new List<List<GameObject>>();
 
@@ -33,10 +34,15 @@ public class BoardManager : Singleton<BoardManager>
     public List<List<IAttackable>> BoardAttackables => _boardAttackables;
 
 
-    void Start()
+    void Awake()
     {
         BoardLoading();
         InitPlayer();
+    }
+
+    void Start()
+    {
+        
     }
 
     void Update()
@@ -94,6 +100,14 @@ public class BoardManager : Singleton<BoardManager>
             gameBoard[x][y].GetComponent<Board>().SetBoardColor(boardColor);
             return true;
         }
+    }
+
+    public bool SummonWalls(int x, int y){
+        if(_boardObjects[x][y] != BoardObject.None)
+            return false;
+        else
+            _boardObjects[x][y] = BoardObject.Wall;
+        return true;
     }
 
     public bool MovePlayer(int x, int y)

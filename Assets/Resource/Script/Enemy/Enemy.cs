@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -47,11 +48,24 @@ public class Enemy : MonoBehaviour, IAttackable
         set
         {
             if (value < 0) _enemyHp = 0;
+            else if(value > _enemyMaxHp) _enemyHp = _enemyMaxHp;
             else _enemyHp = value;
         }
     }
 
-    public Queue<EnemyAction> EnemyActions;
+    private int _enemyPower;
+    public int EnemyPower => _enemyPower;
+
+    private int _previousPlayerRow;
+    private int _previousPlayerCol;
+
+    private Dictionary<Debuff,  int> _debuffDictionary;
+    public Dictionary<Debuff, int> DebuffDictionary => _debuffDictionary;
+
+    private (EnemyAction, EnemyAction) _previousAttack = (EnemyAction.None, EnemyAction.None);
+    private List<(int, int)> overlapPoint;
+
+    public Queue<(EnemyAction, int)> EnemyActions;
     
     void Start()
     {
@@ -60,20 +74,24 @@ public class Enemy : MonoBehaviour, IAttackable
 
     public void InitEnemyData(EnemyDataHolder enemyDataHolder)
     {
+        _previousAttack = (EnemyAction.None, EnemyAction.None);
         _enemyName = enemyDataHolder.EnemyName;
         _enemyHp = enemyDataHolder.EnemyHP;
         _enemyShield = enemyDataHolder.EnemyShield;
         EnemyActions = enemyDataHolder.EnemyAction;
+        _debuffDictionary = new Dictionary<Debuff, int>();
+        foreach(Debuff debuff in Enum.GetValues(typeof(Debuff)))
+            _debuffDictionary[debuff] = 0;
     }
     
     /// <summary>
-    /// ÀÌ EnemyÀÇ EnemyActions Queue¿¡¼­ EnemyAction ÇÏ³ª¸¦ dequeueÇÑ ÈÄ, ÇØ´ç Action¿¡ ¸Â°Ô Çàµ¿ÇÑ µÚ, ´Ù½Ã enqueueÇÑ´Ù.
+    /// ï¿½ï¿½ Enemyï¿½ï¿½ EnemyActions Queueï¿½ï¿½ï¿½ï¿½ EnemyAction ï¿½Ï³ï¿½ï¿½ï¿½ dequeueï¿½ï¿½ ï¿½ï¿½, ï¿½Ø´ï¿½ Actionï¿½ï¿½ ï¿½Â°ï¿½ ï¿½àµ¿ï¿½ï¿½ ï¿½ï¿½, ï¿½Ù½ï¿½ enqueueï¿½Ñ´ï¿½.
     /// </summary>
-    public void EnemyAction()
+    public void DoEnemyAction()
     {
-        EnemyAction enemyAction = EnemyActions.Dequeue();
-            
-        switch ((int)enemyAction / 10)
+        (EnemyAction, int) enemyAction = EnemyActions.Dequeue();
+        
+        switch ((int)enemyAction.Item1 / 10)
         {
             case 0:
                 EnemyAttack(enemyAction);
@@ -92,66 +110,251 @@ public class Enemy : MonoBehaviour, IAttackable
         EnemyActions.Enqueue(enemyAction);
     }
 
-    private void EnemyAttack(EnemyAction enemyAction)
+    private void EnemyAttack((EnemyAction, int) enemyAction)
     {
-        switch (enemyAction)
+        int damage = enemyAction.Item2;
+
+        if(_debuffDictionary[Debuff.PowerIncrease] > 0)
+            damage = (int)(damage * 1.5);
+        if(_debuffDictionary[Debuff.PowerDecrease] > 0)
+            damage = (int)(damage * 0.5);
+
+        _previousAttack.Item2 = _previousAttack.Item1;
+        _previousAttack.Item1 = enemyAction.Item1;
+
+        Debug.Log(_previousPlayerCol);
+
+        switch (enemyAction.Item1)
         {
-            case global::EnemyAction.RowAttack:
+            case EnemyAction.H1Attack:
+                if(PlayerManager.Instance.Col == _previousPlayerCol){
+                    PlayerManager.Instance.SetHp(-damage);
+                }
                 break;
-            case global::EnemyAction.ColAttack:
+            case EnemyAction.V1Attack:
+                if(PlayerManager.Instance.Row == _previousPlayerRow){
+                    PlayerManager.Instance.SetHp(-damage);
+                }
                 break;
-            case global::EnemyAction.ColorAttack:
+            case EnemyAction.H2Attack:
+                if(PlayerManager.Instance.Col == _previousPlayerCol){
+                    PlayerManager.Instance.SetHp(-damage);
+                }
                 break;
-            case global::EnemyAction.UnColorAttack:
+            case EnemyAction.V2Attack:
+                if(PlayerManager.Instance.Row == _previousPlayerRow){
+                    PlayerManager.Instance.SetHp(-damage);
+                }
                 break;
-            case global::EnemyAction.AllAttack:
+            case EnemyAction.ColoredAttack:
+                if(BoardManager.Instance.BoardColors
+                [PlayerManager.Instance.Row][PlayerManager.Instance.Col] != BoardColor.None){
+                    PlayerManager.Instance.SetHp(-damage);
+                }
+                break;
+            case EnemyAction.NoColoredAttack:
+                if(BoardManager.Instance.BoardColors
+                [PlayerManager.Instance.Row][PlayerManager.Instance.Col] == BoardColor.None){
+                    PlayerManager.Instance.SetHp(-damage);
+                }
+                break;
+            case EnemyAction.AllAttack:
+                PlayerManager.Instance.SetHp(-damage);
                 break;
         }
     }
     
-    private void EnemySummon(EnemyAction enemyAction)
+    private void EnemySummon((EnemyAction, int) enemyAction)
     {
-        switch (enemyAction)
+        int index;
+        switch (enemyAction.Item1)
         {
-            case global::EnemyAction.MobSummon:
+            case EnemyAction.WallSummon:
+                if(overlapPoint.Count == 1){
+                    BoardManager.Instance.SummonWalls(overlapPoint[0].Item1, overlapPoint[0].Item2);
+                }
+                else{
+                    do{
+                        index = UnityEngine.Random.Range(0, overlapPoint.Count-1);
+                    }while(!BoardManager.Instance.SummonWalls(overlapPoint[index].Item1, overlapPoint[index].Item2));
+                }
                 break;
-            case global::EnemyAction.WallSummon:
-                break;
-        }
-    }
-    
-    private void EnemyBuff(EnemyAction enemyAction)
-    {
-        switch (enemyAction)
-        {
-            case global::EnemyAction.PowerIncrease:
-                break;
-            case global::EnemyAction.DamageDecrease:
-                break;
-            case global::EnemyAction.HpHealing:
-                break;
-            case global::EnemyAction.ArmorHealing:
-                break;
-        }
-    }
-    
-    private void EnemyDebuff(EnemyAction enemyAction)
-    {
-        switch (enemyAction)
-        {
-            case global::EnemyAction.PlayerPowerDecrease:
-                break;
-            case global::EnemyAction.PlayerDamageIncrease:
-                break;
-            case global::EnemyAction.DrawCardDecrease:
-                break;
-            case global::EnemyAction.CardCostIncrease:
+            case EnemyAction.WallsSummon:
+                foreach((int, int) elems in overlapPoint){
+                    BoardManager.Instance.SummonWalls(elems.Item1, elems.Item2);
+                }
                 break;
         }
     }
 
+    public void GetOverLapPosition(){
+        List<(int, int)> temp = new List<(int, int)>();
+        List<(int, int)> result = new List<(int, int)>();
+
+        switch(_previousAttack.Item1){
+            case EnemyAction.H1Attack:
+                for (int i = 0; i < BoardManager.Instance.BoardSize; i++)
+                    temp.Add((i, _previousPlayerCol));
+                break;
+            case EnemyAction.V1Attack:
+                for (int i = 0; i < BoardManager.Instance.BoardSize; i++)
+                    temp.Add((_previousPlayerRow, i));
+                break;
+            case EnemyAction.H2Attack:
+                for (int i = 0; i < BoardManager.Instance.BoardSize; i++){
+                    for (int j = 0; j < BoardManager.Instance.BoardSize; j++){
+                        if(j == _previousPlayerCol) continue;
+                        else temp.Add((i, j));
+                    }
+                }
+                break;
+            case EnemyAction.V2Attack:
+                for (int i = 0; i < BoardManager.Instance.BoardSize; i++){
+                    for (int j = 0; j < BoardManager.Instance.BoardSize; j++){
+                        if(j == _previousPlayerRow) continue;
+                        temp.Add((j, i));
+                    }
+                }
+                break;
+            case EnemyAction.ColoredAttack:
+                for (int i = 0; i < BoardManager.Instance.BoardSize; i++){
+                    for (int j = 0; j < BoardManager.Instance.BoardSize; j++){
+                        if(BoardManager.Instance.BoardColors[i][j] == BoardColor.None) continue;
+                        temp.Add((i, j));
+                    }
+                }
+                break;
+            case EnemyAction.NoColoredAttack:
+                for (int i = 0; i < BoardManager.Instance.BoardSize; i++){
+                    for (int j = 0; j < BoardManager.Instance.BoardSize; j++){
+                        if(BoardManager.Instance.BoardColors[i][j] != BoardColor.None) continue;
+                        temp.Add((i, j));
+                    }
+                }
+                break;
+            case EnemyAction.AllAttack:
+                for (int i = 0; i < BoardManager.Instance.BoardSize; i++)
+                    for (int j = 0; j < BoardManager.Instance.BoardSize; j++)
+                        temp.Add((i, j));
+                break;
+        }
+
+        switch(_previousAttack.Item2){
+            case EnemyAction.H1Attack:
+                for (int i = 0; i < BoardManager.Instance.BoardSize; i++){
+                    if(temp.Contains((i, _previousPlayerCol)))
+                        result.Add((i, _previousPlayerCol));
+                }
+                break;
+            case EnemyAction.V1Attack:
+                for (int i = 0; i < BoardManager.Instance.BoardSize; i++){
+                    if(temp.Contains((_previousPlayerRow, i)))
+                        result.Add((_previousPlayerRow, i));
+                }
+                break;
+            case EnemyAction.H2Attack:
+                for (int i = 0; i < BoardManager.Instance.BoardSize; i++){
+                    for (int j = 0; j < BoardManager.Instance.BoardSize; j++){
+                        if(j == _previousPlayerCol) continue;
+                        else if(temp.Contains((i, j)))
+                            result.Add((i, j));
+                    }
+                }
+                break;
+            case EnemyAction.V2Attack:
+                for (int i = 0; i < BoardManager.Instance.BoardSize; i++){
+                    for (int j = 0; j < BoardManager.Instance.BoardSize; j++){
+                        if(j == _previousPlayerRow) continue;
+                        else if(temp.Contains((j, i)))
+                            result.Add((j, i));
+                    }
+                }
+                break;
+            case EnemyAction.ColoredAttack:
+                for (int i = 0; i < BoardManager.Instance.BoardSize; i++){
+                    for (int j = 0; j < BoardManager.Instance.BoardSize; j++){
+                        if(BoardManager.Instance.BoardColors[i][j] == BoardColor.None) continue;
+                        else if(temp.Contains((i, j)))
+                            result.Add((i, j));
+                    }
+                }
+                break;
+            case EnemyAction.NoColoredAttack:
+                for (int i = 0; i < BoardManager.Instance.BoardSize; i++){
+                    for (int j = 0; j < BoardManager.Instance.BoardSize; j++){
+                        if(BoardManager.Instance.BoardColors[i][j] != BoardColor.None) continue;
+                        else if(temp.Contains((i, j)))
+                            result.Add((i, j));
+                    }
+                }
+                break;
+            case EnemyAction.AllAttack:
+                for (int i = 0; i < BoardManager.Instance.BoardSize; i++){
+                    for (int j = 0; j < BoardManager.Instance.BoardSize; j++){
+                        if(temp.Contains((i, j))){
+                            result.Add((i, j));
+                        }
+                    }
+                }
+                break;
+        }
+
+        overlapPoint = result;
+        foreach(var elems in overlapPoint)
+            Debug.Log(string.Format("{0},{1}", elems.Item1, elems.Item2));
+    }
+    
+    private void EnemyBuff((EnemyAction, int) enemyAction)
+    {
+        switch (enemyAction.Item1)
+        {
+            case EnemyAction.PowerIncrease:
+                break;
+            case EnemyAction.DamageDecrease:
+                break;
+            case EnemyAction.HpHealing:
+                break;
+            case EnemyAction.ArmorHealing:
+                break;
+        }
+    }
+    
+    private void EnemyDebuff((EnemyAction, int) enemyAction)
+    {
+        switch (enemyAction.Item1)
+        {
+            case EnemyAction.PlayerPowerDecrease:
+                break;
+            case EnemyAction.PlayerDamageIncrease:
+                break;
+            case EnemyAction.DrawCardDecrease:
+                break;
+            case EnemyAction.CardCostIncrease:
+                break;
+        }
+    }
+
+    public void SetDebuff(Debuff debuff, int value)
+    {
+        if(_debuffDictionary[debuff] + value < 0)
+            _debuffDictionary[debuff] = 0;
+        else
+            _debuffDictionary[debuff] += value;
+    }
+
+    public void setPreviousPos(int row, int col){
+        _previousPlayerRow = row;
+        _previousPlayerCol = col;
+    }
+
     public bool DamagetoEnemy(int damage)
     {
+        if(PlayerManager.Instance.DebuffDictionary[Debuff.PowerIncrease] != 0)
+            damage = (int)(1.5 * damage);
+
+        if(PlayerManager.Instance.DebuffDictionary[Debuff.PowerDecrease] != 0)
+            damage = (int)(0.5 * damage);
+
         if (this.EnemyHP < damage)
         {
             Destroy(gameObject);

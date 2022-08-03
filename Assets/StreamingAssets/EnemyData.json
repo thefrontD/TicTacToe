@@ -3,10 +3,11 @@
     "EnemyName" : "SampleEnemy",
     "EnemyHP": 10,
     "EnemyShield": 10,
+    "EnemyPower" : 10,
     "EnemyAction": [
-      "PowerIncrease",
-      "RowAttack",
-      "ColAttack"
+      {"Item1": "H1Attack", "Item2": 1},
+      {"Item1": "V1Attack", "Item2": 1},
+      {"Item1": "WallSummon", "Item2": 1}
     ]
   }
 ]

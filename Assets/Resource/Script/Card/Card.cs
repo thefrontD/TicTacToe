@@ -97,22 +97,22 @@ public abstract class Card
 
             case TriggerCondition.EnemyWillAttack:
                 foreach (Enemy enemy in EnemyManager.Instance.EnemyList)
-                    if ((int)enemy.EnemyActions.Peek()/10 == 0)
+                    if ((int)enemy.EnemyActions.Peek().Item1/10 == 0)
                         proceed = true;
                 break;
             case TriggerCondition.EnemyWillWall:
                 foreach (Enemy enemy in EnemyManager.Instance.EnemyList)
-                    if (enemy.EnemyActions.Peek() == EnemyAction.WallSummon)
+                    if (enemy.EnemyActions.Peek().Item1 == EnemyAction.WallSummon)
                         proceed = true;
                 break;
             case TriggerCondition.EnemyWillMinion:
                 foreach (Enemy enemy in EnemyManager.Instance.EnemyList)
-                    if (enemy.EnemyActions.Peek() == EnemyAction.MobSummon)
+                    if (enemy.EnemyActions.Peek().Item1 == EnemyAction.MobSummon)
                         proceed = true;
                 break;
             case TriggerCondition.EnemyWillShield:
                 foreach (Enemy enemy in EnemyManager.Instance.EnemyList)
-                    if (enemy.EnemyActions.Peek() == EnemyAction.ArmorHealing)
+                    if (enemy.EnemyActions.Peek().Item1 == EnemyAction.ArmorHealing)
                         proceed = true;
                 break;
             
@@ -232,6 +232,7 @@ public abstract class Card
         if (!proceed) return false;
         #endregion
         
+        if (!PlayerManager.Instance.SetMana(-CardCost, cardType)) return false;
         usingCardSpecific();
         if (PlayerManager.Instance.StatesQueue.Count == 0) return false;
         else PlayerManager.Instance.ChangeStates(PlayerManager.Instance.StatesQueue.Dequeue());
@@ -359,7 +360,6 @@ public class ColorCard : Card
         //이동/색칠
         if(this.ColorCardEffect == ColorCardEffect.ColorAndMove)
         {
-            if (!PlayerManager.Instance.SetMana(-CardCost)) return;
             ColorState newState = MakeState(true, ColorTargetPosition.All);
             PlayerManager.Instance.StatesQueue.Enqueue(newState);
             PlayerManager.Instance.StatesQueue.Enqueue(new NormalState());
@@ -369,7 +369,6 @@ public class ColorCard : Card
         }
         //색칠
         if(this.ColorCardEffect == ColorCardEffect.Color){
-            if (!PlayerManager.Instance.SetMana(-CardCost)) return;
             ColorState newState = MakeState(false, ColorTargetPosition.P1);
             PlayerManager.Instance.StatesQueue.Enqueue(newState);
             PlayerManager.Instance.StatesQueue.Enqueue(new NormalState());
@@ -377,7 +376,6 @@ public class ColorCard : Card
         }
         //컬러 테이블 3번
         if(this.ColorCardEffect == ColorCardEffect.Color3){
-            if (!PlayerManager.Instance.SetMana(-CardCost)) return;
             ColorState newState = MakeState(false, ColorTargetPosition.P4);
             PlayerManager.Instance.StatesQueue.Enqueue(newState);
             PlayerManager.Instance.StatesQueue.Enqueue(new NormalState());
@@ -391,7 +389,6 @@ public class ColorCard : Card
             BoardManager.IsWall(BoardManager.PlayerPosition + (0,1))&&
             BoardManager.IsWall(BoardManager.PlayerPosition + (0,-1)) */true)
             {
-                if (!PlayerManager.Instance.SetMana(-CardCost)) return;
                 ColorState newState = MakeState(false, ColorTargetPosition.P5);
                 PlayerManager.Instance.StatesQueue.Enqueue(newState);
                 PlayerManager.Instance.StatesQueue.Enqueue(new NormalState());
@@ -404,7 +401,6 @@ public class ColorCard : Card
         //컬러 테이블 5번
         if(this.ColorCardEffect == ColorCardEffect.Color5){
             if(/*BoardManager.CountBingo() > 0*/true){
-                if (!PlayerManager.Instance.SetMana(-CardCost)) return;
                 ColorState newState = MakeState(false, ColorTargetPosition.C);
                 PlayerManager.Instance.StatesQueue.Enqueue(newState);
                 PlayerManager.Instance.StatesQueue.Enqueue(new NormalState());
@@ -417,7 +413,6 @@ public class ColorCard : Card
             int cost = CardCost;
             if(cost < 0)
                 cost = 0;
-            if (!PlayerManager.Instance.SetMana(-CardCost)) return;
             ColorState newState = MakeState(false, ColorTargetPosition.All);
             PlayerManager.Instance.StatesQueue.Enqueue(newState);
             PlayerManager.Instance.StatesQueue.Enqueue(new NormalState());
@@ -426,7 +421,6 @@ public class ColorCard : Card
         //컬러 테이블 7번
         if(this.ColorCardEffect == ColorCardEffect.Color7){
             if(/*PlayerManager.Instance.AttackedBefore()*/ true){
-                if (!PlayerManager.Instance.SetMana(-CardCost)) return;
                 ColorState newState = new ColorState(false, ColorTargetPosition.V);
                 PlayerManager.Instance.StatesQueue.Enqueue(newState);
                 PlayerManager.Instance.StatesQueue.Enqueue(new NormalState());
@@ -436,7 +430,6 @@ public class ColorCard : Card
         //컬러 테이블 8번
         if(this.ColorCardEffect == ColorCardEffect.Color8){
             if(/*PlayerManager.Instance.AttackedBefore()*/ true){
-                if (!PlayerManager.Instance.SetMana(-CardCost)) return;
                 ColorState newState = MakeState(false, ColorTargetPosition.H);
                 PlayerManager.Instance.StatesQueue.Enqueue(newState);
                 PlayerManager.Instance.StatesQueue.Enqueue(new NormalState());
@@ -445,7 +438,6 @@ public class ColorCard : Card
         }
         //컬러 테이블 9번
         if(this.ColorCardEffect == ColorCardEffect.Color9){
-            if (!PlayerManager.Instance.SetMana(-CardCost)) return;
             ColorState newState = MakeState(false, ColorTargetPosition.P3V);
             PlayerManager.Instance.StatesQueue.Enqueue(newState);
             PlayerManager.Instance.StatesQueue.Enqueue(new NormalState());
@@ -454,7 +446,6 @@ public class ColorCard : Card
         }
         //컬러 테이블 10번
         if(this.ColorCardEffect == ColorCardEffect.Color10){
-            if (!PlayerManager.Instance.SetMana(-CardCost)) return;
             ColorState newState = MakeState(false, ColorTargetPosition.P3H);
             PlayerManager.Instance.StatesQueue.Enqueue(newState);
             PlayerManager.Instance.StatesQueue.Enqueue(new NormalState());
@@ -463,7 +454,6 @@ public class ColorCard : Card
         }
         //컬러 테이블 11번
         if(this.ColorCardEffect == ColorCardEffect.Color11){
-            if (!PlayerManager.Instance.SetMana(-CardCost)) return;
             ColorState newState = MakeState(false, ColorTargetPosition.All);
             PlayerManager.Instance.StatesQueue.Enqueue(newState);
             PlayerManager.Instance.StatesQueue.Enqueue(new NormalState());

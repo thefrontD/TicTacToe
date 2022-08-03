@@ -10,18 +10,22 @@ public class EnemyDataHolder
     private string _enemyName;
     private int _enemyHP;
     private int _enemyShield;
-    private Queue<EnemyAction> _enemyAction;
+    private int _enemyPower;
+    private Queue<(EnemyAction, int)> _enemyAction;
 
     public string EnemyName => _enemyName;
     public int EnemyHP => _enemyHP;
     public int EnemyShield => _enemyShield;
-    public Queue<EnemyAction> EnemyAction => _enemyAction;
+    public int EnemyPower => _enemyPower;
+    public Queue<(EnemyAction, int)> EnemyAction => _enemyAction;
 
-    public EnemyDataHolder(string enemyName, int enemyHp, int enemyShield, Queue<EnemyAction> enemyAction)
+    public EnemyDataHolder(string enemyName, int enemyHp, int enemyShield, int enemyPower,
+    Queue<(EnemyAction, int)> enemyAction)
     {
         this._enemyName = enemyName;
         this._enemyHP = enemyHp;
         this._enemyShield = enemyShield;
+        this._enemyPower = enemyPower;
         this._enemyAction = enemyAction;
     }
 }

@@ -12,11 +12,17 @@ using Random = UnityEngine.Random;
 /// </summary>
 public class PlayerManager : Singleton<PlayerManager>
 {
-    [SerializeField] private int hp = 3;
-    public int Hp { get => hp; set => hp = (value >= 0) ? value : 0; }
+    [SerializeField] private int maxHp = 3;
+    public int MaxHp { get => maxHp; set => maxHp = (value >= 0) ? value : 0; }
+    private int _hp = 3;
+    public int Hp { get => _hp; 
+        set => _hp = (value >= 0) ? value : 0; 
+    }
 
-    [SerializeField] private int mana = 10;
-    public int Mana { get => mana; set => mana = (value >= 0) ? value : 0; }
+    [SerializeField] private int maxMana = 10;
+    public int MaxMana { get => maxMana; set => maxMana = (value >= 0) ? value : 0; }
+    private int _mana = 10;
+    public int Mana { get => _mana; set => _mana = (value >= 0) ? value : 0; }
     
     private int row;
     public int Row { get => row; set => row = value; }
@@ -27,13 +33,19 @@ public class PlayerManager : Singleton<PlayerManager>
     private int _nextTurnDrawNum = 5;
     public int NextTrunDrawNum => _nextTurnDrawNum;
 
+    private Dictionary<Debuff,  int> _debuffDictionary;
+    public Dictionary<Debuff, int> DebuffDictionary => _debuffDictionary;
+
     [SerializeField] private TextMeshProUGUI hpText;
     [SerializeField] private TextMeshProUGUI manaText;
-    private Dictionary<Debuff, (int, int)> _debuffDictionary;
 
     public BaseState state;
     public Queue<BaseState> StatesQueue;
     public List<Card> PlayerCard;
+
+    void Awake(){
+        PlayerCard = CardData.Instance._load("PlayerCard.json");
+    }
 
     void Start()
     {
@@ -42,15 +54,15 @@ public class PlayerManager : Singleton<PlayerManager>
         //{
         //    ColorState state1 = ((ColorCard)card).ColorState();
         //}
-        PlayerCard = CardData.Instance._load("PlayerCard.json");
         PlayerCard.Shuffle();
 
         CardManager.Instance.SetUp();
 
+        _debuffDictionary = new Dictionary<Debuff, int>();
+        InitDebuffDictionary();
+
         SetMana();
         SetHp();
-
-        _debuffDictionary = new Dictionary<Debuff, (int, int)>();
         
         StatesQueue = new Queue<BaseState>();
         state = new NormalState(5, true);
@@ -70,10 +82,16 @@ public class PlayerManager : Singleton<PlayerManager>
 
     private void InitDebuffDictionary()
     {
-        _debuffDictionary[Debuff.DamageIncrease] = (0, 0);
-        _debuffDictionary[Debuff.PowerDecrease] = (0, 0);
-        _debuffDictionary[Debuff.CardCostIncrease] = (0, 0);
-        _debuffDictionary[Debuff.DrawCardDecrease] = (0, 0);
+        foreach(Debuff debuff in Enum.GetValues(typeof(Debuff)))
+            _debuffDictionary[debuff] = 0;
+    } 
+
+    public void SetDebuff(Debuff debuff, int value)
+    {
+        if(_debuffDictionary[debuff] + value < 0)
+            _debuffDictionary[debuff] = 0;
+        else
+            _debuffDictionary[debuff] += value;
     }
     
     public void ChangeStates(BaseState newState)
@@ -91,9 +109,25 @@ public class PlayerManager : Singleton<PlayerManager>
         state.Enter();
     }
 
-    public bool SetMana(int value = 0)
+    public bool SetMana(int value = 0, CardType cardType = CardType.None)
     {
+        if(_debuffDictionary[Debuff.CardCostIncrease] != 0) value--;
+        else{
+            switch(cardType){
+                case CardType.Attack:
+                    if(_debuffDictionary[Debuff.AttackCardCostIncrease] != 0) value--;
+                    break;
+                case CardType.Move:
+                    if(_debuffDictionary[Debuff.MoveCardCostIncrease] != 0) value--;
+                    break;
+                case CardType.Color:
+                    if(_debuffDictionary[Debuff.ColorCardCostIncrease] != 0) value--;
+                    break;
+            }
+        }
+
         if (Mana + value < 0) return false;
+        else if(Mana + value > MaxMana) Mana = MaxMana;
         else Mana += value;
 
         manaText.text = String.Format("Mana : {0}", Mana);
@@ -102,9 +136,10 @@ public class PlayerManager : Singleton<PlayerManager>
     
     public bool SetHp(int value = 0)
     {
+        Debug.Log(value);
         if (Hp + value < 0) return false;
+        else if(Hp + value > MaxHp) Hp = MaxHp;
         else Hp += value;
-
         hpText.text = String.Format("HP : {0}", Hp);
         return true;
     }

@@ -39,7 +39,10 @@ public class NormalState : BaseState
     
     public NormalState(int DrawNum = 5, bool isNewPlayerTurn = false)
     {
-        this.DrawNum = DrawNum;
+        if(PlayerManager.Instance.DebuffDictionary[Debuff.DrawCardDecrease] != 0)
+            this.DrawNum = DrawNum-1;
+        else
+            this.DrawNum = DrawNum;
         this.isNewPlayerTurn = isNewPlayerTurn;
     }
 
@@ -50,8 +53,16 @@ public class NormalState : BaseState
 
     public override void Enter()
     {
-        if(isNewPlayerTurn)
+        if(isNewPlayerTurn){
+            PlayerManager.Instance.SetMana(1000);
+            if(PlayerManager.Instance.DebuffDictionary[Debuff.Heal] > 0)
+                PlayerManager.Instance.SetHp((int)(PlayerManager.Instance.MaxHp*0.1));
+            foreach(Enemy enemy in EnemyManager.Instance.EnemyList)
+                enemy.setPreviousPos(PlayerManager.Instance.Row, PlayerManager.Instance.Col);
             CardManager.Instance.DrawCard(DrawNum);
+            foreach(Debuff debuff in Enum.GetValues(typeof(Debuff)))
+                PlayerManager.Instance.SetDebuff(debuff, -1); 
+        }
     }
 
     public override void MouseEvent()
@@ -78,6 +89,12 @@ public class EnemyState : BaseState
 
     public override void Enter()
     {
+        foreach(Enemy enemy in EnemyManager.Instance.EnemyList){
+            if(enemy.DebuffDictionary[Debuff.Heal] > 0)
+                enemy.EnemyHP += (int)(enemy.EnemyMaxHP*0.1);
+            foreach(Debuff debuff in Enum.GetValues(typeof(Debuff)))
+                enemy.SetDebuff(debuff, -1); 
+        }
         EnemyManager.Instance.EnemyAttack();
     }
 
@@ -93,7 +110,10 @@ public class EnemyState : BaseState
 
     public override void Exit()
     {
-        return;
+        foreach(Enemy enemy in EnemyManager.Instance.EnemyList){
+            if(enemy.EnemyActions.Peek().Item1 == EnemyAction.WallSummon || enemy.EnemyActions.Peek().Item1 == EnemyAction.WallsSummon)
+                enemy.GetOverLapPosition();
+        }
     }
 }
 
@@ -176,14 +196,14 @@ public class MoveState : BaseState
 
                     foreach (Enemy enemy in enemyList)
                     {
-                        EnemyAction enemyAction = enemy.EnemyActions.Peek();
+                        EnemyAction enemyAction = enemy.EnemyActions.Peek().Item1;
                         switch (enemyAction)
                         {
-                            case EnemyAction.RowAttack:
+                            case EnemyAction.H1Attack:
                                 for (int j = 0; j < boardSize; j++)
                                     this.movableSpace[playerRow, j] = true;
                                 break;
-                            case EnemyAction.ColAttack:
+                            case EnemyAction.V1Attack:
                                 for (int i = 0; i < boardSize; i++)
                                     this.movableSpace[i, playerCol] = true;
                                 break;
@@ -192,7 +212,7 @@ public class MoveState : BaseState
                                     for (int j = 0; j < boardSize; j++)
                                         this.movableSpace[i, j] = true;
                                 break;
-                            case EnemyAction.ColorAttack:  // TODO: ColorAttack은 Enemy로 색칠된 건지, Player로 색칠된 건지?
+                            case EnemyAction.ColoredAttack:  // TODO: ColorAttack은 Enemy로 색칠된 건지, Player로 색칠된 건지?
                                 {
                                     List<List<BoardColor>> boardColors = BoardManager.Instance.BoardColors;
                                     for (int i = 0; i < boardSize; i++)  // row
@@ -201,7 +221,7 @@ public class MoveState : BaseState
                                                 this.movableSpace[i, j] = true;
                                     break;
                                 }
-                            case EnemyAction.UnColorAttack:
+                            case EnemyAction.NoColoredAttack:
                                 {
                                     List<List<BoardColor>> boardColors = BoardManager.Instance.BoardColors;
                                     for (int i = 0; i < boardSize; i++)  // row

@@ -10,7 +10,7 @@ public class EnemyManager : Singleton<EnemyManager>
 
     [SerializeField] private StringGameObjectDictionary EnemyPrefab;
 
-    void Start()
+    void Awake()
     {
         _enemyList = new List<Enemy>();
         EnemyLoading("EnemyData.json");
@@ -52,7 +52,7 @@ public class EnemyManager : Singleton<EnemyManager>
         
         foreach (Enemy enemy in _enemyList)
         {
-            enemy.EnemyAction();
+            enemy.DoEnemyAction();
             yield return new WaitForSeconds(0.5f);
         }
         
