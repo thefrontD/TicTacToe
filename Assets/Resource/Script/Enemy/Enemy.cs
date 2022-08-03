@@ -26,6 +26,11 @@ public class Enemy : MonoBehaviour, IAttackable
         }
     }
 
+    public void ReduceHP(int damage)
+    {
+        EnemyHP -= damage;
+    }
+
     public Queue<EnemyAction> EnemyActions;
     
     void Start()
