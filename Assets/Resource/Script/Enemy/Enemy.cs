@@ -309,10 +309,12 @@ public class Enemy : MonoBehaviour, IAttackable
         switch (enemyAction.Item1)
         {
             case EnemyAction.PowerIncrease:
+                SetDebuff(Debuff.PowerIncrease, enemyAction.Item2);
                 break;
             case EnemyAction.DamageDecrease:
                 break;
             case EnemyAction.HpHealing:
+                SetDebuff(Debuff.Heal, enemyAction.Item2);
                 break;
             case EnemyAction.ArmorHealing:
                 break;
@@ -324,12 +326,16 @@ public class Enemy : MonoBehaviour, IAttackable
         switch (enemyAction.Item1)
         {
             case EnemyAction.PlayerPowerDecrease:
+                PlayerManager.Instance.SetDebuff(Debuff.PowerDecrease, enemyAction.Item2);
                 break;
             case EnemyAction.PlayerDamageIncrease:
+                PlayerManager.Instance.SetDebuff(Debuff.DamageIncrease, enemyAction.Item2);
                 break;
             case EnemyAction.DrawCardDecrease:
+                PlayerManager.Instance.SetDebuff(Debuff.DrawCardDecrease, enemyAction.Item2);
                 break;
             case EnemyAction.CardCostIncrease:
+                PlayerManager.Instance.SetDebuff(Debuff.CardCostIncrease, enemyAction.Item2);
                 break;
         }
     }
