@@ -291,7 +291,7 @@ public class MoveState : BaseState
 
 public interface IAttackable    //선택 가능한 오브젝트들이 IAttackable을 갖는다
 {
-    void ReduceHP(int damage);
+    void AttackedByPlayer(int damage);
 }
 
 public class AttackState : BaseState
@@ -391,7 +391,7 @@ public class AttackState : BaseState
                     {
                         for (int i = Card.AttackCount; i > 0; i--)  //AttackCount번 공격
                         {
-                            iAttackable.ReduceHP(Card.Damage);      //Damage 줌
+                            iAttackable.AttackedByPlayer(Card.Damage);      //Damage 줌
                         }
                     }
                 }
