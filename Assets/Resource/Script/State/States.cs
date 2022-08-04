@@ -383,7 +383,23 @@ public class ColorState : BaseState
 
     public override void MouseEvent()
     {
-        PlayerManager.Instance.ChangeStates(PlayerManager.Instance.StatesQueue.Dequeue());
+        //PlayerManager.Instance.ChangeStates(PlayerManager.Instance.StatesQueue.Dequeue());
+        //일단 되는지 테스트
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hitData;
+        if(Physics.Raycast(ray, out hitData))
+        {
+            GameObject hitObject = hitData.transform.gameObject;
+            Debug.Log(hitObject);
+            IAttackable iAttackable = hitObject.GetComponent<IAttackable>();
+            if(iAttackable != null) //레이캐스트에 맞은 오브젝트에 Iattackable 컴포넌트가 있는가?
+            {
+                //if (attackableList.Contains(iAttackable))   //attackableList에 있는가?
+                //{
+                    //처리
+                //}
+            }
+        }
     }
 
     public override void Update()
