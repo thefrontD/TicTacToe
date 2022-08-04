@@ -70,7 +70,7 @@ public class BoardManager : Singleton<BoardManager>
             for (int j = 0; j < _boardSize; j++)
             {
                 float size = BoardPrefab.transform.localScale.x;
-                Vector3 pos = new Vector3(-size + size * i, size - size * j, 0);
+                Vector3 pos = new Vector3(-size + size * j, size - size * i, 0);
                 gameBoard[i].Add(Instantiate(BoardPrefab, pos, Quaternion.identity));
                 gameBoard[i][j].GetComponent<Board>().Init(_boardColors[i][j], i, j);
                 _boardAttackables[i].Add(null);
@@ -110,14 +110,14 @@ public class BoardManager : Singleton<BoardManager>
         return true;
     }
 
-    public bool MovePlayer(int x, int y)
+    public bool MovePlayer(int row, int col)
     {
-        if (x >= _boardSize - 1 || y >= _boardSize - 1 || x < 0 || y < 0)
+        if (row >= _boardSize || col >= _boardSize || row < 0 || col < 0)
             return false;
         else
         {
-            PlayerManager.Instance.Row = x;
-            PlayerManager.Instance.Col = y;
+            PlayerManager.Instance.Row = row;
+            PlayerManager.Instance.Col = col;
             Vector3 nextPos = gameBoard[PlayerManager.Instance.Row][PlayerManager.Instance.Col].transform.position - 
                               new Vector3(0, 0, PlayerPrefab.transform.localScale.z/2);
             PlayerObject.transform.DOMove(nextPos, 0.5f, false);

@@ -28,8 +28,8 @@
     "AdditionalEffectCondition": "None",
     "AdditionalEffect": "None",
     "MoveCardEffect": "Flash",
-    "triggerCondition": "EnemyWillAttack",
-    "moveDirection": "All",
+    "triggerCondition": "None",
+    "moveDirection": "UDLR",
     "cardType": "Move",
     "cardName": "Gamma",
     "cardDesc": "Gamma is Greek C",
@@ -67,7 +67,7 @@
     "triggerCondition": "EnemyWillAttack",
     "moveDirection": "All",
     "cardType": "Move",
-    "cardName": "Gamma",
+    "cardName": "Gamma_A",
     "cardDesc": "Gamma is Greek C",
     "cardCost": 1
   }

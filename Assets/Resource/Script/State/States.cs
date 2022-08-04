@@ -120,7 +120,9 @@ public class EnemyState : BaseState
 
 public class MoveState : BaseState
 {
+    Color tempBackgroundColor;
     bool[,] movableSpace;
+    int moveRow, moveCol;
     public MoveState(MoveCard originalCard)
     {
         int boardSize = BoardManager.Instance.BoardSize;
@@ -245,7 +247,9 @@ public class MoveState : BaseState
     public override void Enter()
     {
         // 카메라 암전 등
-        
+        Camera camera = Camera.main;
+        this.tempBackgroundColor = camera.backgroundColor;
+        camera.backgroundColor = Color.blue;
     }
 
     public override void Exit()
@@ -253,6 +257,10 @@ public class MoveState : BaseState
         // 이동 모션?
         // 카메라 다시 밝게
         //BoardManager.Instance.MovePlayer()
+        Camera camera = Camera.main;
+        camera.backgroundColor = this.tempBackgroundColor;
+
+        PlayerManager.Instance.MovePlayer(this.moveRow, this.moveCol);
     }
 
     public override void MouseEvent()
@@ -276,7 +284,10 @@ public class MoveState : BaseState
                 Debug.Log($"{row}, {col}");
                 if (this.movableSpace[row, col])
                 {
-                    Debug.Log("Move!");
+                    this.moveRow = row;
+                    this.moveCol = col;
+                    Debug.Log($"Move to R{this.moveRow}, C{this.moveCol}");
+                    PlayerManager.Instance.ChangeStates(PlayerManager.Instance.StatesQueue.Dequeue());
                 }
             }
         }

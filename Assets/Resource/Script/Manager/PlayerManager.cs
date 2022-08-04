@@ -144,12 +144,9 @@ public class PlayerManager : Singleton<PlayerManager>
         return true;
     }
 
-    public bool MovePlayer(int x, int y)
+    public bool MovePlayer(int row, int col)
     {
-        if (BoardManager.Instance.MovePlayer(x, y))
-            return true;
-        else
-            return false;
+        return BoardManager.Instance.MovePlayer(row, col);
     }
 
     public void ToEnemyTurn()
