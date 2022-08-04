@@ -244,10 +244,14 @@ public class AttackCard : Card
 {
     [JsonProperty] private AttackCardEffect AttackCardEffect;  //이펙트
 
-    [JsonProperty] private int TargetType;                     //공격 가능한 대상의 종류
-    [JsonProperty] private int TargetCount;                    //공격 가능한 대상의 수
-    [JsonProperty] private int AttackCount;                    //공격 횟수
-    [JsonProperty] private int Damage;                         //공격의 피해량
+    [JsonProperty] private int _targetType;                     //공격 가능한 대상의 종류
+    public int TargetType => _targetType;
+    [JsonProperty] private int _targetCount;                    //공격 가능한 대상의 수
+    public int TargetCount => _targetCount;
+    [JsonProperty] private int _attackCount;                    //공격 횟수
+    public int AttackCount => _attackCount;
+    [JsonProperty] private int _damage;                         //공격의 피해량 
+    public int Damage => _damage;
 
     public int GetTargetType() => TargetType;
     public AttackCard(string cardName, string cardDesc, int cardCost, TriggerCondition triggerCondition,
@@ -260,10 +264,10 @@ public class AttackCard : Card
         Debug.Log(this.CardName);
         this.cardType = CardType.Attack;
         this.AttackCardEffect = attackCardEffect;
-        this.TargetType = targetType;
-        this.TargetCount = targetCount;
-        this.AttackCount = attackCount;
-        this.Damage = damage;
+        this._targetType = targetType;
+        this._targetCount = targetCount;
+        this._attackCount = attackCount;
+        this._damage = damage;
     }
 
     public override void usingCardSpecific()

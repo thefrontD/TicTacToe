@@ -291,12 +291,13 @@ public class MoveState : BaseState
 
 public interface IAttackable    //선택 가능한 오브젝트들이 IAttackable을 갖는다
 {
-        
+    void ReduceHP(int damage);
 }
 
 public class AttackState : BaseState
 {
     private AttackCard Card;
+    private int targetCountLeft;
     List<IAttackable> attackableList = new List<IAttackable>();
     struct coord {
         public coord(int x, int y)
@@ -320,10 +321,10 @@ public class AttackState : BaseState
     }
     public override void Enter()
     {
-        //공격 가능한 대상의 테두리를 밝은 파란 테두리로 표시
-        //카드 데이터의 공격 가능한 대상의 종류
-        //몬스터 공격 가능한 경우(001)
-        int targetType = Card.GetTargetType();
+        //공격 가능한 대상 개수 가져옴
+        targetCountLeft = Card.TargetCount;
+        //공격 가능한 대상 종류 확인
+        int targetType = Card.TargetType;
         bool isMonster = targetType % 10 != 0;
         bool isWall = (targetType / 10) % 10 != 0;
         bool isMinion = (targetType / 100) % 10 != 0;
@@ -365,6 +366,7 @@ public class AttackState : BaseState
             }
         }
         //모든 attack 가능한 오브젝트를 attackableList에 담았음
+        //공격 가능한 대상의 테두리를 밝은 파란 테두리로 표시
     }
     public override void Exit()
     {
@@ -374,21 +376,29 @@ public class AttackState : BaseState
 
     public override void MouseEvent()
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hitData;
-        if(Physics.Raycast(ray, out hitData))
+        while (targetCountLeft > 0)
         {
-            GameObject hitObject = hitData.transform.gameObject;
-            Debug.Log(hitObject);
-            IAttackable iAttackable = hitObject.GetComponent<IAttackable>();
-            if(iAttackable != null) //레이캐스트에 맞은 오브젝트에 Iattackable 컴포넌트가 있는가?
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hitData;
+            if (Physics.Raycast(ray, out hitData))
             {
-                if (attackableList.Contains(iAttackable))   //attackableList에 있는가?
+                GameObject hitObject = hitData.transform.gameObject;
+                Debug.Log(hitObject);
+                IAttackable iAttackable = hitObject.GetComponent<IAttackable>();
+                if (iAttackable != null) //레이캐스트에 맞은 오브젝트에 Iattackable 컴포넌트가 있는가?
                 {
-                    //처리
+                    if (attackableList.Contains(iAttackable))   //attackableList에 있는가?
+                    {
+                        for (int i = Card.AttackCount; i > 0; i--)  //AttackCount번 공격
+                        {
+                            iAttackable.ReduceHP(Card.Damage);      //Damage 줌
+                        }
+                    }
                 }
             }
+            targetCountLeft--;
         }
+       
     }
     public override void Update()
     {

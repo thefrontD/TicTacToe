@@ -66,6 +66,10 @@ public class Enemy : MonoBehaviour, IAttackable
     private List<(int, int)> overlapPoint;
 
     public Queue<(EnemyAction, int)> EnemyActions;
+    public void ReduceHP(int damage)
+    {
+        EnemyHP -= damage;
+    }
     
     void Start()
     {
