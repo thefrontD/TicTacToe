@@ -389,19 +389,19 @@ public class AttackState : BaseState
             RaycastHit hitData;
             if (Physics.Raycast(ray, out hitData))
             {
-                GameObject hitObject = hitData.transform.gameObject;
-                Debug.Log(hitObject);
-                IAttackable iAttackable = hitObject.GetComponent<IAttackable>();
+                IAttackable iAttackable = hitData.transform.gameObject.GetComponent<IAttackable>();
                 if (iAttackable != null) //레이캐스트에 맞은 오브젝트에 Iattackable 컴포넌트가 있는가?
                 {
                     if (attackableList.Contains(iAttackable))   //attackableList에 있는가?
                     {
-                        //공격할 오브젝트 리스트에 추가
-                        selectedAttackableList.Add(iAttackable);
+                        selectedAttackableList.Add(iAttackable);    //공격할 오브젝트 리스트에 추가
+                        attackableList.Remove(iAttackable);         //공격 가능한 오브젝트에서는 삭제
+                        iAttackable.GetGameObject().GetComponent<Outline>().enabled = false;    //아웃라인 끔
                     }
                 }
             }
             targetCountLeft--;
+            Debug.Log(targetCountLeft);
             if (targetCountLeft == 0)
             {
                 foreach (IAttackable selectedAttackable in selectedAttackableList)
@@ -411,12 +411,30 @@ public class AttackState : BaseState
                         selectedAttackable.AttackedByPlayer(Card.Damage);   //Damage 줌
                     }
                 }
+                foreach (IAttackable attackable in attackableList)
+                {
+                    attackable.GetGameObject().GetComponent<Outline>().enabled = false;
+                }
             }
         }
     }
     public override void Update()
     {
-        
+        /* 마우스오버 했을 때 오브젝트 커지게
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hitData;
+        if (Physics.Raycast(ray, out hitData))
+        {
+            IAttackable iAttackable = hitData.transform.gameObject.GetComponent<IAttackable>();
+            if (iAttackable != null) //레이캐스트에 맞은 오브젝트에 Iattackable 컴포넌트가 있는가?
+            {
+                if (attackableList.Contains(iAttackable))   //attackableList에 있는가?
+                {
+                    Debug.Log("raycast hit");
+                }
+            }
+        }
+        */
     }
 }
 
