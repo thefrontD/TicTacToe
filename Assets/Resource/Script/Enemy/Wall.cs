@@ -13,8 +13,12 @@ public class Wall : MonoBehaviour, IAttackable
             else wallHP = value;
         }
     }
-    public void ReduceHP(int damage)
+    public void AttackedByPlayer(int damage)
     {
         WallHP -= damage;
+    }
+    public GameObject GetGameObject()
+    {
+        return gameObject;
     }
 }

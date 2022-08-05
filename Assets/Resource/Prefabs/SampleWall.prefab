@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 7995517874831428590}
   - component: {fileID: 7995517874831428591}
   - component: {fileID: 7995517874831428576}
-  - component: {fileID: 2704758368361659959}
+  - component: {fileID: 1051465351447934120}
   - component: {fileID: 3275682008307679644}
   m_Layer: 0
-  m_Name: SampleEnemy
+  m_Name: SampleWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -97,7 +97,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2704758368361659959
+--- !u!114 &1051465351447934120
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -106,7 +106,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7995517874831428577}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 127faefaed742e142a72f4282ca2261d, type: 3}
+  m_Script: {fileID: 11500000, guid: 5076436017911df42af48729ec9cbf70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &3275682008307679644

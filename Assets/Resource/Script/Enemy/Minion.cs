@@ -13,8 +13,12 @@ public class Minion : MonoBehaviour, IAttackable
             else minionHP = value;
         }
     }
-    public void ReduceHP(int damage)
+    public void AttackedByPlayer(int damage)
     {
         MinionHP -= damage;
+    }
+    public GameObject GetGameObject()
+    {
+        return gameObject;
     }
 }

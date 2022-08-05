@@ -307,7 +307,8 @@ public class MoveState : BaseState
 
 public interface IAttackable    //선택 가능한 오브젝트들이 IAttackable을 갖는다
 {
-    void ReduceHP(int damage);
+    void AttackedByPlayer(int damage);
+    GameObject GetGameObject();
 }
 
 public class AttackState : BaseState
@@ -315,6 +316,7 @@ public class AttackState : BaseState
     private AttackCard Card;
     private int targetCountLeft;
     List<IAttackable> attackableList = new List<IAttackable>();
+    List<IAttackable> selectedAttackableList = new List<IAttackable>();
     struct coord {
         public coord(int x, int y)
         {
@@ -383,24 +385,27 @@ public class AttackState : BaseState
         }
         //모든 attack 가능한 오브젝트를 attackableList에 담았음
         //공격 가능한 대상의 테두리를 밝은 파란 테두리로 표시
+        foreach(IAttackable attackable in attackableList)
+        {
+            attackable.GetGameObject().GetComponent<Outline>().enabled = true;
+        }
     }
     public override void Exit()
     {
         //attackableList 초기화
         attackableList.Clear();
+        selectedAttackableList.Clear();
     }
 
     public override void MouseEvent()
     {
-        while (targetCountLeft > 0)
+        if (targetCountLeft > 0)
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hitData;
             if (Physics.Raycast(ray, out hitData))
             {
-                GameObject hitObject = hitData.transform.gameObject;
-                Debug.Log(hitObject);
-                IAttackable iAttackable = hitObject.GetComponent<IAttackable>();
+                IAttackable iAttackable = hitData.transform.gameObject.GetComponent<IAttackable>();
                 if (iAttackable != null) //레이캐스트에 맞은 오브젝트에 Iattackable 컴포넌트가 있는가?
                 {
                     if (attackableList.Contains(iAttackable))   //attackableList에 있는가?
@@ -417,16 +422,47 @@ public class AttackState : BaseState
 
                             iAttackable.ReduceHP(damage);      //Damage 줌
                         }
+                        selectedAttackableList.Add(iAttackable);    //공격할 오브젝트 리스트에 추가
+                        attackableList.Remove(iAttackable);         //공격 가능한 오브젝트에서는 삭제
+                        iAttackable.GetGameObject().GetComponent<Outline>().enabled = false;    //아웃라인 끔
                     }
                 }
             }
             targetCountLeft--;
+            Debug.Log(targetCountLeft);
+            if (targetCountLeft == 0)
+            {
+                foreach (IAttackable selectedAttackable in selectedAttackableList)
+                {
+                    for (int i = Card.AttackCount; i > 0; i--)  //AttackCount번 공격
+                    {
+                        selectedAttackable.AttackedByPlayer(Card.Damage);   //Damage 줌
+                    }
+                }
+                foreach (IAttackable attackable in attackableList)
+                {
+                    attackable.GetGameObject().GetComponent<Outline>().enabled = false;
+                }
+            }
         }
-       
     }
     public override void Update()
     {
-        // UI 상으로 이동 가능한 곳은 O 표시.
+        /* 마우스오버 했을 때 오브젝트 커지게
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hitData;
+        if (Physics.Raycast(ray, out hitData))
+        {
+            IAttackable iAttackable = hitData.transform.gameObject.GetComponent<IAttackable>();
+            if (iAttackable != null) //레이캐스트에 맞은 오브젝트에 Iattackable 컴포넌트가 있는가?
+            {
+                if (attackableList.Contains(iAttackable))   //attackableList에 있는가?
+                {
+                    Debug.Log("raycast hit");
+                }
+            }
+        }
+        */
     }
 }
 
