@@ -445,7 +445,7 @@ public class ColorCard : Card
             ColorState newState = MakeState(false, ColorTargetPosition.P3V);
             PlayerManager.Instance.StatesQueue.Enqueue(newState);
             PlayerManager.Instance.StatesQueue.Enqueue(new NormalState());
-            PlayerManager.Instance.SetHp(-10);//Damage 10
+            PlayerManager.Instance.DamageToPlayer(-10);//Damage 10
             return;
         }
         //컬러 테이블 10번
@@ -453,7 +453,7 @@ public class ColorCard : Card
             ColorState newState = MakeState(false, ColorTargetPosition.P3H);
             PlayerManager.Instance.StatesQueue.Enqueue(newState);
             PlayerManager.Instance.StatesQueue.Enqueue(new NormalState());
-            PlayerManager.Instance.SetHp(-10);//Damage 10
+            PlayerManager.Instance.DamageToPlayer(-10);//Damage 10
             return;
         }
         //컬러 테이블 11번

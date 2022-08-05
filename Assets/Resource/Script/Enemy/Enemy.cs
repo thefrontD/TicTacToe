@@ -86,6 +86,7 @@ public class Enemy : MonoBehaviour, IAttackable
         _debuffDictionary = new Dictionary<Debuff, int>();
         foreach(Debuff debuff in Enum.GetValues(typeof(Debuff)))
             _debuffDictionary[debuff] = 0;
+        overlapPoint = new List<(int, int)>();
     }
     
     /// <summary>
@@ -119,9 +120,9 @@ public class Enemy : MonoBehaviour, IAttackable
         int damage = enemyAction.Item2;
 
         if(_debuffDictionary[Debuff.PowerIncrease] > 0)
-            damage = (int)(damage * 1.5);
+            damage = (int)(damage * 1.2);
         if(_debuffDictionary[Debuff.PowerDecrease] > 0)
-            damage = (int)(damage * 0.5);
+            damage = (int)(damage * 0.8);
 
         _previousAttack.Item2 = _previousAttack.Item1;
         _previousAttack.Item1 = enemyAction.Item1;
@@ -132,66 +133,59 @@ public class Enemy : MonoBehaviour, IAttackable
         {
             case EnemyAction.H1Attack:
                 if(PlayerManager.Instance.Col == _previousPlayerCol){
-                    PlayerManager.Instance.SetHp(-damage);
+                    PlayerManager.Instance.DamageToPlayer(-damage);
                 }
                 break;
             case EnemyAction.V1Attack:
                 if(PlayerManager.Instance.Row == _previousPlayerRow){
-                    PlayerManager.Instance.SetHp(-damage);
+                    PlayerManager.Instance.DamageToPlayer(-damage);
                 }
                 break;
             case EnemyAction.H2Attack:
                 if(PlayerManager.Instance.Col == _previousPlayerCol){
-                    PlayerManager.Instance.SetHp(-damage);
+                    PlayerManager.Instance.DamageToPlayer(-damage);
                 }
                 break;
             case EnemyAction.V2Attack:
                 if(PlayerManager.Instance.Row == _previousPlayerRow){
-                    PlayerManager.Instance.SetHp(-damage);
+                    PlayerManager.Instance.DamageToPlayer(-damage);
                 }
                 break;
             case EnemyAction.ColoredAttack:
                 if(BoardManager.Instance.BoardColors
                 [PlayerManager.Instance.Row][PlayerManager.Instance.Col] != BoardColor.None){
-                    PlayerManager.Instance.SetHp(-damage);
+                    PlayerManager.Instance.DamageToPlayer(-damage);
                 }
                 break;
             case EnemyAction.NoColoredAttack:
                 if(BoardManager.Instance.BoardColors
                 [PlayerManager.Instance.Row][PlayerManager.Instance.Col] == BoardColor.None){
-                    PlayerManager.Instance.SetHp(-damage);
+                    PlayerManager.Instance.DamageToPlayer(-damage);
                 }
                 break;
             case EnemyAction.AllAttack:
-                PlayerManager.Instance.SetHp(-damage);
+                PlayerManager.Instance.DamageToPlayer(-damage);
                 break;
         }
     }
     
     private void EnemySummon((EnemyAction, int) enemyAction)
     {
-        int index;
-        switch (enemyAction.Item1)
-        {
-            case EnemyAction.WallSummon:
-                if(overlapPoint.Count == 1){
-                    BoardManager.Instance.SummonWalls(overlapPoint[0].Item1, overlapPoint[0].Item2);
-                }
-                else{
-                    do{
-                        index = UnityEngine.Random.Range(0, overlapPoint.Count-1);
-                    }while(!BoardManager.Instance.SummonWalls(overlapPoint[index].Item1, overlapPoint[index].Item2));
-                }
-                break;
-            case EnemyAction.WallsSummon:
-                foreach((int, int) elems in overlapPoint){
-                    BoardManager.Instance.SummonWalls(elems.Item1, elems.Item2);
-                }
-                break;
-        }
+        int damage = enemyAction.Item2;
+
+        if(_debuffDictionary[Debuff.PowerIncrease] > 0)
+            damage = (int)(damage * 1.2);
+        if(_debuffDictionary[Debuff.PowerDecrease] > 0)
+            damage = (int)(damage * 0.8);
+
+        foreach((int, int) elems in overlapPoint)
+            BoardManager.Instance.SummonWalls(elems.Item1, elems.Item2, damage);
     }
 
-    public void GetOverLapPosition(){
+    public void GetOverLapPosition((EnemyAction, int) enemyAction)
+    {
+        overlapPoint.Clear();
+
         List<(int, int)> temp = new List<(int, int)>();
         List<(int, int)> result = new List<(int, int)>();
 
@@ -303,9 +297,20 @@ public class Enemy : MonoBehaviour, IAttackable
                 break;
         }
 
-        overlapPoint = result;
-        foreach(var elems in overlapPoint)
-            Debug.Log(string.Format("{0},{1}", elems.Item1, elems.Item2));
+        int index;
+        switch (enemyAction.Item1)
+        {
+            case EnemyAction.WallSummon:
+                index = UnityEngine.Random.Range(0, overlapPoint.Count-1);
+                overlapPoint.Add(result[index]);
+                break;
+            case EnemyAction.WallsSummon:
+                overlapPoint = result;
+                break;
+        }
+
+        foreach ((int, int) p in overlapPoint)
+            BoardManager.Instance.GameBoard[p.Item1][p.Item2].SetHighlight(BoardSituation.WillSummon);
     }
     
     private void EnemyBuff((EnemyAction, int) enemyAction)
@@ -359,12 +364,6 @@ public class Enemy : MonoBehaviour, IAttackable
 
     public bool DamagetoEnemy(int damage)
     {
-        if(PlayerManager.Instance.DebuffDictionary[Debuff.PowerIncrease] != 0)
-            damage = (int)(1.5 * damage);
-
-        if(PlayerManager.Instance.DebuffDictionary[Debuff.PowerDecrease] != 0)
-            damage = (int)(0.5 * damage);
-
         if (this.EnemyHP < damage)
         {
             Destroy(gameObject);

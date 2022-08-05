@@ -56,7 +56,7 @@ public class NormalState : BaseState
         if(isNewPlayerTurn){
             PlayerManager.Instance.SetMana(1000);
             if(PlayerManager.Instance.DebuffDictionary[Debuff.Heal] > 0)
-                PlayerManager.Instance.SetHp((int)(PlayerManager.Instance.MaxHp*0.1));
+                PlayerManager.Instance.DamageToPlayer((int)(PlayerManager.Instance.MaxHp*0.1));
             foreach(Enemy enemy in EnemyManager.Instance.EnemyList)
                 enemy.setPreviousPos(PlayerManager.Instance.Row, PlayerManager.Instance.Col);
             CardManager.Instance.DrawCard(DrawNum);
@@ -89,6 +89,14 @@ public class EnemyState : BaseState
 
     public override void Enter()
     {
+        for (int i = 0; i < BoardManager.Instance.BoardSize; i++)
+        {
+            for (int j = 0; j < BoardManager.Instance.BoardSize; j++)
+            {
+                BoardManager.Instance.GameBoard[i][j].SetHighlight(BoardSituation.None);
+            }
+        }
+
         foreach(Enemy enemy in EnemyManager.Instance.EnemyList){
             if(enemy.DebuffDictionary[Debuff.Heal] > 0)
                 enemy.EnemyHP += (int)(enemy.EnemyMaxHP*0.1);
@@ -110,10 +118,7 @@ public class EnemyState : BaseState
 
     public override void Exit()
     {
-        foreach(Enemy enemy in EnemyManager.Instance.EnemyList){
-            if(enemy.EnemyActions.Peek().Item1 == EnemyAction.WallSummon || enemy.EnemyActions.Peek().Item1 == EnemyAction.WallsSummon)
-                enemy.GetOverLapPosition();
-        }
+        EnemyManager.Instance.HightLightBoard();
     }
 }
 
@@ -402,7 +407,15 @@ public class AttackState : BaseState
                     {
                         for (int i = Card.AttackCount; i > 0; i--)  //AttackCount번 공격
                         {
-                            iAttackable.ReduceHP(Card.Damage);      //Damage 줌
+                            int damage = Card.Damage;
+
+                            if(PlayerManager.Instance.DebuffDictionary[Debuff.PowerIncrease] != 0)
+                                damage = (int)(1.2 * damage);
+
+                            if(PlayerManager.Instance.DebuffDictionary[Debuff.PowerDecrease] != 0)
+                                damage = (int)(0.8 * damage);
+
+                            iAttackable.ReduceHP(damage);      //Damage 줌
                         }
                     }
                 }

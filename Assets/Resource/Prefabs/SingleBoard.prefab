@@ -94,7 +94,8 @@ GameObject:
   - component: {fileID: 9033935363093032276}
   - component: {fileID: 9033935363093032277}
   - component: {fileID: 9033935363093032278}
-  - component: {fileID: 5911118756410953991}
+  - component: {fileID: 4980614221269704369}
+  - component: {fileID: 6692080774531464726}
   m_Layer: 0
   m_Name: SingleBoard
   m_TagString: Untagged
@@ -111,7 +112,7 @@ Transform:
   m_GameObject: {fileID: 9033935363093032279}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 7, y: 7, z: 0.1}
+  m_LocalScale: {x: 7, y: 7, z: 0.01}
   m_Children:
   - {fileID: 2529444113698776241}
   m_Father: {fileID: 0}
@@ -179,7 +180,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5911118756410953991
+--- !u!114 &4980614221269704369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9033935363093032279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbf3575480402db40813e763382412fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: 0
+  eraseRenderer: 0
+--- !u!114 &6692080774531464726
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -191,8 +206,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5cd96557f7967049a86520dfb11154f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  colorDictionary:
+    m_keys: 
+    m_values: []
   NoneSprite: {fileID: 21300000, guid: 704494fccf8e2424cac19bb233930bcc, type: 3}
   EnemySprite: {fileID: 21300000, guid: 64387963d2b80ce49943b90552acb38a, type: 3}
   PlayerSprite: {fileID: 21300000, guid: 719177ffa9072b94daf9462e63f9c75d, type: 3}
   spriteRenderer: {fileID: 4899775356784925638}
+  outline: {fileID: 4980614221269704369}
   currentBoardColor: 0
+  currentBoardObject: 0

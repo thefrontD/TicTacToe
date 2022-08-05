@@ -100,3 +100,7 @@ public enum Debuff
     CardCostIncrease, AttackCardCostIncrease, MoveCardCostIncrease, ColorCardCostIncrease,
     DrawCardDecrease 
 }
+public enum BoardSituation
+{
+    WillAttack, WillSummon, WillColored, None = 100
+}

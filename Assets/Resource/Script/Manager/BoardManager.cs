@@ -19,7 +19,9 @@ public class BoardManager : Singleton<BoardManager>
     [SerializeField] private GameObject PlayerPrefab;
     [SerializeField] private GameObject WallPrefabs;
     private GameObject PlayerObject;
-    private List<List<GameObject>> gameBoard = new List<List<GameObject>>();
+
+    private List<List<Board>> _gameBoard = new List<List<Board>>();
+    public List<List<Board>> GameBoard => _gameBoard;
 
     private List<List<BoardObject>> _boardObjects = new List<List<BoardObject>>();
     public List<List<BoardObject>> BoardObjects => _boardObjects;
@@ -65,14 +67,14 @@ public class BoardManager : Singleton<BoardManager>
         
         for (int i = 0; i < _boardSize; i++)
         {
-            gameBoard.Add(new List<GameObject>());
+            _gameBoard.Add(new List<Board>());
             _boardAttackables.Add(new List<IAttackable>());
             for (int j = 0; j < _boardSize; j++)
             {
                 float size = BoardPrefab.transform.localScale.x;
                 Vector3 pos = new Vector3(-size + size * j, size - size * i, 0);
-                gameBoard[i].Add(Instantiate(BoardPrefab, pos, Quaternion.identity));
-                gameBoard[i][j].GetComponent<Board>().Init(_boardColors[i][j], i, j);
+                _gameBoard[i].Add(Instantiate(BoardPrefab, pos, Quaternion.identity).GetComponent<Board>());
+                _gameBoard[i][j].Init(_boardColors[i][j], i, j);
                 _boardAttackables[i].Add(null);
             }
         }
@@ -80,7 +82,7 @@ public class BoardManager : Singleton<BoardManager>
 
     private void InitPlayer()
     {
-        Vector3 initPos = gameBoard[PlayerManager.Instance.Row][PlayerManager.Instance.Col].transform.position 
+        Vector3 initPos = _gameBoard[PlayerManager.Instance.Row][PlayerManager.Instance.Col].transform.position 
                           - new Vector3(0, 0, PlayerPrefab.transform.localScale.z/2);
         _boardObjects[PlayerManager.Instance.Row][PlayerManager.Instance.Col] = BoardObject.Player;
         PlayerObject = Instantiate(PlayerPrefab, initPos, Quaternion.identity);
@@ -97,17 +99,16 @@ public class BoardManager : Singleton<BoardManager>
         else
         {
             _boardColors[x][y] = boardColor;
-            gameBoard[x][y].GetComponent<Board>().SetBoardColor(boardColor);
+            _gameBoard[x][y].SetBoardColor(boardColor);
             return true;
         }
     }
 
-    public bool SummonWalls(int x, int y){
-        if(_boardObjects[x][y] != BoardObject.None)
-            return false;
-        else
+    public void SummonWalls(int x, int y, int damage){
+        if(_boardObjects[x][y] == BoardObject.None)
             _boardObjects[x][y] = BoardObject.Wall;
-        return true;
+        else if(_boardObjects[x][y] == BoardObject.Player)
+            PlayerManager.Instance.DamageToPlayer(-damage);
     }
 
     public bool MovePlayer(int row, int col)
@@ -118,7 +119,7 @@ public class BoardManager : Singleton<BoardManager>
         {
             PlayerManager.Instance.Row = row;
             PlayerManager.Instance.Col = col;
-            Vector3 nextPos = gameBoard[PlayerManager.Instance.Row][PlayerManager.Instance.Col].transform.position - 
+            Vector3 nextPos = _gameBoard[PlayerManager.Instance.Row][PlayerManager.Instance.Col].transform.position - 
                               new Vector3(0, 0, PlayerPrefab.transform.localScale.z/2);
             PlayerObject.transform.DOMove(nextPos, 0.5f, false);
             return true;

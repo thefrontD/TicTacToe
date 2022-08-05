@@ -15,15 +15,16 @@ public class PlayerManager : Singleton<PlayerManager>
     [SerializeField] private int maxHp = 3;
     public int MaxHp { get => maxHp; set => maxHp = (value >= 0) ? value : 0; }
     private int _hp = 3;
-    public int Hp { get => _hp; 
-        set => _hp = (value >= 0) ? value : 0; 
-    }
+    public int Hp => _hp;
 
     [SerializeField] private int maxMana = 10;
-    public int MaxMana { get => maxMana; set => maxMana = (value >= 0) ? value : 0; }
+    public int MaxMana => maxMana;
     private int _mana = 10;
-    public int Mana { get => _mana; set => _mana = (value >= 0) ? value : 0; }
+    public int Mana => _mana;
     
+    private int _shield;
+    public int Shield => _shield;
+
     private int row;
     public int Row { get => row; set => row = value; }
     
@@ -36,6 +37,7 @@ public class PlayerManager : Singleton<PlayerManager>
     private Dictionary<Debuff,  int> _debuffDictionary;
     public Dictionary<Debuff, int> DebuffDictionary => _debuffDictionary;
 
+    [SerializeField] private TextMeshProUGUI shieldText;
     [SerializeField] private TextMeshProUGUI hpText;
     [SerializeField] private TextMeshProUGUI manaText;
 
@@ -62,7 +64,7 @@ public class PlayerManager : Singleton<PlayerManager>
         InitDebuffDictionary();
 
         SetMana();
-        SetHp();
+        DamageToPlayer();
         
         StatesQueue = new Queue<BaseState>();
         state = new NormalState(5, true);
@@ -126,21 +128,38 @@ public class PlayerManager : Singleton<PlayerManager>
             }
         }
 
-        if (Mana + value < 0) return false;
-        else if(Mana + value > MaxMana) Mana = MaxMana;
-        else Mana += value;
+        if (_mana + value < 0) return false;
+        else if(_mana + value > MaxMana) _mana = MaxMana;
+        else _mana += value;
 
-        manaText.text = String.Format("Mana : {0}", Mana);
+        manaText.text = String.Format("Mana : {0}", _mana);
         return true;
     }
     
     public bool SetHp(int value = 0)
     {
-        Debug.Log(value);
-        if (Hp + value < 0) return false;
-        else if(Hp + value > MaxHp) Hp = MaxHp;
-        else Hp += value;
-        hpText.text = String.Format("HP : {0}", Hp);
+        if (_hp + value < 0) return false;
+        else if(_hp + value > MaxHp) _hp = MaxHp;
+        else _hp += value;
+        hpText.text = String.Format("HP : {0}", _hp);
+        return true;
+    }
+    
+    public bool DamageToPlayer(int value = 0)
+    {
+        if(_shield != 0){
+            if(_shield + value < 0)
+            {
+                value += _shield;
+                if (_hp + value < 0) return false;
+                else if(_hp + value > MaxHp) _hp = MaxHp;
+                else _hp += value;
+            }
+            else _shield += value;
+        }
+
+        shieldText.text = String.Format("Shield : {0}", _shield);
+        hpText.text = String.Format("HP : {0}", _hp);
         return true;
     }
 

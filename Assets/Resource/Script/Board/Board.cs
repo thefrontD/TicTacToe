@@ -1,13 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using cakeslice;
 
 public class Board : MonoBehaviour
 {
+    [SerializeField] private SituationColorDictionary colorDictionary;
     [SerializeField] private Sprite NoneSprite;
     [SerializeField] private Sprite EnemySprite;
     [SerializeField] private Sprite PlayerSprite;
     [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private Outline outline;
     private int _row;
     private int _col;
 
@@ -33,6 +36,7 @@ public class Board : MonoBehaviour
         _col = col;
         currentBoardColor = boardColor;
         SetBoardColor(currentBoardColor);
+        SetHighlight(BoardSituation.None);
     }
 
     public void SetBoardColor(BoardColor boardColor)
@@ -48,6 +52,17 @@ public class Board : MonoBehaviour
             case BoardColor.Player:
                 spriteRenderer.sprite = PlayerSprite;
             break;
+        }
+    }
+
+    public void SetHighlight(BoardSituation situation)
+    {
+        if(situation == BoardSituation.None)
+            outline.enabled = false;
+        else
+        {
+            outline.enabled = true;
+            outline.color = (int)situation;
         }
     }
 }

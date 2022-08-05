@@ -16,9 +16,42 @@ public class EnemyManager : Singleton<EnemyManager>
         EnemyLoading("EnemyData.json");
     }
 
+    void  Start()
+    {
+        for (int i = 0; i < BoardManager.Instance.BoardSize; i++)
+        {
+            for (int j = 0; j < BoardManager.Instance.BoardSize; j++)
+            {
+                BoardManager.Instance.GameBoard[i][j].SetHighlight(BoardSituation.None);
+            }
+        }
+        HightLightBoard();
+    }
+
     void Update()
     {
         
+    }
+
+    public void HightLightBoard()
+    {
+        foreach(Enemy enemy in _enemyList){
+            switch (enemy.EnemyActions.Peek().Item1)
+            {
+                case EnemyAction.H1Attack:
+                    for (int i = 0; i < BoardManager.Instance.BoardSize; i++)
+                        BoardManager.Instance.GameBoard[i][PlayerManager.Instance.Col].SetHighlight(BoardSituation.WillAttack);
+                    break;
+                case EnemyAction.V1Attack:
+                    for (int i = 0; i < BoardManager.Instance.BoardSize; i++)
+                        BoardManager.Instance.GameBoard[PlayerManager.Instance.Row][i].SetHighlight(BoardSituation.WillAttack);
+                    break;
+                case EnemyAction.WallSummon:
+                case EnemyAction.WallsSummon:
+                    enemy.GetOverLapPosition(enemy.EnemyActions.Peek());
+                    break;
+            }
+        }
     }
 
     /// <summary>
