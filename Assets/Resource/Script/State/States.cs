@@ -353,26 +353,88 @@ public class ColorState : BaseState
     public override void Enter()
     {
         boardsize = BoardManager.Instance.BoardSize;
+        int Row = PlayerManager.Instance.Row;
+        int Col = PlayerManager.Instance.Col;
+
+        switch(card.colorTargetPosition)
+        {
+            case ColorTargetPosition.All:
+                for(int i=0; i<boardsize; i++){
+                    for(int j = 0; j<boardsize; j++){
+                        IfColorableAddToList(i, j);
+                    }
+                }
+                //Debug.Log(BoardManager.Instance.BoardObjects[0][0]);
+                //if(BoardManager.BoardObjects[i][j])
+                break;
+            case ColorTargetPosition.P1:
+                IfColorableAddToList(Row, Col);
+                break;
+            case ColorTargetPosition.P4:
+                if(Row+1 < boardsize)
+                    IfColorableAddToList(Row+1, Col);
+                if(Row-1 > 0)
+                    IfColorableAddToList(Row-1, Col);
+                if(Col+1 <boardsize)
+                    IfColorableAddToList(Row, Col+1);
+                if(Col-1 > 0)
+                    IfColorableAddToList(Row, Col-1);
+                break;
+            case ColorTargetPosition.P5:
+                if(Row+1 < boardsize)
+                    IfColorableAddToList(Row+1, Col);
+                if(Row-1 > 0)
+                    IfColorableAddToList(Row-1, Col);
+                if(Col+1 <boardsize)
+                    IfColorableAddToList(Row, Col+1);
+                if(Col-1 > 0)
+                    IfColorableAddToList(Row, Col-1);
+                IfColorableAddToList(Row,Col);
+                break;
+            case ColorTargetPosition.Color:
+                for(int i=0; i<boardsize; i++){
+                    for(int j = 0; j<boardsize; j++){
+                        if(BoardManager.Instance.BoardColors[i][j] == BoardColor.Player && isNextToColored(i,j))
+                            IfColorableAddToList(i, j);
+                    }
+                }
+                break;
+            case ColorTargetPosition.Vertical:
+                for(int i = 0; i<boardsize; i++){
+                    IfColorableAddToList(i,Col);
+                }
+                break;
+            case ColorTargetPosition.Horizontal:
+                for(int i = 0; i<boardsize; i++){
+                    IfColorableAddToList(Row,i);
+                }
+                break;
+            case ColorTargetPosition.P3V:
+                if(Row+1 < boardsize)
+                    IfColorableAddToList(Row+1, Col);
+                if(Row-1 > 0)
+                    IfColorableAddToList(Row-1, Col);
+                IfColorableAddToList(Row, Col);
+                break;
+            case ColorTargetPosition.P3H:
+                if(Col+1 < boardsize)
+                    IfColorableAddToList(Row, Col+1);
+                if(Col-1 > 0)
+                    IfColorableAddToList(Row, Col-1);
+                IfColorableAddToList(Row, Col);
+                break;
+        }
+        //Colorable 리스트 colorables 에 튜플로 다 저장됨 
+
         //color 대상 list
         //각각의 block 에 대해 IsColorable 함수 호출
 
-        colorables.Add(new Tuple<int,int>(1, 0));
         foreach(Tuple<int,int> elem in colorables){
             Debug.Log("printing colorable elems");
             Debug.Log(elem.Item1);
             Debug.Log(elem.Item2);
         }
 
-        for(int i = 0; i<boardsize; i++){
-            for(int j = 0; j<boardsize; j++){
-                //if(BoardManager.Instance.BoardObjects[i][j] == BoardObject.None)
-                    //Debug.Log(i.ToString() + j.ToString() + "is none");
-                
-                //Debug.Log(BoardManager.Instance.BoardObjects[0][0]);
-                //if(IsColorable(i, j, card.colorTargetPosition))
-                //    colorables.Add(new Tuple<int,int>(i, j));
-            }
-        }
         //color 대상 highlight
     }
 
@@ -407,17 +469,37 @@ public class ColorState : BaseState
 
     }
 
-    private bool IsColorable(int i, int j, ColorTargetPosition target)
+    private bool isNextToColored(int i, int j){
+        bool result = false;
+        if(i+1 < boardsize && BoardManager.Instance.BoardColors[i+1][j] == BoardColor.Player)
+            result = true;
+        if(i-1 > 0 && BoardManager.Instance.BoardColors[i-1][j] == BoardColor.Player)
+            result = true;
+        if(j+1 < boardsize && BoardManager.Instance.BoardColors[i][j+1] == BoardColor.Player)
+            result = true;
+        if(j-1 > 0 && BoardManager.Instance.BoardColors[i][j-1] == BoardColor.Player)
+            result = true;
+        return result;
+    }
+
+    private void IfColorableAddToList(int i, int j)
     {
-        switch(target)
-        {
-            case ColorTargetPosition.All:
-                bool check;
-                //Debug.Log(BoardManager.Instance.BoardObjects[0][0]);
-                //if(BoardManager.BoardObjects[i][j])
-                break;
+        //컬러가 되어있는 곳은 선택 불가능?
+        //벽이 있는 곳은 선택 불가능
+        //미니언이 있는 곳은 선택 불가능
+        //비어있는 곳은 색칠 가능
+        //플레이어가 있는 곳은 색칠 가능
+        if(BoardManager.Instance.BoardObjects[i][j] == BoardObject.None){
+            Debug.Log("(IfColorableAddToList) this block is None");
+            colorables.Add(new Tuple<int,int>(i, j));
+            return;
         }
-        return true;
+        if(BoardManager.Instance.BoardObjects[i][j] == BoardObject.Player){
+            Debug.Log("(IfColorableAddToList) this block is Player");
+            colorables.Add(new Tuple<int,int>(i, j));
+            return;
+        }
+        return;
     }
 }
 

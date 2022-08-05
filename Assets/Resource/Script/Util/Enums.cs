@@ -96,7 +96,7 @@ public enum AdditionalEffect
 
 
 [JsonConverter(typeof(StringEnumConverter))]
-public enum ColorTargetPosition {All, P1, P4, P5, C, V, H, P3V, P3H}
+public enum ColorTargetPosition {All, P1, P4, P5, Color, Vertical, Horizontal, P3V, P3H}
 [JsonConverter(typeof(StringEnumConverter))]
 public enum ColorTargetNum {Target1, Target2, Target3, Target4, Target5, T, Hand}
 

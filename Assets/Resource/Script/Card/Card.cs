@@ -343,11 +343,7 @@ public class ColorCard : Card
         this.additionalEffectCondition = additionalEffectCondition;
         this.additionalEffect = additionalEffect;
     }
-    /*
-    public MoveState MakeMoveState(bool Selectable, ColorTargetPosition Target){
-        return new ColorState(this.Selectable, this.Target);
-    }
-    */
+    
     public override void usingCardSpecific()
     {
         this.cardUseValidity = true;
