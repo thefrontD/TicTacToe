@@ -292,6 +292,7 @@ public class MoveState : BaseState
 public interface IAttackable    //선택 가능한 오브젝트들이 IAttackable을 갖는다
 {
     void AttackedByPlayer(int damage);
+    GameObject GetGameObject();
 }
 
 public class AttackState : BaseState
@@ -299,6 +300,7 @@ public class AttackState : BaseState
     private AttackCard Card;
     private int targetCountLeft;
     List<IAttackable> attackableList = new List<IAttackable>();
+    List<IAttackable> selectedAttackableList = new List<IAttackable>();
     struct coord {
         public coord(int x, int y)
         {
@@ -367,16 +369,21 @@ public class AttackState : BaseState
         }
         //모든 attack 가능한 오브젝트를 attackableList에 담았음
         //공격 가능한 대상의 테두리를 밝은 파란 테두리로 표시
+        foreach(IAttackable attackable in attackableList)
+        {
+            attackable.GetGameObject().GetComponent<Outline>().enabled = true;
+        }
     }
     public override void Exit()
     {
         //attackableList 초기화
         attackableList.Clear();
+        selectedAttackableList.Clear();
     }
 
     public override void MouseEvent()
     {
-        while (targetCountLeft > 0)
+        if (targetCountLeft > 0)
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hitData;
@@ -389,20 +396,27 @@ public class AttackState : BaseState
                 {
                     if (attackableList.Contains(iAttackable))   //attackableList에 있는가?
                     {
-                        for (int i = Card.AttackCount; i > 0; i--)  //AttackCount번 공격
-                        {
-                            iAttackable.AttackedByPlayer(Card.Damage);      //Damage 줌
-                        }
+                        //공격할 오브젝트 리스트에 추가
+                        selectedAttackableList.Add(iAttackable);
                     }
                 }
             }
             targetCountLeft--;
+            if (targetCountLeft == 0)
+            {
+                foreach (IAttackable selectedAttackable in selectedAttackableList)
+                {
+                    for (int i = Card.AttackCount; i > 0; i--)  //AttackCount번 공격
+                    {
+                        selectedAttackable.AttackedByPlayer(Card.Damage);   //Damage 줌
+                    }
+                }
+            }
         }
-       
     }
     public override void Update()
     {
-        // UI 상으로 이동 가능한 곳은 O 표시.
+        
     }
 }
 

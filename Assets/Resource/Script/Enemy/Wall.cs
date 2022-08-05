@@ -17,4 +17,8 @@ public class Wall : MonoBehaviour, IAttackable
     {
         WallHP -= damage;
     }
+    public GameObject GetGameObject()
+    {
+        return gameObject;
+    }
 }

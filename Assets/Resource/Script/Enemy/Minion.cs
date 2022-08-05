@@ -17,4 +17,8 @@ public class Minion : MonoBehaviour, IAttackable
     {
         MinionHP -= damage;
     }
+    public GameObject GetGameObject()
+    {
+        return gameObject;
+    }
 }

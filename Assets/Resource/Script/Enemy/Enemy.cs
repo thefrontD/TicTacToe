@@ -70,6 +70,10 @@ public class Enemy : MonoBehaviour, IAttackable
     {
         EnemyShield -= damage;
     }
+    public GameObject GetGameObject()
+    {
+        return gameObject;
+    }
     
     void Start()
     {
