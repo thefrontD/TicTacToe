@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7995517874831428591}
   - component: {fileID: 7995517874831428576}
   - component: {fileID: 1051465351447934120}
-  - component: {fileID: 3275682008307679644}
+  - component: {fileID: 1620757748702401797}
   m_Layer: 0
   m_Name: SampleWall
   m_TagString: Untagged
@@ -109,21 +109,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5076436017911df42af48729ec9cbf70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &3275682008307679644
+--- !u!114 &1620757748702401797
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7995517874831428577}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Script: {fileID: 11500000, guid: fbf3575480402db40813e763382412fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  outlineMode: 1
-  outlineColor: {r: 0, g: 1, b: 0.9700117, a: 1}
-  outlineWidth: 10
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
+  color: 3
+  eraseRenderer: 0

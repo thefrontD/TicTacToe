@@ -1,19 +1,23 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using cakeslice;
+using QuickOutline;
 
-namespace cakeslice
+namespace QuickOutline
 {
     public class OutlineAnimation : MonoBehaviour
     {
         [SerializeField, Range(0, 2f)] private float flashingSpeed = 0.5f;
+        [SerializeField, Range(0, 1f)] private float minAlpha = 0f;
+        [SerializeField, Range(0, 1f)] private float maxAlpha = 1f;
         bool pingPong = false;
         private float _delta;
 
         // Use this for initialization
         void Start()
         {
+            if(maxAlpha < minAlpha) maxAlpha = minAlpha;
+            
             _delta = 0;
         }
 
@@ -29,7 +33,7 @@ namespace cakeslice
                 _delta += Time.deltaTime * flashingSpeed;
                 c0.a = c1.a = c2.a = _delta;
 
-                if(_delta >= 1)
+                if(_delta >= maxAlpha)
                     pingPong = false;
             }
             else
@@ -37,7 +41,7 @@ namespace cakeslice
                 _delta -= Time.deltaTime * flashingSpeed;
                 c0.a = c1.a = c2.a = _delta;
 
-                if(_delta <= 0)
+                if(_delta <= minAlpha)
                     pingPong = true;
             }
 

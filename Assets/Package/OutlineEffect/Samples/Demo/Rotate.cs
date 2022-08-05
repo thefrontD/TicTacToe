@@ -1,9 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
-using cakeslice;
 
-namespace cakeslice
-{
+namespace QuickOutline{
     public class Rotate : MonoBehaviour
     {
         float timer;

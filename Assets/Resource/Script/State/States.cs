@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using QuickOutline;
 /// <summary>
 /// State에 대한 추상 클래스
 /// </summary>
@@ -388,6 +389,7 @@ public class AttackState : BaseState
         foreach(IAttackable attackable in attackableList)
         {
             attackable.GetGameObject().GetComponent<Outline>().enabled = true;
+            attackable.GetGameObject().GetComponent<Outline>().color = 3;
         }
     }
     public override void Exit()
@@ -410,18 +412,6 @@ public class AttackState : BaseState
                 {
                     if (attackableList.Contains(iAttackable))   //attackableList에 있는가?
                     {
-                        for (int i = Card.AttackCount; i > 0; i--)  //AttackCount번 공격
-                        {
-                            int damage = Card.Damage;
-
-                            if(PlayerManager.Instance.DebuffDictionary[Debuff.PowerIncrease] != 0)
-                                damage = (int)(1.2 * damage);
-
-                            if(PlayerManager.Instance.DebuffDictionary[Debuff.PowerDecrease] != 0)
-                                damage = (int)(0.8 * damage);
-
-                            iAttackable.ReduceHP(damage);      //Damage 줌
-                        }
                         selectedAttackableList.Add(iAttackable);    //공격할 오브젝트 리스트에 추가
                         attackableList.Remove(iAttackable);         //공격 가능한 오브젝트에서는 삭제
                         iAttackable.GetGameObject().GetComponent<Outline>().enabled = false;    //아웃라인 끔
@@ -432,6 +422,14 @@ public class AttackState : BaseState
             Debug.Log(targetCountLeft);
             if (targetCountLeft == 0)
             {
+                int damage = Card.Damage;
+
+                if(PlayerManager.Instance.DebuffDictionary[Debuff.PowerIncrease] != 0)
+                    damage = (int)(1.2 * damage);
+
+                if(PlayerManager.Instance.DebuffDictionary[Debuff.PowerDecrease] != 0)
+                    damage = (int)(0.8 * damage);
+
                 foreach (IAttackable selectedAttackable in selectedAttackableList)
                 {
                     for (int i = Card.AttackCount; i > 0; i--)  //AttackCount번 공격

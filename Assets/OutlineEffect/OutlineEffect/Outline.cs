@@ -26,7 +26,7 @@ using UnityEngine;
 using System.Linq;
 using System.Collections.Generic;
 
-namespace cakeslice
+namespace QuickOutline
 {
 	[RequireComponent(typeof(Renderer))]
 	/* [ExecuteInEditMode] */

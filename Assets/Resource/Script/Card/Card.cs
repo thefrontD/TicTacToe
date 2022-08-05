@@ -393,7 +393,7 @@ public class ColorCard : Card
                     break;
                 case AdditionalEffect.PlayerHp10:
                     Debug.Log("AdditionalEffect : PlayerHp-10");
-                    PlayerManager.Instance.Hp -= 10;
+                    PlayerManager.Instance.SetHp(-10);
                     break;
                 case AdditionalEffect.DumpALL:
                     Debug.Log("AdditionalEffect : Dumpall");

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace cakeslice
+namespace QuickOutline
 {
     /// <summary>
     /// A collection with the fast iteration time of a List and the no-duplicates and fast Remove/Contains time of a HashSet.

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using QuickOutline;
 
 public class Enemy : MonoBehaviour, IAttackable
 {
@@ -88,6 +89,7 @@ public class Enemy : MonoBehaviour, IAttackable
         _enemyShield = enemyDataHolder.EnemyShield;
         EnemyActions = enemyDataHolder.EnemyAction;
         _debuffDictionary = new Dictionary<Debuff, int>();
+        gameObject.GetComponent<Outline>().enabled = false;
         foreach(Debuff debuff in Enum.GetValues(typeof(Debuff)))
             _debuffDictionary[debuff] = 0;
         overlapPoint = new List<(int, int)>();
