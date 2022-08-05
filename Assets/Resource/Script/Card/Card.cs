@@ -322,7 +322,7 @@ public class ColorCard : Card
     [JsonProperty] private TriggerCondition costChangeCondition;
     [JsonProperty] private TriggerCondition triggerCondition;
     [JsonProperty] public ColorTargetPosition colorTargetPosition;
-    [JsonProperty] private ColorTargetNum colorTargetNum;
+    [JsonProperty] public ColorTargetNum colorTargetNum;
     [JsonProperty] private AdditionalEffectCondition additionalEffectCondition;
     [JsonProperty] private AdditionalEffect additionalEffect;
     private bool cardUseValidity;
@@ -372,9 +372,6 @@ public class ColorCard : Card
             default:
                 break;
         }
-
-        ColorState newState = new ColorState(this);
-        PlayerManager.Instance.StatesQueue.Enqueue(newState);
         
         //추가효과 
         bool additionalEffectQualified = true;
@@ -402,6 +399,10 @@ public class ColorCard : Card
                     break;
             }
         }
+        // State를 만드는 부분
+        ColorState newState = new ColorState(this);
+        PlayerManager.Instance.StatesQueue.Enqueue(newState);
+        // State를 Enqueue하는 부분
         PlayerManager.Instance.StatesQueue.Enqueue(new NormalState());
     }
 }

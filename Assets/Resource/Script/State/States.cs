@@ -375,7 +375,7 @@ public class ColorState : BaseState
                     IfColorableAddToList(Row+1, Col);
                 if(Row-1 > 0)
                     IfColorableAddToList(Row-1, Col);
-                if(Col+1 <boardsize)
+                if(Col+1 < boardsize)
                     IfColorableAddToList(Row, Col+1);
                 if(Col-1 > 0)
                     IfColorableAddToList(Row, Col-1);
@@ -399,24 +399,24 @@ public class ColorState : BaseState
                     }
                 }
                 break;
-            case ColorTargetPosition.Vertical:
-                for(int i = 0; i<boardsize; i++){
+            case ColorTargetPosition.Horizontal:
+                for(int i = 0; i < boardsize; i++){
                     IfColorableAddToList(i,Col);
                 }
                 break;
-            case ColorTargetPosition.Horizontal:
+            case ColorTargetPosition.Vertical:
                 for(int i = 0; i<boardsize; i++){
                     IfColorableAddToList(Row,i);
                 }
                 break;
-            case ColorTargetPosition.P3V:
+            case ColorTargetPosition.P3H:
                 if(Row+1 < boardsize)
                     IfColorableAddToList(Row+1, Col);
                 if(Row-1 > 0)
                     IfColorableAddToList(Row-1, Col);
                 IfColorableAddToList(Row, Col);
                 break;
-            case ColorTargetPosition.P3H:
+            case ColorTargetPosition.P3V:
                 if(Col+1 < boardsize)
                     IfColorableAddToList(Row, Col+1);
                 if(Col-1 > 0)
@@ -428,14 +428,13 @@ public class ColorState : BaseState
 
         //color 대상 list
         //각각의 block 에 대해 IsColorable 함수 호출
-
-        foreach(Tuple<int,int> elem in colorables){
+        /*foreach(Tuple<int,int> elem in colorables){
             Debug.Log("printing colorable elems");
             Debug.Log(elem.Item1);
             Debug.Log(elem.Item2);
-        }
+        }*/
 
-        //color 대상 highlight
+        //color 대상 highlight-> update에서
     }
 
     public override void Exit()
@@ -445,21 +444,34 @@ public class ColorState : BaseState
 
     public override void MouseEvent()
     {
-        //PlayerManager.Instance.ChangeStates(PlayerManager.Instance.StatesQueue.Dequeue());
-        //일단 되는지 테스트
+        //클릭하지 않아도 되는 케이스 또한 같이 여기에 구현
+        if(card.colorTargetNum != ColorTargetNum.Target1){
+            Debug.Log("Target is unselectable");
+            //todo
+            foreach(Tuple<int,int> pos in colorables){
+                Debug.Log("(MouseEvent)" + pos.Item1.ToString() + pos.Item2.ToString());
+                BoardManager.Instance.ColoringBoard(pos.Item1, pos.Item2, BoardColor.Player);
+            }
+            
+            PlayerManager.Instance.ChangeStates(PlayerManager.Instance.StatesQueue.Dequeue());
+            return;
+        }
+        
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hitData;
-        if(Physics.Raycast(ray, out hitData))
+        RaycastHit[] hitData;
+        hitData = Physics.RaycastAll(ray);
+        if(true)
         {
-            GameObject hitObject = hitData.transform.gameObject;
-            Debug.Log(hitObject);
-            IAttackable iAttackable = hitObject.GetComponent<IAttackable>();
-            if(iAttackable != null) //레이캐스트에 맞은 오브젝트에 Iattackable 컴포넌트가 있는가?
-            {
-                //if (attackableList.Contains(iAttackable))   //attackableList에 있는가?
-                //{
-                    //처리
-                //}
+            foreach(RaycastHit Data in hitData){
+                GameObject hitObject = Data.transform.gameObject;
+                if(hitObject.GetComponent<Board>()){
+                    //Debug.Log("it is board");
+                    hitObject.GetComponent<Board>().SetBoardColor(BoardColor.Player);
+                    PlayerManager.Instance.ChangeStates(PlayerManager.Instance.StatesQueue.Dequeue());
+                }
+                else{
+                    //Debug.Log("it is nonboard Object");
+                }
             }
         }
     }
@@ -490,12 +502,12 @@ public class ColorState : BaseState
         //비어있는 곳은 색칠 가능
         //플레이어가 있는 곳은 색칠 가능
         if(BoardManager.Instance.BoardObjects[i][j] == BoardObject.None){
-            Debug.Log("(IfColorableAddToList) this block is None");
+            Debug.Log("(IfColorableAddToList) "+ i.ToString() + j.ToString() + " block is None");
             colorables.Add(new Tuple<int,int>(i, j));
             return;
         }
         if(BoardManager.Instance.BoardObjects[i][j] == BoardObject.Player){
-            Debug.Log("(IfColorableAddToList) this block is Player");
+            Debug.Log("(IfColorableAddToList) "+ i.ToString() + j.ToString() + " block is Player");
             colorables.Add(new Tuple<int,int>(i, j));
             return;
         }
