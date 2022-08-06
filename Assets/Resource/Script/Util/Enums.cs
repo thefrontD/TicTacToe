@@ -82,7 +82,7 @@ public enum AdditionalEffect
     None,
     Shield10,
     MonsterHp1,
-    PlayerHp10,
+    PlayerHp10, PlayerHp20, PlayerHp30,
     DMG10,
     Move,
     Color,
