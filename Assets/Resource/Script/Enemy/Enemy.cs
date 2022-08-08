@@ -58,7 +58,9 @@ public class Enemy : MonoBehaviour, IAttackable
     public int EnemyPower => _enemyPower;
 
     private int _previousPlayerRow;
+    public int PreviousPlayerRow => _previousPlayerRow;
     private int _previousPlayerCol;
+    public int PreviousPlayerCol => _previousPlayerCol;
 
     private Dictionary<Debuff,  int> _debuffDictionary;
     public Dictionary<Debuff, int> DebuffDictionary => _debuffDictionary;
@@ -67,9 +69,23 @@ public class Enemy : MonoBehaviour, IAttackable
     private List<(int, int)> overlapPoint;
 
     public Queue<(EnemyAction, int)> EnemyActions;
+    
     public void AttackedByPlayer(int damage)
     {
-        EnemyShield -= damage;
+        EnemyShield = EnemyShield > damage ? EnemyShield - damage : 0;
+
+        if (EnemyShield == 0)
+        {
+            int bingoCount = BoardManager.Instance.CheckBingo(BoardColor.Player);
+
+            EnemyHP -= bingoCount;
+
+            if (EnemyHP < 0)
+            {
+                EnemyManager.Instance.EnemyList.Remove(this);
+                GameManager.Instance.GameClear();
+            }
+        }
     }
     public GameObject GetGameObject()
     {
@@ -148,12 +164,12 @@ public class Enemy : MonoBehaviour, IAttackable
                 }
                 break;
             case EnemyAction.H2Attack:
-                if(PlayerManager.Instance.Col == _previousPlayerCol){
+                if(PlayerManager.Instance.Col != _previousPlayerCol){
                     PlayerManager.Instance.DamageToPlayer(-damage);
                 }
                 break;
             case EnemyAction.V2Attack:
-                if(PlayerManager.Instance.Row == _previousPlayerRow){
+                if(PlayerManager.Instance.Row != _previousPlayerRow){
                     PlayerManager.Instance.DamageToPlayer(-damage);
                 }
                 break;
@@ -366,16 +382,5 @@ public class Enemy : MonoBehaviour, IAttackable
     public void setPreviousPos(int row, int col){
         _previousPlayerRow = row;
         _previousPlayerCol = col;
-    }
-
-    public bool DamagetoEnemy(int damage)
-    {
-        if (this.EnemyHP < damage)
-        {
-            Destroy(gameObject);
-            return true;
-        }
-        else
-            return false;
     }
 }

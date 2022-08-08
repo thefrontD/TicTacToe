@@ -12,6 +12,11 @@ using Random = UnityEngine.Random;
 /// </summary>
 public class PlayerManager : Singleton<PlayerManager>
 {
+    private PlayerDataHolder _holder;
+    
+    private int _currentStage;
+    public int CurrentStage => _currentStage;
+    
     [SerializeField] private int maxHp = 3;
     public int MaxHp { get => maxHp; set => maxHp = (value >= 0) ? value : 0; }
     private int _hp = 3;
@@ -46,6 +51,9 @@ public class PlayerManager : Singleton<PlayerManager>
     public List<Card> PlayerCard;
 
     void Awake(){
+        DontDestroyOnLoad(this.gameObject);
+        DontDestroyOnLoad(this.transform.parent.gameObject);
+        
         PlayerCard = CardData.Instance._load("PlayerCard.json");
     }
 
@@ -80,6 +88,16 @@ public class PlayerManager : Singleton<PlayerManager>
     void FixedUpdate()
     {
         state.Update();
+    }
+
+    public void Init()
+    {
+        _holder = PlayerData.Instance._load("PlayerData.json");
+        _currentStage = _holder.CurrentStage;
+        maxHp = _holder.MaxHp;
+        _hp = _holder.Hp;
+        maxMana = _holder.MaxMana;
+        _mana = _holder.Mana;
     }
 
     private void InitDebuffDictionary()
@@ -145,22 +163,27 @@ public class PlayerManager : Singleton<PlayerManager>
         return true;
     }
     
-    public bool DamageToPlayer(int value = 0)
+    public void DamageToPlayer(int value = 0)
     {
         if(_shield != 0){
             if(_shield + value < 0)
             {
                 value += _shield;
-                if (_hp + value < 0) return false;
+                if (_hp + value < 0) GameManager.Instance.GameOver();
                 else if(_hp + value > MaxHp) _hp = MaxHp;
                 else _hp += value;
             }
             else _shield += value;
         }
+        else
+        {
+            if (_hp + value < 0) GameManager.Instance.GameOver();
+            else if(_hp + value > MaxHp) _hp = MaxHp;
+            else _hp += value;
+        }
 
         shieldText.text = String.Format("Shield : {0}", _shield);
         hpText.text = String.Format("HP : {0}", _hp);
-        return true;
     }
 
     public bool MovePlayer(int row, int col)

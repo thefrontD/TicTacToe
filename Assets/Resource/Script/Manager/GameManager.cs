@@ -13,4 +13,17 @@ public class GameManager : Singleton<GameManager>
     {
         
     }
+
+    public void GameOver()
+    {
+        
+    }
+
+    public void GameClear()
+    {
+        if (EnemyManager.Instance.EnemyList.Count == 0)
+            return;
+        else
+            return;
+    }
 }

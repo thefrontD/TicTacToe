@@ -30,7 +30,7 @@ public class EnemyManager : Singleton<EnemyManager>
 
     void Update()
     {
-        
+
     }
 
     public void HightLightBoard()
@@ -45,6 +45,57 @@ public class EnemyManager : Singleton<EnemyManager>
                 case EnemyAction.V1Attack:
                     for (int i = 0; i < BoardManager.Instance.BoardSize; i++)
                         BoardManager.Instance.GameBoard[PlayerManager.Instance.Row][i].SetHighlight(BoardSituation.WillAttack);
+                    break;
+                case EnemyAction.H2Attack:
+                    for (int i = 0; i < BoardManager.Instance.BoardSize; i++)
+                    {
+                        if (i == enemy.PreviousPlayerCol) continue;
+                        else
+                        {
+                            for (int j = 0; j < BoardManager.Instance.BoardSize; i++)
+                                BoardManager.Instance.GameBoard[j][i].SetHighlight(BoardSituation.WillAttack);
+                        }
+                    }
+                    break;
+                case EnemyAction.V2Attack:
+                    for (int i = 0; i < BoardManager.Instance.BoardSize; i++)
+                    {
+                        if (i == enemy.PreviousPlayerRow) continue;
+                        else
+                        {
+                            for (int j = 0; j < BoardManager.Instance.BoardSize; i++)
+                                BoardManager.Instance.GameBoard[i][j].SetHighlight(BoardSituation.WillAttack);
+                        }
+                    }
+                    break;
+                case EnemyAction.ColoredAttack:
+                    for (int i = 0; i < BoardManager.Instance.BoardSize; i++)
+                    {
+                        for (int j = 0; j < BoardManager.Instance.BoardSize; i++)
+                        {
+                            if(BoardManager.Instance.GameBoard[i][j].currentBoardColor == BoardColor.None)
+                                BoardManager.Instance.GameBoard[i][j].SetHighlight(BoardSituation.WillAttack);
+                        }
+                    }
+                    break;
+                case EnemyAction.NoColoredAttack:
+                    for (int i = 0; i < BoardManager.Instance.BoardSize; i++)
+                    {
+                        for (int j = 0; j < BoardManager.Instance.BoardSize; i++)
+                        {
+                            if(BoardManager.Instance.GameBoard[i][j].currentBoardColor != BoardColor.Enemy)
+                                BoardManager.Instance.GameBoard[i][j].SetHighlight(BoardSituation.WillAttack);
+                        }
+                    }
+                    break;
+                case EnemyAction.AllAttack:
+                    for (int i = 0; i < BoardManager.Instance.BoardSize; i++)
+                    {
+                        for (int j = 0; j < BoardManager.Instance.BoardSize; i++)
+                        {
+                            BoardManager.Instance.GameBoard[i][j].SetHighlight(BoardSituation.WillAttack);
+                        }
+                    }
                     break;
                 case EnemyAction.WallSummon:
                 case EnemyAction.WallsSummon:
