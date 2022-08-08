@@ -2,7 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using QuickOutline;
+using TMPro;
 
 public class Enemy : MonoBehaviour, IAttackable
 {
@@ -75,10 +77,16 @@ public class Enemy : MonoBehaviour, IAttackable
     {
         return gameObject;
     }
+
+    public GameObject HP_Container;
+    public GameObject ShieldUI;
+    public GameObject HPUI;
     
-    void Start()
+    void Update()
     {
-        
+        ShieldUI.GetComponent<Slider>().value = -_enemyShield / _enemyMaxShield;
+        ShieldUI.transform.Find("Text").GetComponent<TextMeshProUGUI>().text = _enemyShield.ToString() + "/" + _enemyMaxShield.ToString();
+        Debug.Log(_enemyShield.ToString() + " / " + _enemyMaxShield.ToString());
     }
 
     public void InitEnemyData(EnemyDataHolder enemyDataHolder)
@@ -89,7 +97,7 @@ public class Enemy : MonoBehaviour, IAttackable
         _enemyShield = enemyDataHolder.EnemyShield;
         EnemyActions = enemyDataHolder.EnemyAction;
         _debuffDictionary = new Dictionary<Debuff, int>();
-        gameObject.GetComponent<Outline>().enabled = false;
+        gameObject.GetComponent<QuickOutline.Outline>().enabled = false;
         foreach(Debuff debuff in Enum.GetValues(typeof(Debuff)))
             _debuffDictionary[debuff] = 0;
         overlapPoint = new List<(int, int)>();
