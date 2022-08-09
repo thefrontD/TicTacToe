@@ -51,10 +51,10 @@ public class PlayerManager : Singleton<PlayerManager>
     public List<Card> PlayerCard;
 
     void Awake(){
-        DontDestroyOnLoad(this.gameObject);
-        DontDestroyOnLoad(this.transform.parent.gameObject);
+        if (PlayerManager.Instance != this)
+            Destroy(gameObject);
         
-        PlayerCard = CardData.Instance._load("PlayerCard.json");
+        DontDestroyOnLoad(this.gameObject);
     }
 
     void Start()
@@ -64,19 +64,6 @@ public class PlayerManager : Singleton<PlayerManager>
         //{
         //    ColorState state1 = ((ColorCard)card).ColorState();
         //}
-        PlayerCard.Shuffle();
-
-        CardManager.Instance.SetUp();
-
-        _debuffDictionary = new Dictionary<Debuff, int>();
-        InitDebuffDictionary();
-
-        SetMana();
-        DamageToPlayer();
-        
-        StatesQueue = new Queue<BaseState>();
-        state = new NormalState(5, true);
-        state.Enter();
     }
 
     void Update()
@@ -90,14 +77,30 @@ public class PlayerManager : Singleton<PlayerManager>
         state.Update();
     }
 
-    public void Init()
+    public void PlayerLoading()
     {
+        PlayerCard = CardData.Instance._load("PlayerCard.json");
+        
         _holder = PlayerData.Instance._load("PlayerData.json");
         _currentStage = _holder.CurrentStage;
         maxHp = _holder.MaxHp;
         _hp = _holder.Hp;
         maxMana = _holder.MaxMana;
         _mana = _holder.Mana;
+        
+        PlayerCard.Shuffle();
+
+        CardManager.Instance.SetUp();
+
+        _debuffDictionary = new Dictionary<Debuff, int>();
+        InitDebuffDictionary();
+
+        SetMana();
+        DamageToPlayer();
+        
+        StatesQueue = new Queue<BaseState>();
+        state = new NormalState(5, true);
+        state.Enter();
     }
 
     private void InitDebuffDictionary()
@@ -119,7 +122,7 @@ public class PlayerManager : Singleton<PlayerManager>
         StartCoroutine(ChangeStatesCoroutine(newState));
     }
     
-    public IEnumerator ChangeStatesCoroutine(BaseState newState)
+    private IEnumerator ChangeStatesCoroutine(BaseState newState)
     {
         Debug.Log(state);
         state.Exit();
@@ -163,13 +166,17 @@ public class PlayerManager : Singleton<PlayerManager>
         return true;
     }
     
-    public void DamageToPlayer(int value = 0)
+    public bool DamageToPlayer(int value = 0)
     {
         if(_shield != 0){
             if(_shield + value < 0)
             {
                 value += _shield;
-                if (_hp + value < 0) GameManager.Instance.GameOver();
+                if (_hp + value <= 0)
+                {
+                    GameManager.Instance.GameOver();
+                    return true;
+                }
                 else if(_hp + value > MaxHp) _hp = MaxHp;
                 else _hp += value;
             }
@@ -177,13 +184,18 @@ public class PlayerManager : Singleton<PlayerManager>
         }
         else
         {
-            if (_hp + value < 0) GameManager.Instance.GameOver();
+            if (_hp + value <= 0)
+            {
+                GameManager.Instance.GameOver();
+                return true;
+            }
             else if(_hp + value > MaxHp) _hp = MaxHp;
             else _hp += value;
         }
 
         shieldText.text = String.Format("Shield : {0}", _shield);
         hpText.text = String.Format("HP : {0}", _hp);
+        return false;
     }
 
     public bool MovePlayer(int row, int col)

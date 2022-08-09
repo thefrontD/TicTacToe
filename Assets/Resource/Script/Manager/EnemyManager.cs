@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class EnemyManager : Singleton<EnemyManager>
@@ -13,11 +14,18 @@ public class EnemyManager : Singleton<EnemyManager>
     void Awake()
     {
         _enemyList = new List<Enemy>();
-        EnemyLoading("EnemyData.json");
     }
 
     void  Start()
     {
+        
+    }
+
+
+    public void EnemyLoading()
+    {
+        EnemyLoading("EnemyData.json");
+        
         for (int i = 0; i < BoardManager.Instance.BoardSize; i++)
         {
             for (int j = 0; j < BoardManager.Instance.BoardSize; j++)
@@ -25,14 +33,13 @@ public class EnemyManager : Singleton<EnemyManager>
                 BoardManager.Instance.GameBoard[i][j].SetHighlight(BoardSituation.None);
             }
         }
+
+        foreach (Enemy enemy in EnemyList)
+            enemy.setPreviousPos(PlayerManager.Instance.Row, PlayerManager.Instance.Col);
+        
         HightLightBoard();
     }
-
-    void Update()
-    {
-
-    }
-
+    
     public void HightLightBoard()
     {
         foreach(Enemy enemy in _enemyList){
@@ -130,18 +137,21 @@ public class EnemyManager : Singleton<EnemyManager>
 
     private IEnumerator EnemyAttackCoroutine()
     {
-        yield return new WaitForSeconds(1.0f);
-     
-        PlayerManager.Instance.StatesQueue.Enqueue(new NormalState(5, true));
+        bool _isGameOver = false;
         
+        yield return new WaitForSeconds(1.0f);
+
         foreach (Enemy enemy in _enemyList)
         {
-            enemy.DoEnemyAction();
+            _isGameOver = enemy.DoEnemyAction();
+            if (_isGameOver) break;
             yield return new WaitForSeconds(0.5f);
         }
         
         yield return new WaitForSeconds(0.5f);
-        
-        PlayerManager.Instance.ChangeStates(new NormalState(5, true));
+        if (_isGameOver)
+            PlayerManager.Instance.ChangeStates(new NormalState(5, false));
+        else
+            PlayerManager.Instance.ChangeStates(new NormalState(5, true));
     }
 }

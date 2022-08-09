@@ -2,17 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d3529374-01b1-433a-a73a-241952c1c846" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Resource/Script/Data/PlayerData.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resource/Script/Data/PlayerData.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resource/Script/Manager/SceneManager.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resource/Script/Manager/SceneManager.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/PlayerData.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/PlayerData.json.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TicTacToe/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TicTacToe/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resource/Script/Enemy/Enemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resource/Script/Enemy/Enemy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resource/Script/Manager/BoardManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resource/Script/Manager/BoardManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resource/Script/Manager/EnemyManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resource/Script/Manager/EnemyManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resource/Script/Manager/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resource/Script/Manager/GameManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resource/Script/Manager/PlayerManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resource/Script/Manager/PlayerManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resource/Script/State/States.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resource/Script/State/States.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/BattleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/BattleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/EnemyData.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/EnemyData.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/PlayerCard.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/PlayerCard.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/PlayerData.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/PlayerData.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,6 +112,7 @@
       <workItem from="1658938038131" duration="1515000" />
       <workItem from="1659069320082" duration="9310000" />
       <workItem from="1659964166779" duration="4446000" />
+      <workItem from="1660025725282" duration="7854000" />
     </task>
     <servers />
   </component>

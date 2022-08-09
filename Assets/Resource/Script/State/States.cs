@@ -58,8 +58,6 @@ public class NormalState : BaseState
             PlayerManager.Instance.SetMana(1000);
             if(PlayerManager.Instance.DebuffDictionary[Debuff.Heal] > 0)
                 PlayerManager.Instance.DamageToPlayer((int)(PlayerManager.Instance.MaxHp*0.1));
-            foreach(Enemy enemy in EnemyManager.Instance.EnemyList)
-                enemy.setPreviousPos(PlayerManager.Instance.Row, PlayerManager.Instance.Col);
             CardManager.Instance.DrawCard(DrawNum);
             foreach(Debuff debuff in Enum.GetValues(typeof(Debuff)))
                 PlayerManager.Instance.SetDebuff(debuff, -1); 
@@ -102,7 +100,9 @@ public class EnemyState : BaseState
             if(enemy.DebuffDictionary[Debuff.Heal] > 0)
                 enemy.EnemyHP += (int)(enemy.EnemyMaxHP*0.1);
             foreach(Debuff debuff in Enum.GetValues(typeof(Debuff)))
-                enemy.SetDebuff(debuff, -1); 
+                enemy.SetDebuff(debuff, -1);
+            if (enemy.EnemyShield == 0)
+                enemy.EnemyShield = enemy.EnemyMaxShield;
         }
         EnemyManager.Instance.EnemyAttack();
     }
@@ -119,6 +119,8 @@ public class EnemyState : BaseState
 
     public override void Exit()
     {
+        foreach(Enemy enemy in EnemyManager.Instance.EnemyList)
+            enemy.setPreviousPos(PlayerManager.Instance.Row, PlayerManager.Instance.Col);
         EnemyManager.Instance.HightLightBoard();
     }
 }
@@ -500,6 +502,8 @@ public class AttackState : BaseState
                 {
                     attackable.GetGameObject().GetComponent<Outline>().enabled = false;
                 }
+                
+                PlayerManager.Instance.ChangeStates(PlayerManager.Instance.StatesQueue.Dequeue());
             }
         }
     }
@@ -691,7 +695,8 @@ public class ColorState : BaseState
                 GameObject hitObject = Data.transform.gameObject;
                 if(hitObject.GetComponent<Board>()){
                     //Debug.Log("it is board");
-                    hitObject.GetComponent<Board>().SetBoardColor(BoardColor.Player);
+                    BoardManager.Instance.ColoringBoard(hitObject.GetComponent<Board>().Row,
+                        hitObject.GetComponent<Board>().Col, BoardColor.Player);
                     PlayerManager.Instance.ChangeStates(PlayerManager.Instance.StatesQueue.Dequeue());
                 }
                 else{
