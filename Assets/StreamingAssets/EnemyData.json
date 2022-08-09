@@ -1,8 +1,8 @@
 [
   {
     "EnemyName" : "SampleEnemy",
-    "EnemyHP": 10,
-    "EnemyShield": 10,
+    "EnemyHP": 1,
+    "EnemyShield": 1,
     "EnemyPower" : 10,
     "EnemyAction": [
       {"Item1": "H1Attack", "Item2": 1},

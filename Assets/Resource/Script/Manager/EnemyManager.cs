@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class EnemyManager : Singleton<EnemyManager>
@@ -13,11 +14,18 @@ public class EnemyManager : Singleton<EnemyManager>
     void Awake()
     {
         _enemyList = new List<Enemy>();
-        EnemyLoading("EnemyData.json");
     }
 
     void  Start()
     {
+        
+    }
+
+
+    public void EnemyLoading(string dataName)
+    {
+        EnemyDataLoading(dataName + ".json");
+        
         for (int i = 0; i < BoardManager.Instance.BoardSize; i++)
         {
             for (int j = 0; j < BoardManager.Instance.BoardSize; j++)
@@ -25,14 +33,13 @@ public class EnemyManager : Singleton<EnemyManager>
                 BoardManager.Instance.GameBoard[i][j].SetHighlight(BoardSituation.None);
             }
         }
+
+        foreach (Enemy enemy in EnemyList)
+            enemy.setPreviousPos(PlayerManager.Instance.Row, PlayerManager.Instance.Col);
+        
         HightLightBoard();
     }
-
-    void Update()
-    {
-        
-    }
-
+    
     public void HightLightBoard()
     {
         foreach(Enemy enemy in _enemyList){
@@ -45,6 +52,57 @@ public class EnemyManager : Singleton<EnemyManager>
                 case EnemyAction.V1Attack:
                     for (int i = 0; i < BoardManager.Instance.BoardSize; i++)
                         BoardManager.Instance.GameBoard[PlayerManager.Instance.Row][i].SetHighlight(BoardSituation.WillAttack);
+                    break;
+                case EnemyAction.H2Attack:
+                    for (int i = 0; i < BoardManager.Instance.BoardSize; i++)
+                    {
+                        if (i == enemy.PreviousPlayerCol) continue;
+                        else
+                        {
+                            for (int j = 0; j < BoardManager.Instance.BoardSize; i++)
+                                BoardManager.Instance.GameBoard[j][i].SetHighlight(BoardSituation.WillAttack);
+                        }
+                    }
+                    break;
+                case EnemyAction.V2Attack:
+                    for (int i = 0; i < BoardManager.Instance.BoardSize; i++)
+                    {
+                        if (i == enemy.PreviousPlayerRow) continue;
+                        else
+                        {
+                            for (int j = 0; j < BoardManager.Instance.BoardSize; i++)
+                                BoardManager.Instance.GameBoard[i][j].SetHighlight(BoardSituation.WillAttack);
+                        }
+                    }
+                    break;
+                case EnemyAction.ColoredAttack:
+                    for (int i = 0; i < BoardManager.Instance.BoardSize; i++)
+                    {
+                        for (int j = 0; j < BoardManager.Instance.BoardSize; i++)
+                        {
+                            if(BoardManager.Instance.GameBoard[i][j].currentBoardColor == BoardColor.None)
+                                BoardManager.Instance.GameBoard[i][j].SetHighlight(BoardSituation.WillAttack);
+                        }
+                    }
+                    break;
+                case EnemyAction.NoColoredAttack:
+                    for (int i = 0; i < BoardManager.Instance.BoardSize; i++)
+                    {
+                        for (int j = 0; j < BoardManager.Instance.BoardSize; i++)
+                        {
+                            if(BoardManager.Instance.GameBoard[i][j].currentBoardColor != BoardColor.Enemy)
+                                BoardManager.Instance.GameBoard[i][j].SetHighlight(BoardSituation.WillAttack);
+                        }
+                    }
+                    break;
+                case EnemyAction.AllAttack:
+                    for (int i = 0; i < BoardManager.Instance.BoardSize; i++)
+                    {
+                        for (int j = 0; j < BoardManager.Instance.BoardSize; i++)
+                        {
+                            BoardManager.Instance.GameBoard[i][j].SetHighlight(BoardSituation.WillAttack);
+                        }
+                    }
                     break;
                 case EnemyAction.WallSummon:
                 case EnemyAction.WallsSummon:
@@ -59,7 +117,7 @@ public class EnemyManager : Singleton<EnemyManager>
     /// Data로 부터 이름을 받아와서 Dictionary에서 서칭한 후 Instantiate
     /// </summary>
     /// <param name="EnemyNameList"></param>
-    private void EnemyLoading(string enemyDataName)
+    private void EnemyDataLoading(string enemyDataName)
     {
         List<EnemyDataHolder> enemyDataHolders = EnemyData.Instance._load(enemyDataName);
 
@@ -79,18 +137,21 @@ public class EnemyManager : Singleton<EnemyManager>
 
     private IEnumerator EnemyAttackCoroutine()
     {
-        yield return new WaitForSeconds(1.0f);
-     
-        PlayerManager.Instance.StatesQueue.Enqueue(new NormalState(5, true));
+        bool _isGameOver = false;
         
+        yield return new WaitForSeconds(1.0f);
+
         foreach (Enemy enemy in _enemyList)
         {
-            enemy.DoEnemyAction();
+            _isGameOver = enemy.DoEnemyAction();
+            if (_isGameOver) break;
             yield return new WaitForSeconds(0.5f);
         }
         
         yield return new WaitForSeconds(0.5f);
-        
-        PlayerManager.Instance.ChangeStates(new NormalState(5, true));
+        if (_isGameOver)
+            PlayerManager.Instance.ChangeStates(new NormalState(5, false));
+        else
+            PlayerManager.Instance.ChangeStates(new NormalState(5, true));
     }
 }
