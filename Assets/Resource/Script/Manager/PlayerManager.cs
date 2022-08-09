@@ -15,7 +15,7 @@ public class PlayerManager : Singleton<PlayerManager>
     private PlayerDataHolder _holder;
     
     private int _currentStage;
-    public int CurrentStage => _currentStage;
+    public int CurrentStage { get => _currentStage; set => _currentStage = value; }
     
     [SerializeField] private int maxHp = 3;
     public int MaxHp { get => maxHp; set => maxHp = (value >= 0) ? value : 0; }

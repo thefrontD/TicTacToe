@@ -41,7 +41,13 @@ public class SceneManager : Singleton<SceneManager>
     
     
     public void LoadTitleScreen(){
-        LoadNextScene(0);
+        LoadScene(0);
+    }
+
+    public void LoadBattleScene()
+    {
+        PlayerManager.Instance.CurrentStage++;
+        LoadScene(1);
     }
 
     public void QuitGame()
@@ -49,7 +55,7 @@ public class SceneManager : Singleton<SceneManager>
         Application.Quit();
     }
 
-    private bool LoadNextScene(int buildIndex)
+    private bool LoadScene(int buildIndex)
     {
         if (loadingCoroutine != null) return false;
 

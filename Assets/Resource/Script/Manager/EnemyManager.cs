@@ -22,9 +22,9 @@ public class EnemyManager : Singleton<EnemyManager>
     }
 
 
-    public void EnemyLoading()
+    public void EnemyLoading(string dataName)
     {
-        EnemyLoading("EnemyData.json");
+        EnemyDataLoading(dataName + ".json");
         
         for (int i = 0; i < BoardManager.Instance.BoardSize; i++)
         {
@@ -117,7 +117,7 @@ public class EnemyManager : Singleton<EnemyManager>
     /// Data로 부터 이름을 받아와서 Dictionary에서 서칭한 후 Instantiate
     /// </summary>
     /// <param name="EnemyNameList"></param>
-    private void EnemyLoading(string enemyDataName)
+    private void EnemyDataLoading(string enemyDataName)
     {
         List<EnemyDataHolder> enemyDataHolders = EnemyData.Instance._load(enemyDataName);
 
