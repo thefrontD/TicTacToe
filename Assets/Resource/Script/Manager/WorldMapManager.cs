@@ -15,16 +15,19 @@ public class WorldMapManager : MonoBehaviour
     public float timeToMove = 2;
     public int clearedStage = 0;
     public GameObject[] stages = new GameObject[11];
+    public GameObject SettingPanel;
     public Text StageIdentifier;
+    public Text PlayerProfile;
+    public List<Card> PlayerCard;
     private GameObject Player;
     void Start()
     {
+        //플레이어 오브젝트 이동 애니메이션
+        //stage를 나타내는cylinder을 array로 받아 적용
         Vector3 spawnPoint = stages[clearedStage].GetComponent<Transform>().position;
         Vector3 nextPoint = stages[clearedStage + 1].GetComponent<Transform>().position;
         spawnPoint += new Vector3(0,-2,0);
         nextPoint += new Vector3(0,-2,0);
-        //stage를 나타내는cylinder을 array로 받아 적용
-
         Player = Instantiate(PlayerPrefab, spawnPoint, Quaternion.identity);
         Sequence mySequence = DOTween.Sequence();
         mySequence.PrependInterval(1);
@@ -32,10 +35,24 @@ public class WorldMapManager : MonoBehaviour
         
         //stage 표기 변경
         StageIdentifier.GetComponent<Text>().text = "Stage 1-"+(clearedStage+1).ToString();
+        //PlayerProfile 표기 변경
+        PlayerProfile.GetComponent<Text>().text = "처치한 적 수: "+ clearedStage.ToString() 
+                                                + "\n현재 스테이지: " +(clearedStage+1).ToString();
+        //todo: 한 스테이지에 처치한 몹 하나라고 가정한 것 나중에 json으로 적용하면 변경 필요
+
+        //CardListUI 세팅
+        PlayerCard = CardData.Instance._load("PlayerCard.json");
     }
 
     void Update()
     {
         
+    }
+
+    public void ToggleSettingPanel(){
+        if(SettingPanel.activeSelf)
+            SettingPanel.SetActive(false);
+        else
+            SettingPanel.SetActive(true);
     }
 }
