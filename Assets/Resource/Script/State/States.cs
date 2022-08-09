@@ -659,18 +659,8 @@ public class ColorState : BaseState
             Debug.Log(elem.Item2);
         }*/
 
-        //color 대상 highlight-> update에서
-    }
-
-    public override void Update()
-    {
-
-    }
-
-    public override void MouseEvent()
-    {
-        //클릭하지 않아도 되는 케이스 또한 같이 여기에 구현
-        if(card.colorTargetNum != ColorTargetNum.Target1){
+        //선택할 필요가 없는 경우 바로 시전
+        if(card.colorTargetNum != ColorTargetNum.One){
             Debug.Log("Target is unselectable");
             //todo
             foreach(Tuple<int,int> pos in colorables){
@@ -681,6 +671,20 @@ public class ColorState : BaseState
             PlayerManager.Instance.ChangeStates(PlayerManager.Instance.StatesQueue.Dequeue());
             return;
         }
+        else{//선택할 필요가 있는 경우 highlight enable
+            foreach(Tuple<int,int> coord in colorables){
+                BoardManager.Instance.GameBoard[coord.Item2][coord.Item1].GetComponent<Outline>().enabled = true;
+            }
+        }
+    }
+
+    public override void Update()
+    {
+
+    }
+
+    public override void MouseEvent()
+    {
         
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit[] hitData;
@@ -691,6 +695,12 @@ public class ColorState : BaseState
                 GameObject hitObject = Data.transform.gameObject;
                 if(hitObject.GetComponent<Board>()){
                     //Debug.Log("it is board");
+                    //highlight disable
+                    foreach(Tuple<int,int> coord in colorables){
+                        BoardManager.Instance.GameBoard[coord.Item2][coord.Item1].GetComponent<Outline>().enabled = false;
+                    }
+                    EnemyManager.Instance.HightLightBoard();
+
                     hitObject.GetComponent<Board>().SetBoardColor(BoardColor.Player);
                     PlayerManager.Instance.ChangeStates(PlayerManager.Instance.StatesQueue.Dequeue());
                 }
