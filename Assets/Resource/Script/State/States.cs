@@ -58,8 +58,6 @@ public class NormalState : BaseState
             PlayerManager.Instance.SetMana(1000);
             if(PlayerManager.Instance.DebuffDictionary[Debuff.Heal] > 0)
                 PlayerManager.Instance.DamageToPlayer((int)(PlayerManager.Instance.MaxHp*0.1));
-            foreach(Enemy enemy in EnemyManager.Instance.EnemyList)
-                enemy.setPreviousPos(PlayerManager.Instance.Row, PlayerManager.Instance.Col);
             CardManager.Instance.DrawCard(DrawNum);
             foreach(Debuff debuff in Enum.GetValues(typeof(Debuff)))
                 PlayerManager.Instance.SetDebuff(debuff, -1); 
@@ -102,7 +100,9 @@ public class EnemyState : BaseState
             if(enemy.DebuffDictionary[Debuff.Heal] > 0)
                 enemy.EnemyHP += (int)(enemy.EnemyMaxHP*0.1);
             foreach(Debuff debuff in Enum.GetValues(typeof(Debuff)))
-                enemy.SetDebuff(debuff, -1); 
+                enemy.SetDebuff(debuff, -1);
+            if (enemy.EnemyShield == 0)
+                enemy.EnemyShield = enemy.EnemyMaxShield;
         }
         EnemyManager.Instance.EnemyAttack();
     }
@@ -119,6 +119,8 @@ public class EnemyState : BaseState
 
     public override void Exit()
     {
+        foreach(Enemy enemy in EnemyManager.Instance.EnemyList)
+            enemy.setPreviousPos(PlayerManager.Instance.Row, PlayerManager.Instance.Col);
         EnemyManager.Instance.HightLightBoard();
     }
 }
@@ -127,122 +129,13 @@ public class EnemyState : BaseState
 public class MoveState : BaseState
 {
     Color tempBackgroundColor;
+    MoveCard card;
     bool[,] movableSpace;
     int moveRow, moveCol;
+
     public MoveState(MoveCard originalCard)
     {
-        int boardSize = BoardManager.Instance.BoardSize;
-        this.movableSpace = new bool[boardSize, boardSize];  // 모든 항이 false인 2D 배열
-        switch (originalCard.moveDirection)
-        {
-            case MoveDirection.All:
-                // 원하는 칸으로 이동
-                {
-                    for (int i = 0; i < boardSize; i++)
-                        for (int j = 0; j < boardSize; j++)
-                            this.movableSpace[i, j] = true;
-                    break;
-                }
-
-            case MoveDirection.UDLR:
-                // 현재 위치로부터 상하좌우로 한 칸 이동
-                {
-                    (int, int)[] coords =
-                    {
-                        (PlayerManager.Instance.Row - 1, PlayerManager.Instance.Col),  // 위
-                        (PlayerManager.Instance.Row, PlayerManager.Instance.Col + 1),  // 오른쪽
-                        (PlayerManager.Instance.Row + 1, PlayerManager.Instance.Col),  // 아래
-                        (PlayerManager.Instance.Row, PlayerManager.Instance.Col - 1)   // 왼쪽
-                    };
-                    foreach ((int, int) coord in coords)
-                    {
-                        if (coord.Item1 >= 0 && coord.Item1 < boardSize && coord.Item2 >= 0 && coord.Item2 < boardSize)
-                        {
-                            this.movableSpace[coord.Item1, coord.Item2] = true;
-                        }
-                    }
-                    break;
-                }
-
-            case MoveDirection.Diagonal:
-                // 현재 위치로부터 대각선으로 한 칸 이동
-                {
-                    (int, int)[] coords =
-                    {
-                        (PlayerManager.Instance.Row - 1, PlayerManager.Instance.Col - 1),  // 왼쪽 위
-                        (PlayerManager.Instance.Row - 1, PlayerManager.Instance.Col + 1),  // 오른쪽 위
-                        (PlayerManager.Instance.Row + 1, PlayerManager.Instance.Col + 1),  // 오른쪽 아래
-                        (PlayerManager.Instance.Row + 1, PlayerManager.Instance.Col - 1)   // 왼쪽 아래
-                    };
-                    foreach ((int, int) coord in coords)
-                    {
-                        if (coord.Item1 >= 0 && coord.Item1 < boardSize && coord.Item2 >= 0 && coord.Item2 < boardSize)
-                        {
-                            this.movableSpace[coord.Item1, coord.Item2] = true;
-                        }
-                    }
-                    break;
-                }
-
-            case MoveDirection.Colored:
-                // 내가 색칠해 뒀던 칸으로 이동
-                {
-                    List<List<BoardColor>> boardColors = BoardManager.Instance.BoardColors;
-                    for (int i = 0; i < boardSize; i++)  // row
-                        for (int j = 0; j < boardSize; j++)  // col
-                            if (boardColors[i][j] == BoardColor.Player)
-                                this.movableSpace[i, j] = true;
-                    break;
-                }
-
-            case MoveDirection.Dangerous:
-                // 적이 이번 턴에 공격할 칸으로 이동
-                {
-                    List<Enemy> enemyList = EnemyManager.Instance.EnemyList;
-                    int playerRow = PlayerManager.Instance.Row;
-                    int playerCol = PlayerManager.Instance.Col;
-
-                    foreach (Enemy enemy in enemyList)
-                    {
-                        EnemyAction enemyAction = enemy.EnemyActions.Peek().Item1;
-                        switch (enemyAction)
-                        {
-                            case EnemyAction.H1Attack:
-                                for (int j = 0; j < boardSize; j++)
-                                    this.movableSpace[playerRow, j] = true;
-                                break;
-                            case EnemyAction.V1Attack:
-                                for (int i = 0; i < boardSize; i++)
-                                    this.movableSpace[i, playerCol] = true;
-                                break;
-                            case EnemyAction.AllAttack:
-                                for (int i = 0; i < boardSize; i++)
-                                    for (int j = 0; j < boardSize; j++)
-                                        this.movableSpace[i, j] = true;
-                                break;
-                            case EnemyAction.ColoredAttack:  // TODO: ColorAttack은 Enemy로 색칠된 건지, Player로 색칠된 건지?
-                                {
-                                    List<List<BoardColor>> boardColors = BoardManager.Instance.BoardColors;
-                                    for (int i = 0; i < boardSize; i++)  // row
-                                        for (int j = 0; j < boardSize; j++)  // col
-                                            if (boardColors[i][j] == BoardColor.Player)
-                                                this.movableSpace[i, j] = true;
-                                    break;
-                                }
-                            case EnemyAction.NoColoredAttack:
-                                {
-                                    List<List<BoardColor>> boardColors = BoardManager.Instance.BoardColors;
-                                    for (int i = 0; i < boardSize; i++)  // row
-                                        for (int j = 0; j < boardSize; j++)  // col
-                                            if (boardColors[i][j] != BoardColor.Player)
-                                                this.movableSpace[i, j] = true;
-                                    break;
-                                }
-                        }
-                    }
-                    break;
-                }
-        }
+        this.card = originalCard;
     }
 
     public override void DoAction(States state)
@@ -252,21 +145,128 @@ public class MoveState : BaseState
 
     public override void Enter()
     {
+        int boardSize = BoardManager.Instance.BoardSize;
+        this.movableSpace = new bool[boardSize, boardSize];  // 모든 항이 false인 2D 배열
+        switch (this.card.moveDirection)
+        {
+            case MoveDirection.All:
+            // 원하는 칸으로 이동
+            {
+                for (int i = 0; i < boardSize; i++)
+                    for (int j = 0; j < boardSize; j++)
+                        this.movableSpace[i, j] = true;
+                break;
+            }
+
+            case MoveDirection.UDLR:
+            // 현재 위치로부터 상하좌우로 한 칸 이동
+            {
+                (int, int)[] coords =
+                {
+                    (PlayerManager.Instance.Row - 1, PlayerManager.Instance.Col),  // 위
+                    (PlayerManager.Instance.Row, PlayerManager.Instance.Col + 1),  // 오른쪽
+                    (PlayerManager.Instance.Row + 1, PlayerManager.Instance.Col),  // 아래
+                    (PlayerManager.Instance.Row, PlayerManager.Instance.Col - 1)   // 왼쪽
+                };
+                foreach ((int, int) coord in coords)
+                {
+                    if (coord.Item1 >= 0 && coord.Item1 < boardSize && coord.Item2 >= 0 && coord.Item2 < boardSize)
+                    {
+                        this.movableSpace[coord.Item1, coord.Item2] = true;
+                    }
+                }
+                break;
+            }
+
+            case MoveDirection.Diagonal:
+            // 현재 위치로부터 대각선으로 한 칸 이동
+            {
+                (int, int)[] coords =
+                {
+                    (PlayerManager.Instance.Row - 1, PlayerManager.Instance.Col - 1),  // 왼쪽 위
+                    (PlayerManager.Instance.Row - 1, PlayerManager.Instance.Col + 1),  // 오른쪽 위
+                    (PlayerManager.Instance.Row + 1, PlayerManager.Instance.Col + 1),  // 오른쪽 아래
+                    (PlayerManager.Instance.Row + 1, PlayerManager.Instance.Col - 1)   // 왼쪽 아래
+                };
+                foreach ((int, int) coord in coords)
+                {
+                    if (coord.Item1 >= 0 && coord.Item1 < boardSize && coord.Item2 >= 0 && coord.Item2 < boardSize)
+                    {
+                        this.movableSpace[coord.Item1, coord.Item2] = true;
+                    }
+                }
+                break;
+            }
+
+            case MoveDirection.Colored:
+            // 내가 색칠해 뒀던 칸으로 이동
+            {
+                List<List<BoardColor>> boardColors = BoardManager.Instance.BoardColors;
+                for (int i = 0; i < boardSize; i++)  // row
+                    for (int j = 0; j < boardSize; j++)  // col
+                        if (boardColors[i][j] == BoardColor.Player)
+                            this.movableSpace[i, j] = true;
+                break;
+            }
+
+            case MoveDirection.Dangerous:
+            // 적이 이번 턴에 공격할 칸으로 이동
+            {
+                List<Enemy> enemyList = EnemyManager.Instance.EnemyList;
+                int playerRow = PlayerManager.Instance.Row;
+                int playerCol = PlayerManager.Instance.Col;
+
+                foreach (Enemy enemy in enemyList)
+                {
+                    EnemyAction enemyAction = enemy.EnemyActions.Peek().Item1;
+                    switch (enemyAction)
+                    {
+                        case EnemyAction.H1Attack:
+                            for (int j = 0; j < boardSize; j++)
+                                this.movableSpace[playerRow, j] = true;
+                            break;
+                        case EnemyAction.V1Attack:
+                            for (int i = 0; i < boardSize; i++)
+                                this.movableSpace[i, playerCol] = true;
+                            break;
+                        case EnemyAction.AllAttack:
+                            for (int i = 0; i < boardSize; i++)
+                                for (int j = 0; j < boardSize; j++)
+                                    this.movableSpace[i, j] = true;
+                            break;
+                        case EnemyAction.ColoredAttack:  // TODO: ColorAttack은 Enemy로 색칠된 건지, Player로 색칠된 건지?
+                        {
+                            List<List<BoardColor>> boardColors = BoardManager.Instance.BoardColors;
+                            for (int i = 0; i < boardSize; i++)  // row
+                                for (int j = 0; j < boardSize; j++)  // col
+                                    if (boardColors[i][j] == BoardColor.Player)
+                                        this.movableSpace[i, j] = true;
+                            break;
+                        }
+                        case EnemyAction.NoColoredAttack:
+                        {
+                            List<List<BoardColor>> boardColors = BoardManager.Instance.BoardColors;
+                            for (int i = 0; i < boardSize; i++)  // row
+                                for (int j = 0; j < boardSize; j++)  // col
+                                    if (boardColors[i][j] != BoardColor.Player)
+                                        this.movableSpace[i, j] = true;
+                            break;
+                        }
+                    }
+                }
+                break;
+            }
+        }
+
         // 카메라 암전 등
         Camera camera = Camera.main;
         this.tempBackgroundColor = camera.backgroundColor;
         camera.backgroundColor = Color.blue;
     }
 
-    public override void Exit()
+    public override void Update()
     {
-        // 이동 모션?
-        // 카메라 다시 밝게
-        //BoardManager.Instance.MovePlayer()
-        Camera camera = Camera.main;
-        camera.backgroundColor = this.tempBackgroundColor;
-
-        PlayerManager.Instance.MovePlayer(this.moveRow, this.moveCol);
+        // UI 상으로 이동 가능한 곳은 O 표시.
     }
 
     public override void MouseEvent()
@@ -299,11 +299,61 @@ public class MoveState : BaseState
         }
     }
 
-    public override void Update()
+    public override void Exit()
     {
-        // UI 상으로 이동 가능한 곳은 O 표시.
+        // 이동 모션?
+        // 카메라 다시 밝게
+        Camera camera = Camera.main;
+        camera.backgroundColor = this.tempBackgroundColor;
+
+        PlayerManager.Instance.MovePlayer(this.moveRow, this.moveCol);
+        DoAdditionalEffect();
     }
 
+    private void DoAdditionalEffect()
+    {
+        bool proceed = false;
+        switch (this.card.AdditionalEffectCondition)
+        {
+            case AdditionalEffectCondition.PlayerInColoredSpace:
+            {
+                (int r, int c) = (PlayerManager.Instance.Row, PlayerManager.Instance.Col);
+                if (BoardManager.Instance.BoardColors[r][c] == BoardColor.Player)
+                    proceed = true;
+                break;
+            }
+            case AdditionalEffectCondition.None:
+            {
+                proceed = true;
+                break;
+            }
+        }
+        if (!proceed) return;
+
+        switch(this.card.AdditionalEffect)  // TODO
+        {
+            case AdditionalEffect.Re:
+            {
+                break;
+            }
+            case AdditionalEffect.Mana1:
+            {
+                break;
+            }
+            case AdditionalEffect.Draw1:
+            {
+                break;
+            }
+            case AdditionalEffect.PlayerHp30:
+            {
+                break;
+            }
+            case AdditionalEffect.DumpMoveCard1:
+            {
+                break;
+            }
+        }
+    }
 }
 
 public interface IAttackable    //선택 가능한 오브젝트들이 IAttackable을 갖는다
@@ -314,7 +364,7 @@ public interface IAttackable    //선택 가능한 오브젝트들이 IAttackabl
 
 public class AttackState : BaseState
 {
-    private AttackCard Card;
+    private AttackCard card;
     private int targetCountLeft;
     List<IAttackable> attackableList = new List<IAttackable>();
     List<IAttackable> selectedAttackableList = new List<IAttackable>();
@@ -330,7 +380,7 @@ public class AttackState : BaseState
 
     public AttackState(AttackCard card)
     {
-        this.Card = card;
+        this.card = card;
     }
 
 //취소하면 normal state로 돌아감
@@ -341,9 +391,9 @@ public class AttackState : BaseState
     public override void Enter()
     {
         //공격 가능한 대상 개수 가져옴
-        targetCountLeft = Card.TargetCount;
+        targetCountLeft = card.TargetCount;
         //공격 가능한 대상 종류 확인
-        int targetType = Card.TargetType;
+        int targetType = card.TargetType;
         bool isMonster = targetType % 10 != 0;
         bool isWall = (targetType / 10) % 10 != 0;
         bool isMinion = (targetType / 100) % 10 != 0;
@@ -392,13 +442,24 @@ public class AttackState : BaseState
             attackable.GetGameObject().GetComponent<Outline>().color = 3;
         }
     }
-    public override void Exit()
+    public override void Update()
     {
-        //attackableList 초기화
-        attackableList.Clear();
-        selectedAttackableList.Clear();
+        /* 마우스오버 했을 때 오브젝트 커지게
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hitData;
+        if (Physics.Raycast(ray, out hitData))
+        {
+            IAttackable iAttackable = hitData.transform.gameObject.GetComponent<IAttackable>();
+            if (iAttackable != null) //레이캐스트에 맞은 오브젝트에 Iattackable 컴포넌트가 있는가?
+            {
+                if (attackableList.Contains(iAttackable))   //attackableList에 있는가?
+                {
+                    Debug.Log("raycast hit");
+                }
+            }
+        }
+        */
     }
-
     public override void MouseEvent()
     {
         if (targetCountLeft > 0)
@@ -422,7 +483,7 @@ public class AttackState : BaseState
             Debug.Log(targetCountLeft);
             if (targetCountLeft == 0)
             {
-                int damage = Card.Damage;
+                int damage = card.Damage;
 
                 if(PlayerManager.Instance.DebuffDictionary[Debuff.PowerIncrease] != 0)
                     damage = (int)(1.2 * damage);
@@ -432,42 +493,77 @@ public class AttackState : BaseState
 
                 foreach (IAttackable selectedAttackable in selectedAttackableList)
                 {
-                    for (int i = Card.AttackCount; i > 0; i--)  //AttackCount번 공격
+                    for (int i = card.AttackCount; i > 0; i--)  //AttackCount번 공격
                     {
-                        selectedAttackable.AttackedByPlayer(Card.Damage);   //Damage 줌
+                        selectedAttackable.AttackedByPlayer(card.Damage);   //Damage 줌
                     }
                 }
                 foreach (IAttackable attackable in attackableList)
                 {
                     attackable.GetGameObject().GetComponent<Outline>().enabled = false;
                 }
+                
+                PlayerManager.Instance.ChangeStates(PlayerManager.Instance.StatesQueue.Dequeue());
             }
         }
     }
-    public override void Update()
+    public override void Exit()
     {
-        /* 마우스오버 했을 때 오브젝트 커지게
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hitData;
-        if (Physics.Raycast(ray, out hitData))
+        //attackableList 초기화
+        attackableList.Clear();
+        selectedAttackableList.Clear();
+        DoAdditionalEffect();
+    }
+
+    private void DoAdditionalEffect()
+    {
+        bool proceed = false;
+        switch (this.card.AdditionalEffectCondition)
         {
-            IAttackable iAttackable = hitData.transform.gameObject.GetComponent<IAttackable>();
-            if (iAttackable != null) //레이캐스트에 맞은 오브젝트에 Iattackable 컴포넌트가 있는가?
+            case AdditionalEffectCondition.PlayerInColoredSpace:
             {
-                if (attackableList.Contains(iAttackable))   //attackableList에 있는가?
-                {
-                    Debug.Log("raycast hit");
-                }
+                (int r, int c) = (PlayerManager.Instance.Row, PlayerManager.Instance.Col);
+                if (BoardManager.Instance.BoardColors[r][c] == BoardColor.Player)
+                    proceed = true;
+                break;
+            }
+            case AdditionalEffectCondition.None:
+            {
+                proceed = true;
+                break;
             }
         }
-        */
+        if (!proceed) return;
+
+        switch (this.card.AdditionalEffect)  // TODO
+        {
+            case AdditionalEffect.Re:
+            {
+                break;
+            }
+            case AdditionalEffect.Mana1:
+            {
+                break;
+            }
+            case AdditionalEffect.Draw1:
+            {
+                break;
+            }
+            case AdditionalEffect.PlayerHp30:
+            {
+                break;
+            }
+            case AdditionalEffect.DumpMoveCard1:
+            {
+                break;
+            }
+        }
     }
 }
 
 
 public class ColorState : BaseState
 {
-    
     private bool Selectable;
     private ColorCard card;
     List<Tuple<int,int>> colorables = new List<Tuple<int,int>>(); 
@@ -477,7 +573,7 @@ public class ColorState : BaseState
     {
         this.card = card;
     }
-        
+    
     public override void DoAction(States state)
     {
         //각 state에서 필요한 함수 작성(필수아님)
@@ -567,18 +663,8 @@ public class ColorState : BaseState
             Debug.Log(elem.Item2);
         }*/
 
-        //color 대상 highlight-> update에서
-    }
-
-    public override void Exit()
-    {
-
-    }
-
-    public override void MouseEvent()
-    {
-        //클릭하지 않아도 되는 케이스 또한 같이 여기에 구현
-        if(card.colorTargetNum != ColorTargetNum.Target1){
+        //선택할 필요가 없는 경우 바로 시전
+        if(card.colorTargetNum != ColorTargetNum.One){
             Debug.Log("Target is unselectable");
             //todo
             foreach(Tuple<int,int> pos in colorables){
@@ -589,6 +675,20 @@ public class ColorState : BaseState
             PlayerManager.Instance.ChangeStates(PlayerManager.Instance.StatesQueue.Dequeue());
             return;
         }
+        else{//선택할 필요가 있는 경우 highlight enable
+            foreach(Tuple<int,int> coord in colorables){
+                BoardManager.Instance.GameBoard[coord.Item2][coord.Item1].GetComponent<Outline>().enabled = true;
+            }
+        }
+    }
+
+    public override void Update()
+    {
+
+    }
+
+    public override void MouseEvent()
+    {
         
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit[] hitData;
@@ -599,7 +699,13 @@ public class ColorState : BaseState
                 GameObject hitObject = Data.transform.gameObject;
                 if(hitObject.GetComponent<Board>()){
                     //Debug.Log("it is board");
-                    hitObject.GetComponent<Board>().SetBoardColor(BoardColor.Player);
+                    BoardManager.Instance.ColoringBoard(hitObject.GetComponent<Board>().Row,
+                        hitObject.GetComponent<Board>().Col, BoardColor.Player);
+                    //highlight disable
+                    foreach(Tuple<int,int> coord in colorables){
+                        BoardManager.Instance.GameBoard[coord.Item2][coord.Item1].GetComponent<Outline>().enabled = false;
+                    }
+                    EnemyManager.Instance.HightLightBoard();
                     PlayerManager.Instance.ChangeStates(PlayerManager.Instance.StatesQueue.Dequeue());
                 }
                 else{
@@ -609,9 +715,54 @@ public class ColorState : BaseState
         }
     }
 
-    public override void Update()
+    public override void Exit()
     {
+        DoAdditionalEffect();
+    }
 
+    private void DoAdditionalEffect()
+    {
+        bool proceed = false;
+        switch (this.card.AdditionalEffectCondition)
+        {
+            case AdditionalEffectCondition.PlayerInColoredSpace:
+            {
+                (int r, int c) = (PlayerManager.Instance.Row, PlayerManager.Instance.Col);
+                if (BoardManager.Instance.BoardColors[r][c] == BoardColor.Player)
+                    proceed = true;
+                break;
+            }
+            case AdditionalEffectCondition.None:
+            {
+                proceed = true;
+                break;
+            }
+        }
+        if (!proceed) return;
+
+        switch (this.card.AdditionalEffect)  // TODO
+        {
+            case AdditionalEffect.Re:
+            {
+                break;
+            }
+            case AdditionalEffect.Mana1:
+            {
+                break;
+            }
+            case AdditionalEffect.Draw1:
+            {
+                break;
+            }
+            case AdditionalEffect.PlayerHp30:
+            {
+                break;
+            }
+            case AdditionalEffect.DumpMoveCard1:
+            {
+                break;
+            }
+        }
     }
 
     private bool isNextToColored(int i, int j){

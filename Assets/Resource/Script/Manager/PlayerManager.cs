@@ -12,6 +12,11 @@ using Random = UnityEngine.Random;
 /// </summary>
 public class PlayerManager : Singleton<PlayerManager>
 {
+    private PlayerDataHolder _holder;
+    
+    private int _currentStage;
+    public int CurrentStage { get => _currentStage; set => _currentStage = value; }
+    
     [SerializeField] private int maxHp = 3;
     public int MaxHp { get => maxHp; set => maxHp = (value >= 0) ? value : 0; }
     private int _hp = 3;
@@ -46,7 +51,10 @@ public class PlayerManager : Singleton<PlayerManager>
     public List<Card> PlayerCard;
 
     void Awake(){
-        PlayerCard = CardData.Instance._load("PlayerCard.json");
+        if (PlayerManager.Instance != this)
+            Destroy(gameObject);
+        
+        DontDestroyOnLoad(this.gameObject);
     }
 
     void Start()
@@ -56,6 +64,30 @@ public class PlayerManager : Singleton<PlayerManager>
         //{
         //    ColorState state1 = ((ColorCard)card).ColorState();
         //}
+    }
+
+    void Update()
+    {
+        if(Input.GetMouseButtonDown(0))
+            state.MouseEvent();
+    }
+
+    void FixedUpdate()
+    {
+        state.Update();
+    }
+
+    public void PlayerLoading()
+    {
+        PlayerCard = CardData.Instance._load("PlayerCard.json");
+        
+        _holder = PlayerData.Instance._load("PlayerData.json");
+        _currentStage = _holder.CurrentStage;
+        maxHp = _holder.MaxHp;
+        _hp = _holder.Hp;
+        maxMana = _holder.MaxMana;
+        _mana = _holder.Mana;
+        
         PlayerCard.Shuffle();
 
         CardManager.Instance.SetUp();
@@ -69,17 +101,6 @@ public class PlayerManager : Singleton<PlayerManager>
         StatesQueue = new Queue<BaseState>();
         state = new NormalState(5, true);
         state.Enter();
-    }
-
-    void Update()
-    {
-        if(Input.GetMouseButtonDown(0))
-            state.MouseEvent();
-    }
-
-    void FixedUpdate()
-    {
-        state.Update();
     }
 
     private void InitDebuffDictionary()
@@ -101,7 +122,7 @@ public class PlayerManager : Singleton<PlayerManager>
         StartCoroutine(ChangeStatesCoroutine(newState));
     }
     
-    public IEnumerator ChangeStatesCoroutine(BaseState newState)
+    private IEnumerator ChangeStatesCoroutine(BaseState newState)
     {
         Debug.Log(state);
         state.Exit();
@@ -151,16 +172,30 @@ public class PlayerManager : Singleton<PlayerManager>
             if(_shield + value < 0)
             {
                 value += _shield;
-                if (_hp + value < 0) return false;
+                if (_hp + value <= 0)
+                {
+                    GameManager.Instance.GameOver();
+                    return true;
+                }
                 else if(_hp + value > MaxHp) _hp = MaxHp;
                 else _hp += value;
             }
             else _shield += value;
         }
+        else
+        {
+            if (_hp + value <= 0)
+            {
+                GameManager.Instance.GameOver();
+                return true;
+            }
+            else if(_hp + value > MaxHp) _hp = MaxHp;
+            else _hp += value;
+        }
 
         shieldText.text = String.Format("Shield : {0}", _shield);
         hpText.text = String.Format("HP : {0}", _hp);
-        return true;
+        return false;
     }
 
     public bool MovePlayer(int row, int col)

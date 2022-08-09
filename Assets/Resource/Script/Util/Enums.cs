@@ -82,7 +82,7 @@ public enum AdditionalEffect
     None,
     Shield10,
     MonsterHp1,
-    PlayerHp10,
+    PlayerHp10, PlayerHp20, PlayerHp30,
     DMG10,
     Move,
     Color,
@@ -98,7 +98,7 @@ public enum AdditionalEffect
 [JsonConverter(typeof(StringEnumConverter))]
 public enum ColorTargetPosition {All, P1, P4, P5, Color, Vertical, Horizontal, P3V, P3H}
 [JsonConverter(typeof(StringEnumConverter))]
-public enum ColorTargetNum {Target1, Target2, Target3, Target4, Target5, T, Hand}
+public enum ColorTargetNum {One, Two, Three, Four, Five, T, Hand}
 
 
 

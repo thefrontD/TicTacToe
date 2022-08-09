@@ -38,8 +38,7 @@ public class BoardManager : Singleton<BoardManager>
 
     void Awake()
     {
-        BoardLoading();
-        InitPlayer();
+        
     }
 
     void Start()
@@ -55,9 +54,9 @@ public class BoardManager : Singleton<BoardManager>
     /// <summary>
     /// Board 기획이 나오면 Json 파일로 저장해서 로딩해서 사용할 예정
     /// </summary>
-    private void BoardLoading()
+    public void BoardLoading(string dataName)
     {
-        Holder holder = BoardData.Instance._load("BoardData.json");
+        Holder holder = BoardData.Instance._load(dataName+".json");
         
         _boardSize = holder._boardSize;
         PlayerManager.Instance.Row = holder._playerRow;
@@ -78,6 +77,8 @@ public class BoardManager : Singleton<BoardManager>
                 _boardAttackables[i].Add(null);
             }
         }
+
+        InitPlayer();
     }
 
     private void InitPlayer()
@@ -100,15 +101,21 @@ public class BoardManager : Singleton<BoardManager>
         {
             _boardColors[x][y] = boardColor;
             _gameBoard[x][y].SetBoardColor(boardColor);
+
             return true;
         }
     }
 
-    public void SummonWalls(int x, int y, int damage){
+    public bool SummonWalls(int x, int y, int damage)
+    {
+        bool _isGameOver = false;
+        
         if(_boardObjects[x][y] == BoardObject.None)
             _boardObjects[x][y] = BoardObject.Wall;
         else if(_boardObjects[x][y] == BoardObject.Player)
-            PlayerManager.Instance.DamageToPlayer(-damage);
+            _isGameOver = PlayerManager.Instance.DamageToPlayer(-damage);
+        
+        return _isGameOver;
     }
 
     public bool MovePlayer(int row, int col)
@@ -139,7 +146,7 @@ public class BoardManager : Singleton<BoardManager>
             {
                 if (_boardColors[i][j] != color)
                     check1 = false;
-                
+
                 if (_boardColors[j][i] != color)
                     check2 = false;
             } 
@@ -155,7 +162,7 @@ public class BoardManager : Singleton<BoardManager>
         {
             if (_boardColors[i][i] != color)
                 check1 = false;
-            if (_boardColors[i][_boardSize - i + 1] != color)
+            if (_boardColors[i][_boardSize - 1 - i] != color)
                 check2 = false;
         }
         
@@ -197,6 +204,8 @@ public class BoardManager : Singleton<BoardManager>
                 check = false;
         if (check) ret++;
 
+        Debug.Log(string.Format("빙고 개수 : {0}", ret));
+        
         return ret;
     } 
 }
