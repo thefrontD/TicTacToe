@@ -73,17 +73,21 @@ public enum AdditionalEffectCondition
     DestroyShield, DestroyWall, DestroyMinion, DestroyWallOrMinion,
     MonsterWillAttack, MonsterWillWall, MonsterWillMinion, MonsterWillShield,
     PlayerInColoredSpace,
-    MakeBingo
+    MakeBingo,
+    PlayerHealthUnder50Percent,
+    DeckTopIsAttackCard,
 }
 
 [JsonConverter(typeof(StringEnumConverter))]
 public enum AdditionalEffect
 {
     None,
-    Shield10,
+    MonsterShield10, MonsterShield20, MonsterShield1000,
     MonsterHp1,
     PlayerHp10, PlayerHp20, PlayerHp30,
-    DMG10,
+    DMG10, DMG20, DMG30,
+    BuffPlayer, DebuffPlayer,
+    BuffMonster, DebuffMonster,
     Move,
     Color,
     Re,
