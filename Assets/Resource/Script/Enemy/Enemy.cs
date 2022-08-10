@@ -90,15 +90,29 @@ public class Enemy : MonoBehaviour, IAttackable
         return gameObject;
     }
 
-    public GameObject HP_Container;
     public GameObject ShieldUI;
     public GameObject HPUI;
+    private GameObject[] HP_Containers;
     
+    private void initUI()
+    {
+        HP_Containers = new GameObject[HPUI.transform.childCount];
+        for (int i = 0; i < HP_Containers.Length; i++)
+        {
+            HP_Containers[i] = HPUI.transform.GetChild(i).gameObject;
+            HP_Containers[i].SetActive(false);
+        }
+        for (int i = 0; i < _enemyMaxHp; i++)
+        {
+            HP_Containers[i].SetActive(true);
+        }
+    }
+
     void Update()
     {
-        ShieldUI.GetComponent<Slider>().value = -_enemyShield / _enemyMaxShield;
+        ShieldUI.GetComponent<Slider>().value = (float)_enemyShield / (float)_enemyMaxShield;
         ShieldUI.transform.Find("Text").GetComponent<TextMeshProUGUI>().text = _enemyShield.ToString() + "/" + _enemyMaxShield.ToString();
-        Debug.Log(_enemyShield.ToString() + " / " + _enemyMaxShield.ToString());
+        Debug.Log((float)_enemyShield / (float)_enemyMaxShield);
     }
 
     public void InitEnemyData(EnemyDataHolder enemyDataHolder)
@@ -117,6 +131,8 @@ public class Enemy : MonoBehaviour, IAttackable
         foreach(Debuff debuff in Enum.GetValues(typeof(Debuff)))
             _debuffDictionary[debuff] = 0;
         overlapPoint = new List<(int, int)>();
+
+        initUI();
     }
     
     /// <summary>
