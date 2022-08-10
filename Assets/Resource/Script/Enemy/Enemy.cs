@@ -84,6 +84,8 @@ public class Enemy : MonoBehaviour, IAttackable
                 GameManager.Instance.GameClear();
             }
         }
+        shieldUIUpdate();
+        HPUIUpdate();
     }
     public GameObject GetGameObject()
     {
@@ -93,26 +95,46 @@ public class Enemy : MonoBehaviour, IAttackable
     public GameObject ShieldUI;
     public GameObject HPUI;
     private GameObject[] HP_Containers;
+    private GameObject[] HP_Icons;
     
     private void initUI()
     {
         HP_Containers = new GameObject[HPUI.transform.childCount];
+        HP_Icons = new GameObject[HPUI.transform.childCount];
         for (int i = 0; i < HP_Containers.Length; i++)
         {
             HP_Containers[i] = HPUI.transform.GetChild(i).gameObject;
+            HP_Icons[i] = HP_Containers[i].transform.GetChild(0).gameObject;
             HP_Containers[i].SetActive(false);
+            HP_Icons[i].SetActive(false);
         }
         for (int i = 0; i < _enemyMaxHp; i++)
         {
             HP_Containers[i].SetActive(true);
+            HP_Icons[i].SetActive(true);
+        }
+        ShieldUI.GetComponent<Slider>().value = (float)_enemyShield / (float)_enemyMaxShield;
+        ShieldUI.transform.Find("Text").GetComponent<TextMeshProUGUI>().text = _enemyShield.ToString() + "/" + _enemyMaxShield.ToString();
+        HPUIUpdate();
+        shieldUIUpdate();
+    }
+
+    void HPUIUpdate()
+    {
+        for (int i = 0; i < _enemyMaxHp; i++)
+        {
+            HP_Icons[i].SetActive(false);
+        }
+        for (int i = 0; i < _enemyHp; i++)
+        {
+            HP_Icons[i].SetActive(true);
         }
     }
 
-    void Update()
+    void shieldUIUpdate()
     {
         ShieldUI.GetComponent<Slider>().value = (float)_enemyShield / (float)_enemyMaxShield;
         ShieldUI.transform.Find("Text").GetComponent<TextMeshProUGUI>().text = _enemyShield.ToString() + "/" + _enemyMaxShield.ToString();
-        Debug.Log((float)_enemyShield / (float)_enemyMaxShield);
     }
 
     public void InitEnemyData(EnemyDataHolder enemyDataHolder)
