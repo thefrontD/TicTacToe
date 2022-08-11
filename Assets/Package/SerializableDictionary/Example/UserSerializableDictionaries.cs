@@ -13,6 +13,8 @@ public class ObjectColorDictionary : SerializableDictionary<UnityEngine.Object, 
 
 [Serializable]
 public class ColorArrayStorage : SerializableDictionary.Storage<Color[]> {}
+[Serializable]
+public class StringSpriteDictionary : SerializableDictionary<string, Sprite> {}
 
 [Serializable]
 public class StringColorArrayDictionary : SerializableDictionary<string, Color[], ColorArrayStorage> {}

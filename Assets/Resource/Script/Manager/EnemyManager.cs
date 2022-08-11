@@ -24,7 +24,7 @@ public class EnemyManager : Singleton<EnemyManager>
 
     public void EnemyLoading(string dataName)
     {
-        EnemyDataLoading(dataName + ".json");
+        EnemyDataLoading(dataName);
         
         for (int i = 0; i < BoardManager.Instance.BoardSize; i++)
         {
@@ -59,8 +59,8 @@ public class EnemyManager : Singleton<EnemyManager>
                         if (i == enemy.PreviousPlayerCol) continue;
                         else
                         {
-                            for (int j = 0; j < BoardManager.Instance.BoardSize; i++)
-                                BoardManager.Instance.GameBoard[j][i].SetHighlight(BoardSituation.WillAttack);
+                            for (int j = 0; j < BoardManager.Instance.BoardSize; j++)
+                                BoardManager.Instance.GameBoard[i][j].SetHighlight(BoardSituation.WillAttack);
                         }
                     }
                     break;
@@ -70,25 +70,31 @@ public class EnemyManager : Singleton<EnemyManager>
                         if (i == enemy.PreviousPlayerRow) continue;
                         else
                         {
-                            for (int j = 0; j < BoardManager.Instance.BoardSize; i++)
-                                BoardManager.Instance.GameBoard[i][j].SetHighlight(BoardSituation.WillAttack);
+                            for (int j = 0; j < BoardManager.Instance.BoardSize; j++)
+                            {
+                                Debug.Log(string.Format("{0} : {1}", i, j));
+                                BoardManager.Instance.GameBoard[j][i].SetHighlight(BoardSituation.WillAttack);
+                            }
                         }
                     }
                     break;
                 case EnemyAction.ColoredAttack:
                     for (int i = 0; i < BoardManager.Instance.BoardSize; i++)
                     {
-                        for (int j = 0; j < BoardManager.Instance.BoardSize; i++)
+                        for (int j = 0; j < BoardManager.Instance.BoardSize; j++)
                         {
-                            if(BoardManager.Instance.GameBoard[i][j].currentBoardColor == BoardColor.None)
+                            if (BoardManager.Instance.GameBoard[i][j].currentBoardColor == BoardColor.None)
+                            {
+                                Debug.Log(string.Format("{0} : {1}", i, j));
                                 BoardManager.Instance.GameBoard[i][j].SetHighlight(BoardSituation.WillAttack);
+                            }
                         }
                     }
                     break;
                 case EnemyAction.NoColoredAttack:
                     for (int i = 0; i < BoardManager.Instance.BoardSize; i++)
                     {
-                        for (int j = 0; j < BoardManager.Instance.BoardSize; i++)
+                        for (int j = 0; j < BoardManager.Instance.BoardSize; j++)
                         {
                             if(BoardManager.Instance.GameBoard[i][j].currentBoardColor != BoardColor.Enemy)
                                 BoardManager.Instance.GameBoard[i][j].SetHighlight(BoardSituation.WillAttack);
@@ -98,7 +104,7 @@ public class EnemyManager : Singleton<EnemyManager>
                 case EnemyAction.AllAttack:
                     for (int i = 0; i < BoardManager.Instance.BoardSize; i++)
                     {
-                        for (int j = 0; j < BoardManager.Instance.BoardSize; i++)
+                        for (int j = 0; j < BoardManager.Instance.BoardSize; j++)
                         {
                             BoardManager.Instance.GameBoard[i][j].SetHighlight(BoardSituation.WillAttack);
                         }
@@ -144,6 +150,9 @@ public class EnemyManager : Singleton<EnemyManager>
         foreach (Enemy enemy in _enemyList)
         {
             _isGameOver = enemy.DoEnemyAction();
+            
+            Debug.Log(_isGameOver);
+            
             if (_isGameOver) break;
             yield return new WaitForSeconds(0.5f);
         }

@@ -56,7 +56,7 @@ public class BoardManager : Singleton<BoardManager>
     /// </summary>
     public void BoardLoading(string dataName)
     {
-        Holder holder = BoardData.Instance._load(dataName+".json");
+        Holder holder = BoardData.Instance._load(dataName);
         
         _boardSize = holder._boardSize;
         PlayerManager.Instance.Row = holder._playerRow;
@@ -111,7 +111,10 @@ public class BoardManager : Singleton<BoardManager>
         bool _isGameOver = false;
         
         if(_boardObjects[x][y] == BoardObject.None)
+        {
             _boardObjects[x][y] = BoardObject.Wall;
+            Instantiate(WallPrefabs, _gameBoard[x][y].transform.position, Quaternion.identity);
+        }
         else if(_boardObjects[x][y] == BoardObject.Player)
             _isGameOver = PlayerManager.Instance.DamageToPlayer(-damage);
         

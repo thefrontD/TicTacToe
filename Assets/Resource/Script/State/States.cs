@@ -96,7 +96,7 @@ public class EnemyState : BaseState
                 BoardManager.Instance.GameBoard[i][j].SetHighlight(BoardSituation.None);
             }
         }
-
+        
         foreach(Enemy enemy in EnemyManager.Instance.EnemyList){
             if(enemy.DebuffDictionary[Debuff.Heal] > 0)
                 enemy.EnemyHP += (int)(enemy.EnemyMaxHP*0.1);
@@ -805,6 +805,7 @@ public class ColorState : BaseState
 
     public override void Exit()
     {
+        EnemyManager.Instance.HightLightBoard();
         DoAdditionalEffect();
     }
 

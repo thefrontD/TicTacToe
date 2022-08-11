@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 using System;
 using UnityEditor;
 
-public class SceneManager : Singleton<SceneManager>
+public class LoadingManager : Singleton<LoadingManager>
 {
     public event Action OnSceneLoaded;
 
@@ -24,15 +24,15 @@ public class SceneManager : Singleton<SceneManager>
 
     private void Awake()
     {
-        if (SceneManager.Instance != this)
+        if (LoadingManager.Instance != this)
             Destroy(gameObject);
 
-        canvas = GetComponent<Canvas>();
+        //canvas = GetComponent<Canvas>();
 
-        loadingScreen = transform.GetChild(0).gameObject;
-        loadingAnimator = loadingScreen.GetComponent<Animator>();
+        //loadingScreen = transform.GetChild(0).gameObject;
+        //loadingAnimator = loadingScreen.GetComponent<Animator>();
 
-        loadingScreen.SetActive(false);
+        //loadingScreen.SetActive(false);
 
         DontDestroyOnLoad(this.gameObject);
     }
@@ -46,8 +46,12 @@ public class SceneManager : Singleton<SceneManager>
 
     public void LoadBattleScene()
     {
-        PlayerManager.Instance.CurrentStage++;
-        LoadScene(1);
+        SceneManager.LoadScene("BattleScene");
+    }
+
+    public void LoadWorldMap()
+    {
+        
     }
 
     public void QuitGame()
@@ -55,6 +59,28 @@ public class SceneManager : Singleton<SceneManager>
         Application.Quit();
     }
 
+    private void SaveData()
+    {
+        PlayerManager.Instance.SavePlayerData();
+    }
+
+    private IEnumerator SavingSequence(string sceneName)
+    {
+        GameManager.Instance.CurrentStage++;
+        
+        PlayerManager.Instance.SavePlayerData();
+        
+        yield return new WaitForSeconds(0.5f);
+        
+        SceneManager.LoadScene("WorldMap");
+    }
+    
+    
+    /// <summary>
+    /// 나중에 LoadingScreen 개발 이후에 사용할 예정 지금은 예정에 없음
+    /// </summary>
+    /// <param name="buildIndex"></param>
+    /// <returns></returns>
     private bool LoadScene(int buildIndex)
     {
         if (loadingCoroutine != null) return false;

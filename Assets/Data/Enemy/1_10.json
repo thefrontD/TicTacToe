@@ -1,0 +1,24 @@
+[
+    {
+      "EnemyName" : "SampleEnemy",
+      "EnemyHP": 4,
+      "EnemyShield": 50,
+      "EnemyPower" : 10,
+      "EnemyAction": [
+        {"Item1": "H2Attack", "Item2": 10},
+        {"Item1": "V1Attack", "Item2": 10},
+        {"Item1": "WallsSummon", "Item2": 10},
+        {"Item1": "V2Attack", "Item2": 10},
+        {"Item1": "H1Attack", "Item2": 10},
+        {"Item1": "WallsSummon", "Item2": 10},
+        {"Item1": "HpHealing", "Item2": 2},
+        {"Item1": "H2Attack", "Item2": 10},
+        {"Item1": "V2Attack", "Item2": 10},
+        {"Item1": "WallsSummon", "Item2": 10},
+        {"Item1": "V2Attack", "Item2": 10},
+        {"Item1": "H2Attack", "Item2": 10},
+        {"Item1": "WallsSummon", "Item2": 10}
+      ]
+    }
+  ]
+  

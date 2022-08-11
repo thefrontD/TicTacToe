@@ -24,6 +24,7 @@ public class WorldMapManager : MonoBehaviour
     {
         //플레이어 오브젝트 이동 애니메이션
         //stage를 나타내는cylinder을 array로 받아 적용
+        clearedStage = (GameManager.Instance.CurrentStage % 100) - 1;
         Vector3 spawnPoint = stages[clearedStage].GetComponent<Transform>().position;
         Vector3 nextPoint = stages[clearedStage + 1].GetComponent<Transform>().position;
         spawnPoint += new Vector3(0,-2,0);
@@ -32,6 +33,7 @@ public class WorldMapManager : MonoBehaviour
         Sequence mySequence = DOTween.Sequence();
         mySequence.PrependInterval(1);
         mySequence.Append(Player.GetComponent<Transform>().DOMove(nextPoint, 2));
+        mySequence.InsertCallback(5, LoadingManager.Instance.LoadBattleScene);
         
         //stage 표기 변경
         StageIdentifier.GetComponent<Text>().text = "Stage 1-"+(clearedStage+1).ToString();
@@ -44,6 +46,11 @@ public class WorldMapManager : MonoBehaviour
         PlayerCard = CardData.Instance._load("PlayerCard.json");
     }
 
+    public void Init()
+    {
+        
+    }
+    
     void Update()
     {
         

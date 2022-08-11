@@ -13,7 +13,7 @@ using UnityEngine;
 /// 실제로 Card를 Rendering 및 Animating 하는 부분은 CardUI라는 Script로 새로 작성 예정
 /// </summary>
 [JsonConverter(typeof(BaseConverter))]
-public abstract class Card 
+public abstract class Card
 {
     protected CardType cardType;
 
@@ -23,18 +23,23 @@ public abstract class Card
     public AdditionalEffectCondition AdditionalEffectCondition => _additionalEffectCondition;
     private AdditionalEffect _additionalEffect;
     public AdditionalEffect AdditionalEffect => _additionalEffect;
-    
+
     private string cardName;
-    public string CardName{
+
+    public string CardName
+    {
         get { return cardName; }
     }
-    
+
     private string cardDesc;
-    public string CardDesc{
+
+    public string CardDesc
+    {
         get { return cardDesc; }
     }
 
     private int cardCost;
+
     public int CardCost
     {
         get { return cardCost; }
@@ -48,13 +53,14 @@ public abstract class Card
     //[JsonConverter(typeof(StringEnumConverter))]
     //public List<States> StatesList;
 
-    public Card(string cardName, string cardDesc, int cardCost, TriggerCondition triggerCondition, 
-        AdditionalEffectCondition additionalEffectCondition, AdditionalEffect additionalEffect){
+    public Card(string cardName, string cardDesc, int cardCost, TriggerCondition triggerCondition,
+        AdditionalEffectCondition additionalEffectCondition, AdditionalEffect additionalEffect)
+    {
         this.cardName = cardName;
         this.cardDesc = cardDesc;
         this.cardCost = cardCost;
     }
-    
+
     /// <summary>
     /// Card마다 가질 수 있는 사용시의 개별적인 효과는 usingCardSpecific에서 작성할 것
     /// </summary>
@@ -62,28 +68,39 @@ public abstract class Card
 
     public bool usingCard()
     {
+        if (!CheckCondition())
+            return false;
+
+        if (!PlayerManager.Instance.SetMana(-CardCost, cardType)) return false;
+        usingCardSpecific();
+        if (PlayerManager.Instance.StatesQueue.Count == 0) return false;
+        else PlayerManager.Instance.ChangeStates(PlayerManager.Instance.StatesQueue.Dequeue());
+        return true;
+    }
+
+    private bool CheckCondition()
+    {
         bool proceed = false;
         int cnt = 0;
         int[] dx = new int[4] {1, 0, -1, 0};
         int[] dy = new int[4] {0, 1, 0, -1};
 
-        #region TriggerCondition
         switch (this._triggerCondition)
         {
             case TriggerCondition.Attacked:
                 proceed = true;
                 break;
-            
+
             case TriggerCondition.PlayerInColoredSpace:
                 if (BoardManager.Instance.BoardColors[PlayerManager.Instance.Row][PlayerManager.Instance.Col]
                     == BoardColor.Player)
                     proceed = true;
                 break;
-            
+
             case TriggerCondition.ColoredSpaceExists:
-                for (int i = 0; i < BoardManager.Instance.BoardColors.Count; i++)  // row
+                for (int i = 0; i < BoardManager.Instance.BoardColors.Count; i++) // row
                 {
-                    for (int j = 0; j < BoardManager.Instance.BoardColors[0].Count; j++)  // col
+                    for (int j = 0; j < BoardManager.Instance.BoardColors[0].Count; j++) // col
                     {
                         if (BoardManager.Instance.BoardColors[i][j] == BoardColor.Player)
                         {
@@ -91,13 +108,15 @@ public abstract class Card
                             break;
                         }
                     }
+
                     if (proceed) break;
                 }
+
                 break;
 
             case TriggerCondition.EnemyWillAttack:
                 foreach (Enemy enemy in EnemyManager.Instance.EnemyList)
-                    if ((int)enemy.EnemyActions.Peek().Item1/10 == 0)
+                    if ((int) enemy.EnemyActions.Peek().Item1 / 10 == 0)
                         proceed = true;
                 break;
             case TriggerCondition.EnemyWillWall:
@@ -115,7 +134,7 @@ public abstract class Card
                     if (enemy.EnemyActions.Peek().Item1 == EnemyAction.ArmorHealing)
                         proceed = true;
                 break;
-            
+
             case TriggerCondition.PlayerWall:
                 proceed = true;
                 break;
@@ -132,7 +151,8 @@ public abstract class Card
                         proceed = false;
                         break;
                     }
-                } 
+                }
+
                 break;
             case TriggerCondition.OnlyColorCardInHand:
                 proceed = true;
@@ -144,6 +164,7 @@ public abstract class Card
                         break;
                     }
                 }
+
                 break;
             case TriggerCondition.OnlyMoveCardInHand:
                 proceed = true;
@@ -155,8 +176,9 @@ public abstract class Card
                         break;
                     }
                 }
+
                 break;
-            
+
             case TriggerCondition.Bingo1:
             case TriggerCondition.Bingo2:
             case TriggerCondition.Bingo3:
@@ -169,11 +191,11 @@ public abstract class Card
             case TriggerCondition.CardInHand2:
             case TriggerCondition.CardInHand3:
             case TriggerCondition.CardInHand4:
-            case TriggerCondition.CardInHand5:    
-                if(CardManager.Instance.HandCardList.Count >= ((int) _triggerCondition - 40))
+            case TriggerCondition.CardInHand5:
+                if (CardManager.Instance.HandCardList.Count >= ((int) _triggerCondition - 40))
                     proceed = true;
                 break;
-            
+
             case TriggerCondition.AttackCardInHand1:
             case TriggerCondition.AttackCardInHand2:
             case TriggerCondition.AttackCardInHand3:
@@ -188,12 +210,12 @@ public abstract class Card
                 if (cnt >= ((int) _triggerCondition - 50))
                     proceed = true;
                 break;
-            
+
             case TriggerCondition.ColorCardInHand1:
             case TriggerCondition.ColorCardInHand2:
             case TriggerCondition.ColorCardInHand3:
             case TriggerCondition.ColorCardInHand4:
-            case TriggerCondition.ColorCardInHand5:  
+            case TriggerCondition.ColorCardInHand5:
                 foreach (CardUI card in CardManager.Instance.HandCardList)
                 {
                     if (card.Card.cardType == CardType.Color)
@@ -203,12 +225,12 @@ public abstract class Card
                 if (cnt >= ((int) _triggerCondition - 60))
                     proceed = true;
                 break;
-            
+
             case TriggerCondition.MoveCardInHand1:
             case TriggerCondition.MoveCardInHand2:
             case TriggerCondition.MoveCardInHand3:
             case TriggerCondition.MoveCardInHand4:
-            case TriggerCondition.MoveCardInHand5:  
+            case TriggerCondition.MoveCardInHand5:
                 foreach (CardUI card in CardManager.Instance.HandCardList)
                 {
                     if (card.Card.cardType == CardType.Move)
@@ -229,14 +251,8 @@ public abstract class Card
                 proceed = true;
                 break;
         }
-        if (!proceed) return false;
-        #endregion
-        
-        if (!PlayerManager.Instance.SetMana(-CardCost, cardType)) return false;
-        usingCardSpecific();
-        if (PlayerManager.Instance.StatesQueue.Count == 0) return false;
-        else PlayerManager.Instance.ChangeStates(PlayerManager.Instance.StatesQueue.Dequeue());
-        return true;
+
+        return proceed;
     }
 }
 

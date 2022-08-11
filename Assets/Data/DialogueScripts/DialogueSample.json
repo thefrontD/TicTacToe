@@ -1,0 +1,42 @@
+﻿{
+  "Dialogues": [
+    {
+      "Name": "주인공",
+      "Context": "그래서 우리는 과거로 끊임없이 흘러들어가면서도 해류에 맞서 배를 띄우고 파도를 가른다.",
+      "PortraitLocation": "Left"
+    },
+    {
+      "Name": "아무개",
+      "Context": "지금보다 나이도 더 적고 마음도 더 여렸던 시절 아버지가 해주셨던 충고를 나는 지금까지 마음속으로 곱씹고는 한다.",
+      "PortraitLocation": "Right"
+    },
+    {
+      "Name": "주인공",
+      "Context": "딸이라 기뻐. 멍청했으면 좋겠어. 여자한텐 그게 세상에서 최선일테니까. 예쁘고 어린 멍청이.",
+      "PortraitLocation": "Left"
+    },
+    {
+      "Name": "아무개",
+      "Context": "과거를 반복할 수 없다고? 할 수 있고말고!",
+      "PortraitLocation": "Right"
+    },
+    {
+      "Name": "주인공",
+      "Context": "넌 그런 쓰레기 같은 놈들을 전부 모아놓은 것보다 가치있는 사람이야.",
+      "PortraitLocation": "Left"
+    },
+    {
+      "Name": "아무개",
+      "Context": "오후는 어디론가 흘러가고 있는데, 허망한 꿈만이 홀로 남아 싸우고 있었다…",
+      "PortraitLocation": "Right"
+    }
+  ],
+  "DialoguePeople" : [
+    "주인공",
+    "아무개"
+  ],
+  "InitialSetting" : [
+    "주인공", "Left",
+    "아무개", "Right"
+  ]
+}

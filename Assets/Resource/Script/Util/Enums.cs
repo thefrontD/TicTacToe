@@ -124,5 +124,5 @@ public enum Debuff
 }
 public enum BoardSituation
 {
-    WillAttack, WillSummon, WillColored, None = 100
+    WillAttack=0, WillSummon, WillColored, None = 100
 }

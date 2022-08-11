@@ -51,11 +51,8 @@ namespace QuickOutline
 		[Range(0, 1)]
 		public float fillAmount = 0.2f;
 
-		public Color lineColor0 = Color.red;
-		public Color lineColor1 = Color.green;
-		public Color lineColor2 = Color.blue;
-		public Color lineColor3 = Color.blue;
-
+		public List<Color> lineColor;
+		
 		public bool additiveRendering = false;
 
 		public bool backfaceCulling = true;
@@ -77,9 +74,8 @@ namespace QuickOutline
 
 		[HideInInspector]
 		public Camera outlineCamera;
-		Material outline1Material;
-		Material outline2Material;
-		Material outline3Material;
+
+		private List<Material> outlineMaterial;
 		Material outlineEraseMaterial;
 		Shader outlineShader;
 		Shader outlineBufferShader;
@@ -94,14 +90,10 @@ namespace QuickOutline
 
 		Material GetMaterialFromID(int ID)
 		{
-			if (ID == 0)
-				return outline1Material;
-			else if (ID == 1)
-				return outline2Material;
-			else if (ID == 2)
-				return outline3Material;
+			if (ID < outlineMaterial.Count)
+				return outlineMaterial[ID];
 			else
-				return outline1Material;
+				return outlineMaterial[0];
 		}
 		List<Material> materialBuffer = new List<Material>();
 		Material CreateMaterial(Color emissionColor)
@@ -115,6 +107,7 @@ namespace QuickOutline
 			m.EnableKeyword("_ALPHABLEND_ON");
 			m.DisableKeyword("_ALPHAPREMULTIPLY_ON");
 			m.renderQueue = 3000;
+
 			return m;
 		}
 
@@ -131,6 +124,8 @@ namespace QuickOutline
 
 		void Start()
 		{
+			outlineMaterial = new List<Material>();
+			
 			CreateMaterialsIfNeeded();
 			UpdateMaterialsPublicProperties();
 
@@ -176,6 +171,13 @@ namespace QuickOutline
 			outlineCamera.AddCommandBuffer(CameraEvent.BeforeImageEffects, commandBuffer);
 		}
 
+		public void SetAlpha(int idx, float alpha)
+		{
+			Color temp = lineColor[idx];
+			temp.a = alpha;
+			lineColor[idx] = temp;
+		}
+		
 		bool RenderTheNextFrame;
 		public void OnPreRender()
 		{
@@ -354,12 +356,10 @@ namespace QuickOutline
 			}
 			if (outlineEraseMaterial == null)
 				outlineEraseMaterial = CreateMaterial(new Color(0, 0, 0, 0));
-			if (outline1Material == null)
-				outline1Material = CreateMaterial(new Color(1, 0, 0, 0));
-			if (outline2Material == null)
-				outline2Material = CreateMaterial(new Color(0, 1, 0, 0));
-			if (outline3Material == null)
-				outline3Material = CreateMaterial(new Color(0, 0, 1, 0));
+
+			foreach (Color color in lineColor)
+				outlineMaterial.Add(CreateMaterial(color));
+			
 		}
 
 		private void DestroyMaterials()
@@ -369,16 +369,15 @@ namespace QuickOutline
 			materialBuffer.Clear();
 			DestroyImmediate(outlineShaderMaterial);
 			DestroyImmediate(outlineEraseMaterial);
-			DestroyImmediate(outline1Material);
-			DestroyImmediate(outline2Material);
-			DestroyImmediate(outline3Material);
+			foreach (Material material in outlineMaterial)
+			{
+				DestroyImmediate(material);
+			}
+			outlineMaterial.Clear();
 			outlineShader = null;
 			outlineBufferShader = null;
 			outlineShaderMaterial = null;
 			outlineEraseMaterial = null;
-			outline1Material = null;
-			outline2Material = null;
-			outline3Material = null;
 		}
 
 		public void UpdateMaterialsPublicProperties()
@@ -423,9 +422,12 @@ namespace QuickOutline
 				outlineShaderMaterial.SetFloat("_FillAmount", fillAmount);
 				outlineShaderMaterial.SetColor("_FillColor", fillColor);
 				outlineShaderMaterial.SetFloat("_UseFillColor", useFillColor ? 1 : 0);
-				outlineShaderMaterial.SetColor("_LineColor1", lineColor0 * lineColor0);
-				outlineShaderMaterial.SetColor("_LineColor2", lineColor1 * lineColor1);
-				outlineShaderMaterial.SetColor("_LineColor3", lineColor2 * lineColor2);
+
+				for (int i = 0; i < lineColor.Count; i++)
+				{
+					outlineShaderMaterial.SetColor(string.Format("_LineColor{0}", i), lineColor[i] * lineColor[i]);
+				}
+				
 				if (flipY)
 					outlineShaderMaterial.SetInt("_FlipY", 1);
 				else

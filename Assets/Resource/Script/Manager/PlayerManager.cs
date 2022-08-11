@@ -14,16 +14,13 @@ public class PlayerManager : Singleton<PlayerManager>
 {
     private PlayerDataHolder _holder;
     
-    private int _currentStage;
-    public int CurrentStage { get => _currentStage; set => _currentStage = value; }
-    
-    [SerializeField] private int maxHp = 3;
-    public int MaxHp { get => maxHp; set => maxHp = (value >= 0) ? value : 0; }
+    private int _maxHp;
+    public int MaxHp { get => _maxHp; set => _maxHp = (value >= 0) ? value : 0; }
     private int _hp = 3;
     public int Hp => _hp;
 
-    [SerializeField] private int maxMana = 10;
-    public int MaxMana => maxMana;
+    private int _maxMana;
+    public int MaxMana => _maxMana;
     private int _mana = 10;
     public int Mana => _mana;
     
@@ -49,21 +46,16 @@ public class PlayerManager : Singleton<PlayerManager>
     public BaseState state;
     public Queue<BaseState> StatesQueue;
     public List<Card> PlayerCard;
-
-    void Awake(){
-        if (PlayerManager.Instance != this)
-            Destroy(gameObject);
-        
-        DontDestroyOnLoad(this.gameObject);
-    }
-
+    
     void Start()
     {
-        //List<States> statesList = new List<States>(){States.Color};
-        //foreach (Card card in PlayerManager.Instance.PlayerCard)
-        //{
-        //    ColorState state1 = ((ColorCard)card).ColorState();
-        //}
+        int floor = GameManager.Instance.CurrentStage/100;
+        int stage = GameManager.Instance.CurrentStage%100;
+        string stageData = floor.ToString() + "_" + stage.ToString();
+        
+        BoardManager.Instance.BoardLoading(stageData);
+        PlayerLoading();
+        EnemyManager.Instance.EnemyLoading(stageData);
     }
 
     void Update()
@@ -79,13 +71,13 @@ public class PlayerManager : Singleton<PlayerManager>
 
     public void PlayerLoading()
     {
-        PlayerCard = CardData.Instance._load("PlayerCard.json");
+        PlayerCard = CardData.Instance._load("PlayerCard");
         
-        _holder = PlayerData.Instance._load("PlayerData.json");
-        _currentStage = _holder.CurrentStage;
-        maxHp = _holder.MaxHp;
+        _holder = PlayerData.Instance._load("PlayerData");
+        GameManager.Instance.CurrentStage = _holder.CurrentStage;
+        _maxHp = _holder.MaxHp;
         _hp = _holder.Hp;
-        maxMana = _holder.MaxMana;
+        _maxMana = _holder.MaxMana;
         _mana = _holder.Mana;
         
         PlayerCard.Shuffle();
@@ -101,6 +93,13 @@ public class PlayerManager : Singleton<PlayerManager>
         StatesQueue = new Queue<BaseState>();
         state = new NormalState(5, true);
         state.Enter();
+    }
+
+    public void SavePlayerData()
+    {
+        PlayerData.Instance.saveData(new PlayerDataHolder(GameManager.Instance.CurrentStage,
+            _maxHp, _hp, _maxMana, _mana), "PlayerData");
+        CardData.Instance.saveData(PlayerCard, "PlayerCard");
     }
 
     private void InitDebuffDictionary()

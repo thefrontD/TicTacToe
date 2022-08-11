@@ -9,16 +9,22 @@ public class CardData : Singleton<CardData>
 {
     public bool saveData(List<Card> cardData, string dataName)
     {
+        string path = Application.dataPath;
+        path += $"/Data/Card/{dataName}.json";
+        
         var converter = new StringEnumConverter();
         var pDataStringSave = JsonConvert.SerializeObject(cardData, converter);
-        File.WriteAllText(Path.Combine(Application.streamingAssetsPath, dataName), pDataStringSave);
+        File.WriteAllText(path, pDataStringSave);
         return true;
     }
 
     public List<Card> _load(string dataName)
     {
+        string path = Application.dataPath;
+        path += $"/Data/Card/{dataName}.json";
+        
         var converter = new StringEnumConverter();
-        var pDataStringLoad = File.ReadAllText(Path.Combine(Application.streamingAssetsPath, dataName));
+        var pDataStringLoad = File.ReadAllText(path);
         List<Card> cardData = JsonConvert.DeserializeObject<List<Card>>(pDataStringLoad, converter);
 
         return cardData;

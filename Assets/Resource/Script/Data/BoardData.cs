@@ -24,18 +24,13 @@ public class Holder
 
 public class BoardData : Singleton<BoardData>
 {
-    /*public bool saveData(Holder holder, string dataName)
-    {
-        var converter = new StringEnumConverter();
-        var pDataStringSave = JsonConvert.SerializeObject(holder, converter);
-        File.WriteAllText(Path.Combine(Application.streamingAssetsPath, dataName), pDataStringSave);
-        return true;
-    }*/
-    
     public Holder _load(string dataName)
     {
+        string path = Application.dataPath;
+        path += $"/Data/Board/{dataName}.json";
+        
         var converter = new StringEnumConverter();
-        var pDataStringLoad = File.ReadAllText(Path.Combine(Application.streamingAssetsPath, dataName));
+        var pDataStringLoad = File.ReadAllText(path);
         Holder EnemyActions = JsonConvert.DeserializeObject<Holder>(pDataStringLoad, converter);
 
         return EnemyActions;

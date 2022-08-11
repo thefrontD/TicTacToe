@@ -44,16 +44,22 @@ public class PlayerData : Singleton<PlayerData>
 {
     public bool saveData(PlayerDataHolder holder, string dataName)
     {
+        string path = Application.dataPath;
+        path += $"/Data/Player/{dataName}.json";
+        
         var converter = new StringEnumConverter();
         var pDataStringSave = JsonConvert.SerializeObject(holder, converter);
-        File.WriteAllText(Path.Combine(Application.streamingAssetsPath, dataName), pDataStringSave);
+        File.WriteAllText(path, pDataStringSave);
         return true;
     }
     
     public PlayerDataHolder _load(string dataName)
     {
+        string path = Application.dataPath;
+        path += $"/Data/Player/{dataName}.json";
+        
         var converter = new StringEnumConverter();
-        var pDataStringLoad = File.ReadAllText(Path.Combine(Application.streamingAssetsPath, dataName));
+        var pDataStringLoad = File.ReadAllText(path);
         PlayerDataHolder playerData = JsonConvert.DeserializeObject<PlayerDataHolder>(pDataStringLoad, converter);
 
         return playerData;

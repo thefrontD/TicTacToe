@@ -34,8 +34,11 @@ public class EnemyData : Singleton<EnemyData>
 {
     public List<EnemyDataHolder> _load(string dataName)
     {
+        string path = Application.dataPath;
+        path += $"/Data/Enemy/{dataName}.json";
+        
         var converter = new StringEnumConverter();
-        var pDataStringLoad = File.ReadAllText(Path.Combine(Application.streamingAssetsPath, dataName));
+        var pDataStringLoad = File.ReadAllText(path);
         List<EnemyDataHolder> enemyDataHolder = JsonConvert.DeserializeObject<List<EnemyDataHolder>>
             (pDataStringLoad, converter);
 

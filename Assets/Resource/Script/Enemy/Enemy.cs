@@ -70,16 +70,13 @@ public class Enemy : MonoBehaviour, IAttackable
 
         if (EnemyShield == 0)
         {
-            int bingoCount = BoardManager.Instance.CheckBingo(BoardColor.Player);
-
-            Debug.Log(bingoCount);
-            
-            _enemyHp -= bingoCount;
+            _enemyHp -= (int)Math.Pow(2, BoardManager.Instance.CheckBingo(BoardColor.Player)-1);
 
             if (EnemyHP <= 0)
             {
                 EnemyManager.Instance.EnemyList.Remove(this);
                 GameManager.Instance.GameClear();
+                Destroy(this.gameObject);
             }
         }
     }
