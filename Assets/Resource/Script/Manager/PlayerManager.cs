@@ -113,6 +113,8 @@ public class PlayerManager : Singleton<PlayerManager>
             _debuffDictionary[debuff] = 0;
         else
             _debuffDictionary[debuff] += value;
+        
+        OnPlayerDataUpdate?.Invoke();
     }
     
     public void ChangeStates(BaseState newState)
