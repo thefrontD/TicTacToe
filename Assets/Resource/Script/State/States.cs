@@ -450,21 +450,32 @@ public class AttackState : BaseState
             {
                 selectedAttackableList.Add(attackableList[i]);
             }
-            GiveDamageToSelectedAttackableList();
-            PlayerManager.Instance.ChangeStates(PlayerManager.Instance.StatesQueue.Dequeue());
+            AttackSelectedAttackableList();
         }
         if (card.TargetCount > 1)
         {
-            //card.TargetCount만큼 랜덤 공격
-            for (int i = 0; i < card.TargetCount; i++)
+            if (card.TargetCount <= attackableList.Count)   //공격 가능한 개체 수가 TargetCount보다 많거나 같은 경우
             {
-                int rand = Random.Range(0, attackableList.Count);
-                selectedAttackableList.Add(attackableList[rand]);
-                attackableList[rand].GetGameObject().GetComponent<Outline>().enabled = false;   //아웃라인 끔
-                attackableList.Remove(attackableList[rand]);
+                //card.TargetCount만큼 랜덤 공격
+                for (int i = 0; i < card.TargetCount; i++)
+                {
+                    int rand = Random.Range(0, attackableList.Count);
+                    selectedAttackableList.Add(attackableList[rand]);
+                    attackableList[rand].GetGameObject().GetComponent<Outline>().enabled = false;   //아웃라인 끔
+                    attackableList.Remove(attackableList[rand]);
+                }
+                AttackSelectedAttackableList();
             }
-            GiveDamageToSelectedAttackableList();
-            PlayerManager.Instance.ChangeStates(PlayerManager.Instance.StatesQueue.Dequeue());
+            else    //공격 가능한 개체 수가 TargetCount보다 적은 경우
+            {
+                //전부 공격
+                for (int i = 0; i < attackableList.Count; i++)
+                {
+                    selectedAttackableList.Add(attackableList[i]);
+                }
+                AttackSelectedAttackableList();
+            }
+
         }
     }
     public override void Update()
@@ -497,8 +508,7 @@ public class AttackState : BaseState
                     if (attackableList.Contains(iAttackable))   //attackableList에 있는가?
                     {
                         selectedAttackableList.Add(iAttackable);    //공격할 오브젝트 리스트에 추가
-                        GiveDamageToSelectedAttackableList();
-                        PlayerManager.Instance.ChangeStates(PlayerManager.Instance.StatesQueue.Dequeue());
+                        AttackSelectedAttackableList();
                     }
                 }
             }
@@ -561,7 +571,7 @@ public class AttackState : BaseState
         }
     }
 
-    private void GiveDamageToSelectedAttackableList()
+    private void AttackSelectedAttackableList()
     {
         int damage = card.Damage;
 
@@ -582,6 +592,7 @@ public class AttackState : BaseState
                 {
                     attackable.GetGameObject().GetComponent<Outline>().enabled = false;
                 }
+        PlayerManager.Instance.ChangeStates(PlayerManager.Instance.StatesQueue.Dequeue());
     }
 }
 

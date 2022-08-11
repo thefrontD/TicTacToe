@@ -1,8 +1,30 @@
 [
   {
     "EnemyName" : "SampleEnemy",
-    "EnemyHP": 1,
-    "EnemyShield": 1,
+    "EnemyHP": 3,
+    "EnemyShield": 60,
+    "EnemyPower" : 10,
+    "EnemyAction": [
+      {"Item1": "H1Attack", "Item2": 1},
+      {"Item1": "V1Attack", "Item2": 1},
+      {"Item1": "WallSummon", "Item2": 1}
+    ]
+  },
+   {
+    "EnemyName" : "SampleEnemy2",
+    "EnemyHP": 3,
+    "EnemyShield": 60,
+    "EnemyPower" : 10,
+    "EnemyAction": [
+      {"Item1": "H1Attack", "Item2": 1},
+      {"Item1": "V1Attack", "Item2": 1},
+      {"Item1": "WallSummon", "Item2": 1}
+    ]
+  },
+  {
+    "EnemyName" : "SampleEnemy3",
+    "EnemyHP": 3,
+    "EnemyShield": 60,
     "EnemyPower" : 10,
     "EnemyAction": [
       {"Item1": "H1Attack", "Item2": 1},
