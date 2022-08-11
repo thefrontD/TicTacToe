@@ -11,6 +11,7 @@ public abstract class BaseState
     /// <summary>
     /// 카드 사용시에 일어나야 하는 부분을 여기에 작성할 것
     /// </summary>
+
     public abstract void DoAction(States state);
 
     /// <summary>
@@ -301,12 +302,12 @@ public class MoveState : BaseState
 
     public override void Exit()
     {
-        // 이동 모션?
         // 카메라 다시 밝게
         Camera camera = Camera.main;
         camera.backgroundColor = this.tempBackgroundColor;
 
-        PlayerManager.Instance.MovePlayer(this.moveRow, this.moveCol);
+        // 이동 모션
+        PlayerManager.Instance.MovePlayer(this.moveRow, this.moveCol, this.card.MoveCardEffect);
         DoAdditionalEffect();
     }
 
@@ -315,7 +316,7 @@ public class MoveState : BaseState
         bool proceed = false;
         switch (this.card.AdditionalEffectCondition)
         {
-            case AdditionalEffectCondition.PlayerInColoredSpace:
+            case AdditionalEffectCondition.PlayerInColoredSpace:  // 플레이어 색의 칸으로 이동했을 때
             {
                 (int r, int c) = (PlayerManager.Instance.Row, PlayerManager.Instance.Col);
                 if (BoardManager.Instance.BoardColors[r][c] == BoardColor.Player)
@@ -330,26 +331,40 @@ public class MoveState : BaseState
         }
         if (!proceed) return;
 
-        switch(this.card.AdditionalEffect)  // TODO
+        switch(this.card.AdditionalEffect)
         {
-            case AdditionalEffect.Re:
+            case AdditionalEffect.Mana1:  // 마나 1 회복
             {
+                PlayerManager.Instance.SetMana(1, ignoreDebuff: true);
                 break;
             }
-            case AdditionalEffect.Mana1:
+            case AdditionalEffect.Draw1:  // 카드 1장 뽑음
             {
+                CardManager.Instance.DrawCard(1);
                 break;
             }
-            case AdditionalEffect.Draw1:
+            case AdditionalEffect.Mana1Draw1:  // 마나 1 회복, 카드 1장 뽑음
             {
+                PlayerManager.Instance.SetMana(1, ignoreDebuff: true);
+                CardManager.Instance.DrawCard(1);
                 break;
             }
-            case AdditionalEffect.PlayerHp30:
+            case AdditionalEffect.PlayerHp30:  // 플레이어에게 피해 30
             {
+                PlayerManager.Instance.SetHp(-30);
                 break;
             }
-            case AdditionalEffect.DumpMoveCard1:
+            case AdditionalEffect.DumpMoveCard1:  // 이동 카드 1장 버림
             {
+                // TODO: UI 작업 필요
+                break;
+            }
+            case AdditionalEffect.Re:  // 그 카드를 패로 되돌림
+            {
+                List<CardUI> grave = CardManager.Instance.GraveList;
+                CardUI thisCardUI = grave[grave.Count - 1];
+                grave.RemoveAt(grave.Count - 1);
+                CardManager.Instance.HandCardList.Add(thisCardUI);  // TODO: 카드 생성되는 모션?
                 break;
             }
         }
@@ -368,6 +383,7 @@ public class AttackState : BaseState
     private int targetCountLeft;
     List<IAttackable> attackableList = new List<IAttackable>();
     List<IAttackable> selectedAttackableList = new List<IAttackable>();
+    
     struct coord {
         public coord(int x, int y)
         {
@@ -510,21 +526,45 @@ public class AttackState : BaseState
     public override void Exit()
     {
         //attackableList 초기화
+        DoAdditionalEffect();
         attackableList.Clear();
         selectedAttackableList.Clear();
-        DoAdditionalEffect();
     }
 
     private void DoAdditionalEffect()
     {
         bool proceed = false;
+        object additionalEffectParam;
         switch (this.card.AdditionalEffectCondition)
         {
-            case AdditionalEffectCondition.PlayerInColoredSpace:
+            case AdditionalEffectCondition.PlayerHealthUnder50Percent:  // 플레이어의 체력이 50% 이하일 때
             {
-                (int r, int c) = (PlayerManager.Instance.Row, PlayerManager.Instance.Col);
-                if (BoardManager.Instance.BoardColors[r][c] == BoardColor.Player)
+                if (PlayerManager.Instance.Hp * 2 <= PlayerManager.Instance.MaxHp)
                     proceed = true;
+                break;
+            }
+            case AdditionalEffectCondition.DeckTopIsAttackCard:  // 덱 맨 위의 카드가 공격 카드였을 때
+            {
+                if (CardManager.Instance.DeckList.Peek().Card is AttackCard)
+                    proceed = true;
+                break;
+            }
+            case AdditionalEffectCondition.DestroyWallOrMinion:  // 벽이나 하수인을 파괴했을 때
+            {
+                // TODO
+                proceed = true;
+                break;
+            }
+            case AdditionalEffectCondition.MonsterWillAttack:  // 그 몬스터의 의도가 공격일 때
+            {
+                // TODO
+                proceed = true;
+                break;
+            }
+            case AdditionalEffectCondition.DestroyShield:  // 그 몬스터의 방어도를 파괴했을 때
+            {
+                // TODO
+                proceed = true;
                 break;
             }
             case AdditionalEffectCondition.None:
@@ -535,26 +575,72 @@ public class AttackState : BaseState
         }
         if (!proceed) return;
 
-        switch (this.card.AdditionalEffect)  // TODO
+        switch (this.card.AdditionalEffect)
         {
-            case AdditionalEffect.Re:
+            case AdditionalEffect.Mana1:  // 마나 1 회복
             {
+                PlayerManager.Instance.SetMana(1, ignoreDebuff: true);
                 break;
             }
-            case AdditionalEffect.Mana1:
+            case AdditionalEffect.Draw1:  // 카드 한 장 뽑음
             {
+                CardManager.Instance.DrawCard(1);
                 break;
             }
-            case AdditionalEffect.Draw1:
+            case AdditionalEffect.PlayerHp20:  // 플레이어에게 피해 20
             {
+                PlayerManager.Instance.SetHp(-20);
                 break;
             }
-            case AdditionalEffect.PlayerHp30:
+            case AdditionalEffect.BuffPlayer:  // 플레이어 강화
             {
+                // TODO
+                //PlayerManager.Instance.
                 break;
             }
-            case AdditionalEffect.DumpMoveCard1:
+            case AdditionalEffect.Move:  // 그 칸으로 이동
             {
+                // TODO
+                break;
+            }
+            case AdditionalEffect.Color:  // 그 칸을 색칠
+            {
+                // TODO
+                break;
+            }
+            case AdditionalEffect.MonsterShield10:  // 그 몬스터의 최대실드 -10
+            {
+                // TODO
+                break;
+            }
+            case AdditionalEffect.MonsterHp1:  // 그 몬스터의 체력 -1
+            {
+                // TODO
+                break;
+            }
+            case AdditionalEffect.BuffMonster:  // 그 몬스터를 강화
+            {
+                // TODO
+                break;
+            }
+            case AdditionalEffect.DebuffMonster:  // 그 몬스터를 약화
+            {
+                // TODO
+                break;
+            }
+            case AdditionalEffect.DMG10:  // 그 적에게 추가로 피해 10
+            {
+                // TODO
+                break;
+            }
+            case AdditionalEffect.DMG20:  // 그 적에게 추가로 피해 20
+            {
+                // TODO
+                break;
+            }
+            case AdditionalEffect.DMG30:  // 그 적에게 추가로 피해 30
+            {
+                // TODO
                 break;
             }
         }
@@ -568,6 +654,7 @@ public class ColorState : BaseState
     private ColorCard card;
     List<Tuple<int,int>> colorables = new List<Tuple<int,int>>(); 
     int boardsize;
+    int prevBingoCount;
 
     public ColorState(ColorCard card)
     {
@@ -584,6 +671,7 @@ public class ColorState : BaseState
         boardsize = BoardManager.Instance.BoardSize;
         int Row = PlayerManager.Instance.Row;
         int Col = PlayerManager.Instance.Col;
+        prevBingoCount = BoardManager.Instance.CheckBingo(BoardColor.Player);
 
         switch(card.colorTargetPosition)
         {
@@ -725,10 +813,9 @@ public class ColorState : BaseState
         bool proceed = false;
         switch (this.card.AdditionalEffectCondition)
         {
-            case AdditionalEffectCondition.PlayerInColoredSpace:
+            case AdditionalEffectCondition.MakeBingo:  // 빙고를 완성했을 때. 이 카드를 냈을 때 BingoCount가 더 커지면 됨.
             {
-                (int r, int c) = (PlayerManager.Instance.Row, PlayerManager.Instance.Col);
-                if (BoardManager.Instance.BoardColors[r][c] == BoardColor.Player)
+                if (BoardManager.Instance.CheckBingo(BoardColor.Player) > this.prevBingoCount)
                     proceed = true;
                 break;
             }
@@ -740,26 +827,55 @@ public class ColorState : BaseState
         }
         if (!proceed) return;
 
-        switch (this.card.AdditionalEffect)  // TODO
+        switch (this.card.AdditionalEffect)
         {
-            case AdditionalEffect.Re:
+            case AdditionalEffect.Mana1:  // 마나 1 회복
             {
+                PlayerManager.Instance.SetMana(1, ignoreDebuff: true);
                 break;
             }
-            case AdditionalEffect.Mana1:
+            case AdditionalEffect.Draw1:  // 카드 1장 뽑음
             {
+                CardManager.Instance.DrawCard(1);
                 break;
             }
-            case AdditionalEffect.Draw1:
+            case AdditionalEffect.Mana1Draw1:  // 마나 1 회복, 카드 1장 뽑음
             {
+                PlayerManager.Instance.SetMana(1, ignoreDebuff: true);
+                CardManager.Instance.DrawCard(1);
                 break;
             }
-            case AdditionalEffect.PlayerHp30:
+            case AdditionalEffect.PlayerHp10:  // 플레이어에게 피해 10
             {
+                PlayerManager.Instance.SetHp(-10);
                 break;
             }
-            case AdditionalEffect.DumpMoveCard1:
+            case AdditionalEffect.DumpColorCard1:  // 이동 카드 1장 버림
             {
+                // TODO: UI 작업 필요
+                break;
+            }
+            case AdditionalEffect.Move:  // 그 칸으로 이동
+            {
+                // TODO
+                break;
+            }
+            case AdditionalEffect.MonsterShield20:  // 그 몬스터의 최대실드 -20
+            {
+                // TODO
+                break;
+            }
+            case AdditionalEffect.MonsterShield1000:  // 그 몬스터의 최대실드 -1000
+            {
+                // TODO
+                break;
+            }
+            case AdditionalEffect.Re:  // 그 카드를 패로 되돌림
+            {
+                List<CardUI> grave = CardManager.Instance.GraveList;
+                CardUI thisCardUI = grave[grave.Count - 1];
+                grave.RemoveAt(grave.Count - 1);
+                CardManager.Instance.HandCardList.Add(thisCardUI);  // TODO: 카드 생성되는 모션?
                 break;
             }
         }

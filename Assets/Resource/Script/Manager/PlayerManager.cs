@@ -132,20 +132,31 @@ public class PlayerManager : Singleton<PlayerManager>
         state.Enter();
     }
 
-    public bool SetMana(int value = 0, CardType cardType = CardType.None)
+    /// <summary>
+    /// 현재 마나를 value만큼 더한다. 마나가 0보다 낮아지면 false를 반환한다.
+    /// </summary>
+    /// <param name="value"></param>
+    /// <param name="cardType"></param>
+    /// <returns></returns>
+    public bool SetMana(int value = 0, CardType cardType = CardType.None, bool ignoreDebuff = false)
     {
-        if(_debuffDictionary[Debuff.CardCostIncrease] != 0) value--;
-        else{
-            switch(cardType){
-                case CardType.Attack:
-                    if(_debuffDictionary[Debuff.AttackCardCostIncrease] != 0) value--;
-                    break;
-                case CardType.Move:
-                    if(_debuffDictionary[Debuff.MoveCardCostIncrease] != 0) value--;
-                    break;
-                case CardType.Color:
-                    if(_debuffDictionary[Debuff.ColorCardCostIncrease] != 0) value--;
-                    break;
+        if (!ignoreDebuff)
+        {
+            if (_debuffDictionary[Debuff.CardCostIncrease] != 0) value--;
+            else
+            {
+                switch (cardType)
+                {
+                    case CardType.Attack:
+                        if (_debuffDictionary[Debuff.AttackCardCostIncrease] != 0) value--;
+                        break;
+                    case CardType.Move:
+                        if (_debuffDictionary[Debuff.MoveCardCostIncrease] != 0) value--;
+                        break;
+                    case CardType.Color:
+                        if (_debuffDictionary[Debuff.ColorCardCostIncrease] != 0) value--;
+                        break;
+                }
             }
         }
 
@@ -157,9 +168,15 @@ public class PlayerManager : Singleton<PlayerManager>
         return true;
     }
     
+    /// <summary>
+    /// 현재 체력을 value만큼 더한다. 체력이 0 이하가 되면 false를 반환한다.
+    /// </summary>
+    /// <param name="value"></param>
+    /// <returns></returns>
     public bool SetHp(int value = 0)
     {
-        if (_hp + value < 0) return false;
+        // TODO: 피해 or 회복하는 이펙트?
+        if (_hp + value <= 0) return false;
         else if(_hp + value > MaxHp) _hp = MaxHp;
         else _hp += value;
         hpText.text = String.Format("HP : {0}", _hp);
@@ -198,9 +215,9 @@ public class PlayerManager : Singleton<PlayerManager>
         return false;
     }
 
-    public bool MovePlayer(int row, int col)
+    public bool MovePlayer(int row, int col, MoveCardEffect effect = MoveCardEffect.Slide)
     {
-        return BoardManager.Instance.MovePlayer(row, col);
+        return BoardManager.Instance.MovePlayer(row, col, effect);
     }
 
     public void ToEnemyTurn()

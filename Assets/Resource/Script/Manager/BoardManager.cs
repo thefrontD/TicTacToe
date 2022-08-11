@@ -118,7 +118,7 @@ public class BoardManager : Singleton<BoardManager>
         return _isGameOver;
     }
 
-    public bool MovePlayer(int row, int col)
+    public bool MovePlayer(int row, int col, MoveCardEffect effect)
     {
         if (row >= _boardSize || col >= _boardSize || row < 0 || col < 0)
             return false;
@@ -128,11 +128,22 @@ public class BoardManager : Singleton<BoardManager>
             PlayerManager.Instance.Col = col;
             Vector3 nextPos = _gameBoard[PlayerManager.Instance.Row][PlayerManager.Instance.Col].transform.position - 
                               new Vector3(0, 0, PlayerPrefab.transform.localScale.z/2);
-            PlayerObject.transform.DOMove(nextPos, 0.5f, false);
-            return true;
+            switch (effect)
+            {
+                case MoveCardEffect.Slide:
+                    PlayerObject.transform.DOMove(nextPos, 0.5f, false);
+                    return true;
+                default:  // TODO: 나중에 effect 만들 시간 있으면 추가하기로 하고, 일단은 Slide로 고정.
+                    PlayerObject.transform.DOMove(nextPos, 0.5f, false);
+                    return true;
+            }
         }
     }
-
+    /// <summary>
+    /// 보드판 전체에서 color로 색칠된 빙고의 개수를 리턴한다.
+    /// </summary>
+    /// <param name="color"></param>
+    /// <returns></returns>
     public int CheckBingo(BoardColor color)
     {
         int ret = 0;
