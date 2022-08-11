@@ -356,7 +356,7 @@ public class MoveState : BaseState
             }
             case AdditionalEffect.DumpMoveCard1:  // 이동 카드 1장 버림
             {
-                // TODO: UI 작업 필요
+                // TODO: UI 작업 필요, 아마 DumpState를 따로 만들어야 할 수도?
                 break;
             }
             case AdditionalEffect.Re:  // 그 카드를 패로 되돌림
@@ -383,6 +383,7 @@ public class AttackState : BaseState
     private int targetCountLeft;
     List<IAttackable> attackableList = new List<IAttackable>();
     List<IAttackable> selectedAttackableList = new List<IAttackable>();
+    List<int> prevEnemyShield = new List<int>();
     
     struct coord {
         public coord(int x, int y)
@@ -509,6 +510,13 @@ public class AttackState : BaseState
 
                 foreach (IAttackable selectedAttackable in selectedAttackableList)
                 {
+                    // Enemy들의 현재 실드 상황 저장
+                    if (selectedAttackable is Enemy)
+                    {
+                        Enemy enemy = selectedAttackable as Enemy;
+                        this.prevEnemyShield.Add(enemy.EnemyShield);
+                    }
+                    // 공격
                     for (int i = card.AttackCount; i > 0; i--)  //AttackCount번 공격
                     {
                         selectedAttackable.AttackedByPlayer(card.Damage);   //Damage 줌
@@ -534,7 +542,7 @@ public class AttackState : BaseState
     private void DoAdditionalEffect()
     {
         bool proceed = false;
-        object additionalEffectParam;
+        List<IAttackable> additionalEffectParam = new List<IAttackable>();
         switch (this.card.AdditionalEffectCondition)
         {
             case AdditionalEffectCondition.PlayerHealthUnder50Percent:  // 플레이어의 체력이 50% 이하일 때
@@ -551,24 +559,75 @@ public class AttackState : BaseState
             }
             case AdditionalEffectCondition.DestroyWallOrMinion:  // 벽이나 하수인을 파괴했을 때
             {
-                // TODO
-                proceed = true;
+                foreach (IAttackable attackable in this.selectedAttackableList)
+                {
+                    if (attackable is Wall)
+                    {
+                        Wall wall = attackable as Wall;
+                        if (wall.WallHP <= 0)
+                        {
+                            proceed = true;
+                            additionalEffectParam.Add(wall);
+                        }
+                    }
+                    else if (attackable is Minion)
+                    {
+                        Minion minion = attackable as Minion;
+                        if (minion.MinionHP <= 0)
+                        {
+                            proceed = true;
+                            additionalEffectParam.Add(minion);
+                        }
+                    }
+                }
                 break;
             }
             case AdditionalEffectCondition.MonsterWillAttack:  // 그 몬스터의 의도가 공격일 때
             {
-                // TODO
-                proceed = true;
+                foreach (IAttackable attackable in this.selectedAttackableList)
+                {
+                    if (attackable is Enemy)
+                    {
+                        Enemy enemy = attackable as Enemy;
+                        EnemyAction enemyAction = enemy.EnemyActions.Peek().Item1;
+                        switch (enemyAction)
+                        {
+                            case EnemyAction.AllAttack:
+                            case EnemyAction.ColoredAttack:
+                            case EnemyAction.NoColoredAttack:
+                            case EnemyAction.H1Attack:
+                            case EnemyAction.H2Attack:
+                            case EnemyAction.V1Attack:
+                            case EnemyAction.V2Attack:
+                                proceed = true;
+                                additionalEffectParam.Add(enemy);
+                                break;
+                        }
+                    }    
+                }
                 break;
             }
-            case AdditionalEffectCondition.DestroyShield:  // 그 몬스터의 방어도를 파괴했을 때
+            case AdditionalEffectCondition.DestroyShield:  // 그 몬스터의 방어도를 방금 파괴했을 때
             {
-                // TODO
-                proceed = true;
+                int i = 0;
+                foreach (IAttackable attackable in this.selectedAttackableList)
+                {
+                    if (attackable is Enemy)
+                    {
+                        Enemy enemy = attackable as Enemy;
+                        if (enemy.EnemyShield <= 0 && this.prevEnemyShield[i] > 0)  // 이 공격으로 방어도를 파괴했음
+                        {
+                            proceed = true;
+                            additionalEffectParam.Add(enemy);
+                        }
+                        i++;
+                    }
+                }
                 break;
             }
             case AdditionalEffectCondition.None:
             {
+                additionalEffectParam = new List<IAttackable>(this.selectedAttackableList);
                 proceed = true;
                 break;
             }
@@ -594,53 +653,113 @@ public class AttackState : BaseState
             }
             case AdditionalEffect.BuffPlayer:  // 플레이어 강화
             {
-                // TODO
-                //PlayerManager.Instance.
+                PlayerManager.Instance.SetDebuff(Debuff.PowerIncrease, 1);
                 break;
             }
             case AdditionalEffect.Move:  // 그 칸으로 이동
             {
-                // TODO
+                foreach (IAttackable attackable in additionalEffectParam)
+                {
+                    if (attackable is Wall)
+                    {
+                        Wall wall = attackable as Wall;
+                        PlayerManager.Instance.MovePlayer(wall.Row, wall.Col);
+                    }
+                    else if (attackable is Minion)
+                    {
+                        Minion minion = attackable as Minion;
+                        PlayerManager.Instance.MovePlayer(minion.Row, minion.Col);
+                    }
+                }
                 break;
             }
             case AdditionalEffect.Color:  // 그 칸을 색칠
             {
-                // TODO
+                foreach (IAttackable attackable in additionalEffectParam)
+                {
+                    if (attackable is Wall)
+                    {
+                        Wall wall = attackable as Wall;
+                        BoardManager.Instance.ColoringBoard(wall.Row, wall.Col, BoardColor.Player);
+                    }
+                    else if (attackable is Minion)
+                    {
+                        Minion minion = attackable as Minion;
+                        BoardManager.Instance.ColoringBoard(minion.Row, minion.Col, BoardColor.Player);
+                    }
+                }
                 break;
             }
-            case AdditionalEffect.MonsterShield10:  // 그 몬스터의 최대실드 -10
+            case AdditionalEffect.MonsterMaxShield10:  // 그 몬스터의 최대실드 -10
             {
-                // TODO
+                foreach (IAttackable attackable in additionalEffectParam)
+                {
+                    if (attackable is Enemy)
+                    {
+                        Enemy enemy = attackable as Enemy;
+                        enemy.EnemyMaxShield -= 10;
+                    }
+                }
                 break;
             }
             case AdditionalEffect.MonsterHp1:  // 그 몬스터의 체력 -1
             {
-                // TODO
+                foreach (IAttackable attackable in additionalEffectParam)
+                {
+                    if (attackable is Enemy)
+                    {
+                        Enemy enemy = attackable as Enemy;
+                        enemy.EnemyHP -= 1;
+                    }
+                }
                 break;
             }
             case AdditionalEffect.BuffMonster:  // 그 몬스터를 강화
             {
-                // TODO
+                foreach (IAttackable attackable in additionalEffectParam)
+                {
+                    if (attackable is Enemy)
+                    {
+                        Enemy enemy = attackable as Enemy;
+                        enemy.SetDebuff(Debuff.PowerIncrease, 1);
+                    }
+                }
                 break;
             }
             case AdditionalEffect.DebuffMonster:  // 그 몬스터를 약화
             {
-                // TODO
+                foreach (IAttackable attackable in additionalEffectParam)
+                {
+                    if (attackable is Enemy)
+                    {
+                        Enemy enemy = attackable as Enemy;
+                        enemy.SetDebuff(Debuff.PowerDecrease, 1);
+                    }
+                }
                 break;
             }
             case AdditionalEffect.DMG10:  // 그 적에게 추가로 피해 10
             {
-                // TODO
+                foreach (IAttackable attackable in additionalEffectParam)
+                {
+                    attackable.AttackedByPlayer(10);
+                }
                 break;
             }
             case AdditionalEffect.DMG20:  // 그 적에게 추가로 피해 20
             {
-                // TODO
+                foreach (IAttackable attackable in additionalEffectParam)
+                {
+                    attackable.AttackedByPlayer(20);
+                }
                 break;
             }
             case AdditionalEffect.DMG30:  // 그 적에게 추가로 피해 30
             {
-                // TODO
+                foreach (IAttackable attackable in additionalEffectParam)
+                {
+                    attackable.AttackedByPlayer(30);
+                }
                 break;
             }
         }
@@ -655,6 +774,7 @@ public class ColorState : BaseState
     List<Tuple<int,int>> colorables = new List<Tuple<int,int>>(); 
     int boardsize;
     int prevBingoCount;
+    (int row, int col) clickedCoord = (-1, -1);
 
     public ColorState(ColorCard card)
     {
@@ -783,20 +903,25 @@ public class ColorState : BaseState
         hitData = Physics.RaycastAll(ray);
         if(true)
         {
-            foreach(RaycastHit Data in hitData){
+            foreach(RaycastHit Data in hitData)
+            {
                 GameObject hitObject = Data.transform.gameObject;
-                if(hitObject.GetComponent<Board>()){
+                Board hitBoard = hitObject.GetComponent<Board>();
+                if (hitBoard)
+                {
                     //Debug.Log("it is board");
-                    BoardManager.Instance.ColoringBoard(hitObject.GetComponent<Board>().Row,
-                        hitObject.GetComponent<Board>().Col, BoardColor.Player);
+                    this.clickedCoord = (hitBoard.Row, hitBoard.Col);
+                    BoardManager.Instance.ColoringBoard(hitBoard.Row, hitBoard.Col, BoardColor.Player);
                     //highlight disable
-                    foreach(Tuple<int,int> coord in colorables){
+                    foreach(Tuple<int,int> coord in colorables)
+                    {
                         BoardManager.Instance.GameBoard[coord.Item2][coord.Item1].GetComponent<Outline>().enabled = false;
                     }
                     EnemyManager.Instance.HightLightBoard();
                     PlayerManager.Instance.ChangeStates(PlayerManager.Instance.StatesQueue.Dequeue());
                 }
-                else{
+                else
+                {
                     //Debug.Log("it is nonboard Object");
                 }
             }
@@ -811,6 +936,7 @@ public class ColorState : BaseState
     private void DoAdditionalEffect()
     {
         bool proceed = false;
+        
         switch (this.card.AdditionalEffectCondition)
         {
             case AdditionalEffectCondition.MakeBingo:  // 빙고를 완성했을 때. 이 카드를 냈을 때 BingoCount가 더 커지면 됨.
@@ -852,22 +978,31 @@ public class ColorState : BaseState
             }
             case AdditionalEffect.DumpColorCard1:  // 이동 카드 1장 버림
             {
-                // TODO: UI 작업 필요
+                // TODO: UI 작업 필요, 아마 DumpState를 따로 만들어야 할 수도?
                 break;
             }
             case AdditionalEffect.Move:  // 그 칸으로 이동
             {
-                // TODO
+                if (this.clickedCoord.row >= 0 && this.clickedCoord.col >= 0)
+                {
+                    PlayerManager.Instance.MovePlayer(this.clickedCoord.row, this.clickedCoord.col);
+                }
                 break;
             }
-            case AdditionalEffect.MonsterShield20:  // 그 몬스터의 최대실드 -20
+            case AdditionalEffect.MonsterShield20:  // 그 몬스터의 실드 -20
             {
-                // TODO
+                foreach (Enemy enemy in EnemyManager.Instance.EnemyList)
+                {
+                    enemy.EnemyShield -= 20;
+                }
                 break;
             }
-            case AdditionalEffect.MonsterShield1000:  // 그 몬스터의 최대실드 -1000
+            case AdditionalEffect.MonsterShield1000:  // 그 몬스터의 실드 -1000
             {
-                // TODO
+                foreach (Enemy enemy in EnemyManager.Instance.EnemyList)
+                {
+                    enemy.EnemyShield -= 1000;  // 사실상 전부 파괴
+                }
                 break;
             }
             case AdditionalEffect.Re:  // 그 카드를 패로 되돌림

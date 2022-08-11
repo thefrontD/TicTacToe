@@ -82,7 +82,8 @@ public enum AdditionalEffectCondition
 public enum AdditionalEffect
 {
     None,
-    MonsterShield10, MonsterShield20, MonsterShield1000,
+    MonsterMaxShield10,
+    MonsterShield20, MonsterShield1000,
     MonsterHp1,
     PlayerHp10, PlayerHp20, PlayerHp30,
     DMG10, DMG20, DMG30,

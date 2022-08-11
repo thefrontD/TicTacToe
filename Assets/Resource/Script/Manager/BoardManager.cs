@@ -93,26 +93,26 @@ public class BoardManager : Singleton<BoardManager>
     /// 
     /// </summary>
 
-    public bool ColoringBoard(int x, int y, BoardColor boardColor)
+    public bool ColoringBoard(int row, int col, BoardColor boardColor)
     {
-        if (x >= _boardSize || y >= _boardSize || x < 0 || y < 0)
+        if (row >= _boardSize || col >= _boardSize || row < 0 || col < 0)
             return false;
         else
         {
-            _boardColors[x][y] = boardColor;
-            _gameBoard[x][y].SetBoardColor(boardColor);
+            _boardColors[row][col] = boardColor;
+            _gameBoard[row][col].SetBoardColor(boardColor);
 
             return true;
         }
     }
 
-    public bool SummonWalls(int x, int y, int damage)
+    public bool SummonWalls(int row, int col, int damage)
     {
         bool _isGameOver = false;
         
-        if(_boardObjects[x][y] == BoardObject.None)
-            _boardObjects[x][y] = BoardObject.Wall;
-        else if(_boardObjects[x][y] == BoardObject.Player)
+        if(_boardObjects[row][col] == BoardObject.None)
+            _boardObjects[row][col] = BoardObject.Wall;
+        else if(_boardObjects[row][col] == BoardObject.Player)
             _isGameOver = PlayerManager.Instance.DamageToPlayer(-damage);
         
         return _isGameOver;

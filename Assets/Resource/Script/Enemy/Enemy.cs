@@ -33,6 +33,7 @@ public class Enemy : MonoBehaviour, IAttackable
         get { return _enemyMaxHp; }
         set
         {
+            // TODO: enemyMaxHp가 현재 Hp보다 낮아지면 현재 Hp도 깎아야 하지 않을까?
             if (value < 0) _enemyMaxHp = 0;
             else _enemyMaxHp = value;
         }
