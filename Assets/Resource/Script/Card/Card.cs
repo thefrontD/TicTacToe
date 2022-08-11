@@ -393,32 +393,32 @@ public class ColorCard : Card
                 break;
         }
         
-        //추가효과 
-        bool additionalEffectQualified = true;
+        ////추가효과 
+        //bool additionalEffectQualified = true;
 
-        if(additionalEffectQualified){
-            switch(this.additionalEffect){
-                case AdditionalEffect.Move:
-                    Debug.Log("AdditionalEffect : Move");
-                    /*MoveCard moveCard = new MoveCard("move", "movetocoloredblock", 0,
-                        TriggerCondition.None, AdditionalEffectCondition.None, 
-                        AdditionalEffect.None, MoveCardEffect.Run, 
-                        MoveDirection.Colored);
-                    MoveState moveState = new MoveState(moveCard);*/
-                    //movestate사용에 문제가 있음
-                    break;
-                case AdditionalEffect.PlayerHp10:
-                    Debug.Log("AdditionalEffect : PlayerHp-10");
-                    PlayerManager.Instance.SetHp(-10);
-                    break;
-                case AdditionalEffect.DumpALL:
-                    Debug.Log("AdditionalEffect : Dumpall");
-                    CardManager.Instance.AllHandCardtoGrave();
-                    break;
-                default:
-                    break;
-            }
-        }
+        //if(additionalEffectQualified){
+        //    switch(this.additionalEffect){
+        //        case AdditionalEffect.Move:
+        //            Debug.Log("AdditionalEffect : Move");
+        //            /*MoveCard moveCard = new MoveCard("move", "movetocoloredblock", 0,
+        //                TriggerCondition.None, AdditionalEffectCondition.None, 
+        //                AdditionalEffect.None, MoveCardEffect.Run, 
+        //                MoveDirection.Colored);
+        //            MoveState moveState = new MoveState(moveCard);*/
+        //            //movestate사용에 문제가 있음
+        //            break;
+        //        case AdditionalEffect.PlayerHp10:
+        //            Debug.Log("AdditionalEffect : PlayerHp-10");
+        //            PlayerManager.Instance.SetHp(-10);
+        //            break;
+        //        case AdditionalEffect.DumpALL:
+        //            Debug.Log("AdditionalEffect : Dumpall");
+        //            CardManager.Instance.AllHandCardtoGrave();
+        //            break;
+        //        default:
+        //            break;
+        //    }
+        //}
         // State를 만드는 부분
         ColorState newState = new ColorState(this);
         PlayerManager.Instance.StatesQueue.Enqueue(newState);
