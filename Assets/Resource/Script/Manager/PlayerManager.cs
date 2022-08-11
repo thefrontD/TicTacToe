@@ -42,9 +42,7 @@ public class PlayerManager : Singleton<PlayerManager>
     private Dictionary<Debuff,  int> _debuffDictionary;
     public Dictionary<Debuff, int> DebuffDictionary => _debuffDictionary;
 
-    [SerializeField] private TextMeshProUGUI shieldText;
-    [SerializeField] private TextMeshProUGUI hpText;
-    [SerializeField] private TextMeshProUGUI manaText;
+    public event Action OnPlayerDataUpdate;
 
     public BaseState state;
     public Queue<BaseState> StatesQueue;
@@ -153,7 +151,7 @@ public class PlayerManager : Singleton<PlayerManager>
         else if(_mana + value > MaxMana) _mana = MaxMana;
         else _mana += value;
 
-        manaText.text = String.Format("Mana : {0}", _mana);
+        OnPlayerDataUpdate?.Invoke();
         return true;
     }
     
@@ -162,7 +160,7 @@ public class PlayerManager : Singleton<PlayerManager>
         if (_hp + value < 0) return false;
         else if(_hp + value > MaxHp) _hp = MaxHp;
         else _hp += value;
-        hpText.text = String.Format("HP : {0}", _hp);
+        OnPlayerDataUpdate?.Invoke();
         return true;
     }
     
@@ -193,8 +191,7 @@ public class PlayerManager : Singleton<PlayerManager>
             else _hp += value;
         }
 
-        shieldText.text = String.Format("Shield : {0}", _shield);
-        hpText.text = String.Format("HP : {0}", _hp);
+        OnPlayerDataUpdate?.Invoke();
         return false;
     }
 
