@@ -1180,21 +1180,26 @@ public class ColorState : BaseState
 
     private void IfColorableAddToList(int i, int j)
     {
-        //컬러가 되어있는 곳은 선택 불가능?
+        //컬러가 되어있는 곳은 선택 불가능!
         //벽이 있는 곳은 선택 불가능
         //미니언이 있는 곳은 선택 불가능
         //비어있는 곳은 색칠 가능
         //플레이어가 있는 곳은 색칠 가능
+        if(BoardManager.Instance.BoardColors[i][j] == BoardColor.Player){
+            //Debug.Log("(IfColorableAddToList) " + i.ToString() + j.ToString() + " block is already colored");
+            return;
+        }
+
         if (BoardManager.Instance.BoardObjects[i][j] == BoardObject.None)
         {
-            Debug.Log("(IfColorableAddToList) " + i.ToString() + j.ToString() + " block is None");
+            //Debug.Log("(IfColorableAddToList) " + i.ToString() + j.ToString() + " block is None");
             colorables.Add((i, j));
             return;
         }
 
         if (BoardManager.Instance.BoardObjects[i][j] == BoardObject.Player)
         {
-            Debug.Log("(IfColorableAddToList) " + i.ToString() + j.ToString() + " block is Player");
+            //Debug.Log("(IfColorableAddToList) " + i.ToString() + j.ToString() + " block is Player");
             colorables.Add((i, j));
             return;
         }
