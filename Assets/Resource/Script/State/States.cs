@@ -890,7 +890,7 @@ public class ColorState : BaseState
 {
     private bool Selectable;
     private ColorCard card;
-    List<Tuple<int, int>> colorables = new List<Tuple<int, int>>();
+    List<(int row, int col)> colorables = new List<(int row, int col)>();
     int boardsize;
     int prevBingoCount;
     (int row, int col) clickedCoord = (-1, -1);
@@ -1005,10 +1005,10 @@ public class ColorState : BaseState
         {
             Debug.Log("Target is unselectable");
             //todo
-            foreach (Tuple<int, int> pos in colorables)
+            foreach ((int row, int col) in colorables)
             {
-                Debug.Log("(MouseEvent)" + pos.Item1.ToString() + pos.Item2.ToString());
-                BoardManager.Instance.ColoringBoard(pos.Item1, pos.Item2, BoardColor.Player);
+                Debug.Log("(MouseEvent)" + row.ToString() + col.ToString());
+                BoardManager.Instance.ColoringBoard(row, col, BoardColor.Player);
             }
 
             PlayerManager.Instance.ChangeStates(PlayerManager.Instance.StatesQueue.Dequeue());
@@ -1017,9 +1017,9 @@ public class ColorState : BaseState
         else
         {
             //선택할 필요가 있는 경우 highlight enable
-            foreach (Tuple<int, int> coord in colorables)
+            foreach ((int row, int col) in colorables)
             {
-                BoardManager.Instance.GameBoard[coord.Item1][coord.Item2].GetComponent<Outline>().enabled = true;
+                BoardManager.Instance.GameBoard[row][col].GetComponent<Outline>().enabled = true;
             }
         }
     }
@@ -1041,21 +1041,24 @@ public class ColorState : BaseState
                 Board hitBoard = hitObject.GetComponent<Board>();
                 if (hitBoard)
                 {
-                    //Debug.Log("it is board");
                     this.clickedCoord = (hitBoard.Row, hitBoard.Col);
-                    BoardManager.Instance.ColoringBoard(hitBoard.Row, hitBoard.Col, BoardColor.Player);
-                    //highlight disable
-                    foreach (Tuple<int, int> coord in colorables)
+                    if (colorables.Contains(this.clickedCoord))
                     {
-                        BoardManager.Instance.GameBoard[coord.Item1][coord.Item2].GetComponent<Outline>().enabled = false;
-                    }
+                        //Debug.Log("it is board");
+                        BoardManager.Instance.ColoringBoard(hitBoard.Row, hitBoard.Col, BoardColor.Player);
+                        //highlight disable
+                        foreach ((int row, int col) in colorables)
+                        {
+                            BoardManager.Instance.GameBoard[row][col].GetComponent<Outline>().enabled = false;
+                        }
 
-                    EnemyManager.Instance.HightLightBoard();
-                    PlayerManager.Instance.ChangeStates(PlayerManager.Instance.StatesQueue.Dequeue());
-                }
-                else
-                {
-                    //Debug.Log("it is nonboard Object");
+                        EnemyManager.Instance.HightLightBoard();
+                        PlayerManager.Instance.ChangeStates(PlayerManager.Instance.StatesQueue.Dequeue());
+                    }
+                    else
+                    {
+                        this.clickedCoord = (-1, -1);
+                    }
                 }
             }
         }
@@ -1185,14 +1188,14 @@ public class ColorState : BaseState
         if (BoardManager.Instance.BoardObjects[i][j] == BoardObject.None)
         {
             Debug.Log("(IfColorableAddToList) " + i.ToString() + j.ToString() + " block is None");
-            colorables.Add(new Tuple<int, int>(i, j));
+            colorables.Add((i, j));
             return;
         }
 
         if (BoardManager.Instance.BoardObjects[i][j] == BoardObject.Player)
         {
             Debug.Log("(IfColorableAddToList) " + i.ToString() + j.ToString() + " block is Player");
-            colorables.Add(new Tuple<int, int>(i, j));
+            colorables.Add((i, j));
             return;
         }
 
