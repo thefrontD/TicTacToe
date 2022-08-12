@@ -2,7 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using QuickOutline;
+using TMPro;
 
 public class Enemy : MonoBehaviour, IAttackable
 {
@@ -80,16 +82,15 @@ public class Enemy : MonoBehaviour, IAttackable
                 Destroy(this.gameObject);
             }
         }
+        EnemyUI.ShieldUIUpdate();
+        EnemyUI.HPUIUpdate();
     }
     public GameObject GetGameObject()
     {
         return gameObject;
     }
-    
-    void Start()
-    {
-        
-    }
+
+    public EnemyUI EnemyUI;
 
     public void InitEnemyData(EnemyDataHolder enemyDataHolder)
     {
@@ -103,10 +104,11 @@ public class Enemy : MonoBehaviour, IAttackable
         _enemyShield = enemyDataHolder.EnemyShield;
         EnemyActions = enemyDataHolder.EnemyAction;
         _debuffDictionary = new Dictionary<Debuff, int>();
-        gameObject.GetComponent<Outline>().enabled = false;
+        gameObject.GetComponent<QuickOutline.Outline>().enabled = false;
         foreach(Debuff debuff in Enum.GetValues(typeof(Debuff)))
             _debuffDictionary[debuff] = 0;
         overlapPoint = new List<(int, int)>();
+        EnemyUI.InitUI();
     }
     
     /// <summary>

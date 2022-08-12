@@ -15,12 +15,12 @@
     "AdditionalEffect": "None",
     "AttackCardEffect": "Alpha",
     "TargetType": 1,
-    "TargetCount": 1,
+    "TargetCount": 0,
     "AttackCount": 3,
     "Damage": 4,
     "cardType": "Attack",
     "cardName": "Beta",
-    "cardDesc": "Beta is Greek B",
+    "cardDesc": "TargetCount 0",
     "cardCost": 1
   },
   {
@@ -51,12 +51,12 @@
     "AdditionalEffect": "None",
     "AttackCardEffect": "Alpha",
     "TargetType": 1,
-    "TargetCount": 1,
+    "TargetCount": 2,
     "AttackCount": 3,
     "Damage": 4,
     "cardType": "Attack",
     "cardName": "Beta",
-    "cardDesc": "Beta is Greek B",
+    "cardDesc": "TargetCount 2",
     "cardCost": 1
   },
   {

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using QuickOutline;
+using Random = UnityEngine.Random;
 /// <summary>
 /// State에 대한 추상 클래스
 /// </summary>
@@ -460,6 +461,41 @@ public class AttackState : BaseState
             attackable.GetGameObject().GetComponent<Outline>().enabled = true;
             attackable.GetGameObject().GetComponent<Outline>().color = 3;
         }
+        //targetCount가 1이 아닌 경우, 바로 처리(0: 전체 공격/2 이상: 랜덤 공격)
+        if (card.TargetCount == 0)
+        {
+            //전부 공격
+            for (int i = 0; i < attackableList.Count; i++)
+            {
+                selectedAttackableList.Add(attackableList[i]);
+            }
+            AttackSelectedAttackableList();
+        }
+        if (card.TargetCount > 1)
+        {
+            if (card.TargetCount <= attackableList.Count)   //공격 가능한 개체 수가 TargetCount보다 많거나 같은 경우
+            {
+                //card.TargetCount만큼 랜덤 공격
+                for (int i = 0; i < card.TargetCount; i++)
+                {
+                    int rand = Random.Range(0, attackableList.Count);
+                    selectedAttackableList.Add(attackableList[rand]);
+                    attackableList[rand].GetGameObject().GetComponent<Outline>().enabled = false;   //아웃라인 끔
+                    attackableList.Remove(attackableList[rand]);
+                }
+                AttackSelectedAttackableList();
+            }
+            else    //공격 가능한 개체 수가 TargetCount보다 적은 경우
+            {
+                //전부 공격
+                for (int i = 0; i < attackableList.Count; i++)
+                {
+                    selectedAttackableList.Add(attackableList[i]);
+                }
+                AttackSelectedAttackableList();
+            }
+
+        }
     }
     public override void Update()
     {
@@ -481,8 +517,6 @@ public class AttackState : BaseState
     }
     public override void MouseEvent()
     {
-        if (targetCountLeft > 0)
-        {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hitData;
             if (Physics.Raycast(ray, out hitData))
@@ -493,8 +527,7 @@ public class AttackState : BaseState
                     if (attackableList.Contains(iAttackable))   //attackableList에 있는가?
                     {
                         selectedAttackableList.Add(iAttackable);    //공격할 오브젝트 리스트에 추가
-                        attackableList.Remove(iAttackable);         //공격 가능한 오브젝트에서는 삭제
-                        iAttackable.GetGameObject().GetComponent<Outline>().enabled = false;    //아웃라인 끔
+                        AttackSelectedAttackableList();
                     }
                 }
             }
@@ -535,6 +568,11 @@ public class AttackState : BaseState
     }
     public override void Exit()
     {
+        //아웃라인 끄기
+        for (int i = 0; i < attackableList.Count; i++)
+        {
+            attackableList[i].GetGameObject().GetComponent<Outline>().enabled = false;
+        }
         //attackableList 초기화
         DoAdditionalEffect();
         attackableList.Clear();
@@ -765,6 +803,30 @@ public class AttackState : BaseState
                 break;
             }
         }
+    }
+
+    private void AttackSelectedAttackableList()
+    {
+        int damage = card.Damage;
+
+                if(PlayerManager.Instance.DebuffDictionary[Debuff.PowerIncrease] != 0)
+                    damage = (int) (1.2 * damage);
+
+                if(PlayerManager.Instance.DebuffDictionary[Debuff.PowerDecrease] != 0)
+                    damage = (int) (0.8 * damage);
+
+                foreach (IAttackable selectedAttackable in selectedAttackableList)
+                {
+                    for (int i = card.AttackCount; i > 0; i--)  //AttackCount번 공격
+                    {
+                        selectedAttackable.AttackedByPlayer(card.Damage);   //Damage 줌
+                    }
+                }
+                foreach (IAttackable attackable in attackableList)
+                {
+                    attackable.GetGameObject().GetComponent<Outline>().enabled = false;
+                }
+        PlayerManager.Instance.ChangeStates(PlayerManager.Instance.StatesQueue.Dequeue());
     }
 }
 
