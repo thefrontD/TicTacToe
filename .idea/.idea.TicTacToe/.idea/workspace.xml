@@ -2,14 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d3529374-01b1-433a-a73a-241952c1c846" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.TicTacToe/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TicTacToe/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/OutlineEffect/OutlineEffect/Outline.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/OutlineEffect/OutlineEffect/Outline.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/OutlineEffect/OutlineEffect/OutlineEffect.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/OutlineEffect/OutlineEffect/OutlineEffect.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/OutlineEffect/OutlineEffect/Resources/OutlineShader.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/OutlineEffect/OutlineEffect/Resources/OutlineShader.shader" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resource/Prefabs/Card.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resource/Prefabs/Card.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resource/Script/Card/Card.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resource/Script/Card/Card.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resource/Script/Manager/BoardManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resource/Script/Manager/BoardManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resource/Script/Manager/CardManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resource/Script/Manager/CardManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resource/Script/State/States.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resource/Script/State/States.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/BattleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/BattleScene.unity" afterDir="false" />
     </list>
