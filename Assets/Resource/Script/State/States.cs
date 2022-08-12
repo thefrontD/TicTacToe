@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using QuickOutline;
 using Random = UnityEngine.Random;
@@ -269,10 +270,11 @@ public class MoveState : BaseState
             }
         }
 
-        // 카메라 암전 등
-        Camera camera = Camera.main;
-        this.tempBackgroundColor = camera.backgroundColor;
-        camera.backgroundColor = Color.blue;
+        // Outline 켜기
+        for (int i = 0; i < boardSize; i++)
+            for (int j = 0; j < boardSize; j++)
+                if (this.movableSpace[i, j])
+                    BoardManager.Instance.GameBoard[i][j].GetComponent<Outline>().enabled = true;
     }
 
     public override void Update()
@@ -312,9 +314,12 @@ public class MoveState : BaseState
 
     public override void Exit()
     {
-        // 카메라 다시 밝게
-        Camera camera = Camera.main;
-        camera.backgroundColor = this.tempBackgroundColor;
+        int boardSize = BoardManager.Instance.BoardSize;
+
+        // Outline 끄기
+        for (int i = 0; i < boardSize; i++)
+            for (int j = 0; j < boardSize; j++)
+                BoardManager.Instance.GameBoard[i][j].GetComponent<Outline>().enabled = false;
 
         // 이동 모션
         PlayerManager.Instance.MovePlayer(this.moveRow, this.moveCol, this.card.MoveCardEffect);
@@ -367,7 +372,14 @@ public class MoveState : BaseState
             }
             case AdditionalEffect.DumpMoveCard1: // 이동 카드 1장 버림
             {
-                // TODO: UI 작업 필요, 아마 DumpState를 따로 만들어야 할 수도?
+                // DumpState를 state queue의 head에 Enqueue시킴
+                List<BaseState> states = new List<BaseState> { new DumpState(CardType.Move, 1) };
+                states.AddRange(PlayerManager.Instance.StatesQueue);
+
+                // 되도록이면 StatesQueue를 교체하지 않고 in-place로 내부값만 바꾸고 싶었음
+                PlayerManager.Instance.StatesQueue.Clear();
+                foreach (BaseState state in states)
+                    PlayerManager.Instance.StatesQueue.Enqueue(state);
                 break;
             }
             case AdditionalEffect.Re: // 그 카드를 패로 되돌림
@@ -1103,7 +1115,14 @@ public class ColorState : BaseState
             }
             case AdditionalEffect.DumpColorCard1: // 이동 카드 1장 버림
             {
-                // TODO: UI 작업 필요, 아마 DumpState를 따로 만들어야 할 수도?
+                // DumpState를 state queue의 head에 Enqueue시킴
+                List<BaseState> states = new List<BaseState> { new DumpState(CardType.Color, 1) };
+                states.AddRange(PlayerManager.Instance.StatesQueue);
+
+                // 되도록이면 StatesQueue를 교체하지 않고 in-place로 내부값만 바꾸고 싶었음
+                PlayerManager.Instance.StatesQueue.Clear();
+                foreach (BaseState state in states)
+                    PlayerManager.Instance.StatesQueue.Enqueue(state);
                 break;
             }
             case AdditionalEffect.Move: // 그 칸으로 이동
@@ -1179,6 +1198,64 @@ public class ColorState : BaseState
             return;
         }
 
+        return;
+    }
+}
+
+public class DumpState : BaseState
+{
+    CardType dumpCardType;
+    int dumpNum;
+    List<CardUI> dumpableCardIndexes = new List<CardUI>();
+
+    public DumpState(CardType cardType, int dumpNum)
+    {
+        this.dumpCardType = cardType;
+        this.dumpNum = dumpNum;
+    }
+
+    public override void DoAction(States state)
+    {
+    }
+
+    public override void Enter()
+    {
+        // 버릴 수 있는 카드들을 리스트에 저장, 카드 Outline 설정
+        foreach (CardUI cardui in CardManager.Instance.HandCardList)
+        {
+            if (cardui.Card.CardType == dumpCardType)
+            {
+                dumpableCardIndexes.Add(cardui);
+                cardui.GetComponent<Outline>().enabled = true;
+            }
+        }
+    }
+
+    public override void Update()
+    {
+    }
+
+    public override void MouseEvent()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hitData;
+        if (Physics.Raycast(ray, out hitData))
+        {
+            CardUI cardui = hitData.transform.gameObject.GetComponent<CardUI>();
+            if (cardui != null && dumpableCardIndexes.Contains(cardui))
+            {
+                // 카드 클릭 시 카드 버리기
+                CardManager.Instance.HandtoGrave(dumpableCardIndexes.IndexOf(cardui));
+                PlayerManager.Instance.ChangeStates(PlayerManager.Instance.StatesQueue.Dequeue());
+            }
+        }
+    }
+
+    public override void Exit()
+    {
+        // 카드 Outline 해제
+        foreach (CardUI cardui in CardManager.Instance.HandCardList)
+            cardui.GetComponent<Outline>().enabled = false;
         return;
     }
 }

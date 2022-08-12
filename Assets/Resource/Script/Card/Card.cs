@@ -16,6 +16,7 @@ using UnityEngine;
 public abstract class Card
 {
     protected CardType cardType;
+    public CardType CardType => cardType;
 
     private TriggerCondition _triggerCondition;
     public TriggerCondition TriggerCondition => _triggerCondition;
