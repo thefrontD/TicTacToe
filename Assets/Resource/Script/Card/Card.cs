@@ -132,7 +132,7 @@ public abstract class Card
                 break;
             case TriggerCondition.EnemyWillShield:
                 foreach (Enemy enemy in EnemyManager.Instance.EnemyList)
-                    if (enemy.EnemyActions.Peek().Item1 == EnemyAction.ArmorHealing)
+                    if (enemy.EnemyActions.Peek().Item1 == EnemyAction.ShieldHealing)
                         proceed = true;
                 break;
 

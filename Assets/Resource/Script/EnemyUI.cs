@@ -12,6 +12,13 @@ public class EnemyUI : MonoBehaviour
     [SerializeField] private GameObject buffIcon;
     [SerializeField] private GameObject debuffIcon;
     [SerializeField] private TextMeshProUGUI buffDebuffText;
+    [Serializable]
+    struct IntentionIcon
+    {
+        public Intention Intention;
+        public GameObject Icon;
+    }
+    [SerializeField] private IntentionIcon[] IntentionIcons;
     private Enemy enemy;
     private GameObject[] HP_Containers;
     private GameObject[] HP_Icons;
@@ -39,6 +46,7 @@ public class EnemyUI : MonoBehaviour
         }
         HPUIUpdate();
         ShieldUIUpdate();
+        IntentionUpdate();
     }
 
     public void HPUIUpdate()
@@ -82,17 +90,60 @@ public class EnemyUI : MonoBehaviour
     }
 
     public void IntentionUpdate()
-    {/*
-        switch (enemy.EnemyActions)
+    {
+        (EnemyAction, int) enemyAction = enemy.EnemyActions.Peek();
+
+        switch (enemyAction.Item1)
         {
-            case H1Attack:
+            case EnemyAction.H1Attack:
+            case EnemyAction.V1Attack:
+            case EnemyAction.H2Attack:
+            case EnemyAction.V2Attack:
+            case EnemyAction.AllAttack:
+            case EnemyAction.ColoredAttack:
+            case EnemyAction.NoColoredAttack:
+                activateIntentionIcon(Intention.Attack);
                 break;
-                
-                 * H1Attack, V1Attack, H2Attack, V2Attack, AllAttack, ColoredAttack, NoColoredAttack,
-    WallSummon=10, WallsSummon, MobSummon,
-    PowerIncrease=20, DamageDecrease, HpHealing, ArmorHealing,
-    PlayerPowerDecrease=30, PlayerDamageIncrease, DrawCardDecrease, CardCostIncrease,
-    None=200
-                 */
+            case EnemyAction.WallSummon:
+            case EnemyAction.WallsSummon:
+                activateIntentionIcon(Intention.Wall);
+                break;
+            case EnemyAction.MobSummon:
+                activateIntentionIcon(Intention.Minion);
+                break;
+            case EnemyAction.PowerIncrease:
+            case EnemyAction.DamageDecrease:
+                activateIntentionIcon(Intention.Buff);
+                break;
+            case EnemyAction.HpHealing:
+                activateIntentionIcon(Intention.HPHealing);
+                break;
+            case EnemyAction.ShieldHealing:
+                activateIntentionIcon(Intention.ShieldHealing);
+                break;
+            case EnemyAction.PlayerPowerDecrease:
+            case EnemyAction.PlayerDamageIncrease:
+            case EnemyAction.DrawCardDecrease:
+            case EnemyAction.CardCostIncrease:
+                activateIntentionIcon(Intention.Debuff);
+                break;
+            case EnemyAction.None:
+                activateIntentionIcon(Intention.None);
+                break;
+        }
+    }
+    private void activateIntentionIcon(Intention intention)
+    {
+        for (int i = 0; i < IntentionIcons.Length; i++)
+        {
+            if (IntentionIcons[i].Intention == intention)
+            {
+                IntentionIcons[i].Icon.SetActive(true);
+            }
+            else
+            {
+                IntentionIcons[i].Icon.SetActive(false);
+            }
+        }
     }
 }
