@@ -410,14 +410,13 @@ public class AttackState : BaseState
 
     struct coord
     {
-        public coord(int x, int y)
+        public int row;
+        public int col;
+        public coord(int r, int c)
         {
-            this.x = x;
-            this.y = y;
+            this.row = r;
+            this.col = c;
         }
-
-        public int x;
-        public int y;
     }
 
     public AttackState(AttackCard card)
@@ -458,12 +457,12 @@ public class AttackState : BaseState
             foreach (coord c in coords)
             {
                 //row col이 0,3 미만이고, 그 좌표에 Wall이 있을 때
-                if (c.x >= 0 && c.x < 3 && c.y >= 0 && c.y < 3 &&
-                    BoardManager.Instance.BoardObjects[c.x][c.y] == BoardObject.Wall)
+                if (c.row >= 0 && c.row < 3 && c.col >= 0 && c.col < 3 &&
+                    BoardManager.Instance.BoardObjects[c.row][c.col] == BoardObject.Wall)
                 {
-                    if (BoardManager.Instance.BoardObjects[c.x][c.y] == BoardObject.Wall)
+                    if (BoardManager.Instance.BoardObjects[c.row][c.col] == BoardObject.Wall)
                     {
-                        attackableList.Add(BoardManager.Instance.BoardAttackables[c.x][c.y]);
+                        attackableList.Add(BoardManager.Instance.BoardAttackables[c.row][c.col]);
                     }
                 }
             }
@@ -474,12 +473,12 @@ public class AttackState : BaseState
             foreach (coord c in coords)
             {
                 //row col이 0,3 미만이고, 그 좌표에 Minion이 있을 때
-                if (c.x >= 0 && c.x < 3 && c.y >= 0 && c.y < 3 &&
-                    BoardManager.Instance.BoardObjects[c.x][c.y] == BoardObject.Minion)
+                if (c.row >= 0 && c.row < 3 && c.col >= 0 && c.col < 3 &&
+                    BoardManager.Instance.BoardObjects[c.row][c.col] == BoardObject.Minion)
                 {
-                    if (BoardManager.Instance.BoardObjects[c.x][c.y] == BoardObject.Minion)
+                    if (BoardManager.Instance.BoardObjects[c.row][c.col] == BoardObject.Minion)
                     {
-                        attackableList.Add(BoardManager.Instance.BoardAttackables[c.x][c.y]);
+                        attackableList.Add(BoardManager.Instance.BoardAttackables[c.row][c.col]);
                     }
                 }
             }
@@ -933,21 +932,21 @@ public class ColorState : BaseState
             case ColorTargetPosition.P4:
                 if (Row + 1 < boardsize)
                     IfColorableAddToList(Row + 1, Col);
-                if (Row - 1 > 0)
+                if (Row - 1 >= 0)
                     IfColorableAddToList(Row - 1, Col);
                 if (Col + 1 < boardsize)
                     IfColorableAddToList(Row, Col + 1);
-                if (Col - 1 > 0)
+                if (Col - 1 >= 0)
                     IfColorableAddToList(Row, Col - 1);
                 break;
             case ColorTargetPosition.P5:
                 if (Row + 1 < boardsize)
                     IfColorableAddToList(Row + 1, Col);
-                if (Row - 1 > 0)
+                if (Row - 1 >= 0)
                     IfColorableAddToList(Row - 1, Col);
                 if (Col + 1 < boardsize)
                     IfColorableAddToList(Row, Col + 1);
-                if (Col - 1 > 0)
+                if (Col - 1 >= 0)
                     IfColorableAddToList(Row, Col - 1);
                 IfColorableAddToList(Row, Col);
                 break;
@@ -962,31 +961,31 @@ public class ColorState : BaseState
                 }
 
                 break;
-            case ColorTargetPosition.Horizontal:
+            case ColorTargetPosition.Vertical:
                 for (int i = 0; i < boardsize; i++)
                 {
                     IfColorableAddToList(i, Col);
                 }
 
                 break;
-            case ColorTargetPosition.Vertical:
+            case ColorTargetPosition.Horizontal:
                 for (int i = 0; i < boardsize; i++)
                 {
                     IfColorableAddToList(Row, i);
                 }
 
                 break;
-            case ColorTargetPosition.P3H:
+            case ColorTargetPosition.P3V:
                 if (Row + 1 < boardsize)
                     IfColorableAddToList(Row + 1, Col);
-                if (Row - 1 > 0)
+                if (Row - 1 >= 0)
                     IfColorableAddToList(Row - 1, Col);
                 IfColorableAddToList(Row, Col);
                 break;
-            case ColorTargetPosition.P3V:
+            case ColorTargetPosition.P3H:
                 if (Col + 1 < boardsize)
                     IfColorableAddToList(Row, Col + 1);
-                if (Col - 1 > 0)
+                if (Col - 1 >= 0)
                     IfColorableAddToList(Row, Col - 1);
                 IfColorableAddToList(Row, Col);
                 break;
@@ -1020,7 +1019,7 @@ public class ColorState : BaseState
             //선택할 필요가 있는 경우 highlight enable
             foreach (Tuple<int, int> coord in colorables)
             {
-                BoardManager.Instance.GameBoard[coord.Item2][coord.Item1].GetComponent<Outline>().enabled = true;
+                BoardManager.Instance.GameBoard[coord.Item1][coord.Item2].GetComponent<Outline>().enabled = true;
             }
         }
     }
@@ -1048,8 +1047,7 @@ public class ColorState : BaseState
                     //highlight disable
                     foreach (Tuple<int, int> coord in colorables)
                     {
-                        BoardManager.Instance.GameBoard[coord.Item2][coord.Item1].GetComponent<Outline>().enabled =
-                            false;
+                        BoardManager.Instance.GameBoard[coord.Item1][coord.Item2].GetComponent<Outline>().enabled = false;
                     }
 
                     EnemyManager.Instance.HightLightBoard();

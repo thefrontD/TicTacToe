@@ -191,14 +191,14 @@ public class BoardManager : Singleton<BoardManager>
     /// <summary>
     /// 빙고 체킹
     /// </summary>
-    public int CheckBingo(int x, int y, BoardColor color)
+    public int CheckBingo(int row, int col, BoardColor color)
     {
         int ret = 0;
         bool check = true;
         
-        if (x >= _boardSize || y >= _boardSize || x < 0 || y < 0)
+        if (row >= _boardSize || col >= _boardSize || row < 0 || col < 0)
             return 0;
-        else if (x == y)
+        else if (row == col)
         { 
             for (int i = 0; i < _boardSize; i++)
                 if (_boardColors[i][i] != color)
@@ -208,13 +208,13 @@ public class BoardManager : Singleton<BoardManager>
 
         check = true;
         for (int i = 0; i < _boardSize; i++)
-            if (_boardColors[x][i] != color)
+            if (_boardColors[row][i] != color)
                 check = false;
         if (check) ret++;
         
         check = true;
         for (int i = 0; i < _boardSize; i++)
-            if (_boardColors[i][y] != color)
+            if (_boardColors[i][col] != color)
                 check = false;
         if (check) ret++;
 
