@@ -134,8 +134,11 @@ public class Enemy : MonoBehaviour, IAttackable
                 EnemyDebuff(enemyAction);
                 break;
         }
-        
+
         EnemyActions.Enqueue(enemyAction);
+
+        EnemyUI.IntentionUpdate();
+
         return _isGameOver;
     }
 
@@ -279,7 +282,7 @@ public class Enemy : MonoBehaviour, IAttackable
             case EnemyAction.HpHealing:
                 SetDebuff(Debuff.Heal, enemyAction.Item2);
                 break;
-            case EnemyAction.ArmorHealing:
+            case EnemyAction.ShieldHealing:
                 break;
         }
     }

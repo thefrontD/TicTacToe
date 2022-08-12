@@ -266,6 +266,7 @@ Transform:
   - {fileID: 53169386}
   - {fileID: 55102825}
   - {fileID: 1720629414}
+  - {fileID: 1455093635}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -774,6 +775,94 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1205073825}
   m_CullTransparentMesh: 1
+--- !u!1 &1339304134 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4572794570102968568, guid: 17bd36cadba43df499d781cd99e3348e, type: 3}
+  m_PrefabInstance: {fileID: 1605126316}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1455093634
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1455093635}
+  - component: {fileID: 1455093636}
+  m_Layer: 0
+  m_Name: MouseOverUIManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1455093635
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1455093634}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 471338779}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1455093636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1455093634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ace63a4d44c151445a5447f4406e15e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MouseOverUIPanel: {fileID: 1339304134}
+  MouseOverText: {fileID: 2109610773}
+  UITypeTexts:
+  - Type: 0
+    Text: "\uC758\uB3C4-\uACF5\uACA9: \uC774 \uC801\uC740 \uC815\uD574\uC9C4 \uCE78\uC744
+      <color=\"red\">\uACF5\uACA9</color>\uD558\uB824 \uD569\uB2C8\uB2E4."
+  - Type: 1
+    Text: "\uC758\uB3C4-\uBCBD \uC0DD\uC131: \uC774 \uC801\uC740 \uC815\uD574\uC9C4
+      \uCE78\uC5D0 <color=\"maroon\">\uBCBD</color>\uC744 \uC0DD\uC131\uD558\uB824
+      \uD569\uB2C8\uB2E4."
+  - Type: 2
+    Text: "\uC758\uB3C4-\uD558\uC218\uC778 \uC0DD\uC131: \uC774 \uC801\uC740 \uC815\uD574\uC9C4
+      \uCE78\uC5D0 <color=\"olive\">\uD558\uC218\uC778</color>\uC744 \uC0DD\uC131\uD558\uB824
+      \uD569\uB2C8\uB2E4."
+  - Type: 3
+    Text: "\uC758\uB3C4-\uAC15\uD654: \uC774 \uC801\uC740 \uC790\uC2E0\uC5D0\uAC8C
+      <color=\"blue\">\uC774\uB85C\uC6B4 \uD6A8\uACFC</color>\uB97C \uC0AC\uC6A9\uD558\uB824
+      \uD569\uB2C8\uB2E4."
+  - Type: 4
+    Text: "\uC758\uB3C4-\uC57D\uD654: \uC774 \uC801\uC740 \uB2F9\uC2E0\uC5D0\uAC8C
+      <color=\"purple\">\uD574\uB85C\uC6B4 \uD6A8\uACFC</color>\uB97C \uC0AC\uC6A9\uD558\uB824
+      \uD569\uB2C8\uB2E4."
+  - Type: 5
+    Text: "\uC758\uB3C4-\uD68C\uBCF5: \uC774 \uC801\uC740 <color=\"green\">\uCCB4\uB825</color>\uC744
+      <color=\"green\">\uD68C\uBCF5</color>\uD558\uB824 \uD569\uB2C8\uB2E4."
+  - Type: 6
+    Text: "\uC758\uB3C4-\uC2E4\uB4DC: \uC774 \uC801\uC740 <color=\"green\">\uBC29\uC5B4\uB3C4</color>\uB97C
+      <color=\"green\">\uD68C\uBCF5</color>\uD558\uB824 \uD569\uB2C8\uB2E4."
+  - Type: 7
+    Text: "\uC758\uB3C4-\uD734\uC2DD: \uC774 \uC801\uC740 \uB2E4\uC74C \uD134\uC5D0
+      \uC544\uBB34 \uD589\uB3D9\uB3C4 \uD558\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4."
+  - Type: 8
+    Text: "\uAC15\uD654: \uC911\uCCA9\uB2F9 \uB370\uBBF8\uC9C0 20%\uC99D\uAC00"
+  - Type: 9
+    Text: "\uC57D\uD654: \uC911\uCCA9\uB2F9 \uB370\uBBF8\uC9C0 20%\uAC10\uC18C"
+  - Type: 10
+    Text: "\uB371\uC5D0 \uC788\uB294 \uCE74\uB4DC\uB4E4\uC744 \uD655\uC778\uD569\uB2C8\uB2E4."
+  - Type: 11
+    Text: "\uC774\uBC88 \uC804\uD22C\uC5D0\uC11C \uC0AC\uC6A9\uD55C \uCE74\uB4DC\uB97C
+      \uD655\uC778\uD569\uB2C8\uB2E4."
 --- !u!1001 &1605126316
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -873,9 +962,13 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 53169387}
-    - target: {fileID: 1616819751543547456, guid: 17bd36cadba43df499d781cd99e3348e, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ToEnemyTurn
+    - target: {fileID: 3929649264088958923, guid: 17bd36cadba43df499d781cd99e3348e, type: 3}
+      propertyPath: UIType
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5741290257479905726, guid: 17bd36cadba43df499d781cd99e3348e, type: 3}
+      propertyPath: UIType
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17bd36cadba43df499d781cd99e3348e, type: 3}
@@ -1125,6 +1218,17 @@ MonoBehaviour:
   BoardPrefab: {fileID: 9033935363093032279, guid: f0a5aaaa5e004a549849f66f5837a500, type: 3}
   PlayerPrefab: {fileID: 7482235872211935316, guid: c34cea9497ceb504e826333dd6b9d8c8, type: 3}
   WallPrefabs: {fileID: 0}
+--- !u!114 &2109610773 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 314777123836927785, guid: 17bd36cadba43df499d781cd99e3348e, type: 3}
+  m_PrefabInstance: {fileID: 1605126316}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3425932782451300328
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -112,7 +112,7 @@ public enum EnemyAction
 {
     H1Attack, V1Attack, H2Attack, V2Attack, AllAttack, ColoredAttack, NoColoredAttack,
     WallSummon=10, WallsSummon, MobSummon,
-    PowerIncrease=20, DamageDecrease, HpHealing, ArmorHealing,
+    PowerIncrease=20, DamageDecrease, HpHealing, ShieldHealing,
     PlayerPowerDecrease=30, PlayerDamageIncrease, DrawCardDecrease, CardCostIncrease,
     None=200
 }
@@ -126,4 +126,18 @@ public enum Debuff
 public enum BoardSituation
 {
     WillAttack=0, WillSummon, WillColored, None = 100
+}
+
+[JsonConverter(typeof(StringEnumConverter))]
+public enum MouseOverUIType
+{
+    Intention_Attack, Intention_Wall, Intention_Minion, Intention_Buff, Intention_Debuff, Intention_HPHealing, Intention_ShieldHealing, Intention_None,
+    PowerIncrease, DamageDecrease,
+    Deck, Grave
+}
+
+[JsonConverter(typeof(StringEnumConverter))]
+public enum Intention
+{
+    Attack, Wall, Minion, Buff, Debuff, HPHealing, ShieldHealing, None
 }
