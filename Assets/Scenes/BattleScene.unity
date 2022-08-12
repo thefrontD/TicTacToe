@@ -1162,11 +1162,12 @@ MonoBehaviour:
   lineIntensity: 0.75
   fillAmount: 0.2
   lineColor:
-  - {r: 1, g: 1, b: 0, a: 1}
   - {r: 1, g: 0, b: 0, a: 1}
-  - {r: 0, g: 1, b: 0, a: 1}
   - {r: 0, g: 0, b: 1, a: 1}
+  - {r: 0, g: 1, b: 0, a: 1}
+  - {r: 1, g: 0.49019608, b: 0, a: 1}
   - {r: 1, g: 1, b: 0, a: 1}
+  - {r: 0, g: 0.49019608, b: 1, a: 1}
   additiveRendering: 0
   backfaceCulling: 1
   fillColor: {r: 0, g: 0, b: 1, a: 1}
@@ -1179,6 +1180,7 @@ MonoBehaviour:
   sourceCamera: {fileID: 963194227}
   autoEnableOutlines: 0
   outlineCamera: {fileID: 0}
+  outlineMaterial: []
   outlineShaderMaterial: {fileID: 0}
   renderTexture: {fileID: 0}
   extraRenderTexture: {fileID: 0}
@@ -1194,7 +1196,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e12900426d1676a42b765db03ad85b14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flashingColorIndex: 010000000200000003000000
+  flashingColorIndex: 000000000100000002000000
   flashingSpeed: 0.8
   minAlpha: 0.3
   maxAlpha: 1

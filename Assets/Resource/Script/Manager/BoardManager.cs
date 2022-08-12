@@ -110,12 +110,12 @@ public class BoardManager : Singleton<BoardManager>
     {
         bool _isGameOver = false;
         
-        if(_boardObjects[x][y] == BoardObject.None)
+        if(_boardObjects[row][col] == BoardObject.None)
         {
-            _boardObjects[x][y] = BoardObject.Wall;
-            Instantiate(WallPrefabs, _gameBoard[x][y].transform.position, Quaternion.identity);
+            _boardObjects[row][col] = BoardObject.Wall;
+            Instantiate(WallPrefabs, _gameBoard[row][col].transform.position, Quaternion.identity);
         }
-        else if(_boardObjects[x][y] == BoardObject.Player)
+        else if(_boardObjects[row][col] == BoardObject.Player)
             _isGameOver = PlayerManager.Instance.DamageToPlayer(-damage);
         
         return _isGameOver;

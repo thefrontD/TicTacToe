@@ -75,7 +75,7 @@ namespace QuickOutline
 		[HideInInspector]
 		public Camera outlineCamera;
 
-		private List<Material> outlineMaterial;
+		[SerializeField] private List<Material> outlineMaterial;
 		Material outlineEraseMaterial;
 		Shader outlineShader;
 		Shader outlineBufferShader;
@@ -257,7 +257,7 @@ namespace QuickOutline
 								m = outlineEraseMaterial;
 							else
 								m = GetMaterialFromID(outline.color);
-						}
+						}  
 
 						if (backfaceCulling)
 							m.SetInt("_Culling", (int)UnityEngine.Rendering.CullMode.Back);
@@ -357,9 +357,9 @@ namespace QuickOutline
 			if (outlineEraseMaterial == null)
 				outlineEraseMaterial = CreateMaterial(new Color(0, 0, 0, 0));
 
-			foreach (Color color in lineColor)
-				outlineMaterial.Add(CreateMaterial(color));
-			
+			if(outlineMaterial.Count != lineColor.Count)
+				foreach (Color color in lineColor)
+					outlineMaterial.Add(CreateMaterial(color));
 		}
 
 		private void DestroyMaterials()
@@ -425,7 +425,7 @@ namespace QuickOutline
 
 				for (int i = 0; i < lineColor.Count; i++)
 				{
-					outlineShaderMaterial.SetColor(string.Format("_LineColor{0}", i), lineColor[i] * lineColor[i]);
+					outlineShaderMaterial.SetColor(string.Format("_LineColor{0}", i+1), lineColor[i] * lineColor[i]);
 				}
 				
 				if (flipY)

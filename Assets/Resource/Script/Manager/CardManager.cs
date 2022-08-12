@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using DG.Tweening;
+using QuickOutline;
 using UnityEngine;
 using UnityEngine.XR;
 
@@ -59,6 +60,17 @@ public class CardManager : Singleton<CardManager>
             StartCoroutine(DrawCardCoroutine(drawNum));
     }
 
+    private void CheckUsable()
+    {
+        foreach (CardUI card in HandCardList)
+        {
+            if (card.Card.CheckCondition())
+                card.gameObject.GetComponent<Outline>().enabled = true;
+            else
+                card.gameObject.GetComponent<Outline>().enabled = false;
+        }
+    }
+    
     private IEnumerator DrawCardCoroutine(int drawNum)
     {
         for (int i = 0; i < drawNum; i++)
@@ -74,6 +86,8 @@ public class CardManager : Singleton<CardManager>
             DrawCardAnimation(drawCard);
             yield return new WaitForSeconds(0.3f);
         }
+
+        CheckUsable();
     }
 
     private void CardPositionAdjust()

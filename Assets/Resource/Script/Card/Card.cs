@@ -78,7 +78,7 @@ public abstract class Card
         return true;
     }
 
-    private bool CheckCondition()
+    public bool CheckCondition()
     {
         bool proceed = false;
         int cnt = 0;

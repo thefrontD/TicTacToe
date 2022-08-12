@@ -146,6 +146,13 @@ Shader "Hidden/OutlineEffect"
 			half4 _LineColor1;
 			half4 _LineColor2;
 			half4 _LineColor3;
+			half4 _LineColor4;
+			half4 _LineColor5;
+			half4 _LineColor6;
+			half4 _LineColor7;
+			half4 _LineColor8;
+			half4 _LineColor9;
+			half4 _LineColor10;
 			int _FlipY;
 			int _Dark;
 			float _FillAmount;

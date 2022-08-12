@@ -2,156 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d3529374-01b1-433a-a73a-241952c1c846" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Data.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Data/Board.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Data/Board/1_1.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Data/Board/1_1.json.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Data/Board/1_10.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Data/Board/1_10.json.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Data/Board/1_2.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Data/Board/1_2.json.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Data/Board/1_3.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Data/Board/1_3.json.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Data/Board/1_4.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Data/Board/1_4.json.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Data/Board/1_5.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Data/Board/1_5.json.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Data/Board/1_6.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Data/Board/1_6.json.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Data/Board/1_7.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Data/Board/1_7.json.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Data/Board/1_8.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Data/Board/1_8.json.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Data/Board/1_9.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Data/Board/1_9.json.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Data/BoardData.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Data/BoardData.json.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Data/Card.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Data/Card/PlayerCard.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Data/Card/PlayerCard.json.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Data/DialogueScripts.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Data/DialogueScripts/DialogueSample.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Data/DialogueScripts/DialogueSample.json.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Data/Enemy.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Data/Enemy/1_1.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Data/Enemy/1_1.json.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Data/Enemy/1_10.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Data/Enemy/1_10.json.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Data/Enemy/1_2.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Data/Enemy/1_2.json.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Data/Enemy/1_3.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Data/Enemy/1_3.json.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Data/Enemy/1_4.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Data/Enemy/1_4.json.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Data/Enemy/1_5.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Data/Enemy/1_5.json.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Data/Enemy/1_6.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Data/Enemy/1_6.json.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Data/Enemy/1_7.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Data/Enemy/1_7.json.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Data/Enemy/1_8.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Data/Enemy/1_8.json.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Data/Enemy/1_9.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Data/Enemy/1_9.json.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Data/EnemyData.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Data/EnemyData.json.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Data/Player.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Data/Player/PlayerData.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Data/Player/PlayerData.json.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resource/Prefabs/DialogueCanvas.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resource/Prefabs/DialogueCanvas.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resource/Prefabs/GameManager.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resource/Prefabs/GameManager.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resource/Script/Dialogue.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resource/Script/Dialogue/DialogueHolder.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resource/Script/Dialogue/DialogueHolder.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resource/Script/Dialogue/DialogueUI.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resource/Script/Dialogue/DialogueUI.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resource/Script/Manager/DialgoueManger.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resource/Script/Manager/DialgoueManger.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/SubData.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/SubData/Board.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/SubData/Board/1_1.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/SubData/Board/1_1.json.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/SubData/Board/1_10.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/SubData/Board/1_10.json.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/SubData/Board/1_2.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/SubData/Board/1_2.json.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/SubData/Board/1_3.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/SubData/Board/1_3.json.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/SubData/Board/1_4.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/SubData/Board/1_4.json.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/SubData/Board/1_5.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/SubData/Board/1_5.json.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/SubData/Board/1_6.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/SubData/Board/1_6.json.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/SubData/Board/1_7.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/SubData/Board/1_7.json.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/SubData/Board/1_8.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/SubData/Board/1_8.json.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/SubData/Board/1_9.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/SubData/Board/1_9.json.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/SubData/BoardData.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/SubData/BoardData.json.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/SubData/Enemy.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/SubData/Enemy/1_1.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/SubData/Enemy/1_1.json.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/SubData/Enemy/1_10.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/SubData/Enemy/1_10.json.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/SubData/Enemy/1_2.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/SubData/Enemy/1_2.json.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/SubData/Enemy/1_3.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/SubData/Enemy/1_3.json.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/SubData/Enemy/1_4.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/SubData/Enemy/1_4.json.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/SubData/Enemy/1_5.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/SubData/Enemy/1_5.json.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/SubData/Enemy/1_6.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/SubData/Enemy/1_6.json.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/SubData/Enemy/1_7.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/SubData/Enemy/1_7.json.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/SubData/Enemy/1_8.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/SubData/Enemy/1_8.json.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/SubData/Enemy/1_9.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/SubData/Enemy/1_9.json.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/SubData/EnemyData.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/SubData/EnemyData.json.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/SubData/PlayerCard.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/SubData/PlayerCard.json.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/SubData/PlayerData.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/SubData/PlayerData.json.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TicTacToe/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TicTacToe/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/OutlineEffect/OutlineEffect/Outline.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/OutlineEffect/OutlineEffect/Outline.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/OutlineEffect/OutlineEffect/OutlineEffect.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/OutlineEffect/OutlineEffect/OutlineEffect.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/OutlineEffect/Samples/Demo/OutlineAnimation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/OutlineEffect/Samples/Demo/OutlineAnimation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SerializableDictionary/Example/Editor/UserSerializableDictionaryPropertyDrawers.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SerializableDictionary/Example/Editor/UserSerializableDictionaryPropertyDrawers.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SerializableDictionary/Example/UserSerializableDictionaries.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SerializableDictionary/Example/UserSerializableDictionaries.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/OutlineEffect/OutlineEffect/Resources/OutlineShader.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/OutlineEffect/OutlineEffect/Resources/OutlineShader.shader" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resource/Prefabs/Card.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resource/Prefabs/Card.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resource/Script/Card/Card.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resource/Script/Card/Card.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resource/Script/Data/BoardData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resource/Script/Data/BoardData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resource/Script/Data/CardData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resource/Script/Data/CardData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resource/Script/Data/EnemyData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resource/Script/Data/EnemyData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resource/Script/Data/PlayerData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resource/Script/Data/PlayerData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resource/Script/Enemy/Enemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resource/Script/Enemy/Enemy.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resource/Script/Manager/BoardManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resource/Script/Manager/BoardManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resource/Script/Manager/EnemyManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resource/Script/Manager/EnemyManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resource/Script/Manager/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resource/Script/Manager/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resource/Script/Manager/PlayerManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resource/Script/Manager/PlayerManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resource/Script/Manager/SceneManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resource/Script/Manager/LoadingManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resource/Script/Manager/SceneManager.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resource/Script/Manager/LoadingManager.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resource/Script/Manager/WorldMapManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resource/Script/Manager/WorldMapManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resource/Script/Manager/CardManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resource/Script/Manager/CardManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resource/Script/State/States.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resource/Script/State/States.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resource/Script/Util/Enums.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resource/Script/Util/Enums.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/BattleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/BattleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/WorldMap.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/WorldMap.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/BoardData.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/BoardData.json.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/EnemyData.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/EnemyData.json.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/PlayerCard.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/PlayerCard.json.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/PlayerData.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/PlayerData.json.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -252,6 +112,7 @@
       <workItem from="1660025725282" duration="8906000" />
       <workItem from="1660105870122" duration="87000" />
       <workItem from="1660192283644" duration="16386000" />
+      <workItem from="1660263404513" duration="3080000" />
     </task>
     <servers />
   </component>
