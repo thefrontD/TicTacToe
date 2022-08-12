@@ -26,9 +26,7 @@ public class GameManager : Singleton<GameManager>
 
     void Start()
     {
-        BoardManager.Instance.BoardLoading("BoardData");
-        PlayerManager.Instance.PlayerLoading();
-        EnemyManager.Instance.EnemyLoading("EnemyData");
+        
     }
 
     void Update()

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using QuickOutline;
 using Random = UnityEngine.Random;
 
 /// <summary>
@@ -50,7 +51,7 @@ public class PlayerManager : Singleton<PlayerManager>
         int floor = GameManager.Instance.CurrentStage/100;
         int stage = GameManager.Instance.CurrentStage%100;
         string stageData = floor.ToString() + "_" + stage.ToString();
-        
+
         BoardManager.Instance.BoardLoading(stageData);
         PlayerLoading();
         EnemyManager.Instance.EnemyLoading(stageData);
@@ -69,6 +70,9 @@ public class PlayerManager : Singleton<PlayerManager>
 
     public void PlayerLoading()
     {
+        _debuffDictionary = new Dictionary<Debuff, int>();
+        InitDebuffDictionary();
+        
         PlayerCard = CardData.Instance._load("PlayerCard");
         
         _holder = PlayerData.Instance._load("PlayerData");
@@ -81,9 +85,6 @@ public class PlayerManager : Singleton<PlayerManager>
         PlayerCard.Shuffle();
 
         CardManager.Instance.SetUp();
-
-        _debuffDictionary = new Dictionary<Debuff, int>();
-        InitDebuffDictionary();
 
         SetMana();
         DamageToPlayer();
@@ -220,6 +221,8 @@ public class PlayerManager : Singleton<PlayerManager>
 
     public void ToEnemyTurn()
     {
+        foreach (CardUI card in CardManager.Instance.HandCardList)
+            card.gameObject.GetComponent<Outline>().enabled = false;
         CardManager.Instance.AllHandCardtoGrave();
         ChangeStates(new EnemyState());
     }

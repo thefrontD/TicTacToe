@@ -2,6 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d3529374-01b1-433a-a73a-241952c1c846" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.TicTacToe/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TicTacToe/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resource/Script/Data/BoardData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resource/Script/Data/BoardData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resource/Script/Manager/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resource/Script/Manager/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resource/Script/Manager/PlayerManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resource/Script/Manager/PlayerManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resource/Script/PlayerUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resource/Script/PlayerUI.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resource/Script/State/States.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resource/Script/State/States.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/BattleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/BattleScene.unity" afterDir="false" />
     </list>
@@ -105,6 +110,7 @@
       <workItem from="1660105870122" duration="87000" />
       <workItem from="1660192283644" duration="16386000" />
       <workItem from="1660263404513" duration="3080000" />
+      <workItem from="1660300808785" duration="952000" />
     </task>
     <servers />
   </component>

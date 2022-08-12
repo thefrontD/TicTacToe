@@ -15,7 +15,6 @@ public class PlayerUI : MonoBehaviour
     void Start()
     {
         PlayerManager.Instance.OnPlayerDataUpdate += UpdatePlayerUI;
-        UpdatePlayerUI();
     }
     
     void Update()

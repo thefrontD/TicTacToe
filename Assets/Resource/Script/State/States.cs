@@ -82,8 +82,6 @@ public class NormalState : BaseState
 
     public override void Exit()
     {
-        foreach (CardUI card in CardManager.Instance.HandCardList)
-            card.gameObject.GetComponent<Outline>().enabled = false;
         return;
     }
 }

@@ -28,11 +28,11 @@ public class BoardData : Singleton<BoardData>
     {
         string path = Application.dataPath;
         path += $"/Data/Board/{dataName}.json";
-        
+
         var converter = new StringEnumConverter();
         var pDataStringLoad = File.ReadAllText(path);
-        Holder EnemyActions = JsonConvert.DeserializeObject<Holder>(pDataStringLoad, converter);
+        Holder holder = JsonConvert.DeserializeObject<Holder>(pDataStringLoad, converter);
 
-        return EnemyActions;
+        return holder;
     }
 }

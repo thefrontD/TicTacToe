@@ -75,6 +75,7 @@ public abstract class Card
         usingCardSpecific();
         if (PlayerManager.Instance.StatesQueue.Count == 0) return false;
         else PlayerManager.Instance.ChangeStates(PlayerManager.Instance.StatesQueue.Dequeue());
+
         return true;
     }
 
