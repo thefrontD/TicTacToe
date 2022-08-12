@@ -16,9 +16,9 @@ public class WorldMapManager : MonoBehaviour
     public int clearedStage = 0;
     public GameObject[] stages = new GameObject[11];
     public GameObject SettingPanel;
+    public GameObject CardListPanel;
     public Text StageIdentifier;
     public Text PlayerProfile;
-    public List<Card> PlayerCard;
     private GameObject Player;
     void Start()
     {
@@ -42,8 +42,6 @@ public class WorldMapManager : MonoBehaviour
                                                 + "\n현재 스테이지: " +(clearedStage+1).ToString();
         //todo: 한 스테이지에 처치한 몹 하나라고 가정한 것 나중에 json으로 적용하면 변경 필요
 
-        //CardListUI 세팅
-        PlayerCard = CardData.Instance._load("PlayerCard.json");
     }
 
     public void Init()
@@ -54,6 +52,13 @@ public class WorldMapManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void ToggleCardListPanel(){
+        if(CardListPanel.activeSelf)
+            CardListPanel.SetActive(false);
+        else
+            CardListPanel.SetActive(true);
     }
 
     public void ToggleSettingPanel(){
