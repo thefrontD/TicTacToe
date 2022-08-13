@@ -1,0 +1,31 @@
+{
+  "Dialogues": [
+    {
+      "Name": "나레이터",
+      "Context": "",
+      "PortraitLocation": "Left"
+    },
+    {
+      "Name": "나레이터",
+      "Context": "",
+      "PortraitLocation": "Left"
+    },
+    {
+      "Name": "샬롯",
+      "Context": "!!! 침입자?!",
+      "PortraitLocation": "Right"
+    },
+    {
+      "Name": "주인공",
+      "Context": "침입자가 아니...",
+      "PortraitLocation": "Left"
+    },
+    {
+      "Name": "샬롯",
+      "Context": "무서워!",
+      "PortraitLocation": "Right"
+    }
+  ],
+  "DialoguePeople": ["나레이터", "샬롯", "주인공"],
+  "InitialSetting": ["나레이터", "Left"]
+}

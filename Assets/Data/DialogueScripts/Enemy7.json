@@ -1,0 +1,21 @@
+{
+  "Dialogues": [
+    {
+      "Name": "나레이터",
+      "Context": "이번에도 돌파할 수 있을 것인가?",
+      "PortraitLocation": "Left"
+    },
+    {
+      "Name": "나레이터",
+      "Context": "백전노장의 거북이, 포즈웨이 대령!",
+      "PortraitLocation": "Left"
+    },
+    {
+      "Name": "포즈웨이 대령",
+      "Context": "내가 그대의 상대를 해 주겠소!",
+      "PortraitLocation": "Right"
+    }
+  ],
+  "DialoguePeople": ["나레이터", "포즈웨이 대령"],
+  "InitialSetting": ["나레이터", "Left"]
+}

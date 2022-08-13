@@ -1,0 +1,21 @@
+{
+  "Dialogues": [
+    {
+      "Name": "래빗 더 앨리스",
+      "Context": "이런! 두...두고보자!!!",
+      "PortraitLocation": "Right"
+    },
+    {
+      "Name": "주인공",
+      "Context": "놓치지 않아!",
+      "PortraitLocation": "Left"
+    },
+    {
+      "Name": "래빗 더 앨리스",
+      "Context": "윽... 나의 부귀영화가...",
+      "PortraitLocation": "Right"
+    }
+  ],
+  "DialoguePeople": ["래빗 더 앨리스", "주인공"],
+  "InitialSetting": ["래빗 더 앨리스", "Right"]
+}

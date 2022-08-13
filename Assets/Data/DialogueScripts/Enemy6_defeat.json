@@ -1,0 +1,11 @@
+{
+  "Dialogues": [
+    {
+      "Name": "래빗 더 앨리스",
+      "Context": "좋아. 실험쥐가 하나 늘었군 히히히히",
+      "PortraitLocation": "Right"
+    }
+  ],
+  "DialoguePeople": ["래빗 더 앨리스"],
+  "InitialSetting": ["래빗 더 앨리스", "Right"]
+}

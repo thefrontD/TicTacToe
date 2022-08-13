@@ -1,0 +1,11 @@
+{
+  "Dialogues": [
+    {
+      "Name": "샬롯",
+      "Context": "으앙... 침입자가 아니라고? 그걸 왜 이제 말해!",
+      "PortraitLocation": "Right"
+    }
+  ],
+  "DialoguePeople": ["샬롯"],
+  "InitialSetting": ["샬롯", "Right"]
+}

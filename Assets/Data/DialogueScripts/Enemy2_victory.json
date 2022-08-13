@@ -1,0 +1,11 @@
+{
+  "Dialogues": [
+    {
+      "Name": "두덕씨",
+      "Context": "히익! 따... 땅만은 안돼!",
+      "PortraitLocation": "Right"
+    }
+  ],
+  "DialoguePeople": ["두덕씨"],
+  "InitialSetting": ["두덕씨", "Right"]
+}

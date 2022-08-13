@@ -1,0 +1,11 @@
+{
+  "Dialogues": [
+    {
+      "Name": "그리즐",
+      "Context": "숲은 나의 땅이다!",
+      "PortraitLocation": "Right"
+    }
+  ],
+  "DialoguePeople": ["그리즐"],
+  "InitialSetting": ["그리즐", "Right"]
+}
