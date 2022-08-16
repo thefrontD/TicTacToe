@@ -1,75 +1,88 @@
 [
   {
+    "ColorCardEffect": "Color",
+    "costChangeCondition": "None",
+    "colorTargetPosition": "All",
+    "colorTargetNum": "One",
+    "CardType": "Color",
     "TriggerCondition": "None",
     "AdditionalEffectCondition": "None",
     "AdditionalEffect": "None",
-    "ColorCardEffect": "Color",
-    "CardType": "Color",
-    "cardName": "Alpha",
-    "cardDesc": "Alpha is Greek A",
-    "cardCost": 1
+    "CardName": "Alpha",
+    "CardDesc": "Alpha is Greek A",
+    "CardCost": 1
   },
   {
+    "MoveCardEffect": "Flash",
+    "triggerCondition": "None",
+    "moveDirection": "All",
+    "CardType": "Move",
     "TriggerCondition": "None",
     "AdditionalEffectCondition": "None",
     "AdditionalEffect": "None",
+    "CardName": "Gamma_A",
+    "CardDesc": "Gamma is Greek C",
+    "CardCost": 1
+  },
+  {
     "AttackCardEffect": "Alpha",
+    "_targetType": 1,
+    "_targetCount": 1,
+    "_attackCount": 3,
+    "_damage": 4,
     "TargetType": 1,
-    "TargetCount": 0,
+    "TargetCount": 1,
     "AttackCount": 3,
     "Damage": 4,
     "CardType": "Attack",
-    "cardName": "Beta",
-    "cardDesc": "TargetCount 0",
-    "cardCost": 1
-  },
-  {
     "TriggerCondition": "None",
     "AdditionalEffectCondition": "None",
     "AdditionalEffect": "None",
+    "CardName": "Beta",
+    "CardDesc": "Beta is Greek B",
+    "CardCost": 1
+  },
+  {
+    "ColorCardEffect": "Color",
+    "costChangeCondition": "None",
+    "colorTargetPosition": "All",
+    "colorTargetNum": "One",
+    "CardType": "Color",
+    "TriggerCondition": "None",
+    "AdditionalEffectCondition": "None",
+    "AdditionalEffect": "None",
+    "CardName": "Alpha",
+    "CardDesc": "Alpha is Greek A",
+    "CardCost": 1
+  },
+  {
     "MoveCardEffect": "Flash",
     "triggerCondition": "None",
     "moveDirection": "UDLR",
     "CardType": "Move",
-    "cardName": "Gamma",
-    "cardDesc": "Gamma is Greek C",
-    "cardCost": 1
-  },
-  {
     "TriggerCondition": "None",
     "AdditionalEffectCondition": "None",
     "AdditionalEffect": "None",
-    "ColorCardEffect": "Color",
-    "ColorTargetPosition": "P4",
-    "CardType": "Color",
-    "cardName": "Alpha",
-    "cardDesc": "Alpha is Greek A",
-    "cardCost": 1
+    "CardName": "Gamma",
+    "CardDesc": "Gamma is Greek C",
+    "CardCost": 1
   },
   {
-    "TriggerCondition": "None",
-    "AdditionalEffectCondition": "None",
-    "AdditionalEffect": "None",
     "AttackCardEffect": "Alpha",
+    "_targetType": 1,
+    "_targetCount": 1,
+    "_attackCount": 3,
+    "_damage": 4,
     "TargetType": 1,
-    "TargetCount": 2,
+    "TargetCount": 1,
     "AttackCount": 3,
     "Damage": 4,
     "CardType": "Attack",
-    "cardName": "Beta",
-    "cardDesc": "TargetCount 2",
-    "cardCost": 1
-  },
-  {
     "TriggerCondition": "None",
     "AdditionalEffectCondition": "None",
     "AdditionalEffect": "None",
-    "MoveCardEffect": "Flash",
-    "triggerCondition": "EnemyWillAttack",
-    "moveDirection": "All",
-    "CardType": "Move",
-    "cardName": "Gamma_A",
-    "cardDesc": "Gamma is Greek C",
-    "cardCost": 1
+    "CardName": "Beta",
+    "CardDesc": "Beta is Greek B",
+    "CardCost": 1
   }
 ]
