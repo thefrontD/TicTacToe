@@ -86,6 +86,9 @@ public class Enemy : MonoBehaviour, IAttackable
         }
         EnemyUI.ShieldUIUpdate();
         EnemyUI.HPUIUpdate();
+        //Debug.Log("Buff" + DebuffDictionary[Debuff.PowerIncrease]);
+        //Debug.Log("Debuff" + DebuffDictionary[Debuff.PowerDecrease]);
+        //EnemyUI.BuffDebuffUpdate();
     }
     public GameObject GetGameObject()
     {
