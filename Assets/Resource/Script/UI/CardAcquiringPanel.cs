@@ -30,7 +30,6 @@ public class CardAcquiringPanel : MonoBehaviour
         //initialize 3개
         for(int i = 0; i < CardNum; i++)
             InitCard(CardPositionList[i], CardPool[CardChosen[i]]);
-
     }
 
     void InitCard(Vector3 position, Card card){

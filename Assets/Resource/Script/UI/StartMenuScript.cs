@@ -61,10 +61,8 @@ public class StartMenuScript : MonoBehaviour
             {
                 byte[] buffer = new byte[4096];
                 int nRead = 0;
-                // ReadAsync()는 await 연산자와 함께 사용해야 됨
                 while((nRead = await fromStream.ReadAsync(buffer, 0, buffer.Length)) != 0)
                 {
-                    // WriteAsync()는 await 연산자와 함께 사용해야 됨
                     await toStream.WriteAsync(buffer, 0, nRead);
                     totalCopied += nRead;
                 }
