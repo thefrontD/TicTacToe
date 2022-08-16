@@ -2,8 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using EPOOutline;
 using UnityEngine;
-using QuickOutline;
 using Random = UnityEngine.Random;
 
 /// <summary>
@@ -60,14 +60,27 @@ public class NormalState : BaseState
 
     public override void Enter()
     {
-        if (isNewPlayerTurn)
+        if (PlayerManager.Instance.TutorialPhase == 7)
+        {
+            PlayerManager.Instance.SetMana(1000);
+            CardManager.Instance.DrawCard(1);
+        }
+
+        if (PlayerManager.Instance.TutorialPhase == 10)
+        {
+            PlayerManager.Instance.SetMana(1000);
+            CardManager.Instance.DrawCard(2);
+        }
+        else if (isNewPlayerTurn)
         {
             PlayerManager.Instance.SetMana(1000);
             if (PlayerManager.Instance.DebuffDictionary[Debuff.Heal] > 0)
                 PlayerManager.Instance.DamageToPlayer((int) (PlayerManager.Instance.MaxHp * 0.1));
             CardManager.Instance.DrawCard(DrawNum);
+            /*
             foreach (Debuff debuff in Enum.GetValues(typeof(Debuff)))
                 PlayerManager.Instance.SetDebuff(debuff, -1);
+            */
         }
     }
 
@@ -83,6 +96,17 @@ public class NormalState : BaseState
 
     public override void Exit()
     {
+        if (PlayerManager.Instance.BingoAttack)
+        {
+            for (int i = 0; i < BoardManager.Instance.BoardSize; i++)
+            {
+                for (int j = 0; j < BoardManager.Instance.BoardSize; j++)
+                {
+                    BoardManager.Instance.GameBoard[i][j].SetBoardColor(BoardColor.None);
+                }
+            }
+        }
+        
         return;
     }
 }
@@ -112,6 +136,9 @@ public class EnemyState : BaseState
                 enemy.SetDebuff(debuff, -1);
             if (enemy.EnemyShield == 0)
                 enemy.EnemyShield = enemy.EnemyMaxShield;
+            
+            enemy.EnemyUI.ShieldUIUpdate();
+            enemy.EnemyUI.HPUIUpdate();
         }
 
         EnemyManager.Instance.EnemyAttack();
@@ -271,10 +298,10 @@ public class MoveState : BaseState
         }
 
         // Outline 켜기
-        for (int i = 0; i < boardSize; i++)
-            for (int j = 0; j < boardSize; j++)
-                if (this.movableSpace[i, j])
-                    BoardManager.Instance.GameBoard[i][j].GetComponent<Outline>().enabled = true;
+        //for (int i = 0; i < boardSize; i++)
+            //for (int j = 0; j < boardSize; j++)
+                //if (this.movableSpace[i, j])
+                    //BoardManager.Instance.GameBoard[i][j].GetComponent<Outline>().enabled = true;
     }
 
     public override void Update()
@@ -285,7 +312,6 @@ public class MoveState : BaseState
     public override void MouseEvent()
     {
         // 이동 가능한 곳을 클릭할 시 진행.
-        // 코드 출처: https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&blogId=stizms&logNo=220226873659
         Camera camera = Camera.main;
         Vector3 mousePos = Input.mousePosition;
         mousePos.z = camera.farClipPlane;
@@ -319,8 +345,10 @@ public class MoveState : BaseState
         // Outline 끄기
         for (int i = 0; i < boardSize; i++)
             for (int j = 0; j < boardSize; j++)
-                BoardManager.Instance.GameBoard[i][j].GetComponent<Outline>().enabled = false;
+                BoardManager.Instance.GameBoard[i][j].SetHighlight(BoardSituation.None);
 
+        EnemyManager.Instance.HightLightBoard();
+        
         // 이동 모션
         PlayerManager.Instance.MovePlayer(this.moveRow, this.moveCol, this.card.MoveCardEffect);
         DoAdditionalEffect();
@@ -488,8 +516,8 @@ public class AttackState : BaseState
         //공격 가능한 대상의 테두리를 밝은 파란 테두리로 표시
         foreach (IAttackable attackable in attackableList)
         {
-            attackable.GetGameObject().GetComponent<Outline>().enabled = true;
-            attackable.GetGameObject().GetComponent<Outline>().color = 3;
+            attackable.GetGameObject().GetComponent<Outlinable>().enabled = true;
+            attackable.GetGameObject().GetComponent<Outlinable>().OutlineParameters.Color = Color.blue;
         }
 
         //targetCount가 1이 아닌 경우, 바로 처리(0: 전체 공격/2 이상: 랜덤 공격)
@@ -513,7 +541,7 @@ public class AttackState : BaseState
                 {
                     int rand = Random.Range(0, attackableList.Count);
                     selectedAttackableList.Add(attackableList[rand]);
-                    attackableList[rand].GetGameObject().GetComponent<Outline>().enabled = false; //아웃라인 끔
+                    //attackableList[rand].GetGameObject().GetComponent<Outline>().enabled = false; //아웃라인 끔
                     attackableList.Remove(attackableList[rand]);
                 }
 
@@ -598,7 +626,7 @@ public class AttackState : BaseState
 
             foreach (IAttackable attackable in attackableList)
             {
-                attackable.GetGameObject().GetComponent<Outline>().enabled = false;
+                //attackable.GetGameObject().GetComponent<Outline>().enabled = false;
             }
 
             PlayerManager.Instance.ChangeStates(PlayerManager.Instance.StatesQueue.Dequeue());
@@ -610,7 +638,7 @@ public class AttackState : BaseState
         //아웃라인 끄기
         for (int i = 0; i < attackableList.Count; i++)
         {
-            attackableList[i].GetGameObject().GetComponent<Outline>().enabled = false;
+            //attackableList[i].GetGameObject().GetComponent<Outline>().enabled = false;
         }
 
         //attackableList 초기화
@@ -879,7 +907,7 @@ public class AttackState : BaseState
 
         foreach (IAttackable attackable in attackableList)
         {
-            attackable.GetGameObject().GetComponent<Outline>().enabled = false;
+            attackable.GetGameObject().GetComponent<Outlinable>().enabled = false;
         }
 
         PlayerManager.Instance.ChangeStates(PlayerManager.Instance.StatesQueue.Dequeue());
@@ -1019,7 +1047,7 @@ public class ColorState : BaseState
             //선택할 필요가 있는 경우 highlight enable
             foreach ((int row, int col) in colorables)
             {
-                BoardManager.Instance.GameBoard[row][col].GetComponent<Outline>().enabled = true;
+                BoardManager.Instance.GameBoard[row][col].SetHighlight(BoardSituation.WillColored);
             }
         }
     }
@@ -1049,7 +1077,7 @@ public class ColorState : BaseState
                         //highlight disable
                         foreach ((int row, int col) in colorables)
                         {
-                            BoardManager.Instance.GameBoard[row][col].GetComponent<Outline>().enabled = false;
+                            BoardManager.Instance.GameBoard[row][col].SetHighlight(BoardSituation.None);
                         }
 
                         EnemyManager.Instance.HightLightBoard();
@@ -1232,7 +1260,7 @@ public class DumpState : BaseState
             if (cardui.Card.CardType == dumpCardType)
             {
                 dumpableCardIndexes.Add(cardui);
-                cardui.GetComponent<Outline>().enabled = true;
+                cardui.GetComponent<Outlinable>().enabled = true;
             }
         }
     }
@@ -1261,7 +1289,7 @@ public class DumpState : BaseState
     {
         // 카드 Outline 해제
         foreach (CardUI cardui in CardManager.Instance.HandCardList)
-            cardui.GetComponent<Outline>().enabled = false;
+            cardui.GetComponent<Outlinable>().enabled = false;
         return;
     }
 }

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using EPOOutline;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -74,7 +75,10 @@ public class CardUI : MonoBehaviour
         if (PlayerManager.Instance.state.GetType() == typeof(NormalState))
         {
             if(Card.usingCard())
+            {
+                GetComponent<Outlinable>().enabled = false;
                 CardManager.Instance.HandtoGrave(idx);
+            }
         }
     }
 

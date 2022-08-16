@@ -2,13 +2,756 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d3529374-01b1-433a-a73a-241952c1c846" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Animations.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Animations/CharacterAnimator.controller" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Animations/CharacterAnimator.controller.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Animations/Run.anim" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Animations/Run.anim.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Materials.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Materials/Cyan.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Materials/Cyan.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Materials/Ground.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Materials/Ground.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/2d city.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/2d city/City 2d.psd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/2d city/City 2d.psd.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/2d city/License free.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/2d city/License free.txt.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/BitGem.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/BitGem/Police_Officer_SC.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/BitGem/Police_Officer_SC/Models.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/BitGem/Police_Officer_SC/Models/Materials.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/BitGem/Police_Officer_SC/Models/Materials/cop_blue.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/BitGem/Police_Officer_SC/Models/Materials/cop_blue.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/BitGem/Police_Officer_SC/Models/Materials/cop_blue_MaskMap.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/BitGem/Police_Officer_SC/Models/Materials/cop_blue_MaskMap.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/BitGem/Police_Officer_SC/Models/cop.fbx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/BitGem/Police_Officer_SC/Models/cop.fbx.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/BitGem/Police_Officer_SC/Prefabs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/BitGem/Police_Officer_SC/Prefabs/cop.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/BitGem/Police_Officer_SC/Prefabs/cop.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/BitGem/Police_Officer_SC/Textures.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/BitGem/Police_Officer_SC/Textures/cop_blue.tga" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/BitGem/Police_Officer_SC/Textures/cop_blue.tga.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/BitGem/Police_Officer_SC/Textures/cop_blue_metal_unity.tga" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/BitGem/Police_Officer_SC/Textures/cop_blue_metal_unity.tga.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/BitGem/Police_Officer_SC/police_officer_SC.unity" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/BitGem/Police_Officer_SC/police_officer_SC.unity.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Cartoon Buildings.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Cartoon Buildings/Materals.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Cartoon Buildings/Materals/Buildings.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Cartoon Buildings/Materals/Buildings.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Cartoon Buildings/Materals/Material_Emission.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Cartoon Buildings/Materals/Material_Emission.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Cartoon Buildings/Materals/Material_alpha.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Cartoon Buildings/Materals/Material_alpha.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Cartoon Buildings/Models.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Cartoon Buildings/Models/Garage.fbx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Cartoon Buildings/Models/Garage.fbx.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Cartoon Buildings/Models/Gas_station.fbx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Cartoon Buildings/Models/Gas_station.fbx.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Cartoon Buildings/Models/Station.fbx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Cartoon Buildings/Models/Station.fbx.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Cartoon Buildings/New Material.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Cartoon Buildings/New Material.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Cartoon Buildings/Prefabs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Cartoon Buildings/Prefabs/Garage.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Cartoon Buildings/Prefabs/Garage.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Cartoon Buildings/Prefabs/Gas_station.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Cartoon Buildings/Prefabs/Gas_station.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Cartoon Buildings/Prefabs/Station.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Cartoon Buildings/Prefabs/Station.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Cartoon Buildings/Scene.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Cartoon Buildings/Scene/Scene.unity" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Cartoon Buildings/Scene/Scene.unity.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Cartoon Buildings/Texture.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Cartoon Buildings/Texture/Tex_color.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Cartoon Buildings/Texture/Tex_color.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/CartoonLowPolyCityLite.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/CartoonLowPolyCityLite/CartoonLowPolyCityLite_HDRP_2018.3.unitypackage.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/CartoonLowPolyCityLite/CartoonLowPolyCityLite_LWRP_2018.3.unitypackage.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/CartoonLowPolyCityLite/CartoonLowPolyCityLite_URP_2019.3.unitypackage.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/CartoonLowPolyCityLite/Materials.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/CartoonLowPolyCityLite/Materials/CartoonLowPolyCityLite_01.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/CartoonLowPolyCityLite/Materials/CartoonLowPolyCityLite_01.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/CartoonLowPolyCityLite/Models.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/CartoonLowPolyCityLite/Models/BG.fbx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/CartoonLowPolyCityLite/Models/BG.fbx.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/CartoonLowPolyCityLite/Models/Car_03.fbx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/CartoonLowPolyCityLite/Models/Car_03.fbx.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/CartoonLowPolyCityLite/Models/House_01.fbx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/CartoonLowPolyCityLite/Models/House_01.fbx.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/CartoonLowPolyCityLite/Models/House_16.fbx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/CartoonLowPolyCityLite/Models/House_16.fbx.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/CartoonLowPolyCityLite/Models/Light_01.fbx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/CartoonLowPolyCityLite/Models/Light_01.fbx.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/CartoonLowPolyCityLite/Models/Road_02.fbx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/CartoonLowPolyCityLite/Models/Road_02.fbx.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/CartoonLowPolyCityLite/Models/Road_10.fbx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/CartoonLowPolyCityLite/Models/Road_10.fbx.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/CartoonLowPolyCityLite/Models/Trash_01.fbx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/CartoonLowPolyCityLite/Models/Trash_01.fbx.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/CartoonLowPolyCityLite/Models/Wheel_01.fbx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/CartoonLowPolyCityLite/Models/Wheel_01.fbx.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/CartoonLowPolyCityLite/Prefabs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/CartoonLowPolyCityLite/Prefabs/BG.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/CartoonLowPolyCityLite/Prefabs/BG.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/CartoonLowPolyCityLite/Prefabs/Car_03.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/CartoonLowPolyCityLite/Prefabs/Car_03.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/CartoonLowPolyCityLite/Prefabs/House_01.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/CartoonLowPolyCityLite/Prefabs/House_01.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/CartoonLowPolyCityLite/Prefabs/House_16.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/CartoonLowPolyCityLite/Prefabs/House_16.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/CartoonLowPolyCityLite/Prefabs/Light_01.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/CartoonLowPolyCityLite/Prefabs/Light_01.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/CartoonLowPolyCityLite/Prefabs/Road_02.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/CartoonLowPolyCityLite/Prefabs/Road_02.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/CartoonLowPolyCityLite/Prefabs/Road_10.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/CartoonLowPolyCityLite/Prefabs/Road_10.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/CartoonLowPolyCityLite/Prefabs/Trash_01.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/CartoonLowPolyCityLite/Prefabs/Trash_01.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/CartoonLowPolyCityLite/Scenes.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/CartoonLowPolyCityLite/Scenes/CartoonLowPolyCityLite_01.unity" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/CartoonLowPolyCityLite/Scenes/CartoonLowPolyCityLite_01.unity.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/CartoonLowPolyCityLite/Textures.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/CartoonLowPolyCityLite/Textures/Texture_01.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/CartoonLowPolyCityLite/Textures/Texture_01.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Animation.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Animation/Death-end.anim" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Animation/Death-end.anim.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Animation/Death.anim" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Animation/Death.anim.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Animation/Idle.anim" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Animation/Idle.anim.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Animation/Jump.anim" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Animation/Jump.anim.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Animation/Player.controller" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Animation/Player.controller.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Animation/Run.anim" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Animation/Run.anim.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Animation/Sit-down.anim" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Animation/Sit-down.anim.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Animation/Slide-end.anim" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Animation/Slide-end.anim.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Animation/Slide-start.anim" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Animation/Slide-start.anim.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Animation/Slide.anim" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Animation/Slide.anim.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Animation/Sneaking.anim" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Animation/Sneaking.anim.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Animation/Walk.anim" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Animation/Walk.anim.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Prefab/Player.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Prefab/Player.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Scene.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Scene/Demo.unity" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Scene/Demo.unity.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Death-hero01_001.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Death-hero01_001.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Death-hero01_002.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Death-hero01_002.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Death-hero01_003.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Death-hero01_003.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Death-hero01_004.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Death-hero01_004.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Death-hero01_005.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Death-hero01_005.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Death-hero01_006.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Death-hero01_006.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Death-hero01_007.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Death-hero01_007.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Death-hero01_008.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Death-hero01_008.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Death-hero01_009.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Death-hero01_009.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Idle-hero01_001.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Idle-hero01_001.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Idle-hero01_002.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Idle-hero01_002.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Idle-hero01_003.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Idle-hero01_003.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Idle-hero01_004.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Idle-hero01_004.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Idle-hero01_005.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Idle-hero01_005.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Idle-hero01_006.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Idle-hero01_006.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Idle-hero01_007.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Idle-hero01_007.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Idle-hero01_008.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Idle-hero01_008.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Idle-hero01_009.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Idle-hero01_009.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Idle-hero01_010.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Idle-hero01_010.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Idle-hero01_011.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Idle-hero01_011.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Idle-hero01_012.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Idle-hero01_012.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Jump-hero01_001.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Jump-hero01_001.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Jump-hero01_002.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Jump-hero01_002.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Jump-hero01_003.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Jump-hero01_003.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Jump-hero01_004.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Jump-hero01_004.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Jump-hero01_005.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Jump-hero01_005.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Jump-hero01_006.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Jump-hero01_006.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Jump-hero01_007.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Jump-hero01_007.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Jump-hero01_008.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Jump-hero01_008.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Jump-hero01_009.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Jump-hero01_009.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Run-hero01_001.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Run-hero01_001.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Run-hero01_002.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Run-hero01_002.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Run-hero01_003.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Run-hero01_003.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Run-hero01_004.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Run-hero01_004.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Run-hero01_005.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Run-hero01_005.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Run-hero01_006.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Run-hero01_006.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Run-hero01_007.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Run-hero01_007.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Sit-down00-hero01_001.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Sit-down00-hero01_001.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Sit-down00-hero01_002.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Sit-down00-hero01_002.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Sit-down00-hero01_003.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Sit-down00-hero01_003.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Sit-down01-hero01_001.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Sit-down01-hero01_001.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Sit-down01-hero01_002.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Sit-down01-hero01_002.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Sit-down01-hero01_003.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Sit-down01-hero01_003.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Sit-down01-hero01_004.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Sit-down01-hero01_004.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Sit-down01-hero01_005.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Sit-down01-hero01_005.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Sit-down01-hero01_006.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Sit-down01-hero01_006.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Sit-down01-hero01_007.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Sit-down01-hero01_007.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Sit-down01-hero01_008.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Sit-down01-hero01_008.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Sit-down01-hero01_009.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Sit-down01-hero01_009.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Sit-down01-hero01_010.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Sit-down01-hero01_010.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Sit-down01-hero01_011.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Sit-down01-hero01_011.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Sit-down01-hero01_012.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Sit-down01-hero01_012.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Sit-down01-hero01_013.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Sit-down01-hero01_013.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Slide-hero01_001.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Slide-hero01_001.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Slide-hero01_002.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Slide-hero01_002.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Slide-hero01_003.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Slide-hero01_003.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Slide-hero01_004.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Slide-hero01_004.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Sneaking-hero01_001.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Sneaking-hero01_001.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Sneaking-hero01_002.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Sneaking-hero01_002.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Sneaking-hero01_003.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Sneaking-hero01_003.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Sneaking-hero01_004.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Sneaking-hero01_004.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Sneaking-hero01_005.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Sneaking-hero01_005.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Sneaking-hero01_006.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Sneaking-hero01_006.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Sneaking-hero01_007.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Sneaking-hero01_007.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Sneaking-hero01_008.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Sneaking-hero01_008.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Sneaking-hero01_009.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Sneaking-hero01_009.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Sneaking-hero01_010.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Sneaking-hero01_010.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Sneaking-hero01_011.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Sneaking-hero01_011.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Sneaking-hero01_012.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Sneaking-hero01_012.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Sneaking-hero01_013.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Sneaking-hero01_013.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Sneaking-hero01_014.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Sneaking-hero01_014.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Sneaking-hero01_015.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Sneaking-hero01_015.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Sneaking-hero01_016.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Sneaking-hero01_016.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Sneaking-hero01_017.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Sneaking-hero01_017.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Sneaking-hero01_018.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Sneaking-hero01_018.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Sneaking-hero01_019.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Sneaking-hero01_019.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Walk-hero01_001.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Walk-hero01_001.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Walk-hero01_002.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Walk-hero01_002.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Walk-hero01_003.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Walk-hero01_003.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Walk-hero01_004.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Walk-hero01_004.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Walk-hero01_005.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Walk-hero01_005.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Walk-hero01_006.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Walk-hero01_006.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Walk-hero01_007.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Walk-hero01_007.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Walk-hero01_008.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Walk-hero01_008.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Walk-hero01_009.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Walk-hero01_009.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0000_Death-hero01_001.png.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0000_Death-hero01_001.png.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0001_Death-hero01_002.png.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0001_Death-hero01_002.png.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0002_Death-hero01_003.png.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0002_Death-hero01_003.png.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0003_Death-hero01_004.png.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0003_Death-hero01_004.png.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0004_Death-hero01_005.png.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0004_Death-hero01_005.png.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0005_Death-hero01_006.png.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0005_Death-hero01_006.png.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0006_Death-hero01_007.png.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0006_Death-hero01_007.png.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0007_Death-hero01_008.png.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0007_Death-hero01_008.png.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0008_Death-hero01_009.png.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0008_Death-hero01_009.png.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0009_Idle-hero01_001.png.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0009_Idle-hero01_001.png.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0010_Idle-hero01_002.png.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0010_Idle-hero01_002.png.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0011_Idle-hero01_003.png.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0011_Idle-hero01_003.png.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0012_Idle-hero01_004.png.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0012_Idle-hero01_004.png.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0013_Idle-hero01_005.png.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0013_Idle-hero01_005.png.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0014_Idle-hero01_006.png.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0014_Idle-hero01_006.png.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0015_Idle-hero01_007.png.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0015_Idle-hero01_007.png.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0016_Idle-hero01_008.png.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0016_Idle-hero01_008.png.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0017_Idle-hero01_009.png.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0017_Idle-hero01_009.png.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0018_Idle-hero01_010.png.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0018_Idle-hero01_010.png.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0019_Idle-hero01_011.png.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0019_Idle-hero01_011.png.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0020_Idle-hero01_012.png.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0020_Idle-hero01_012.png.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0021_Jump-hero01_001.png.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0021_Jump-hero01_001.png.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0022_Jump-hero01_002.png.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0022_Jump-hero01_002.png.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0023_Jump-hero01_003.png.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0023_Jump-hero01_003.png.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0024_Jump-hero01_004.png.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0024_Jump-hero01_004.png.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0025_Jump-hero01_005.png.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0025_Jump-hero01_005.png.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0026_Jump-hero01_006.png.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0026_Jump-hero01_006.png.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0027_Jump-hero01_007.png.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0027_Jump-hero01_007.png.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0028_Jump-hero01_008.png.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0028_Jump-hero01_008.png.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0029_Jump-hero01_009.png.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0029_Jump-hero01_009.png.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0030_Run-hero01_001.png.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0030_Run-hero01_001.png.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0031_Run-hero01_002.png.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0031_Run-hero01_002.png.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0032_Run-hero01_003.png.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0032_Run-hero01_003.png.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0033_Run-hero01_004.png.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0033_Run-hero01_004.png.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0034_Run-hero01_005.png.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0034_Run-hero01_005.png.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0035_Run-hero01_006.png.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0035_Run-hero01_006.png.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0036_Run-hero01_007.png.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0036_Run-hero01_007.png.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0037_Sit-down00-hero01_001.png.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0037_Sit-down00-hero01_001.png.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0038_Sit-down00-hero01_002.png.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0038_Sit-down00-hero01_002.png.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0039_Sit-down00-hero01_003.png.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0039_Sit-down00-hero01_003.png.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0040_Sit-down01-hero01_001.png.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0040_Sit-down01-hero01_001.png.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0041_Sit-down01-hero01_002.png.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0041_Sit-down01-hero01_002.png.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0042_Sit-down01-hero01_003.png.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0042_Sit-down01-hero01_003.png.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0043_Sit-down01-hero01_004.png.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0043_Sit-down01-hero01_004.png.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0044_Sit-down01-hero01_005.png.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0044_Sit-down01-hero01_005.png.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0045_Sit-down01-hero01_006.png.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0045_Sit-down01-hero01_006.png.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0046_Sit-down01-hero01_007.png.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0046_Sit-down01-hero01_007.png.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0047_Sit-down01-hero01_008.png.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0047_Sit-down01-hero01_008.png.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0048_Sit-down01-hero01_009.png.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0048_Sit-down01-hero01_009.png.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0049_Sit-down01-hero01_010.png.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0049_Sit-down01-hero01_010.png.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0050_Sit-down01-hero01_011.png.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0050_Sit-down01-hero01_011.png.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0051_Sit-down01-hero01_012.png.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0051_Sit-down01-hero01_012.png.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0052_Sit-down01-hero01_013.png.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0052_Sit-down01-hero01_013.png.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0053_Slide-hero01_001.png.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0053_Slide-hero01_001.png.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0054_Slide-hero01_002.png.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0054_Slide-hero01_002.png.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0055_Slide-hero01_003.png.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0055_Slide-hero01_003.png.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0056_Slide-hero01_004.png.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0056_Slide-hero01_004.png.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0057_Sneaking-hero01_001.png.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0057_Sneaking-hero01_001.png.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0058_Sneaking-hero01_002.png.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0058_Sneaking-hero01_002.png.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0059_Sneaking-hero01_003.png.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0059_Sneaking-hero01_003.png.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0060_Sneaking-hero01_004.png.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0060_Sneaking-hero01_004.png.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0061_Sneaking-hero01_005.png.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0061_Sneaking-hero01_005.png.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0062_Sneaking-hero01_006.png.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0062_Sneaking-hero01_006.png.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0063_Sneaking-hero01_007.png.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0063_Sneaking-hero01_007.png.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0064_Sneaking-hero01_008.png.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0064_Sneaking-hero01_008.png.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0065_Sneaking-hero01_009.png.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0065_Sneaking-hero01_009.png.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0066_Sneaking-hero01_010.png.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0066_Sneaking-hero01_010.png.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0067_Sneaking-hero01_011.png.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0067_Sneaking-hero01_011.png.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0068_Sneaking-hero01_012.png.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0068_Sneaking-hero01_012.png.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0069_Sneaking-hero01_013.png.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0069_Sneaking-hero01_013.png.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0070_Sneaking-hero01_014.png.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0070_Sneaking-hero01_014.png.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0071_Sneaking-hero01_015.png.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0071_Sneaking-hero01_015.png.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0072_Sneaking-hero01_016.png.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0072_Sneaking-hero01_016.png.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0073_Sneaking-hero01_017.png.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0073_Sneaking-hero01_017.png.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0074_Sneaking-hero01_018.png.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0074_Sneaking-hero01_018.png.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0075_Sneaking-hero01_019.png.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0075_Sneaking-hero01_019.png.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0076_Walk-hero01_001.png.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0076_Walk-hero01_001.png.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0077_Walk-hero01_002.png.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0077_Walk-hero01_002.png.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0078_Walk-hero01_003.png.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0078_Walk-hero01_003.png.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0079_Walk-hero01_004.png.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0079_Walk-hero01_004.png.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0080_Walk-hero01_005.png.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0080_Walk-hero01_005.png.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0081_Walk-hero01_006.png.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0081_Walk-hero01_006.png.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0082_Walk-hero01_007.png.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0082_Walk-hero01_007.png.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0083_Walk-hero01_008.png.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0083_Walk-hero01_008.png.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0084_Walk-hero01_009.png.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0084_Walk-hero01_009.png.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Read Me.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Read Me.docx.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Read Me.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Read Me.pdf.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Prefabs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Prefabs/Speech bubble.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Prefabs/Speech bubble.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Scenes.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Scenes/Demo 2D.unity" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Scenes/Demo 2D.unity.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Scenes/Demo 2DSettings.lighting" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Scenes/Demo 2DSettings.lighting.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Scenes/Demo 3D.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Scenes/Demo 3D.unity" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Scenes/Demo 3D.unity.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Scenes/Demo 3D/GameObject Profile.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Scenes/Demo 3D/GameObject Profile.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Scenes/Demo 3D/NavMesh.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Scenes/Demo 3D/NavMesh.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Scenes/Demo 3DSettings.lighting" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Scenes/Demo 3DSettings.lighting.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Scenes/Use cases.unity" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Scenes/Use cases.unity.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Scripts.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Scripts/BubbleSpot.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Scripts/BubbleSpot.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Scripts/CameraController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Scripts/CameraController.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Scripts/Character.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Scripts/Character.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Scripts/Chicken.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Scripts/Chicken.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Scripts/Doughnut.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Scripts/Doughnut.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Scripts/ICollectable.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Scripts/ICollectable.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Scripts/InteractableObject.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Scripts/InteractableObject.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Scripts/UsecaseSwitcher.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Scripts/UsecaseSwitcher.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Sounds.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Sounds/Chicken.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Sounds/Chicken.wav.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Sounds/Eat.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Sounds/Eat.wav.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Sounds/Ignition.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Sounds/Ignition.wav.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Sounds/Third-Party Notices.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Sounds/Third-Party Notices.txt.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Sounds/Walk.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Sounds/Walk.wav.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Textures.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Textures/Cursor.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Textures/Cursor.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Textures/Speech bubble.psd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Textures/Speech bubble.psd.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Textures/Sprite.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Textures/Sprite.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Textures/Trash bin.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Textures/Trash bin.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Documentation.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Documentation/Easy performant outline.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Documentation/Easy performant outline.pdf.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Editor resources.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Editor resources/Icons.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Editor resources/Icons/Blitter icon.psd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Editor resources/Icons/Blitter icon.psd.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Editor resources/Icons/Camera icon.psd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Editor resources/Icons/Camera icon.psd.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Editor resources/Icons/Outline icon.psd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Editor resources/Icons/Outline icon.psd.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Editor resources/Resources.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Editor resources/Resources/Easy performant outline.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Editor resources/Resources/Easy performant outline/EP Outline logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Editor resources/Resources/Easy performant outline/EP Outline logo.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Resources.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Resources/Easy performant outline.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Resources/Easy performant outline/Shaders.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Resources/Easy performant outline/Shaders/BasicBlit.shader" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Resources/Easy performant outline/Shaders/BasicBlit.shader.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Resources/Easy performant outline/Shaders/Blur.shader" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Resources/Easy performant outline/Shaders/Blur.shader.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Resources/Easy performant outline/Shaders/ClearStencil.shader" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Resources/Easy performant outline/Shaders/ClearStencil.shader.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Resources/Easy performant outline/Shaders/Dilate.shader" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Resources/Easy performant outline/Shaders/Dilate.shader.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Resources/Easy performant outline/Shaders/EdgeDilate.shader" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Resources/Easy performant outline/Shaders/EdgeDilate.shader.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Resources/Easy performant outline/Shaders/Fills.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Resources/Easy performant outline/Shaders/Fills/ColorFill.shader" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Resources/Easy performant outline/Shaders/Fills/ColorFill.shader.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Resources/Easy performant outline/Shaders/Fills/Dots.shader" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Resources/Easy performant outline/Shaders/Fills/Dots.shader.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Resources/Easy performant outline/Shaders/Fills/EmptyFill.shader" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Resources/Easy performant outline/Shaders/Fills/EmptyFill.shader.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Resources/Easy performant outline/Shaders/Fills/FillMask.shader" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Resources/Easy performant outline/Shaders/Fills/FillMask.shader.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Resources/Easy performant outline/Shaders/Fills/Fresnel.shader" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Resources/Easy performant outline/Shaders/Fills/Fresnel.shader.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Resources/Easy performant outline/Shaders/Fills/Interlaced.shader" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Resources/Easy performant outline/Shaders/Fills/Interlaced.shader.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Resources/Easy performant outline/Shaders/FinalBlit.shader" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Resources/Easy performant outline/Shaders/FinalBlit.shader.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Resources/Easy performant outline/Shaders/MiskCG.cginc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Resources/Easy performant outline/Shaders/MiskCG.cginc.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Resources/Easy performant outline/Shaders/Obstacle.shader" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Resources/Easy performant outline/Shaders/Obstacle.shader.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Resources/Easy performant outline/Shaders/Outline.shader" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Resources/Easy performant outline/Shaders/Outline.shader.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Resources/Easy performant outline/Shaders/OutlineMask.shader" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Resources/Easy performant outline/Shaders/OutlineMask.shader.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Resources/Easy performant outline/Shaders/PartialBlit.shader" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Resources/Easy performant outline/Shaders/PartialBlit.shader.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Resources/Easy performant outline/Shaders/TransparentBlit.shader" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Resources/Easy performant outline/Shaders/TransparentBlit.shader.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Resources/Easy performant outline/Shaders/ZPrepass.shader" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Resources/Easy performant outline/Shaders/ZPrepass.shader.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Scripts.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Scripts/BlitUtility.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Scripts/BlitUtility.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Scripts/BlurType.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Scripts/BlurType.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Scripts/CameraUtility.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Scripts/CameraUtility.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Scripts/DOTween support.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Scripts/DOTween support/DOTweenEPO.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Scripts/DOTween support/DOTweenEPO.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Scripts/Editor.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Scripts/Editor/EPOSetuper.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Scripts/Editor/EPOSetuper.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Scripts/Editor/OutlinableEditor.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Scripts/Editor/OutlinableEditor.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Scripts/Editor/OutlinePropertiesPropertyDrawer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Scripts/Editor/OutlinePropertiesPropertyDrawer.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Scripts/Editor/OutlineTargetPropertyDrawer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Scripts/Editor/OutlineTargetPropertyDrawer.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Scripts/Editor/OutlinerEditor.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Scripts/Editor/OutlinerEditor.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Scripts/Editor/SerializedPassPropertyDrawer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Scripts/Editor/SerializedPassPropertyDrawer.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Scripts/KeywordsUtility.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Scripts/KeywordsUtility.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Scripts/OnPreRenderEventTransferer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Scripts/OnPreRenderEventTransferer.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Scripts/Outlinable.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Scripts/Outlinable.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Scripts/OutlineCustomPass.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Scripts/OutlineCustomPass.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Scripts/OutlineEffect.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Scripts/OutlineEffect.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Scripts/OutlineParameters.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Scripts/OutlineParameters.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Scripts/OutlineTarget.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Scripts/OutlineTarget.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Scripts/Outliner.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Scripts/Outliner.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Scripts/PipelineAssetUtility.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Scripts/PipelineAssetUtility.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Scripts/RenderTargetUtility.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Scripts/RenderTargetUtility.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Scripts/RendererFilteringUtility.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Scripts/RendererFilteringUtility.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Scripts/SerializedPass.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Scripts/SerializedPass.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Scripts/TargetStateListener.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Scripts/TargetStateListener.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Scripts/URP support.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Scripts/URP support/URPOutlineFeature.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Scripts/URP support/URPOutlineFeature.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resource/Material/BoardSecondMaterial.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resource/Material/BoardSecondMaterial.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resource/Material/CardSecondMaterial.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resource/Material/CardSecondMaterial.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resource/Script/Manager/TutorialManager.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resource/Script/Manager/TutorialManager.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TicTacToe/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TicTacToe/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resource/Script/Data/BoardData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resource/Script/Data/BoardData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/OutlineEffect.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/OutlineEffect/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/OutlineEffect/LICENSE.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/OutlineEffect/OutlineEffect.asmdef" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/OutlineEffect/OutlineEffect.asmdef.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/OutlineEffect/OutlineEffect.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/OutlineEffect/OutlineEffect/LinkedSet.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/OutlineEffect/OutlineEffect/LinkedSet.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/OutlineEffect/OutlineEffect/Outline.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/OutlineEffect/OutlineEffect/Outline.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/OutlineEffect/OutlineEffect/OutlineEffect.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/OutlineEffect/OutlineEffect/OutlineEffect.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/OutlineEffect/OutlineEffect/Resources.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/OutlineEffect/OutlineEffect/Resources/OutlineBufferShader.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/OutlineEffect/OutlineEffect/Resources/OutlineBufferShader.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/OutlineEffect/OutlineEffect/Resources/OutlineShader.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/OutlineEffect/OutlineEffect/Resources/OutlineShader.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/OutlineEffect/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/OutlineEffect/package.json.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Package/OutlineEffect.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Package/OutlineEffect/README.rtf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Package/OutlineEffect/README.rtf.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Package/OutlineEffect/Samples.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Package/OutlineEffect/Samples/Demo.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Package/OutlineEffect/Samples/Demo/Content.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Package/OutlineEffect/Samples/Demo/Content/at.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Package/OutlineEffect/Samples/Demo/Content/at.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Package/OutlineEffect/Samples/Demo/Content/at.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Package/OutlineEffect/Samples/Demo/Content/at.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Package/OutlineEffect/Samples/Demo/Content/chair.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Package/OutlineEffect/Samples/Demo/Content/chair.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Package/OutlineEffect/Samples/Demo/Content/chair.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Package/OutlineEffect/Samples/Demo/Content/chair/black_plastic.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Package/OutlineEffect/Samples/Demo/Content/chair/black_plastic.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Package/OutlineEffect/Samples/Demo/Content/chair/brushed_steel.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Package/OutlineEffect/Samples/Demo/Content/chair/brushed_steel.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Package/OutlineEffect/Samples/Demo/Content/chair/chrome.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Package/OutlineEffect/Samples/Demo/Content/chair/chrome.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Package/OutlineEffect/Samples/Demo/Content/chair/skin.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Package/OutlineEffect/Samples/Demo/Content/chair/skin.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Package/OutlineEffect/Samples/Demo/Content/chair/wheel.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Package/OutlineEffect/Samples/Demo/Content/chair/wheel.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Package/OutlineEffect/Samples/Demo/Content/floor.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Package/OutlineEffect/Samples/Demo/Content/floor.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Package/OutlineEffect/Samples/Demo/Content/grey.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Package/OutlineEffect/Samples/Demo/Content/grey.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Package/OutlineEffect/Samples/Demo/Content/logo.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Package/OutlineEffect/Samples/Demo/Content/logo.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Package/OutlineEffect/Samples/Demo/Content/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Package/OutlineEffect/Samples/Demo/Content/logo.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Package/OutlineEffect/Samples/Demo/Content/sky.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Package/OutlineEffect/Samples/Demo/Content/sky.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Package/OutlineEffect/Samples/Demo/Demo.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Package/OutlineEffect/Samples/Demo/Demo.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Package/OutlineEffect/Samples/Demo/MaterialSwitcher.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Package/OutlineEffect/Samples/Demo/MaterialSwitcher.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Package/OutlineEffect/Samples/Demo/OutlineAnimation.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Package/OutlineEffect/Samples/Demo/OutlineAnimation.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Package/OutlineEffect/Samples/Demo/Rotate.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Package/OutlineEffect/Samples/Demo/Rotate.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Package/OutlineEffect/Samples/Demo/StressTest.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Package/OutlineEffect/Samples/Demo/StressTest.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Package/OutlineEffect/Samples/Demo/Toggle.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Package/OutlineEffect/Samples/Demo/Toggle.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Package/SerializableDictionary/Example/Editor/UserSerializableDictionaryPropertyDrawers.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SerializableDictionary/Example/Editor/UserSerializableDictionaryPropertyDrawers.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Package/SerializableDictionary/Example/UserSerializableDictionaries.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SerializableDictionary/Example/UserSerializableDictionaries.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resource/Prefabs/Card.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resource/Prefabs/Card.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resource/Prefabs/GameManager.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resource/Prefabs/GameManager.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resource/Prefabs/SampleEnemy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resource/Prefabs/SampleEnemy.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resource/Prefabs/SampleWall.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resource/Prefabs/SampleWall.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resource/Prefabs/SingleBoard.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resource/Prefabs/SingleBoard.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resource/Script/Board/Board.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resource/Script/Board/Board.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resource/Script/Card/CardUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resource/Script/Card/CardUI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resource/Script/Enemy/Enemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resource/Script/Enemy/Enemy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resource/Script/Manager/BoardManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resource/Script/Manager/BoardManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resource/Script/Manager/CardManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resource/Script/Manager/CardManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resource/Script/Manager/DialgoueManger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resource/Script/Manager/DialgoueManger.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resource/Script/Manager/EnemyManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resource/Script/Manager/EnemyManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resource/Script/Manager/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resource/Script/Manager/GameManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resource/Script/Manager/PlayerManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resource/Script/Manager/PlayerManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resource/Script/PlayerUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resource/Script/PlayerUI.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resource/Script/State/States.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resource/Script/State/States.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/BattleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/BattleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/WorldMap.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/WorldMap.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,16 +788,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;Discover.Launch.Via.Unity&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;rider.run.widget.enabled.cache&quot;: &quot;false&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;settings.json.schema&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Discover.Launch.Via.Unity": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "nodejs_package_manager_path": "npm",
+    "rider.run.widget.enabled.cache": "false",
+    "settings.editor.selected.configurable": "settings.json.schema",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="UnitTests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2020.3.30f1\Editor\Unity.exe" />
@@ -111,6 +855,7 @@
       <workItem from="1660192283644" duration="16386000" />
       <workItem from="1660263404513" duration="3080000" />
       <workItem from="1660300808785" duration="952000" />
+      <workItem from="1660583157710" duration="10716000" />
     </task>
     <servers />
   </component>

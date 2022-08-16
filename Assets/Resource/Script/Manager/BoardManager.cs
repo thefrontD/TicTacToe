@@ -71,7 +71,7 @@ public class BoardManager : Singleton<BoardManager>
             for (int j = 0; j < _boardSize; j++)
             {
                 float size = BoardPrefab.transform.localScale.x;
-                Vector3 pos = new Vector3(-size + size * j, size - size * i, 0);
+                Vector3 pos = new Vector3(-size + size * j, size - size * i + 4, 0);
                 _gameBoard[i].Add(Instantiate(BoardPrefab, pos, Quaternion.identity).GetComponent<Board>());
                 _gameBoard[i][j].Init(_boardColors[i][j], i, j);
                 _boardAttackables[i].Add(null);
@@ -131,6 +131,8 @@ public class BoardManager : Singleton<BoardManager>
             PlayerManager.Instance.Col = col;
             Vector3 nextPos = _gameBoard[PlayerManager.Instance.Row][PlayerManager.Instance.Col].transform.position - 
                               new Vector3(0, 0, PlayerPrefab.transform.localScale.z/2);
+            _boardObjects[row][col] = BoardObject.Player;
+            
             switch (effect)
             {
                 case MoveCardEffect.Slide:

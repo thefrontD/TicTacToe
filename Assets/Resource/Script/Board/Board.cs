@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using EPOOutline;
 using UnityEngine;
-using QuickOutline;
 
 public class Board : MonoBehaviour
 {
@@ -10,7 +10,7 @@ public class Board : MonoBehaviour
     [SerializeField] private Sprite EnemySprite;
     [SerializeField] private Sprite PlayerSprite;
     [SerializeField] private SpriteRenderer spriteRenderer;
-    [SerializeField] private Outline outline;
+    [SerializeField] private List<Color> colors;
     private int _row;
     private int _col;
 
@@ -58,11 +58,11 @@ public class Board : MonoBehaviour
     public void SetHighlight(BoardSituation situation)
     {
         if(situation == BoardSituation.None)
-            outline.enabled = false;
+            GetComponent<Outlinable>().enabled = false;
         else
         {
-            outline.enabled = true;
-            outline.color = (int)situation;
+            GetComponent<Outlinable>().enabled = true;
+            GetComponent<Outlinable>().OutlineParameters.Color = colors[(int) situation];
         }
     }
 }

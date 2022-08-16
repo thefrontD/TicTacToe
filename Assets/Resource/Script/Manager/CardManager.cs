@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using DG.Tweening;
-using QuickOutline;
+using EPOOutline;
 using UnityEngine;
-using UnityEngine.XR;
 
 /// <summary>
 /// Card의 움직임에 대한 Manager
@@ -65,9 +64,9 @@ public class CardManager : Singleton<CardManager>
         foreach (CardUI card in HandCardList)
         {
             if (card.Card.CheckCondition())
-                card.gameObject.GetComponent<Outline>().enabled = true;
+                card.gameObject.GetComponent<Outlinable>().enabled = true;
             else
-                card.gameObject.GetComponent<Outline>().enabled = false;
+                card.gameObject.GetComponent<Outlinable>().enabled = false;
         }
     }
     

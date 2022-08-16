@@ -60,7 +60,7 @@ public class EnemyManager : Singleton<EnemyManager>
                         else
                         {
                             for (int j = 0; j < BoardManager.Instance.BoardSize; j++)
-                                BoardManager.Instance.GameBoard[i][j].SetHighlight(BoardSituation.WillAttack);
+                                BoardManager.Instance.GameBoard[j][i].SetHighlight(BoardSituation.WillAttack);
                         }
                     }
                     break;
@@ -73,7 +73,7 @@ public class EnemyManager : Singleton<EnemyManager>
                             for (int j = 0; j < BoardManager.Instance.BoardSize; j++)
                             {
                                 Debug.Log(string.Format("{0} : {1}", i, j));
-                                BoardManager.Instance.GameBoard[j][i].SetHighlight(BoardSituation.WillAttack);
+                                BoardManager.Instance.GameBoard[i][j].SetHighlight(BoardSituation.WillAttack);
                             }
                         }
                     }

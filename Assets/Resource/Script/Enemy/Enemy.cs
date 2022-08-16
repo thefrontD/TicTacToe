@@ -1,9 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using EPOOutline;
 using UnityEngine;
 using UnityEngine.UI;
-using QuickOutline;
 using TMPro;
 
 public class Enemy : MonoBehaviour, IAttackable
@@ -75,6 +75,8 @@ public class Enemy : MonoBehaviour, IAttackable
         {
             _enemyHp -= (int)Math.Pow(2, BoardManager.Instance.CheckBingo(BoardColor.Player)-1);
 
+            PlayerManager.Instance.BingoAttack = true;
+
             if (EnemyHP <= 0)
             {
                 EnemyManager.Instance.EnemyList.Remove(this);
@@ -104,7 +106,7 @@ public class Enemy : MonoBehaviour, IAttackable
         _enemyShield = enemyDataHolder.EnemyShield;
         EnemyActions = enemyDataHolder.EnemyAction;
         _debuffDictionary = new Dictionary<Debuff, int>();
-        gameObject.GetComponent<QuickOutline.Outline>().enabled = false;
+        gameObject.GetComponent<Outlinable>().enabled = false;
         foreach(Debuff debuff in Enum.GetValues(typeof(Debuff)))
             _debuffDictionary[debuff] = 0;
         overlapPoint = new List<(int, int)>();
@@ -149,9 +151,9 @@ public class Enemy : MonoBehaviour, IAttackable
         bool _isGameOver = false;
 
         if(_debuffDictionary[Debuff.PowerIncrease] > 0)
-            damage = (int)(damage * 1.2);
+            damage = (int)(damage * (1 + _debuffDictionary[Debuff.PowerIncrease] / 100));
         if(_debuffDictionary[Debuff.PowerDecrease] > 0)
-            damage = (int)(damage * 0.8);
+            damage = (int)(damage * (1 - _debuffDictionary[Debuff.PowerIncrease] / 100));
 
         _previousAttack.Item2 = _previousAttack.Item1;
         _previousAttack.Item1 = enemyAction.Item1;
@@ -180,25 +182,33 @@ public class Enemy : MonoBehaviour, IAttackable
                 }
                 break;
             case EnemyAction.H2Attack:
-                for (int i = 0; i < BoardManager.Instance.BoardSize; i++){
-                    for (int j = 0; j < BoardManager.Instance.BoardSize; j++){
-                        if(j == _previousPlayerCol) continue;
-                        else temp2.Add((i, j));
+                for (int i = 0; i < BoardManager.Instance.BoardSize; i++)
+                {
+                    if (i == _previousPlayerCol) continue;
+                    else
+                    {
+                        for (int j = 0; j < BoardManager.Instance.BoardSize; j++)
+                        {
+                            temp2.Add((j, i));
+                            if(BoardManager.Instance.BoardObjects[j][i] == BoardObject.Player)
+                                _isGameOver = PlayerManager.Instance.DamageToPlayer(-damage);
+                        }
                     }
-                }
-                if(PlayerManager.Instance.Col != _previousPlayerCol){
-                    _isGameOver = PlayerManager.Instance.DamageToPlayer(-damage);
                 }
                 break;
             case EnemyAction.V2Attack:
-                for (int i = 0; i < BoardManager.Instance.BoardSize; i++){
-                    for (int j = 0; j < BoardManager.Instance.BoardSize; j++){
-                        if(j == _previousPlayerRow) continue;
-                        temp2.Add((j, i));
+                for (int i = 0; i < BoardManager.Instance.BoardSize; i++)
+                {
+                    if (i == _previousPlayerCol) continue;
+                    else
+                    {
+                        for (int j = 0; j < BoardManager.Instance.BoardSize; j++)
+                        {
+                            temp2.Add((i, j));
+                            if(BoardManager.Instance.BoardObjects[i][j] == BoardObject.Player)
+                                _isGameOver = PlayerManager.Instance.DamageToPlayer(-damage);
+                        }
                     }
-                }
-                if(PlayerManager.Instance.Row != _previousPlayerRow){
-                    _isGameOver = PlayerManager.Instance.DamageToPlayer(-damage);
                 }
                 break;
             case EnemyAction.ColoredAttack:

@@ -32,6 +32,16 @@ public class DialogueManager : Singleton<DialogueManager>
     private DialogueUI _dialogueUI;
     public DialogueEndEvent dialogueCallBack;
 
+    public void Start()
+    {
+        /*
+        dialogueCallBack = new DialogueEndEvent();
+        dialogueCallBack.DialogueCallBack += PlayerManager.Instance.Init;
+        
+        StartDialogue(string.Format("Enemy{0}", GameManager.Instance.CurrentStage%100));
+        */
+    }
+
     public DialogueManager()
     {
         _dialogueCanvas = GameObject.FindWithTag("DialogueCanvas");

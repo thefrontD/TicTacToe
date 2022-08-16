@@ -15,6 +15,8 @@ public class ObjectColorDictionary : SerializableDictionary<UnityEngine.Object, 
 public class ColorArrayStorage : SerializableDictionary.Storage<Color[]> {}
 [Serializable]
 public class StringSpriteDictionary : SerializableDictionary<string, Sprite> {}
+[SerializeField]
+public class StringColorDictionary : SerializableDictionary<string, Color> {}
 
 [Serializable]
 public class StringColorArrayDictionary : SerializableDictionary<string, Color[], ColorArrayStorage> {}

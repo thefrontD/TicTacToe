@@ -9,7 +9,7 @@ public class GameManager : Singleton<GameManager>
 {
     [SerializeField] private GameObject gameOverPanel;
     [SerializeField] private GameObject gameClearPanel;
-    private int _currentStage = 101;
+    private int _currentStage = 102;
     public int CurrentStage
     {
         get => _currentStage;
@@ -36,13 +36,7 @@ public class GameManager : Singleton<GameManager>
 
     public void GameOver()
     {
-        if (PlayerManager.Instance.Hp <= 0)
-        {
-            gameOverPanel.SetActive(true);
-            return;
-        }
-        else
-            return;
+        gameOverPanel.SetActive(true);
     }
 
     public void GameClear()

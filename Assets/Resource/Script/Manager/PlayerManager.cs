@@ -2,9 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using EPOOutline;
 using TMPro;
 using UnityEngine;
-using QuickOutline;
 using Random = UnityEngine.Random;
 
 /// <summary>
@@ -40,6 +40,15 @@ public class PlayerManager : Singleton<PlayerManager>
     private Dictionary<Debuff,  int> _debuffDictionary;
     public Dictionary<Debuff, int> DebuffDictionary => _debuffDictionary;
 
+    private bool _bingoAttack;
+    public bool BingoAttack { get => _bingoAttack; set => _bingoAttack = value; }
+
+    private bool _tutorialTrigger;
+    public bool TutorialTrigger => _tutorialTrigger;
+    
+    private int _tutorialPhase;
+    public int TutorialPhase => _tutorialPhase;
+    
     public event Action OnPlayerDataUpdate;
 
     public BaseState state;
@@ -48,13 +57,8 @@ public class PlayerManager : Singleton<PlayerManager>
     
     void Start()
     {
-        int floor = GameManager.Instance.CurrentStage/100;
-        int stage = GameManager.Instance.CurrentStage%100;
-        string stageData = floor.ToString() + "_" + stage.ToString();
-
-        BoardManager.Instance.BoardLoading(stageData);
-        PlayerLoading();
-        EnemyManager.Instance.EnemyLoading(stageData);
+        _tutorialPhase = 1;
+        Init();
     }
 
     void Update()
@@ -67,13 +71,43 @@ public class PlayerManager : Singleton<PlayerManager>
     {
         state.Update();
     }
+    
+    private void Init()
+    {
+        int floor = GameManager.Instance.CurrentStage/100;
+        int stage = GameManager.Instance.CurrentStage%100;
+        string stageData = floor.ToString() + "_" + stage.ToString();
+
+        if (stage == 1)
+            _tutorialTrigger = true;
+        else
+            _tutorialTrigger = false;
+        
+        BoardManager.Instance.BoardLoading(stageData);
+        PlayerLoading();
+        EnemyManager.Instance.EnemyLoading(stageData);
+    }
+    
+    public void Init(object sender, EventArgs arg)
+    {
+        int floor = GameManager.Instance.CurrentStage/100;
+        int stage = GameManager.Instance.CurrentStage%100;
+        string stageData = floor.ToString() + "_" + stage.ToString();
+
+        BoardManager.Instance.BoardLoading(stageData);
+        PlayerLoading();
+        EnemyManager.Instance.EnemyLoading(stageData);
+    }
 
     public void PlayerLoading()
     {
         _debuffDictionary = new Dictionary<Debuff, int>();
         InitDebuffDictionary();
         
-        PlayerCard = CardData.Instance._load("PlayerCard");
+        if (_tutorialTrigger)
+            PlayerCard = CardData.Instance._load("TutorialCard");
+        else
+            PlayerCard = CardData.Instance._load("PlayerCard");
         
         _holder = PlayerData.Instance._load("PlayerData");
         GameManager.Instance.CurrentStage = _holder.CurrentStage;
@@ -81,8 +115,9 @@ public class PlayerManager : Singleton<PlayerManager>
         _hp = _holder.Hp;
         _maxMana = _holder.MaxMana;
         _mana = _holder.Mana;
-        
-        PlayerCard.Shuffle();
+
+        if (!_tutorialTrigger)
+            PlayerCard.Shuffle();
 
         CardManager.Instance.SetUp();
 
@@ -90,7 +125,10 @@ public class PlayerManager : Singleton<PlayerManager>
         DamageToPlayer();
         
         StatesQueue = new Queue<BaseState>();
-        state = new NormalState(5, true);
+        if (_tutorialTrigger)
+            state = new NormalState(3, true);
+        else
+            state = new NormalState(5, true);
         state.Enter();
     }
 
@@ -191,6 +229,7 @@ public class PlayerManager : Singleton<PlayerManager>
                 value += _shield;
                 if (_hp + value <= 0)
                 {
+                    _hp = 0;
                     GameManager.Instance.GameOver();
                     return true;
                 }
@@ -203,6 +242,7 @@ public class PlayerManager : Singleton<PlayerManager>
         {
             if (_hp + value <= 0)
             {
+                _hp = 0;
                 GameManager.Instance.GameOver();
                 return true;
             }
@@ -222,7 +262,7 @@ public class PlayerManager : Singleton<PlayerManager>
     public void ToEnemyTurn()
     {
         foreach (CardUI card in CardManager.Instance.HandCardList)
-            card.gameObject.GetComponent<Outline>().enabled = false;
+            card.gameObject.GetComponent<Outlinable>().enabled = false;
         CardManager.Instance.AllHandCardtoGrave();
         ChangeStates(new EnemyState());
     }
