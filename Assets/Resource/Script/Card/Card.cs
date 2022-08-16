@@ -304,7 +304,7 @@ public class AttackCard : Card
 public class MoveCard : Card
 {
     [JsonProperty] public MoveCardEffect MoveCardEffect;
-    [JsonProperty] public TriggerCondition triggerCondition;
+    public TriggerCondition triggerCondition;
     [JsonProperty] public MoveDirection moveDirection;     // 상하좌우로 이동, 대각선으로 이동, 어느 칸으로든 이동 등
 
     public MoveCard(string cardName, string cardDesc, int cardCost, TriggerCondition triggerCondition,
@@ -343,11 +343,11 @@ public class ColorCard : Card
 {
     [JsonProperty] private ColorCardEffect ColorCardEffect;
     [JsonProperty] private TriggerCondition costChangeCondition;
-    [JsonProperty] private TriggerCondition triggerCondition;
+    private TriggerCondition triggerCondition;
     [JsonProperty] public ColorTargetPosition colorTargetPosition;
     [JsonProperty] public ColorTargetNum colorTargetNum;
-    [JsonProperty] private AdditionalEffectCondition additionalEffectCondition;
-    [JsonProperty] private AdditionalEffect additionalEffect;
+    private AdditionalEffectCondition additionalEffectCondition;
+    private AdditionalEffect additionalEffect;
     private bool cardUseValidity;
 
     public ColorCard(string cardName, string cardDesc, int cardCost, TriggerCondition costChangeCondition, TriggerCondition triggerCondition,

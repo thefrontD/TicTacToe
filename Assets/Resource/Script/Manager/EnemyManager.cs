@@ -47,33 +47,33 @@ public class EnemyManager : Singleton<EnemyManager>
             {
                 case EnemyAction.H1Attack:
                     for (int i = 0; i < BoardManager.Instance.BoardSize; i++)
-                        BoardManager.Instance.GameBoard[i][PlayerManager.Instance.Col].SetHighlight(BoardSituation.WillAttack);
+                        BoardManager.Instance.GameBoard[PlayerManager.Instance.Row][i].SetHighlight(BoardSituation.WillAttack);
                     break;
                 case EnemyAction.V1Attack:
                     for (int i = 0; i < BoardManager.Instance.BoardSize; i++)
-                        BoardManager.Instance.GameBoard[PlayerManager.Instance.Row][i].SetHighlight(BoardSituation.WillAttack);
+                        BoardManager.Instance.GameBoard[i][PlayerManager.Instance.Col].SetHighlight(BoardSituation.WillAttack);
                     break;
                 case EnemyAction.H2Attack:
-                    for (int i = 0; i < BoardManager.Instance.BoardSize; i++)
-                    {
-                        if (i == enemy.PreviousPlayerCol) continue;
-                        else
-                        {
-                            for (int j = 0; j < BoardManager.Instance.BoardSize; j++)
-                                BoardManager.Instance.GameBoard[j][i].SetHighlight(BoardSituation.WillAttack);
-                        }
-                    }
-                    break;
-                case EnemyAction.V2Attack:
                     for (int i = 0; i < BoardManager.Instance.BoardSize; i++)
                     {
                         if (i == enemy.PreviousPlayerRow) continue;
                         else
                         {
                             for (int j = 0; j < BoardManager.Instance.BoardSize; j++)
+                                BoardManager.Instance.GameBoard[i][j].SetHighlight(BoardSituation.WillAttack);
+                        }
+                    }
+                    break;
+                case EnemyAction.V2Attack:
+                    for (int i = 0; i < BoardManager.Instance.BoardSize; i++)
+                    {
+                        if (i == enemy.PreviousPlayerCol) continue;
+                        else
+                        {
+                            for (int j = 0; j < BoardManager.Instance.BoardSize; j++)
                             {
                                 Debug.Log(string.Format("{0} : {1}", i, j));
-                                BoardManager.Instance.GameBoard[i][j].SetHighlight(BoardSituation.WillAttack);
+                                BoardManager.Instance.GameBoard[j][i].SetHighlight(BoardSituation.WillAttack);
                             }
                         }
                     }
@@ -112,7 +112,7 @@ public class EnemyManager : Singleton<EnemyManager>
                     break;
                 case EnemyAction.WallSummon:
                 case EnemyAction.WallsSummon:
-                    enemy.GetOverLapPosition(enemy.EnemyActions.Peek());
+                    enemy.HighlightOverlapPoint();
                     break;
             }
         }

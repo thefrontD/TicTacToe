@@ -58,7 +58,8 @@ public class PlayerManager : Singleton<PlayerManager>
     void Start()
     {
         _tutorialPhase = 1;
-        Init();
+        state = new NormalState();
+        //Init();
     }
 
     void Update()
@@ -107,10 +108,10 @@ public class PlayerManager : Singleton<PlayerManager>
         if (_tutorialTrigger)
             PlayerCard = CardData.Instance._load("TutorialCard");
         else
-            PlayerCard = CardData.Instance._load("PlayerCard");
+            PlayerCard = CardData.Instance._load(string.Format("PlayerCard{0}", GameManager.Instance.PlayerNum));
         
-        _holder = PlayerData.Instance._load("PlayerData");
-        GameManager.Instance.CurrentStage = _holder.CurrentStage;
+        _holder = PlayerData.Instance._load(string.Format("PlayerData{0}", GameManager.Instance.PlayerNum));
+        //GameManager.Instance.CurrentStage = _holder.CurrentStage;
         _maxHp = _holder.MaxHp;
         _hp = _holder.Hp;
         _maxMana = _holder.MaxMana;
@@ -135,8 +136,8 @@ public class PlayerManager : Singleton<PlayerManager>
     public void SavePlayerData()
     {
         PlayerData.Instance.saveData(new PlayerDataHolder(GameManager.Instance.CurrentStage,
-            _maxHp, _hp, _maxMana, _mana), "PlayerData");
-        CardData.Instance.saveData(PlayerCard, "PlayerCard");
+            _maxHp, _hp, _maxMana, _mana), string.Format("PlayerData{0}", GameManager.Instance.PlayerNum));
+        CardData.Instance.saveData(PlayerCard, string.Format("PlayerCard{0}", GameManager.Instance.PlayerNum));
     }
 
     private void InitDebuffDictionary()

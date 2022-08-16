@@ -76,9 +76,11 @@ public class DialogueUI : MonoBehaviour
         switch (pos)
         {
             case "Left":
+                leftPersonImage.gameObject.SetActive(true);
                 leftPersonImage.sprite = portraitDictionary[name];
                 break;
             case "Right":
+                rightPersonImage.gameObject.SetActive(true);
                 rightPersonImage.sprite = portraitDictionary[name];
                 break;
         }
@@ -89,20 +91,27 @@ public class DialogueUI : MonoBehaviour
         switch (_dialogue.PortraitLocation)
         {
             case "Left":
+                leftPersonImage.gameObject.SetActive(true);
                 leftPersonImage.sprite = portraitDictionary[_dialogue.Name];
                 leftPersonImage.color = Color.white;
-                rightPersonImage.color = unHighlightedColor;
+                if(rightPersonImage.gameObject.activeSelf)
+                    rightPersonImage.color = unHighlightedColor;
                 break;
             case "Right":
+                rightPersonImage.gameObject.SetActive(true);
                 rightPersonImage.sprite = portraitDictionary[_dialogue.Name];
                 rightPersonImage.color = Color.white;
-                leftPersonImage.color = unHighlightedColor;
+                if(leftPersonImage.gameObject.activeSelf)
+                    leftPersonImage.color = unHighlightedColor;
                 break;
         }
     }
 
     private void InitPortrait()
     {
+        leftPersonImage.gameObject.SetActive(false);
+        rightPersonImage.gameObject.SetActive(false);
+
         for (int i = 0; i < _dialogueHolder.InitialSetting.Count / 2; i++)
         {
             SetPortrait(_dialogueHolder.InitialSetting[2 * i], _dialogueHolder.InitialSetting[2 * i + 1]);

@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Threading.Tasks;
 using System.Collections.Generic;
 using UnityEngine;
 using Newtonsoft.Json;
@@ -14,6 +15,9 @@ public class CardData : Singleton<CardData>
         
         var converter = new StringEnumConverter();
         var pDataStringSave = JsonConvert.SerializeObject(cardData, converter);
+
+        Debug.Log(pDataStringSave);
+
         File.WriteAllText(path, pDataStringSave);
         return true;
     }
@@ -25,17 +29,17 @@ public class CardData : Singleton<CardData>
         
         var converter = new StringEnumConverter();
         var pDataStringLoad = File.ReadAllText(path);
+
+        Debug.Log(pDataStringLoad);
+
         List<Card> cardData = JsonConvert.DeserializeObject<List<Card>>(pDataStringLoad, converter);
 
         return cardData;
     }
 
-    public bool _loadnew(string dataName)
+    public async Task _loadnew(string dataName)
     {
-        var converter = new StringEnumConverter();
-        var pDataStringLoad = File.ReadAllText(Path.Combine(Application.streamingAssetsPath, "OriginCardData.json"));
-        List<Card> cardData = JsonConvert.DeserializeObject<List<Card>>(pDataStringLoad, converter);
+        List<Card> cardData = _load("PlayerCard");
         saveData(cardData, dataName);
-        return true;
     }
 }

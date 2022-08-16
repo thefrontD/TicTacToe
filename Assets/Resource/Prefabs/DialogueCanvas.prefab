@@ -472,8 +472,18 @@ MonoBehaviour:
   nameText: {fileID: 3425932782594703626}
   dialogueText: {fileID: 3425932782594703625}
   portraitDictionary:
-    m_keys: []
-    m_values: []
+    m_keys:
+    - "\uB098\uB808\uC774\uD130"
+    - "\uB450\uB355\uC528"
+    - "\uCC38 \uC2A4\uD328\uB85C\uC6B0"
+    - "\uBCF4\uC5B4 \uC81C\uC774\uD06C"
+    - "\uC0EC\uB86F"
+    m_values:
+    - {fileID: 21300000, guid: 7fa894c6efc609c4f9ecce5411d97781, type: 3}
+    - {fileID: 21300000, guid: 949274285c2796b49bda59c0c66ac0f6, type: 3}
+    - {fileID: 21300000, guid: d724ac775536708448c8e1a7c02e08b9, type: 3}
+    - {fileID: 21300000, guid: 7b28c302fdea07a4ba23e9dd6f562169, type: 3}
+    - {fileID: 21300000, guid: 3cd81d02a00d688468fcd0e9c69705f7, type: 3}
 --- !u!1 &3640591892604054577
 GameObject:
   m_ObjectHideFlags: 0

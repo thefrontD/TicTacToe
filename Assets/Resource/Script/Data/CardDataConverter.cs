@@ -31,7 +31,11 @@ public class BaseConverter : JsonConverter
     public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
     {
         JObject jo = JObject.Load(reader);
-        switch (jo["cardType"].Value<string>())
+
+        string type = jo["CardType"].Value<string>();
+        if(type == null) type = jo["cardType"].Value<string>();
+
+        switch (type)
         {
             case "Attack":
                 return JsonConvert.DeserializeObject<AttackCard>(jo.ToString(), SpecifiedSubclassConversion);

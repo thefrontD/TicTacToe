@@ -46,11 +46,14 @@ public class NormalState : BaseState
 
     public NormalState(int DrawNum = 5, bool isNewPlayerTurn = false)
     {
-        if (PlayerManager.Instance.DebuffDictionary[Debuff.DrawCardDecrease] != 0)
-            this.DrawNum = DrawNum - 1;
-        else
-            this.DrawNum = DrawNum;
         this.isNewPlayerTurn = isNewPlayerTurn;
+
+        if(isNewPlayerTurn){
+            if (PlayerManager.Instance.DebuffDictionary[Debuff.DrawCardDecrease] != 0)
+                this.DrawNum = DrawNum - 1;
+            else
+                this.DrawNum = DrawNum;
+        }
     }
 
     public override void DoAction(States state)
@@ -156,6 +159,12 @@ public class EnemyState : BaseState
 
     public override void Exit()
     {
+        foreach (Enemy enemy in EnemyManager.Instance.EnemyList)
+        {
+            if(enemy.EnemyActions.Peek().Item1 == EnemyAction.WallsSummon || enemy.EnemyActions.Peek().Item1 == EnemyAction.WallSummon)
+                enemy.GetOverLapPosition(enemy.EnemyActions.Peek());
+        }
+
         foreach (Enemy enemy in EnemyManager.Instance.EnemyList)
             enemy.setPreviousPos(PlayerManager.Instance.Row, PlayerManager.Instance.Col);
         EnemyManager.Instance.HightLightBoard();
