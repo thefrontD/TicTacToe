@@ -10,6 +10,7 @@ using UnityEditor;
 [CustomPropertyDrawer(typeof(SituationColorDictionary))]
 [CustomPropertyDrawer(typeof(StringSpriteDictionary))]
 [CustomPropertyDrawer(typeof(StringColorDictionary))]
+[CustomPropertyDrawer(typeof(BoardSituationSpriteDictionary))]
 public class AnySerializableDictionaryPropertyDrawer : SerializableDictionaryPropertyDrawer {}
 
 [CustomPropertyDrawer(typeof(ColorArrayStorage))]
