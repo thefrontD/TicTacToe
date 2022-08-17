@@ -10,7 +10,10 @@
         "AdditionalEffect": "None",
         "CardName": "Alpha",
         "CardDesc": "Alpha is Greek A",
-        "CardCost": 1
+        "CardCost": 1,
+        "CardPoolAttributes" : [
+            "CardPoolA"
+        ]
     },
     {
         "MoveCardEffect": "Flash",
@@ -22,7 +25,10 @@
         "AdditionalEffect": "None",
         "CardName": "Gamma_A",
         "CardDesc": "Gamma is Greek C",
-        "CardCost": 1
+        "CardCost": 1,
+        "CardPoolAttributes" : [
+            "BasicCardPool"
+        ]
     },
     {
         "AttackCardEffect": "Alpha",
@@ -40,7 +46,11 @@
         "AdditionalEffect": "None",
         "CardName": "Beta",
         "CardDesc": "Beta is Greek B",
-        "CardCost": 1
+        "CardCost": 1,
+        "CardPoolAttributes" : [
+            "CardPoolA", 
+            "CardPoolB"
+        ]
     },
     {
         "ColorCardEffect": "Color",
@@ -53,7 +63,10 @@
         "AdditionalEffect": "None",
         "CardName": "Alpha",
         "CardDesc": "Alpha is Greek A",
-        "CardCost": 1
+        "CardCost": 1,
+        "CardPoolAttributes" : [
+            "BasicCardPool"
+        ]
     },
     {
         "MoveCardEffect": "Flash",
@@ -65,7 +78,10 @@
         "AdditionalEffect": "None",
         "CardName": "Gamma",
         "CardDesc": "Gamma is Greek C",
-        "CardCost": 1
+        "CardCost": 1,
+        "CardPoolAttributes" : [
+            "BasicCardPool"
+        ]
     },
     {
         "AttackCardEffect": "Alpha",
@@ -83,6 +99,9 @@
         "AdditionalEffect": "None",
         "CardName": "Beta",
         "CardDesc": "Beta is Greek B",
-        "CardCost": 1
+        "CardCost": 1,
+        "CardPoolAttributes" : [
+            "BasicCardPool"
+        ]
     }
 ]

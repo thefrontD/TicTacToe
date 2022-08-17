@@ -36,7 +36,7 @@ public class PlayerUI : MonoBehaviour
         {
             buffIcon.SetActive(false);
             debuffIcon.SetActive(true);
-            buffDebuffText.text = String.Format("{0}", PlayerManager.Instance.DebuffDictionary[Debuff.PowerIncrease]);
+            buffDebuffText.text = String.Format("{0}", PlayerManager.Instance.DebuffDictionary[Debuff.PowerDecrease]);
         }
         else
         {

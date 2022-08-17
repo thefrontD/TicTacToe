@@ -132,7 +132,7 @@ public enum BoardSituation
 public enum MouseOverUIType
 {
     Intention_Attack, Intention_Wall, Intention_Minion, Intention_Buff, Intention_Debuff, Intention_HPHealing, Intention_ShieldHealing, Intention_None,
-    PowerIncrease, DamageDecrease,
+    PowerIncrease, PowerDecrease,
     Deck, Grave
 }
 
@@ -140,4 +140,12 @@ public enum MouseOverUIType
 public enum Intention
 {
     Attack, Wall, Minion, Buff, Debuff, HPHealing, ShieldHealing, None
+}
+
+[JsonConverter(typeof(StringEnumConverter))]
+public enum CardPoolAttribute{
+    BasicCardPool = 0,
+    CardPoolA = 1,
+    CardPoolB = 2,
+    CardPoolC = 3
 }

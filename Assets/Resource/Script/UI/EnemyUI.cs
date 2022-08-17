@@ -47,6 +47,7 @@ public class EnemyUI : MonoBehaviour
         HPUIUpdate();
         ShieldUIUpdate();
         IntentionUpdate();
+        BuffDebuffUpdate();
     }
 
     public void HPUIUpdate()
@@ -79,7 +80,7 @@ public class EnemyUI : MonoBehaviour
         {
             buffIcon.SetActive(false);
             debuffIcon.SetActive(true);
-            buffDebuffText.text = String.Format("{0}", enemy.DebuffDictionary[Debuff.PowerIncrease]);
+            buffDebuffText.text = String.Format("{0}", enemy.DebuffDictionary[Debuff.PowerDecrease]);
         }
         else
         {
