@@ -638,7 +638,7 @@ public class AttackState : BaseState
                 //attackable.GetGameObject().GetComponent<Outline>().enabled = false;
             }
 
-            PlayerManager.Instance.ChangeStates(PlayerManager.Instance.StatesQueue.Dequeue());
+            //PlayerManager.Instance.ChangeStates(PlayerManager.Instance.StatesQueue.Dequeue());
         }
     }
 

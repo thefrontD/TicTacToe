@@ -132,7 +132,7 @@ public enum BoardSituation
 public enum MouseOverUIType
 {
     Intention_Attack, Intention_Wall, Intention_Minion, Intention_Buff, Intention_Debuff, Intention_HPHealing, Intention_ShieldHealing, Intention_None,
-    PowerIncrease, DamageDecrease,
+    PowerIncrease, PowerDecrease,
     Deck, Grave
 }
 
