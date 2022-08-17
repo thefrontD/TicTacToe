@@ -24,6 +24,7 @@ public abstract class Card
     public AdditionalEffectCondition AdditionalEffectCondition => _additionalEffectCondition;
     private AdditionalEffect _additionalEffect;
     public AdditionalEffect AdditionalEffect => _additionalEffect;
+    public List<CardPoolAttribute> CardPoolAttributes = new List<CardPoolAttribute>();
 
     private string cardName;
 
@@ -54,12 +55,13 @@ public abstract class Card
     //[JsonConverter(typeof(StringEnumConverter))]
     //public List<States> StatesList;
 
-    public Card(string cardName, string cardDesc, int cardCost, TriggerCondition triggerCondition,
+    public Card(string cardName, string cardDesc, int cardCost, List<CardPoolAttribute> CardPoolAttributes, TriggerCondition triggerCondition,
         AdditionalEffectCondition additionalEffectCondition, AdditionalEffect additionalEffect)
     {
         this.cardName = cardName;
         this.cardDesc = cardDesc;
         this.cardCost = cardCost;
+        this.CardPoolAttributes = CardPoolAttributes;
     }
 
     /// <summary>
@@ -69,6 +71,9 @@ public abstract class Card
 
     public bool usingCard()
     {
+        /*foreach(CardPoolAttribute pool in CardPoolAttributes){
+            Debug.Log("(usingCard) CardPool is " + pool.ToString());
+        }*/
         if (!CheckCondition())
             return false;
 
@@ -272,10 +277,10 @@ public class AttackCard : Card
     public int Damage => _damage;
 
     public int GetTargetType() => TargetType;
-    public AttackCard(string cardName, string cardDesc, int cardCost, TriggerCondition triggerCondition,
+    public AttackCard(string cardName, string cardDesc, int cardCost, List<CardPoolAttribute> cardPoolAttributes, TriggerCondition triggerCondition,
         AdditionalEffectCondition additionalEffectCondition, AdditionalEffect additionalEffect,
         AttackCardEffect attackCardEffect, int targetType, int targetCount, int attackCount, int damage) 
-        : base(cardName, cardDesc, cardCost, triggerCondition, additionalEffectCondition, additionalEffect)
+        : base(cardName, cardDesc, cardCost, cardPoolAttributes, triggerCondition, additionalEffectCondition, additionalEffect)
         //카드 이름, 카드 설명, 카드 코스트, StatesList,
         //공격 가능한 대상의 종류, 공격 가능한 대상의 수, 공격 횟수, 공격의 피해량
     {
@@ -307,10 +312,10 @@ public class MoveCard : Card
     public TriggerCondition triggerCondition;
     [JsonProperty] public MoveDirection moveDirection;     // 상하좌우로 이동, 대각선으로 이동, 어느 칸으로든 이동 등
 
-    public MoveCard(string cardName, string cardDesc, int cardCost, TriggerCondition triggerCondition,
+    public MoveCard(string cardName, string cardDesc, int cardCost, List<CardPoolAttribute> cardPoolAttributes, TriggerCondition triggerCondition,
         AdditionalEffectCondition additionalEffectCondition, AdditionalEffect additionalEffect,
         MoveCardEffect moveCardEffect, MoveDirection moveDirection)
-        : base(cardName, cardDesc, cardCost, triggerCondition, additionalEffectCondition, additionalEffect)
+        : base(cardName, cardDesc, cardCost, cardPoolAttributes, triggerCondition, additionalEffectCondition, additionalEffect)
     {
         this.cardType = CardType.Move;
         this.MoveCardEffect = moveCardEffect;
@@ -350,11 +355,11 @@ public class ColorCard : Card
     private AdditionalEffect additionalEffect;
     private bool cardUseValidity;
 
-    public ColorCard(string cardName, string cardDesc, int cardCost, TriggerCondition costChangeCondition, TriggerCondition triggerCondition,
+    public ColorCard(string cardName, string cardDesc, int cardCost, List<CardPoolAttribute> cardPoolAttributes, TriggerCondition costChangeCondition, TriggerCondition triggerCondition,
         ColorTargetPosition colorTargetPosition, ColorTargetNum colorTargetNum,
         AdditionalEffectCondition additionalEffectCondition, AdditionalEffect additionalEffect,
         ColorCardEffect colorCardEffect) : 
-        base(cardName, cardDesc, cardCost, triggerCondition, additionalEffectCondition, additionalEffect)
+        base(cardName, cardDesc, cardCost, cardPoolAttributes, triggerCondition, additionalEffectCondition, additionalEffect)
     {
         this.cardType = CardType.Color;
         this.costChangeCondition = costChangeCondition;

@@ -141,3 +141,11 @@ public enum Intention
 {
     Attack, Wall, Minion, Buff, Debuff, HPHealing, ShieldHealing, None
 }
+
+[JsonConverter(typeof(StringEnumConverter))]
+public enum CardPoolAttribute{
+    BasicCardPool = 0,
+    CardPoolA = 1,
+    CardPoolB = 2,
+    CardPoolC = 3
+}
