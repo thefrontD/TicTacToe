@@ -40,8 +40,14 @@ public class LoadingManager : Singleton<LoadingManager>
     private int[] values;
     
     
-    public void LoadTitleScreen(){
-        LoadScene(0);
+    public void StartGame()
+    {
+        
+    }
+
+    public void LoadTitleScreen()
+    {
+        SceneManager.LoadScene("TitleScreen");
     }
 
     public void LoadBattleScene()
@@ -51,7 +57,12 @@ public class LoadingManager : Singleton<LoadingManager>
 
     public void LoadWorldMap()
     {
-        
+        StartCoroutine(SavingSequence("WorldMap"));
+    }
+
+    public void LoadWorldMap(bool isStart)
+    {
+        StartCoroutine(SavingSequence("WorldMap", isStart));
     }
 
     public void QuitGame()
@@ -64,11 +75,15 @@ public class LoadingManager : Singleton<LoadingManager>
         PlayerManager.Instance.SavePlayerData();
     }
 
-    private IEnumerator SavingSequence(string sceneName)
+    private IEnumerator SavingSequence(string sceneName, bool isStart = false)
     {
-        GameManager.Instance.CurrentStage++;
+        if(!isStart)
+        {
+            Debug.Log("Yes!");
+            GameManager.Instance.CurrentStage++;
         
-        PlayerManager.Instance.SavePlayerData();
+            PlayerManager.Instance.SavePlayerData();
+        }
         
         yield return new WaitForSeconds(0.5f);
         

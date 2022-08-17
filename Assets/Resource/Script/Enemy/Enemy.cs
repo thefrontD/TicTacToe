@@ -121,6 +121,8 @@ public class Enemy : MonoBehaviour, IAttackable
         (EnemyAction, int) enemyAction = EnemyActions.Dequeue();
         bool _isGameOver = false;
         
+        Debug.Log(enemyAction.Item1);
+
         switch ((int)enemyAction.Item1 / 10)
         {
             case 0:
@@ -168,20 +170,35 @@ public class Enemy : MonoBehaviour, IAttackable
         switch (enemyAction.Item1)
         {
             case EnemyAction.H1Attack:
-                for (int i = 0; i < BoardManager.Instance.BoardSize; i++)
-                    temp2.Add((i, _previousPlayerCol));
-                if(PlayerManager.Instance.Col == _previousPlayerCol){
-                    _isGameOver = PlayerManager.Instance.DamageToPlayer(-damage);
+                for (int i = 0; i < BoardManager.Instance.BoardSize; i++){
+                    temp2.Add((_previousPlayerRow, i));
+                    if(BoardManager.Instance.BoardObjects[_previousPlayerRow][i] == BoardObject.Player)
+                        _isGameOver = PlayerManager.Instance.DamageToPlayer(-damage);
                 }
                 break;
             case EnemyAction.V1Attack:
-                for (int i = 0; i < BoardManager.Instance.BoardSize; i++)
-                    temp2.Add((_previousPlayerRow, i));
-                if(PlayerManager.Instance.Row == _previousPlayerRow){
-                    _isGameOver = PlayerManager.Instance.DamageToPlayer(-damage);
+            for (int i = 0; i < BoardManager.Instance.BoardSize; i++){
+                    temp2.Add((i, _previousPlayerCol));
+                    if(BoardManager.Instance.BoardObjects[i][_previousPlayerCol] == BoardObject.Player)
+                        _isGameOver = PlayerManager.Instance.DamageToPlayer(-damage);
                 }
                 break;
             case EnemyAction.H2Attack:
+                for (int i = 0; i < BoardManager.Instance.BoardSize; i++)
+                {
+                    if (i == _previousPlayerRow) continue;
+                    else
+                    {
+                        for (int j = 0; j < BoardManager.Instance.BoardSize; j++)
+                        {
+                            temp2.Add((i, j));
+                            if(BoardManager.Instance.BoardObjects[i][j] == BoardObject.Player)
+                                _isGameOver = PlayerManager.Instance.DamageToPlayer(-damage);
+                        }
+                    }
+                }
+                break;
+            case EnemyAction.V2Attack:
                 for (int i = 0; i < BoardManager.Instance.BoardSize; i++)
                 {
                     if (i == _previousPlayerCol) continue;
@@ -196,43 +213,28 @@ public class Enemy : MonoBehaviour, IAttackable
                     }
                 }
                 break;
-            case EnemyAction.V2Attack:
-                for (int i = 0; i < BoardManager.Instance.BoardSize; i++)
-                {
-                    if (i == _previousPlayerCol) continue;
-                    else
-                    {
-                        for (int j = 0; j < BoardManager.Instance.BoardSize; j++)
-                        {
-                            temp2.Add((i, j));
-                            if(BoardManager.Instance.BoardObjects[i][j] == BoardObject.Player)
-                                _isGameOver = PlayerManager.Instance.DamageToPlayer(-damage);
-                        }
-                    }
-                }
-                break;
             case EnemyAction.ColoredAttack:
                 for (int i = 0; i < BoardManager.Instance.BoardSize; i++){
                     for (int j = 0; j < BoardManager.Instance.BoardSize; j++){
                         if(BoardManager.Instance.BoardColors[i][j] == BoardColor.None) continue;
-                        temp2.Add((i, j));
+                        else{
+                            if(BoardManager.Instance.BoardObjects[i][j] == BoardObject.Player)
+                                _isGameOver = PlayerManager.Instance.DamageToPlayer(-damage);
+                            temp2.Add((i, j));
+                        }
                     }
-                }
-                if(BoardManager.Instance.BoardColors
-                [PlayerManager.Instance.Row][PlayerManager.Instance.Col] != BoardColor.None){
-                    _isGameOver = PlayerManager.Instance.DamageToPlayer(-damage);
                 }
                 break;
             case EnemyAction.NoColoredAttack:
                 for (int i = 0; i < BoardManager.Instance.BoardSize; i++){
                     for (int j = 0; j < BoardManager.Instance.BoardSize; j++){
                         if(BoardManager.Instance.BoardColors[i][j] != BoardColor.None) continue;
-                        temp2.Add((i, j));
+                        else{
+                            if(BoardManager.Instance.BoardObjects[i][j] == BoardObject.Player)
+                                _isGameOver = PlayerManager.Instance.DamageToPlayer(-damage);
+                            temp2.Add((i, j));
+                        }
                     }
-                }
-                if(BoardManager.Instance.BoardColors
-                [PlayerManager.Instance.Row][PlayerManager.Instance.Col] == BoardColor.None){
-                    _isGameOver = PlayerManager.Instance.DamageToPlayer(-damage);
                 }
                 break;
             case EnemyAction.AllAttack:
@@ -248,14 +250,14 @@ public class Enemy : MonoBehaviour, IAttackable
     
     private bool EnemySummon((EnemyAction, int) enemyAction)
     {
-        bool _isGameOver = false;;
+        bool _isGameOver = false;
         
         int damage = enemyAction.Item2;
 
         if(_debuffDictionary[Debuff.PowerIncrease] > 0)
-            damage = (int)(damage * 1.2);
+            damage = (int)(damage * (1 + _debuffDictionary[Debuff.PowerIncrease] / 100));
         if(_debuffDictionary[Debuff.PowerDecrease] > 0)
-            damage = (int)(damage * 0.8);
+            damage = (int)(damage * (1 - _debuffDictionary[Debuff.PowerIncrease] / 100));
 
         foreach((int, int) elems in overlapPoint)
             _isGameOver = BoardManager.Instance.SummonWalls(elems.Item1, elems.Item2, damage);
@@ -267,6 +269,8 @@ public class Enemy : MonoBehaviour, IAttackable
     {
         overlapPoint.Clear();
 
+        if(temp1.Count == 0 || temp2.Count == 0) return;
+
         foreach ((int, int) item in temp1)
             if(temp2.Contains(item)) overlapPoint.Add(item);
 
@@ -275,7 +279,10 @@ public class Enemy : MonoBehaviour, IAttackable
             overlapPoint.Shuffle();
             overlapPoint = new List<(int, int)>() {overlapPoint[0]};
         }
+    }
 
+    public void HighlightOverlapPoint()
+    {
         foreach ((int, int) p in overlapPoint)
             BoardManager.Instance.GameBoard[p.Item1][p.Item2].SetHighlight(BoardSituation.WillSummon);
     }

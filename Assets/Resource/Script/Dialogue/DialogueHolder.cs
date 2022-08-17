@@ -1,7 +1,29 @@
-﻿using System.Collections;
+﻿using System;
+using System.IO;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Newtonsoft.Json;
+
+public class DialogueEndCallBack : EventArgs
+{
+    public DialogueEndCallBack()
+    {
+    }
+}
+
+public class DialogueEndEvent
+{
+    public event EventHandler DialogueCallBack;
+
+    public void Run()
+    {
+        if (DialogueCallBack != null)
+        {
+            DialogueCallBack(this, new DialogueEndCallBack());
+        }
+    }
+}
 
 public class SingleDialogue
 {

@@ -9,6 +9,13 @@ public class GameManager : Singleton<GameManager>
 {
     [SerializeField] private GameObject gameOverPanel;
     [SerializeField] private GameObject gameClearPanel;
+
+    private int _playerNum = 0;
+    public int PlayerNum
+    {
+        get => _playerNum;
+        set => _playerNum = value;
+    }
     private int _currentStage = 102;
     public int CurrentStage
     {
@@ -26,7 +33,7 @@ public class GameManager : Singleton<GameManager>
 
     void Start()
     {
-        
+
     }
 
     void Update()
@@ -36,17 +43,37 @@ public class GameManager : Singleton<GameManager>
 
     public void GameOver()
     {
-        gameOverPanel.SetActive(true);
+        DialogueManager.Instance.dialogueCallBack.DialogueCallBack -= PlayerManager.Instance.Init;
+        DialogueManager.Instance.dialogueCallBack.DialogueCallBack += gameOverPanelActivation;
+
+        Debug.Log(_currentStage);
+
+        DialogueManager.Instance.StartDialogue(string.Format("Enemy{0}_defeat", _currentStage%100));
     }
 
     public void GameClear()
     {
         if (EnemyManager.Instance.EnemyList.Count == 0)
         {
-            gameClearPanel.SetActive(true);
+            DialogueManager.Instance.dialogueCallBack.DialogueCallBack -= PlayerManager.Instance.Init;
+            DialogueManager.Instance.dialogueCallBack.DialogueCallBack += gameClearPanelActivation;
+
+            Debug.Log(_currentStage);
+
+            DialogueManager.Instance.StartDialogue(string.Format("Enemy{0}_victory", _currentStage%100));
             return;
         }
         else
             return;
+    }
+
+    private void gameOverPanelActivation(object sender, EventArgs eventArgs)
+    {
+        gameOverPanel.SetActive(true);
+    }
+
+    private void gameClearPanelActivation(object sender, EventArgs eventArgs)
+    {
+        gameClearPanel.SetActive(true);
     }
 }
