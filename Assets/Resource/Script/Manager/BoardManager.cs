@@ -84,9 +84,10 @@ public class BoardManager : Singleton<BoardManager>
     private void InitPlayer()
     {
         Vector3 initPos = _gameBoard[PlayerManager.Instance.Row][PlayerManager.Instance.Col].transform.position 
-                          - new Vector3(0, 0, PlayerPrefab.transform.localScale.z/2);
+                          - new Vector3(0, 0, 0);
         _boardObjects[PlayerManager.Instance.Row][PlayerManager.Instance.Col] = BoardObject.Player;
-        PlayerObject = Instantiate(PlayerPrefab, initPos, Quaternion.identity);
+        Quaternion rotation = Quaternion.Euler(-90, -90, 90);
+        PlayerObject = Instantiate(PlayerPrefab, initPos, rotation);
     }
 
     /// <summary>
@@ -127,18 +128,25 @@ public class BoardManager : Singleton<BoardManager>
             return false;
         else
         {
+            int angle = -1 * (int)Vector2.Angle(new Vector2(0, 1), 
+                new Vector2(row - PlayerManager.Instance.Row, col - PlayerManager.Instance.Col));
+            
+            Debug.Log(angle);
+            
             PlayerManager.Instance.Row = row;
             PlayerManager.Instance.Col = col;
-            Vector3 nextPos = _gameBoard[PlayerManager.Instance.Row][PlayerManager.Instance.Col].transform.position - 
-                              new Vector3(0, 0, PlayerPrefab.transform.localScale.z/2);
+            Vector3 nextPos = _gameBoard[PlayerManager.Instance.Row][PlayerManager.Instance.Col].transform.position;
             _boardObjects[row][col] = BoardObject.Player;
-            
+            Vector3 nextRot = PlayerObject.transform.position - nextPos;
+
             switch (effect)
             {
                 case MoveCardEffect.Slide:
+                    PlayerObject.transform.DORotate(new Vector3(angle, 90, -90), 0.5f);
                     PlayerObject.transform.DOMove(nextPos, 0.5f, false);
                     return true;
                 default:  // TODO: 나중에 effect 만들 시간 있으면 추가하기로 하고, 일단은 Slide로 고정.
+                    PlayerObject.transform.DORotate(new Vector3(angle, 90, -90), 0.5f);
                     PlayerObject.transform.DOMove(nextPos, 0.5f, false);
                     return true;
             }

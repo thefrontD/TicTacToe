@@ -72,7 +72,7 @@ public class CardUI : MonoBehaviour
 
     void OnMouseDown()
     {
-        if (PlayerManager.Instance.state.GetType() == typeof(NormalState))
+        if (PlayerManager.Instance.state.GetType() == typeof(NormalState) && isHand)
         {
             if(Card.usingCard())
             {
