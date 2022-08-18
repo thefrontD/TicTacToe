@@ -2,54 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d3529374-01b1-433a-a73a-241952c1c846" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Package/SimpleSky.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Package/SimpleSky/ReadMe.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Package/SimpleSky/ReadMe.txt.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Package/SimpleSky/_Demo.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Package/SimpleSky/_Demo/SimpleSky_Demo.unity" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Package/SimpleSky/_Demo/SimpleSky_Demo.unity.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Package/SimpleSky/_Demo/SimpleSky_DemoSettings.lighting" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Package/SimpleSky/_Demo/SimpleSky_DemoSettings.lighting.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Package/SimpleSky/_Materials.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Package/SimpleSky/_Materials/SimpleSky.mat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Package/SimpleSky/_Materials/SimpleSky.mat.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Package/SimpleSky/_Models.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Package/SimpleSky/_Models/Cloud_01.fbx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Package/SimpleSky/_Models/Cloud_01.fbx.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Package/SimpleSky/_Models/Cloud_02.fbx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Package/SimpleSky/_Models/Cloud_02.fbx.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Package/SimpleSky/_Models/Cloud_03.fbx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Package/SimpleSky/_Models/Cloud_03.fbx.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Package/SimpleSky/_Models/Cloud_04.fbx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Package/SimpleSky/_Models/Cloud_04.fbx.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Package/SimpleSky/_Models/Cloud_05.fbx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Package/SimpleSky/_Models/Cloud_05.fbx.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Package/SimpleSky/_Models/Cloud_06.fbx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Package/SimpleSky/_Models/Cloud_06.fbx.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Package/SimpleSky/_Models/SkyDome.fbx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Package/SimpleSky/_Models/SkyDome.fbx.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Package/SimpleSky/_Prefabs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Package/SimpleSky/_Prefabs/Cloud_01.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Package/SimpleSky/_Prefabs/Cloud_01.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Package/SimpleSky/_Prefabs/Cloud_02.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Package/SimpleSky/_Prefabs/Cloud_02.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Package/SimpleSky/_Prefabs/Cloud_03.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Package/SimpleSky/_Prefabs/Cloud_03.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Package/SimpleSky/_Prefabs/Cloud_04.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Package/SimpleSky/_Prefabs/Cloud_04.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Package/SimpleSky/_Prefabs/Cloud_05.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Package/SimpleSky/_Prefabs/Cloud_05.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Package/SimpleSky/_Prefabs/Cloud_06.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Package/SimpleSky/_Prefabs/Cloud_06.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Package/SimpleSky/_Prefabs/SkyDome.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Package/SimpleSky/_Prefabs/SkyDome.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Package/SimpleSky/_Textures.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Package/SimpleSky/_Textures/SimpleSky.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Package/SimpleSky/_Textures/SimpleSky.png.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TicTacToe/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TicTacToe/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/DialogueScripts/DialogueSample.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/DialogueScripts/DialogueSample.json.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/SingleBoard.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/SingleBoard.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Script/Card/CardUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Script/Card/CardUI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Thirdparty/FX Mega Pack 2/Prefabs/3D Beam 01 PS.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Thirdparty/FX Mega Pack 2/Prefabs/3D Beam 01 PS.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Thirdparty/FX Mega Pack 2/Prefabs/3D Beam 02 PS.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Thirdparty/FX Mega Pack 2/Prefabs/3D Beam 02 PS.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Thirdparty/FX Mega Pack 2/Prefabs/3D Beam Blue 01 PS.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Thirdparty/FX Mega Pack 2/Prefabs/3D Beam Blue 01 PS.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Thirdparty/FX Mega Pack 2/Prefabs/3D Beam Pink 01 PS.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Thirdparty/FX Mega Pack 2/Prefabs/3D Beam Pink 01 PS.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/BattleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/BattleScene.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -147,7 +105,8 @@
       <workItem from="1660263404513" duration="3080000" />
       <workItem from="1660300808785" duration="952000" />
       <workItem from="1660583157710" duration="10716000" />
-      <workItem from="1660714648580" duration="8612000" />
+      <workItem from="1660714648580" duration="9297000" />
+      <workItem from="1660787622401" duration="1108000" />
     </task>
     <servers />
   </component>
