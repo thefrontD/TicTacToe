@@ -8,7 +8,7 @@
         "TriggerCondition": "None",
         "AdditionalEffectCondition": "None",
         "AdditionalEffect": "None",
-        "CardName": "Alpha",
+        "CardName": "색칠/이동",
         "CardDesc": "Alpha is Greek A",
         "CardCost": 1,
         "CardPoolAttributes" : [
@@ -23,7 +23,7 @@
         "TriggerCondition": "None",
         "AdditionalEffectCondition": "None",
         "AdditionalEffect": "None",
-        "CardName": "Gamma_A",
+        "CardName": "신의 집게",
         "CardDesc": "Gamma is Greek C",
         "CardCost": 1,
         "CardPoolAttributes" : [
@@ -44,7 +44,7 @@
         "TriggerCondition": "None",
         "AdditionalEffectCondition": "None",
         "AdditionalEffect": "None",
-        "CardName": "Beta",
+        "CardName": "공격",
         "CardDesc": "Beta is Greek B",
         "CardCost": 1,
         "CardPoolAttributes" : [
@@ -61,7 +61,7 @@
         "TriggerCondition": "None",
         "AdditionalEffectCondition": "None",
         "AdditionalEffect": "None",
-        "CardName": "Alpha",
+        "CardName": "색칠",
         "CardDesc": "Alpha is Greek A",
         "CardCost": 1,
         "CardPoolAttributes" : [
@@ -76,7 +76,7 @@
         "TriggerCondition": "None",
         "AdditionalEffectCondition": "None",
         "AdditionalEffect": "None",
-        "CardName": "Gamma",
+        "CardName": "거점 : 휴식",
         "CardDesc": "Gamma is Greek C",
         "CardCost": 1,
         "CardPoolAttributes" : [
@@ -97,7 +97,7 @@
         "TriggerCondition": "None",
         "AdditionalEffectCondition": "None",
         "AdditionalEffect": "None",
-        "CardName": "Beta",
+        "CardName": "약탈",
         "CardDesc": "Beta is Greek B",
         "CardCost": 1,
         "CardPoolAttributes" : [

@@ -26,6 +26,7 @@ public class CardData : Singleton<CardData>
     {
         string path = Application.dataPath;
         path += $"/Data/Card/{dataName}.json";
+        print(path);
         
         var converter = new StringEnumConverter();
         var pDataStringLoad = File.ReadAllText(path);

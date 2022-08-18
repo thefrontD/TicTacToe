@@ -19,7 +19,7 @@ public class CardUI : MonoBehaviour
     private Vector3 originPos;
     private Vector3 originScale;
     [SerializeField] private SpriteRenderer CardBackground;
-    private SpriteRenderer CardImage;
+    [SerializeField] private SpriteRenderer CardImage;
     [SerializeField] private TextMeshPro CardCostText;
     [SerializeField] private TextMeshPro CardNameText;
     [SerializeField] private TextMeshPro CardDescText;
@@ -36,7 +36,20 @@ public class CardUI : MonoBehaviour
     public void init(Card card)
     {
         this.Card = card;
-        
+
+        /* 주의사항:
+         * 카드 이름에서 경로로 사용할 수 없는 특수문자들이 꽤 있습니다.
+         * 따라서 카드 sprite의 파일명을 다음과 같이 수정했습니다.
+         * ':' -> '-'  ex) "색칠 : 십자가" -> "색칠 - 십자가"
+         * '/' -> '_'  ex) "색칠/이동" -> "색칠_이동"
+         */
+        // TODO: 공격/이동, 공격/색칠, 전략 : 마나, 전략 : 카드, 전략 : 강화, 행운의 숫자, 흡수, 이동, 대각선 이동, 거점 : 회복 아트가 없음!!
+        // TODO: 폰트 문제 해결 (SF 함박눈 / 옴니고딕), 카드 뒷면 만들기?
+        CardBackground.sprite = Resources.Load<Sprite>($"Images/Cards/{card.CardType}/배경");
+        string cardPathName = card.CardName.Replace(':', '-').Replace('/', '_');
+        print(cardPathName);
+        CardImage.sprite = Resources.Load<Sprite>($"Images/Cards/{card.CardType}/{cardPathName}");
+
         CardNameText.text = Card.CardName;
         CardDescText.text = Card.CardDesc;
         CardCostText.text = Card.CardCost.ToString();
