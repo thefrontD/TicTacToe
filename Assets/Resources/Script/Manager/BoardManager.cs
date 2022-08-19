@@ -18,6 +18,7 @@ public class BoardManager : Singleton<BoardManager>
     //Board State Array
     [SerializeField] private GameObject PlayerPrefab;
     [SerializeField] private GameObject WallPrefabs;
+    [SerializeField] private GameObject ColorEffect;
     private GameObject PlayerObject;
 
     private List<List<Board>> _gameBoard = new List<List<Board>>();
@@ -100,11 +101,28 @@ public class BoardManager : Singleton<BoardManager>
             return false;
         else
         {
+            if(boardColor == BoardColor.Player)
+                PlayColorEffect(row, col);
+            
             _boardColors[row][col] = boardColor;
             _gameBoard[row][col].SetBoardColor(boardColor);
 
+            //BingoEffect(row, col);
             return true;
         }
+    }
+
+    public void PlayColorEffect(int row, int col){
+        Debug.Log(_gameBoard[row][col].GetComponent<Transform>().position);
+        Vector3 pos = new Vector3(0,0,0);
+        pos = _gameBoard[row][col].GetComponent<Transform>().position;
+        pos.z = -2;
+        GameObject EffectInstance = Instantiate(ColorEffect, pos, Quaternion.identity);
+        Destroy(EffectInstance, 2);
+        return;
+    }
+    public void BingoEffect(int row, int col){
+        return;
     }
 
     public bool SummonWalls(int row, int col, int damage)
