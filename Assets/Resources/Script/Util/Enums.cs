@@ -36,7 +36,7 @@ public enum ColorCardEffect
 {
     ColorAnyAndMove,
     Color, 
-    ColorCross, 
+    ColorCross1, 
     ColorCross2, 
     ColorCloseBlock, 
     ColorAny, 
@@ -54,7 +54,8 @@ public enum TriggerCondition
     None, 
     Attacked,
     PlayerInColoredSpace,
-    EnemyWillAttack, EnemyWillWall, EnemyWillMinion, EnemyWillShield,
+    EnemyWillAttack, EnemyWillWall, EnemyWillMinion, EnemyWillShield,//Enemy -> monster으로 변경된 듯 합니다 
+    MonsterWillAttack,
     PlayerWall, PlayerNotWall,
     OnlyAttackCardInHand, OnlyMoveCardInHand, OnlyColorCardInHand,
     ColoredSpaceExists,
@@ -64,7 +65,9 @@ public enum TriggerCondition
     ColorCardInHand1=61, ColorCardInHand2=62, ColorCardInHand3=63, ColorCardInHand4=64, ColorCardInHand5=65,
     MoveCardInHand1=71, MoveCardInHand2=72, MoveCardInHand3=73, MoveCardInHand4=74, MoveCardInHand5=75,
     SevenColoredSpace,
-    PlayerHealthExceeds10 = 110, PlayerHealthExceeds30=130
+    PlayerHealthExceeds10 = 110,
+    PlayerHealthExceeds20 = 120,//~~20임의로 추가했습니다 추가효과 작업 필요할 것 같습니다.
+    PlayerHealthExceeds30=130
 }
 
 [JsonConverter(typeof(StringEnumConverter))]
@@ -83,10 +86,15 @@ public enum AdditionalEffectCondition
 public enum AdditionalEffect
 {
     None,
-    MonsterMaxShield10,
-    MonsterShield20, MonsterShield1000,
-    MonsterHp1,
-    PlayerHp10, PlayerHp20, PlayerHp30,
+    MonsterMaxShield10,//아래로 바뀐 것으로 추정
+    MaxMonsterShieldMinus10,
+    MonsterShield20, MonsterShield1000,//아래로 바뀐 것으로 추정
+    MonsterShieldMinus20,MonsterShieldMinus1000,
+    MonsterHp1,//아래로 바뀐 것으로 추정
+    MonsterHpMinus1,
+    PlayerHp10, PlayerHp20, PlayerHp30,//아래로 바뀐 것으로 추정
+    PlayerHpMinus10,PlayerHpMinus20,PlayerHpMinus30,
+    PlayerHpPlus10,PlayerHpPlus20,PlayerHpPlus30,
     DMG10, DMG20, DMG30,
     BuffPlayer, DebuffPlayer,
     BuffMonster, DebuffMonster,
@@ -146,7 +154,10 @@ public enum Intention
 [JsonConverter(typeof(StringEnumConverter))]
 public enum CardPoolAttribute{
     BasicCardPool = 0,
-    CardPoolA = 1,
-    CardPoolB = 2,
-    CardPoolC = 3
+    Public = 1,
+    AttackCardDeckTop = 2,
+    Berserker = 3,
+    Color = 4,
+    DrawMana = 5,
+    ShieldDestroy =6
 }
