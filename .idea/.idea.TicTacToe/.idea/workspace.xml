@@ -2,36 +2,36 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d3529374-01b1-433a-a73a-241952c1c846" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TicTacToe/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TicTacToe/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial_1.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial/Tutorial_1.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial_10.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial/Tutorial_10.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial_11.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial/Tutorial_11.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial_12.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial/Tutorial_12.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial_13.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial/Tutorial_13.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial_14.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial/Tutorial_14.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial_15.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial/Tutorial_15.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial_16.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial/Tutorial_16.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial_17.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial/Tutorial_17.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial_18.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial/Tutorial_18.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial_19.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial/Tutorial_19.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial_2.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial/Tutorial_2.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial_20.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial/Tutorial_20.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial_21.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial/Tutorial_21.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial_22.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial/Tutorial_22.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial_23.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial/Tutorial_23.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial_24.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial/Tutorial_24.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial_25.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial/Tutorial_25.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial_26.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial/Tutorial_26.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial_3.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial/Tutorial_3.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial_4.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial/Tutorial_4.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial_5.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial/Tutorial_5.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial_6.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial/Tutorial_6.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial_7.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial/Tutorial_7.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial_8.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial/Tutorial_8.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial_9.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial/Tutorial_9.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Script/Card/CardUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Script/Card/CardUI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Script/Manager/PlayerManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Script/Manager/PlayerManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial/Tutorial_1.json.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial/Tutorial_1.json.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial/Tutorial_10.json.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial/Tutorial_10.json.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial/Tutorial_11.json.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial/Tutorial_11.json.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial/Tutorial_12.json.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial/Tutorial_12.json.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial/Tutorial_13.json.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial/Tutorial_13.json.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial/Tutorial_14.json.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial/Tutorial_14.json.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial/Tutorial_15.json.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial/Tutorial_15.json.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial/Tutorial_16.json.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial/Tutorial_16.json.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial/Tutorial_17.json.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial/Tutorial_17.json.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial/Tutorial_18.json.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial/Tutorial_18.json.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial/Tutorial_19.json.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial/Tutorial_19.json.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial/Tutorial_2.json.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial/Tutorial_2.json.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial/Tutorial_20.json.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial/Tutorial_20.json.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial/Tutorial_21.json.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial/Tutorial_21.json.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial/Tutorial_22.json.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial/Tutorial_22.json.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial/Tutorial_23.json.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial/Tutorial_23.json.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial/Tutorial_24.json.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial/Tutorial_24.json.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial/Tutorial_25.json.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial/Tutorial_25.json.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial/Tutorial_26.json.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial/Tutorial_26.json.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial/Tutorial_3.json.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial/Tutorial_3.json.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial/Tutorial_4.json.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial/Tutorial_4.json.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial/Tutorial_5.json.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial/Tutorial_5.json.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial/Tutorial_6.json.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial/Tutorial_6.json.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial/Tutorial_7.json.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial/Tutorial_7.json.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial/Tutorial_8.json.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial/Tutorial_8.json.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial/Tutorial_9.json.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/DialogueScripts/Tutorial/Tutorial_9.json.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Model/5.blend.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Model/5.blend.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Model/6.blend.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Model/6.blend.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Script/Card/Card.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Script/Card/Card.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -131,7 +131,8 @@
       <workItem from="1660583157710" duration="10716000" />
       <workItem from="1660714648580" duration="9297000" />
       <workItem from="1660787622401" duration="1630000" />
-      <workItem from="1660884540918" duration="9231000" />
+      <workItem from="1660884540918" duration="9852000" />
+      <workItem from="1660908504850" duration="941000" />
     </task>
     <servers />
   </component>

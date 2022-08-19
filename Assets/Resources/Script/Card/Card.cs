@@ -24,7 +24,7 @@ public abstract class Card
     public AdditionalEffectCondition AdditionalEffectCondition => _additionalEffectCondition;
     private AdditionalEffect _additionalEffect;
     public AdditionalEffect AdditionalEffect => _additionalEffect;
-    public List<CardPoolAttribute> CardPoolAttributes = new List<CardPoolAttribute>();
+    [JsonProperty] public List<CardPoolAttribute> CardPoolAttributes = new List<CardPoolAttribute>();
 
     private string cardName;
 
@@ -254,7 +254,7 @@ public abstract class Card
                     proceed = true;
                 break;
 
-            case global::TriggerCondition.SevenColoredSpace:
+            case TriggerCondition.SevenColoredSpace:
                 int count = 0;
                 
                 for (int i = 0; i < BoardManager.Instance.BoardSize; i++)
