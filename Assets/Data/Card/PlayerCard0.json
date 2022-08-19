@@ -12,7 +12,7 @@
         "CardDesc": "Alpha is Greek A",
         "CardCost": 1,
         "CardPoolAttributes" : [
-            "CardPoolA"
+            "BasicCardPool"
         ]
     },
     {
@@ -27,7 +27,7 @@
         "CardDesc": "Gamma is Greek C",
         "CardCost": 1,
         "CardPoolAttributes" : [
-            "BasicCardPool"
+            "Public"
         ]
     },
     {
@@ -48,8 +48,8 @@
         "CardDesc": "Beta is Greek B",
         "CardCost": 1,
         "CardPoolAttributes" : [
-            "CardPoolA", 
-            "CardPoolB"
+            "Public", 
+            "AttackCardDeckTop"
         ]
     },
     {
