@@ -1,0 +1,11 @@
+{
+  "Dialogues": [
+    {
+      "Name": "붓",
+      "Context": "벽은 공격 카드로 파괴할 수 있어",
+      "PortraitLocation": "Left"
+    }
+  ],
+  "DialoguePeople": ["붓"],
+  "InitialSetting": ["붓", "Left"]
+}

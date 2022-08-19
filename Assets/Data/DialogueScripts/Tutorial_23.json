@@ -1,0 +1,11 @@
+{
+  "Dialogues": [
+    {
+      "Name": "붓",
+      "Context": "이동 카드로 이동해서 색칠을 복구하자!!",
+      "PortraitLocation": "Left"
+    }
+  ],
+  "DialoguePeople": ["붓"],
+  "InitialSetting": ["붓", "Left"]
+}

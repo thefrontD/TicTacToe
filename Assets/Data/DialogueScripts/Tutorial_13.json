@@ -1,0 +1,16 @@
+{
+  "Dialogues": [
+    {
+      "Name": "붓",
+      "Context": "잘 했어!",
+      "PortraitLocation": "Left"
+    },
+    {
+      "Name": "붓",
+      "Context": "빙고 완성을 위해 미리 이동할까?",
+      "PortraitLocation": "Left"
+    }
+  ],
+  "DialoguePeople": ["붓"],
+  "InitialSetting": ["붓", "Left"]
+}

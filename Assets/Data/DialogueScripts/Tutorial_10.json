@@ -1,0 +1,21 @@
+{
+  "Dialogues": [
+    {
+      "Name": "붓",
+      "Context": "이번에는 또 다른 공격이군",
+      "PortraitLocation": "Left"
+    },
+    {
+      "Name": "붓",
+      "Context": "방금같은 이동으로 적의 의도에서 벗어나자",
+      "PortraitLocation": "Left"
+    },
+    {
+      "Name": "붓",
+      "Context": "하지만 그 전에 색칠 한 번 어때?",
+      "PortraitLocation": "Left"
+    }
+  ],
+  "DialoguePeople": ["붓"],
+  "InitialSetting": ["붓", "Left"]
+}
