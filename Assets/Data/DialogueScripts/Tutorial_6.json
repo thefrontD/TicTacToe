@@ -1,0 +1,16 @@
+{
+  "Dialogues": [
+    {
+      "Name": "붓",
+      "Context": "잘 했어!",
+      "PortraitLocation": "Left"
+    },
+    {
+      "Name": "붓",
+      "Context": "이제 할 것도 없으니 턴을 종료할까?",
+      "PortraitLocation": "Left"
+    }
+  ],
+  "DialoguePeople": ["붓"],
+  "InitialSetting": ["붓", "Left"]
+}

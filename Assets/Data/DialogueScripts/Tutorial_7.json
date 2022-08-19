@@ -1,0 +1,16 @@
+{
+  "Dialogues": [
+    {
+      "Name": "붓",
+      "Context": "적이 어떤 행동을 하는지 의도를 알아볼까?",
+      "PortraitLocation": "Left"
+    },
+    {
+      "Name": "붓",
+      "Context": "이번 적의 의도는 공격 이군",
+      "PortraitLocation": "Left"
+    }
+  ],
+  "DialoguePeople": ["붓"],
+  "InitialSetting": ["붓", "Left"]
+}

@@ -1,0 +1,16 @@
+{
+  "Dialogues": [
+    {
+      "Name": "붓",
+      "Context": "마나를 소모해서 카드를 사용 할 수 있어",
+      "PortraitLocation": "Left"
+    },
+    {
+      "Name": "붓",
+      "Context": "클릭 해서 사용해봐",
+      "PortraitLocation": "Left"
+    }
+  ],
+  "DialoguePeople": ["붓"],
+  "InitialSetting": ["붓", "Left"]
+}
