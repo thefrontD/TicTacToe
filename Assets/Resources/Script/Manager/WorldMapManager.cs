@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.SubsystemsImplementation;
 using UnityEngine.UI;
 /*
 public timeToMove: 캐릭터가 이동하는데 걸리는 시간
@@ -9,7 +11,7 @@ clearedStage를 변화시키면, 캐릭터가 몇번째 스테이지에서 다�
 stage를 나타내는 바의 Cylinder을 기준으로 움직이도록 만들었기 때문에 Cylinder위치를 수정해도 원하는대로 작동
 */
 //setting temp image 집어넣어둠 적용 어떻게 하는지 찾아볼것
-public class WorldMapManager : MonoBehaviour
+public class WorldMapManager : Singleton<WorldMapManager>
 {
     public GameObject PlayerPrefab;
     public float timeToMove = 2;
@@ -20,10 +22,22 @@ public class WorldMapManager : MonoBehaviour
     public Text StageIdentifier;
     public Text PlayerProfile;
     private GameObject Player;
-    void Start()
+    
+    public void Start()
     {
-        //플레이어 오브젝트 이동 애니메이션
-        //stage를 나타내는cylinder을 array로 받아 적용
+        if (GameManager.Instance.CurrentStage == 101)
+        {
+            DialogueManager.Instance.dialogueCallBack.DialogueCallBack += Init;
+            DialogueManager.Instance.StartDialogue("Prologue");
+        }
+        else
+        {
+            Init(this, EventArgs.Empty);
+        }
+    }
+
+    public void Init(object sender, EventArgs e)
+    {
         clearedStage = (GameManager.Instance.CurrentStage % 100) - 1;
         Vector3 spawnPoint = stages[clearedStage].GetComponent<Transform>().position;
         Vector3 nextPoint = stages[clearedStage + 1].GetComponent<Transform>().position;
@@ -39,16 +53,9 @@ public class WorldMapManager : MonoBehaviour
         StageIdentifier.GetComponent<Text>().text = "Stage 1-"+(clearedStage+1).ToString();
         //PlayerProfile 표기 변경
         PlayerProfile.GetComponent<Text>().text = "처치한 적 수: "+ clearedStage.ToString() 
-                                                + "\n현재 스테이지: " +(clearedStage+1).ToString();
-        //todo: 한 스테이지에 처치한 몹 하나라고 가정한 것 나중에 json으로 적용하면 변경 필요
-
+                                                             + "\n현재 스테이지: " +(clearedStage+1).ToString();
     }
 
-    public void Init()
-    {
-        
-    }
-    
     void Update()
     {
         

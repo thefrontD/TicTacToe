@@ -125,6 +125,7 @@ public class DialogueUI : MonoBehaviour
 
     private IEnumerator DialogueAnimaiton(string dialogueIdx)
     {
+        normalUICanvas.SetActive(false);
         LoadDialogue(dialogueIdx);
         InitPortrait();
 
@@ -166,6 +167,7 @@ public class DialogueUI : MonoBehaviour
 
         DialogueManager.Instance.dialogueCallBack.Run();
 
+        normalUICanvas.SetActive(true);
         gameObject.SetActive(false);
     }
 

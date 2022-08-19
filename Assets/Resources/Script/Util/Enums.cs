@@ -63,6 +63,7 @@ public enum TriggerCondition
     AttackCardInHand1=51, AttackCardInHand2=52, AttackCardInHand3=53, AttackCardInHand4=54, AttackCardInHand5=55,
     ColorCardInHand1=61, ColorCardInHand2=62, ColorCardInHand3=63, ColorCardInHand4=64, ColorCardInHand5=65,
     MoveCardInHand1=71, MoveCardInHand2=72, MoveCardInHand3=73, MoveCardInHand4=74, MoveCardInHand5=75,
+    SevenColoredSpace,
     PlayerHealthExceeds10 = 110, PlayerHealthExceeds30=130
 }
 

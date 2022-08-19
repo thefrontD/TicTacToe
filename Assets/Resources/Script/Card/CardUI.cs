@@ -25,6 +25,7 @@ public class CardUI : MonoBehaviour
     [SerializeField] private TextMeshPro CardDescText;
     //[SerializeField] private TextMeshPro CardEffectExplanation;
     private bool isDrag = false;
+    private int _originIdx = 0;
     public bool isHand = false;
 
     void Start()
@@ -50,6 +51,8 @@ public class CardUI : MonoBehaviour
         print(cardPathName);
         CardImage.sprite = Resources.Load<Sprite>($"Images/Cards/{card.CardType}/{cardPathName}");
 
+        SetSortingOrder(0);
+        
         CardNameText.text = Card.CardName;
         CardDescText.text = Card.CardDesc;
         CardCostText.text = Card.CardCost.ToString();
@@ -61,6 +64,7 @@ public class CardUI : MonoBehaviour
         {
             transform.DOMove(originPos + MouseOnPos, animationDuration);
             transform.DOScale(originScale * MouseOnScale, animationDuration);
+            SetSortingOrder(50);
         }
     }
     
@@ -70,6 +74,7 @@ public class CardUI : MonoBehaviour
         {
             transform.DOMove(originPos, animationDuration);
             transform.DOScale(originScale, animationDuration);
+            SetSortingOrder(_originIdx);
         }
     }
 
@@ -78,9 +83,27 @@ public class CardUI : MonoBehaviour
         originPos = transform.position;
     }
     
-    public void setPos(Vector3 pos)
+    public void setPos(Vector3 pos, int idx)
     {
         originPos = pos;
+        SetSortingOrder(idx);
+        _originIdx = idx;
+    }
+
+
+    private void SetSortingOrder(int idx)
+    {
+        CardBackground.sortingOrder = idx;
+        CardImage.sortingOrder = idx;
+        CardCostText.sortingOrder = idx;
+        CardNameText.sortingOrder = idx;
+        CardDescText.sortingOrder = idx;
+    }
+    
+    public void ToGrave()
+    {
+        SetSortingOrder(0);
+        _originIdx = idx;
     }
 
     void OnMouseDown()

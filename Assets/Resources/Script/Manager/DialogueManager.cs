@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DialogueManager : Singleton<DialogueManager>
 {
@@ -8,7 +9,7 @@ public class DialogueManager : Singleton<DialogueManager>
     private DialogueUI _dialogueUI;
     public DialogueEndEvent dialogueCallBack;
 
-    public void Start()
+    public void Awake()
     {
         dialogueCallBack = new DialogueEndEvent();
         _dialogueCanvas = GameObject.FindGameObjectWithTag("DialogueCanvas");
@@ -16,10 +17,9 @@ public class DialogueManager : Singleton<DialogueManager>
         Debug.Log(_dialogueCanvas);
 
         _dialogueUI = _dialogueCanvas.GetComponent<DialogueUI>();
-        dialogueCallBack.DialogueCallBack += PlayerManager.Instance.Init;
+        if(SceneManager.GetActiveScene().name == "BattleScene")
+            dialogueCallBack.DialogueCallBack += PlayerManager.Instance.Init;
         _dialogueCanvas.SetActive(false);
-
-        StartDialogue(string.Format("Enemy{0}", GameManager.Instance.CurrentStage%100));
     }
 
     public void StartDialogue(string dialogueIdx)

@@ -99,7 +99,7 @@ public class CardManager : Singleton<CardManager>
             Vector3 cardPosition = cardPositionList[idx];
             card.transform.DOMove(cardPosition, 0.1f, false);
             card.Idx = cardNum;
-            card.setPos(cardPosition);
+            card.setPos(cardPosition, idx);
             idx += 2;
             cardNum++;
         }
@@ -122,6 +122,7 @@ public class CardManager : Singleton<CardManager>
     public void HandtoGrave(int idx)
     {
         CardUI card = _handCardList[idx];
+        card.ToGrave();
         card.isHand = false;
         card.transform.DOMove(gravePos, 0.2f, false);
         card.transform.DORotate(new Vector3(0, 180, 0), 0.2f, RotateMode.Fast);

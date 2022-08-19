@@ -254,6 +254,18 @@ public abstract class Card
                     proceed = true;
                 break;
 
+            case global::TriggerCondition.SevenColoredSpace:
+                int count = 0;
+                
+                for (int i = 0; i < BoardManager.Instance.BoardSize; i++)
+                    for (int j = 0; j < BoardManager.Instance.BoardSize; j++)
+                        if (BoardManager.Instance.BoardColors[i][j] == BoardColor.Player)
+                            count++;
+
+                if (count == 7)
+                    proceed = true;
+                break;
+            
             case TriggerCondition.None:
                 proceed = true;
                 break;

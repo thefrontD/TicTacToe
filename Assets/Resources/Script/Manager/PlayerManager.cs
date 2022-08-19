@@ -59,7 +59,7 @@ public class PlayerManager : Singleton<PlayerManager>
     {
         _tutorialPhase = 1;
         state = new NormalState();
-        //Init();
+        DialogueManager.Instance.StartDialogue(string.Format("Enemy{0}", GameManager.Instance.CurrentStage%100));
     }
 
     void Update()
