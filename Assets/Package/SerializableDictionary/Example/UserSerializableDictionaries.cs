@@ -19,6 +19,8 @@ public class StringSpriteDictionary : SerializableDictionary<string, Sprite> {}
 public class StringColorDictionary : SerializableDictionary<string, Color> {}
 [Serializable]
 public class BoardSituationSpriteDictionary : SerializableDictionary<BoardSituation, Sprite> {}
+[Serializable]
+public class StringSoundDictionary : SerializableDictionary<string, AudioClip> {}
 
 [Serializable]
 public class StringColorArrayDictionary : SerializableDictionary<string, Color[], ColorArrayStorage> {}

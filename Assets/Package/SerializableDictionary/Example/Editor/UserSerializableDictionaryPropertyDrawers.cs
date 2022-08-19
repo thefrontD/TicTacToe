@@ -11,6 +11,7 @@ using UnityEditor;
 [CustomPropertyDrawer(typeof(StringSpriteDictionary))]
 [CustomPropertyDrawer(typeof(StringColorDictionary))]
 [CustomPropertyDrawer(typeof(BoardSituationSpriteDictionary))]
+[CustomPropertyDrawer(typeof(StringSoundDictionary))]
 public class AnySerializableDictionaryPropertyDrawer : SerializableDictionaryPropertyDrawer {}
 
 [CustomPropertyDrawer(typeof(ColorArrayStorage))]

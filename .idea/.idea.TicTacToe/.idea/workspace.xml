@@ -2,29 +2,35 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d3529374-01b1-433a-a73a-241952c1c846" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Font/210 OmniGothicOTF 020.otf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Font/210 OmniGothicOTF 020.otf.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Font/SF함박눈-TTF.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Font/SF함박눈-TTF.ttf.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Script/Manager/SoundManager.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Script/Manager/SoundManager.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Sound.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Sound/Click.aac" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Sound/Click.aac.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Sound/Coloring.aac" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Sound/Coloring.aac.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Sound/DeckShuffle.aac" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Sound/DeckShuffle.aac.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Sound/Draw.aac" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Sound/Draw.aac.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Sound/HealShield.aac" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Sound/HealShield.aac.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Sound/MouseOver.aac" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Sound/MouseOver.aac.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Sound/MovePlayer.aac" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Sound/MovePlayer.aac.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Sound/MoveinWorldMap.aac" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Sound/MoveinWorldMap.aac.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Sound/TrunOver.aac" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Sound/TrunOver.aac.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Sound/UsingCard.aac" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Sound/UsingCard.aac.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TicTacToe/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TicTacToe/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Card/PlayerCard1.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/Card/PlayerCard1.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Font/Maplestory Light SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Font/Maplestory Light SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Package/SerializableDictionary/Example/Editor/UserSerializableDictionaryPropertyDrawers.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SerializableDictionary/Example/Editor/UserSerializableDictionaryPropertyDrawers.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Package/SerializableDictionary/Example/UserSerializableDictionaries.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SerializableDictionary/Example/UserSerializableDictionaries.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Card.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Card.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/DialogueCanvas.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/DialogueCanvas.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Script/Card/Card.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Script/Card/Card.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/GameManager.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/GameManager.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resources/Script/Card/CardUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Script/Card/CardUI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Script/Dialogue/DialogueUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Script/Dialogue/DialogueUI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Script/Manager/CardManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Script/Manager/CardManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Script/Manager/DialogueManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Script/Manager/DialogueManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Script/Manager/PlayerManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Script/Manager/PlayerManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Script/Manager/WorldMapManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Script/Manager/WorldMapManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Script/Util/Enums.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Script/Util/Enums.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/BattleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/BattleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/WorldMap.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/WorldMap.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Oswald Bold SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Oswald Bold SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Roboto-Bold SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Roboto-Bold SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,6 +47,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6b1444477c1d41c692ef6c02a838308529ac30/8d/5fce19b3/Void.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Resources/Script/Board/BoardIntention.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Resources/Script/Manager/SoundManager.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -123,7 +130,7 @@
       <workItem from="1660583157710" duration="10716000" />
       <workItem from="1660714648580" duration="9297000" />
       <workItem from="1660787622401" duration="1630000" />
-      <workItem from="1660884540918" duration="4880000" />
+      <workItem from="1660884540918" duration="6999000" />
     </task>
     <servers />
   </component>
