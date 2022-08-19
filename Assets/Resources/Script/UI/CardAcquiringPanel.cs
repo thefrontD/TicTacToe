@@ -98,6 +98,7 @@ public class CardAcquiringPanel : MonoBehaviour
         CardImage.GetComponent<Transform>().SetParent(transform);
         CardImage.GetComponent<RectTransform>().anchoredPosition = position;
         CardImage.GetComponent<CardAcquiring>().SetCard(card);
+        CardImage.GetComponent<CardAcquiring>().SetImage();
         return;
     }
 
