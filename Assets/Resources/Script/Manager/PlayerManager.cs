@@ -65,7 +65,10 @@ public class PlayerManager : Singleton<PlayerManager>
     void Update()
     {
         if(Input.GetMouseButtonDown(0))
+        {
+            SoundManager.Instance.PlaySE("Click", 0.5f);
             state.MouseEvent();
+        }
     }
 
     void FixedUpdate()
@@ -265,6 +268,7 @@ public class PlayerManager : Singleton<PlayerManager>
         foreach (CardUI card in CardManager.Instance.HandCardList)
             card.gameObject.GetComponent<Outlinable>().enabled = false;
         CardManager.Instance.AllHandCardtoGrave();
+        SoundManager.Instance.PlaySE("TurnOver");
         ChangeStates(new EnemyState());
     }
 }

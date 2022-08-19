@@ -113,6 +113,7 @@ public class CardUI : MonoBehaviour
         {
             if(Card.usingCard())
             {
+                SoundManager.Instance.PlaySE("UsingCard");
                 GetComponent<Outlinable>().enabled = false;
                 CardManager.Instance.HandtoGrave(idx);
             }
