@@ -437,12 +437,12 @@ public class MoveState : BaseState
             {
                 int row = board.Row;
                 int col = board.Col;
-                Debug.Log($"{row}, {col}");
+                //Debug.Log($"{row}, {col}");
                 if (this.movableSpace[row, col])
                 {
                     this.moveRow = row;
                     this.moveCol = col;
-                    Debug.Log($"Move to R{this.moveRow}, C{this.moveCol}");
+                    //Debug.Log($"Move to R{this.moveRow}, C{this.moveCol}");
                     PlayerManager.Instance.ChangeStates(PlayerManager.Instance.StatesQueue.Dequeue());
                 }
             }
@@ -713,7 +713,7 @@ public class AttackState : BaseState
         }
 
         targetCountLeft--;
-        Debug.Log(targetCountLeft);
+        //Debug.Log(targetCountLeft);
         if (targetCountLeft == 0)
         {
             int damage = card.Damage;
@@ -1156,13 +1156,13 @@ public class ColorState : BaseState
         }*/
 
         //선택할 필요가 없는 경우 바로 시전
-        if (card.colorTargetNum != ColorTargetNum.One)
+        if (card.colorTargetNum != ColorTargetNum.One || card.colorTargetPosition == ColorTargetPosition.P1)
         {
-            Debug.Log("Target is unselectable");
+            //Debug.Log("Target is unselectable");
             //todo
             foreach ((int row, int col) in colorables)
             {
-                Debug.Log("(MouseEvent)" + row.ToString() + col.ToString());
+                ///Debug.Log("(MouseEvent)" + row.ToString() + col.ToString());
                 BoardManager.Instance.ColoringBoard(row, col, BoardColor.Player);
             }
 
