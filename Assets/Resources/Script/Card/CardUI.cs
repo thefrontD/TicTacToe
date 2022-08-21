@@ -117,6 +117,10 @@ public class CardUI : MonoBehaviour
                 GetComponent<Outlinable>().enabled = false;
                 CardManager.Instance.HandtoGrave(idx);
             }
+            else if(PlayerManager.Instance.TutorialPhase == 16)
+            {
+                TutorialManager.Instance.toNextTutorial(PlayerManager.Instance.TutorialPhase);
+            }
         }
     }
 

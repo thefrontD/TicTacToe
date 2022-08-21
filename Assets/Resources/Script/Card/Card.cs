@@ -76,6 +76,10 @@ public abstract class Card
         }*/
         if (!CheckCondition())
             return false;
+        
+        if(PlayerManager.Instance.TutorialTrigger)
+            if (!CheckTutorial())
+                return false;
 
         if (!PlayerManager.Instance.SetMana(-CardCost, cardType)) return false;
         usingCardSpecific();
@@ -85,6 +89,37 @@ public abstract class Card
         return true;
     }
 
+    private bool CheckTutorial()
+    {
+        switch (PlayerManager.Instance.TutorialPhase)
+        {
+            case 3:
+            case 4: 
+            case 5:
+            case 18:
+            case 21:
+                if (cardType == CardType.Attack) return true;
+                else return false;
+            
+            case 6:
+            case 11:
+            case 15:
+            case 20:
+                if (cardType == CardType.Color) return true;
+                else return false;
+            
+            case 9:
+            case 12:
+            case 14:
+            case 19: 
+                if (cardType == CardType.Move) return true;
+                else return false;
+            
+            default:
+                return false;
+        }
+    }
+    
     public bool CheckCondition()
     {
         bool proceed = false;

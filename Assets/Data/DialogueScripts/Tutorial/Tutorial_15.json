@@ -2,12 +2,7 @@
   "Dialogues": [
     {
       "Name": "붓",
-      "Context": "이번 적의 의도는 무엇일까?",
-      "PortraitLocation": "Left"
-    },
-    {
-      "Name": "붓",
-      "Context": "일단 빙고를 완성시키기 위해 이동하자",
+      "Context": "때가 되었어! 내 힘을 보여줄 시간이야!",
       "PortraitLocation": "Left"
     }
   ],

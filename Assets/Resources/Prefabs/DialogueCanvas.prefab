@@ -478,12 +478,26 @@ MonoBehaviour:
     - "\uCC38 \uC2A4\uD328\uB85C\uC6B0"
     - "\uBCF4\uC5B4 \uC81C\uC774\uD06C"
     - "\uC0EC\uB86F"
+    - "\uB798\uBE57 \uB354 \uC5D8\uB9AC\uC2A4"
+    - "\uD3EC\uC988\uC6E8\uC774 \uB300\uB839"
+    - "\uADF8\uB9AC\uC990"
+    - "\uC544\uC774\uB4DC\uB77C"
+    - "\uD3ED\uC2DC\uBC00\uB9AC\uC559"
+    - "\uBD93"
+    - "\uC8FC\uC778\uACF5"
     m_values:
-    - {fileID: 21300000, guid: 7fa894c6efc609c4f9ecce5411d97781, type: 3}
+    - {fileID: 21300000, guid: 9db0960b03deb46449d556154fd604b4, type: 3}
     - {fileID: 21300000, guid: 949274285c2796b49bda59c0c66ac0f6, type: 3}
     - {fileID: 21300000, guid: d724ac775536708448c8e1a7c02e08b9, type: 3}
     - {fileID: 21300000, guid: 7b28c302fdea07a4ba23e9dd6f562169, type: 3}
     - {fileID: 21300000, guid: 3cd81d02a00d688468fcd0e9c69705f7, type: 3}
+    - {fileID: 21300000, guid: fd394e9561538bb449df2ab2dae8f79f, type: 3}
+    - {fileID: 21300000, guid: 00f1f0f4e8450a64e853ebe738a5e5d8, type: 3}
+    - {fileID: 21300000, guid: 7fa894c6efc609c4f9ecce5411d97781, type: 3}
+    - {fileID: 21300000, guid: 568343b4c235b284cbd652a3e2e50958, type: 3}
+    - {fileID: 21300000, guid: b7c997c36063a7642a77406754256664, type: 3}
+    - {fileID: 21300000, guid: 2dd2209204b2d4b48a9a042bbcbf86b2, type: 3}
+    - {fileID: 21300000, guid: 9db0960b03deb46449d556154fd604b4, type: 3}
 --- !u!1 &3640591892604054577
 GameObject:
   m_ObjectHideFlags: 0

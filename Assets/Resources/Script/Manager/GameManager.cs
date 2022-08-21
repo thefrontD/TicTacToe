@@ -16,7 +16,7 @@ public class GameManager : Singleton<GameManager>
         get => _playerNum;
         set => _playerNum = value;
     }
-    private int _currentStage = 102;
+    private int _currentStage = 101;
     public int CurrentStage
     {
         get => _currentStage;
@@ -46,8 +46,6 @@ public class GameManager : Singleton<GameManager>
         DialogueManager.Instance.dialogueCallBack.DialogueCallBack -= PlayerManager.Instance.Init;
         DialogueManager.Instance.dialogueCallBack.DialogueCallBack += gameOverPanelActivation;
 
-        Debug.Log(_currentStage);
-
         DialogueManager.Instance.StartDialogue(string.Format("Enemy{0}_defeat", _currentStage%100));
     }
 
@@ -57,10 +55,16 @@ public class GameManager : Singleton<GameManager>
         {
             DialogueManager.Instance.dialogueCallBack.DialogueCallBack -= PlayerManager.Instance.Init;
             DialogueManager.Instance.dialogueCallBack.DialogueCallBack += gameClearPanelActivation;
-
-            Debug.Log(_currentStage);
-
-            DialogueManager.Instance.StartDialogue(string.Format("Enemy{0}_victory", _currentStage%100));
+            
+            if(PlayerManager.Instance.TutorialTrigger)
+            {
+                DialogueManager.Instance.dialogueCallBack.DialogueCallBack -= PlayerManager.Instance.NextTutorialNum;
+                TutorialManager.Instance.toNextTutorial(PlayerManager.Instance.TutorialPhase);
+            }
+            else
+            {
+                DialogueManager.Instance.StartDialogue(string.Format("Enemy{0}_victory", _currentStage % 100));
+            }
             return;
         }
         else

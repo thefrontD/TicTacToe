@@ -4,6 +4,11 @@
       "Name": "붓",
       "Context": "이번엔 진짜로 이동할 차례야, 죽기 싫다면 말이야!",
       "PortraitLocation": "Left"
+    },
+    {
+      "Name": "붓",
+      "Context": "클릭하여 적의 의도에서 벗어나자!",
+      "PortraitLocation": "Left"
     }
   ],
   "DialoguePeople": ["붓"],

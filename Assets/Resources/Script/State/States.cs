@@ -63,16 +63,39 @@ public class NormalState : BaseState
 
     public override void Enter()
     {
-        if (PlayerManager.Instance.TutorialPhase == 7)
+        if (PlayerManager.Instance.TutorialPhase == 3 || PlayerManager.Instance.TutorialPhase == 5 ||
+            PlayerManager.Instance.TutorialPhase == 6 || PlayerManager.Instance.TutorialPhase == 9 ||
+            PlayerManager.Instance.TutorialPhase == 11 || PlayerManager.Instance.TutorialPhase == 12 ||
+            PlayerManager.Instance.TutorialPhase == 13 || PlayerManager.Instance.TutorialPhase == 15 ||
+            PlayerManager.Instance.TutorialPhase == 18 || PlayerManager.Instance.TutorialPhase == 19 ||
+            PlayerManager.Instance.TutorialPhase == 20)
         {
-            PlayerManager.Instance.SetMana(1000);
-            CardManager.Instance.DrawCard(1);
+            TutorialManager.Instance.toNextTutorial(PlayerManager.Instance.TutorialPhase);
         }
 
-        if (PlayerManager.Instance.TutorialPhase == 10)
+        if (PlayerManager.Instance.TutorialPhase == 14 && PlayerManager.Instance.TutorialSubPhase == 3)
         {
-            PlayerManager.Instance.SetMana(1000);
-            CardManager.Instance.DrawCard(2);
+            PlayerManager.Instance.TutorialSubPhase = 0;
+            TutorialManager.Instance.toNextTutorial(PlayerManager.Instance.TutorialPhase);
+        }
+        
+        if(PlayerManager.Instance.tutorial4Trigger)
+        {
+            TutorialManager.Instance.toNextTutorial(PlayerManager.Instance.TutorialPhase);
+            PlayerManager.Instance.tutorial4Trigger = false;
+        }
+
+        if (PlayerManager.Instance.TutorialPhase == 7)
+        {
+            TutorialManager.Instance.toNextTutorial(PlayerManager.Instance.TutorialPhase);
+        }
+        else if (PlayerManager.Instance.TutorialPhase == 10)
+        {
+            TutorialManager.Instance.toNextTutorial(PlayerManager.Instance.TutorialPhase);
+        }
+        else if (PlayerManager.Instance.TutorialPhase == 17)
+        {
+            TutorialManager.Instance.toNextTutorial(PlayerManager.Instance.TutorialPhase);
         }
         else if (isNewPlayerTurn)
         {
@@ -99,6 +122,8 @@ public class NormalState : BaseState
 
     public override void Exit()
     {
+        Debug.Log(PlayerManager.Instance.BingoAttack);
+        
         if (PlayerManager.Instance.BingoAttack)
         {
             for (int i = 0; i < BoardManager.Instance.BoardSize; i++)
@@ -137,8 +162,6 @@ public class EnemyState : BaseState
                 enemy.EnemyHP += (int) (enemy.EnemyMaxHP * 0.1);
             foreach (Debuff debuff in Enum.GetValues(typeof(Debuff)))
                 enemy.SetDebuff(debuff, -1);
-            if (enemy.EnemyShield == 0)
-                enemy.EnemyShield = enemy.EnemyMaxShield;
             
             enemy.EnemyUI.ShieldUIUpdate();
             enemy.EnemyUI.HPUIUpdate();
@@ -206,18 +229,97 @@ public class MoveState : BaseState
             case MoveDirection.UDLR:
                 // 현재 위치로부터 상하좌우로 한 칸 이동
             {
-                (int, int)[] coords =
-                {
-                    (PlayerManager.Instance.Row - 1, PlayerManager.Instance.Col), // 위
-                    (PlayerManager.Instance.Row, PlayerManager.Instance.Col + 1), // 오른쪽
-                    (PlayerManager.Instance.Row + 1, PlayerManager.Instance.Col), // 아래
-                    (PlayerManager.Instance.Row, PlayerManager.Instance.Col - 1) // 왼쪽
-                };
-                foreach ((int, int) coord in coords)
-                {
-                    if (coord.Item1 >= 0 && coord.Item1 < boardSize && coord.Item2 >= 0 && coord.Item2 < boardSize)
+                if(!PlayerManager.Instance.TutorialTrigger){
+                    (int, int)[] coords =
                     {
-                        this.movableSpace[coord.Item1, coord.Item2] = true;
+                        (PlayerManager.Instance.Row - 1, PlayerManager.Instance.Col), // 위
+                        (PlayerManager.Instance.Row, PlayerManager.Instance.Col + 1), // 오른쪽
+                        (PlayerManager.Instance.Row + 1, PlayerManager.Instance.Col), // 아래
+                        (PlayerManager.Instance.Row, PlayerManager.Instance.Col - 1) // 왼쪽
+                    };
+                    foreach ((int, int) coord in coords)
+                    {
+                        if (coord.Item1 >= 0 && coord.Item1 < boardSize && coord.Item2 >= 0 && coord.Item2 < boardSize)
+                        {
+                            this.movableSpace[coord.Item1, coord.Item2] = true;
+                        }
+                    }
+                }
+                else if (PlayerManager.Instance.TutorialPhase == 9)
+                {
+                    (int, int)[] coords =
+                    {
+                        (PlayerManager.Instance.Row, PlayerManager.Instance.Col - 1) // 왼쪽
+                    };
+                    foreach ((int, int) coord in coords)
+                    {
+                        if (coord.Item1 >= 0 && coord.Item1 < boardSize && coord.Item2 >= 0 && coord.Item2 < boardSize)
+                        {
+                            this.movableSpace[coord.Item1, coord.Item2] = true;
+                        }
+                    }
+                }
+                else if (PlayerManager.Instance.TutorialPhase == 12)
+                {
+                    (int, int)[] coords =
+                    {
+                        (PlayerManager.Instance.Row - 1, PlayerManager.Instance.Col) // 아래
+                    };
+                    foreach ((int, int) coord in coords)
+                    {
+                        if (coord.Item1 >= 0 && coord.Item1 < boardSize && coord.Item2 >= 0 && coord.Item2 < boardSize)
+                        {
+                            this.movableSpace[coord.Item1, coord.Item2] = true;
+                        }
+                    }
+                }
+                else if (PlayerManager.Instance.TutorialPhase == 14)
+                {
+                    switch (PlayerManager.Instance.TutorialSubPhase)
+                    {
+                        case 0:
+                        case 1:
+                            (int, int)[] coord1s =
+                            {
+                                (PlayerManager.Instance.Row, PlayerManager.Instance.Col + 1) // 오른쪽
+                            };
+                            foreach ((int, int) coord in coord1s)
+                            {
+                                if (coord.Item1 >= 0 && coord.Item1 < boardSize && coord.Item2 >= 0 && coord.Item2 < boardSize)
+                                {
+                                    this.movableSpace[coord.Item1, coord.Item2] = true;
+                                }
+                            }
+                            break;
+                        case 2:
+                            (int, int)[] coord2s =
+                            {
+                                (PlayerManager.Instance.Row + 1, PlayerManager.Instance.Col) // 아래
+                            };
+                            foreach ((int, int) coord in coord2s)
+                            {
+                                if (coord.Item1 >= 0 && coord.Item1 < boardSize && coord.Item2 >= 0 && coord.Item2 < boardSize)
+                                {
+                                    this.movableSpace[coord.Item1, coord.Item2] = true;
+                                }
+                            }
+                            break;
+                    }
+
+                    PlayerManager.Instance.TutorialSubPhase++;
+                }
+                else if (PlayerManager.Instance.TutorialPhase == 19)
+                {
+                    (int, int)[] coords =
+                    {
+                        (PlayerManager.Instance.Row, PlayerManager.Instance.Col - 1)
+                    };
+                    foreach ((int, int) coord in coords)
+                    {
+                        if (coord.Item1 >= 0 && coord.Item1 < boardSize && coord.Item2 >= 0 && coord.Item2 < boardSize)
+                        {
+                            this.movableSpace[coord.Item1, coord.Item2] = true;
+                        }
                     }
                 }
 
@@ -464,6 +566,7 @@ public class AttackState : BaseState
 //취소하면 normal state로 돌아감
     public override void DoAction(States state)
     {
+        
     }
 
     public override void Enter()
@@ -496,15 +599,11 @@ public class AttackState : BaseState
                 //row col이 0,3 미만이고, 그 좌표에 Wall이 있을 때
                 if (c.row >= 0 && c.row < 3 && c.col >= 0 && c.col < 3 &&
                     BoardManager.Instance.BoardObjects[c.row][c.col] == BoardObject.Wall)
-                {
-                    if (BoardManager.Instance.BoardObjects[c.row][c.col] == BoardObject.Wall)
-                    {
-                        attackableList.Add(BoardManager.Instance.BoardAttackables[c.row][c.col]);
-                    }
-                }
+                    attackableList.Add(BoardManager.Instance.BoardAttackables[c.row][c.col]);
             }
         }
 
+        /*
         if (isMinion)
         {
             foreach (coord c in coords)
@@ -512,15 +611,14 @@ public class AttackState : BaseState
                 //row col이 0,3 미만이고, 그 좌표에 Minion이 있을 때
                 if (c.row >= 0 && c.row < 3 && c.col >= 0 && c.col < 3 &&
                     BoardManager.Instance.BoardObjects[c.row][c.col] == BoardObject.Minion)
-                {
-                    if (BoardManager.Instance.BoardObjects[c.row][c.col] == BoardObject.Minion)
-                    {
-                        attackableList.Add(BoardManager.Instance.BoardAttackables[c.row][c.col]);
-                    }
-                }
+                    attackableList.Add(BoardManager.Instance.BoardAttackables[c.row][c.col]);
             }
         }
-
+        */
+        
+        if(attackableList.Count > 1)
+            Debug.Log(attackableList[1]);
+        
         //모든 attack 가능한 오브젝트를 attackableList에 담았음
         //공격 가능한 대상의 테두리를 밝은 파란 테두리로 표시
         foreach (IAttackable attackable in attackableList)
@@ -996,7 +1094,6 @@ public class ColorState : BaseState
                             IfColorableAddToList(i, j);
                     }
                 }
-
                 break;
             case ColorTargetPosition.Vertical:
                 for (int i = 0; i < boardsize; i++)

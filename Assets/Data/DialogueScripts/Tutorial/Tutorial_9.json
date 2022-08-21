@@ -2,7 +2,12 @@
   "Dialogues": [
     {
       "Name": "붓",
-      "Context": "자 그럼 시작해 볼까?",
+      "Context": "잘 했어!",
+      "PortraitLocation": "Left"
+    },
+    {
+      "Name": "붓",
+      "Context": "수고했으니 한 숨 돌릴까?",
       "PortraitLocation": "Left"
     }
   ],

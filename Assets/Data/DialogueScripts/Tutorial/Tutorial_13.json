@@ -2,12 +2,12 @@
   "Dialogues": [
     {
       "Name": "붓",
-      "Context": "잘 했어!",
+      "Context": "이번 적의 의도는 무엇일까?",
       "PortraitLocation": "Left"
     },
     {
       "Name": "붓",
-      "Context": "빙고 완성을 위해 미리 이동할까?",
+      "Context": "일단 빙고를 완성시키기 위해 이동하자",
       "PortraitLocation": "Left"
     }
   ],

@@ -110,6 +110,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5076436017911df42af48729ec9cbf70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  destructionEffect: {fileID: 0}
+  Row: 0
+  Col: 0
 --- !u!114 &541944434671629406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -117,16 +120,17 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7995517874831428577}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3fe91dc294731a9428c0941ea7579110, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  flashing: 0
   complexMaskingMode: 0
   drawingMode: 1
   outlineLayer: 0
   outlineTargets:
-  - IsVisible: 0
+  - IsVisible: 1
     CutoutMask: 8
     edgeDilateAmount: 5
     frontEdgeDilateAmount: 5

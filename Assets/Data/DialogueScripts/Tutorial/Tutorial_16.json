@@ -2,7 +2,12 @@
   "Dialogues": [
     {
       "Name": "붓",
-      "Context": "색칠 카드를 사용해 빙고를 완성하자!!",
+      "Context": "다음 턴에 말이야~",
+      "PortraitLocation": "Left"
+    },
+    {
+      "Name": "붓",
+      "Context": "저 인형을 끝장내 버리기 위해 턴을 종료해!",
       "PortraitLocation": "Left"
     }
   ],

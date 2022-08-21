@@ -102,7 +102,7 @@ public class BoardManager : Singleton<BoardManager>
         else
         {
             if(boardColor == BoardColor.Player)
-                PlayColorEffect(row, col);
+                //PlayColorEffect(row, col);
             
             _boardColors[row][col] = boardColor;
             _gameBoard[row][col].SetBoardColor(boardColor);
@@ -132,7 +132,10 @@ public class BoardManager : Singleton<BoardManager>
         if(_boardObjects[row][col] == BoardObject.None)
         {
             _boardObjects[row][col] = BoardObject.Wall;
-            Instantiate(WallPrefabs, _gameBoard[row][col].transform.position, Quaternion.identity);
+            ColoringBoard(row, col, BoardColor.None);
+            GameObject wall = Instantiate(WallPrefabs, _gameBoard[row][col].transform.position, Quaternion.identity);
+            _boardAttackables[row][col] = wall.GetComponent<Wall>();
+            wall.GetComponent<Wall>().Init(row, col);
         }
         else if(_boardObjects[row][col] == BoardObject.Player)
             _isGameOver = PlayerManager.Instance.DamageToPlayer(-damage);
@@ -148,9 +151,8 @@ public class BoardManager : Singleton<BoardManager>
         {
             int angle = -1 * (int)Vector2.Angle(new Vector2(0, 1), 
                 new Vector2(row - PlayerManager.Instance.Row, col - PlayerManager.Instance.Col));
-            
-            Debug.Log(angle);
-            
+
+            _boardObjects[PlayerManager.Instance.Row][PlayerManager.Instance.Col] = BoardObject.None;
             PlayerManager.Instance.Row = row;
             PlayerManager.Instance.Col = col;
             Vector3 nextPos = _gameBoard[PlayerManager.Instance.Row][PlayerManager.Instance.Col].transform.position;

@@ -14,11 +14,6 @@ public class SoundManager : Singleton<SoundManager>
     [SerializeField] private StringSoundDictionary seDictionary; //효과음 딕셔너리
     [SerializeField] private StringSoundDictionary bgmDictionary; //배경음 딕셔너리
 
-    private void Awake()
-    {
-        DontDestroyOnLoad(this.gameObject); //여러 씬에서 사용할 것.
-    }
-
     // 효과 사운드 재생
     public void PlaySE(string name, float volume = 1f)
     {

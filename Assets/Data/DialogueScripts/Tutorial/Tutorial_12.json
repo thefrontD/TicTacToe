@@ -2,7 +2,12 @@
   "Dialogues": [
     {
       "Name": "붓",
-      "Context": "클릭하여 적의 의도에서 벗어나자!",
+      "Context": "잘 했어!",
+      "PortraitLocation": "Left"
+    },
+    {
+      "Name": "붓",
+      "Context": "할 건 다 한거 같으니 이만 턴을 종료하자",
       "PortraitLocation": "Left"
     }
   ],
