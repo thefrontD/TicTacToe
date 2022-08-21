@@ -2266,9 +2266,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BoardPrefab: {fileID: 9033935363093032279, guid: f0a5aaaa5e004a549849f66f5837a500, type: 3}
-  PlayerPrefab: {fileID: 9065865979408193782, guid: b37e1ec7bc12e3549ae4897ccabefa0b, type: 3}
+  PlayerPrefab: {fileID: -2529390294451437032, guid: b37e1ec7bc12e3549ae4897ccabefa0b, type: 3}
   WallPrefabs: {fileID: 7995517874831428577, guid: 13fe3b71b134329488051397afb33d65, type: 3}
-  ColorEffect: {fileID: 0}
+  ColorEffect: {fileID: 1684374799952259555, guid: 8e3dd0053a6b49d40920cf71ed4fd869, type: 3}
   MoveWindEffect: {fileID: 1216866934488732980, guid: 67c7afdcd4eec7642aded2bfb617e118, type: 3}
 --- !u!114 &2109610773 stripped
 MonoBehaviour:
