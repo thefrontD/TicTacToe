@@ -106,8 +106,9 @@ public class BoardManager : Singleton<BoardManager>
             
             _boardColors[row][col] = boardColor;
             _gameBoard[row][col].SetBoardColor(boardColor);
-
-            //BingoEffect(row, col);
+            ResetBingoEffect();
+            CheckBingoAndEffect(BoardColor.Player);
+            CheckBingoAndEffect(BoardColor.Enemy);
             return true;
         }
     }
@@ -250,4 +251,71 @@ public class BoardManager : Singleton<BoardManager>
         
         return ret;
     } 
+    public void ResetBingoEffect(){
+        for(int i = 0; i<_boardSize; i++){
+            for(int j = 0; j<_boardSize; j++){
+                GameBoard[i][j].GetComponent<Board>().ActivateBingoEffect(false, BoardColor.None);
+            }
+        }
+    }
+
+    public int CheckBingoAndEffect(BoardColor color)
+    {
+        int ret = 0;
+        bool check1, check2;
+        
+        for (int i = 0; i < _boardSize; i++)
+        {
+            check1 = check2 = true;            
+            
+            for (int j = 0; j < _boardSize; j++)
+            {
+                if (_boardColors[i][j] != color)
+                    check1 = false;
+
+                if (_boardColors[j][i] != color)
+                    check2 = false;
+            } 
+
+            if (check1){
+                Debug.Log("check1 true ret++");
+                ret++;
+                for(int j = 0; j<_boardSize; j++){
+                    GameBoard[i][j].GetComponent<Board>().ActivateBingoEffect(true, color);
+                }
+            }
+            if (check2){
+                Debug.Log("check2 true ret++");
+                ret++;
+                for(int j = 0; j<_boardSize; j++){
+                    GameBoard[j][i].GetComponent<Board>().ActivateBingoEffect(true, color);
+                }
+            }
+        }
+
+        check1 = check2 = true;
+        for (int i = 0; i < _boardSize; i++)
+        {
+            if (_boardColors[i][i] != color)
+                check1 = false;
+            if (_boardColors[i][_boardSize - 1 - i] != color)
+                check2 = false;
+        }
+        
+        if (check1){
+            Debug.Log("check1_2 true ret++");
+            ret++;
+            for (int i = 0; i < _boardSize; i++)
+                GameBoard[i][i].GetComponent<Board>().ActivateBingoEffect(true, color);
+        }
+        if (check2){
+            Debug.Log("check1_2 true ret++");
+            ret++;
+            for (int i = 0; i < _boardSize; i++)
+                GameBoard[i][_boardSize - 1 - i].GetComponent<Board>().ActivateBingoEffect(true, color);
+        }
+        Debug.Log("Total Bingo is why not changing: "+ret.ToString());
+
+        return ret;
+    }
 }

@@ -71,4 +71,20 @@ public class Board : MonoBehaviour
             GetComponent<Outlinable>().OutlineParameters.Color = colors[(int) situation];
         }
     }
+
+    public void ActivateBingoEffect(bool select, BoardColor color){
+        if(select == true){
+            //Debug.Log("ActivateBingoEffect true Color: " + color.ToString());
+            if(color == BoardColor.Player)
+                transform.Find("BingoEffect").gameObject.SetActive(true);
+            else
+                transform.Find("BingoEffectEnemy").gameObject.SetActive(true);
+
+        }
+        else{
+            //Debug.Log("ActivateBingoEffect false");
+            transform.Find("BingoEffect").gameObject.SetActive(false);
+            transform.Find("BingoEffectEnemy").gameObject.SetActive(false);
+        }
+    }
 }

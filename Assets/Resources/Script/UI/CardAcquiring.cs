@@ -9,6 +9,7 @@ using TMPro;
 public class CardAcquiring : MonoBehaviour, IPointerClickHandler
 {
     Card card;
+    private bool Clickable = true;
     void Start()
     {
         
@@ -16,10 +17,13 @@ public class CardAcquiring : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        Debug.Log("Card Selected");
-        Debug.Log(card);
-        PlayerManager.Instance.PlayerCard.Add(card);
-        transform.parent.GetComponent<CardAcquiringPanel>().EndCardAcquiring();
+        if(Clickable == true){
+            Debug.Log("Card Selected");
+            Debug.Log(card);
+            PlayerManager.Instance.PlayerCard.Add(card);
+            transform.parent.GetComponent<CardAcquiringPanel>().EndCardAcquiring();
+        }
+        return;
     }
 
     public void SetCard(Card card){
@@ -52,6 +56,9 @@ public class CardAcquiring : MonoBehaviour, IPointerClickHandler
         Rect rect = new Rect(0, 0, texture.width, texture.height);
         Sprite sprite = Sprite.Create(texture, rect, new Vector2(0.5f, 0.5f));
         return sprite;
+    }
+    public void SetClickable(bool cond){
+        this.Clickable = cond;
     }
 
     void Update()
