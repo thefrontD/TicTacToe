@@ -54,8 +54,7 @@ public enum TriggerCondition
     None, 
     Attacked,
     PlayerInColoredSpace,
-    EnemyWillAttack, EnemyWillWall, EnemyWillMinion, EnemyWillShield,//Enemy -> monster으로 변경된 듯 합니다 
-    MonsterWillAttack,
+    MonsterWillAttack, MonsterWillWall, MonsterWillMinion, MonsterWillShield,
     PlayerWall, PlayerNotWall,
     OnlyAttackCardInHand, OnlyMoveCardInHand, OnlyColorCardInHand,
     ColoredSpaceExists,
@@ -66,8 +65,8 @@ public enum TriggerCondition
     MoveCardInHand1=71, MoveCardInHand2=72, MoveCardInHand3=73, MoveCardInHand4=74, MoveCardInHand5=75,
     SevenColoredSpace,
     PlayerHealthExceeds10 = 110,
-    PlayerHealthExceeds20 = 120,//~~20임의로 추가했습니다 추가효과 작업 필요할 것 같습니다.
-    PlayerHealthExceeds30=130
+    PlayerHealthExceeds20 = 120,
+    PlayerHealthExceeds30 = 130
 }
 
 [JsonConverter(typeof(StringEnumConverter))]
@@ -86,14 +85,10 @@ public enum AdditionalEffectCondition
 public enum AdditionalEffect
 {
     None,
-    MonsterMaxShield10,//아래로 바뀐 것으로 추정
     MaxMonsterShieldMinus10,
-    MonsterShield20, MonsterShield1000,//아래로 바뀐 것으로 추정
-    MonsterShieldMinus20,MonsterShieldMinus1000,
-    MonsterHp1,//아래로 바뀐 것으로 추정
+    MonsterShieldMinus20, MonsterShieldMinus1000,
     MonsterHpMinus1,
-    PlayerHp10, PlayerHp20, PlayerHp30,//아래로 바뀐 것으로 추정
-    PlayerHpMinus10,PlayerHpMinus20,PlayerHpMinus30,
+    PlayerHpMinus10, PlayerHpMinus20, PlayerHpMinus30,
     PlayerHpPlus10,PlayerHpPlus20,PlayerHpPlus30,
     DMG10, DMG20, DMG30,
     BuffPlayer, DebuffPlayer,

@@ -156,31 +156,31 @@ public abstract class Card
 
                 break;
 
-            case TriggerCondition.EnemyWillAttack:
+            case TriggerCondition.MonsterWillAttack:
                 foreach (Enemy enemy in EnemyManager.Instance.EnemyList)
                     if ((int) enemy.EnemyActions.Peek().Item1 / 10 == 0)
                         proceed = true;
                 break;
-            case TriggerCondition.EnemyWillWall:
+            case TriggerCondition.MonsterWillWall:
                 foreach (Enemy enemy in EnemyManager.Instance.EnemyList)
                     if (enemy.EnemyActions.Peek().Item1 == EnemyAction.WallSummon)
                         proceed = true;
                 break;
-            case TriggerCondition.EnemyWillMinion:
+            case TriggerCondition.MonsterWillMinion:
                 foreach (Enemy enemy in EnemyManager.Instance.EnemyList)
                     if (enemy.EnemyActions.Peek().Item1 == EnemyAction.MobSummon)
                         proceed = true;
                 break;
-            case TriggerCondition.EnemyWillShield:
+            case TriggerCondition.MonsterWillShield:
                 foreach (Enemy enemy in EnemyManager.Instance.EnemyList)
                     if (enemy.EnemyActions.Peek().Item1 == EnemyAction.ShieldHealing)
                         proceed = true;
                 break;
 
-            case TriggerCondition.PlayerWall:
+            case TriggerCondition.PlayerWall:  // TODO
                 proceed = true;
                 break;
-            case TriggerCondition.PlayerNotWall:
+            case TriggerCondition.PlayerNotWall:  // TODO
                 proceed = true;
                 break;
 
@@ -283,6 +283,7 @@ public abstract class Card
                     proceed = true;
                 break;
 
+            case TriggerCondition.PlayerHealthExceeds20:
             case TriggerCondition.PlayerHealthExceeds30:
                 // 플레이어의 체력이 30을 초과하는가?
                 if (PlayerManager.Instance.Hp > ((int) _triggerCondition - 100))

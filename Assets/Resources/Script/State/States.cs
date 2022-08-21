@@ -504,7 +504,12 @@ public class MoveState : BaseState
                 CardManager.Instance.DrawCard(1);
                 break;
             }
-            case AdditionalEffect.PlayerHp30: // 플레이어에게 피해 30
+            case AdditionalEffect.PlayerHpPlus20: // 플레이어 20 회복
+            {
+                PlayerManager.Instance.SetHp(20);
+                break;
+            }
+            case AdditionalEffect.PlayerHpMinus30: // 플레이어에게 피해 30
             {
                 PlayerManager.Instance.SetHp(-30);
                 break;
@@ -770,6 +775,13 @@ public class AttackState : BaseState
                     proceed = true;
                 break;
             }
+            case AdditionalEffectCondition.PlayerInColoredSpace: // 현재 플레이어가 있는 칸이 색칠(아군)된 칸일 때
+            {
+                (int r, int c) = (PlayerManager.Instance.Row, PlayerManager.Instance.Col);
+                if (BoardManager.Instance.BoardColors[r][c] == BoardColor.Player)
+                    proceed = true;
+                break;
+            }
             case AdditionalEffectCondition.DeckTopIsAttackCard: // 덱 맨 위의 카드가 공격 카드였을 때
             {
                 if (CardManager.Instance.DeckList.Peek().Card is AttackCard)
@@ -870,7 +882,12 @@ public class AttackState : BaseState
                 CardManager.Instance.DrawCard(1);
                 break;
             }
-            case AdditionalEffect.PlayerHp20: // 플레이어에게 피해 20
+            case AdditionalEffect.PlayerHpPlus20: // 플레이어 20 회복
+            {
+                PlayerManager.Instance.SetHp(20);
+                break;
+            }
+            case AdditionalEffect.PlayerHpMinus20: // 플레이어에게 피해 20
             {
                 PlayerManager.Instance.SetHp(-20);
                 break;
@@ -916,7 +933,7 @@ public class AttackState : BaseState
 
                 break;
             }
-            case AdditionalEffect.MonsterMaxShield10: // 그 몬스터의 최대실드 -10
+            case AdditionalEffect.MaxMonsterShieldMinus10: // 그 몬스터의 최대실드 -10
             {
                 foreach (IAttackable attackable in additionalEffectParam)
                 {
@@ -929,7 +946,7 @@ public class AttackState : BaseState
 
                 break;
             }
-            case AdditionalEffect.MonsterHp1: // 그 몬스터의 체력 -1
+            case AdditionalEffect.MonsterHpMinus1: // 그 몬스터의 체력 -1
             {
                 foreach (IAttackable attackable in additionalEffectParam)
                 {
@@ -1247,7 +1264,7 @@ public class ColorState : BaseState
                 CardManager.Instance.DrawCard(1);
                 break;
             }
-            case AdditionalEffect.PlayerHp10: // 플레이어에게 피해 10
+            case AdditionalEffect.PlayerHpMinus10: // 플레이어에게 피해 10
             {
                 PlayerManager.Instance.SetHp(-10);
                 break;
@@ -1273,7 +1290,7 @@ public class ColorState : BaseState
 
                 break;
             }
-            case AdditionalEffect.MonsterShield20: // 그 몬스터의 실드 -20
+            case AdditionalEffect.MonsterShieldMinus20: // 그 몬스터의 실드 -20
             {
                 foreach (Enemy enemy in EnemyManager.Instance.EnemyList)
                 {
@@ -1282,7 +1299,7 @@ public class ColorState : BaseState
 
                 break;
             }
-            case AdditionalEffect.MonsterShield1000: // 그 몬스터의 실드 -1000
+            case AdditionalEffect.MonsterShieldMinus1000: // 그 몬스터의 실드 -1000
             {
                 foreach (Enemy enemy in EnemyManager.Instance.EnemyList)
                 {
