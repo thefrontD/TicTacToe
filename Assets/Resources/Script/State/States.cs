@@ -511,6 +511,10 @@ public class MoveState : BaseState
             }
             case AdditionalEffect.DumpMoveCard1: // 이동 카드 1장 버림
             {
+                foreach (BaseState state in PlayerManager.Instance.StatesQueue)
+                {
+                    Debug.Log(state.ToString());
+                }
                 // DumpState를 state queue의 head에 Enqueue시킴
                 List<BaseState> states = new List<BaseState> { new DumpState(CardType.Move, 1) };
                 states.AddRange(PlayerManager.Instance.StatesQueue);

@@ -263,10 +263,32 @@ public class Enemy : MonoBehaviour, IAttackable
                 _isGameOver = PlayerManager.Instance.DamageToPlayer(-damage);
                 break;
         }
+        StartCoroutine(PlayEnemyAttackEffect(temp2));
 
         return _isGameOver;
     }
-    
+
+    private IEnumerator PlayEnemyAttackEffect(List<(int, int)> attackedSpaces)
+    {
+        int boardSize = BoardManager.Instance.BoardSize;
+        bool[,] attacked = new bool[boardSize, boardSize];  // 모두 false로 초기화
+        foreach ((int, int) coord in attackedSpaces)
+            attacked[coord.Item1, coord.Item2] = true;
+
+        for (int r = 0; r < boardSize; r++)
+        {
+            for (int c = 0; c < boardSize; c++)
+            {
+                if (attacked[r, c])
+                {
+                    Vector3 position = BoardManager.Instance.GameBoard[r][c].transform.position;
+                    Instantiate(EnemyManager.Instance.EnemyAttackEffect, position + new Vector3(0, 0, -3), Quaternion.identity);  // 자동으로 destroy된다.
+                }
+            }
+            yield return new WaitForSeconds(0.3f);
+        }
+    }
+
     private bool EnemySummon((EnemyAction, int) enemyAction)
     {
         bool _isGameOver = false;

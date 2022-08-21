@@ -243,6 +243,10 @@ public class PlayerManager : Singleton<PlayerManager>
     
     public bool DamageToPlayer(int value = 0)
     {
+        if (value < 0)  // 대미지를 입었음
+        {
+            StartCoroutine(DamageBlink());
+        }
         if(_shield != 0){
             if(_shield + value < 0)
             {
@@ -272,6 +276,18 @@ public class PlayerManager : Singleton<PlayerManager>
 
         OnPlayerDataUpdate?.Invoke();
         return false;
+    }
+
+    public IEnumerator DamageBlink()
+    {
+        const int numBlinks = 30;
+        Renderer renderer = BoardManager.Instance.PlayerObject.GetComponent<Renderer>();
+        for (int i = 0; i < numBlinks * 2; i++)
+        {
+            renderer.enabled = !renderer.enabled;
+            yield return new WaitForSeconds(0.1f);
+        }
+        renderer.enabled = true;
     }
 
     public bool MovePlayer(int row, int col, MoveCardEffect effect = MoveCardEffect.Slide)

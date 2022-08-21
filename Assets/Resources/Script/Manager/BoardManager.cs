@@ -19,7 +19,10 @@ public class BoardManager : Singleton<BoardManager>
     [SerializeField] private GameObject PlayerPrefab;
     [SerializeField] private GameObject WallPrefabs;
     [SerializeField] private GameObject ColorEffect;
-    private GameObject PlayerObject;
+    [SerializeField] private GameObject MoveWindEffect;
+
+    private GameObject _playerObject;
+    public GameObject PlayerObject => _playerObject;
 
     private List<List<Board>> _gameBoard = new List<List<Board>>();
     public List<List<Board>> GameBoard => _gameBoard;
@@ -88,7 +91,7 @@ public class BoardManager : Singleton<BoardManager>
                           - new Vector3(0, 0, 0);
         _boardObjects[PlayerManager.Instance.Row][PlayerManager.Instance.Col] = BoardObject.Player;
         Quaternion rotation = Quaternion.Euler(-90, -90, 90);
-        PlayerObject = Instantiate(PlayerPrefab, initPos, rotation);
+        _playerObject = Instantiate(PlayerPrefab, initPos, rotation);
     }
 
     /// <summary>
@@ -159,6 +162,7 @@ public class BoardManager : Singleton<BoardManager>
             _boardObjects[row][col] = BoardObject.Player;
             Vector3 nextRot = PlayerObject.transform.position - nextPos;
 
+            PlayMoveEffect(PlayerObject.transform.position, nextPos);
             switch (effect)
             {
                 case MoveCardEffect.Slide:
@@ -172,6 +176,14 @@ public class BoardManager : Singleton<BoardManager>
             }
         }
     }
+
+    public void PlayMoveEffect(Vector3 from, Vector3 to)
+    {
+        Vector3 direction = to - from;
+        Quaternion angle = Quaternion.Euler(0, 0, Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg);
+        Instantiate(MoveWindEffect, from + new Vector3(0, 0, -5), angle);  // 자동으로 destroy된다.
+    }
+
     /// <summary>
     /// 보드판 전체에서 color로 색칠된 빙고의 개수를 리턴한다.
     /// </summary>

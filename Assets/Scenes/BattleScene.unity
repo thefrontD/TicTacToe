@@ -2221,6 +2221,7 @@ MonoBehaviour:
     m_values:
     - {fileID: 7995517874831428577, guid: 639cee557a16b0147a4840c4097c5ecf, type: 3}
     - {fileID: 7995517874831428577, guid: 639cee557a16b0147a4840c4097c5ecf, type: 3}
+  EnemyAttackEffect: {fileID: 113563744581792600, guid: fba2ac82c70e0774f9d6194d6ef93b2b, type: 3}
 --- !u!1 &1926733655
 GameObject:
   m_ObjectHideFlags: 0
@@ -2268,6 +2269,7 @@ MonoBehaviour:
   PlayerPrefab: {fileID: 9065865979408193782, guid: b37e1ec7bc12e3549ae4897ccabefa0b, type: 3}
   WallPrefabs: {fileID: 7995517874831428577, guid: 13fe3b71b134329488051397afb33d65, type: 3}
   ColorEffect: {fileID: 0}
+  MoveWindEffect: {fileID: 1216866934488732980, guid: 67c7afdcd4eec7642aded2bfb617e118, type: 3}
 --- !u!114 &2109610773 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 314777123836927785, guid: 17bd36cadba43df499d781cd99e3348e, type: 3}
