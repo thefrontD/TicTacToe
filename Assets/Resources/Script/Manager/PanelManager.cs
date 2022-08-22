@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PanelManager : Singleton<PanelManager>
 {
@@ -8,15 +9,10 @@ public class PanelManager : Singleton<PanelManager>
     public GameObject GameOverPanel => gameOverPanel;
     [SerializeField] private GameObject gameClearPanel;
     public GameObject GameClearPanel => gameClearPanel;
+    [SerializeField] private Button nextButton;
 
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        nextButton.onClick.AddListener(LoadingManager.Instance.LoadWorldMap);
     }
 }
