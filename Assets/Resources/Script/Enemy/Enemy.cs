@@ -213,9 +213,9 @@ public class Enemy : MonoBehaviour, IAttackable
         bool _isGameOver = false;
 
         if(_debuffDictionary[Debuff.PowerIncrease] > 0)
-            damage = (int)(damage * (1 + _debuffDictionary[Debuff.PowerIncrease] / 100));
+            damage = (int)(damage * (1 + _debuffDictionary[Debuff.PowerIncrease] / 100f));
         if(_debuffDictionary[Debuff.PowerDecrease] > 0)
-            damage = (int)(damage * (1 - _debuffDictionary[Debuff.PowerIncrease] / 100));
+            damage = (int)(damage * (1 - _debuffDictionary[Debuff.PowerDecrease] / 100f));
 
         _previousAttack.Item2 = _previousAttack.Item1;
         _previousAttack.Item1 = enemyAction.Item1;
@@ -425,8 +425,10 @@ public class Enemy : MonoBehaviour, IAttackable
         if(value >0){
             if(debuff == Debuff.PowerDecrease )
                 transform.Find("DebuffEffect").gameObject.SetActive(true);
-            else if(debuff == Debuff.Heal)
+            else if(debuff == Debuff.Heal){
                 transform.Find("HealEffect").gameObject.SetActive(true);
+                SoundManager.Instance.PlaySE("HealShield");
+            }
             else
                 transform.Find("BuffEffect").gameObject.SetActive(true);
         }
@@ -441,6 +443,7 @@ public class Enemy : MonoBehaviour, IAttackable
     public void EnemyHealShield(int num)
     {
         Debug.Log("EnemyHPHeal!");
+        SoundManager.Instance.PlaySE("HealShield");
         _enemyShield = _enemyShield + num > _enemyMaxShield ? _enemyMaxShield : _enemyShield + num;
         EnemyUI.ShieldUIUpdate();
     }
