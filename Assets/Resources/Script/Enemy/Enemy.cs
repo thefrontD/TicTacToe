@@ -5,6 +5,7 @@ using EPOOutline;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Random = UnityEngine.Random;
 
 public class Enemy : MonoBehaviour, IAttackable
 {
@@ -67,47 +68,65 @@ public class Enemy : MonoBehaviour, IAttackable
 
     public Queue<(EnemyAction, int)> EnemyActions;
     
-    public void AttackedByPlayer(int damage)
+    public void AttackedByPlayer(int damage, int attackCount)
     {
-        EnemyShield = EnemyShield > damage ? EnemyShield - damage : 0;
+        StartCoroutine(AttackedByPlayerCoroutine(damage, attackCount));
+    }
 
-        if(PlayerManager.Instance.GOD)
+    public IEnumerator AttackedByPlayerCoroutine(int damage, int attackCount)
+    {
+        for (int i = 0; i < attackCount; i++)
         {
-            EnemyManager.Instance.EnemyList.Remove(this);
-            GameManager.Instance.GameClear();
-        }
+            EnemyShield = EnemyShield > damage ? EnemyShield - damage : 0;
 
-        if (EnemyShield == 0)
-        {
-            int bingoCount = BoardManager.Instance.CheckBingo(BoardColor.Player);
-            
-            if(bingoCount > 0)
-            {
-                _enemyHp -= (int) Math.Pow(2, bingoCount - 1);
-                PlayerManager.Instance.BingoAttack = true;
-            }
-            else
-            {
-                EnemyHealShield(_enemyMaxShield);
-                if (PlayerManager.Instance.TutorialPhase == 4)
-                    PlayerManager.Instance.tutorial4Trigger = true;
-            }
-            
-            if (EnemyHP <= 0)
+            PlayAttackFromPlayerEffect();
+            if(PlayerManager.Instance.GOD)
             {
                 EnemyManager.Instance.EnemyList.Remove(this);
                 GameManager.Instance.GameClear();
-                Destroy(this.gameObject);
             }
+
+            if (EnemyShield == 0)
+            {
+                int bingoCount = BoardManager.Instance.CheckBingo(BoardColor.Player);
+                
+                if(bingoCount > 0)
+                {
+                    _enemyHp -= (int) Math.Pow(2, bingoCount - 1);
+                    PlayerManager.Instance.BingoAttack = true;
+                }
+                else
+                {
+                    EnemyHealShield(_enemyMaxShield);
+                    if (PlayerManager.Instance.TutorialPhase == 4)
+                        PlayerManager.Instance.tutorial4Trigger = true;
+                }
+                
+                if (EnemyHP <= 0)
+                {
+                    EnemyManager.Instance.EnemyList.Remove(this);
+                    GameManager.Instance.GameClear();
+                    Destroy(this.gameObject);
+                }
+            }
+            
+            EnemyUI.ShieldUIUpdate();
+            EnemyUI.HPUIUpdate();
+            yield return new WaitForSeconds(0.3f);
         }
-        
-        EnemyUI.ShieldUIUpdate();
-        EnemyUI.HPUIUpdate();
     }
 
-    public GameObject GetGameObject()
+    private void PlayAttackFromPlayerEffect()
     {
-        return gameObject;
+        int leftOrRight = Random.Range(0, 2);
+        int angle;
+        if (leftOrRight == 0)
+            angle = Random.Range(10, 70);
+        else
+            angle = Random.Range(-10, -70);
+        print(angle);
+        Quaternion rotation = Quaternion.Euler(angle, -90, 90);
+        Instantiate(PlayerManager.Instance.AttackEffect, transform.position + new Vector3(0, 0, -3), rotation);  // 자동으로 destroy된다.
     }
 
     public EnemyUI EnemyUI;
@@ -278,6 +297,7 @@ public class Enemy : MonoBehaviour, IAttackable
         foreach ((int, int) coord in attackedSpaces)
             attacked[coord.Item1, coord.Item2] = true;
 
+        // 위부터 아래 방향으로 순서대로 쾅쾅쾅 터뜨리는 코드
         for (int r = 0; r < boardSize; r++)
         {
             for (int c = 0; c < boardSize; c++)

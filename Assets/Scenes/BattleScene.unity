@@ -263,7 +263,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardAqr: {fileID: 1463755947}
-  _god: 1
+  _god: 0
+  AttackEffect: {fileID: 105608, guid: 9c6af9e56f998094e8a7ade8f0e2a0a9, type: 3}
   tutorial4Trigger: 0
 --- !u!1 &55102824
 GameObject:
@@ -2320,8 +2321,8 @@ MonoBehaviour:
     - SampleEnemy
     - SampleEnemy2
     m_values:
-    - {fileID: 7995517874831428577, guid: 639cee557a16b0147a4840c4097c5ecf, type: 3}
-    - {fileID: 7995517874831428577, guid: 639cee557a16b0147a4840c4097c5ecf, type: 3}
+    - {fileID: 2907379799277094143, guid: 0ec6d48f6bdb6c64782a2752bb07244b, type: 3}
+    - {fileID: 2907379799277094143, guid: 0ec6d48f6bdb6c64782a2752bb07244b, type: 3}
   EnemyAttackEffect: {fileID: 113563744581792600, guid: fba2ac82c70e0774f9d6194d6ef93b2b, type: 3}
 --- !u!1 &1926733655
 GameObject:
