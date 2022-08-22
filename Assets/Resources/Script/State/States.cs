@@ -124,7 +124,12 @@ public class NormalState : BaseState
 
     public override void Exit()
     {
-        Debug.Log(PlayerManager.Instance.BingoAttack);
+        foreach (Enemy enemy in EnemyManager.Instance.EnemyList)
+        {
+            if(enemy.EnemyShield == 0){
+                enemy.EnemyHealShield(enemy.EnemyMaxShield);
+            }
+        }
         
         if (PlayerManager.Instance.BingoAttack)
         {
