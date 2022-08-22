@@ -136,6 +136,7 @@ public class NormalState : BaseState
                     BoardManager.Instance.GameBoard[i][j].ActivateBingoEffect(false);
                 }
             }
+            PlayerManager.Instance.BingoAttack = false;
         }
         foreach (CardUI cardui in CardManager.Instance.HandCardList)
             cardui.gameObject.GetComponent<Outlinable>().enabled = false;
