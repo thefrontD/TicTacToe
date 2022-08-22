@@ -95,6 +95,6 @@ public class Board : MonoBehaviour
 
     public void ActivateColorEffect()
     {
-        colorEffect.gameObject.SetActive(true);
+        colorEffect.Play();
     }
 }
