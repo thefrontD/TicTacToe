@@ -52,10 +52,10 @@ public class WorldMapManager : Singleton<WorldMapManager>
         mySequence.InsertCallback(5, LoadingManager.Instance.LoadBattleScene);
         
         //stage 표기 변경
-        StageIdentifier.GetComponent<TextMeshProUGUI>().text = "Stage 1-"+(clearedStage+1).ToString();
-        //PlayerProfile 표기 변경
-        PlayerProfile.GetComponent<TextMeshProUGUI>().text ="처치한 적 수: "+ clearedStage.ToString() 
-                                                             + "\n현재 스테이지: " +(clearedStage+1).ToString();
+        // StageIdentifier.GetComponent<TextMeshProUGUI>().text = "Stage 1-"+(clearedStage+1).ToString();
+        // //PlayerProfile 표기 변경
+        // PlayerProfile.GetComponent<TextMeshProUGUI>().text ="처치한 적 수: "+ clearedStage.ToString() 
+        //                                                      + "\n현재 스테이지: " +(clearedStage+1).ToString();
     }
 
     void Update()
@@ -63,17 +63,17 @@ public class WorldMapManager : Singleton<WorldMapManager>
         
     }
 
-    public void ToggleCardListPanel(){
-        if(CardListPanel.activeSelf)
-            CardListPanel.SetActive(false);
-        else
-            CardListPanel.SetActive(true);
-    }
+    // public void ToggleCardListPanel(){
+    //     if(CardListPanel.activeSelf)
+    //         CardListPanel.SetActive(false);
+    //     else
+    //         CardListPanel.SetActive(true);
+    // }
 
-    public void ToggleSettingPanel(){
-        if(SettingPanel.activeSelf)
-            SettingPanel.SetActive(false);
-        else
-            SettingPanel.SetActive(true);
-    }
+    // public void ToggleSettingPanel(){
+    //     if(SettingPanel.activeSelf)
+    //         SettingPanel.SetActive(false);
+    //     else
+    //         SettingPanel.SetActive(true);
+    // }
 }
