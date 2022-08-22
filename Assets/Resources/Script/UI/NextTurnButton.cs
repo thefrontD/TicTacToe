@@ -1,25 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using DG.Tweening;
 
-public class NextTurnButton : MonoBehaviour
+public class NextTurnButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
 {
-    //private _origin 
+    private bool _isRotate = false;
 
-    void Start()
+    public void OnPointerEnter(PointerEventData pointerEventData)
     {
-        
+        if(!_isRotate)
+            transform.DORotate(new Vector3(0, 0, -90), 0.5f).SetEase(Ease.InOutQuad);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OnPointerExit(PointerEventData pointerEventData)
     {
-        
+        if(!_isRotate)
+            transform.DORotate(new Vector3(0, 0, 0), 0.5f).SetEase(Ease.InOutQuad);
     }
 
-    void OnMouseDown()
+    public void OnPointerDown(PointerEventData pointerEventData)
     {
-        
+        StartCoroutine(LockRotation());
+        transform.DORotate(new Vector3(0, 0, 0), 0.5f, RotateMode.FastBeyond360).SetEase(Ease.InOutQuad);
+    }
+
+    private IEnumerator LockRotation()
+    {
+        _isRotate = true;
+        yield return new WaitForSeconds(1.1f);
+        _isRotate = false;
     }
 }
