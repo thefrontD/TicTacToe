@@ -108,6 +108,7 @@ public class NormalState : BaseState
                 PlayerManager.Instance.SetDebuff(debuff, -1);
             */
         }
+        CardManager.Instance.CheckUsable();
     }
 
     public override void MouseEvent()
@@ -134,7 +135,8 @@ public class NormalState : BaseState
                 }
             }
         }
-        
+        foreach (CardUI cardui in CardManager.Instance.HandCardList)
+            cardui.gameObject.GetComponent<Outlinable>().enabled = false;
         return;
     }
 }
@@ -407,12 +409,6 @@ public class MoveState : BaseState
                 break;
             }
         }
-
-        // Outline 켜기
-        //for (int i = 0; i < boardSize; i++)
-            //for (int j = 0; j < boardSize; j++)
-                //if (this.movableSpace[i, j])
-                    //BoardManager.Instance.GameBoard[i][j].GetComponent<Outline>().enabled = true;
     }
 
     public override void Update()
@@ -657,7 +653,6 @@ public class AttackState : BaseState
                 {
                     int rand = Random.Range(0, attackableList.Count);
                     selectedAttackableList.Add(attackableList[rand]);
-                    //attackableList[rand].GetGameObject().GetComponent<Outline>().enabled = false; //아웃라인 끔
                     attackableList.Remove(attackableList[rand]);
                 }
 
@@ -707,56 +702,15 @@ public class AttackState : BaseState
                 if (attackableList.Contains(iAttackable)) //attackableList에 있는가?
                 {
                     selectedAttackableList.Add(iAttackable); //공격할 오브젝트 리스트에 추가
+                    Debug.Log("HIT");
                     AttackSelectedAttackableList();
                 }
             }
-        }
-
-        targetCountLeft--;
-        //Debug.Log(targetCountLeft);
-        if (targetCountLeft == 0)
-        {
-            int damage = card.Damage;
-
-            if (PlayerManager.Instance.DebuffDictionary[Debuff.PowerIncrease] != 0)
-                damage = (int) (1.2 * damage);
-
-            if (PlayerManager.Instance.DebuffDictionary[Debuff.PowerDecrease] != 0)
-                damage = (int) (0.8 * damage);
-
-            foreach (IAttackable selectedAttackable in selectedAttackableList)
-            {
-                // Enemy들의 현재 실드 상황 저장
-                if (selectedAttackable is Enemy)
-                {
-                    Enemy enemy = selectedAttackable as Enemy;
-                    this.prevEnemyShield.Add(enemy.EnemyShield);
-                }
-
-                // 공격
-                for (int i = card.AttackCount; i > 0; i--) //AttackCount번 공격
-                {
-                    selectedAttackable.AttackedByPlayer(card.Damage); //Damage 줌
-                }
-            }
-
-            foreach (IAttackable attackable in attackableList)
-            {
-                //attackable.GetGameObject().GetComponent<Outline>().enabled = false;
-            }
-
-            //PlayerManager.Instance.ChangeStates(PlayerManager.Instance.StatesQueue.Dequeue());
         }
     }
 
     public override void Exit()
     {
-        //아웃라인 끄기
-        for (int i = 0; i < attackableList.Count; i++)
-        {
-            //attackableList[i].GetGameObject().GetComponent<Outline>().enabled = false;
-        }
-
         //attackableList 초기화
         DoAdditionalEffect();
         attackableList.Clear();
@@ -1029,7 +983,8 @@ public class AttackState : BaseState
         {
             for (int i = card.AttackCount; i > 0; i--) //AttackCount번 공격
             {
-                selectedAttackable.AttackedByPlayer(card.Damage); //Damage 줌
+                Debug.Log("Dealt: " + damage);
+                selectedAttackable.AttackedByPlayer(damage); //Damage 줌
             }
         }
 
@@ -1406,7 +1361,8 @@ public class DumpState : BaseState
             if (cardui != null && dumpableCardUIs.Contains(cardui))
             {
                 // 카드 클릭 시 카드 버리기
-                CardManager.Instance.HandtoGrave(dumpableCardUIs.IndexOf(cardui));
+                cardui.GetComponent<Outlinable>().enabled = false;
+                CardManager.Instance.HandtoGrave(CardManager.Instance.HandCardList.IndexOf(cardui));
                 PlayerManager.Instance.EndCurrentState();
             }
         }

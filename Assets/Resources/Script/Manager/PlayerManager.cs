@@ -192,10 +192,12 @@ public class PlayerManager : Singleton<PlayerManager>
     {
         Debug.Log(state);
         state.Exit();
+        this._clickable = false;
         yield return new WaitForSeconds(0.5f);
         state = newState;
         Debug.Log(state);
         state.Enter();
+        this._clickable = true;
     }
 
     public void EndCurrentState()
@@ -207,10 +209,12 @@ public class PlayerManager : Singleton<PlayerManager>
     {
         Debug.Log(state);
         state.Exit();
+        this._clickable = false;
         yield return new WaitForSeconds(0.5f);
         state = StatesQueue.Dequeue();
         Debug.Log(state);
         state.Enter();
+        this._clickable = true;
     }
 
     /// <summary>
