@@ -14,6 +14,9 @@ using Random = UnityEngine.Random;
 public class PlayerManager : Singleton<PlayerManager>
 {
     [SerializeField] private CardAcquiringPanel cardAqr;
+    [SerializeField] private bool _god = false;
+
+    public bool GOD => _god;
 
     private PlayerDataHolder _holder;
     
@@ -54,6 +57,8 @@ public class PlayerManager : Singleton<PlayerManager>
     public int TutorialSubPhase { get => _tutorialSubPhase; set => _tutorialSubPhase = value; }
 
     private bool _clickable = true;
+    private bool _cardUsable = true;
+    public bool CardUsable { get => _cardUsable; set => _cardUsable = value; }
     
     public bool tutorial4Trigger = false;
     public event Action OnPlayerDataUpdate;
@@ -84,7 +89,6 @@ public class PlayerManager : Singleton<PlayerManager>
     {
         if(Input.GetMouseButtonDown(0) && _clickable)
         {
-            SoundManager.Instance.PlaySE("Click", 0.5f);
             state.MouseEvent();
         }
     }
@@ -258,7 +262,6 @@ public class PlayerManager : Singleton<PlayerManager>
                 if (_hp + value <= 0)
                 {
                     _hp = 0;
-                    GameManager.Instance.GameOver();
                     return true;
                 }
                 else if(_hp + value > MaxHp) _hp = MaxHp;
@@ -271,7 +274,6 @@ public class PlayerManager : Singleton<PlayerManager>
             if (_hp + value <= 0)
             {
                 _hp = 0;
-                GameManager.Instance.GameOver();
                 return true;
             }
             else if(_hp + value > MaxHp) _hp = MaxHp;

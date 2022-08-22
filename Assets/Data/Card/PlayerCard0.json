@@ -2,86 +2,18 @@
     {
         "ColorCardEffect": "Color",
         "costChangeCondition": "None",
-        "colorTargetPosition": "All",
-        "colorTargetNum": "One",
-        "CardType": "Color",
-        "TriggerCondition": "None",
-        "AdditionalEffectCondition": "None",
-        "AdditionalEffect": "None",
-        "CardName": "색칠/이동",
-        "CardDesc": "Alpha is Greek A",
-        "CardCost": 1,
-        "CardPoolAttributes" : [
-            "BasicCardPool"
-        ]
-    },
-    {
-        "MoveCardEffect": "Flash",
-        "triggerCondition": "None",
-        "moveDirection": "All",
-        "CardType": "Move",
-        "TriggerCondition": "None",
-        "AdditionalEffectCondition": "None",
-        "AdditionalEffect": "None",
-        "CardName": "신의 집게",
-        "CardDesc": "Gamma is Greek C",
-        "CardCost": 1,
-        "CardPoolAttributes" : [
-            "Public"
-        ]
-    },
-    {
-        "AttackCardEffect": "Alpha",
-        "_targetType": 1,
-        "_targetCount": 1,
-        "_attackCount": 3,
-        "_damage": 4,
-        "TargetType": 1,
-        "TargetCount": 1,
-        "AttackCount": 3,
-        "Damage": 4,
-        "CardType": "Attack",
-        "TriggerCondition": "None",
-        "AdditionalEffectCondition": "None",
-        "AdditionalEffect": "None",
-        "CardName": "공격",
-        "CardDesc": "Beta is Greek B",
-        "CardCost": 1,
-        "CardPoolAttributes" : [
-            "Public", 
-            "AttackCardDeckTop"
-        ]
-    },
-    {
-        "ColorCardEffect": "Color",
-        "costChangeCondition": "None",
         "colorTargetPosition": "P1",
         "colorTargetNum": "One",
+        "CardPoolAttributes": [
+            "BasicCardPool"
+        ],
         "CardType": "Color",
         "TriggerCondition": "None",
         "AdditionalEffectCondition": "None",
         "AdditionalEffect": "None",
         "CardName": "색칠",
         "CardDesc": "Alpha is Greek A",
-        "CardCost": 1,
-        "CardPoolAttributes" : [
-            "BasicCardPool"
-        ]
-    },
-    {
-        "MoveCardEffect": "Flash",
-        "triggerCondition": "None",
-        "moveDirection": "UDLR",
-        "CardType": "Move",
-        "TriggerCondition": "None",
-        "AdditionalEffectCondition": "None",
-        "AdditionalEffect": "None",
-        "CardName": "거점 : 휴식",
-        "CardDesc": "Gamma is Greek C",
-        "CardCost": 1,
-        "CardPoolAttributes" : [
-            "BasicCardPool"
-        ]
+        "CardCost": 1
     },
     {
         "AttackCardEffect": "Alpha",
@@ -89,6 +21,9 @@
         "_targetCount": 1,
         "_attackCount": 3,
         "_damage": 4,
+        "CardPoolAttributes": [
+            "BasicCardPool"
+        ],
         "TargetType": 1,
         "TargetCount": 1,
         "AttackCount": 3,
@@ -99,9 +34,74 @@
         "AdditionalEffect": "None",
         "CardName": "약탈",
         "CardDesc": "Beta is Greek B",
-        "CardCost": 1,
-        "CardPoolAttributes" : [
+        "CardCost": 1
+    },
+    {
+        "MoveCardEffect": "Flash",
+        "triggerCondition": "None",
+        "moveDirection": "All",
+        "CardPoolAttributes": [
+            "Public"
+        ],
+        "CardType": "Move",
+        "TriggerCondition": "None",
+        "AdditionalEffectCondition": "None",
+        "AdditionalEffect": "None",
+        "CardName": "신의 집게",
+        "CardDesc": "Gamma is Greek C",
+        "CardCost": 1
+    },
+    {
+        "ColorCardEffect": "Color",
+        "costChangeCondition": "None",
+        "colorTargetPosition": "All",
+        "colorTargetNum": "One",
+        "CardPoolAttributes": [
             "BasicCardPool"
-        ]
+        ],
+        "CardType": "Color",
+        "TriggerCondition": "None",
+        "AdditionalEffectCondition": "None",
+        "AdditionalEffect": "None",
+        "CardName": "색칠/이동",
+        "CardDesc": "Alpha is Greek A",
+        "CardCost": 1
+    },
+    {
+        "AttackCardEffect": "Alpha",
+        "_targetType": 1,
+        "_targetCount": 1,
+        "_attackCount": 3,
+        "_damage": 4,
+        "CardPoolAttributes": [
+            "Public",
+            "AttackCardDeckTop"
+        ],
+        "TargetType": 1,
+        "TargetCount": 1,
+        "AttackCount": 3,
+        "Damage": 4,
+        "CardType": "Attack",
+        "TriggerCondition": "None",
+        "AdditionalEffectCondition": "None",
+        "AdditionalEffect": "None",
+        "CardName": "공격",
+        "CardDesc": "Beta is Greek B",
+        "CardCost": 1
+    },
+    {
+        "MoveCardEffect": "Flash",
+        "triggerCondition": "None",
+        "moveDirection": "UDLR",
+        "CardPoolAttributes": [
+            "BasicCardPool"
+        ],
+        "CardType": "Move",
+        "TriggerCondition": "None",
+        "AdditionalEffectCondition": "None",
+        "AdditionalEffect": "None",
+        "CardName": "거점 : 휴식",
+        "CardDesc": "Gamma is Greek C",
+        "CardCost": 1
     }
 ]

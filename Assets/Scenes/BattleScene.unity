@@ -263,6 +263,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardAqr: {fileID: 1463755947}
+  _god: 1
   tutorial4Trigger: 0
 --- !u!1 &55102824
 GameObject:
@@ -2043,9 +2044,13 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 53169387}
+    - target: {fileID: 1616819751797662794, guid: 17bd36cadba43df499d781cd99e3348e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 2880
+      objectReference: {fileID: 0}
     - target: {fileID: 1616819751797662795, guid: 17bd36cadba43df499d781cd99e3348e, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3929649264088958923, guid: 17bd36cadba43df499d781cd99e3348e, type: 3}
       propertyPath: UIType
@@ -2290,7 +2295,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BoardPrefab: {fileID: 9033935363093032279, guid: f0a5aaaa5e004a549849f66f5837a500, type: 3}
-  PlayerPrefab: {fileID: 919132149155446097, guid: 3e0ae181209b6aa41a750b0c0fd8208b, type: 3}
+  PlayerPrefab: {fileID: 350642886088647637, guid: 4cccfa2c541f28544924be8f65c95400, type: 3}
   WallPrefabs: {fileID: 7995517874831428577, guid: 13fe3b71b134329488051397afb33d65, type: 3}
   ColorEffect: {fileID: 1684374799952259555, guid: 8e3dd0053a6b49d40920cf71ed4fd869, type: 3}
   MoveWindEffect: {fileID: 1216866934488732980, guid: 67c7afdcd4eec7642aded2bfb617e118, type: 3}

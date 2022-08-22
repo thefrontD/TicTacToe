@@ -62,7 +62,6 @@ public class CardUI : MonoBehaviour
     {
         if(isHand)
         {
-            SoundManager.Instance.PlaySE("MouseOver");
             transform.DOMove(originPos + MouseOnPos, animationDuration);
             transform.DOScale(originScale * MouseOnScale, animationDuration);
             SetSortingOrder(50);

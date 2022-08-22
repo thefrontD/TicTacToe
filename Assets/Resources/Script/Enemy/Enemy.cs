@@ -71,6 +71,12 @@ public class Enemy : MonoBehaviour, IAttackable
     {
         EnemyShield = EnemyShield > damage ? EnemyShield - damage : 0;
 
+        if(PlayerManager.Instance.GOD)
+        {
+            EnemyManager.Instance.EnemyList.Remove(this);
+            GameManager.Instance.GameClear();
+        }
+
         if (EnemyShield == 0)
         {
             int bingoCount = BoardManager.Instance.CheckBingo(BoardColor.Player);
@@ -94,7 +100,6 @@ public class Enemy : MonoBehaviour, IAttackable
                 Destroy(this.gameObject);
             }
         }
-        
         
         EnemyUI.ShieldUIUpdate();
         EnemyUI.HPUIUpdate();
@@ -263,12 +268,13 @@ public class Enemy : MonoBehaviour, IAttackable
                 _isGameOver = PlayerManager.Instance.DamageToPlayer(-damage);
                 break;
         }
-        StartCoroutine(PlayEnemyAttackEffect(temp2));
+
+        StartCoroutine(PlayEnemyAttackEffect(temp2, _isGameOver));
 
         return _isGameOver;
     }
 
-    private IEnumerator PlayEnemyAttackEffect(List<(int, int)> attackedSpaces)
+    private IEnumerator PlayEnemyAttackEffect(List<(int, int)> attackedSpaces, bool isGameOver)
     {
         int boardSize = BoardManager.Instance.BoardSize;
         bool[,] attacked = new bool[boardSize, boardSize];  // 모두 false로 초기화
@@ -287,6 +293,9 @@ public class Enemy : MonoBehaviour, IAttackable
             }
             yield return new WaitForSeconds(0.3f);
         }
+
+        if(isGameOver)
+            GameManager.Instance.GameOver();
     }
 
     private bool EnemySummon((EnemyAction, int) enemyAction)

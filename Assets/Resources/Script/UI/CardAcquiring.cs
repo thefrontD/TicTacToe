@@ -20,7 +20,11 @@ public class CardAcquiring : MonoBehaviour, IPointerClickHandler
         if(Clickable == true){
             Debug.Log("Card Selected");
             Debug.Log(card);
-            PlayerManager.Instance.PlayerCard.Add(card);
+            if(!PlayerManager.Instance.TutorialTrigger)
+                PlayerManager.Instance.PlayerCard.Add(card);
+            else{
+                
+            }
             transform.parent.GetComponent<CardAcquiringPanel>().EndCardAcquiring();
         }
         return;

@@ -74,6 +74,9 @@ public abstract class Card
         /*foreach(CardPoolAttribute pool in CardPoolAttributes){
             Debug.Log("(usingCard) CardPool is " + pool.ToString());
         }*/
+        if (!PlayerManager.Instance.CardUsable)
+            return false;
+
         if (!CheckCondition())
             return false;
         

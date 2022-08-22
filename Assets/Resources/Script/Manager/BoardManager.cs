@@ -92,7 +92,7 @@ public class BoardManager : Singleton<BoardManager>
         _boardObjects[PlayerManager.Instance.Row][PlayerManager.Instance.Col] = BoardObject.Player;
         Quaternion rotation = Quaternion.Euler(-90, -90, 90);
         _playerObject = Instantiate(PlayerPrefab, initPos, rotation);
-        _playerObject.transform.localScale = new Vector3(12, 12, 12);
+        //_playerObject.transform.localScale = new Vector3(12, 12, 12);
     }
 
     /// <summary>
@@ -168,11 +168,11 @@ public class BoardManager : Singleton<BoardManager>
             switch (effect)
             {
                 case MoveCardEffect.Slide:
-                    PlayerObject.transform.DORotate(new Vector3(angle, 90, -90), 0.5f);
+                    //PlayerObject.transform.DORotate(new Vector3(angle, 90, -90), 0.5f);
                     PlayerObject.transform.DOMove(nextPos, 0.5f, false);
                     return true;
                 default:  // TODO: 나중에 effect 만들 시간 있으면 추가하기로 하고, 일단은 Slide로 고정.
-                    PlayerObject.transform.DORotate(new Vector3(angle, 90, -90), 0.5f);
+                    //PlayerObject.transform.DORotate(new Vector3(angle, 90, -90), 0.5f);
                     PlayerObject.transform.DOMove(nextPos, 0.5f, false);
                     return true;
             }
