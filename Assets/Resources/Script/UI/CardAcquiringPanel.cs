@@ -56,15 +56,16 @@ public class CardAcquiringPanel : MonoBehaviour
                 }
             }
         }
+        Debug.Log("BasicCardPoolCount: " + Count[0].ToString());
         
         //가장 많은 pool, 다음으로 많은 pool 선정
         int first;
         int second;
-        if(Count[0] > Count[1]){
-            first = 0; second = 1;
+        if(Count[1] > Count[4]){
+            first = 4; second = 1;
         }
         else{
-            first = 1; second = 0;
+            first = 1; second = 4;
         }
         for(int i = 2; i<Count.Length; i++){
             if(Count[i] > Count[first])
@@ -77,12 +78,12 @@ public class CardAcquiringPanel : MonoBehaviour
 
         //Cardpool 구성
         foreach(var card in TotalCardList.Select((value, index) => new {value, index})){
-            if(card.value.CardPoolAttributes.Contains((CardPoolAttribute)(Count[first])))
+            if(card.value.CardPoolAttributes.Contains((CardPoolAttribute)first))
                 CardPool1.Add(card.index);
-            if(card.value.CardPoolAttributes.Contains((CardPoolAttribute)(Count[second])))
+            if(card.value.CardPoolAttributes.Contains((CardPoolAttribute)second))
                 CardPool2.Add(card.index);
-            if(!(card.value.CardPoolAttributes.Contains((CardPoolAttribute)(Count[first]))
-                ||card.value.CardPoolAttributes.Contains((CardPoolAttribute)(Count[second]))))
+            if(!(card.value.CardPoolAttributes.Contains((CardPoolAttribute)first))
+                ||card.value.CardPoolAttributes.Contains((CardPoolAttribute)second))
                 CardPool3.Add(card.index);
         }
 
