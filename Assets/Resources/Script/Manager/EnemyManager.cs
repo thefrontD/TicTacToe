@@ -48,11 +48,11 @@ public class EnemyManager : Singleton<EnemyManager>
             {
                 case EnemyAction.H1Attack:
                     for (int i = 0; i < BoardManager.Instance.BoardSize; i++)
-                        BoardManager.Instance.GameBoard[PlayerManager.Instance.Row][i].SetHighlight(BoardSituation.WillAttack);
+                        BoardManager.Instance.GameBoard[enemy.PreviousPlayerRow][i].SetHighlight(BoardSituation.WillAttack);
                     break;
                 case EnemyAction.V1Attack:
                     for (int i = 0; i < BoardManager.Instance.BoardSize; i++)
-                        BoardManager.Instance.GameBoard[i][PlayerManager.Instance.Col].SetHighlight(BoardSituation.WillAttack);
+                        BoardManager.Instance.GameBoard[i][enemy.PreviousPlayerCol].SetHighlight(BoardSituation.WillAttack);
                     break;
                 case EnemyAction.H2Attack:
                     for (int i = 0; i < BoardManager.Instance.BoardSize; i++)
