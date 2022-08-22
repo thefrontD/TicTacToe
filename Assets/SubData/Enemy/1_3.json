@@ -1,6 +1,6 @@
 [
     {
-      "EnemyName" : "Sparrow",
+      "EnemyName" : "SampleEnemy",
       "EnemyHP": 2,
       "EnemyShield": 40,
       "EnemyPower" : 10,

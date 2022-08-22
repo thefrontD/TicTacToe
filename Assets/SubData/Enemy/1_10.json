@@ -1,6 +1,6 @@
 [
     {
-      "EnemyName" : "Foximilien",
+      "EnemyName" : "SampleEnemy",
       "EnemyHP": 4,
       "EnemyShield": 50,
       "EnemyPower" : 10,

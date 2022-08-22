@@ -1,6 +1,6 @@
 [
   {
-    "EnemyName" : "ScareCrow",
+    "EnemyName" : "SampleEnemy",
     "EnemyHP": 1,
     "EnemyShield": 20,
     "EnemyPower" : 10,
