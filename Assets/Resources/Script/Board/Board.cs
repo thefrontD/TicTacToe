@@ -35,14 +35,14 @@ public class Board : MonoBehaviour
     {
         _row = row;
         _col = col;
-        currentBoardColor = boardColor;
         SetBoardColor(currentBoardColor);
         SetHighlight(BoardSituation.None);
     }
 
     public void SetBoardColor(BoardColor boardColor)
     {
-        switch(boardColor)
+        currentBoardColor = boardColor;
+        switch (boardColor)
         {
             case BoardColor.None:
                 spriteRenderer.sprite = NoneSprite;

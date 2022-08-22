@@ -133,8 +133,10 @@ public class NormalState : BaseState
                 for (int j = 0; j < BoardManager.Instance.BoardSize; j++)
                 {
                     BoardManager.Instance.GameBoard[i][j].SetBoardColor(BoardColor.None);
+                    BoardManager.Instance.BoardColors[i][j] = BoardColor.None;
                 }
             }
+            PlayerManager.Instance.BingoAttack = false;
         }
         foreach (CardUI cardui in CardManager.Instance.HandCardList)
             cardui.gameObject.GetComponent<Outlinable>().enabled = false;
