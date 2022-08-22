@@ -137,7 +137,7 @@ public class PlayerManager : Singleton<PlayerManager>
     {
         _debuffDictionary = new Dictionary<Debuff, int>();
         InitDebuffDictionary();
-        
+
         if (_tutorialTrigger)
             PlayerCard = CardData.Instance._load("TutorialCard");
         else

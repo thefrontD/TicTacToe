@@ -8,8 +8,6 @@ using UnityEngine.UI;
 
 public class GameManager : Singleton<GameManager>
 {
-    [SerializeField] private GameObject gameOverPanel;
-    [SerializeField] private GameObject gameClearPanel;
 
     private int _playerNum = 1;
     public int PlayerNum
@@ -94,12 +92,12 @@ public class GameManager : Singleton<GameManager>
 
     private void gameOverPanelActivation(object sender, EventArgs eventArgs)
     {
-        gameOverPanel.SetActive(true);
+        PanelManager.Instance.GameOverPanel.SetActive(true);
     }
 
     private void gameClearPanelActivation(object sender, EventArgs eventArgs)
     {
-        gameClearPanel.SetActive(true);
-        gameClearPanel.transform.DOLocalMoveY(0, 1f);
+        PanelManager.Instance.GameClearPanel.SetActive(true);
+        PanelManager.Instance.GameClearPanel.transform.DOLocalMoveY(0, 1f);
     }
 }

@@ -96,6 +96,7 @@ public class Enemy : MonoBehaviour, IAttackable
                 if(bingoCount > 0)
                 {
                     _enemyHp -= (int) Math.Pow(2, bingoCount - 1);
+                    EnemyHealShield(_enemyMaxShield);
                     PlayerManager.Instance.BingoAttack = true;
                 }
                 else

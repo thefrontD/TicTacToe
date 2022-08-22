@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - DialogueCanvas
+  - GameOverPanel
+  - GameClear
   layers:
   - Default
   - TransparentFX
