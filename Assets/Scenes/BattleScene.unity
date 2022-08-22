@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.0044925525, g: 0.00037751035, b: 0.0000076953565, a: 1}
+  m_IndirectSpecularColor: {r: 0.0044925553, g: 0.00037751003, b: 0.000007695341, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1044,7 +1044,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 0.9430511, b: 0.7877358, a: 1}
+  m_Color: {r: 0.91194963, g: 1, b: 0.9705101, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -2419,13 +2419,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemyPrefab:
     m_keys:
-    - SampleEnemy
-    - SampleEnemy2
+    - ScareCrow
     - DooDuck
+    - Sparrow
+    - BoarJake
+    - Charlotte
+    - RabbitTheAlice
+    - MarshalPausway
+    - Adrya
+    - Grizzle
+    - Foximilien
     m_values:
-    - {fileID: 2907379799277094143, guid: 0ec6d48f6bdb6c64782a2752bb07244b, type: 3}
-    - {fileID: 2907379799277094143, guid: 0ec6d48f6bdb6c64782a2752bb07244b, type: 3}
-    - {fileID: 678213689767800369, guid: 1a2ed855ef6f20d41b648a13771ba62d, type: 3}
+    - {fileID: 4554034445249513964, guid: a997c7b5292d2174d8b0533f6943a584, type: 3}
+    - {fileID: 324718112058890358, guid: 57a5b2f85ab657847881b6556c224fc3, type: 3}
+    - {fileID: 616310200512193429, guid: 4442c466de79bca4da247841a6d76d70, type: 3}
+    - {fileID: 4849306787820460049, guid: 72f47e0ec6c33254d96e00df004c3cd8, type: 3}
+    - {fileID: 6614119185016657095, guid: 855a7e3ad841db8418c8dc99518e17a8, type: 3}
+    - {fileID: 4250071109937148490, guid: 2f20df2f48eafdc4d88fdc01a0c00d59, type: 3}
+    - {fileID: 8251221220492968509, guid: b370d5b6f8df58f438dc73e04c1a0afe, type: 3}
+    - {fileID: 3533013862123864831, guid: 754e1dc62884920408b78a7fd7e6f026, type: 3}
+    - {fileID: 4167957287278303372, guid: a58ad8fbf28f7364eb15cc7408369d26, type: 3}
+    - {fileID: 865530946455132029, guid: e5e006732dffe974b85b548ac3d2c074, type: 3}
   EnemyAttackEffect: {fileID: 113563744581792600, guid: fba2ac82c70e0774f9d6194d6ef93b2b, type: 3}
 --- !u!1001 &1721200041
 PrefabInstance:
