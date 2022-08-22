@@ -1824,7 +1824,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1999,10 +1999,10 @@ GameObject:
   - component: {fileID: 7995517874831428589}
   - component: {fileID: 2704758368361659959}
   - component: {fileID: 1734049434390123799}
-  - component: {fileID: 6216355589334144182}
   - component: {fileID: 7135468919635233635}
   - component: {fileID: 1723493144140610143}
   - component: {fileID: 4049161483367559880}
+  - component: {fileID: 6216355589334144182}
   m_Layer: 0
   m_Name: SampleEnemy
   m_TagString: Untagged
@@ -2085,25 +2085,6 @@ MonoBehaviour:
     fillPass:
       shader: {fileID: 0}
       serializedProperties: []
---- !u!114 &6216355589334144182
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7995517874831428577}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3cd411ce9e76fed409fe9c37ba7f4ecc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TextureTileScale: 1
-  CardboardTickness: 0.1
-  DoubleSided: 1
-  DuplicateSpriteOnBackFace: 1
-  CardboardLineMaterial: {fileID: 2100000, guid: 0359cc2a032b6914486d2ce84f150e90, type: 2}
-  CardboardFaceMaterial: {fileID: 2100000, guid: 0359cc2a032b6914486d2ce84f150e90, type: 2}
-  FaceFillColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &7135468919635233635
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2184,7 +2165,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4, y: 4}
+    oldSize: {x: 3.125, y: 3.125}
     newSize: {x: 4, y: 4}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -2376,6 +2357,25 @@ PolygonCollider2D:
       - {x: 1.5390625, y: -1.6875}
       - {x: 1.5507812, y: -1.6757812}
       - {x: 1.6679688, y: -1.5859375}
+--- !u!114 &6216355589334144182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7995517874831428577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cd411ce9e76fed409fe9c37ba7f4ecc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TextureTileScale: 1
+  CardboardTickness: 0.1
+  DoubleSided: 1
+  DuplicateSpriteOnBackFace: 1
+  CardboardLineMaterial: {fileID: 2100000, guid: 0359cc2a032b6914486d2ce84f150e90, type: 2}
+  CardboardFaceMaterial: {fileID: 2100000, guid: 0359cc2a032b6914486d2ce84f150e90, type: 2}
+  FaceFillColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &8818370764073466631
 GameObject:
   m_ObjectHideFlags: 0
