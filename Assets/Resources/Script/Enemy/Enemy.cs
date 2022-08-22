@@ -93,8 +93,17 @@ public class Enemy : MonoBehaviour, IAttackable
             {
                 int bingoCount = BoardManager.Instance.CheckBingo(BoardColor.Player);
                 
-                if(bingoCount > 0)
+                if (bingoCount > 0)
                 {
+                    for (int ii = 0; ii < BoardManager.Instance.BoardSize; ii++)
+                    {
+                        for (int j = 0; j < BoardManager.Instance.BoardSize; j++)
+                        {
+                            BoardManager.Instance.GameBoard[ii][j].SetBoardColor(BoardColor.None);
+                            BoardManager.Instance.GameBoard[ii][j].ActivateBingoEffect(false);
+                        }
+                    }
+
                     _enemyHp -= (int) Math.Pow(2, bingoCount - 1);
                     EnemyHealShield(_enemyMaxShield);
                     PlayerManager.Instance.BingoAttack = true;
