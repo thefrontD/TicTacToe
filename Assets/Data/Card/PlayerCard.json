@@ -1,94 +1,228 @@
 [
     {
-        "ColorCardEffect": "Color",
-        "costChangeCondition": "None",
-        "colorTargetPosition": "All",
-        "colorTargetNum": "One",
-        "CardType": "Color",
-        "TriggerCondition": "None",
-        "AdditionalEffectCondition": "None",
-        "AdditionalEffect": "None",
-        "CardName": "Alpha",
-        "CardDesc": "Alpha is Greek A",
-        "CardCost": 1,
-        "CardPoolAttributes":["CardPoolA", "CardPoolB"]
+      "TriggerCondition": "None",
+      "AdditionalEffectCondition": "None",
+      "AdditionalEffect": "None",
+      "ColorCardEffect": "Color",    
+      "CardType": "Color",
+      "cardName": "색칠",
+      "cardDesc": "자신이 위치한 칸을 <b>색칠</b>한다",
+      "cardCost": 1,
+      "CardPoolAttributes" : [
+        "BasicCardPool"
+      ]
+  
     },
     {
-        "MoveCardEffect": "Flash",
-        "triggerCondition": "None",
-        "moveDirection": "All",
-        "CardType": "Move",
-        "TriggerCondition": "None",
-        "AdditionalEffectCondition": "None",
-        "AdditionalEffect": "None",
-        "CardName": "Gamma_A",
-        "CardDesc": "Gamma is Greek C",
-        "CardCost": 1,
-        "CardPoolAttributes":["CardPoolA", "CardPoolB"]
+      "TriggerCondition": "None",
+      "AdditionalEffectCondition": "None",
+      "AdditionalEffect": "None",
+      "ColorCardEffect": "Color",    
+      "CardType": "Color",
+      "cardName": "색칠",
+      "cardDesc": "자신이 위치한 칸을 <b>색칠</b>한다",
+      "cardCost": 1,
+      "CardPoolAttributes" : [
+        "BasicCardPool"
+      ]
     },
     {
-        "AttackCardEffect": "Alpha",
-        "_targetType": 1,
-        "_targetCount": 1,
-        "_attackCount": 3,
-        "_damage": 4,
-        "TargetType": 1,
-        "TargetCount": 1,
-        "AttackCount": 3,
-        "Damage": 4,
-        "CardType": "Attack",
-        "TriggerCondition": "None",
-        "AdditionalEffectCondition": "None",
-        "AdditionalEffect": "None",
-        "CardName": "Beta",
-        "CardDesc": "Beta is Greek B",
-        "CardCost": 1,
-        "CardPoolAttributes":["CardPoolA", "CardPoolB"]
+      "TriggerCondition": "None",
+      "AdditionalEffectCondition": "None",
+      "AdditionalEffect": "None",
+      "ColorCardEffect": "Color",    
+      "CardType": "Color",
+      "cardName": "색칠",
+      "cardDesc": "자신이 위치한 칸을 <b>색칠</b>한다",
+      "cardCost": 1,
+      "CardPoolAttributes" : [
+        "BasicCardPool"
+      ]
     },
     {
-        "ColorCardEffect": "Color",
-        "costChangeCondition": "None",
-        "colorTargetPosition": "All",
-        "colorTargetNum": "One",
-        "CardType": "Color",
-        "TriggerCondition": "None",
-        "AdditionalEffectCondition": "None",
-        "AdditionalEffect": "None",
-        "CardName": "Alpha",
-        "CardDesc": "Alpha is Greek A",
-        "CardCost": 1,
-        "CardPoolAttributes":["CardPoolA", "CardPoolB"]
+      "TriggerCondition": "None",
+      "AdditionalEffectCondition": "None",
+      "AdditionalEffect": "None",
+      "ColorCardEffect": "Color",    
+      "CardType": "Color",
+      "cardName": "색칠",
+      "cardDesc": "자신이 위치한 칸을 <b>색칠</b>한다",
+      "cardCost": 1,
+      "CardPoolAttributes" : [
+        "BasicCardPool"
+      ]
     },
     {
-        "MoveCardEffect": "Flash",
-        "triggerCondition": "None",
-        "moveDirection": "UDLR",
-        "CardType": "Move",
-        "TriggerCondition": "None",
-        "AdditionalEffectCondition": "None",
-        "AdditionalEffect": "None",
-        "CardName": "Gamma",
-        "CardDesc": "Gamma is Greek C",
-        "CardCost": 1,
-        "CardPoolAttributes":["CardPoolA", "CardPoolB"]
+      "TriggerCondition": "None",
+      "AdditionalEffectCondition": "None",
+      "AdditionalEffect": "Move",
+      "ColorCardEffect": "ColorAnyAndMove",    
+      "CardType": "Color",
+      "cardName": "색칠/이동",
+      "cardDesc": "원하는 칸을 1칸 <b>색칠</b>한다, 그 칸으로 <b>이동</b>한다",
+      "cardCost": 1,
+      "CardPoolAttributes" : [
+        "Public"
+      ]
     },
     {
-        "AttackCardEffect": "Alpha",
-        "_targetType": 1,
-        "_targetCount": 1,
-        "_attackCount": 3,
-        "_damage": 4,
-        "TargetType": 1,
-        "TargetCount": 1,
-        "AttackCount": 3,
-        "Damage": 4,
-        "CardType": "Attack",
-        "TriggerCondition": "None",
-        "AdditionalEffectCondition": "None",
-        "AdditionalEffect": "None",
-        "CardName": "Beta",
-        "CardDesc": "Beta is Greek B",
-        "CardCost": 1,
-        "CardPoolAttributes":["CardPoolA", "CardPoolB"]
+      "TriggerCondition": "None",
+      "AdditionalEffectCondition": "None",
+      "AdditionalEffect": "None",
+      "AttackCardEffect": "Alpha",
+      "TargetType": 111,
+      "TargetCount": 1,
+      "AttackCount": 1,
+      "Damage": 10,
+      "CardType": "Attack",
+      "cardName": "공격",
+      "cardDesc": "적에게 피해를 <color=#FF0000>10</color> 준다",
+      "cardCost": 1,
+      "CardPoolAttributes" : [
+        "BasicCardPool"
+      ]
+    },
+    {
+      "TriggerCondition": "None",
+      "AdditionalEffectCondition": "None",
+      "AdditionalEffect": "None",
+      "AttackCardEffect": "Alpha",
+      "TargetType": 111,
+      "TargetCount": 1,
+      "AttackCount": 1,
+      "Damage": 10,
+      "CardType": "Attack",
+      "cardName": "공격",
+      "cardDesc": "적에게 피해를 <color=#FF0000>10</color> 준다",
+      "cardCost": 1,
+      "CardPoolAttributes" : [
+        "BasicCardPool"
+      ]
+    },
+    {
+      "TriggerCondition": "None",
+      "AdditionalEffectCondition": "None",
+      "AdditionalEffect": "None",
+      "AttackCardEffect": "Alpha",
+      "TargetType": 111,
+      "TargetCount": 1,
+      "AttackCount": 1,
+      "Damage": 10,
+      "CardType": "Attack",
+      "cardName": "공격",
+      "cardDesc": "적에게 피해를 <color=#FF0000>10</color> 준다",
+      "cardCost": 1,
+      "CardPoolAttributes" : [
+        "BasicCardPool"
+      ]
+    },
+    {
+      "TriggerCondition": "None",
+      "AdditionalEffectCondition": "None",
+      "AdditionalEffect": "None",
+      "AttackCardEffect": "Alpha",
+      "TargetType": 111,
+      "TargetCount": 1,
+      "AttackCount": 1,
+      "Damage": 10,
+      "CardType": "Attack",
+      "cardName": "공격",
+      "cardDesc": "적에게 피해를 <color=#FF0000>10</color> 준다",
+      "cardCost": 1,
+      "CardPoolAttributes" : [
+        "BasicCardPool"
+      ]
+    },
+    {
+      "TriggerCondition": "None",
+      "AdditionalEffectCondition": "PlayerInColoredSpace",
+      "AdditionalEffect": "DMG20",
+      "AttackCardEffect": "Alpha",
+      "TargetType": 111,
+      "TargetCount": 1,
+      "AttackCount": 1,
+      "Damage": 10,
+      "CardType": "Attack",
+      "cardName": "홈그라운드",
+      "cardDesc": "적에게 피해를 <color=#FF0000>10</color> 준다, 자신의 색칠된 칸에 있을 경우 적에게 피해를 <color=#FF0000>20</color> 더 준다",
+      "cardCost": 1,
+      "CardPoolAttributes" : [
+        "Public", "Color"
+      ]
+    },
+    {
+      "TriggerCondition": "None",
+      "AdditionalEffectCondition": "None",
+      "AdditionalEffect": "None",
+      "MoveCardEffect": "Flash",
+      "triggerCondition": "None",
+      "moveDirection": "UDLR",
+      "CardType": "Move",
+      "cardName": "이동",
+      "cardDesc": "상하좌우로 1칸 <b>이동</b>한다",
+      "cardCost": 0,
+      "CardPoolAttributes" : [
+        "BasicCardPool"
+      ]
+    },
+    {
+      "TriggerCondition": "None",
+      "AdditionalEffectCondition": "None",
+      "AdditionalEffect": "None",
+      "MoveCardEffect": "Flash",
+      "triggerCondition": "None",
+      "moveDirection": "UDLR",
+      "CardType": "Move",
+      "cardName": "이동",
+      "cardDesc": "상하좌우로 1칸 <b>이동</b>한다",
+      "cardCost": 0,
+      "CardPoolAttributes" : [
+        "BasicCardPool"
+      ]
+    },
+    {
+      "TriggerCondition": "None",
+      "AdditionalEffectCondition": "None",
+      "AdditionalEffect": "None",
+      "MoveCardEffect": "Flash",
+      "triggerCondition": "None",
+      "moveDirection": "UDLR",
+      "CardType": "Move",
+      "cardName": "이동",
+      "cardDesc": "상하좌우로 1칸 <b>이동</b>한다",
+      "cardCost": 0,
+      "CardPoolAttributes" : [
+        "BasicCardPool"
+      ]
+    },
+    {
+      "TriggerCondition": "None",
+      "AdditionalEffectCondition": "None",
+      "AdditionalEffect": "None",
+      "MoveCardEffect": "Flash",
+      "triggerCondition": "None",
+      "moveDirection": "UDLR",
+      "CardType": "Move",
+      "cardName": "이동",
+      "cardDesc": "상하좌우로 1칸 <b>이동</b>한다",
+      "cardCost": 0,
+      "CardPoolAttributes" : [
+        "BasicCardPool" 
+      ]
+    },
+    {
+      "TriggerCondition": "None",
+      "AdditionalEffectCondition": "None",
+      "AdditionalEffect": "None",
+      "MoveCardEffect": "Flash",
+      "triggerCondition": "None",
+      "moveDirection": "Colored",
+      "CardType": "Move",
+      "cardName": "이동 마법진",
+      "cardDesc": "자신의 색칠된 칸으로 <b>이동</b>한다",
+      "cardCost": 0,
+      "CardPoolAttributes" : [
+        "Public"
+      ]
     }
-]
+  ]

@@ -51,20 +51,20 @@
     ]
   },
   {
-    "ColorCardEffect": "Color",
+    "TriggerCondition": "None",
+    "AdditionalEffectCondition": "None",
+    "AdditionalEffect": "None",
+    "ColorCardEffect": "Color",    
+    "CardType": "Color",
+    "cardName": "색칠",
+    "cardDesc": "자신이 위치한 칸을 <b>색칠</b>한다",
+    "cardCost": 1,
+    "CardPoolAttributes" : [
+      "BasicCardPool"
+    ],
     "costChangeCondition": "None",
     "colorTargetPosition": "P1",
-    "colorTargetNum": "One",
-    "CardType": "Color",
-    "TriggerCondition": "None",
-    "AdditionalEffectCondition": "None",
-    "AdditionalEffect": "None",
-    "CardName": "색칠",
-    "CardDesc": "자신이 위치한 칸을 색칠한다",
-    "CardCost": 1,
-    "CardPoolAttributes" : [
-        "BasicCardPool"
-    ]
+    "colorTargetNum": "One"
   },
   {
     "TriggerCondition": "None",
@@ -74,6 +74,7 @@
     "triggerCondition": "None",
     "moveDirection": "UDLR",
     "CardType": "Move",
+    "cardType": "Move",
     "cardName": "이동",
     "cardDesc": "상하좌우로 1칸 이동한다",
     "cardCost": 1,
@@ -82,96 +83,96 @@
     ]
   },
   {
-    "ColorCardEffect": "Color",
+    "TriggerCondition": "None",
+    "AdditionalEffectCondition": "None",
+    "AdditionalEffect": "None",
+    "ColorCardEffect": "Color",    
+    "CardType": "Color",
+    "cardName": "색칠",
+    "cardDesc": "자신이 위치한 칸을 <b>색칠</b>한다",
+    "cardCost": 1,
+    "CardPoolAttributes" : [
+      "BasicCardPool"
+    ],
     "costChangeCondition": "None",
     "colorTargetPosition": "P1",
-    "colorTargetNum": "One",
+    "colorTargetNum": "One"
+  },
+  {
+    "TriggerCondition": "None",
+    "AdditionalEffectCondition": "None",
+    "AdditionalEffect": "None",
+    "MoveCardEffect": "Flash",
+    "triggerCondition": "None",
+    "moveDirection": "UDLR",
+    "CardType": "Move",
+    "cardName": "이동",
+    "cardDesc": "상하좌우로 1칸 이동한다",
+    "cardCost": 1,
+    "CardPoolAttributes" : [
+      "BasicCardPool"
+    ]
+  },
+  {
+    "TriggerCondition": "None",
+    "AdditionalEffectCondition": "None",
+    "AdditionalEffect": "None",
+    "MoveCardEffect": "Flash",
+    "triggerCondition": "None",
+    "moveDirection": "UDLR",
+    "CardType": "Move",
+    "cardName": "이동",
+    "cardDesc": "상하좌우로 1칸 이동한다",
+    "cardCost": 1,
+    "CardPoolAttributes" : [
+      "BasicCardPool"
+    ]
+  },
+  {
+    "TriggerCondition": "None",
+    "AdditionalEffectCondition": "None",
+    "AdditionalEffect": "None",
+    "MoveCardEffect": "Flash",
+    "triggerCondition": "None",
+    "moveDirection": "UDLR",
+    "CardType": "Move",
+    "cardName": "이동",
+    "cardDesc": "상하좌우로 1칸 이동한다",
+    "cardCost": 1,
+    "CardPoolAttributes" : [
+      "BasicCardPool"
+    ]
+  },
+  {
+    "TriggerCondition": "None",
+    "AdditionalEffectCondition": "None",
+    "AdditionalEffect": "None",
+    "MoveCardEffect": "Flash",
+    "triggerCondition": "None",
+    "moveDirection": "UDLR",
+    "CardType": "Move",
+    "cardName": "이동",
+    "cardDesc": "상하좌우로 1칸 이동한다",
+    "cardCost": 1,
+    "CardPoolAttributes" : [
+      "BasicCardPool"
+    ]
+  },
+  {
+    "TriggerCondition": "None",
+    "AdditionalEffectCondition": "None",
+    "AdditionalEffect": "None",
+    "ColorCardEffect": "Color",    
     "CardType": "Color",
-    "TriggerCondition": "None",
-    "AdditionalEffectCondition": "None",
-    "AdditionalEffect": "None",
-    "CardName": "색칠",
-    "CardDesc": "자신이 위치한 칸을 색칠한다",
-    "CardCost": 1,
-    "CardPoolAttributes" : [
-        "BasicCardPool"
-    ]
-  },
-  {
-    "TriggerCondition": "None",
-    "AdditionalEffectCondition": "None",
-    "AdditionalEffect": "None",
-    "MoveCardEffect": "Flash",
-    "triggerCondition": "None",
-    "moveDirection": "UDLR",
-    "CardType": "Move",
-    "cardName": "이동",
-    "cardDesc": "상하좌우로 1칸 이동한다",
+    "cardName": "색칠",
+    "cardDesc": "자신이 위치한 칸을 <b>색칠</b>한다",
     "cardCost": 1,
     "CardPoolAttributes" : [
       "BasicCardPool"
-    ]
-  },
-  {
-    "TriggerCondition": "None",
-    "AdditionalEffectCondition": "None",
-    "AdditionalEffect": "None",
-    "MoveCardEffect": "Flash",
-    "triggerCondition": "None",
-    "moveDirection": "UDLR",
-    "CardType": "Move",
-    "cardName": "이동",
-    "cardDesc": "상하좌우로 1칸 이동한다",
-    "cardCost": 1,
-    "CardPoolAttributes" : [
-      "BasicCardPool"
-    ]
-  },
-  {
-    "TriggerCondition": "None",
-    "AdditionalEffectCondition": "None",
-    "AdditionalEffect": "None",
-    "MoveCardEffect": "Flash",
-    "triggerCondition": "None",
-    "moveDirection": "UDLR",
-    "CardType": "Move",
-    "cardName": "이동",
-    "cardDesc": "상하좌우로 1칸 이동한다",
-    "cardCost": 1,
-    "CardPoolAttributes" : [
-      "BasicCardPool"
-    ]
-  },
-  {
-    "TriggerCondition": "None",
-    "AdditionalEffectCondition": "None",
-    "AdditionalEffect": "None",
-    "MoveCardEffect": "Flash",
-    "triggerCondition": "None",
-    "moveDirection": "UDLR",
-    "CardType": "Move",
-    "cardName": "이동",
-    "cardDesc": "상하좌우로 1칸 이동한다",
-    "cardCost": 1,
-    "CardPoolAttributes" : [
-      "BasicCardPool"
-    ]
-  },
-  {
-    "ColorCardEffect": "Color",
+    ],
     "costChangeCondition": "None",
     "colorTargetPosition": "P1",
-    "colorTargetNum": "One",
-    "CardType": "Color",
-    "TriggerCondition": "None",
-    "AdditionalEffectCondition": "None",
-    "AdditionalEffect": "None",
-    "CardName": "색칠",
-    "CardDesc": "자신이 위치한 칸을 색칠한다",
-    "CardCost": 1,
-    "CardPoolAttributes" : [
-        "BasicCardPool"
-    ]
+    "colorTargetNum": "One"
   },
   {
     "TriggerCondition": "None",
@@ -240,19 +241,19 @@
     ]
   },
   {
-    "ColorCardEffect": "Color",
-    "costChangeCondition": "None",
-    "colorTargetPosition": "P1",
-    "colorTargetNum": "One",
-    "CardType": "Color",
     "TriggerCondition": "None",
     "AdditionalEffectCondition": "None",
     "AdditionalEffect": "None",
-    "CardName": "색칠",
-    "CardDesc": "자신이 위치한 칸을 색칠한다",
-    "CardCost": 1,
+    "ColorCardEffect": "Color",    
+    "CardType": "Color",
+    "cardName": "색칠",
+    "cardDesc": "자신이 위치한 칸을 <b>색칠</b>한다",
+    "cardCost": 1,
     "CardPoolAttributes" : [
-        "BasicCardPool"
-    ]
+      "BasicCardPool"
+    ],
+    "costChangeCondition": "None",
+    "colorTargetPosition": "P1",
+    "colorTargetNum": "One"
   }
 ]

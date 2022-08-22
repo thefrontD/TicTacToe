@@ -32,6 +32,10 @@ public class BaseConverter : JsonConverter
     {
         JObject jo = JObject.Load(reader);
 
+        string name = jo["cardName"].Value<string>();
+
+        Debug.Log(name);
+
         string type = jo["CardType"].Value<string>();
         if(type == null) type = jo["cardType"].Value<string>();
 
