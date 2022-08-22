@@ -182,7 +182,7 @@ public class PlayerManager : Singleton<PlayerManager>
             _debuffDictionary[debuff] = 0;
         else
             _debuffDictionary[debuff] += value;
-        
+        BoardManager.Instance.SetPlayerDebuffEffect(debuff);
         OnPlayerDataUpdate?.Invoke();
     }
     
@@ -195,10 +195,12 @@ public class PlayerManager : Singleton<PlayerManager>
     {
         Debug.Log(state);
         state.Exit();
+        this._clickable = false;
         yield return new WaitForSeconds(0.5f);
         state = newState;
         Debug.Log(state);
         state.Enter();
+        this._clickable = true;
     }
 
     public void EndCurrentState()
@@ -210,10 +212,12 @@ public class PlayerManager : Singleton<PlayerManager>
     {
         Debug.Log(state);
         state.Exit();
+        this._clickable = false;
         yield return new WaitForSeconds(0.5f);
         state = StatesQueue.Dequeue();
         Debug.Log(state);
         state.Enter();
+        this._clickable = true;
     }
 
     /// <summary>
@@ -259,6 +263,10 @@ public class PlayerManager : Singleton<PlayerManager>
     /// <returns></returns>
     public bool SetHp(int value = 0)
     {
+        //회복하는 이펙트 부분
+        if(value>0){
+            BoardManager.Instance.SetPlayerDebuffEffect(Debuff.Heal);
+        }
         // TODO: 피해 or 회복하는 이펙트?
         if (_hp + value <= 0) return false;
         else if(_hp + value > MaxHp) _hp = MaxHp;

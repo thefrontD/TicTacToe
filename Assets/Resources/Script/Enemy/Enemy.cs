@@ -340,17 +340,13 @@ public class Enemy : MonoBehaviour, IAttackable
         {
             case EnemyAction.PowerIncrease:
                 SetDebuff(Debuff.PowerIncrease, enemyAction.Item2);
-                transform.Find("BuffEffect").gameObject.SetActive(true);
                 break;
             case EnemyAction.DamageDecrease:
-                transform.Find("BuffEffect").gameObject.SetActive(true);
                 break;
             case EnemyAction.HpHealing:
                 SetDebuff(Debuff.Heal, enemyAction.Item2);
-                transform.Find("HealEffect").gameObject.SetActive(true);
                 break;
             case EnemyAction.ShieldHealing:
-                transform.Find("HealEffect").gameObject.SetActive(true);
                 break;
         }
         EnemyUI.BuffDebuffUpdate();
@@ -383,12 +379,14 @@ public class Enemy : MonoBehaviour, IAttackable
             _debuffDictionary[debuff] = 0;
         else
             _debuffDictionary[debuff] += value;
-        if(debuff == Debuff.PowerDecrease )
-            transform.Find("BuffEffect").gameObject.SetActive(true);
-        else if(debuff == Debuff.Heal)
-            transform.Find("HealEffect").gameObject.SetActive(true);
-        else
-            transform.Find("DebuffEffect").gameObject.SetActive(true);
+        if(value >0){
+            if(debuff == Debuff.PowerDecrease )
+                transform.Find("DebuffEffect").gameObject.SetActive(true);
+            else if(debuff == Debuff.Heal)
+                transform.Find("HealEffect").gameObject.SetActive(true);
+            else
+                transform.Find("BuffEffect").gameObject.SetActive(true);
+        }
         EnemyUI.BuffDebuffUpdate();
     }
 
