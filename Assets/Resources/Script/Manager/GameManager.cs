@@ -99,5 +99,6 @@ public class GameManager : Singleton<GameManager>
     private void gameClearPanelActivation(object sender, EventArgs eventArgs)
     {
         gameClearPanel.SetActive(true);
+        gameClearPanel.transform.DOLocalMoveY(0, 1f);
     }
 }

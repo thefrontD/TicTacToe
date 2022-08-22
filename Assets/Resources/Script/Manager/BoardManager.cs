@@ -138,9 +138,11 @@ public class BoardManager : Singleton<BoardManager>
         {
             _boardObjects[row][col] = BoardObject.Wall;
             ColoringBoard(row, col, BoardColor.None);
-            GameObject wall = Instantiate(WallPrefabs, _gameBoard[row][col].transform.position, Quaternion.identity);
+            GameObject wall = Instantiate(WallPrefabs, _gameBoard[row][col].transform.position + new Vector3(0, 0, 2.5f), Quaternion.identity);
             _boardAttackables[row][col] = wall.GetComponent<Wall>();
             wall.GetComponent<Wall>().Init(row, col);
+            wall.transform.DOMoveZ(-1, 1).SetEase(Ease.OutQuart);
+            wall.transform.GetChild(0).GetComponent<ParticleSystem>().Play();
         }
         else if(_boardObjects[row][col] == BoardObject.Player)
             _isGameOver = PlayerManager.Instance.DamageToPlayer(-damage);

@@ -34,11 +34,18 @@ public class Wall : MonoBehaviour, IAttackable
         {
             BoardManager.Instance.BoardObjects[Row][Col] = BoardObject.None;
             BoardManager.Instance.BoardAttackables[Row][Col] = null;
-            //destructionEffect.Play();
-            //transform.DOMoveZ().onComplete();
-            Destroy(this.gameObject);
+            StartCoroutine(DestroyWall());
         }
     }
+
+    private IEnumerator DestroyWall()
+    {
+        destructionEffect.Play();
+        transform.DOMoveZ(2.5f, 1f).SetEase(Ease.InQuad);
+        yield return new WaitForSeconds(1.4f);
+        Destroy(this.gameObject);
+    }
+
     public GameObject GetGameObject()
     {
         return gameObject;
