@@ -88,6 +88,7 @@ public class CardManager : Singleton<CardManager>
             CardUI drawCard = _deckList.Dequeue();
             _handCardList.Add(drawCard);
             drawCard.isHand = true;
+            drawCard.SetSortingOrder(0);
             DrawCardAnimation(drawCard);
             yield return new WaitForSeconds(0.3f);
         }
