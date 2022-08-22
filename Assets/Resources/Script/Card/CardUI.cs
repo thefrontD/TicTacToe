@@ -52,7 +52,7 @@ public class CardUI : MonoBehaviour
         print(cardPathName);
         CardImage.sprite = Resources.Load<Sprite>($"Images/Cards/{card.CardType}/{cardPathName}");
 
-        SetSortingOrder(0);
+        SetBackOrder(0);
 
         CardNameText.text = Card.CardName;
         CardDescText.text = Card.CardDesc;
@@ -92,8 +92,10 @@ public class CardUI : MonoBehaviour
     }
 
 
-    private void SetSortingOrder(int idx)
+    public void SetSortingOrder(int idx)
     {
+        CardBackground.sprite = Resources.Load<Sprite>($"Images/Cards/"+ Card.CardType.ToString() +"/BackGround");
+        CardManaImage.gameObject.SetActive(true);
         CardBackground.sortingOrder = idx;
         CardManaImage.sortingOrder = idx;
         CardImage.sortingOrder = idx;
@@ -101,10 +103,20 @@ public class CardUI : MonoBehaviour
         CardNameText.sortingOrder = idx+1;
         CardDescText.sortingOrder = idx+1;
     }
+    private void SetBackOrder(int idx){
+        CardManaImage.gameObject.SetActive(false);
+        CardBackground.sortingOrder = idx+1;
+        CardManaImage.sortingOrder = idx;
+        CardBackground.sprite = Resources.Load<Sprite>($"Images/Cards/Common/카드 뒷면");
+        CardImage.sortingOrder = idx;
+        CardCostText.sortingOrder = idx;
+        CardNameText.sortingOrder = idx;
+        CardDescText.sortingOrder = idx;
+    }
     
     public void ToGrave()
     {
-        SetSortingOrder(0);
+        SetBackOrder(0);
         _originIdx = idx;
     }
 
