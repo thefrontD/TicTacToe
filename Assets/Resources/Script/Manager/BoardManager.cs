@@ -175,9 +175,13 @@ public class BoardManager : Singleton<BoardManager>
                     //PlayerObject.transform.DORotate(new Vector3(angle, 90, -90), 0.5f);
                     PlayerObject.transform.DOMove(nextPos, 0.5f, false);
                     return true;
-                default:  // TODO: 나중에 effect 만들 시간 있으면 추가하기로 하고, 일단은 Slide로 고정.
+                default:  // 띄우고, 옮기고, 내림
+                    Vector3 currPos = PlayerObject.transform.position;
                     //PlayerObject.transform.DORotate(new Vector3(angle, 90, -90), 0.5f);
-                    PlayerObject.transform.DOMove(nextPos, 0.5f, false);
+                    Sequence moveSequence = DOTween.Sequence()
+                        .Append(PlayerObject.transform.DOMove(currPos + new Vector3(0, 0, -9), 0.3f, false))
+                        .Append(PlayerObject.transform.DOMove(nextPos + new Vector3(0, 0, -9), 0.5f, false))
+                        .Append(PlayerObject.transform.DOMove(nextPos, 0.3f, false));
                     return true;
             }
         }
