@@ -56,20 +56,6 @@
     "colorTargetNum": "Five"
   },
   {
-    "TriggerCondition": "Bingo1",
-    "AdditionalEffectCondition": "None",
-    "AdditionalEffect": "None",
-    "ColorCardEffect": "ColorCloseBlock",
-    "CardType": "Color",
-    "cardName": "색 번짐",
-    "cardDesc": "필드에 빙고가 있을 경우 발동할 수 있다, 자신의 색칠된 칸에 인접한 칸을 1칸 <b>색칠</b>한다",
-    "cardCost": 1,
-    "CardPoolAttributes": ["Color"],
-    "costChangeCondition": "None",
-    "colorTargetPosition": "Color",
-    "colorTargetNum": "One"
-  },
-  {
     "TriggerCondition": "Attacked",
     "AdditionalEffectCondition": "None",
     "AdditionalEffect": "None",
