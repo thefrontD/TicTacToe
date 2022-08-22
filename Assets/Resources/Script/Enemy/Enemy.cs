@@ -343,13 +343,17 @@ public class Enemy : MonoBehaviour, IAttackable
         {
             case EnemyAction.PowerIncrease:
                 SetDebuff(Debuff.PowerIncrease, enemyAction.Item2);
+                transform.Find("BuffEffect").gameObject.SetActive(true);
                 break;
             case EnemyAction.DamageDecrease:
+                transform.Find("BuffEffect").gameObject.SetActive(true);
                 break;
             case EnemyAction.HpHealing:
                 SetDebuff(Debuff.Heal, enemyAction.Item2);
+                transform.Find("HealEffect").gameObject.SetActive(true);
                 break;
             case EnemyAction.ShieldHealing:
+                transform.Find("HealEffect").gameObject.SetActive(true);
                 break;
         }
     }
@@ -375,10 +379,17 @@ public class Enemy : MonoBehaviour, IAttackable
 
     public void SetDebuff(Debuff debuff, int value)
     {
+        Debug.Log("SetDebuff");
         if(_debuffDictionary[debuff] + value < 0)
             _debuffDictionary[debuff] = 0;
         else
             _debuffDictionary[debuff] += value;
+        if(debuff == Debuff.PowerDecrease )
+            transform.Find("BuffEffect").gameObject.SetActive(true);
+        else if(debuff == Debuff.Heal)
+            transform.Find("HealEffect").gameObject.SetActive(true);
+        else
+            transform.Find("DebuffEffect").gameObject.SetActive(true);
     }
 
     public void setPreviousPos(int row, int col){

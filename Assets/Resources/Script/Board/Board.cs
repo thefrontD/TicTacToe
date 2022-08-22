@@ -87,4 +87,8 @@ public class Board : MonoBehaviour
             transform.Find("BingoEffectEnemy").gameObject.SetActive(false);
         }
     }
+
+    public void ActivateColorEffect(){
+        transform.Find("ColorEffect").gameObject.SetActive(true);
+    }
 }

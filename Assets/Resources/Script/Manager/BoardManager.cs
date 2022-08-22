@@ -106,7 +106,7 @@ public class BoardManager : Singleton<BoardManager>
         else
         {
             if(boardColor == BoardColor.Player)
-                //PlayColorEffect(row, col);
+                _gameBoard[row][col].ActivateColorEffect();
             
             _boardColors[row][col] = boardColor;
             _gameBoard[row][col].SetBoardColor(boardColor);
