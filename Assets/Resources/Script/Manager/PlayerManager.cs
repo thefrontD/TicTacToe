@@ -60,6 +60,9 @@ public class PlayerManager : Singleton<PlayerManager>
     private bool _clickable = true;
     private bool _cardUsable = true;
     public bool CardUsable { get => _cardUsable; set => _cardUsable = value; }
+
+    private bool _lockTurn = true;
+    public bool LockTurn { get => _lockTurn; set => _lockTurn = value; }
     
     public bool tutorial4Trigger = false;
     public event Action OnPlayerDataUpdate;
@@ -333,11 +336,16 @@ public class PlayerManager : Singleton<PlayerManager>
 
     public void ToEnemyTurn()
     {
-        foreach (CardUI card in CardManager.Instance.HandCardList)
+        if(!_lockTurn)
+        {
+            foreach (CardUI card in CardManager.Instance.HandCardList)
             card.gameObject.GetComponent<Outlinable>().enabled = false;
-        CardManager.Instance.AllHandCardtoGrave();
-        SoundManager.Instance.PlaySE("TurnOver");
-        ChangeStates(new EnemyState());
+            CardManager.Instance.AllHandCardtoGrave();
+            SoundManager.Instance.PlaySE("TurnOver");
+            ChangeStates(new EnemyState());
+
+            _lockTurn = true;
+        }
     }
 
     public void NextTutorialNum(object sender, EventArgs e)

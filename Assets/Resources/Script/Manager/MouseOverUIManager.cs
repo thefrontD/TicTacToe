@@ -15,17 +15,21 @@ public class MouseOverUIManager : Singleton<MouseOverUIManager>
         public string Text;
     }
     [SerializeField] private UITypeText[] UITypeTexts;
-    public void DisplayUI(MouseOverUIType UIType)
+
+    public void DisplayUI(MouseOverUIType UIType, Vector3 pos)
     {
         Debug.Log(UITypeToText(UIType));
         MouseOverUIPanel.SetActive(true);
         MouseOverText.text = UITypeToText(UIType);
-
+        MouseOverUIPanel.transform.position = pos + new Vector3(MouseOverUIPanel.GetComponent<RectTransform>().sizeDelta.x/2 + 40,
+        MouseOverUIPanel.GetComponent<RectTransform>().sizeDelta.y/2 + 40, 0) ;
     }
+
     public void EraseUI()
     {
         MouseOverUIPanel.SetActive(false);
     }
+
     private string UITypeToText(MouseOverUIType UIType)
     {
         for (int i = 0; i < UITypeTexts.Length; i++)
@@ -35,6 +39,6 @@ public class MouseOverUIManager : Singleton<MouseOverUIManager>
                 return UITypeTexts[i].Text;
             }
         }
-        return "UITypeÀÌ ¾ø´Ù(error)";
+        return "UITypeï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½(error)";
     }
 }

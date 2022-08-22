@@ -107,6 +107,8 @@ public class CardManager : Singleton<CardManager>
             
             TutorialManager.Instance.toNextTutorial(PlayerManager.Instance.TutorialPhase);
         }
+
+        PlayerManager.Instance.LockTurn = false;
     }
 
     private void CardPositionAdjust()

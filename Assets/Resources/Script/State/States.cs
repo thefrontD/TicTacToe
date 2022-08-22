@@ -63,7 +63,8 @@ public class NormalState : BaseState
 
     public override void Enter()
     {
-        if (PlayerManager.Instance.TutorialPhase == 3 || PlayerManager.Instance.TutorialPhase == 5 ||
+        if (PlayerManager.Instance.TutorialPhase == 3 || PlayerManager.Instance.TutorialPhase == 4 ||
+            PlayerManager.Instance.TutorialPhase == 5 ||
             PlayerManager.Instance.TutorialPhase == 6 || PlayerManager.Instance.TutorialPhase == 9 ||
             PlayerManager.Instance.TutorialPhase == 11 || PlayerManager.Instance.TutorialPhase == 12 ||
             PlayerManager.Instance.TutorialPhase == 13 || PlayerManager.Instance.TutorialPhase == 15 ||

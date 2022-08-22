@@ -8,7 +8,9 @@ public class MouseOverUIComponent : MonoBehaviour, IPointerEnterHandler, IPointe
     [SerializeField] private MouseOverUIType UIType;
     public void OnPointerEnter(PointerEventData eventData)
     {
-        MouseOverUIManager.Instance.DisplayUI(UIType);
+        Vector3 pos = Camera.main.WorldToScreenPoint(transform.position);
+
+        MouseOverUIManager.Instance.DisplayUI(UIType, pos);
     }
 
     public void OnPointerExit(PointerEventData eventData)

@@ -80,6 +80,7 @@ public class Enemy : MonoBehaviour, IAttackable
             EnemyShield = EnemyShield > damage ? EnemyShield - damage : 0;
 
             PlayAttackFromPlayerEffect();
+            
             if(PlayerManager.Instance.GOD)
             {
                 EnemyManager.Instance.EnemyList.Remove(this);
@@ -101,7 +102,7 @@ public class Enemy : MonoBehaviour, IAttackable
                     if (PlayerManager.Instance.TutorialPhase == 4)
                         PlayerManager.Instance.tutorial4Trigger = true;
                 }
-                
+
                 if (EnemyHP <= 0)
                 {
                     EnemyManager.Instance.EnemyList.Remove(this);
@@ -417,6 +418,7 @@ public class Enemy : MonoBehaviour, IAttackable
 
     private void EnemyHealShield(int num)
     {
+        Debug.Log("EnemyHPHeal!");
         _enemyShield = _enemyShield + num > _enemyMaxShield ? _enemyMaxShield : _enemyShield + num;
     }
 }
