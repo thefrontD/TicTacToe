@@ -335,4 +335,14 @@ public class BoardManager : Singleton<BoardManager>
 
         return ret;
     }
+
+    public void SetPlayerDebuffEffect(Debuff debuff){
+        if(debuff == Debuff.PowerIncrease || debuff == Debuff.DamageIncrease){
+            PlayerObject.transform.Find("BuffEffect").gameObject.SetActive(true);
+        }else if(debuff == Debuff.Heal){
+            PlayerObject.transform.Find("HealEffect").gameObject.SetActive(true);
+        }else{
+            PlayerObject.transform.Find("DebuffEffect").gameObject.SetActive(true);
+        }
+    }
 }
