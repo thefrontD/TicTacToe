@@ -540,8 +540,8 @@ public class MoveState : BaseState
 
 public interface IAttackable //선택 가능한 오브젝트들이 IAttackable을 갖는다
 {
-    void AttackedByPlayer(int damage);
-    GameObject GetGameObject();
+    void AttackedByPlayer(int damage, int attackCount);
+    GameObject gameObject { get; }
 }
 
 public class AttackState : BaseState
@@ -628,8 +628,8 @@ public class AttackState : BaseState
         //공격 가능한 대상의 테두리를 밝은 파란 테두리로 표시
         foreach (IAttackable attackable in attackableList)
         {
-            attackable.GetGameObject().GetComponent<Outlinable>().enabled = true;
-            attackable.GetGameObject().GetComponent<Outlinable>().OutlineParameters.Color = Color.blue;
+            attackable.gameObject.GetComponent<Outlinable>().enabled = true;
+            attackable.gameObject.GetComponent<Outlinable>().OutlineParameters.Color = Color.blue;
         }
 
         //targetCount가 1이 아닌 경우, 바로 처리(0: 전체 공격/2 이상: 랜덤 공격)
@@ -943,7 +943,7 @@ public class AttackState : BaseState
             {
                 foreach (IAttackable attackable in additionalEffectParam)
                 {
-                    attackable.AttackedByPlayer(10);
+                    attackable.AttackedByPlayer(10, 1);
                 }
 
                 break;
@@ -952,7 +952,7 @@ public class AttackState : BaseState
             {
                 foreach (IAttackable attackable in additionalEffectParam)
                 {
-                    attackable.AttackedByPlayer(20);
+                    attackable.AttackedByPlayer(20, 1);
                 }
 
                 break;
@@ -961,7 +961,7 @@ public class AttackState : BaseState
             {
                 foreach (IAttackable attackable in additionalEffectParam)
                 {
-                    attackable.AttackedByPlayer(30);
+                    attackable.AttackedByPlayer(30, 1);
                 }
 
                 break;
@@ -981,16 +981,12 @@ public class AttackState : BaseState
 
         foreach (IAttackable selectedAttackable in selectedAttackableList)
         {
-            for (int i = card.AttackCount; i > 0; i--) //AttackCount번 공격
-            {
-                Debug.Log("Dealt: " + damage);
-                selectedAttackable.AttackedByPlayer(damage); //Damage 줌
-            }
+            selectedAttackable.AttackedByPlayer(damage, card.AttackCount); //Damage 줌
         }
 
         foreach (IAttackable attackable in attackableList)
         {
-            attackable.GetGameObject().GetComponent<Outlinable>().enabled = false;
+            attackable.gameObject.GetComponent<Outlinable>().enabled = false;
         }
 
         PlayerManager.Instance.EndCurrentState();
