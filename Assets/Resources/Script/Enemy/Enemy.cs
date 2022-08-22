@@ -305,7 +305,7 @@ public class Enemy : MonoBehaviour, IAttackable
                 if (attacked[r, c])
                 {
                     Vector3 position = BoardManager.Instance.GameBoard[r][c].transform.position;
-                    Instantiate(EnemyManager.Instance.EnemyAttackEffect, position + new Vector3(0, 0, -3), Quaternion.identity);  // 자동으로 destroy된다.
+                    Instantiate(EnemyManager.Instance.EnemyAttackEffect, position + new Vector3(0, 0, -6), Quaternion.identity);  // 자동으로 destroy된다.
                 }
             }
             yield return new WaitForSeconds(0.3f);
