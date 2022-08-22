@@ -455,6 +455,9 @@ public class MoveState : BaseState
 
     public override void Exit()
     {
+        Debug.Log("AdditionalEffectCondition: " + card.AdditionalEffectCondition);
+        Debug.Log("AdditionalEffect: " + card.AdditionalEffect);
+
         int boardSize = BoardManager.Instance.BoardSize;
 
         // Outline 끄기
@@ -722,6 +725,8 @@ public class AttackState : BaseState
 
     public override void Exit()
     {
+        Debug.Log("AdditionalEffectCondition: " + card.AdditionalEffectCondition);
+        Debug.Log("AdditionalEffect: " + card.AdditionalEffect);
         //attackableList 초기화
         DoAdditionalEffect();
         attackableList.Clear();
@@ -738,19 +743,23 @@ public class AttackState : BaseState
             {
                 if (PlayerManager.Instance.Hp * 2 <= PlayerManager.Instance.MaxHp)
                     proceed = true;
+                additionalEffectParam = new List<IAttackable>(this.selectedAttackableList);
                 break;
             }
             case AdditionalEffectCondition.PlayerInColoredSpace: // 현재 플레이어가 있는 칸이 색칠(아군)된 칸일 때
             {
                 (int r, int c) = (PlayerManager.Instance.Row, PlayerManager.Instance.Col);
+                Debug.Log(BoardManager.Instance.BoardColors[r][c]);
                 if (BoardManager.Instance.BoardColors[r][c] == BoardColor.Player)
                     proceed = true;
+                additionalEffectParam = new List<IAttackable>(this.selectedAttackableList);
                 break;
             }
             case AdditionalEffectCondition.DeckTopIsAttackCard: // 덱 맨 위의 카드가 공격 카드였을 때
             {
                 if (CardManager.Instance.DeckList.Peek().Card is AttackCard)
                     proceed = true;
+                additionalEffectParam = new List<IAttackable>(this.selectedAttackableList);
                 break;
             }
             case AdditionalEffectCondition.DestroyWallOrMinion: // 벽이나 하수인을 파괴했을 때
@@ -1183,6 +1192,8 @@ public class ColorState : BaseState
 
     public override void Exit()
     {
+        Debug.Log("AdditionalEffectCondition: " + card.AdditionalEffectCondition);
+        Debug.Log("AdditionalEffect: " + card.AdditionalEffect);
         EnemyManager.Instance.HightLightBoard();
         DoAdditionalEffect();
     }
