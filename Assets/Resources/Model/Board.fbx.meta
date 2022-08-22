@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 3e0ae181209b6aa41a750b0c0fd8208b
+guid: fd8a895bb3e6eb241a606fad26b3289a
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
@@ -7,68 +7,18 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Body
-    second: {fileID: 2100000, guid: b7a0d2f32ffeeb348ac1a75d39f0a9ed, type: 2}
+      name: Dirt
+    second: {fileID: 2100000, guid: 29131de421d25e342b7fa7eb410d7071, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Brush_Connector
-    second: {fileID: 2100000, guid: f53a76444175d7646960254ca2fd21cd, type: 2}
+      name: Grass
+    second: {fileID: 2100000, guid: db105ce2d4f414646be031f9b6883ab0, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Brush_Tip
-    second: {fileID: 2100000, guid: 97820945ccf22c54db6f28295368dd31, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Brush_Wood
-    second: {fileID: 2100000, guid: e4fc4861c74988746b9807314adde4ac, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Cork
-    second: {fileID: 2100000, guid: ff0e0d0f011b40849b66380281e71a3e, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Eyebrows
-    second: {fileID: 2100000, guid: c34977fac1b9d7b4d95cad6390fe5b9a, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Eyes
-    second: {fileID: 2100000, guid: 35cf5d47665e646479aefc53874af0c3, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Glass
-    second: {fileID: 2100000, guid: a707b1e3d378be349bf52e583efbbb18, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Hair
-    second: {fileID: 2100000, guid: 21bcd03dbb3521b4f908a5a20265b3e4, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material
-    second: {fileID: 2100000, guid: 4963048de2396674eb30e38b95de9119, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Potion
-    second: {fileID: 2100000, guid: 86082c2cb4af76844842c6e19e9963a3, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Scarf
-    second: {fileID: 2100000, guid: baf727e3743d1d549ab6e9b052749f4c, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Strap
-    second: {fileID: 2100000, guid: 4b51a352df5f932479b56efdaaf5fa74, type: 2}
+      name: Panel
+    second: {fileID: 2100000, guid: bc486b354e1f85b4685b36ec6fa62915, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

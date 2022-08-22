@@ -26,7 +26,7 @@ public class Wall : MonoBehaviour, IAttackable
         this.Col = col;
     }
     
-    public void AttackedByPlayer(int damage)
+    public void AttackedByPlayer(int damage, int attackCount)
     {
         WallHP -= damage;
 
@@ -41,13 +41,8 @@ public class Wall : MonoBehaviour, IAttackable
     private IEnumerator DestroyWall()
     {
         destructionEffect.Play();
-        transform.DOMoveZ(2.5f, 1f).SetEase(Ease.InQuad);
+        transform.DOMoveZ(0f, 1f).SetEase(Ease.InQuad);
         yield return new WaitForSeconds(1.4f);
         Destroy(this.gameObject);
-    }
-
-    public GameObject GetGameObject()
-    {
-        return gameObject;
     }
 }

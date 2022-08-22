@@ -15,6 +15,7 @@ public class PlayerManager : Singleton<PlayerManager>
 {
     [SerializeField] private CardAcquiringPanel cardAqr;
     [SerializeField] private bool _god = false;
+    [SerializeField] public GameObject AttackEffect;
 
     public bool GOD => _god;
 
