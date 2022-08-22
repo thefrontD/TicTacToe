@@ -380,6 +380,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameOverPanel: {fileID: 1605126318}
   gameClearPanel: {fileID: 1605126317}
+  nextButton: {fileID: 1605126319}
 --- !u!1 &350792893
 GameObject:
   m_ObjectHideFlags: 0
@@ -2363,6 +2364,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1616819750807398116, guid: 17bd36cadba43df499d781cd99e3348e, type: 3}
   m_PrefabInstance: {fileID: 1605126316}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1605126319 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5563338447876844214, guid: 17bd36cadba43df499d781cd99e3348e, type: 3}
+  m_PrefabInstance: {fileID: 1605126316}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1712806189
 GameObject:
   m_ObjectHideFlags: 0
