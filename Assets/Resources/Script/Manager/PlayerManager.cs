@@ -58,6 +58,8 @@ public class PlayerManager : Singleton<PlayerManager>
     public int TutorialSubPhase { get => _tutorialSubPhase; set => _tutorialSubPhase = value; }
 
     private bool _clickable = true;
+    public bool Clickable => _clickable;
+
     private bool _cardUsable = true;
     public bool CardUsable { get => _cardUsable; set => _cardUsable = value; }
     
@@ -197,11 +199,13 @@ public class PlayerManager : Singleton<PlayerManager>
         Debug.Log(state);
         state.Exit();
         this._clickable = false;
+        Debug.Log(_clickable);
         yield return new WaitForSeconds(0.5f);
         state = newState;
         Debug.Log(state);
         state.Enter();
         this._clickable = true;
+        Debug.Log(_clickable);
     }
 
     public void EndCurrentState()
@@ -333,11 +337,14 @@ public class PlayerManager : Singleton<PlayerManager>
 
     public void ToEnemyTurn()
     {
-        foreach (CardUI card in CardManager.Instance.HandCardList)
-            card.gameObject.GetComponent<Outlinable>().enabled = false;
-        CardManager.Instance.AllHandCardtoGrave();
-        SoundManager.Instance.PlaySE("TurnOver");
-        ChangeStates(new EnemyState());
+        if (_clickable)
+        {
+            foreach (CardUI card in CardManager.Instance.HandCardList)
+                card.gameObject.GetComponent<Outlinable>().enabled = false;
+            CardManager.Instance.AllHandCardtoGrave();
+            SoundManager.Instance.PlaySE("TurnOver");
+            ChangeStates(new EnemyState());
+        }
     }
 
     public void NextTutorialNum(object sender, EventArgs e)

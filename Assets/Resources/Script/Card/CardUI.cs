@@ -19,6 +19,7 @@ public class CardUI : MonoBehaviour
     private Vector3 originPos;
     private Vector3 originScale;
     [SerializeField] private SpriteRenderer CardBackground;
+    [SerializeField] private SpriteRenderer CardManaImage;
     [SerializeField] private SpriteRenderer CardImage;
     [SerializeField] private TextMeshPro CardCostText;
     [SerializeField] private TextMeshPro CardNameText;
@@ -94,9 +95,10 @@ public class CardUI : MonoBehaviour
     private void SetSortingOrder(int idx)
     {
         CardBackground.sortingOrder = idx;
+        CardManaImage.sortingOrder = idx;
         CardImage.sortingOrder = idx;
-        CardCostText.sortingOrder = idx;
-        CardNameText.sortingOrder = idx;
+        CardCostText.sortingOrder = idx+1;
+        CardNameText.sortingOrder = idx+1;
         CardDescText.sortingOrder = idx+1;
     }
     
@@ -108,7 +110,7 @@ public class CardUI : MonoBehaviour
 
     void OnMouseDown()
     {
-        if (PlayerManager.Instance.state.GetType() == typeof(NormalState) && isHand)
+        if (PlayerManager.Instance.state.GetType() == typeof(NormalState) && isHand && PlayerManager.Instance.Clickable)
         {
             if(Card.usingCard())
             {
