@@ -12,6 +12,9 @@ public class Board : MonoBehaviour
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private BoardIntention boardIntention;
     [SerializeField] private List<Color> colors;
+    [SerializeField] private ParticleSystem bingoEffect;
+    [SerializeField] private ParticleSystem bingoEnemyEffect;
+    [SerializeField] private ParticleSystem colorEffect;
     private int _row;
     private int _col;
 
@@ -54,6 +57,8 @@ public class Board : MonoBehaviour
                 spriteRenderer.sprite = PlayerSprite;
             break;
         }
+
+        BoardManager.Instance.BoardColors[Row][Col] = boardColor;
     }
 
     public void SetHighlight(BoardSituation situation)
@@ -72,23 +77,24 @@ public class Board : MonoBehaviour
         }
     }
 
-    public void ActivateBingoEffect(bool select, BoardColor color){
+    public void ActivateBingoEffect(bool select, BoardColor color = BoardColor.None){
         if(select == true){
             //Debug.Log("ActivateBingoEffect true Color: " + color.ToString());
             if(color == BoardColor.Player)
-                transform.Find("BingoEffect").gameObject.SetActive(true);
+                bingoEffect.gameObject.SetActive(true);
             else
-                transform.Find("BingoEffectEnemy").gameObject.SetActive(true);
+                bingoEnemyEffect.gameObject.SetActive(true);
 
         }
         else{
             //Debug.Log("ActivateBingoEffect false");
-            transform.Find("BingoEffect").gameObject.SetActive(false);
-            transform.Find("BingoEffectEnemy").gameObject.SetActive(false);
+            bingoEffect.gameObject.SetActive(false);
+            bingoEnemyEffect.gameObject.SetActive(false);
         }
     }
 
-    public void ActivateColorEffect(){
-        transform.Find("ColorEffect").gameObject.SetActive(true);
+    public void ActivateColorEffect()
+    {
+        colorEffect.Play();
     }
 }
