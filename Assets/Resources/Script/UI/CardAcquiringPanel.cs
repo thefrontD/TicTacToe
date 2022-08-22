@@ -16,6 +16,7 @@ public class CardAcquiringPanel : MonoBehaviour
     [SerializeField] private GameObject NewCardPrefab;
     private List<Card> TotalCardList = new List<Card>();
     private List<Card> _tutorialCardList = new List<Card>();
+    public List<Card> TutorialCardList => _tutorialCardList;
     private int[] Count;
     private List<int> CardPool1 = new List<int>();
     //현재 카드 덱에 가장 많은 카드 풀의 카드
@@ -39,21 +40,20 @@ public class CardAcquiringPanel : MonoBehaviour
         {
             foreach(Card pcard in PlayerManager.Instance.PlayerCard){
                 foreach(CardPoolAttribute att in  pcard.CardPoolAttributes){
-                if(att == CardPoolAttribute.BasicCardPool)//basic card pool은 카운트 하지 않는다
-                    continue;
-                Count[(int)att] ++;
+                    if(att == CardPoolAttribute.BasicCardPool)//basic card pool은 카운트 하지 않는다
+                        continue;
+                    Count[(int)att] ++;
+                }
             }
-        }
         }
         else
         {
-
-        }
-        foreach(Card pcard in PlayerManager.Instance.PlayerCard){
-            foreach(CardPoolAttribute att in  pcard.CardPoolAttributes){
-                if(att == CardPoolAttribute.BasicCardPool)//basic card pool은 카운트 하지 않는다
-                    continue;
-                Count[(int)att] ++;
+            foreach(Card pcard in _tutorialCardList){
+                foreach(CardPoolAttribute att in  pcard.CardPoolAttributes){
+                    if(att == CardPoolAttribute.BasicCardPool)//basic card pool은 카운트 하지 않는다
+                        continue;
+                    Count[(int)att] ++;
+                }
             }
         }
         
@@ -92,13 +92,15 @@ public class CardAcquiringPanel : MonoBehaviour
         newcard = Random.Range(0,CardPool1.Count);
         CardChosen.Add(CardPool1[newcard]);
         Debug.Log("first chosen card is " + CardPool1[newcard].ToString());
-        while(CardChosen.Count < 2){
+        while(CardChosen.Count < 2)
+        {
             newcard = Random.Range(0,CardPool2.Count);
             if(!CardChosen.Contains(CardPool2[newcard]))
                 CardChosen.Add(CardPool2[newcard]);
             Debug.Log("second chosen card is " + CardPool2[newcard].ToString());
         }
-        while(CardChosen.Count < 3){
+        while(CardChosen.Count < 3)
+        {
             newcard = Random.Range(0,CardPool3.Count);
             if(!CardChosen.Contains(CardPool3[newcard]))
                 CardChosen.Add(CardPool3[newcard]);

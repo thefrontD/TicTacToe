@@ -164,7 +164,10 @@ public class PlayerManager : Singleton<PlayerManager>
     {
         PlayerData.Instance.saveData(new PlayerDataHolder(GameManager.Instance.CurrentStage,
             _maxHp, _hp, _maxMana, _mana), string.Format("PlayerData{0}", GameManager.Instance.PlayerNum));
-        CardData.Instance.saveData(PlayerCard, string.Format("PlayerCard{0}", GameManager.Instance.PlayerNum));
+        if(_tutorialTrigger)
+            CardData.Instance.saveData(PlayerCard, string.Format("PlayerCard{0}", GameManager.Instance.PlayerNum));
+        else
+            CardData.Instance.saveData(PlayerCard, string.Format("PlayerCard{0}", cardAqr.TutorialCardList));
     }
 
     private void InitDebuffDictionary()
@@ -192,10 +195,12 @@ public class PlayerManager : Singleton<PlayerManager>
     {
         Debug.Log(state);
         state.Exit();
+        this._clickable = false;
         yield return new WaitForSeconds(0.5f);
         state = newState;
         Debug.Log(state);
         state.Enter();
+        this._clickable = true;
     }
 
     public void EndCurrentState()
@@ -207,10 +212,12 @@ public class PlayerManager : Singleton<PlayerManager>
     {
         Debug.Log(state);
         state.Exit();
+        this._clickable = false;
         yield return new WaitForSeconds(0.5f);
         state = StatesQueue.Dequeue();
         Debug.Log(state);
         state.Enter();
+        this._clickable = true;
     }
 
     /// <summary>

@@ -17,10 +17,6 @@
     },
     {
         "AttackCardEffect": "Alpha",
-        "_targetType": 1,
-        "_targetCount": 1,
-        "_attackCount": 3,
-        "_damage": 4,
         "CardPoolAttributes": [
             "BasicCardPool"
         ],
@@ -62,17 +58,13 @@
         "CardType": "Color",
         "TriggerCondition": "None",
         "AdditionalEffectCondition": "None",
-        "AdditionalEffect": "None",
+        "AdditionalEffect": "Move",
         "CardName": "색칠/이동",
         "CardDesc": "Alpha is Greek A",
         "CardCost": 1
     },
     {
         "AttackCardEffect": "Alpha",
-        "_targetType": 1,
-        "_targetCount": 1,
-        "_attackCount": 3,
-        "_damage": 4,
         "CardPoolAttributes": [
             "Public",
             "AttackCardDeckTop"
