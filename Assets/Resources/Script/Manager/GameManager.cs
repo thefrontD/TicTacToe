@@ -17,7 +17,7 @@ public class GameManager : Singleton<GameManager>
         get => _playerNum;
         set => _playerNum = value;
     }
-    private int _currentStage = 103;
+    [SerializeField] private int _currentStage = 103;
     public int CurrentStage
     {
         get => _currentStage;

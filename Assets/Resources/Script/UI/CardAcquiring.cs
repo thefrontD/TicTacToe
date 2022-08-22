@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -42,14 +43,18 @@ public class CardAcquiring : MonoBehaviour, IPointerClickHandler
         Sprite ImageTo = LoadImage(Application.dataPath +"/Resources/Images/Cards/"+ card.CardType.ToString() +"/BackGround.png");
         transform.GetComponent<Image>().sprite = ImageTo;
         //set mana
-        Debug.Log(card.CardCost.ToString());
-        ImageTo = LoadImage(Application.dataPath +"/Resources/Images/Cards/Common/마나 "+ card.CardCost.ToString() +".png");
-        transform.Find("Cost").GetComponent<Image>().sprite = ImageTo;
-        //set cotent
-        //??
+        transform.Find("CostText").GetComponent<TextMeshProUGUI>().text = card.CardCost.ToString();
         
-        //ImageTo = LoadImage(Application.dataPath +"/Resources/Images/Cards/"+ card.CardType.ToString() + "/" + card.CardName.ToString() + ".png");
-        //transform.Find("Object").GetComponent<Image>().sprite = ImageTo;
+        string cardImagePath = card.CardName.Replace(':', '-').Replace('/', '_');
+        //set cotent
+        try{
+            ImageTo = LoadImage(Application.dataPath +"/Resources/Images/Cards/"+ card.CardType.ToString() + "/" + cardImagePath + ".png");
+        }
+        catch(Exception e){
+            Debug.Log("Image Not Found: card name: " +  card.CardName.ToString());
+        }
+        if(ImageTo != null)
+            transform.Find("Object").GetComponent<Image>().sprite = ImageTo;
 
         //set title
         transform.Find("CardName").GetComponent<TextMeshProUGUI>().text = card.CardName.ToString();

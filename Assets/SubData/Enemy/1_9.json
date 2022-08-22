@@ -1,6 +1,6 @@
 [
     {
-      "EnemyName" : "SampleEnemy",
+      "EnemyName" : "Grizzle",
       "EnemyHP": 3,
       "EnemyShield": 50,
       "EnemyPower" : 10,
