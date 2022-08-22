@@ -11,7 +11,7 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private GameObject gameOverPanel;
     [SerializeField] private GameObject gameClearPanel;
 
-    private int _playerNum = 0;
+    private int _playerNum = 1;
     public int PlayerNum
     {
         get => _playerNum;

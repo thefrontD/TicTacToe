@@ -70,11 +70,6 @@ public class LoadingManager : Singleton<LoadingManager>
         Application.Quit();
     }
 
-    private void SaveData()
-    {
-        PlayerManager.Instance.SavePlayerData();
-    }
-
     private IEnumerator SavingSequence(string sceneName, bool isStart = false)
     {
         if(!isStart)

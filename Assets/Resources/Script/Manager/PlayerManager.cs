@@ -170,10 +170,10 @@ public class PlayerManager : Singleton<PlayerManager>
     {
         PlayerData.Instance.saveData(new PlayerDataHolder(GameManager.Instance.CurrentStage,
             _maxHp, _hp, _maxMana, _mana), string.Format("PlayerData{0}", GameManager.Instance.PlayerNum));
-        if(_tutorialTrigger)
+        if(!_tutorialTrigger)
             CardData.Instance.saveData(PlayerCard, string.Format("PlayerCard{0}", GameManager.Instance.PlayerNum));
         else
-            CardData.Instance.saveData(PlayerCard, string.Format("PlayerCard{0}", cardAqr.TutorialCardList));
+            CardData.Instance.saveData(cardAqr.TutorialCardList, string.Format("PlayerCard{0}", GameManager.Instance.PlayerNum));
     }
 
     private void InitDebuffDictionary()
@@ -364,7 +364,7 @@ public class PlayerManager : Singleton<PlayerManager>
                     CardManager.Instance.AllHandCardtoGrave();
                     SoundManager.Instance.PlaySE("TurnOver");
                     ChangeStates(new EnemyState());
-    
+
                     _lockTurn = true;
                 }
             }

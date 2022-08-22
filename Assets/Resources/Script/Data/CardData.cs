@@ -12,7 +12,7 @@ public class CardData : Singleton<CardData>
     {
         string path = Application.dataPath;
         path += $"/Data/Card/{dataName}.json";
-        
+
         var converter = new StringEnumConverter();
         var pDataStringSave = JsonConvert.SerializeObject(cardData, converter);
 

@@ -10,7 +10,7 @@ public class CardListPanel : MonoBehaviour
     public List<Card> PlayerCard;
     void Start()
     {
-        PlayerCard = CardData.Instance._load("PlayerCard0");
+        PlayerCard = CardData.Instance._load(string.Format("PlayerCard{0}", GameManager.Instance.PlayerNum));
         PrintCard();
     }
 
