@@ -224,8 +224,8 @@ public class MoveState : BaseState
                 // 원하는 칸으로 이동
             {
                 for (int i = 0; i < boardSize; i++)
-                for (int j = 0; j < boardSize; j++)
-                    this.movableSpace[i, j] = true;
+                    for (int j = 0; j < boardSize; j++)
+                        this.movableSpace[i, j] = true;
                 break;
             }
 
@@ -355,9 +355,9 @@ public class MoveState : BaseState
             {
                 List<List<BoardColor>> boardColors = BoardManager.Instance.BoardColors;
                 for (int i = 0; i < boardSize; i++) // row
-                for (int j = 0; j < boardSize; j++) // col
-                    if (boardColors[i][j] == BoardColor.Player)
-                        this.movableSpace[i, j] = true;
+                    for (int j = 0; j < boardSize; j++) // col
+                        if (boardColors[i][j] == BoardColor.Player)
+                            this.movableSpace[i, j] = true;
                 break;
             }
 
@@ -383,25 +383,25 @@ public class MoveState : BaseState
                             break;
                         case EnemyAction.AllAttack:
                             for (int i = 0; i < boardSize; i++)
-                            for (int j = 0; j < boardSize; j++)
-                                this.movableSpace[i, j] = true;
+                                for (int j = 0; j < boardSize; j++)
+                                    this.movableSpace[i, j] = true;
                             break;
                         case EnemyAction.ColoredAttack: // TODO: ColorAttack은 Enemy로 색칠된 건지, Player로 색칠된 건지?
                         {
                             List<List<BoardColor>> boardColors = BoardManager.Instance.BoardColors;
                             for (int i = 0; i < boardSize; i++) // row
-                            for (int j = 0; j < boardSize; j++) // col
-                                if (boardColors[i][j] == BoardColor.Player)
-                                    this.movableSpace[i, j] = true;
+                                for (int j = 0; j < boardSize; j++) // col
+                                    if (boardColors[i][j] == BoardColor.Player)
+                                        this.movableSpace[i, j] = true;
                             break;
                         }
                         case EnemyAction.NoColoredAttack:
                         {
                             List<List<BoardColor>> boardColors = BoardManager.Instance.BoardColors;
                             for (int i = 0; i < boardSize; i++) // row
-                            for (int j = 0; j < boardSize; j++) // col
-                                if (boardColors[i][j] != BoardColor.Player)
-                                    this.movableSpace[i, j] = true;
+                                for (int j = 0; j < boardSize; j++) // col
+                                    if (boardColors[i][j] != BoardColor.Player)
+                                        this.movableSpace[i, j] = true;
                             break;
                         }
                     }
@@ -410,11 +410,18 @@ public class MoveState : BaseState
                 break;
             }
         }
+        for (int i = 0; i < boardSize; i++) // row
+            for (int j = 0; j < boardSize; j++) // col
+            {
+                if (this.movableSpace[i, j])
+                    BoardManager.Instance.GameBoard[i][j].SetHighlight(BoardSituation.WillMove);
+                else
+                    BoardManager.Instance.GameBoard[i][j].SetHighlight(BoardSituation.None);
+            }
     }
 
     public override void Update()
     {
-        // UI 상으로 이동 가능한 곳은 O 표시.
     }
 
     public override void MouseEvent()
