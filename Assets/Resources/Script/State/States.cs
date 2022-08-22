@@ -773,6 +773,7 @@ public class AttackState : BaseState
                     if (attackable is Wall)
                     {
                         Wall wall = attackable as Wall;
+                            Debug.Log("WALL ", wall);
                         if (wall.WallHP <= 0)
                         {
                             proceed = true;
