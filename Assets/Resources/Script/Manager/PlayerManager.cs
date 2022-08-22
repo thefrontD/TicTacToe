@@ -340,15 +340,35 @@ public class PlayerManager : Singleton<PlayerManager>
 
     public void ToEnemyTurn()
     {
-        if(!_lockTurn)
-        {
-            foreach (CardUI card in CardManager.Instance.HandCardList)
-            card.gameObject.GetComponent<Outlinable>().enabled = false;
-            CardManager.Instance.AllHandCardtoGrave();
-            SoundManager.Instance.PlaySE("TurnOver");
-            ChangeStates(new EnemyState());
+        if(!_tutorialTrigger){
+            if(!_lockTurn)
+            {
+                foreach (CardUI card in CardManager.Instance.HandCardList)
+                card.gameObject.GetComponent<Outlinable>().enabled = false;
+                CardManager.Instance.AllHandCardtoGrave();
+                SoundManager.Instance.PlaySE("TurnOver");
+                ChangeStates(new EnemyState());
 
-            _lockTurn = true;
+                _lockTurn = true;
+            }
+        }
+        else
+        {
+            if(_tutorialPhase == 7 || _tutorialPhase == 10 || _tutorialPhase == 13 || _tutorialPhase == 17 ||
+            _tutorialPhase == 21)
+            {
+                if(!_lockTurn)
+                {
+                    foreach (CardUI card in CardManager.Instance.HandCardList)
+                    card.gameObject.GetComponent<Outlinable>().enabled = false;
+                    CardManager.Instance.AllHandCardtoGrave();
+                    SoundManager.Instance.PlaySE("TurnOver");
+                    ChangeStates(new EnemyState());
+    
+                    _lockTurn = true;
+                }
+            }
+            
         }
     }
 
