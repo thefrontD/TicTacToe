@@ -2256,7 +2256,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4572794570102968568, guid: 17bd36cadba43df499d781cd99e3348e, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5563338447876844214, guid: 17bd36cadba43df499d781cd99e3348e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -2843,7 +2843,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 9123025365275335061, guid: 78ba0f15ca52fce40a23bbc374799a14, type: 3}
       propertyPath: _currentStage
-      value: 101
+      value: 103
       objectReference: {fileID: 0}
     - target: {fileID: 9123025365275335061, guid: 78ba0f15ca52fce40a23bbc374799a14, type: 3}
       propertyPath: gameOverPanel
