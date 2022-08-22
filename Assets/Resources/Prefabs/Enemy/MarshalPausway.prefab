@@ -171,6 +171,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GenericDeath
       objectReference: {fileID: 0}
+    - target: {fileID: 119968, guid: e73000b12fb76244cbffd6abbf8bb6e4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 428504, guid: e73000b12fb76244cbffd6abbf8bb6e4, type: 3}
       propertyPath: m_RootOrder
       value: 1
