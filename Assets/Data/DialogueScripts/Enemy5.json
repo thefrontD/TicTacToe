@@ -1,16 +1,6 @@
 {
   "Dialogues": [
     {
-      "Name": "나레이터",
-      "Context": "",
-      "PortraitLocation": "Left"
-    },
-    {
-      "Name": "나레이터",
-      "Context": "",
-      "PortraitLocation": "Left"
-    },
-    {
       "Name": "샬롯",
       "Context": "!!! 침입자?!",
       "PortraitLocation": "Right"
