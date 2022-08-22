@@ -183,9 +183,12 @@ public class BoardManager : Singleton<BoardManager>
 
     public void PlayMoveEffect(Vector3 from, Vector3 to)
     {
-        Vector3 direction = to - from;
-        Quaternion angle = Quaternion.Euler(0, 0, Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg);
-        Instantiate(MoveWindEffect, from + new Vector3(0, 0, -5), angle);  // 자동으로 destroy된다.
+        // Vector3 direction = to - from;
+        // float scale = direction.magnitude / 7f;
+        // print("Scale: " + scale);
+        // Quaternion angle = Quaternion.Euler(0, 0, Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg);
+        // GameObject moveWindEffectObject = Instantiate(MoveWindEffect, from + new Vector3(0, 0, -5), angle);  // 자동으로 destroy된다.
+        // moveWindEffectObject.transform.localScale = new Vector3(scale, 3f, 3f);
     }
 
     /// <summary>
