@@ -443,7 +443,7 @@ public class MoveState : BaseState
                     this.moveRow = row;
                     this.moveCol = col;
                     //Debug.Log($"Move to R{this.moveRow}, C{this.moveCol}");
-                    PlayerManager.Instance.ChangeStates(PlayerManager.Instance.StatesQueue.Dequeue());
+                    PlayerManager.Instance.EndCurrentState();
                 }
             }
         }
@@ -1038,7 +1038,7 @@ public class AttackState : BaseState
             attackable.GetGameObject().GetComponent<Outlinable>().enabled = false;
         }
 
-        PlayerManager.Instance.ChangeStates(PlayerManager.Instance.StatesQueue.Dequeue());
+        PlayerManager.Instance.EndCurrentState();
     }
 }
 
@@ -1166,7 +1166,7 @@ public class ColorState : BaseState
                 BoardManager.Instance.ColoringBoard(row, col, BoardColor.Player);
             }
 
-            PlayerManager.Instance.ChangeStates(PlayerManager.Instance.StatesQueue.Dequeue());
+            PlayerManager.Instance.EndCurrentState();
             return;
         }
         else
@@ -1208,7 +1208,7 @@ public class ColorState : BaseState
                         }
 
                         EnemyManager.Instance.HightLightBoard();
-                        PlayerManager.Instance.ChangeStates(PlayerManager.Instance.StatesQueue.Dequeue());
+                        PlayerManager.Instance.EndCurrentState();
                     }
                     else
                     {
@@ -1367,7 +1367,7 @@ public class DumpState : BaseState
 {
     CardType dumpCardType;
     int dumpNum;
-    List<CardUI> dumpableCardIndexes = new List<CardUI>();
+    List<CardUI> dumpableCardUIs = new List<CardUI>();
 
     public DumpState(CardType cardType, int dumpNum)
     {
@@ -1386,7 +1386,7 @@ public class DumpState : BaseState
         {
             if (cardui.Card.CardType == dumpCardType)
             {
-                dumpableCardIndexes.Add(cardui);
+                dumpableCardUIs.Add(cardui);
                 cardui.GetComponent<Outlinable>().enabled = true;
             }
         }
@@ -1403,11 +1403,11 @@ public class DumpState : BaseState
         if (Physics.Raycast(ray, out hitData))
         {
             CardUI cardui = hitData.transform.gameObject.GetComponent<CardUI>();
-            if (cardui != null && dumpableCardIndexes.Contains(cardui))
+            if (cardui != null && dumpableCardUIs.Contains(cardui))
             {
                 // 카드 클릭 시 카드 버리기
-                CardManager.Instance.HandtoGrave(dumpableCardIndexes.IndexOf(cardui));
-                PlayerManager.Instance.ChangeStates(PlayerManager.Instance.StatesQueue.Dequeue());
+                CardManager.Instance.HandtoGrave(dumpableCardUIs.IndexOf(cardui));
+                PlayerManager.Instance.EndCurrentState();
             }
         }
     }

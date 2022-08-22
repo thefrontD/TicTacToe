@@ -62,6 +62,9 @@ public abstract class Card
         this.cardDesc = cardDesc;
         this.cardCost = cardCost;
         this.CardPoolAttributes = CardPoolAttributes;
+        this._triggerCondition = triggerCondition;
+        this._additionalEffectCondition = additionalEffectCondition;
+        this._additionalEffect = additionalEffect;
     }
 
     /// <summary>

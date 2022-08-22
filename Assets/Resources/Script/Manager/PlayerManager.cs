@@ -198,6 +198,21 @@ public class PlayerManager : Singleton<PlayerManager>
         state.Enter();
     }
 
+    public void EndCurrentState()
+    {
+        StartCoroutine(EndCurrentStateCoroutine());
+    }
+
+    private IEnumerator EndCurrentStateCoroutine()
+    {
+        Debug.Log(state);
+        state.Exit();
+        yield return new WaitForSeconds(0.5f);
+        state = StatesQueue.Dequeue();
+        Debug.Log(state);
+        state.Enter();
+    }
+
     /// <summary>
     /// 현재 마나를 value만큼 더한다. 마나가 0보다 낮아지면 false를 반환한다.
     /// </summary>

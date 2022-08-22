@@ -103,5 +103,36 @@
         "CardName": "거점 : 휴식",
         "CardDesc": "Gamma is Greek C",
         "CardCost": 1
+    },
+    {
+        "ColorCardEffect": "Color",
+        "costChangeCondition": "None",
+        "triggerCondition": "ColorCardInHand2",
+        "colorTargetPosition": "All",
+        "colorTargetNum": "One",
+        "CardPoolAttributes" : [
+            "BasicCardPool"
+        ],
+        "CardType": "Color",
+        "AdditionalEffectCondition": "None",
+        "AdditionalEffect": "DumpColorCard1",
+        "CardName": "도색 : 세로",
+        "CardDesc": "Alpha is Greek A",
+        "CardCost": 1
+    },
+    {
+        "MoveCardEffect": "Flash",
+        "triggerCondition": "MoveCardInHand2",
+        "moveDirection": "All",
+        "CardPoolAttributes" : [
+            "BasicCardPool"
+        ],
+        "CardType": "Move",
+        "TriggerCondition": "None",
+        "AdditionalEffectCondition": "None",
+        "AdditionalEffect": "DumpMoveCard1",
+        "CardName": "도움닫기",
+        "CardDesc": "Gamma is Greek C",
+        "CardCost": 1
     }
 ]
