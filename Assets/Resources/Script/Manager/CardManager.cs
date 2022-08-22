@@ -65,7 +65,7 @@ public class CardManager : Singleton<CardManager>
             StartCoroutine(DrawCardCoroutine(drawNum));
     }
 
-    private void CheckUsable()
+    public void CheckUsable()
     {
         foreach (CardUI card in HandCardList)
         {
