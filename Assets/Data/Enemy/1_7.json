@@ -8,7 +8,7 @@
         {"Item1": "V2Attack", "Item2": 10},
         {"Item1": "H2Attack", "Item2": 10},
         {"Item1": "WallSummon", "Item2": 10},
-        {"Item1": "ArmorHealing", "Item2": 40}
+        {"Item1": "ShieldHealing", "Item2": 40}
       ]
     }
   ]
