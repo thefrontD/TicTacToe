@@ -49,6 +49,7 @@ public class WorldMapManager : Singleton<WorldMapManager>
         Sequence mySequence = DOTween.Sequence();
         mySequence.PrependInterval(1);
         mySequence.Append(Player.GetComponent<Transform>().DOMove(nextPoint, 2));
+        SoundManager.Instance.PlaySE("WorldMapMove");
         mySequence.InsertCallback(5, LoadingManager.Instance.LoadBattleScene);
         
         //stage 표기 변경

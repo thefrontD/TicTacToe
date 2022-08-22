@@ -131,7 +131,7 @@ public class CardManager : Singleton<CardManager>
     private void DrawCardAnimation(CardUI card)
     {
         CardPositionAdjust();
-        
+        SoundManager.Instance.PlaySE("Draw");
         card.transform.DOMove(cardPositionList[9 + _handCardList.Count], 0.2f, false);
         card.transform.DORotate(new Vector3(-30, 0, 0), 0.2f, RotateMode.Fast);
     }
@@ -159,6 +159,7 @@ public class CardManager : Singleton<CardManager>
     public void GraveToDeck()
     {
         _graveList.Shuffle();
+        SoundManager.Instance.PlaySE("DeckShuffle");
         foreach (CardUI card in _graveList)
         {
             _deckList.Enqueue(card);

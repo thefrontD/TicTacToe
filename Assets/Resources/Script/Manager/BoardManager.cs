@@ -107,9 +107,10 @@ public class BoardManager : Singleton<BoardManager>
             return false;
         else
         {
-            if(boardColor == BoardColor.Player)
+            if(boardColor == BoardColor.Player){
                 _gameBoard[row][col].ActivateColorEffect();
-            
+                SoundManager.Instance.PlaySE("Coloring");
+            }
             _boardColors[row][col] = boardColor;
             _gameBoard[row][col].SetBoardColor(boardColor);
             ResetBingoEffect();
@@ -119,15 +120,15 @@ public class BoardManager : Singleton<BoardManager>
         }
     }
 
-    public void PlayColorEffect(int row, int col){
-        Debug.Log(_gameBoard[row][col].GetComponent<Transform>().position);
-        Vector3 pos = new Vector3(0,0,0);
-        pos = _gameBoard[row][col].GetComponent<Transform>().position;
-        pos.z = -2;
-        GameObject EffectInstance = Instantiate(ColorEffect, pos, Quaternion.identity);
-        Destroy(EffectInstance, 2);
-        return;
-    }
+    // public void PlayColorEffect(int row, int col){
+    //     Debug.Log(_gameBoard[row][col].GetComponent<Transform>().position);
+    //     Vector3 pos = new Vector3(0,0,0);
+    //     pos = _gameBoard[row][col].GetComponent<Transform>().position;
+    //     pos.z = -2;
+    //     GameObject EffectInstance = Instantiate(ColorEffect, pos, Quaternion.identity);
+    //     Destroy(EffectInstance, 2);
+    //     return;
+    // }
     public void BingoEffect(int row, int col){
         return;
     }
@@ -169,6 +170,8 @@ public class BoardManager : Singleton<BoardManager>
             Vector3 nextRot = PlayerObject.transform.position - nextPos;
 
             PlayMoveEffect(PlayerObject.transform.position, nextPos);
+            SoundManager.Instance.PlaySE("MovePlayer");
+            
             switch (effect)
             {
                 case MoveCardEffect.Slide:
@@ -350,6 +353,7 @@ public class BoardManager : Singleton<BoardManager>
             PlayerObject.transform.Find("BuffEffect").gameObject.SetActive(true);
         }else if(debuff == Debuff.Heal){
             PlayerObject.transform.Find("HealEffect").gameObject.SetActive(true);
+            SoundManager.Instance.PlaySE("HealShield");
         }else{
             PlayerObject.transform.Find("DebuffEffect").gameObject.SetActive(true);
         }
