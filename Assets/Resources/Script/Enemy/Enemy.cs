@@ -213,9 +213,9 @@ public class Enemy : MonoBehaviour, IAttackable
         bool _isGameOver = false;
 
         if(_debuffDictionary[Debuff.PowerIncrease] > 0)
-            damage = (int)(damage * (1 + _debuffDictionary[Debuff.PowerIncrease] / 100));
+            damage = (int)(damage * (1 + _debuffDictionary[Debuff.PowerIncrease] / 100f));
         if(_debuffDictionary[Debuff.PowerDecrease] > 0)
-            damage = (int)(damage * (1 - _debuffDictionary[Debuff.PowerIncrease] / 100));
+            damage = (int)(damage * (1 - _debuffDictionary[Debuff.PowerDecrease] / 100f));
 
         _previousAttack.Item2 = _previousAttack.Item1;
         _previousAttack.Item1 = enemyAction.Item1;

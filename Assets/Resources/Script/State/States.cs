@@ -170,8 +170,6 @@ public class EnemyState : BaseState
         {
             if (enemy.DebuffDictionary[Debuff.Heal] > 0)
                 enemy.EnemyHP += (int) (enemy.EnemyMaxHP * 0.1);
-            foreach (Debuff debuff in Enum.GetValues(typeof(Debuff)))
-                enemy.SetDebuff(debuff, -1);
             
             enemy.EnemyUI.ShieldUIUpdate();
             enemy.EnemyUI.HPUIUpdate();
@@ -1004,11 +1002,10 @@ public class AttackState : BaseState
     {
         int damage = card.Damage;
 
-        if (PlayerManager.Instance.DebuffDictionary[Debuff.PowerIncrease] != 0)
-            damage = (int) (1.2 * damage);
-
-        if (PlayerManager.Instance.DebuffDictionary[Debuff.PowerDecrease] != 0)
-            damage = (int) (0.8 * damage);
+        if (PlayerManager.Instance.DebuffDictionary[Debuff.PowerIncrease] > 0)
+            damage = (int)(damage * (1 + PlayerManager.Instance.DebuffDictionary[Debuff.PowerIncrease] / 100f));
+        if (PlayerManager.Instance.DebuffDictionary[Debuff.PowerDecrease] > 0)
+            damage = (int)(damage * (1 - PlayerManager.Instance.DebuffDictionary[Debuff.PowerDecrease] / 100f));
 
         foreach (IAttackable selectedAttackable in selectedAttackableList)
         {
