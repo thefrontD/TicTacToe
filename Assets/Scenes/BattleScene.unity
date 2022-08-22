@@ -2806,6 +2806,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 9123025365275335061, guid: 78ba0f15ca52fce40a23bbc374799a14, type: 3}
+      propertyPath: _currentStage
+      value: 102
+      objectReference: {fileID: 0}
+    - target: {fileID: 9123025365275335061, guid: 78ba0f15ca52fce40a23bbc374799a14, type: 3}
       propertyPath: gameOverPanel
       value: 
       objectReference: {fileID: 1605126318}
