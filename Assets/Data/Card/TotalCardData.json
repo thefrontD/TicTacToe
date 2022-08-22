@@ -7,7 +7,7 @@
     "CardType": "Color",
     "cardName": "색칠/이동",
     "cardDesc": "원하는 칸을 1칸 <b>색칠</b>한다, 그 칸으로 <b>이동</b>한다",
-    "cardCost": 1,
+    "cardCost": 2,
     "CardPoolAttributes": ["Public"],
     "costChangeCondition": "None",
     "colorTargetPosition": "All",
@@ -625,7 +625,7 @@
     "CardType": "Move",
     "cardName": "훼손된 마법진",
     "cardDesc": "원하는 칸으로 <b>이동</b>한다, 피해를 <color=#FF0000>30</color> 입는다",
-    "cardCost": 1,
+    "cardCost": 0,
     "CardPoolAttributes": ["Berserker"]
   },
   {
