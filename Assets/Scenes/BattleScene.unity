@@ -915,11 +915,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d0223f77114284b47a0e8b317e71e4dc, type: 3}
---- !u!1 &693232893 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1616819749753361075, guid: 17bd36cadba43df499d781cd99e3348e, type: 3}
-  m_PrefabInstance: {fileID: 1605126316}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &693764433
 GameObject:
   m_ObjectHideFlags: 0
@@ -2623,70 +2618,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1433636693547815885, guid: f6a30c053a6963d479c730f21917a529, type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: 4b3cfe2951beaca4a8827da5b80f88f5, type: 2}
-    - target: {fileID: 1433636693547815885, guid: f6a30c053a6963d479c730f21917a529, type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: -4882304345557355242, guid: 4b3cfe2951beaca4a8827da5b80f88f5, type: 2}
     - target: {fileID: 3425932782594703624, guid: f6a30c053a6963d479c730f21917a529, type: 3}
       propertyPath: m_Name
       value: DialogueCanvas
       objectReference: {fileID: 0}
-    - target: {fileID: 3425932782594703624, guid: f6a30c053a6963d479c730f21917a529, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3425932782594703625, guid: f6a30c053a6963d479c730f21917a529, type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: 4b3cfe2951beaca4a8827da5b80f88f5, type: 2}
-    - target: {fileID: 3425932782594703625, guid: f6a30c053a6963d479c730f21917a529, type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: -4882304345557355242, guid: 4b3cfe2951beaca4a8827da5b80f88f5, type: 2}
-    - target: {fileID: 3425932782594703626, guid: f6a30c053a6963d479c730f21917a529, type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: 4b3cfe2951beaca4a8827da5b80f88f5, type: 2}
-    - target: {fileID: 3425932782594703626, guid: f6a30c053a6963d479c730f21917a529, type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: -4882304345557355242, guid: 4b3cfe2951beaca4a8827da5b80f88f5, type: 2}
-    - target: {fileID: 3425932782594703630, guid: f6a30c053a6963d479c730f21917a529, type: 3}
-      propertyPath: normalUICanvas
-      value: 
-      objectReference: {fileID: 693232893}
-    - target: {fileID: 3425932782594703630, guid: f6a30c053a6963d479c730f21917a529, type: 3}
-      propertyPath: unHighlightedColor.a
-      value: 0.5882353
-      objectReference: {fileID: 0}
-    - target: {fileID: 3425932782594703630, guid: f6a30c053a6963d479c730f21917a529, type: 3}
-      propertyPath: unHighlightedColor.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3425932782594703630, guid: f6a30c053a6963d479c730f21917a529, type: 3}
-      propertyPath: unHighlightedColor.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3425932782594703630, guid: f6a30c053a6963d479c730f21917a529, type: 3}
-      propertyPath: unHighlightedColor.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3748423171167166316, guid: f6a30c053a6963d479c730f21917a529, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 700
-      objectReference: {fileID: 0}
-    - target: {fileID: 5050231438705549735, guid: f6a30c053a6963d479c730f21917a529, type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: 4b3cfe2951beaca4a8827da5b80f88f5, type: 2}
-    - target: {fileID: 5050231438705549735, guid: f6a30c053a6963d479c730f21917a529, type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: -4882304345557355242, guid: 4b3cfe2951beaca4a8827da5b80f88f5, type: 2}
     - target: {fileID: 5957348934926785969, guid: f6a30c053a6963d479c730f21917a529, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -2770,10 +2705,6 @@ PrefabInstance:
     - target: {fileID: 5957348934926785969, guid: f6a30c053a6963d479c730f21917a529, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6582645884144980714, guid: f6a30c053a6963d479c730f21917a529, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -700
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f6a30c053a6963d479c730f21917a529, type: 3}
