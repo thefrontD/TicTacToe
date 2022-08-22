@@ -130,8 +130,8 @@ public class EnemyManager : Singleton<EnemyManager>
 
         foreach (EnemyDataHolder enemyData in enemyDataHolders)
         {
-            GameObject enemyObject = Instantiate(EnemyPrefab[enemyData.EnemyName], new Vector3(0, 25, -1.5f), Quaternion.Euler(-90, 0, 0));
-            Enemy enemy = enemyObject.GetComponent<Enemy>();
+            GameObject enemyObject = Instantiate(EnemyPrefab[enemyData.EnemyName], new Vector3(0, 17.5f, 0), Quaternion.Euler(-90, 0, 0));
+            Enemy enemy = enemyObject.transform.GetChild(0).GetComponent<Enemy>();
             enemy.InitEnemyData(enemyData);
             EnemyList.Add(enemy);
         }
