@@ -6,9 +6,11 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using Random = UnityEngine.Random;
+using DG.Tweening;
 
 public class Enemy : MonoBehaviour, IAttackable
 {
+    [SerializeField] private ParticleSystem deathParticle;
     private string _enemyName;
     public string EnemyName => _enemyName;
     
@@ -80,11 +82,11 @@ public class Enemy : MonoBehaviour, IAttackable
             EnemyShield = EnemyShield > damage ? EnemyShield - damage : 0;
 
             PlayAttackFromPlayerEffect();
-            
+
             if(PlayerManager.Instance.GOD)
             {
                 EnemyManager.Instance.EnemyList.Remove(this);
-                GameManager.Instance.GameClear();
+                StartCoroutine(EnemyDeathCoroutine());
             }
 
             if (EnemyShield == 0)
@@ -102,12 +104,10 @@ public class Enemy : MonoBehaviour, IAttackable
                     if (PlayerManager.Instance.TutorialPhase == 4)
                         PlayerManager.Instance.tutorial4Trigger = true;
                 }
-
                 if (EnemyHP <= 0)
                 {
                     EnemyManager.Instance.EnemyList.Remove(this);
-                    GameManager.Instance.GameClear();
-                    Destroy(this.gameObject);
+                    StartCoroutine(EnemyDeathCoroutine());
                 }
             }
             
@@ -115,6 +115,20 @@ public class Enemy : MonoBehaviour, IAttackable
             EnemyUI.HPUIUpdate();
             yield return new WaitForSeconds(0.3f);
         }
+    }
+
+    private IEnumerator EnemyDeathCoroutine()
+    {
+        transform.parent.DORotate(new Vector3(0, 0, 0), 0.6f, RotateMode.Fast).SetEase(Ease.InQuart);
+
+        yield return new WaitForSeconds(1.0f);
+
+        deathParticle.Play();
+
+        yield return new WaitForSeconds(1.0f);
+
+        GameManager.Instance.GameClear();
+        Destroy(this.gameObject);
     }
 
     private void PlayAttackFromPlayerEffect()
