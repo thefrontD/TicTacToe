@@ -132,7 +132,7 @@
   {
     "TriggerCondition": "None",
     "AdditionalEffectCondition": "PlayerInColoredSpace",
-    "AdditionalEffect": "DMG20",
+    "AdditionalEffect": "DMG10",
     "AttackCardEffect": "Alpha",
     "TargetType": 111,
     "TargetCount": 1,
@@ -140,7 +140,7 @@
     "Damage": 10,
     "CardType": "Attack",
     "cardName": "홈그라운드",
-    "cardDesc": "적에게 피해를 <color=#FF0000>10</color> 준다, 자신의 색칠된 칸에 있을 경우 적에게 피해를 <color=#FF0000>20</color> 더 준다",
+    "cardDesc": "적에게 피해를 <color=#FF0000>10</color> 준다, 자신의 색칠된 칸에 있을 경우 적에게 피해를 <color=#FF0000>10</color> 더 준다",
     "cardCost": 1,
     "CardPoolAttributes": ["Public", "Color"]
   },
