@@ -36,7 +36,7 @@ public class StartMenuScript : MonoBehaviour
             DeleteSaveFile();
         }
 
-        GameManager.Instance.CurrentStage = 102;
+        GameManager.Instance.CurrentStage = 101;
 
         await CopyAsync(Application.dataPath + "/Data/Player/PlayerData.json", _path);
         await CopyAsync(Application.dataPath + "/Data/Card/PlayerCard.json", 

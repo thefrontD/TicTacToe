@@ -341,7 +341,7 @@ public class PlayerManager : Singleton<PlayerManager>
     public void ToEnemyTurn()
     {
         if(!_tutorialTrigger){
-            if(!_lockTurn)
+            if(!_lockTurn && state.GetType() == typeof(NormalState))
             {
                 foreach (CardUI card in CardManager.Instance.HandCardList)
                 card.gameObject.GetComponent<Outlinable>().enabled = false;
@@ -357,7 +357,7 @@ public class PlayerManager : Singleton<PlayerManager>
             if(_tutorialPhase == 7 || _tutorialPhase == 10 || _tutorialPhase == 13 || _tutorialPhase == 17 ||
             _tutorialPhase == 21)
             {
-                if(!_lockTurn)
+                if(!_lockTurn && state.GetType() == typeof(NormalState))
                 {
                     foreach (CardUI card in CardManager.Instance.HandCardList)
                     card.gameObject.GetComponent<Outlinable>().enabled = false;
