@@ -14,7 +14,8 @@ public class CardAcquiringPanel : MonoBehaviour
     [SerializeField] private List<Vector3> CardPositionList;
     [SerializeField] private int CardNum = 3;
     [SerializeField] private GameObject NewCardPrefab;
-    private List<Card> TotalCardList;
+    private List<Card> TotalCardList = new List<Card>();
+    private List<Card> _tutorialCardList = new List<Card>();
     private int[] Count;
     private List<int> CardPool1 = new List<int>();
     //현재 카드 덱에 가장 많은 카드 풀의 카드
@@ -31,6 +32,23 @@ public class CardAcquiringPanel : MonoBehaviour
         for(int i = 0; i<Count.Length; i++)
             Count[i] = 0;
         //player card list의 pool count
+
+        _tutorialCardList = CardData.Instance._load(string.Format("PlayerCard{0}", GameManager.Instance.PlayerNum));
+
+        if(PlayerManager.Instance.TutorialTrigger)
+        {
+            foreach(Card pcard in PlayerManager.Instance.PlayerCard){
+                foreach(CardPoolAttribute att in  pcard.CardPoolAttributes){
+                if(att == CardPoolAttribute.BasicCardPool)//basic card pool은 카운트 하지 않는다
+                    continue;
+                Count[(int)att] ++;
+            }
+        }
+        }
+        else
+        {
+
+        }
         foreach(Card pcard in PlayerManager.Instance.PlayerCard){
             foreach(CardPoolAttribute att in  pcard.CardPoolAttributes){
                 if(att == CardPoolAttribute.BasicCardPool)//basic card pool은 카운트 하지 않는다
