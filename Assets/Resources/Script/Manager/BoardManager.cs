@@ -18,7 +18,11 @@ public class BoardManager : Singleton<BoardManager>
     //Board State Array
     [SerializeField] private GameObject PlayerPrefab;
     [SerializeField] private GameObject WallPrefabs;
-    private GameObject PlayerObject;
+    [SerializeField] private GameObject ColorEffect;
+    [SerializeField] private GameObject MoveWindEffect;
+
+    private GameObject _playerObject;
+    public GameObject PlayerObject => _playerObject;
 
     private List<List<Board>> _gameBoard = new List<List<Board>>();
     public List<List<Board>> GameBoard => _gameBoard;
@@ -87,7 +91,7 @@ public class BoardManager : Singleton<BoardManager>
                           - new Vector3(0, 0, 0);
         _boardObjects[PlayerManager.Instance.Row][PlayerManager.Instance.Col] = BoardObject.Player;
         Quaternion rotation = Quaternion.Euler(-90, -90, 90);
-        PlayerObject = Instantiate(PlayerPrefab, initPos, rotation);
+        _playerObject = Instantiate(PlayerPrefab, initPos, rotation);
     }
 
     /// <summary>
@@ -100,11 +104,29 @@ public class BoardManager : Singleton<BoardManager>
             return false;
         else
         {
+            if(boardColor == BoardColor.Player)
+                //PlayColorEffect(row, col);
+            
             _boardColors[row][col] = boardColor;
             _gameBoard[row][col].SetBoardColor(boardColor);
-
+            ResetBingoEffect();
+            CheckBingoAndEffect(BoardColor.Player);
+            CheckBingoAndEffect(BoardColor.Enemy);
             return true;
         }
+    }
+
+    public void PlayColorEffect(int row, int col){
+        Debug.Log(_gameBoard[row][col].GetComponent<Transform>().position);
+        Vector3 pos = new Vector3(0,0,0);
+        pos = _gameBoard[row][col].GetComponent<Transform>().position;
+        pos.z = -2;
+        GameObject EffectInstance = Instantiate(ColorEffect, pos, Quaternion.identity);
+        Destroy(EffectInstance, 2);
+        return;
+    }
+    public void BingoEffect(int row, int col){
+        return;
     }
 
     public bool SummonWalls(int row, int col, int damage)
@@ -114,7 +136,10 @@ public class BoardManager : Singleton<BoardManager>
         if(_boardObjects[row][col] == BoardObject.None)
         {
             _boardObjects[row][col] = BoardObject.Wall;
-            Instantiate(WallPrefabs, _gameBoard[row][col].transform.position, Quaternion.identity);
+            ColoringBoard(row, col, BoardColor.None);
+            GameObject wall = Instantiate(WallPrefabs, _gameBoard[row][col].transform.position, Quaternion.identity);
+            _boardAttackables[row][col] = wall.GetComponent<Wall>();
+            wall.GetComponent<Wall>().Init(row, col);
         }
         else if(_boardObjects[row][col] == BoardObject.Player)
             _isGameOver = PlayerManager.Instance.DamageToPlayer(-damage);
@@ -130,15 +155,15 @@ public class BoardManager : Singleton<BoardManager>
         {
             int angle = -1 * (int)Vector2.Angle(new Vector2(0, 1), 
                 new Vector2(row - PlayerManager.Instance.Row, col - PlayerManager.Instance.Col));
-            
-            Debug.Log(angle);
-            
+
+            _boardObjects[PlayerManager.Instance.Row][PlayerManager.Instance.Col] = BoardObject.None;
             PlayerManager.Instance.Row = row;
             PlayerManager.Instance.Col = col;
             Vector3 nextPos = _gameBoard[PlayerManager.Instance.Row][PlayerManager.Instance.Col].transform.position;
             _boardObjects[row][col] = BoardObject.Player;
             Vector3 nextRot = PlayerObject.transform.position - nextPos;
 
+            PlayMoveEffect(PlayerObject.transform.position, nextPos);
             switch (effect)
             {
                 case MoveCardEffect.Slide:
@@ -152,6 +177,14 @@ public class BoardManager : Singleton<BoardManager>
             }
         }
     }
+
+    public void PlayMoveEffect(Vector3 from, Vector3 to)
+    {
+        Vector3 direction = to - from;
+        Quaternion angle = Quaternion.Euler(0, 0, Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg);
+        Instantiate(MoveWindEffect, from + new Vector3(0, 0, -5), angle);  // 자동으로 destroy된다.
+    }
+
     /// <summary>
     /// 보드판 전체에서 color로 색칠된 빙고의 개수를 리턴한다.
     /// </summary>
@@ -232,4 +265,71 @@ public class BoardManager : Singleton<BoardManager>
         
         return ret;
     } 
+    public void ResetBingoEffect(){
+        for(int i = 0; i<_boardSize; i++){
+            for(int j = 0; j<_boardSize; j++){
+                GameBoard[i][j].GetComponent<Board>().ActivateBingoEffect(false, BoardColor.None);
+            }
+        }
+    }
+
+    public int CheckBingoAndEffect(BoardColor color)
+    {
+        int ret = 0;
+        bool check1, check2;
+        
+        for (int i = 0; i < _boardSize; i++)
+        {
+            check1 = check2 = true;            
+            
+            for (int j = 0; j < _boardSize; j++)
+            {
+                if (_boardColors[i][j] != color)
+                    check1 = false;
+
+                if (_boardColors[j][i] != color)
+                    check2 = false;
+            } 
+
+            if (check1){
+                Debug.Log("check1 true ret++");
+                ret++;
+                for(int j = 0; j<_boardSize; j++){
+                    GameBoard[i][j].GetComponent<Board>().ActivateBingoEffect(true, color);
+                }
+            }
+            if (check2){
+                Debug.Log("check2 true ret++");
+                ret++;
+                for(int j = 0; j<_boardSize; j++){
+                    GameBoard[j][i].GetComponent<Board>().ActivateBingoEffect(true, color);
+                }
+            }
+        }
+
+        check1 = check2 = true;
+        for (int i = 0; i < _boardSize; i++)
+        {
+            if (_boardColors[i][i] != color)
+                check1 = false;
+            if (_boardColors[i][_boardSize - 1 - i] != color)
+                check2 = false;
+        }
+        
+        if (check1){
+            Debug.Log("check1_2 true ret++");
+            ret++;
+            for (int i = 0; i < _boardSize; i++)
+                GameBoard[i][i].GetComponent<Board>().ActivateBingoEffect(true, color);
+        }
+        if (check2){
+            Debug.Log("check1_2 true ret++");
+            ret++;
+            for (int i = 0; i < _boardSize; i++)
+                GameBoard[i][_boardSize - 1 - i].GetComponent<Board>().ActivateBingoEffect(true, color);
+        }
+        Debug.Log("Total Bingo is why not changing: "+ret.ToString());
+
+        return ret;
+    }
 }

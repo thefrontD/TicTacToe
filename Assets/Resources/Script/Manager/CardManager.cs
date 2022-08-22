@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -51,6 +52,11 @@ public class CardManager : Singleton<CardManager>
         }
     }
 
+    public void Tutorial4(object sender, EventArgs e)
+    {
+        DrawCard(1);
+    }
+    
     public void DrawCard(int drawNum)
     {
         if(drawNum > _deckList.Count + _graveList.Count)
@@ -87,6 +93,20 @@ public class CardManager : Singleton<CardManager>
         }
 
         CheckUsable();
+        
+        if (PlayerManager.Instance.TutorialPhase == 2)
+        {
+            yield return new WaitForSeconds(1);
+            
+            TutorialManager.Instance.toNextTutorial(PlayerManager.Instance.TutorialPhase);
+        }
+        
+        if (PlayerManager.Instance.TutorialPhase == 8)
+        {
+            yield return new WaitForSeconds(0.6f);
+            
+            TutorialManager.Instance.toNextTutorial(PlayerManager.Instance.TutorialPhase);
+        }
     }
 
     private void CardPositionAdjust()
@@ -99,7 +119,7 @@ public class CardManager : Singleton<CardManager>
             Vector3 cardPosition = cardPositionList[idx];
             card.transform.DOMove(cardPosition, 0.1f, false);
             card.Idx = cardNum;
-            card.setPos(cardPosition);
+            card.setPos(cardPosition, idx);
             idx += 2;
             cardNum++;
         }
@@ -122,6 +142,7 @@ public class CardManager : Singleton<CardManager>
     public void HandtoGrave(int idx)
     {
         CardUI card = _handCardList[idx];
+        card.ToGrave();
         card.isHand = false;
         card.transform.DOMove(gravePos, 0.2f, false);
         card.transform.DORotate(new Vector3(0, 180, 0), 0.2f, RotateMode.Fast);

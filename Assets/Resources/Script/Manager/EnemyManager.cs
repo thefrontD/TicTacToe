@@ -10,13 +10,14 @@ public class EnemyManager : Singleton<EnemyManager>
     public List<Enemy> EnemyList => _enemyList;
 
     [SerializeField] private StringGameObjectDictionary EnemyPrefab;
+    [SerializeField] public GameObject EnemyAttackEffect;
 
     void Awake()
     {
         _enemyList = new List<Enemy>();
     }
 
-    void  Start()
+    void Start()
     {
         
     }

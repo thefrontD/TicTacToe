@@ -10,7 +10,7 @@ public class CardListPanel : MonoBehaviour
     public List<Card> PlayerCard;
     void Start()
     {
-        PlayerCard = CardData.Instance._load("PlayerCard");
+        PlayerCard = CardData.Instance._load("PlayerCard0");
         PrintCard();
     }
 
@@ -26,11 +26,9 @@ public class CardListPanel : MonoBehaviour
             CardImage = Instantiate(CardImagePrefab, coord, Quaternion.identity);
             CardImage.GetComponent<Transform>().SetParent(transform.Find("Viewport").gameObject.GetComponent<Transform>().Find("Content").gameObject.GetComponent<Transform>());
             CardImage.GetComponent<RectTransform>().anchoredPosition = coord;
-            //find appropriate image and replace image
-            //Debug.Log(CardImage.GetComponent<Image>().sprite );
-            Sprite ImageTo = LoadImage(Application.dataPath +"/Resource/Images/BlueBox.png");
-            Debug.Log(ImageTo);
-            CardImage.GetComponent<Image>().sprite = ImageTo;
+            CardImage.GetComponent<CardAcquiring>().SetCard(CardData);
+            CardImage.GetComponent<CardAcquiring>().SetClickable(false);
+            CardImage.GetComponent<CardAcquiring>().SetImage();
             //Debug.Log(CardImage.GetComponent<Image>().sprite );
             //이미지가 변하지 않음 수정필요
 

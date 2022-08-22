@@ -73,10 +73,20 @@ public class Enemy : MonoBehaviour, IAttackable
 
         if (EnemyShield == 0)
         {
-            _enemyHp -= (int)Math.Pow(2, BoardManager.Instance.CheckBingo(BoardColor.Player)-1);
-
-            PlayerManager.Instance.BingoAttack = true;
-
+            int bingoCount = BoardManager.Instance.CheckBingo(BoardColor.Player);
+            
+            if(bingoCount > 0)
+            {
+                _enemyHp -= (int) Math.Pow(2, bingoCount - 1);
+                PlayerManager.Instance.BingoAttack = true;
+            }
+            else
+            {
+                EnemyHealShield(_enemyMaxShield);
+                if (PlayerManager.Instance.TutorialPhase == 4)
+                    PlayerManager.Instance.tutorial4Trigger = true;
+            }
+            
             if (EnemyHP <= 0)
             {
                 EnemyManager.Instance.EnemyList.Remove(this);
@@ -84,12 +94,15 @@ public class Enemy : MonoBehaviour, IAttackable
                 Destroy(this.gameObject);
             }
         }
+        
+        
         EnemyUI.ShieldUIUpdate();
         EnemyUI.HPUIUpdate();
         //Debug.Log("Buff" + DebuffDictionary[Debuff.PowerIncrease]);
         //Debug.Log("Debuff" + DebuffDictionary[Debuff.PowerDecrease]);
         //EnemyUI.BuffDebuffUpdate();
     }
+
     public GameObject GetGameObject()
     {
         return gameObject;
@@ -173,15 +186,18 @@ public class Enemy : MonoBehaviour, IAttackable
         switch (enemyAction.Item1)
         {
             case EnemyAction.H1Attack:
-                for (int i = 0; i < BoardManager.Instance.BoardSize; i++){
+                for (int i = 0; i < BoardManager.Instance.BoardSize; i++)
+                {
                     temp2.Add((_previousPlayerRow, i));
                     if(BoardManager.Instance.BoardObjects[_previousPlayerRow][i] == BoardObject.Player)
                         _isGameOver = PlayerManager.Instance.DamageToPlayer(-damage);
                 }
                 break;
             case EnemyAction.V1Attack:
-            for (int i = 0; i < BoardManager.Instance.BoardSize; i++){
+                for (int i = 0; i < BoardManager.Instance.BoardSize; i++)
+                {
                     temp2.Add((i, _previousPlayerCol));
+                    Debug.Log(BoardManager.Instance.BoardObjects[i][_previousPlayerCol]);
                     if(BoardManager.Instance.BoardObjects[i][_previousPlayerCol] == BoardObject.Player)
                         _isGameOver = PlayerManager.Instance.DamageToPlayer(-damage);
                 }
@@ -247,10 +263,32 @@ public class Enemy : MonoBehaviour, IAttackable
                 _isGameOver = PlayerManager.Instance.DamageToPlayer(-damage);
                 break;
         }
+        StartCoroutine(PlayEnemyAttackEffect(temp2));
 
         return _isGameOver;
     }
-    
+
+    private IEnumerator PlayEnemyAttackEffect(List<(int, int)> attackedSpaces)
+    {
+        int boardSize = BoardManager.Instance.BoardSize;
+        bool[,] attacked = new bool[boardSize, boardSize];  // 모두 false로 초기화
+        foreach ((int, int) coord in attackedSpaces)
+            attacked[coord.Item1, coord.Item2] = true;
+
+        for (int r = 0; r < boardSize; r++)
+        {
+            for (int c = 0; c < boardSize; c++)
+            {
+                if (attacked[r, c])
+                {
+                    Vector3 position = BoardManager.Instance.GameBoard[r][c].transform.position;
+                    Instantiate(EnemyManager.Instance.EnemyAttackEffect, position + new Vector3(0, 0, -3), Quaternion.identity);  // 자동으로 destroy된다.
+                }
+            }
+            yield return new WaitForSeconds(0.3f);
+        }
+    }
+
     private bool EnemySummon((EnemyAction, int) enemyAction)
     {
         bool _isGameOver = false;
@@ -337,5 +375,10 @@ public class Enemy : MonoBehaviour, IAttackable
     public void setPreviousPos(int row, int col){
         _previousPlayerRow = row;
         _previousPlayerCol = col;
+    }
+
+    private void EnemyHealShield(int num)
+    {
+        _enemyShield = _enemyShield + num > _enemyMaxShield ? _enemyMaxShield : _enemyShield + num;
     }
 }

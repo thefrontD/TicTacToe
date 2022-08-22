@@ -24,7 +24,7 @@ public abstract class Card
     public AdditionalEffectCondition AdditionalEffectCondition => _additionalEffectCondition;
     private AdditionalEffect _additionalEffect;
     public AdditionalEffect AdditionalEffect => _additionalEffect;
-    public List<CardPoolAttribute> CardPoolAttributes = new List<CardPoolAttribute>();
+    [JsonProperty] public List<CardPoolAttribute> CardPoolAttributes = new List<CardPoolAttribute>();
 
     private string cardName;
 
@@ -76,6 +76,10 @@ public abstract class Card
         }*/
         if (!CheckCondition())
             return false;
+        
+        if(PlayerManager.Instance.TutorialTrigger)
+            if (!CheckTutorial())
+                return false;
 
         if (!PlayerManager.Instance.SetMana(-CardCost, cardType)) return false;
         usingCardSpecific();
@@ -85,6 +89,37 @@ public abstract class Card
         return true;
     }
 
+    private bool CheckTutorial()
+    {
+        switch (PlayerManager.Instance.TutorialPhase)
+        {
+            case 3:
+            case 4: 
+            case 5:
+            case 18:
+            case 21:
+                if (cardType == CardType.Attack) return true;
+                else return false;
+            
+            case 6:
+            case 11:
+            case 15:
+            case 20:
+                if (cardType == CardType.Color) return true;
+                else return false;
+            
+            case 9:
+            case 12:
+            case 14:
+            case 19: 
+                if (cardType == CardType.Move) return true;
+                else return false;
+            
+            default:
+                return false;
+        }
+    }
+    
     public bool CheckCondition()
     {
         bool proceed = false;
@@ -121,31 +156,31 @@ public abstract class Card
 
                 break;
 
-            case TriggerCondition.EnemyWillAttack:
+            case TriggerCondition.MonsterWillAttack:
                 foreach (Enemy enemy in EnemyManager.Instance.EnemyList)
                     if ((int) enemy.EnemyActions.Peek().Item1 / 10 == 0)
                         proceed = true;
                 break;
-            case TriggerCondition.EnemyWillWall:
+            case TriggerCondition.MonsterWillWall:
                 foreach (Enemy enemy in EnemyManager.Instance.EnemyList)
                     if (enemy.EnemyActions.Peek().Item1 == EnemyAction.WallSummon)
                         proceed = true;
                 break;
-            case TriggerCondition.EnemyWillMinion:
+            case TriggerCondition.MonsterWillMinion:
                 foreach (Enemy enemy in EnemyManager.Instance.EnemyList)
                     if (enemy.EnemyActions.Peek().Item1 == EnemyAction.MobSummon)
                         proceed = true;
                 break;
-            case TriggerCondition.EnemyWillShield:
+            case TriggerCondition.MonsterWillShield:
                 foreach (Enemy enemy in EnemyManager.Instance.EnemyList)
                     if (enemy.EnemyActions.Peek().Item1 == EnemyAction.ShieldHealing)
                         proceed = true;
                 break;
 
-            case TriggerCondition.PlayerWall:
+            case TriggerCondition.PlayerWall:  // TODO
                 proceed = true;
                 break;
-            case TriggerCondition.PlayerNotWall:
+            case TriggerCondition.PlayerNotWall:  // TODO
                 proceed = true;
                 break;
 
@@ -248,12 +283,25 @@ public abstract class Card
                     proceed = true;
                 break;
 
+            case TriggerCondition.PlayerHealthExceeds20:
             case TriggerCondition.PlayerHealthExceeds30:
                 // 플레이어의 체력이 30을 초과하는가?
                 if (PlayerManager.Instance.Hp > ((int) _triggerCondition - 100))
                     proceed = true;
                 break;
 
+            case TriggerCondition.SevenColoredSpace:
+                int count = 0;
+                
+                for (int i = 0; i < BoardManager.Instance.BoardSize; i++)
+                    for (int j = 0; j < BoardManager.Instance.BoardSize; j++)
+                        if (BoardManager.Instance.BoardColors[i][j] == BoardColor.Player)
+                            count++;
+
+                if (count == 7)
+                    proceed = true;
+                break;
+            
             case TriggerCondition.None:
                 proceed = true;
                 break;

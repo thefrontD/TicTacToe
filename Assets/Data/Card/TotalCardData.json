@@ -170,7 +170,7 @@
   },
   {
     "TriggerCondition": "ColorCardInHand2",
-    "AdditionalEffectCondition": "",
+    "AdditionalEffectCondition": "None",
     "AdditionalEffect": "DumpColorCard1",
     "ColorCardEffect": "ColorVertical2",    
     "CardType": "Color",
@@ -182,7 +182,7 @@
     ]
   },  {
     "TriggerCondition": "ColorCardInHand2",
-    "AdditionalEffectCondition": "",
+    "AdditionalEffectCondition": "None",
     "AdditionalEffect": "DumpColorCard1",
     "ColorCardEffect": "ColorHorizontal2",    
     "CardType": "Color",
@@ -383,7 +383,7 @@
   },
   {
     "TriggerCondition": "None",
-    "AdditionalEffectCondition": "PlayerHealthUnder50%",
+    "AdditionalEffectCondition": "PlayerHealthUnder50Percent",
     "AdditionalEffect": "DMG30",
     "AttackCardEffect": "Alpha",
     "TargetType": 111,
@@ -501,23 +501,6 @@
     ]
   },
   {
-    "TriggerCondition": "7ColoredSpace",
-    "AdditionalEffectCondition": "None",
-    "AdditionalEffect": "None",
-    "AttackCardEffect": "Alpha",
-    "TargetType": 111,
-    "TargetCount": 0,
-    "AttackCount": 1,
-    "Damage": 77,
-    "CardType": "Attack",
-    "cardName": "행운의 숫자",
-    "cardDesc": "자신의 색칠된 칸이 7칸 있을 경우 발동할 수 있다, 모든 적에게 피해를 77 준다",
-    "cardCost": 1,
-    "CardPoolAttributes" : [
-      "Color"
-    ]
-  },
-  {
     "TriggerCondition": "None",
     "AdditionalEffectCondition": "None",
     "AdditionalEffect": "PlayerHpPlus20",
@@ -534,7 +517,6 @@
       "Public", "Berserker"
     ]
   },
-
   {
     "TriggerCondition": "None",
     "AdditionalEffectCondition": "None",

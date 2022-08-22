@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using DG.Tweening;
 using UnityEngine;
 //전투 승리 후 나타날 카드 획득 창 관리
 //3개의 카드를 중복없이 고른다
@@ -98,11 +99,13 @@ public class CardAcquiringPanel : MonoBehaviour
         CardImage.GetComponent<Transform>().SetParent(transform);
         CardImage.GetComponent<RectTransform>().anchoredPosition = position;
         CardImage.GetComponent<CardAcquiring>().SetCard(card);
+        CardImage.GetComponent<CardAcquiring>().SetImage();
         return;
     }
 
-    public void EndCardAcquiring(){
-        transform.gameObject.SetActive(false);
+    public void EndCardAcquiring()
+    {
+        transform.parent.DOMoveX(-1920, 0.5f, false).SetEase(Ease.OutQuad);
     }
 
     void Update()

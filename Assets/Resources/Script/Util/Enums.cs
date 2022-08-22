@@ -36,7 +36,7 @@ public enum ColorCardEffect
 {
     ColorAnyAndMove,
     Color, 
-    ColorCross, 
+    ColorCross1, 
     ColorCross2, 
     ColorCloseBlock, 
     ColorAny, 
@@ -54,7 +54,7 @@ public enum TriggerCondition
     None, 
     Attacked,
     PlayerInColoredSpace,
-    EnemyWillAttack, EnemyWillWall, EnemyWillMinion, EnemyWillShield,
+    MonsterWillAttack, MonsterWillWall, MonsterWillMinion, MonsterWillShield,
     PlayerWall, PlayerNotWall,
     OnlyAttackCardInHand, OnlyMoveCardInHand, OnlyColorCardInHand,
     ColoredSpaceExists,
@@ -63,7 +63,10 @@ public enum TriggerCondition
     AttackCardInHand1=51, AttackCardInHand2=52, AttackCardInHand3=53, AttackCardInHand4=54, AttackCardInHand5=55,
     ColorCardInHand1=61, ColorCardInHand2=62, ColorCardInHand3=63, ColorCardInHand4=64, ColorCardInHand5=65,
     MoveCardInHand1=71, MoveCardInHand2=72, MoveCardInHand3=73, MoveCardInHand4=74, MoveCardInHand5=75,
-    PlayerHealthExceeds10 = 110, PlayerHealthExceeds30=130
+    SevenColoredSpace,
+    PlayerHealthExceeds10 = 110,
+    PlayerHealthExceeds20 = 120,
+    PlayerHealthExceeds30 = 130
 }
 
 [JsonConverter(typeof(StringEnumConverter))]
@@ -82,10 +85,11 @@ public enum AdditionalEffectCondition
 public enum AdditionalEffect
 {
     None,
-    MonsterMaxShield10,
-    MonsterShield20, MonsterShield1000,
-    MonsterHp1,
-    PlayerHp10, PlayerHp20, PlayerHp30,
+    MaxMonsterShieldMinus10,
+    MonsterShieldMinus20, MonsterShieldMinus1000,
+    MonsterHpMinus1,
+    PlayerHpMinus10, PlayerHpMinus20, PlayerHpMinus30,
+    PlayerHpPlus10,PlayerHpPlus20,PlayerHpPlus30,
     DMG10, DMG20, DMG30,
     BuffPlayer, DebuffPlayer,
     BuffMonster, DebuffMonster,
@@ -145,7 +149,10 @@ public enum Intention
 [JsonConverter(typeof(StringEnumConverter))]
 public enum CardPoolAttribute{
     BasicCardPool = 0,
-    CardPoolA = 1,
-    CardPoolB = 2,
-    CardPoolC = 3
+    Public = 1,
+    AttackCardDeckTop = 2,
+    Berserker = 3,
+    Color = 4,
+    DrawMana = 5,
+    ShieldDestroy =6
 }

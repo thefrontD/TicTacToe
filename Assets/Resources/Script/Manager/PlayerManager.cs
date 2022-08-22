@@ -40,15 +40,20 @@ public class PlayerManager : Singleton<PlayerManager>
     private Dictionary<Debuff,  int> _debuffDictionary;
     public Dictionary<Debuff, int> DebuffDictionary => _debuffDictionary;
 
-    private bool _bingoAttack;
+    private bool _bingoAttack = false;
     public bool BingoAttack { get => _bingoAttack; set => _bingoAttack = value; }
 
-    private bool _tutorialTrigger;
+    private bool _tutorialTrigger = false;
     public bool TutorialTrigger => _tutorialTrigger;
     
-    private int _tutorialPhase;
-    public int TutorialPhase => _tutorialPhase;
+    private int _tutorialPhase = 0;
+    public int TutorialPhase { get => _tutorialPhase; set => _tutorialPhase = value; }
+    private int _tutorialSubPhase = 0;
+    public int TutorialSubPhase { get => _tutorialSubPhase; set => _tutorialSubPhase = value; }
+
+    private bool _clickable = true;
     
+    public bool tutorial4Trigger = false;
     public event Action OnPlayerDataUpdate;
 
     public BaseState state;
@@ -57,15 +62,29 @@ public class PlayerManager : Singleton<PlayerManager>
     
     void Start()
     {
-        _tutorialPhase = 1;
+        if (GameManager.Instance.CurrentStage == 101)
+        {
+            _tutorialPhase = 1;
+            _tutorialTrigger = true;
+        }
+        
         state = new NormalState();
-        //Init();
+        if(!_tutorialTrigger)
+            DialogueManager.Instance.StartDialogue(string.Format("Enemy{0}", GameManager.Instance.CurrentStage%100));
+        else
+        {
+            DialogueManager.Instance.dialogueCallBack.DialogueCallBack += NextTutorialNum;
+            DialogueManager.Instance.StartDialogue(string.Format("Tutorial/Tutorial_{0}", _tutorialPhase));
+        }
     }
 
     void Update()
     {
-        if(Input.GetMouseButtonDown(0))
+        if(Input.GetMouseButtonDown(0) && _clickable)
+        {
+            SoundManager.Instance.PlaySE("Click", 0.5f);
             state.MouseEvent();
+        }
     }
 
     void FixedUpdate()
@@ -224,6 +243,10 @@ public class PlayerManager : Singleton<PlayerManager>
     
     public bool DamageToPlayer(int value = 0)
     {
+        if (value < 0)  // 대미지를 입었음
+        {
+            StartCoroutine(DamageBlink());
+        }
         if(_shield != 0){
             if(_shield + value < 0)
             {
@@ -255,8 +278,21 @@ public class PlayerManager : Singleton<PlayerManager>
         return false;
     }
 
+    public IEnumerator DamageBlink()
+    {
+        const int numBlinks = 30;
+        Renderer renderer = BoardManager.Instance.PlayerObject.GetComponent<Renderer>();
+        for (int i = 0; i < numBlinks * 2; i++)
+        {
+            renderer.enabled = !renderer.enabled;
+            yield return new WaitForSeconds(0.1f);
+        }
+        renderer.enabled = true;
+    }
+
     public bool MovePlayer(int row, int col, MoveCardEffect effect = MoveCardEffect.Slide)
     {
+        Debug.Log(string.Format("{0} : {1}", row, col));
         return BoardManager.Instance.MovePlayer(row, col, effect);
     }
 
@@ -265,6 +301,12 @@ public class PlayerManager : Singleton<PlayerManager>
         foreach (CardUI card in CardManager.Instance.HandCardList)
             card.gameObject.GetComponent<Outlinable>().enabled = false;
         CardManager.Instance.AllHandCardtoGrave();
+        SoundManager.Instance.PlaySE("TurnOver");
         ChangeStates(new EnemyState());
+    }
+
+    public void NextTutorialNum(object sender, EventArgs e)
+    {
+        _tutorialPhase++;
     }
 }
