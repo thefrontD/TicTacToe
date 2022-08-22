@@ -103,9 +103,6 @@ public class Enemy : MonoBehaviour, IAttackable
         
         EnemyUI.ShieldUIUpdate();
         EnemyUI.HPUIUpdate();
-        //Debug.Log("Buff" + DebuffDictionary[Debuff.PowerIncrease]);
-        //Debug.Log("Debuff" + DebuffDictionary[Debuff.PowerDecrease]);
-        //EnemyUI.BuffDebuffUpdate();
     }
 
     public GameObject GetGameObject()
@@ -356,6 +353,7 @@ public class Enemy : MonoBehaviour, IAttackable
                 transform.Find("HealEffect").gameObject.SetActive(true);
                 break;
         }
+        EnemyUI.BuffDebuffUpdate();
     }
     
     private void EnemyDebuff((EnemyAction, int) enemyAction)
@@ -375,6 +373,7 @@ public class Enemy : MonoBehaviour, IAttackable
                 PlayerManager.Instance.SetDebuff(Debuff.CardCostIncrease, enemyAction.Item2);
                 break;
         }
+        EnemyUI.BuffDebuffUpdate();
     }
 
     public void SetDebuff(Debuff debuff, int value)
@@ -390,6 +389,7 @@ public class Enemy : MonoBehaviour, IAttackable
             transform.Find("HealEffect").gameObject.SetActive(true);
         else
             transform.Find("DebuffEffect").gameObject.SetActive(true);
+        EnemyUI.BuffDebuffUpdate();
     }
 
     public void setPreviousPos(int row, int col){
