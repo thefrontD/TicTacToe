@@ -2292,6 +2292,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 2954090955126646088, guid: 17bd36cadba43df499d781cd99e3348e, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3849885183753745822, guid: 17bd36cadba43df499d781cd99e3348e, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -5000
@@ -2338,7 +2342,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7236685435469829553, guid: 17bd36cadba43df499d781cd99e3348e, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7236685435469829553, guid: 17bd36cadba43df499d781cd99e3348e, type: 3}
       propertyPath: m_TagString
@@ -2692,6 +2696,10 @@ PrefabInstance:
     - target: {fileID: 3425932782594703624, guid: f6a30c053a6963d479c730f21917a529, type: 3}
       propertyPath: m_Name
       value: DialogueCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 3425932782594703624, guid: f6a30c053a6963d479c730f21917a529, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3425932782594703630, guid: f6a30c053a6963d479c730f21917a529, type: 3}
       propertyPath: normalUICanvas

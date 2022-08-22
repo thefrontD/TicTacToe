@@ -442,5 +442,6 @@ public class Enemy : MonoBehaviour, IAttackable
     {
         Debug.Log("EnemyHPHeal!");
         _enemyShield = _enemyShield + num > _enemyMaxShield ? _enemyMaxShield : _enemyShield + num;
+        EnemyUI.ShieldUIUpdate();
     }
 }

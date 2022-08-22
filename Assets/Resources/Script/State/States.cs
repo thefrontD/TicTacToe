@@ -191,8 +191,9 @@ public class EnemyState : BaseState
         {
             if(enemy.EnemyActions.Peek().Item1 == EnemyAction.WallsSummon || enemy.EnemyActions.Peek().Item1 == EnemyAction.WallSummon)
                 enemy.GetOverLapPosition(enemy.EnemyActions.Peek());
-            if(enemy.EnemyShield == 0)
+            if(enemy.EnemyShield == 0){
                 enemy.EnemyHealShield(enemy.EnemyMaxShield);
+            }
         }
 
         foreach (Enemy enemy in EnemyManager.Instance.EnemyList)
