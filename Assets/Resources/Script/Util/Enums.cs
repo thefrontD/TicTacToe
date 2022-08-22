@@ -129,7 +129,7 @@ public enum Debuff
 }
 public enum BoardSituation
 {
-    WillAttack=0, WillSummon, WillColored, None = 100
+    WillAttack=0, WillSummon, WillColored, WillMove, None = 100
 }
 
 [JsonConverter(typeof(StringEnumConverter))]
