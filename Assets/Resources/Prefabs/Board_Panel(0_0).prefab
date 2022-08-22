@@ -296,7 +296,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3144787859519300545
 Transform:
   m_ObjectHideFlags: 0
@@ -305,7 +305,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3144787859519300546}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 1.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0.6, z: -0}
   m_LocalScale: {x: 0.10500033, y: 0.104999974, z: 0}
   m_Children: []
   m_Father: {fileID: 4180013918114273247}
@@ -376,8 +376,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveTime: 1
   tweenDelay: 0.1
-  maxHeight: 1
-  minHeight: 1.5
+  maxHeight: 0.5
+  minHeight: 0.6
   spriteDictionary:
     m_keys: 000000000100000002000000
     m_values:
