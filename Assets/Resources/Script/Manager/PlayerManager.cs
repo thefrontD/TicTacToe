@@ -13,6 +13,8 @@ using Random = UnityEngine.Random;
 /// </summary>
 public class PlayerManager : Singleton<PlayerManager>
 {
+    [SerializeField] private CardAcquiringPanel cardAqr;
+
     private PlayerDataHolder _holder;
     
     private int _maxHp;
@@ -106,6 +108,7 @@ public class PlayerManager : Singleton<PlayerManager>
         BoardManager.Instance.BoardLoading(stageData);
         PlayerLoading();
         EnemyManager.Instance.EnemyLoading(stageData);
+        cardAqr.Init();
     }
     
     public void Init(object sender, EventArgs arg)
@@ -117,6 +120,7 @@ public class PlayerManager : Singleton<PlayerManager>
         BoardManager.Instance.BoardLoading(stageData);
         PlayerLoading();
         EnemyManager.Instance.EnemyLoading(stageData);
+        cardAqr.Init();
     }
 
     public void PlayerLoading()

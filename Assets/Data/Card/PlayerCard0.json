@@ -55,7 +55,7 @@
     {
         "ColorCardEffect": "Color",
         "costChangeCondition": "None",
-        "colorTargetPosition": "All",
+        "colorTargetPosition": "P1",
         "colorTargetNum": "One",
         "CardType": "Color",
         "TriggerCondition": "None",

@@ -22,7 +22,8 @@ public class CardAcquiringPanel : MonoBehaviour
     //현재 카드 덱에 두번째로 많은 카드 풀의 카드
     private List<int> CardPool3 = new List<int>();
     //위 두 카드 풀에 없는 카드
-    void Start()
+
+    public void Init()
     {
         TotalCardList = CardData.Instance._load("TotalCardData");
         Count = new int[System.Enum.GetValues(typeof(CardPoolAttribute)).Length];
@@ -38,8 +39,6 @@ public class CardAcquiringPanel : MonoBehaviour
             }
         }
         
-
-
         //가장 많은 pool, 다음으로 많은 pool 선정
         int first;
         int second;

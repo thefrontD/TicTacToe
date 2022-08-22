@@ -1,0 +1,210 @@
+fileFormatVersion: 2
+guid: dd6bb2c9215f74746a58cb8220c5c11d
+ModelImporter:
+  serializedVersion: 20200
+  internalIDToNameTable:
+  - first:
+      74: -1343852339964784151
+    second: "\uC2E4\uB9B0\uB354|\uC2E4\uB9B0\uB354.001Action.001"
+  - first:
+      74: 6327375970064863262
+    second: "\uC2E4\uB9B0\uB354|\uC2E4\uB9B0\uB354.002Action.001"
+  - first:
+      74: -1253117658463726235
+    second: "\uC2E4\uB9B0\uB354|\uC2E4\uB9B0\uB354.004Action.001"
+  - first:
+      74: 7317133807806987012
+    second: "\uC2E4\uB9B0\uB354|\uC2E4\uB9B0\uB354.005Action.001"
+  - first:
+      74: -8369720411737657475
+    second: "\uC2E4\uB9B0\uB354|\uC2E4\uB9B0\uB354.006Action.001"
+  - first:
+      74: -9056202561408431514
+    second: "\uC2E4\uB9B0\uB354|\uC2E4\uB9B0\uB354Action.001"
+  - first:
+      74: 3012403529858600520
+    second: "\uC2E4\uB9B0\uB354.001|\uC2E4\uB9B0\uB354.001Action.001"
+  - first:
+      74: 3346403727775640260
+    second: "\uC2E4\uB9B0\uB354.001|\uC2E4\uB9B0\uB354.002Action.001"
+  - first:
+      74: 9219319067147298965
+    second: "\uC2E4\uB9B0\uB354.001|\uC2E4\uB9B0\uB354.004Action.001"
+  - first:
+      74: -7998228494261850166
+    second: "\uC2E4\uB9B0\uB354.001|\uC2E4\uB9B0\uB354.005Action.001"
+  - first:
+      74: -2466159974061425320
+    second: "\uC2E4\uB9B0\uB354.001|\uC2E4\uB9B0\uB354.006Action.001"
+  - first:
+      74: -1088015314567926809
+    second: "\uC2E4\uB9B0\uB354.001|\uC2E4\uB9B0\uB354Action.001"
+  - first:
+      74: 2834398491387141053
+    second: "\uC2E4\uB9B0\uB354.002|\uC2E4\uB9B0\uB354.001Action.001"
+  - first:
+      74: -7570932507127032857
+    second: "\uC2E4\uB9B0\uB354.002|\uC2E4\uB9B0\uB354.002Action.001"
+  - first:
+      74: -8431431091695414610
+    second: "\uC2E4\uB9B0\uB354.002|\uC2E4\uB9B0\uB354.004Action.001"
+  - first:
+      74: 2943701341201149582
+    second: "\uC2E4\uB9B0\uB354.002|\uC2E4\uB9B0\uB354.005Action.001"
+  - first:
+      74: -7208365607738907542
+    second: "\uC2E4\uB9B0\uB354.002|\uC2E4\uB9B0\uB354.006Action.001"
+  - first:
+      74: 7143926712776955437
+    second: "\uC2E4\uB9B0\uB354.002|\uC2E4\uB9B0\uB354Action.001"
+  - first:
+      74: 5691310205165892754
+    second: "\uC2E4\uB9B0\uB354.004|\uC2E4\uB9B0\uB354.001Action.001"
+  - first:
+      74: -8077853215498131798
+    second: "\uC2E4\uB9B0\uB354.004|\uC2E4\uB9B0\uB354.002Action.001"
+  - first:
+      74: 3168999458321090225
+    second: "\uC2E4\uB9B0\uB354.004|\uC2E4\uB9B0\uB354.004Action.001"
+  - first:
+      74: -8246331469483197920
+    second: "\uC2E4\uB9B0\uB354.004|\uC2E4\uB9B0\uB354.005Action.001"
+  - first:
+      74: -7730418422330925950
+    second: "\uC2E4\uB9B0\uB354.004|\uC2E4\uB9B0\uB354.006Action.001"
+  - first:
+      74: 1568457169125676896
+    second: "\uC2E4\uB9B0\uB354.004|\uC2E4\uB9B0\uB354Action.001"
+  - first:
+      74: -7819317264291340864
+    second: "\uC2E4\uB9B0\uB354.005|\uC2E4\uB9B0\uB354.001Action.001"
+  - first:
+      74: -4148201602669867363
+    second: "\uC2E4\uB9B0\uB354.005|\uC2E4\uB9B0\uB354.002Action.001"
+  - first:
+      74: 6182165235203289129
+    second: "\uC2E4\uB9B0\uB354.005|\uC2E4\uB9B0\uB354.004Action.001"
+  - first:
+      74: -6152687833532574891
+    second: "\uC2E4\uB9B0\uB354.005|\uC2E4\uB9B0\uB354.005Action.001"
+  - first:
+      74: 2090680621640399651
+    second: "\uC2E4\uB9B0\uB354.005|\uC2E4\uB9B0\uB354.006Action.001"
+  - first:
+      74: -2326543177160714179
+    second: "\uC2E4\uB9B0\uB354.005|\uC2E4\uB9B0\uB354Action.001"
+  - first:
+      74: 3764502608882342933
+    second: "\uC2E4\uB9B0\uB354.006|\uC2E4\uB9B0\uB354.001Action.001"
+  - first:
+      74: 4175714526181483871
+    second: "\uC2E4\uB9B0\uB354.006|\uC2E4\uB9B0\uB354.002Action.001"
+  - first:
+      74: -266083823088635462
+    second: "\uC2E4\uB9B0\uB354.006|\uC2E4\uB9B0\uB354.004Action.001"
+  - first:
+      74: 3751051131554261156
+    second: "\uC2E4\uB9B0\uB354.006|\uC2E4\uB9B0\uB354.005Action.001"
+  - first:
+      74: -3435743078144154042
+    second: "\uC2E4\uB9B0\uB354.006|\uC2E4\uB9B0\uB354.006Action.001"
+  - first:
+      74: -968935445579215149
+    second: "\uC2E4\uB9B0\uB354.006|\uC2E4\uB9B0\uB354Action.001"
+  externalObjects: {}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

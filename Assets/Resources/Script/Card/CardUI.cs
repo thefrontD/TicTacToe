@@ -38,21 +38,21 @@ public class CardUI : MonoBehaviour
     {
         this.Card = card;
 
-        /* ÁÖÀÇ»çÇ×:
-         * Ä«µå ÀÌ¸§¿¡¼­ °æ·Î·Î »ç¿ëÇÒ ¼ö ¾ø´Â Æ¯¼ö¹®ÀÚµéÀÌ ²Ï ÀÖ½À´Ï´Ù.
-         * µû¶ó¼­ Ä«µå spriteÀÇ ÆÄÀÏ¸íÀ» ´ÙÀ½°ú °°ÀÌ ¼öÁ¤Çß½À´Ï´Ù.
-         * ':' -> '-'  ex) "»öÄ¥ : ½ÊÀÚ°¡" -> "»öÄ¥ - ½ÊÀÚ°¡"
-         * '/' -> '_'  ex) "»öÄ¥/ÀÌµ¿" -> "»öÄ¥_ÀÌµ¿"
+        /* ï¿½ï¿½ï¿½Ç»ï¿½ï¿½ï¿½:
+         * Ä«ï¿½ï¿½ ï¿½Ì¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Î·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Æ¯ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ö½ï¿½ï¿½Ï´ï¿½.
+         * ï¿½ï¿½ï¿½ï¿½ Ä«ï¿½ï¿½ spriteï¿½ï¿½ ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ß½ï¿½ï¿½Ï´ï¿½.
+         * ':' -> '-'  ex) "ï¿½ï¿½Ä¥ : ï¿½ï¿½ï¿½Ú°ï¿½" -> "ï¿½ï¿½Ä¥ - ï¿½ï¿½ï¿½Ú°ï¿½"
+         * '/' -> '_'  ex) "ï¿½ï¿½Ä¥/ï¿½Ìµï¿½" -> "ï¿½ï¿½Ä¥_ï¿½Ìµï¿½"
          */
-        // TODO: °ø°Ý/ÀÌµ¿, °ø°Ý/»öÄ¥, Àü·« : ¸¶³ª, Àü·« : Ä«µå, Àü·« : °­È­, Çà¿îÀÇ ¼ýÀÚ, Èí¼ö, ÀÌµ¿, ´ë°¢¼± ÀÌµ¿, °ÅÁ¡ : È¸º¹ ¾ÆÆ®°¡ ¾øÀ½!!
-        // TODO: ÆùÆ® ¹®Á¦ ÇØ°á (SF ÇÔ¹Ú´« / ¿È´Ï°íµñ), Ä«µå µÞ¸é ¸¸µé±â?
-        CardBackground.sprite = Resources.Load<Sprite>($"Images/Cards/{card.CardType}/¹è°æ");
+        // TODO: ï¿½ï¿½ï¿½ï¿½/ï¿½Ìµï¿½, ï¿½ï¿½ï¿½ï¿½/ï¿½ï¿½Ä¥, ï¿½ï¿½ï¿½ï¿½ : ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ : Ä«ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ : ï¿½ï¿½È­, ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½, ï¿½Ìµï¿½, ï¿½ë°¢ï¿½ï¿½ ï¿½Ìµï¿½, ï¿½ï¿½ï¿½ï¿½ : È¸ï¿½ï¿½ ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½!!
+        // TODO: ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ ï¿½Ø°ï¿½ (SF ï¿½Ô¹Ú´ï¿½ / ï¿½È´Ï°ï¿½ï¿½ï¿½), Ä«ï¿½ï¿½ ï¿½Þ¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½?
+        CardBackground.sprite = Resources.Load<Sprite>($"Images/Cards/{card.CardType}/BackGround");
         string cardPathName = card.CardName.Replace(':', '-').Replace('/', '_');
         print(cardPathName);
         CardImage.sprite = Resources.Load<Sprite>($"Images/Cards/{card.CardType}/{cardPathName}");
 
         SetSortingOrder(0);
-        
+
         CardNameText.text = Card.CardName;
         CardDescText.text = Card.CardDesc;
         CardCostText.text = Card.CardCost.ToString();
@@ -98,7 +98,7 @@ public class CardUI : MonoBehaviour
         CardImage.sortingOrder = idx;
         CardCostText.sortingOrder = idx;
         CardNameText.sortingOrder = idx;
-        CardDescText.sortingOrder = idx;
+        CardDescText.sortingOrder = idx+1;
     }
     
     public void ToGrave()

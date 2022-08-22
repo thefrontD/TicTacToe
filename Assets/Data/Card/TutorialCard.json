@@ -51,16 +51,19 @@
     ]
   },
   {
-    "TriggerCondition": "None",
-    "AdditionalEffectCondition": "None",
-    "AdditionalEffect": "None",
     "ColorCardEffect": "Color",
+    "costChangeCondition": "None",
+    "colorTargetPosition": "P1",
+    "colorTargetNum": "One",
     "CardType": "Color",
-    "cardName": "색칠",
-    "cardDesc": "자신이 위치한 칸을 색칠한다",
-    "cardCost": 1,
+    "TriggerCondition": "None",
+    "AdditionalEffectCondition": "None",
+    "AdditionalEffect": "None",
+    "CardName": "색칠",
+    "CardDesc": "자신이 위치한 칸을 색칠한다",
+    "CardCost": 1,
     "CardPoolAttributes" : [
-      "BasicCardPool"
+        "BasicCardPool"
     ]
   },
   {
@@ -79,16 +82,19 @@
     ]
   },
   {
-    "TriggerCondition": "None",
-    "AdditionalEffectCondition": "None",
-    "AdditionalEffect": "None",
     "ColorCardEffect": "Color",
+    "costChangeCondition": "None",
+    "colorTargetPosition": "P1",
+    "colorTargetNum": "One",
     "CardType": "Color",
-    "cardName": "색칠",
-    "cardDesc": "자신이 위치한 칸을 색칠한다",
-    "cardCost": 1,
+    "TriggerCondition": "None",
+    "AdditionalEffectCondition": "None",
+    "AdditionalEffect": "None",
+    "CardName": "색칠",
+    "CardDesc": "자신이 위치한 칸을 색칠한다",
+    "CardCost": 1,
     "CardPoolAttributes" : [
-      "BasicCardPool"
+        "BasicCardPool"
     ]
   },
   {
@@ -152,16 +158,19 @@
     ]
   },
   {
-    "TriggerCondition": "None",
-    "AdditionalEffectCondition": "None",
-    "AdditionalEffect": "None",
     "ColorCardEffect": "Color",
+    "costChangeCondition": "None",
+    "colorTargetPosition": "P1",
+    "colorTargetNum": "One",
     "CardType": "Color",
-    "cardName": "색칠",
-    "cardDesc": "자신이 위치한 칸을 색칠한다",
-    "cardCost": 1,
+    "TriggerCondition": "None",
+    "AdditionalEffectCondition": "None",
+    "AdditionalEffect": "None",
+    "CardName": "색칠",
+    "CardDesc": "자신이 위치한 칸을 색칠한다",
+    "CardCost": 1,
     "CardPoolAttributes" : [
-      "BasicCardPool"
+        "BasicCardPool"
     ]
   },
   {
@@ -231,16 +240,19 @@
     ]
   },
   {
+    "ColorCardEffect": "Color",
+    "costChangeCondition": "None",
+    "colorTargetPosition": "P1",
+    "colorTargetNum": "One",
+    "CardType": "Color",
     "TriggerCondition": "None",
     "AdditionalEffectCondition": "None",
     "AdditionalEffect": "None",
-    "ColorCardEffect": "Color",
-    "CardType": "Color",
-    "cardName": "색칠",
-    "cardDesc": "자신이 위치한 칸을 색칠한다",
-    "cardCost": 1,
+    "CardName": "색칠",
+    "CardDesc": "자신이 위치한 칸을 색칠한다",
+    "CardCost": 1,
     "CardPoolAttributes" : [
-      "BasicCardPool"
+        "BasicCardPool"
     ]
   }
 ]

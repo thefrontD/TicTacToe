@@ -33,7 +33,7 @@ public class CardAcquiring : MonoBehaviour, IPointerClickHandler
     public void SetImage(){
         //set bg
         Debug.Log(card.CardType.ToString());
-        Sprite ImageTo = LoadImage(Application.dataPath +"/Resources/Images/Cards/"+ card.CardType.ToString() +"/배경.png");
+        Sprite ImageTo = LoadImage(Application.dataPath +"/Resources/Images/Cards/"+ card.CardType.ToString() +"/BackGround.png");
         transform.GetComponent<Image>().sprite = ImageTo;
         //set mana
         Debug.Log(card.CardCost.ToString());
