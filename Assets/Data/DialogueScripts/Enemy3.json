@@ -2,12 +2,12 @@
   "Dialogues": [
     {
       "Name": "나레이터",
-      "Context": "",
+      "Context": "다음으로 용사를 방해하는 것은 바로!",
       "PortraitLocation": "Left"
     },
     {
       "Name": "나레이터",
-      "Context": "",
+      "Context": "드디어 등장하는구나 마왕군!",
       "PortraitLocation": "Left"
     },
     {

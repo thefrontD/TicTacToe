@@ -20,6 +20,8 @@ public class BoardManager : Singleton<BoardManager>
     [SerializeField] private GameObject WallPrefabs;
     [SerializeField] private GameObject ColorEffect;
     [SerializeField] private GameObject MoveWindEffect;
+    [SerializeField] private GameObject MainBoard;
+    [SerializeField] private Vector3 bias;
 
     private GameObject _playerObject;
     public GameObject PlayerObject => _playerObject;
@@ -27,7 +29,7 @@ public class BoardManager : Singleton<BoardManager>
     private List<List<Board>> _gameBoard = new List<List<Board>>();
     public List<List<Board>> GameBoard => _gameBoard;
 
-    private List<List<BoardObject>> _boardObjects = new List<List<BoardObject>>();
+    [SerializeField] private List<List<BoardObject>> _boardObjects = new List<List<BoardObject>>();
     public List<List<BoardObject>> BoardObjects => _boardObjects;
     //Board Color Array
     private List<List<BoardColor>> _boardColors = new List<List<BoardColor>>();
@@ -76,7 +78,8 @@ public class BoardManager : Singleton<BoardManager>
             {
                 float size = BoardPrefab.transform.localScale.x;
                 Vector3 pos = new Vector3(-size + size * j, size - size * i + 4, 0);
-                _gameBoard[i].Add(Instantiate(BoardPrefab, pos, Quaternion.identity).GetComponent<Board>());
+                //_gameBoard[i].Add(Instantiate(BoardPrefab, pos, Quaternion.identity).GetComponent<Board>());
+                _gameBoard[i].Add(MainBoard.transform.GetChild(i*3+j).GetComponent<Board>());
                 _gameBoard[i][j].Init(_boardColors[i][j], i, j);
                 _boardAttackables[i].Add(null);
             }
@@ -87,8 +90,7 @@ public class BoardManager : Singleton<BoardManager>
 
     private void InitPlayer()
     {
-        Vector3 initPos = _gameBoard[PlayerManager.Instance.Row][PlayerManager.Instance.Col].transform.position 
-                          - new Vector3(0, 0, 0);
+        Vector3 initPos = _gameBoard[PlayerManager.Instance.Row][PlayerManager.Instance.Col].transform.position  + bias;
         _boardObjects[PlayerManager.Instance.Row][PlayerManager.Instance.Col] = BoardObject.Player;
         Quaternion rotation = Quaternion.Euler(-90, -90, 90);
         _playerObject = Instantiate(PlayerPrefab, initPos, rotation);
@@ -138,7 +140,7 @@ public class BoardManager : Singleton<BoardManager>
         {
             _boardObjects[row][col] = BoardObject.Wall;
             ColoringBoard(row, col, BoardColor.None);
-            GameObject wall = Instantiate(WallPrefabs, _gameBoard[row][col].transform.position + new Vector3(0, 0, 2.5f), Quaternion.identity);
+            GameObject wall = Instantiate(WallPrefabs, _gameBoard[row][col].transform.position + new Vector3(0, 0, -6f), Quaternion.identity);
             _boardAttackables[row][col] = wall.GetComponent<Wall>();
             wall.GetComponent<Wall>().Init(row, col);
             wall.transform.DOMoveZ(-1, 1).SetEase(Ease.OutQuart);
@@ -162,7 +164,7 @@ public class BoardManager : Singleton<BoardManager>
             _boardObjects[PlayerManager.Instance.Row][PlayerManager.Instance.Col] = BoardObject.None;
             PlayerManager.Instance.Row = row;
             PlayerManager.Instance.Col = col;
-            Vector3 nextPos = _gameBoard[PlayerManager.Instance.Row][PlayerManager.Instance.Col].transform.position;
+            Vector3 nextPos = _gameBoard[PlayerManager.Instance.Row][PlayerManager.Instance.Col].transform.position + bias;
             _boardObjects[row][col] = BoardObject.Player;
             Vector3 nextRot = PlayerObject.transform.position - nextPos;
 
