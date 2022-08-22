@@ -105,12 +105,10 @@ public class Enemy : MonoBehaviour, IAttackable
                     }
 
                     _enemyHp -= (int) Math.Pow(2, bingoCount - 1);
-                    EnemyHealShield(_enemyMaxShield);
                     PlayerManager.Instance.BingoAttack = true;
                 }
                 else
                 {
-                    EnemyHealShield(_enemyMaxShield);
                     if (PlayerManager.Instance.TutorialPhase == 4)
                         PlayerManager.Instance.tutorial4Trigger = true;
                 }
@@ -440,7 +438,7 @@ public class Enemy : MonoBehaviour, IAttackable
         _previousPlayerCol = col;
     }
 
-    private void EnemyHealShield(int num)
+    public void EnemyHealShield(int num)
     {
         Debug.Log("EnemyHPHeal!");
         _enemyShield = _enemyShield + num > _enemyMaxShield ? _enemyMaxShield : _enemyShield + num;
