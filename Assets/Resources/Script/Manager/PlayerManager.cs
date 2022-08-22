@@ -301,14 +301,16 @@ public class PlayerManager : Singleton<PlayerManager>
 
     public IEnumerator DamageBlink()
     {
-        const int numBlinks = 30;
-        Renderer renderer = BoardManager.Instance.PlayerObject.GetComponent<Renderer>();
-        for (int i = 0; i < numBlinks * 2; i++)
+        const int numBlinks = 10;
+        GameObject playerObject = BoardManager.Instance.PlayerObject.transform.GetChild(0).gameObject;
+        for (int i = 0; i < numBlinks; i++)
         {
-            renderer.enabled = !renderer.enabled;
-            yield return new WaitForSeconds(0.1f);
+            playerObject.SetActive(false);
+            yield return new WaitForSeconds(0.05f);
+            playerObject.SetActive(true);
+            yield return new WaitForSeconds(0.05f);
         }
-        renderer.enabled = true;
+        playerObject.SetActive(true);
     }
 
     public bool MovePlayer(int row, int col, MoveCardEffect effect = MoveCardEffect.Slide)
