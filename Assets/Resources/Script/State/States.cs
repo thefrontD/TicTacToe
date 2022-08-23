@@ -44,7 +44,7 @@ public class NormalState : BaseState
     private int DrawNum;
     private bool isNewPlayerTurn;
 
-    public NormalState(int DrawNum = 5, bool isNewPlayerTurn = false)
+    public NormalState(int DrawNum = 6, bool isNewPlayerTurn = false)
     {
         this.isNewPlayerTurn = isNewPlayerTurn;
 
@@ -383,12 +383,34 @@ public class MoveState : BaseState
                             for (int i = 0; i < boardSize; i++)
                                 this.movableSpace[i, playerCol] = true;
                             break;
+                        case EnemyAction.H2Attack:
+                            for (int j = 0; j < boardSize; j++)
+                            {
+                                for (int i = 0; i < boardSize; i++)
+                                {
+                                    if (i == playerRow)
+                                        continue;
+                                    this.movableSpace[i, j] = true;
+                                }
+                            }
+                            break;
+                        case EnemyAction.V2Attack:
+                            for (int i = 0; i < boardSize; i++)
+                            {
+                                for (int j = 0; j < boardSize; j++)
+                                {
+                                    if (j == playerCol)
+                                        continue;
+                                    this.movableSpace[i, j] = true;
+                                }
+                            }
+                            break;
                         case EnemyAction.AllAttack:
                             for (int i = 0; i < boardSize; i++)
                             for (int j = 0; j < boardSize; j++)
                                 this.movableSpace[i, j] = true;
                             break;
-                        case EnemyAction.ColoredAttack: // TODO: ColorAttack은 Enemy로 색칠된 건지, Player로 색칠된 건지?
+                        case EnemyAction.ColoredAttack:
                         {
                             List<List<BoardColor>> boardColors = BoardManager.Instance.BoardColors;
                             for (int i = 0; i < boardSize; i++) // row
@@ -437,7 +459,7 @@ public class MoveState : BaseState
                 int row = board.Row;
                 int col = board.Col;
                 //Debug.Log($"{row}, {col}");
-                if (this.movableSpace[row, col])
+                if (this.movableSpace[row, col] && BoardManager.Instance.BoardObjects[row][col] == BoardObject.None)
                 {
                     this.moveRow = row;
                     this.moveCol = col;
@@ -588,6 +610,11 @@ public class AttackState : BaseState
         bool isMinion = (targetType / 100) % 10 != 0;
         int playerRow = PlayerManager.Instance.Row;
         int playerCol = PlayerManager.Instance.Col;
+        foreach (Enemy enemy in EnemyManager.Instance.EnemyList)
+        {
+            this.prevEnemyShield.Add(enemy.EnemyShield);
+        }
+
         coord[] coords =
         {
             new coord(playerRow - 1, playerCol), new coord(playerRow + 1, playerCol),
@@ -813,20 +840,14 @@ public class AttackState : BaseState
             }
             case AdditionalEffectCondition.DestroyShield: // 그 몬스터의 방어도를 방금 파괴했을 때
             {
-                int i = 0;
-                foreach (IAttackable attackable in this.selectedAttackableList)
+                for (int i = 0; i < this.prevEnemyShield.Count; i++)
                 {
-                    if (attackable is Enemy)
+                    if (EnemyManager.Instance.EnemyList[i].EnemyShield <= 0 && this.prevEnemyShield[i] > 0) // 이 공격으로 방어도를 파괴했음
                     {
-                        Enemy enemy = attackable as Enemy;
-                        if (enemy.EnemyShield <= 0 && this.prevEnemyShield[i] > 0) // 이 공격으로 방어도를 파괴했음
-                        {
-                            proceed = true;
-                            additionalEffectParam.Add(enemy);
-                        }
-
-                        i++;
+                        proceed = true;
+                        additionalEffectParam.Add(EnemyManager.Instance.EnemyList[i]);
                     }
+
                 }
 
                 break;
@@ -925,6 +946,7 @@ public class AttackState : BaseState
                     {
                         Enemy enemy = attackable as Enemy;
                         enemy.EnemyHP -= 1;
+                        enemy.EnemyUI.HPUIUpdate();
                     }
                 }
 
