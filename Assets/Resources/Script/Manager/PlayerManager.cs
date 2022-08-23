@@ -163,6 +163,13 @@ public class PlayerManager : Singleton<PlayerManager>
         else
             state = new NormalState(5, true);
         state.Enter();
+        
+        if(GameManager.Instance.CurrentStage%10 == 10)
+            SoundManager.Instance.PlayBGM("Battle_Boss");
+        else if(GameManager.Instance.CurrentStage%10 == 3||GameManager.Instance.CurrentStage%10 == 6||GameManager.Instance.CurrentStage%10 == 7)
+            SoundManager.Instance.PlayBGM("Battle_Evils");
+        else
+            SoundManager.Instance.PlayBGM("Battle_Normal");
     }
 
     public void SavePlayerData()

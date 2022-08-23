@@ -27,7 +27,6 @@ public class GameManager : Singleton<GameManager>
     {
         if (GameManager.Instance != this)
             Destroy(gameObject);
-        
         DontDestroyOnLoad(this.gameObject);
     }
 
@@ -60,6 +59,7 @@ public class GameManager : Singleton<GameManager>
 
         BoardManager.Instance.PlayerObject.transform.GetChild(0).gameObject.SetActive(false);
         BoardManager.Instance.PlayerObject.transform.GetChild(1).GetComponent<ParticleSystem>().Play();
+        SoundManager.Instance.PlaySE("Death");
 
         yield return new WaitForSeconds(1.0f);
 
