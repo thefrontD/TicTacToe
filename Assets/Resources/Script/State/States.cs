@@ -704,6 +704,9 @@ public class AttackState : BaseState
         if (Physics.Raycast(ray, out hitData))
         {
             IAttackable iAttackable = hitData.transform.GetChild(0).gameObject.GetComponent<IAttackable>();
+            if(iAttackable == null)
+                iAttackable = hitData.transform.gameObject.GetComponent<IAttackable>();
+
             if (iAttackable != null) //레이캐스트에 맞은 오브젝트에 Iattackable 컴포넌트가 있는가?
             {
                 if (attackableList.Contains(iAttackable)) //attackableList에 있는가?
