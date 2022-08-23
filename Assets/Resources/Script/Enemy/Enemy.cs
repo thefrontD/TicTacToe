@@ -1,12 +1,10 @@
+using DG.Tweening;
+using EPOOutline;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using EPOOutline;
 using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
 using Random = UnityEngine.Random;
-using DG.Tweening;
 
 public class Enemy : MonoBehaviour, IAttackable
 {
@@ -145,6 +143,10 @@ public class Enemy : MonoBehaviour, IAttackable
     }
 
     public EnemyUI EnemyUI;
+    [SerializeField] private Material spriteOutlineMaterial;
+    [SerializeField] private Material cardboardOutlineMaterial;
+    [SerializeField] private Color spriteOutlineColor;
+    [SerializeField] private Color originalSpriteOutlineColor = Color.white;
 
     public void InitEnemyData(EnemyDataHolder enemyDataHolder)
     {
@@ -434,5 +436,30 @@ public class Enemy : MonoBehaviour, IAttackable
     {
         Debug.Log("EnemyHPHeal!");
         _enemyShield = _enemyShield + num > _enemyMaxShield ? _enemyMaxShield : _enemyShield + num;
+    }
+
+    public void EnemyOutlineEffect()
+    {
+        spriteOutlineMaterial.DOColor(spriteOutlineColor, 0.5f).SetLoops(-1, LoopType.Yoyo);
+        cardboardOutlineMaterial.DOColor(spriteOutlineColor, 0.5f).SetLoops(-1, LoopType.Yoyo);
+    }
+
+    public void StopEnemyOutlineEffect()
+    {
+        spriteOutlineMaterial.DOKill();
+        cardboardOutlineMaterial.DOKill();
+        InitEnemyOutline();
+    }
+
+    public void InitEnemyOutline()
+    {
+        spriteOutlineMaterial.SetColor("_Color", originalSpriteOutlineColor);
+        cardboardOutlineMaterial.SetColor("_Color", originalSpriteOutlineColor);
+        Debug.Log("init");
+    }
+
+    void Start()
+    {
+        InitEnemyOutline();
     }
 }

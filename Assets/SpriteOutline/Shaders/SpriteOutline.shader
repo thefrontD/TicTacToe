@@ -3,7 +3,7 @@
     Properties
     {
 		[PerRendererData] _MainTex ("Sprite Texture", 2D) = "white" {}
-		_Color ("Main texture Tint", Color) = (1,1,1,1)
+		_Color1 ("Main texture Tint", Color) = (1,1,1,1)
 
 		[Header(General Settings)]
 		[MaterialToggle] _OutlineEnabled ("Outline Enabled", Float) = 1
@@ -15,7 +15,7 @@
 		[KeywordEnum(Inside under sprite, Inside over sprite, Outside)] _OutlinePosition("Outline Position (Frame Only)", Float) = 0
 
 		[Header(Solid Settings)]
-		_SolidOutline ("Outline Color Base", Color) = (1,1,1,1)
+		_Color ("Outline Color Base", Color) = (1,1,1,1)
 
 		[Header(Gradient Settings)]
 		_GradientOutline1 ("Outline Color 1", Color) = (1,1,1,1)
@@ -70,7 +70,7 @@
 				float2 texcoord  : TEXCOORD0;
 			};
 
-			fixed4 _Color;
+			fixed4 _Color1;
             fixed _Thickness;
             fixed _OutlineEnabled;
             fixed _ConnectedAlpha;
@@ -78,7 +78,7 @@
             fixed _OutlinePosition;
             fixed _OutlineMode;
 
-			fixed4 _SolidOutline;
+			fixed4 _Color;
 
 			fixed4 _GradientOutline1;
 			fixed4 _GradientOutline2;
@@ -95,7 +95,7 @@
 				v2f OUT;
 				OUT.vertex = UnityObjectToClipPos(IN.vertex);
 				OUT.texcoord = IN.texcoord;
-				OUT.color = IN.color * _Color;
+				OUT.color = IN.color * _Color1;
 				#ifdef PIXELSNAP_ON
 				OUT.vertex = UnityPixelSnap (OUT.vertex);
 				#endif
@@ -217,11 +217,11 @@
 				{
 					if(_OutlineMode == 0) // Solid
 					{
-						outlineC = _SolidOutline;
+						outlineC = _Color;
 
 						if(_ConnectedAlpha != 0)
 						{
-							outlineC.a *= _Color.a;
+							outlineC.a *= _Color1.a;
 						}
 						outlineC.rgb *= outlineC.a;
 					}
@@ -266,8 +266,8 @@
 
 								if(_ConnectedAlpha != 0)
 								{
-									_GradientOutline1.a *= _Color.a;
-									_GradientOutline2.a *= _Color.a;
+									_GradientOutline1.a *= _Color1.a;
+									_GradientOutline2.a *= _Color1.a;
 									//outlineC.rgb *= outlineC.a;
 								}
 								_GradientOutline1.rgb *= _GradientOutline1.a;
@@ -320,8 +320,8 @@
 
 								if(_ConnectedAlpha != 0)
 								{
-									_GradientOutline1.a *= _Color.a;
-									_GradientOutline2.a *= _Color.a;
+									_GradientOutline1.a *= _Color1.a;
+									_GradientOutline2.a *= _Color1.a;
 									//outlineC.rgb *= outlineC.a;
 								}
 								_GradientOutline1.rgb *= _GradientOutline1.a;
@@ -373,7 +373,7 @@
 
 						if(_ConnectedAlpha != 0)
 						{
-							outlineC.a *= _Color.a;
+							outlineC.a *= _Color1.a;
 						}
 						outlineC.rgb *= outlineC.a;
 					}

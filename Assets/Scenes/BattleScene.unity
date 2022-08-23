@@ -1919,6 +1919,11 @@ MonoBehaviour:
   - Type: 11
     Text: "\uC774\uBC88 \uC804\uD22C\uC5D0\uC11C \uC0AC\uC6A9\uD55C \uCE74\uB4DC\uB97C
       \uD655\uC778\uD569\uB2C8\uB2E4."
+--- !u!1 &1458823355 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1616819749753361075, guid: 17bd36cadba43df499d781cd99e3348e, type: 3}
+  m_PrefabInstance: {fileID: 1605126316}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1463755947 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1830731041, guid: 17bd36cadba43df499d781cd99e3348e, type: 3}
@@ -2622,6 +2627,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DialogueCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 3425932782594703630, guid: f6a30c053a6963d479c730f21917a529, type: 3}
+      propertyPath: normalUICanvas
+      value: 
+      objectReference: {fileID: 1458823355}
     - target: {fileID: 5957348934926785969, guid: f6a30c053a6963d479c730f21917a529, type: 3}
       propertyPath: m_Pivot.x
       value: 0
