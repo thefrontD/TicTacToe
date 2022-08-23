@@ -534,10 +534,7 @@ public class MoveState : BaseState
             }
             case AdditionalEffect.Re: // 그 카드를 패로 되돌림
             {
-                List<CardUI> grave = CardManager.Instance.GraveList;
-                CardUI thisCardUI = grave[grave.Count - 1];
-                grave.RemoveAt(grave.Count - 1);
-                CardManager.Instance.HandCardList.Add(thisCardUI); // TODO: 카드 생성되는 모션?
+                CardManager.Instance.DrawFromGrave();
                 break;
             }
         }
@@ -1283,10 +1280,7 @@ public class ColorState : BaseState
             }
             case AdditionalEffect.Re: // 그 카드를 패로 되돌림
             {
-                List<CardUI> grave = CardManager.Instance.GraveList;
-                CardUI thisCardUI = grave[grave.Count - 1];
-                grave.RemoveAt(grave.Count - 1);
-                CardManager.Instance.HandCardList.Add(thisCardUI); // TODO: 카드 생성되는 모션?
+                CardManager.Instance.DrawFromGrave();
                 break;
             }
         }
