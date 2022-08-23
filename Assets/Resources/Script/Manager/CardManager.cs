@@ -167,4 +167,22 @@ public class CardManager : Singleton<CardManager>
         }
         _graveList.Clear();
     }
+
+    public void DrawFromGrave()
+    {
+        StartCoroutine(DrawFromGraveCoroutine());
+    }
+
+    public IEnumerator DrawFromGraveCoroutine()
+    {
+        CardUI lastUsedCard = _graveList[_graveList.Count - 1];
+        _graveList.RemoveAt(_graveList.Count - 1);
+        _handCardList.Add(lastUsedCard);
+
+        lastUsedCard.isHand = true;
+        lastUsedCard.SetSortingOrder(0);
+        DrawCardAnimation(lastUsedCard);
+        yield return new WaitForSeconds(0.3f);
+        CheckUsable();
+    }
 }
