@@ -184,10 +184,25 @@ public abstract class Card
                 break;
 
             case TriggerCondition.PlayerWall:  // TODO
-                proceed = true;
+                for(int i = 0; i < 4;  i++){
+                    if(PlayerManager.Instance.Row + dx[i] < 0 || PlayerManager.Instance.Row + dx[i] > 2 ||
+                    PlayerManager.Instance.Row + dy[i] < 0 || PlayerManager.Instance.Row + dy[i] > 2){
+                        if(BoardManager.Instance.BoardObjects[PlayerManager.Instance.Row + dx[i]][PlayerManager.Instance.Col + dy[i]]
+                        == BoardObject.Wall)
+                            proceed = true;
+                    }
+                }
                 break;
             case TriggerCondition.PlayerNotWall:  // TODO
                 proceed = true;
+                for(int i = 0; i < 4;  i++){
+                    if(PlayerManager.Instance.Row + dx[i] < 0 || PlayerManager.Instance.Row + dx[i] > 2 ||
+                    PlayerManager.Instance.Row + dy[i] < 0 || PlayerManager.Instance.Row + dy[i] > 2){
+                        if(BoardManager.Instance.BoardObjects[PlayerManager.Instance.Row + dx[i]][PlayerManager.Instance.Col + dy[i]]
+                        == BoardObject.Wall)
+                            proceed = false;
+                    }
+                }
                 break;
 
             case TriggerCondition.OnlyAttackCardInHand:
