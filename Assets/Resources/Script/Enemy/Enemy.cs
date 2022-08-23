@@ -109,8 +109,7 @@ public class Enemy : MonoBehaviour, IAttackable
                 }
                 else
                 {
-                    if (PlayerManager.Instance.TutorialPhase == 4)
-                        PlayerManager.Instance.tutorial4Trigger = true;
+                    // if (PlayerManager.Instance.TutorialPhase == 4)
                 }
                 if (EnemyHP <= 0)
                 {

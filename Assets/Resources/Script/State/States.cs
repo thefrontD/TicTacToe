@@ -79,12 +79,6 @@ public class NormalState : BaseState
             PlayerManager.Instance.TutorialSubPhase = 0;
             TutorialManager.Instance.toNextTutorial(PlayerManager.Instance.TutorialPhase);
         }
-        
-        if(PlayerManager.Instance.tutorial4Trigger)
-        {
-            TutorialManager.Instance.toNextTutorial(PlayerManager.Instance.TutorialPhase);
-            PlayerManager.Instance.tutorial4Trigger = false;
-        }
 
         if (PlayerManager.Instance.TutorialPhase == 7)
         {

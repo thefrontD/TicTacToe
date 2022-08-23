@@ -66,7 +66,6 @@ public class PlayerManager : Singleton<PlayerManager>
     private bool _lockTurn = true;
     public bool LockTurn { get => _lockTurn; set => _lockTurn = value; }
     
-    public bool tutorial4Trigger = false;
     public event Action OnPlayerDataUpdate;
 
     public BaseState state;
