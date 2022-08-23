@@ -943,7 +943,7 @@ public class AttackState : BaseState
                     if (attackable is Enemy)
                     {
                         Enemy enemy = attackable as Enemy;
-                        enemy.SetDebuff(Debuff.PowerIncrease, 1);
+                        enemy.SetDebuff(Debuff.PowerIncrease, 20);
                     }
                 }
 
@@ -956,7 +956,7 @@ public class AttackState : BaseState
                     if (attackable is Enemy)
                     {
                         Enemy enemy = attackable as Enemy;
-                        enemy.SetDebuff(Debuff.PowerDecrease, 1);
+                        enemy.SetDebuff(Debuff.PowerDecrease, 20);
                     }
                 }
 

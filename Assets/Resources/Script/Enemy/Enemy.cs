@@ -345,9 +345,9 @@ public class Enemy : MonoBehaviour, IAttackable
         int damage = enemyAction.Item2;
 
         if(_debuffDictionary[Debuff.PowerIncrease] > 0)
-            damage = (int)(damage * (1 + _debuffDictionary[Debuff.PowerIncrease] / 100));
+            damage = (int)(damage * (1 + _debuffDictionary[Debuff.PowerIncrease] / 100f));
         if(_debuffDictionary[Debuff.PowerDecrease] > 0)
-            damage = (int)(damage * (1 - _debuffDictionary[Debuff.PowerIncrease] / 100));
+            damage = (int)(damage * (1 - _debuffDictionary[Debuff.PowerDecrease] / 100f));
         if(overlapPoint.Count == 0)
             return _isGameOver;
         else
