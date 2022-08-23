@@ -40,7 +40,7 @@ public class Cardboarder : MonoBehaviour {
 		}
 	}
 
-	private void CreateCardboardSideLineMesh()
+	public void CreateCardboardSideLineMesh()
 	{
 		List<Vector3> vertices = new List<Vector3>();
 		List<Vector2> uvs = new List<Vector2>();
@@ -94,7 +94,7 @@ public class Cardboarder : MonoBehaviour {
 		renderer.material = CardboardLineMaterial;
 	}
 
-	private void CreateCardboardFace(float zOffset, bool invert = false)
+	public void CreateCardboardFace(float zOffset, bool invert = false)
 	{
 		float minX, maxX, minY, maxY;
 		minX = float.MaxValue;

@@ -226,8 +226,8 @@ public class MoveState : BaseState
                 // 원하는 칸으로 이동
             {
                 for (int i = 0; i < boardSize; i++)
-                    for (int j = 0; j < boardSize; j++)
-                        this.movableSpace[i, j] = true;
+                for (int j = 0; j < boardSize; j++)
+                    this.movableSpace[i, j] = true;
                 break;
             }
 
@@ -357,9 +357,9 @@ public class MoveState : BaseState
             {
                 List<List<BoardColor>> boardColors = BoardManager.Instance.BoardColors;
                 for (int i = 0; i < boardSize; i++) // row
-                    for (int j = 0; j < boardSize; j++) // col
-                        if (boardColors[i][j] == BoardColor.Player)
-                            this.movableSpace[i, j] = true;
+                for (int j = 0; j < boardSize; j++) // col
+                    if (boardColors[i][j] == BoardColor.Player)
+                        this.movableSpace[i, j] = true;
                 break;
             }
 
@@ -385,25 +385,25 @@ public class MoveState : BaseState
                             break;
                         case EnemyAction.AllAttack:
                             for (int i = 0; i < boardSize; i++)
-                                for (int j = 0; j < boardSize; j++)
-                                    this.movableSpace[i, j] = true;
+                            for (int j = 0; j < boardSize; j++)
+                                this.movableSpace[i, j] = true;
                             break;
                         case EnemyAction.ColoredAttack: // TODO: ColorAttack은 Enemy로 색칠된 건지, Player로 색칠된 건지?
                         {
                             List<List<BoardColor>> boardColors = BoardManager.Instance.BoardColors;
                             for (int i = 0; i < boardSize; i++) // row
-                                for (int j = 0; j < boardSize; j++) // col
-                                    if (boardColors[i][j] == BoardColor.Player)
-                                        this.movableSpace[i, j] = true;
+                            for (int j = 0; j < boardSize; j++) // col
+                                if (boardColors[i][j] == BoardColor.Player)
+                                    this.movableSpace[i, j] = true;
                             break;
                         }
                         case EnemyAction.NoColoredAttack:
                         {
                             List<List<BoardColor>> boardColors = BoardManager.Instance.BoardColors;
                             for (int i = 0; i < boardSize; i++) // row
-                                for (int j = 0; j < boardSize; j++) // col
-                                    if (boardColors[i][j] != BoardColor.Player)
-                                        this.movableSpace[i, j] = true;
+                            for (int j = 0; j < boardSize; j++) // col
+                                if (boardColors[i][j] != BoardColor.Player)
+                                    this.movableSpace[i, j] = true;
                             break;
                         }
                     }
@@ -412,18 +412,11 @@ public class MoveState : BaseState
                 break;
             }
         }
-        for (int i = 0; i < boardSize; i++) // row
-            for (int j = 0; j < boardSize; j++) // col
-            {
-                if (this.movableSpace[i, j])
-                    BoardManager.Instance.GameBoard[i][j].SetHighlight(BoardSituation.WillMove);
-                else
-                    BoardManager.Instance.GameBoard[i][j].SetHighlight(BoardSituation.None);
-            }
     }
 
     public override void Update()
     {
+        // UI 상으로 이동 가능한 곳은 O 표시.
     }
 
     public override void MouseEvent()
@@ -641,6 +634,10 @@ public class AttackState : BaseState
         //공격 가능한 대상의 테두리를 밝은 파란 테두리로 표시
         foreach (IAttackable attackable in attackableList)
         {
+            if(attackable.gameObject.GetComponent<Enemy>() != null)
+            {
+                attackable.gameObject.GetComponent<Enemy>().EnemyOutlineEffect();
+            }
             attackable.gameObject.GetComponent<Outlinable>().enabled = true;
             attackable.gameObject.GetComponent<Outlinable>().OutlineParameters.Color = Color.blue;
         }
@@ -709,10 +706,7 @@ public class AttackState : BaseState
         RaycastHit hitData;
         if (Physics.Raycast(ray, out hitData))
         {
-            IAttackable iAttackable = hitData.transform.gameObject.GetComponent<IAttackable>();
-            if(iAttackable == null)
-                iAttackable = hitData.transform.GetChild(0).gameObject.GetComponent<IAttackable>();
-
+            IAttackable iAttackable = hitData.transform.GetChild(0).gameObject.GetComponent<IAttackable>();
             if (iAttackable != null) //레이캐스트에 맞은 오브젝트에 Iattackable 컴포넌트가 있는가?
             {
                 if (attackableList.Contains(iAttackable)) //attackableList에 있는가?
@@ -943,7 +937,7 @@ public class AttackState : BaseState
                     if (attackable is Enemy)
                     {
                         Enemy enemy = attackable as Enemy;
-                        enemy.SetDebuff(Debuff.PowerIncrease, 1);
+                        enemy.SetDebuff(Debuff.PowerIncrease, 20);
                     }
                 }
 
@@ -956,7 +950,7 @@ public class AttackState : BaseState
                     if (attackable is Enemy)
                     {
                         Enemy enemy = attackable as Enemy;
-                        enemy.SetDebuff(Debuff.PowerDecrease, 1);
+                        enemy.SetDebuff(Debuff.PowerDecrease, 20);
                     }
                 }
 
@@ -1008,6 +1002,10 @@ public class AttackState : BaseState
 
         foreach (IAttackable attackable in attackableList)
         {
+            if (attackable.gameObject.GetComponent<Enemy>() != null)
+            {
+                attackable.gameObject.GetComponent<Enemy>().StopEnemyOutlineEffect();
+            }
             attackable.gameObject.GetComponent<Outlinable>().enabled = false;
         }
 
