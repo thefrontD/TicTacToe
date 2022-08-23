@@ -120,7 +120,6 @@
       "AdditionalEffectCondition": "None",
       "AdditionalEffect": "None",
       "MoveCardEffect": "Flash",
-      "triggerCondition": "None",
       "moveDirection": "UDLR",
       "CardType": "Move",
       "cardName": "이동",
@@ -133,7 +132,6 @@
       "AdditionalEffectCondition": "None",
       "AdditionalEffect": "None",
       "MoveCardEffect": "Flash",
-      "triggerCondition": "None",
       "moveDirection": "UDLR",
       "CardType": "Move",
       "cardName": "이동",
@@ -146,7 +144,6 @@
       "AdditionalEffectCondition": "None",
       "AdditionalEffect": "None",
       "MoveCardEffect": "Flash",
-      "triggerCondition": "None",
       "moveDirection": "UDLR",
       "CardType": "Move",
       "cardName": "이동",
@@ -155,11 +152,10 @@
       "CardPoolAttributes": ["BasicCardPool"]
     },
     {
-      "TriggerCondition": "None",
+      "TriggerCondition": "ColoredSpaceExists",
       "AdditionalEffectCondition": "None",
       "AdditionalEffect": "None",
       "MoveCardEffect": "Flash",
-      "triggerCondition": "None",
       "moveDirection": "Colored",
       "CardType": "Move",
       "cardName": "이동 마법진",
@@ -167,5 +163,4 @@
       "cardCost": 1,
       "CardPoolAttributes": ["Public"]
     }
-  ]
-  
+]
