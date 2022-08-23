@@ -610,6 +610,11 @@ public class AttackState : BaseState
         bool isMinion = (targetType / 100) % 10 != 0;
         int playerRow = PlayerManager.Instance.Row;
         int playerCol = PlayerManager.Instance.Col;
+        foreach (Enemy enemy in EnemyManager.Instance.EnemyList)
+        {
+            this.prevEnemyShield.Add(enemy.EnemyShield);
+        }
+
         coord[] coords =
         {
             new coord(playerRow - 1, playerCol), new coord(playerRow + 1, playerCol),
@@ -832,20 +837,14 @@ public class AttackState : BaseState
             }
             case AdditionalEffectCondition.DestroyShield: // 그 몬스터의 방어도를 방금 파괴했을 때
             {
-                int i = 0;
-                foreach (IAttackable attackable in this.selectedAttackableList)
+                for (int i = 0; i < this.prevEnemyShield.Count; i++)
                 {
-                    if (attackable is Enemy)
+                    if (EnemyManager.Instance.EnemyList[i].EnemyShield <= 0 && this.prevEnemyShield[i] > 0) // 이 공격으로 방어도를 파괴했음
                     {
-                        Enemy enemy = attackable as Enemy;
-                        if (enemy.EnemyShield <= 0 && this.prevEnemyShield[i] > 0) // 이 공격으로 방어도를 파괴했음
-                        {
-                            proceed = true;
-                            additionalEffectParam.Add(enemy);
-                        }
-
-                        i++;
+                        proceed = true;
+                        additionalEffectParam.Add(EnemyManager.Instance.EnemyList[i]);
                     }
+
                 }
 
                 break;
@@ -944,6 +943,7 @@ public class AttackState : BaseState
                     {
                         Enemy enemy = attackable as Enemy;
                         enemy.EnemyHP -= 1;
+                        enemy.EnemyUI.HPUIUpdate();
                     }
                 }
 
