@@ -127,6 +127,7 @@ public class Enemy : MonoBehaviour, IAttackable
     private IEnumerator EnemyDeathCoroutine()
     {
         transform.parent.DORotate(new Vector3(0, 0, 0), 0.6f, RotateMode.Fast).SetEase(Ease.InQuart);
+        SoundManager.Instance.PlaySE("Death");
 
         yield return new WaitForSeconds(1.0f);
 

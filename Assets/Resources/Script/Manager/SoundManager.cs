@@ -36,14 +36,12 @@ public class SoundManager : Singleton<SoundManager>
     }
 
     //BGM 사운드 재생, BGM 이름은 일단
-    public void PlayBGM(float volume = 1f)
+    public void PlayBGM(string name, float volume = 1f)
     {
-        string name = SceneManager.GetActiveScene().name;
-        
         bgmPlayer.loop = true; //BGM 사운드이므로 루프설정
         bgmPlayer.volume = volume * masterVolumeBGM;
 
-        if (seDictionary.ContainsKey(name) == false)
+        if (bgmDictionary.ContainsKey(name) == false)
         {
             Debug.Log(name + " is not Contained audioClipsDic");
             return;
