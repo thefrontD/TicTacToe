@@ -1286,7 +1286,7 @@ public class ColorState : BaseState
             {
                 foreach (Enemy enemy in EnemyManager.Instance.EnemyList)
                 {
-                    enemy.EnemyShield -= 20;
+                    enemy.AttackedByPlayer(20, 1);
                 }
 
                 break;
@@ -1295,7 +1295,7 @@ public class ColorState : BaseState
             {
                 foreach (Enemy enemy in EnemyManager.Instance.EnemyList)
                 {
-                    enemy.EnemyShield -= 1000; // 사실상 전부 파괴
+                    enemy.AttackedByPlayer(1000, 1);  // 사실상 전부 파괴
                 }
 
                 break;
