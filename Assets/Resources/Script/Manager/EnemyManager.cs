@@ -160,8 +160,8 @@ public class EnemyManager : Singleton<EnemyManager>
         
         yield return new WaitForSeconds(0.5f);
         if (_isGameOver)
-            PlayerManager.Instance.ChangeStates(new NormalState(5, false));
+            PlayerManager.Instance.ChangeStates(new NormalState(6, false));
         else
-            PlayerManager.Instance.ChangeStates(new NormalState(5, true));
+            PlayerManager.Instance.ChangeStates(new NormalState(6, true));
     }
 }
