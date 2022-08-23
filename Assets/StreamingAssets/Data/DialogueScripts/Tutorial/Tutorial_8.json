@@ -2,7 +2,7 @@
   "Dialogues": [
     {
       "Name": "붓",
-      "Context": "이 카드로 적의 의도에서 벗어나 보자",
+      "Context": "이동 카드로 적의 의도에서 벗어나 보자. 이동 카드를 클릭하고, 왼쪽 칸을 클릭해서 이동해.",
       "PortraitLocation": "Left"
     }
   ],

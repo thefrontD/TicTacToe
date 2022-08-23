@@ -12,7 +12,7 @@
     },
     {
       "Name": "붓",
-      "Context": "공격 카드로 벽을 파괴하자",
+      "Context": "공격 카드를 사용하고 벽을 클릭해서 벽을 파괴하자",
       "PortraitLocation": "Left"
     }
   ],

@@ -7,7 +7,7 @@
     },
     {
       "Name": "붓",
-      "Context": "클릭 해서 사용해봐",
+      "Context": "공격 카드와 상대를 클릭해서 상대를 공격해봐.",
       "PortraitLocation": "Left"
     }
   ],

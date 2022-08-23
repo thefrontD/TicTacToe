@@ -7,7 +7,7 @@
     },
     {
       "Name": "붓",
-      "Context": "클릭하여 적의 의도에서 벗어나자!",
+      "Context": "이동 카드를 사용해서 위로 이동하자.",
       "PortraitLocation": "Left"
     }
   ],
