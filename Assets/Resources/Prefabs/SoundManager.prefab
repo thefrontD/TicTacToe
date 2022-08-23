@@ -1351,6 +1351,7 @@ MonoBehaviour:
     - UsingCard
     - DeckShuffle
     - Death
+    - HealHp
     m_values:
     - {fileID: 8300000, guid: 6559cd9e342f6964bb26a610104ed27f, type: 3}
     - {fileID: 8300000, guid: 9dde5db450aba8e40910901ef4659253, type: 3}
@@ -1363,6 +1364,7 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 6df34f8205163fb40947162ccf325edc, type: 3}
     - {fileID: 8300000, guid: 395c293d5bb7ae246a9b9d12a5c531fa, type: 3}
     - {fileID: 8300000, guid: e9ec66f897b2e7e4c85ccfb29aabdb4d, type: 3}
+    - {fileID: 8300000, guid: 1a66a4693cfc94c49b73c7cd1c5781ee, type: 3}
   bgmDictionary:
     m_keys:
     - Battle_Boss

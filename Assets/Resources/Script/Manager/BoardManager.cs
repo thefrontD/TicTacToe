@@ -353,7 +353,7 @@ public class BoardManager : Singleton<BoardManager>
             PlayerObject.transform.Find("BuffEffect").gameObject.SetActive(true);
         }else if(debuff == Debuff.Heal){
             PlayerObject.transform.Find("HealEffect").gameObject.SetActive(true);
-            SoundManager.Instance.PlaySE("HealShield");
+            SoundManager.Instance.PlaySE("HealHP");
         }else{
             PlayerObject.transform.Find("DebuffEffect").gameObject.SetActive(true);
         }

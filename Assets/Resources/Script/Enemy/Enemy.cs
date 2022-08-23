@@ -463,7 +463,7 @@ public class Enemy : MonoBehaviour, IAttackable
     public void EnemyHealShield(int num)
     {
         Debug.Log("EnemyHPHeal!");
-        SoundManager.Instance.PlaySE("HealShield");
+        SoundManager.Instance.PlaySE("HealHP");
         _enemyShield = _enemyShield + num > _enemyMaxShield ? _enemyMaxShield : _enemyShield + num;
         EnemyUI.ShieldUIUpdate();
     }
