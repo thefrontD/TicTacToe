@@ -265,6 +265,7 @@ MonoBehaviour:
   cardAqr: {fileID: 1463755947}
   _god: 0
   AttackEffect: {fileID: 105608, guid: 9c6af9e56f998094e8a7ade8f0e2a0a9, type: 3}
+  playerUI: {fileID: 1605126322}
 --- !u!1 &55102824
 GameObject:
   m_ObjectHideFlags: 0
@@ -2941,6 +2942,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1605126322 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8496565169368358338, guid: 17bd36cadba43df499d781cd99e3348e, type: 3}
+  m_PrefabInstance: {fileID: 1605126316}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d02c036c3e967243bd966f9b914c8b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1712806189
