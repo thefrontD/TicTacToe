@@ -15,6 +15,7 @@ public class Board : MonoBehaviour
     [SerializeField] private ParticleSystem bingoEffect;
     [SerializeField] private ParticleSystem bingoEnemyEffect;
     [SerializeField] private ParticleSystem colorEffect;
+    [SerializeField] private ParticleSystem highLightEffect;
     private int _row;
     private int _col;
 
@@ -40,6 +41,7 @@ public class Board : MonoBehaviour
         _col = col;
         SetBoardColor(currentBoardColor);
         SetHighlight(BoardSituation.None);
+        GetComponent<Outlinable>().enabled = false;
     }
 
     public void SetBoardColor(BoardColor boardColor)
@@ -65,21 +67,21 @@ public class Board : MonoBehaviour
     {
         if(situation == BoardSituation.None)
         {
-            GetComponent<Outlinable>().enabled = false;
             boardIntention.gameObject.SetActive(false);
+            highLightEffect.gameObject.SetActive(false);
         }
         else
         {
             boardIntention.gameObject.SetActive(true);
+            highLightEffect.gameObject.SetActive(true);
+            ParticleSystem.MainModule settings = highLightEffect.main;
+            settings.startColor = new ParticleSystem.MinMaxGradient( colors[(int)situation] );
             boardIntention.SetSprite(situation);
-            GetComponent<Outlinable>().enabled = true;
-            GetComponent<Outlinable>().OutlineParameters.Color = colors[(int) situation];
         }
     }
 
     public void ActivateBingoEffect(bool select, BoardColor color = BoardColor.None){
         if(select == true){
-            //Debug.Log("ActivateBingoEffect true Color: " + color.ToString());
             if(color == BoardColor.Player)
                 bingoEffect.gameObject.SetActive(true);
             else
@@ -87,7 +89,6 @@ public class Board : MonoBehaviour
 
         }
         else{
-            //Debug.Log("ActivateBingoEffect false");
             bingoEffect.gameObject.SetActive(false);
             bingoEnemyEffect.gameObject.SetActive(false);
         }
