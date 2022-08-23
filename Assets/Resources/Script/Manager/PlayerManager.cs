@@ -16,7 +16,7 @@ public class PlayerManager : Singleton<PlayerManager>
     [SerializeField] private CardAcquiringPanel cardAqr;
     [SerializeField] private bool _god = false;
     [SerializeField] public GameObject AttackEffect;
-
+    [SerializeField] public PlayerUI playerUI;
     public bool GOD => _god;
 
     private PlayerDataHolder _holder;
@@ -120,6 +120,7 @@ public class PlayerManager : Singleton<PlayerManager>
         PlayerLoading();
         EnemyManager.Instance.EnemyLoading(stageData);
         cardAqr.Init();
+        playerUI.UpdatePlayerUI();
     }
     
     public void Init(object sender, EventArgs arg)
@@ -132,6 +133,7 @@ public class PlayerManager : Singleton<PlayerManager>
         PlayerLoading();
         EnemyManager.Instance.EnemyLoading(stageData);
         cardAqr.Init();
+        playerUI.UpdatePlayerUI();
     }
 
     public void PlayerLoading()

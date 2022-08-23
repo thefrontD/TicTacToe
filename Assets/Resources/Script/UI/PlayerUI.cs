@@ -22,7 +22,7 @@ public class PlayerUI : MonoBehaviour
         
     }
     
-    private void UpdatePlayerUI()
+    public void UpdatePlayerUI()
     {
         hpText.text = String.Format("{0}/{1}", PlayerManager.Instance.Hp, PlayerManager.Instance.MaxHp);
         manaText.text = String.Format("{0}/{1}", PlayerManager.Instance.Mana, PlayerManager.Instance.MaxMana);
