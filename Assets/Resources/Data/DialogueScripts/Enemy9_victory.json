@@ -1,0 +1,11 @@
+{
+  "Dialogues": [
+    {
+      "Name": "그리즐",
+      "Context": "졌다... 죽여라.... 마왕군이 아니라고?",
+      "PortraitLocation": "Right"
+    }
+  ],
+  "DialoguePeople": ["그리즐"],
+  "InitialSetting": ["그리즐", "Right"]
+}

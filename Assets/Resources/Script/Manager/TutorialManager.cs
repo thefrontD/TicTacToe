@@ -27,6 +27,10 @@ public class TutorialManager : Singleton<TutorialManager>
                 PlayerManager.Instance.SetMana(1000);
                 CardManager.Instance.DrawCard(2);
                 break;
+            case 13:
+                PlayerManager.Instance.SetMana(1000);
+                CardManager.Instance.DrawCard(5);
+                break;
             case 17:
                 PlayerManager.Instance.SetMana(1000);
                 CardManager.Instance.DrawCard(4);

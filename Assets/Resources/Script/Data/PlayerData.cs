@@ -44,7 +44,7 @@ public class PlayerData : Singleton<PlayerData>
 {
     public bool saveData(PlayerDataHolder holder, string dataName)
     {
-        string path = Application.dataPath;
+        string path = Application.streamingAssetsPath;
         path += $"/Data/Player/{dataName}.json";
         
         var converter = new StringEnumConverter();
@@ -55,7 +55,7 @@ public class PlayerData : Singleton<PlayerData>
     
     public PlayerDataHolder _load(string dataName)
     {
-        string path = Application.dataPath;
+        string path = Application.streamingAssetsPath;
         path += $"/Data/Player/{dataName}.json";
         
         var converter = new StringEnumConverter();

@@ -1,0 +1,11 @@
+{
+  "Dialogues": [
+    {
+      "Name": "참 스패로우",
+      "Context": "용사가 아니다! 용사가 아니다!",
+      "PortraitLocation": "Right"
+    }
+  ],
+  "DialoguePeople": ["참 스패로우"],
+  "InitialSetting": ["참 스패로우", "Right"]
+}

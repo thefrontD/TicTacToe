@@ -1,0 +1,11 @@
+{
+  "Dialogues": [
+    {
+      "Name": "",
+      "Context": "",
+      "PortraitLocation": "Left"
+    }
+  ],
+  "DialoguePeople": ["붓"],
+  "InitialSetting": ["붓", "Left"]
+}

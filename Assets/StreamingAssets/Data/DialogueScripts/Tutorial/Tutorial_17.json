@@ -1,0 +1,21 @@
+{
+  "Dialogues": [
+    {
+      "Name": "붓",
+      "Context": "적의 벽이 색칠을 파괴해 버렸어!",
+      "PortraitLocation": "Left"
+    },
+    {
+      "Name": "붓",
+      "Context": "벽은 공격 카드로 파괴할 수 있어",
+      "PortraitLocation": "Left"
+    },
+    {
+      "Name": "붓",
+      "Context": "공격 카드로 벽을 파괴하자",
+      "PortraitLocation": "Left"
+    }
+  ],
+  "DialoguePeople": ["붓"],
+  "InitialSetting": ["붓", "Left"]
+}

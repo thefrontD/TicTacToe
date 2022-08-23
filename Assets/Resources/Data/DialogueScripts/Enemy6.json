@@ -1,0 +1,26 @@
+{
+  "Dialogues": [
+    {
+      "Name": "나레이터",
+      "Context": "드디어 본색을 드러내는건가 마왕군!",
+      "PortraitLocation": "Left"
+    },
+    {
+      "Name": "나레이터",
+      "Context": "비겁하게 기습하는 마법사 토끼!",
+      "PortraitLocation": "Left"
+    },
+    {
+      "Name": "나레이터",
+      "Context": "잠깐! 벌써 공격한다고?",
+      "PortraitLocation": "Left"
+    },
+    {
+      "Name": "래빗 더 앨리스",
+      "Context": "포이즌 밤!",
+      "PortraitLocation": "Right"
+    }
+  ],
+  "DialoguePeople": ["나레이터", "래빗 더 앨리스"],
+  "InitialSetting": ["나레이터", "Left"]
+}

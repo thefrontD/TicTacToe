@@ -1,0 +1,21 @@
+{
+  "Dialogues": [
+    {
+      "Name": "나레이터",
+      "Context": "마왕을 향해 가는 용사",
+      "PortraitLocation": "Left"
+    },
+    {
+      "Name": "나레이터",
+      "Context": "그 앞에는 인간을 싫어하는 드라이어드가 길을 막고 있었다!",
+      "PortraitLocation": "Left"
+    },
+    {
+      "Name": "아이드라",
+      "Context": "숲을 더럽히는자! 나가라!",
+      "PortraitLocation": "Right"
+    }
+  ],
+  "DialoguePeople": ["나레이터", "아이드라"],
+  "InitialSetting": ["나레이터", "Left"]
+}

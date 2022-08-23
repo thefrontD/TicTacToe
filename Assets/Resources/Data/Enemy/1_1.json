@@ -1,0 +1,15 @@
+[
+  {
+    "EnemyName" : "ScareCrow",
+    "EnemyHP": 1,
+    "EnemyShield": 20,
+    "EnemyPower" : 10,
+    "EnemyAction": [
+      {"Item1": "None", "Item2": 200},
+      {"Item1": "V1Attack", "Item2": 10},
+      {"Item1": "H1Attack", "Item2": 10},
+      {"Item1": "WallSummon", "Item2": 10},
+      {"Item1": "V1Attack", "Item2": 10}
+    ]
+  }
+]

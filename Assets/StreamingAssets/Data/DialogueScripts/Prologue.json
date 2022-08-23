@@ -1,0 +1,76 @@
+{
+  "Dialogues": [
+    {
+      "Name": "나레이터",
+      "Context": "흠..흠… 이야기를 시작해 볼까?",
+      "PortraitLocation": "Left"
+    },
+    {
+      "Name": "나레이터",
+      "Context": "옛날옛적에 한 시골 왕국이 있었어요",
+      "PortraitLocation": "Left"
+    },
+    {
+      "Name": "나레이터",
+      "Context": "어느날 마왕이 공주를 납치해갔어요!",
+      "PortraitLocation": "Left"
+    },
+    {
+      "Name": "나레이터",
+      "Context": "그순간 등장하는 멋진 용사님!! ",
+      "PortraitLocation": "Left"
+    },
+    {
+      "Name": "나레이터",
+      "Context": "짠!!!!",
+      "PortraitLocation": "Left"
+    },
+    {
+      "Name": "나레이터",
+      "Context": "(어... 음.... 용사가 어디갔지?)",
+      "PortraitLocation": "Left"
+    },
+    {
+      "Name": "나레이터",
+      "Context": "(음 이럴순 없어... 용사없는 이야기라니...)",
+      "PortraitLocation": "Left"
+    },
+    {
+      "Name": "나레이터",
+      "Context": "(어쩔수 없군...)",
+      "PortraitLocation": "Left"
+    },
+    {
+      "Name": "나레이터",
+      "Context": "그때 마을의 한 소년에게 신의 계시가 내려왔어요",
+      "PortraitLocation": "Left"
+    },
+    {
+      "Name": "나레이터",
+      "Context": "'용사여... 적을 무찌르고 공주를 구하세요...'",
+      "PortraitLocation": "Left"
+    },
+    {
+      "Name": "나레이터",
+      "Context": "'지금 내려주는 검을 사용해서 적을 무찌르세요'",
+      "PortraitLocation": "Left"
+    },
+    {
+      "Name": "주인공",
+      "Context": "검? 굉장히 이상하게 생긴 검이네요",
+      "PortraitLocation": "Right"
+    },
+    {
+      "Name": "주인공",
+      "Context": "하지만... 이런 검으로 어떻게 싸우면 좋지...",
+      "PortraitLocation": "Right"
+    },
+    {
+      "Name": "붓",
+      "Context": "지금부터 싸우는 법을 알려줄게",
+      "PortraitLocation": "Left"
+    }
+  ],
+  "DialoguePeople": ["나레이터", "주인공"],
+  "InitialSetting": ["나레이터", "Left"]
+}

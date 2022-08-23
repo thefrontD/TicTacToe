@@ -27,6 +27,8 @@ public class WorldMapManager : Singleton<WorldMapManager>
     
     public void Start()
     {
+        Screen.SetResolution(1920, 1080, true);
+
         if (GameManager.Instance.CurrentStage == 101)
         {
             DialogueManager.Instance.dialogueCallBack.DialogueCallBack += Init;

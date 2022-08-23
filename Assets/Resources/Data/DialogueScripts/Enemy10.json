@@ -1,0 +1,31 @@
+{
+  "Dialogues": [
+    {
+      "Name": "나레이터",
+      "Context": "용사에게 닥친 엄청난 위기!",
+      "PortraitLocation": "Left"
+    },
+    {
+      "Name": "나레이터",
+      "Context": "대 마왕군의 간부 드디어 등장!",
+      "PortraitLocation": "Left"
+    },
+    {
+      "Name": "나레이터",
+      "Context": "그 이름 폭시밀리앙!",
+      "PortraitLocation": "Left"
+    },
+    {
+      "Name": "폭시밀리앙",
+      "Context": "감히 마왕군의 간부인 나를 공격하겠다고?",
+      "PortraitLocation": "Right"
+    },
+    {
+      "Name": "폭시밀리앙",
+      "Context": "너를 마왕님께 바치고 그분의 측근이 될 것이다!",
+      "PortraitLocation": "Right"
+    }
+  ],
+  "DialoguePeople": ["나레이터", "폭시밀리앙"],
+  "InitialSetting": ["나레이터", "Left"]
+}

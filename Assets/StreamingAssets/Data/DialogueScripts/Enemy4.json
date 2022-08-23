@@ -1,0 +1,21 @@
+{
+  "Dialogues": [
+    {
+      "Name": "나레이터",
+      "Context": "모험을 하다보면 예기치 못한 위기도 있는법!",
+      "PortraitLocation": "Left"
+    },
+    {
+      "Name": "나레이터",
+      "Context": "수풀에서 갑자기 기습하는 멧돼지 인간!",
+      "PortraitLocation": "Left"
+    },
+    {
+      "Name": "보어 제이크",
+      "Context": "용사는 모르겠고 네놈은 내 적수가 될 수 있을까!",
+      "PortraitLocation": "Right"
+    }
+  ],
+  "DialoguePeople": ["나레이터", "보어 제이크"],
+  "InitialSetting": ["나레이터", "Left"]
+}

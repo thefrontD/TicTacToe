@@ -1,0 +1,11 @@
+{
+  "Dialogues": [
+    {
+      "Name": "보어 제이크",
+      "Context": "강하군, 인정한다.",
+      "PortraitLocation": "Right"
+    }
+  ],
+  "DialoguePeople": ["보어 제이크"],
+  "InitialSetting": ["보어 제이크", "Right"]
+}

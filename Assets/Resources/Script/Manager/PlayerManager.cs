@@ -74,6 +74,8 @@ public class PlayerManager : Singleton<PlayerManager>
     
     void Start()
     {
+        Screen.SetResolution(1920, 1080, true);
+
         if (GameManager.Instance.CurrentStage == 101)
         {
             _tutorialPhase = 1;

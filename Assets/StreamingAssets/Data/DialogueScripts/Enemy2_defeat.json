@@ -1,0 +1,11 @@
+{
+  "Dialogues": [
+    {
+      "Name": "두덕씨",
+      "Context": "여긴 내 땅이야! 히히... 여기도! 저기도!",
+      "PortraitLocation": "Right"
+    }
+  ],
+  "DialoguePeople": ["두덕씨"],
+  "InitialSetting": ["두덕씨", "Right"]
+}

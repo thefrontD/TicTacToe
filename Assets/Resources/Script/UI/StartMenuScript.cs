@@ -14,7 +14,7 @@ public class StartMenuScript : MonoBehaviour
 
     void Start()
     {
-        _path = Application.dataPath;
+        _path = Application.streamingAssetsPath;
         _path += string.Format("/Data/Player/PlayerData{0}.json", saveFileNum);
 
         FileInfo fileInfo = new FileInfo(_path);
@@ -23,6 +23,8 @@ public class StartMenuScript : MonoBehaviour
         {
             deleteButton.GetComponent<Button>().enabled = false;
         }
+
+        Screen.SetResolution(1920, 1080, true);
     }
 
     public async void StartNewGame()
@@ -38,9 +40,9 @@ public class StartMenuScript : MonoBehaviour
 
         GameManager.Instance.CurrentStage = 101;
 
-        await CopyAsync(Application.dataPath + "/Data/Player/PlayerData.json", _path);
-        await CopyAsync(Application.dataPath + "/Data/Card/PlayerCard.json", 
-            Application.dataPath + string.Format("/Data/Card/PlayerCard{0}.json", saveFileNum));
+        await CopyAsync(Application.streamingAssetsPath + "/Data/Player/PlayerData.json", _path);
+        await CopyAsync(Application.streamingAssetsPath + "/Data/Card/PlayerCard.json", 
+            Application.streamingAssetsPath + string.Format("/Data/Card/PlayerCard{0}.json", saveFileNum));
         //await CardData.Instance._loadnew(string.Format("PlayerCard{0}", saveFileNum));
 
         GameManager.Instance.PlayerNum = saveFileNum;

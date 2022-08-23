@@ -1,0 +1,11 @@
+{
+  "Dialogues": [
+    {
+      "Name": "포즈웨이 대령",
+      "Context": "언제든 다시 덤비시게나.",
+      "PortraitLocation": "Right"
+    }
+  ],
+  "DialoguePeople": ["포즈웨이 대령"],
+  "InitialSetting": ["포즈웨이 대령", "Right"]
+}

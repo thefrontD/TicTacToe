@@ -26,7 +26,7 @@ public class BoardData : Singleton<BoardData>
 {
     public Holder _load(string dataName)
     {
-        string path = Application.dataPath;
+        string path = Application.streamingAssetsPath;
         path += $"/Data/Board/{dataName}.json";
 
         var converter = new StringEnumConverter();

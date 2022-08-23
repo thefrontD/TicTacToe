@@ -52,7 +52,7 @@ public class DialogueUI : MonoBehaviour
 
     private void LoadDialogue(string dialogueIdx)
     {
-        string path = Application.dataPath;
+        string path = Application.streamingAssetsPath;
         path += $"/Data/DialogueScripts/{dialogueIdx}.json";
 
         var pDataStringLoad = File.ReadAllText(path);

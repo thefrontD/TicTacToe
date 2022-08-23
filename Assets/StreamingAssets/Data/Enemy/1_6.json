@@ -1,0 +1,17 @@
+[
+    {
+      "EnemyName" : "RabbitTheAlice",
+      "EnemyHP": 3,
+      "EnemyShield": 40,
+      "EnemyPower" : 10,
+      "EnemyAction": [
+        {"Item1": "H2Attack", "Item2": 10},
+        {"Item1": "ColoredAttack", "Item2": 10},
+        {"Item1": "WallSummon", "Item2": 10},
+        {"Item1": "ColoredAttack", "Item2": 10},
+        {"Item1": "V2Attack", "Item2": 10},
+        {"Item1": "WallsSummon", "Item2": 10}
+      ]
+    }
+  ]
+  

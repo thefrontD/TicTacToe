@@ -10,7 +10,7 @@ public class CardData : Singleton<CardData>
 {
     public bool saveData(List<Card> cardData, string dataName)
     {
-        string path = Application.dataPath;
+        string path = Application.streamingAssetsPath;
         path += $"/Data/Card/{dataName}.json";
 
         var converter = new StringEnumConverter();
@@ -24,7 +24,7 @@ public class CardData : Singleton<CardData>
 
     public List<Card> _load(string dataName)
     {
-        string path = Application.dataPath;
+        string path = Application.streamingAssetsPath;
         path += $"/Data/Card/{dataName}.json";
         print(path);
         

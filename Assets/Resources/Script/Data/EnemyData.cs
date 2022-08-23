@@ -34,7 +34,7 @@ public class EnemyData : Singleton<EnemyData>
 {
     public List<EnemyDataHolder> _load(string dataName)
     {
-        string path = Application.dataPath;
+        string path = Application.streamingAssetsPath;
         path += $"/Data/Enemy/{dataName}.json";
         
         var converter = new StringEnumConverter();

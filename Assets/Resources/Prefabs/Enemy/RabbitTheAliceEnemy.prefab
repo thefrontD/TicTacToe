@@ -19,6 +19,18 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 8bc5eb53592e16948bc84050c590a75a, type: 3}
+    - target: {fileID: 2704758368361659959, guid: 639cee557a16b0147a4840c4097c5ecf, type: 3}
+      propertyPath: spriteOutlineColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2704758368361659959, guid: 639cee557a16b0147a4840c4097c5ecf, type: 3}
+      propertyPath: spriteOutlineColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2704758368361659959, guid: 639cee557a16b0147a4840c4097c5ecf, type: 3}
+      propertyPath: spriteOutlineColor.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2793025214852430856, guid: 639cee557a16b0147a4840c4097c5ecf, type: 3}
       propertyPath: m_LocalPosition.z
       value: -0
@@ -248,6 +260,6 @@ MonoBehaviour:
   CardboardTickness: 0.1
   DoubleSided: 1
   DuplicateSpriteOnBackFace: 1
-  CardboardLineMaterial: {fileID: 2100000, guid: 0359cc2a032b6914486d2ce84f150e90, type: 2}
-  CardboardFaceMaterial: {fileID: 2100000, guid: 0359cc2a032b6914486d2ce84f150e90, type: 2}
+  CardboardLineMaterial: {fileID: 2100000, guid: 017d23c6fa90c954f97dd43541ed0735, type: 2}
+  CardboardFaceMaterial: {fileID: 2100000, guid: 017d23c6fa90c954f97dd43541ed0735, type: 2}
   FaceFillColor: {r: 1, g: 1, b: 1, a: 0}

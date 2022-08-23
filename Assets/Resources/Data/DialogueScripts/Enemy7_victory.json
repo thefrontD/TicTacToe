@@ -1,0 +1,11 @@
+{
+  "Dialogues": [
+    {
+      "Name": "포즈웨이 대령",
+      "Context": "윽... 마왕님..",
+      "PortraitLocation": "Right"
+    }
+  ],
+  "DialoguePeople": ["포즈웨이 대령"],
+  "InitialSetting": ["포즈웨이 대령", "Right"]
+}

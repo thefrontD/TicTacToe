@@ -1,0 +1,11 @@
+{
+  "Dialogues": [
+    {
+      "Name": "아이드라",
+      "Context": "용서 못 해...!",
+      "PortraitLocation": "Right"
+    }
+  ],
+  "DialoguePeople": ["아이드라"],
+  "InitialSetting": ["아이드라", "Right"]
+}

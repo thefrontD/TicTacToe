@@ -1,0 +1,21 @@
+{
+  "Dialogues": [
+    {
+      "Name": "나레이터",
+      "Context": "숲의 깊은 곳,",
+      "PortraitLocation": "Left"
+    },
+    {
+      "Name": "나레이터",
+      "Context": "그곳에는 밀려난 숲의 지배자 그리즐이 있었는데...",
+      "PortraitLocation": "Left"
+    },
+    {
+      "Name": "그리즐",
+      "Context": "마왕군인가...?",
+      "PortraitLocation": "Right"
+    }
+  ],
+  "DialoguePeople": ["나레이터", "그리즐"],
+  "InitialSetting": ["나레이터", "Left"]
+}

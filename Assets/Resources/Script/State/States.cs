@@ -67,7 +67,7 @@ public class NormalState : BaseState
             PlayerManager.Instance.TutorialPhase == 5 ||
             PlayerManager.Instance.TutorialPhase == 6 || PlayerManager.Instance.TutorialPhase == 9 ||
             PlayerManager.Instance.TutorialPhase == 11 || PlayerManager.Instance.TutorialPhase == 12 ||
-            PlayerManager.Instance.TutorialPhase == 13 || PlayerManager.Instance.TutorialPhase == 15 ||
+            PlayerManager.Instance.TutorialPhase == 15 ||
             PlayerManager.Instance.TutorialPhase == 18 || PlayerManager.Instance.TutorialPhase == 19 ||
             PlayerManager.Instance.TutorialPhase == 20)
         {
@@ -85,6 +85,10 @@ public class NormalState : BaseState
             TutorialManager.Instance.toNextTutorial(PlayerManager.Instance.TutorialPhase);
         }
         else if (PlayerManager.Instance.TutorialPhase == 10)
+        {
+            TutorialManager.Instance.toNextTutorial(PlayerManager.Instance.TutorialPhase);
+        }
+        else if (PlayerManager.Instance.TutorialPhase == 13)
         {
             TutorialManager.Instance.toNextTutorial(PlayerManager.Instance.TutorialPhase);
         }

@@ -1,0 +1,11 @@
+{
+  "Dialogues": [
+    {
+      "Name": "폭시밀리앙",
+      "Context": "마왕님이 계신 한 나는 무적이다!",
+      "PortraitLocation": "Right"
+    }
+  ],
+  "DialoguePeople": ["폭시밀리앙"],
+  "InitialSetting": ["폭시밀리앙", "Right"]
+}

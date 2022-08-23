@@ -1,0 +1,26 @@
+{
+  "Dialogues": [
+    {
+      "Name": "나레이터",
+      "Context": "용사는 마왕을 물리치기 위해 모험을 떠났습니다",
+      "PortraitLocation": "Left"
+    },
+    {
+      "Name": "나레이터",
+      "Context": "하지만 영웅의 길은 험난한 법!",
+      "PortraitLocation": "Left"
+    },
+    {
+      "Name": "나레이터",
+      "Context": "용사의 앞길을 막는 것은 바로 욕심많은 '자칭' 땅부자 두더지, 두덕씨!",
+      "PortraitLocation": "Left"
+    },
+    {
+      "Name": "두덕씨",
+      "Context": "어이! 내 땅에서 나가!",
+      "PortraitLocation": "Right"
+    }
+  ],
+  "DialoguePeople": ["나레이터", "두덕씨"],
+  "InitialSetting": ["나레이터", "Left"]
+}

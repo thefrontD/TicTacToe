@@ -1,0 +1,11 @@
+{
+  "Dialogues": [
+    {
+      "Name": "아이드라",
+      "Context": "이것이 숲을 더럽힌 자의 말로이다!",
+      "PortraitLocation": "Right"
+    }
+  ],
+  "DialoguePeople": ["아이드라"],
+  "InitialSetting": ["아이드라", "Right"]
+}

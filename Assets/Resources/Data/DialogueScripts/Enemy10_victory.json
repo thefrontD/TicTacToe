@@ -1,0 +1,21 @@
+{
+  "Dialogues": [
+    {
+      "Name": "폭시밀리앙",
+      "Context": "내.. 내가 죽으면 마왕님이 가만히 계시지 않을 것이다!",
+      "PortraitLocation": "Right"
+    },
+    {
+      "Name": "나레이터",
+      "Context": "용사는 마왕군의 간부를 물리치고 앞으로 나아갔습니다.",
+      "PortraitLocation": "Left"
+    },
+    {
+      "Name": "나레이터",
+      "Context": "- 이후 이야기는 정식 버전을 기다려주세요! -",
+      "PortraitLocation": "Left"
+    }
+  ],
+  "DialoguePeople": ["폭시밀리앙", "나레이터"],
+  "InitialSetting": ["폭시밀리앙", "Right"]
+}
