@@ -43,12 +43,12 @@ public class WorldMapManager : Singleton<WorldMapManager>
         clearedStage = (GameManager.Instance.CurrentStage % 100) - 1;
         Vector3 spawnPoint = stages[clearedStage].GetComponent<Transform>().position;
         Vector3 nextPoint = stages[clearedStage + 1].GetComponent<Transform>().position;
-        spawnPoint += new Vector3(0,-2,0);
-        nextPoint += new Vector3(0,-2,0);
-        Player = Instantiate(PlayerPrefab, spawnPoint, Quaternion.identity);
+        spawnPoint += new Vector3(0,0.5f,0);
+        nextPoint += new Vector3(0,0.5f,0);
+        Player = Instantiate(PlayerPrefab, spawnPoint, Quaternion.Euler(0, 105, 0));
         Sequence mySequence = DOTween.Sequence();
         mySequence.PrependInterval(1);
-        mySequence.Append(Player.GetComponent<Transform>().DOMove(nextPoint, 2));
+        mySequence.Append(Player.GetComponent<Transform>().DOJump(nextPoint, 1, 1, 2, false));
         SoundManager.Instance.PlaySE("WorldMapMove");
         mySequence.InsertCallback(5, LoadingManager.Instance.LoadBattleScene);
         
