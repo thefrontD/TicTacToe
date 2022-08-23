@@ -376,8 +376,13 @@ public class Enemy : MonoBehaviour, IAttackable
 
     public void HighlightOverlapPoint()
     {
-        foreach ((int, int) p in overlapPoint)
-            BoardManager.Instance.GameBoard[p.Item1][p.Item2].SetHighlight(BoardSituation.WillSummon);
+        if(overlapPoint.Count == 0)
+            return;
+        else
+        {
+            foreach ((int, int) p in overlapPoint)
+                BoardManager.Instance.GameBoard[p.Item1][p.Item2].SetHighlight(BoardSituation.WillSummon);
+        }
     }
     
     private void EnemyBuff((EnemyAction, int) enemyAction)
