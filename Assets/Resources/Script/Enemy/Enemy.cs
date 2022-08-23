@@ -398,9 +398,10 @@ public class Enemy : MonoBehaviour, IAttackable
             case EnemyAction.DamageDecrease:
                 break;
             case EnemyAction.HpHealing:
-                SetDebuff(Debuff.Heal, enemyAction.Item2);
+                EnemyHealHp(enemyAction.Item2);
                 break;
             case EnemyAction.ShieldHealing:
+                EnemyHealShield(enemyAction.Item2);
                 break;
         }
         EnemyUI.BuffDebuffUpdate();
@@ -449,6 +450,14 @@ public class Enemy : MonoBehaviour, IAttackable
     public void setPreviousPos(int row, int col){
         _previousPlayerRow = row;
         _previousPlayerCol = col;
+    }
+
+    public void EnemyHealHp(int num)
+    {
+        Debug.Log("EnemyHPHeal!");
+        SoundManager.Instance.PlaySE("HealShield");
+        _enemyHp = _enemyHp + num > _enemyMaxHp ? _enemyMaxHp : _enemyHp + num;
+        EnemyUI.ShieldUIUpdate();
     }
 
     public void EnemyHealShield(int num)
