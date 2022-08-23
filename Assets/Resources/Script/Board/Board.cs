@@ -75,7 +75,7 @@ public class Board : MonoBehaviour
             boardIntention.gameObject.SetActive(true);
             highLightEffect.gameObject.SetActive(true);
             ParticleSystem.MainModule settings = highLightEffect.main;
-            settings.startColor = new ParticleSystem.MinMaxGradient( colors[(int)situation] );
+            settings.startColor = colors[(int)situation];
             boardIntention.SetSprite(situation);
         }
     }
