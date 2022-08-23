@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.45016253, g: 0.49773192, b: 0.562135, a: 1}
+  m_IndirectSpecularColor: {r: 0.18283102, g: 0.22599196, b: 0.29222006, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -135,6 +135,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 654617403635949779, guid: f6a30c053a6963d479c730f21917a529, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1.9999971
+      objectReference: {fileID: 0}
+    - target: {fileID: 654617403635949779, guid: f6a30c053a6963d479c730f21917a529, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 654617403635949779, guid: f6a30c053a6963d479c730f21917a529, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 654617403635949779, guid: f6a30c053a6963d479c730f21917a529, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3425932782594703624, guid: f6a30c053a6963d479c730f21917a529, type: 3}
       propertyPath: m_Name
       value: DialogueCanvas
@@ -1387,7 +1403,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c36a57e577ad1419ca9f179fa166c5ac, type: 2}
+  - {fileID: 2100000, guid: 60fc475b3862c7c438c1c604bedd3449, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
