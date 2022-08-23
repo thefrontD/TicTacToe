@@ -348,9 +348,13 @@ public class Enemy : MonoBehaviour, IAttackable
             damage = (int)(damage * (1 + _debuffDictionary[Debuff.PowerIncrease] / 100));
         if(_debuffDictionary[Debuff.PowerDecrease] > 0)
             damage = (int)(damage * (1 - _debuffDictionary[Debuff.PowerIncrease] / 100));
-
-        foreach((int, int) elems in overlapPoint)
-            _isGameOver = BoardManager.Instance.SummonWalls(elems.Item1, elems.Item2, damage);
+        if(overlapPoint.Count == 0)
+            return _isGameOver;
+        else
+        {
+            foreach((int, int) elems in overlapPoint)
+                _isGameOver = BoardManager.Instance.SummonWalls(elems.Item1, elems.Item2, damage);
+        }
 
         return _isGameOver;
     }
