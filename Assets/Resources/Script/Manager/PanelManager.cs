@@ -1,3 +1,4 @@
+using System.Net.Mime;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,9 +11,13 @@ public class PanelManager : Singleton<PanelManager>
     [SerializeField] private GameObject gameClearPanel;
     public GameObject GameClearPanel => gameClearPanel;
     [SerializeField] private Button nextButton;
+    [SerializeField] private Button mainMenuButton;
+    [SerializeField] private Button exitGameButton;
 
     void Start()
     {
         nextButton.onClick.AddListener(LoadingManager.Instance.LoadWorldMap);
+        mainMenuButton.onClick.AddListener(LoadingManager.Instance.LoadTitleScreen);
+        exitGameButton.onClick.AddListener(Application.Quit);
     }
 }

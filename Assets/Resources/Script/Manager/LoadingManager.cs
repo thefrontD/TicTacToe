@@ -82,7 +82,10 @@ public class LoadingManager : Singleton<LoadingManager>
         
         yield return new WaitForSeconds(0.5f);
         
-        SceneManager.LoadScene("WorldMap");
+        if(GameManager.Instance.CurrentStage == 111)
+            SceneManager.LoadScene("TitleScreen");
+        else
+            SceneManager.LoadScene("WorldMap");
     }
     
     
