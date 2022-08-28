@@ -951,6 +951,7 @@ public class AttackState : BaseState
                         Enemy enemy = attackable as Enemy;
                         enemy.EnemyHP -= 1;
                         enemy.EnemyUI.HPUIUpdate();
+                        attackable.AttackedByPlayer(0, 1);
                     }
                 }
 
