@@ -366,11 +366,9 @@ public class Enemy : MonoBehaviour, IAttackable
         overlapPoint.Clear();
 
         if(temp1.Count == 0 || temp2.Count == 0) return;
-
         foreach ((int, int) item in temp1)
             if(temp2.Contains(item)) overlapPoint.Add(item);
-
-        if (enemyAction.Item1 == EnemyAction.WallSummon)
+        if (enemyAction.Item1 == EnemyAction.WallSummon && overlapPoint.Count != 0)
         {
             overlapPoint.Shuffle();
             overlapPoint = new List<(int, int)>() {overlapPoint[0]};

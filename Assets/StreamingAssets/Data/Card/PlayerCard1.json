@@ -42,18 +42,6 @@
     "colorTargetNum": "One"
   },
   {
-    "TriggerCondition": "ColoredSpaceExists",
-    "AdditionalEffectCondition": "None",
-    "AdditionalEffect": "None",
-    "MoveCardEffect": "Flash",
-    "moveDirection": "Colored",
-    "CardType": "Move",
-    "cardName": "이동 마법진",
-    "cardDesc": "자신의 색칠된 칸으로 <b>이동</b>한다",
-    "cardCost": 1,
-    "CardPoolAttributes": ["Public"]
-  },
-  {
     "TriggerCondition": "None",
     "AdditionalEffectCondition": "None",
     "AdditionalEffect": "Move",

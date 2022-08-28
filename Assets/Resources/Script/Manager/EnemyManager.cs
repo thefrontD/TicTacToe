@@ -84,7 +84,7 @@ public class EnemyManager : Singleton<EnemyManager>
                     {
                         for (int j = 0; j < BoardManager.Instance.BoardSize; j++)
                         {
-                            if (BoardManager.Instance.GameBoard[i][j].currentBoardColor == BoardColor.None)
+                            if (BoardManager.Instance.GameBoard[i][j].currentBoardColor == BoardColor.Player)
                             {
                                 Debug.Log(string.Format("{0} : {1}", i, j));
                                 BoardManager.Instance.GameBoard[i][j].SetHighlight(BoardSituation.WillAttack);
