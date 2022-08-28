@@ -144,6 +144,12 @@ public abstract class Card
                     == BoardColor.Player)
                     proceed = true;
                 break;
+            case TriggerCondition.PlayerNotInColoredSpace:
+                if (BoardManager.Instance.BoardColors[PlayerManager.Instance.Row][PlayerManager.Instance.Col]
+                    != BoardColor.Player){
+                    proceed = true;
+                }
+                break;
 
             case TriggerCondition.ColoredSpaceExists:
                 for (int i = 0; i < BoardManager.Instance.BoardColors.Count; i++) // row

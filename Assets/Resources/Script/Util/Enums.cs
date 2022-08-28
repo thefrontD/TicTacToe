@@ -54,6 +54,7 @@ public enum TriggerCondition
     None, 
     Attacked,
     PlayerInColoredSpace,
+    PlayerNotInColoredSpace,
     MonsterWillAttack, MonsterWillWall, MonsterWillMinion, MonsterWillShield,
     PlayerWall, PlayerNotWall,
     OnlyAttackCardInHand, OnlyMoveCardInHand, OnlyColorCardInHand,
