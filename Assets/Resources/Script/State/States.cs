@@ -1411,6 +1411,10 @@ public class DumpState : BaseState
                 cardui.GetComponent<Outlinable>().enabled = true;
             }
         }
+        
+        //안내문 활성화
+        PanelManager.Instance.DirectionNotice.SetActive(true);
+        PanelManager.Instance.SetDirectionNotice(States.Dump); 
     }
 
     public override void Update()
@@ -1419,6 +1423,9 @@ public class DumpState : BaseState
 
     public override void MouseEvent()
     {
+        //안내문 비활성화
+        PanelManager.Instance.DirectionNotice.SetActive(false);
+
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hitData;
         if (Physics.Raycast(ray, out hitData))
