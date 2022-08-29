@@ -383,7 +383,6 @@ MonoBehaviour:
   nextButton: {fileID: 1605126319}
   mainMenuButton: {fileID: 1605126321}
   exitGameButton: {fileID: 1605126320}
-  DirectionNotice: {fileID: 1605126323}
 --- !u!1 &350792893
 GameObject:
   m_ObjectHideFlags: 0
@@ -2956,11 +2955,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d02c036c3e967243bd966f9b914c8b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1605126323 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8347812521677285236, guid: 17bd36cadba43df499d781cd99e3348e, type: 3}
-  m_PrefabInstance: {fileID: 1605126316}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1712806189
 GameObject:
   m_ObjectHideFlags: 0
