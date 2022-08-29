@@ -438,9 +438,6 @@ public class MoveState : BaseState
                 break;
             }
         }
-        //안내문 활성화
-        PanelManager.Instance.DirectionNotice.SetActive(true);
-        PanelManager.Instance.SetDirectionNotice(States.Move);
     }
 
     public override void Update()
@@ -450,9 +447,6 @@ public class MoveState : BaseState
 
     public override void MouseEvent()
     {
-        //안내문 비활성화
-        PanelManager.Instance.DirectionNotice.SetActive(false);
-
         // 이동 가능한 곳을 클릭할 시 진행.
         Camera camera = Camera.main;
         Vector3 mousePos = Input.mousePosition;
@@ -676,16 +670,9 @@ public class AttackState : BaseState
             attackable.gameObject.GetComponent<Outlinable>().OutlineParameters.Color = Color.blue;
         }
 
-        //안내문 활성화
-        PanelManager.Instance.DirectionNotice.SetActive(true);
-        PanelManager.Instance.SetDirectionNotice(States.Attack); 
-
         //targetCount가 1이 아닌 경우, 바로 처리(0: 전체 공격/2 이상: 랜덤 공격)
         if (card.TargetCount == 0)
         {
-            //안내문 비활성화
-            PanelManager.Instance.DirectionNotice.SetActive(false);
-
             //전부 공격
             for (int i = 0; i < attackableList.Count; i++)
             {
@@ -743,9 +730,6 @@ public class AttackState : BaseState
 
     public override void MouseEvent()
     {
-        //안내문 비활성화
-        PanelManager.Instance.DirectionNotice.SetActive(false);
-
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hitData;
         if (Physics.Raycast(ray, out hitData))
@@ -1185,10 +1169,6 @@ public class ColorState : BaseState
         }
         else
         {
-            //안내문 활성화
-            PanelManager.Instance.DirectionNotice.SetActive(true);
-            PanelManager.Instance.SetDirectionNotice(States.Color);
-
             //선택할 필요가 있는 경우 highlight enable
             foreach ((int row, int col) in colorables)
             {
@@ -1203,9 +1183,6 @@ public class ColorState : BaseState
 
     public override void MouseEvent()
     {
-        //안내문 비활성화
-        PanelManager.Instance.DirectionNotice.SetActive(false);
-
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit[] hitData;
         hitData = Physics.RaycastAll(ray);
