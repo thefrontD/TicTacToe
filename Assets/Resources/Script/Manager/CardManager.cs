@@ -27,6 +27,7 @@ public class CardManager : Singleton<CardManager>
     public List<CardUI> HandCardList => _handCardList;
     public Queue<CardUI> DeckList => _deckList;
     public List<CardUI> GraveList => _graveList;
+    private bool cardMovementLock = false;
 
     void Start()
     {
@@ -59,7 +60,7 @@ public class CardManager : Singleton<CardManager>
     
     public void DrawCard(int drawNum)
     {
-        if(drawNum > _deckList.Count + _graveList.Count)
+        if (drawNum > _deckList.Count + _graveList.Count)
             StartCoroutine(DrawCardCoroutine(_deckList.Count + _graveList.Count));
         else
             StartCoroutine(DrawCardCoroutine(drawNum));
@@ -78,6 +79,10 @@ public class CardManager : Singleton<CardManager>
     
     private IEnumerator DrawCardCoroutine(int drawNum)
     {
+        yield return new WaitForSeconds(0.05f);  // lock의 원활한 작동 보장을 위함
+        yield return new WaitWhile(() => cardMovementLock);
+        cardMovementLock = true;
+
         for (int i = 0; i < drawNum; i++)
         {
             if (_deckList.Count == 0)
@@ -110,6 +115,7 @@ public class CardManager : Singleton<CardManager>
         }
 
         PlayerManager.Instance.LockTurn = false;
+        cardMovementLock = false;
     }
 
     private void CardPositionAdjust()
@@ -184,5 +190,46 @@ public class CardManager : Singleton<CardManager>
         DrawCardAnimation(lastUsedCard);
         yield return new WaitForSeconds(0.3f);
         CheckUsable();
+    }
+
+    public void PeekFromDeckAnimation(CardUI card)
+    {
+        SoundManager.Instance.PlaySE("Draw");
+        Sequence peekSequence = DOTween.Sequence()
+            .Append(card.transform.DOMove(new Vector3(-9, -7, -17), 0.6f, false))
+            .Join(card.transform.DORotate(new Vector3(40, -180, 0), 0.6f, RotateMode.Fast))
+            .AppendInterval(0.4f)
+            .Append(card.transform.DORotate(new Vector3(-40, 0, 0), 0.6f, RotateMode.Fast))
+            .InsertCallback(1.3f, () => card.SetSortingOrder(0));
+    }
+
+    public void ReturnToDeckAnimation(CardUI card)
+    {
+        Sequence peekSequence = DOTween.Sequence()
+            .Append(card.transform.DORotate(new Vector3(40, -180, 0), 0.6f, RotateMode.Fast))
+            .InsertCallback(0.3f, () => card.SetBackOrder(0))
+            .Append(card.transform.DOMove(deckPos, 0.6f, false))
+            .Join(card.transform.DORotate(new Vector3(0, -180, 0), 0.6f, RotateMode.Fast));
+    }
+
+    public void PeekAndReturn()
+    {
+        StartCoroutine(PeekAndReturnCoroutine());
+    }
+    public IEnumerator PeekAndReturnCoroutine()
+    {
+        yield return new WaitWhile(() => cardMovementLock);
+        cardMovementLock = true;
+
+        CardUI topCard = _deckList.Peek();
+        PeekFromDeckAnimation(topCard);
+        yield return new WaitForSeconds(1.6f);
+
+        yield return new WaitForSeconds(1.2f);
+
+        ReturnToDeckAnimation(topCard);
+        yield return new WaitForSeconds(1.6f);
+
+        cardMovementLock = false;
     }
 }

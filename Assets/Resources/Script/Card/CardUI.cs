@@ -103,7 +103,7 @@ public class CardUI : MonoBehaviour
         CardNameText.sortingOrder = idx+1;
         CardDescText.sortingOrder = idx+1;
     }
-    private void SetBackOrder(int idx){
+    public void SetBackOrder(int idx){
         CardManaImage.gameObject.SetActive(false);
         CardBackground.sortingOrder = idx+1;
         CardManaImage.sortingOrder = idx;
