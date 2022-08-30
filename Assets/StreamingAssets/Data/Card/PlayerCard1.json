@@ -14,6 +14,56 @@
     "colorTargetNum": "One"
   },
   {
+    "TriggerCondition": "None",
+    "AdditionalEffectCondition": "None",
+    "AdditionalEffect": "None",
+    "ColorCardEffect": "ColorCross1",    
+    "CardType": "Color",
+    "cardName": "색칠 : 마름모",
+    "cardDesc": "자신이 위치한 칸에 인접한 칸 4칸을 <b>색칠</b>한다",
+    "cardCost": 3,
+    "CardPoolAttributes" : [
+      "Color"
+    ],
+    "costChangeCondition": "None",
+    "colorTargetPosition": "P4",
+    "colorTargetNum": "Four"
+  },
+  {
+    "TriggerCondition": "None",
+    "AdditionalEffectCondition": "DeckTopIsAttackCard",
+    "AdditionalEffect": "BuffPlayer",
+    "AttackCardEffect": "Alpha",
+    "TargetType": 111,
+    "TargetCount": 1,
+    "AttackCount": 1,
+    "Damage": 10,
+    "CardType": "Attack",
+    "cardName": "전략 : 강화",
+    "cardDesc": "적에게 피해를 <color=#FF0000>10</color> 준다, 덱 맨 위의 카드가 공격 카드일 경우 자신을 <b>강화</b>한다",
+    "cardCost": 1,
+    "CardPoolAttributes" : [
+      "AttackCardDeckTop"
+    ]
+  },
+  {
+    "TriggerCondition": "None",
+    "AdditionalEffectCondition": "None",
+    "AdditionalEffect": "DebuffMonster",
+    "AttackCardEffect": "Alpha",
+    "TargetType": 1,
+    "TargetCount": 1,
+    "AttackCount": 1,
+    "Damage": 10,
+    "CardType": "Attack",
+    "cardName": "독 단검",
+    "cardDesc": "몬스터에게 피해를 <color=#FF0000>10</color> 준다, 몬스터를 <b>약화</b>한다",
+    "cardCost": 2,
+    "CardPoolAttributes" : [
+      "Public"
+    ]
+  },
+  {
     "TriggerCondition": "PlayerNotInColoredSpace",
     "AdditionalEffectCondition": "None",
     "AdditionalEffect": "None",
