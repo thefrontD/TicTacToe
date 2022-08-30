@@ -17,7 +17,7 @@ public enum BoardObject { None, Player, Wall, Minion }
 public enum BoardColor { None, Player, Enemy }
 
 [JsonConverter(typeof(StringEnumConverter))]
-public enum States{ Normal, Attack, Move, Color }
+public enum States{ Normal, Attack, Move, Color, Dump }
 
 //[JsonConverter(typeof(StringEnumConverter))]
 //public enum EnemyState { Normal, Attack, Color }
