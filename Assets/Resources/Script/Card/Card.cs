@@ -136,7 +136,7 @@ public abstract class Card
         switch (this._triggerCondition)
         {
             case TriggerCondition.Attacked:
-                proceed = true;
+                proceed = PlayerManager.Instance.Attacked;
                 break;
 
             case TriggerCondition.PlayerInColoredSpace:
@@ -192,7 +192,7 @@ public abstract class Card
             case TriggerCondition.PlayerWall:  // TODO
                 for(int i = 0; i < 4;  i++){
                     if(PlayerManager.Instance.Row + dx[i] < 0 || PlayerManager.Instance.Row + dx[i] > 2 ||
-                    PlayerManager.Instance.Row + dy[i] < 0 || PlayerManager.Instance.Row + dy[i] > 2){
+                    PlayerManager.Instance.Col + dy[i] < 0 || PlayerManager.Instance.Col + dy[i] > 2){
                         if(BoardManager.Instance.BoardObjects[PlayerManager.Instance.Row + dx[i]][PlayerManager.Instance.Col + dy[i]]
                         == BoardObject.Wall)
                             proceed = true;
@@ -203,7 +203,9 @@ public abstract class Card
                 proceed = true;
                 for(int i = 0; i < 4;  i++){
                     if(PlayerManager.Instance.Row + dx[i] < 0 || PlayerManager.Instance.Row + dx[i] > 2 ||
-                    PlayerManager.Instance.Row + dy[i] < 0 || PlayerManager.Instance.Row + dy[i] > 2){
+                    PlayerManager.Instance.Col + dy[i] < 0 || PlayerManager.Instance.Col + dy[i] > 2){
+                        continue;
+                    }else{
                         if(BoardManager.Instance.BoardObjects[PlayerManager.Instance.Row + dx[i]][PlayerManager.Instance.Col + dy[i]]
                         == BoardObject.Wall)
                             proceed = false;
@@ -310,6 +312,7 @@ public abstract class Card
                     proceed = true;
                 break;
 
+            case TriggerCondition.PlayerHealthExceeds10:
             case TriggerCondition.PlayerHealthExceeds20:
             case TriggerCondition.PlayerHealthExceeds30:
                 // 플레이어의 체력이 30을 초과하는가?
