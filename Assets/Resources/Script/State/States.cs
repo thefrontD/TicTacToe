@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using EPOOutline;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -142,7 +141,7 @@ public class NormalState : BaseState
             PlayerManager.Instance.BingoAttack = false;
         }
         foreach (CardUI cardui in CardManager.Instance.HandCardList)
-            cardui.gameObject.GetComponent<Outlinable>().enabled = false;
+            cardui.HightLightCard(false);
         return;
     }
 }
@@ -438,6 +437,17 @@ public class MoveState : BaseState
                 break;
             }
         }
+
+        for (int i = 0; i < BoardManager.Instance.BoardSize; i++)
+        {
+            for (int j = 0; j < BoardManager.Instance.BoardSize; j++)
+            {
+                BoardManager.Instance.GameBoard[i][j].SetHighlight(BoardSituation.None); 
+
+                if(this.movableSpace[i, j])
+                    BoardManager.Instance.GameBoard[i][j].SetHighlight(BoardSituation.WillMove); 
+            }
+        }
     }
 
     public override void Update()
@@ -666,8 +676,6 @@ public class AttackState : BaseState
             {
                 attackable.gameObject.GetComponent<Enemy>().EnemyOutlineEffect();
             }
-            attackable.gameObject.GetComponent<Outlinable>().enabled = true;
-            attackable.gameObject.GetComponent<Outlinable>().OutlineParameters.Color = Color.blue;
         }
 
         //targetCount가 1이 아닌 경우, 바로 처리(0: 전체 공격/2 이상: 랜덤 공격)
@@ -1037,7 +1045,6 @@ public class AttackState : BaseState
             {
                 attackable.gameObject.GetComponent<Enemy>().StopEnemyOutlineEffect();
             }
-            attackable.gameObject.GetComponent<Outlinable>().enabled = false;
         }
 
         PlayerManager.Instance.EndCurrentState();
@@ -1389,7 +1396,7 @@ public class DumpState : BaseState
             if (cardui.Card.CardType == dumpCardType)
             {
                 dumpableCardUIs.Add(cardui);
-                cardui.GetComponent<Outlinable>().enabled = true;
+                cardui.HightLightCard(true);
             }
         }
         
@@ -1415,7 +1422,7 @@ public class DumpState : BaseState
             if (cardui != null && dumpableCardUIs.Contains(cardui))
             {
                 // 카드 클릭 시 카드 버리기
-                cardui.GetComponent<Outlinable>().enabled = false;
+                cardui.HightLightCard(false);
                 CardManager.Instance.HandtoGrave(CardManager.Instance.HandCardList.IndexOf(cardui));
                 PlayerManager.Instance.EndCurrentState();
             }
@@ -1426,7 +1433,7 @@ public class DumpState : BaseState
     {
         // 카드 Outline 해제
         foreach (CardUI cardui in CardManager.Instance.HandCardList)
-            cardui.GetComponent<Outlinable>().enabled = false;
+            cardui.HightLightCard(false);
         return;
     }
 }
