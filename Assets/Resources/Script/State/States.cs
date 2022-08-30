@@ -229,8 +229,8 @@ public class MoveState : BaseState
                 // 원하는 칸으로 이동
             {
                 for (int i = 0; i < boardSize; i++)
-                for (int j = 0; j < boardSize; j++)
-                    this.movableSpace[i, j] = true;
+                    for (int j = 0; j < boardSize; j++)
+                        this.movableSpace[i, j] = true;
                 break;
             }
 
@@ -360,9 +360,9 @@ public class MoveState : BaseState
             {
                 List<List<BoardColor>> boardColors = BoardManager.Instance.BoardColors;
                 for (int i = 0; i < boardSize; i++) // row
-                for (int j = 0; j < boardSize; j++) // col
-                    if (boardColors[i][j] == BoardColor.Player)
-                        this.movableSpace[i, j] = true;
+                    for (int j = 0; j < boardSize; j++) // col
+                        if (boardColors[i][j] == BoardColor.Player)
+                            this.movableSpace[i, j] = true;
                 break;
             }
 
@@ -410,25 +410,25 @@ public class MoveState : BaseState
                             break;
                         case EnemyAction.AllAttack:
                             for (int i = 0; i < boardSize; i++)
-                            for (int j = 0; j < boardSize; j++)
-                                this.movableSpace[i, j] = true;
+                                for (int j = 0; j < boardSize; j++)
+                                    this.movableSpace[i, j] = true;
                             break;
                         case EnemyAction.ColoredAttack:
                         {
                             List<List<BoardColor>> boardColors = BoardManager.Instance.BoardColors;
                             for (int i = 0; i < boardSize; i++) // row
-                            for (int j = 0; j < boardSize; j++) // col
-                                if (boardColors[i][j] == BoardColor.Player)
-                                    this.movableSpace[i, j] = true;
+                                for (int j = 0; j < boardSize; j++) // col
+                                    if (boardColors[i][j] == BoardColor.Player)
+                                        this.movableSpace[i, j] = true;
                             break;
                         }
                         case EnemyAction.NoColoredAttack:
                         {
                             List<List<BoardColor>> boardColors = BoardManager.Instance.BoardColors;
                             for (int i = 0; i < boardSize; i++) // row
-                            for (int j = 0; j < boardSize; j++) // col
-                                if (boardColors[i][j] != BoardColor.Player)
-                                    this.movableSpace[i, j] = true;
+                                for (int j = 0; j < boardSize; j++) // col
+                                    if (boardColors[i][j] != BoardColor.Player)
+                                        this.movableSpace[i, j] = true;
                             break;
                         }
                     }
@@ -478,6 +478,13 @@ public class MoveState : BaseState
                     this.moveRow = row;
                     this.moveCol = col;
                     //Debug.Log($"Move to R{this.moveRow}, C{this.moveCol}");
+                    PlayerManager.Instance.EndCurrentState();
+                }
+                else if (this.movableSpace[row, col] && BoardManager.Instance.BoardObjects[row][col] == BoardObject.Player && card.triggerCondition == TriggerCondition.ColoredSpaceExists)
+                {
+                    // TODO: 이건 "이동 마법진"을 위한 임시조치. 나중에 이 코드는 없애고, 아예 전용 triggerCondition(ex. ColoredSpaceExceptPlayerExists)을 만들어야 할 듯.
+                    this.moveRow = row;
+                    this.moveCol = col;
                     PlayerManager.Instance.EndCurrentState();
                 }
             }
