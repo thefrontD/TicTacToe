@@ -1,14 +1,18 @@
 [
     {
       "EnemyName" : "MarshalPausway",
-      "EnemyHP": 3,
-      "EnemyShield": 50,
+      "EnemyHP": 5,
+      "EnemyShield": 70,
       "EnemyPower" : 10,
       "EnemyAction": [
-        {"Item1": "V2Attack", "Item2": 10},
+        {"Item1": "V1Attack", "Item2": 10},
         {"Item1": "H2Attack", "Item2": 10},
-        {"Item1": "WallSummon", "Item2": 10},
-        {"Item1": "ShieldHealing", "Item2": 40}
+        {"Item1": "WallsSummon", "Item2": 10},
+        {"Item1": "ShieldHealing", "Item2": 60}
+        {"Item1": "H1Attack", "Item2": 10},
+        {"Item1": "V2Attack", "Item2": 10},
+        {"Item1": "WallsSummon", "Item2": 10},
+        {"Item1": "ShieldHealing", "Item2": 60}
       ]
     }
   ]
