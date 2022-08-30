@@ -186,7 +186,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3641571945615409430, guid: ba764f3f4bc2d3444bc5e9f3be04d5ff, type: 3}
       propertyPath: ColorModule.enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4180013918114273247, guid: ba764f3f4bc2d3444bc5e9f3be04d5ff, type: 3}
       propertyPath: m_RootOrder
@@ -252,7 +252,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3641571945615409430, guid: ba764f3f4bc2d3444bc5e9f3be04d5ff, type: 3}
       propertyPath: ColorModule.enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4180013918114273247, guid: ba764f3f4bc2d3444bc5e9f3be04d5ff, type: 3}
       propertyPath: m_RootOrder
@@ -318,7 +318,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3641571945615409430, guid: ba764f3f4bc2d3444bc5e9f3be04d5ff, type: 3}
       propertyPath: ColorModule.enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4180013918114273247, guid: ba764f3f4bc2d3444bc5e9f3be04d5ff, type: 3}
       propertyPath: m_RootOrder
@@ -384,7 +384,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3641571945615409430, guid: ba764f3f4bc2d3444bc5e9f3be04d5ff, type: 3}
       propertyPath: ColorModule.enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4180013918114273247, guid: ba764f3f4bc2d3444bc5e9f3be04d5ff, type: 3}
       propertyPath: m_RootOrder
@@ -450,7 +450,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3641571945615409430, guid: ba764f3f4bc2d3444bc5e9f3be04d5ff, type: 3}
       propertyPath: ColorModule.enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4180013918114273247, guid: ba764f3f4bc2d3444bc5e9f3be04d5ff, type: 3}
       propertyPath: m_RootOrder
@@ -516,7 +516,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3641571945615409430, guid: ba764f3f4bc2d3444bc5e9f3be04d5ff, type: 3}
       propertyPath: ColorModule.enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4180013918114273247, guid: ba764f3f4bc2d3444bc5e9f3be04d5ff, type: 3}
       propertyPath: m_RootOrder
@@ -582,7 +582,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3641571945615409430, guid: ba764f3f4bc2d3444bc5e9f3be04d5ff, type: 3}
       propertyPath: ColorModule.enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4180013918114273247, guid: ba764f3f4bc2d3444bc5e9f3be04d5ff, type: 3}
       propertyPath: m_RootOrder
@@ -648,7 +648,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3641571945615409430, guid: ba764f3f4bc2d3444bc5e9f3be04d5ff, type: 3}
       propertyPath: ColorModule.enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4180013918114273247, guid: ba764f3f4bc2d3444bc5e9f3be04d5ff, type: 3}
       propertyPath: m_RootOrder
@@ -714,7 +714,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3641571945615409430, guid: ba764f3f4bc2d3444bc5e9f3be04d5ff, type: 3}
       propertyPath: ColorModule.enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4180013918114273247, guid: ba764f3f4bc2d3444bc5e9f3be04d5ff, type: 3}
       propertyPath: m_RootOrder

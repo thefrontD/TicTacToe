@@ -1213,6 +1213,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1634586635982699915, guid: 904639439823b8945bb84b4b5ba7b1b2, type: 3}
+      propertyPath: ColorModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1634586635982699915, guid: 904639439823b8945bb84b4b5ba7b1b2, type: 3}
       propertyPath: InitialModule.startSize.scalar
       value: 1
       objectReference: {fileID: 0}

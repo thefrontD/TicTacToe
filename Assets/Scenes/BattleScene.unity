@@ -2881,6 +2881,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1616819751797662794, guid: 17bd36cadba43df499d781cd99e3348e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 1920
+      objectReference: {fileID: 0}
     - target: {fileID: 1616819751797662795, guid: 17bd36cadba43df499d781cd99e3348e, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -3530,7 +3534,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5303504930969994944, guid: b525f0fd36dd1e2428609d6633e3e705, type: 3}
       propertyPath: ColorModule.enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6286635160232120347, guid: b525f0fd36dd1e2428609d6633e3e705, type: 3}
       propertyPath: m_RootOrder
@@ -3582,35 +3586,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7078904656399808770, guid: b525f0fd36dd1e2428609d6633e3e705, type: 3}
       propertyPath: ColorModule.enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7078904656468600347, guid: b525f0fd36dd1e2428609d6633e3e705, type: 3}
       propertyPath: ColorModule.enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7078904656795820714, guid: b525f0fd36dd1e2428609d6633e3e705, type: 3}
       propertyPath: ColorModule.enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7078904657112387861, guid: b525f0fd36dd1e2428609d6633e3e705, type: 3}
       propertyPath: ColorModule.enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7078904657181016112, guid: b525f0fd36dd1e2428609d6633e3e705, type: 3}
       propertyPath: ColorModule.enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7078904657893670512, guid: b525f0fd36dd1e2428609d6633e3e705, type: 3}
       propertyPath: ColorModule.enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7078904657986306656, guid: b525f0fd36dd1e2428609d6633e3e705, type: 3}
       propertyPath: ColorModule.enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7078904657992017402, guid: b525f0fd36dd1e2428609d6633e3e705, type: 3}
       propertyPath: ColorModule.enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b525f0fd36dd1e2428609d6633e3e705, type: 3}
