@@ -8,6 +8,8 @@ public class TutorialManager : Singleton<TutorialManager>
 {
     public void toNextTutorial(int idx)
     {
+        PlayerManager.Instance.CardUsable = false;
+        
         switch (idx)
         {
             case 2:

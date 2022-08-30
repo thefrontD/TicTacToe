@@ -125,7 +125,7 @@ public class CardAcquiringPanel : MonoBehaviour
 
     public void EndCardAcquiring()
     {
-        transform.parent.DOMoveX(-1920, 1, false).SetEase(Ease.OutQuad);
+        transform.parent.DOMoveX(-960, 1, false).SetEase(Ease.OutQuad);
     }
 
     void Update()
