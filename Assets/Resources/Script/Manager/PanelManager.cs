@@ -18,7 +18,7 @@ public class PanelManager : Singleton<PanelManager>
     [SerializeField]private string MoveNotice = "이동할 칸을 선택하세요";
     [SerializeField]private string AttackNotice = "공격 대상을 선택하세요";
     [SerializeField]private string ColorNotice = "색칠할 칸을 선택하세요";
-    [SerializeField]private string ColorNotice = "버릴 카드를 선택하세요";
+    [SerializeField]private string DumpNotice = "버릴 카드를 선택하세요";
 
     public void SetDirectionNotice(States state){
         switch(state){
@@ -30,6 +30,9 @@ public class PanelManager : Singleton<PanelManager>
                 break;
             case States.Color:
                 DirectionNotice.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = ColorNotice;
+                break;
+            case States.Dump:
+                DirectionNotice.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = DumpNotice;
                 break;
         }
         return;
