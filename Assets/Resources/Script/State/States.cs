@@ -784,7 +784,11 @@ public class AttackState : BaseState
             }
             case AdditionalEffectCondition.DeckTopIsAttackCard: // 덱 맨 위의 카드가 공격 카드였을 때
             {
-                if (CardManager.Instance.DeckList.Peek().Card is AttackCard)
+                if (CardManager.Instance.DeckList.Count == 0)
+                    break;
+                CardUI topCard = CardManager.Instance.DeckList.Peek();
+                CardManager.Instance.PeekAndReturn();
+                if (topCard.Card is AttackCard)
                     proceed = true;
                 additionalEffectParam = new List<IAttackable>(this.selectedAttackableList);
                 break;
