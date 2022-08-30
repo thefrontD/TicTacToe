@@ -3552,6 +3552,38 @@ PrefabInstance:
       propertyPath: m_Name
       value: Board
       objectReference: {fileID: 0}
+    - target: {fileID: 7078904656399808770, guid: b525f0fd36dd1e2428609d6633e3e705, type: 3}
+      propertyPath: ColorModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7078904656468600347, guid: b525f0fd36dd1e2428609d6633e3e705, type: 3}
+      propertyPath: ColorModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7078904656795820714, guid: b525f0fd36dd1e2428609d6633e3e705, type: 3}
+      propertyPath: ColorModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7078904657112387861, guid: b525f0fd36dd1e2428609d6633e3e705, type: 3}
+      propertyPath: ColorModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7078904657181016112, guid: b525f0fd36dd1e2428609d6633e3e705, type: 3}
+      propertyPath: ColorModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7078904657893670512, guid: b525f0fd36dd1e2428609d6633e3e705, type: 3}
+      propertyPath: ColorModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7078904657986306656, guid: b525f0fd36dd1e2428609d6633e3e705, type: 3}
+      propertyPath: ColorModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7078904657992017402, guid: b525f0fd36dd1e2428609d6633e3e705, type: 3}
+      propertyPath: ColorModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b525f0fd36dd1e2428609d6633e3e705, type: 3}
 --- !u!1001 &9123025363835996909
