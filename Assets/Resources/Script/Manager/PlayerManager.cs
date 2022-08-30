@@ -209,16 +209,14 @@ public class PlayerManager : Singleton<PlayerManager>
     
     private IEnumerator ChangeStatesCoroutine(BaseState newState)
     {
+        this._clickable = false;
         Debug.Log(state);
         state.Exit();
-        this._clickable = false;
-        Debug.Log(_clickable);
         yield return new WaitForSeconds(0.5f);
         state = newState;
         Debug.Log(state);
         state.Enter();
         this._clickable = true;
-        Debug.Log(_clickable);
     }
 
     public void EndCurrentState()
@@ -385,5 +383,6 @@ public class PlayerManager : Singleton<PlayerManager>
     public void NextTutorialNum(object sender, EventArgs e)
     {
         _tutorialPhase++;
+        _cardUsable = true;
     }
 }

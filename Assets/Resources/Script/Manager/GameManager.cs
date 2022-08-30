@@ -48,6 +48,11 @@ public class GameManager : Singleton<GameManager>
 
     private IEnumerator GameOverCoroutine()
     {
+        foreach (CardUI card in CardManager.Instance.HandCardList)
+        {
+            card.isHand = false;
+        }
+        
         PlayerManager.Instance.CardUsable = false;
         DialogueManager.Instance.dialogueCallBack.DialogueCallBack -= PlayerManager.Instance.Init;
         DialogueManager.Instance.dialogueCallBack.DialogueCallBack += gameOverPanelActivation;
@@ -70,6 +75,11 @@ public class GameManager : Singleton<GameManager>
     {
         if (EnemyManager.Instance.EnemyList.Count == 0)
         {
+            foreach (CardUI card in CardManager.Instance.HandCardList)
+            {
+                card.isHand = false;
+            }
+            
             PlayerManager.Instance.CardUsable = false;
 
             DialogueManager.Instance.dialogueCallBack.DialogueCallBack -= PlayerManager.Instance.Init;
