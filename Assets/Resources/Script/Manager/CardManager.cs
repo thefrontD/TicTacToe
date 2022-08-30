@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using DG.Tweening;
-using EPOOutline;
 using UnityEngine;
 
 /// <summary>
@@ -70,10 +69,7 @@ public class CardManager : Singleton<CardManager>
     {
         foreach (CardUI card in HandCardList)
         {
-            if (card.Card.CheckCondition())
-                card.gameObject.GetComponent<Outlinable>().enabled = true;
-            else
-                card.gameObject.GetComponent<Outlinable>().enabled = false;
+            card.HightLightCard(card.Card.CheckCondition());
         }
     }
     

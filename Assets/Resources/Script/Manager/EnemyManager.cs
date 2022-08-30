@@ -73,7 +73,6 @@ public class EnemyManager : Singleton<EnemyManager>
                         {
                             for (int j = 0; j < BoardManager.Instance.BoardSize; j++)
                             {
-                                Debug.Log(string.Format("{0} : {1}", i, j));
                                 BoardManager.Instance.GameBoard[j][i].SetHighlight(BoardSituation.WillAttack);
                             }
                         }
@@ -86,7 +85,6 @@ public class EnemyManager : Singleton<EnemyManager>
                         {
                             if (BoardManager.Instance.GameBoard[i][j].currentBoardColor == BoardColor.Player)
                             {
-                                Debug.Log(string.Format("{0} : {1}", i, j));
                                 BoardManager.Instance.GameBoard[i][j].SetHighlight(BoardSituation.WillAttack);
                             }
                         }
@@ -97,7 +95,7 @@ public class EnemyManager : Singleton<EnemyManager>
                     {
                         for (int j = 0; j < BoardManager.Instance.BoardSize; j++)
                         {
-                            if(BoardManager.Instance.GameBoard[i][j].currentBoardColor != BoardColor.Enemy)
+                            if(BoardManager.Instance.GameBoard[i][j].currentBoardColor == BoardColor.None)
                                 BoardManager.Instance.GameBoard[i][j].SetHighlight(BoardSituation.WillAttack);
                         }
                     }

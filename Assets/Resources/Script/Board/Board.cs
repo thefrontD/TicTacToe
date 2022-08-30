@@ -68,14 +68,18 @@ public class Board : MonoBehaviour
         if(situation == BoardSituation.None)
         {
             boardIntention.gameObject.SetActive(false);
+            highLightEffect.Clear();
             highLightEffect.gameObject.SetActive(false);
         }
         else
         {
             boardIntention.gameObject.SetActive(true);
             highLightEffect.gameObject.SetActive(true);
-            ParticleSystem.MainModule settings = highLightEffect.main;
-            settings.startColor = colors[(int)situation];
+            ParticleSystem.MainModule settings1 = highLightEffect.main;
+            settings1.startColor = colors[(int)situation];
+            ParticleSystem.MainModule settings2 = highLightEffect.transform.GetChild(0).GetComponent<ParticleSystem>().main;
+            settings2.startColor = colors[(int)situation];
+            highLightEffect.Play();
             boardIntention.SetSprite(situation);
         }
     }
