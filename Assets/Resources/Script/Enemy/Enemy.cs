@@ -148,6 +148,8 @@ public class Enemy : MonoBehaviour, IAttackable
         print(angle);
         Quaternion rotation = Quaternion.Euler(angle, -90, 90);
         Instantiate(PlayerManager.Instance.AttackEffect, transform.position + new Vector3(0, 0, -3), rotation);  // 자동으로 destroy된다.
+        //SE 재생
+        SoundManager.Instance.PlaySE("PlayerAttack", 0.5f);
     }
 
     public EnemyUI EnemyUI;
@@ -433,14 +435,18 @@ public class Enemy : MonoBehaviour, IAttackable
         else
             _debuffDictionary[debuff] += value;
         if(value >0){
-            if(debuff == Debuff.PowerDecrease )
+            if(debuff == Debuff.PowerDecrease ){
                 transform.Find("DebuffEffect").gameObject.SetActive(true);
+                SoundManager.Instance.PlaySE("Debuff", 1.0f);
+            }
             else if(debuff == Debuff.Heal){
                 transform.Find("HealEffect").gameObject.SetActive(true);
-                SoundManager.Instance.PlaySE("HealShield");
+                SoundManager.Instance.PlaySE("HealShield", 0.5f);
             }
-            else
+            else{
                 transform.Find("BuffEffect").gameObject.SetActive(true);
+                SoundManager.Instance.PlaySE("Buff", 0.5f);
+            }
         }
         EnemyUI.BuffDebuffUpdate();
     }
