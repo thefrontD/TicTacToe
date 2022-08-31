@@ -333,7 +333,7 @@ public class PlayerManager : Singleton<PlayerManager>
     public IEnumerator DamageBlink()
     {
         const int numBlinks = 10;
-        GameObject playerObject = BoardManager.Instance.PlayerObject.transform.GetChild(1).gameObject;
+        GameObject playerObject = BoardManager.Instance.PlayerObject.transform.GetChild(0).gameObject;
         for (int i = 0; i < numBlinks; i++)
         {
             playerObject.SetActive(false);
