@@ -1,14 +1,14 @@
 [
     {
       "EnemyName" : "RabbitTheAlice",
-      "EnemyHP": 3,
-      "EnemyShield": 40,
+      "EnemyHP": 4,
+      "EnemyShield": 50,
       "EnemyPower" : 10,
       "EnemyAction": [
+        {"Item1": "V2Attack", "Item2": 10},
         {"Item1": "H2Attack", "Item2": 10},
-        {"Item1": "ColoredAttack", "Item2": 10},
-        {"Item1": "WallSummon", "Item2": 10},
-        {"Item1": "ColoredAttack", "Item2": 10},
+        {"Item1": "WallsSummon", "Item2": 10},
+        {"Item1": "H2Attack", "Item2": 10},
         {"Item1": "V2Attack", "Item2": 10},
         {"Item1": "WallsSummon", "Item2": 10}
       ]

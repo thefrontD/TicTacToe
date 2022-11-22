@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
-using EPOOutline;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -25,6 +24,7 @@ public class CardUI : MonoBehaviour
     [SerializeField] private TextMeshPro CardNameText;
     [SerializeField] private TextMeshPro CardDescText;
     //[SerializeField] private TextMeshPro CardEffectExplanation;
+    [SerializeField] private ParticleSystem HightLightParticle;
     private bool isDrag = false;
     private int _originIdx = 0;
     public bool isHand = false;
@@ -103,7 +103,7 @@ public class CardUI : MonoBehaviour
         CardNameText.sortingOrder = idx+1;
         CardDescText.sortingOrder = idx+1;
     }
-    private void SetBackOrder(int idx){
+    public void SetBackOrder(int idx){
         CardManaImage.gameObject.SetActive(false);
         CardBackground.sortingOrder = idx+1;
         CardManaImage.sortingOrder = idx;
@@ -127,13 +127,27 @@ public class CardUI : MonoBehaviour
             if(Card.usingCard())
             {
                 SoundManager.Instance.PlaySE("UsingCard");
-                GetComponent<Outlinable>().enabled = false;
+                HightLightCard(false);
                 CardManager.Instance.HandtoGrave(idx);
             }
             else if(PlayerManager.Instance.TutorialPhase == 16)
             {
                 TutorialManager.Instance.toNextTutorial(PlayerManager.Instance.TutorialPhase);
             }
+        }
+    }
+
+    public void HightLightCard(bool isOn)
+    {
+        if(isOn)
+        {
+            HightLightParticle.gameObject.SetActive(true);
+            HightLightParticle.Play();
+        }
+        else
+        {
+            HightLightParticle.Clear();
+            HightLightParticle.gameObject.SetActive(false);
         }
     }
 

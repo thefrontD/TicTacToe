@@ -14,6 +14,7 @@ public class PanelManager : Singleton<PanelManager>
     [SerializeField] private Button nextButton;
     [SerializeField] private Button mainMenuButton;
     [SerializeField] private Button exitGameButton;
+
     public GameObject DirectionNotice;
     [SerializeField]private string MoveNotice = "이동할 칸을 선택하세요";
     [SerializeField]private string AttackNotice = "공격 대상을 선택하세요";

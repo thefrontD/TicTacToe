@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using EPOOutline;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -142,7 +141,7 @@ public class NormalState : BaseState
             PlayerManager.Instance.BingoAttack = false;
         }
         foreach (CardUI cardui in CardManager.Instance.HandCardList)
-            cardui.gameObject.GetComponent<Outlinable>().enabled = false;
+            cardui.HightLightCard(false);
         return;
     }
 }
@@ -230,8 +229,8 @@ public class MoveState : BaseState
                 // 원하는 칸으로 이동
             {
                 for (int i = 0; i < boardSize; i++)
-                for (int j = 0; j < boardSize; j++)
-                    this.movableSpace[i, j] = true;
+                    for (int j = 0; j < boardSize; j++)
+                        this.movableSpace[i, j] = true;
                 break;
             }
 
@@ -361,9 +360,9 @@ public class MoveState : BaseState
             {
                 List<List<BoardColor>> boardColors = BoardManager.Instance.BoardColors;
                 for (int i = 0; i < boardSize; i++) // row
-                for (int j = 0; j < boardSize; j++) // col
-                    if (boardColors[i][j] == BoardColor.Player)
-                        this.movableSpace[i, j] = true;
+                    for (int j = 0; j < boardSize; j++) // col
+                        if (boardColors[i][j] == BoardColor.Player)
+                            this.movableSpace[i, j] = true;
                 break;
             }
 
@@ -411,25 +410,25 @@ public class MoveState : BaseState
                             break;
                         case EnemyAction.AllAttack:
                             for (int i = 0; i < boardSize; i++)
-                            for (int j = 0; j < boardSize; j++)
-                                this.movableSpace[i, j] = true;
+                                for (int j = 0; j < boardSize; j++)
+                                    this.movableSpace[i, j] = true;
                             break;
                         case EnemyAction.ColoredAttack:
                         {
                             List<List<BoardColor>> boardColors = BoardManager.Instance.BoardColors;
                             for (int i = 0; i < boardSize; i++) // row
-                            for (int j = 0; j < boardSize; j++) // col
-                                if (boardColors[i][j] == BoardColor.Player)
-                                    this.movableSpace[i, j] = true;
+                                for (int j = 0; j < boardSize; j++) // col
+                                    if (boardColors[i][j] == BoardColor.Player)
+                                        this.movableSpace[i, j] = true;
                             break;
                         }
                         case EnemyAction.NoColoredAttack:
                         {
                             List<List<BoardColor>> boardColors = BoardManager.Instance.BoardColors;
                             for (int i = 0; i < boardSize; i++) // row
-                            for (int j = 0; j < boardSize; j++) // col
-                                if (boardColors[i][j] != BoardColor.Player)
-                                    this.movableSpace[i, j] = true;
+                                for (int j = 0; j < boardSize; j++) // col
+                                    if (boardColors[i][j] != BoardColor.Player)
+                                        this.movableSpace[i, j] = true;
                             break;
                         }
                     }
@@ -438,9 +437,17 @@ public class MoveState : BaseState
                 break;
             }
         }
-        //안내문 활성화
-        PanelManager.Instance.DirectionNotice.SetActive(true);
-        PanelManager.Instance.SetDirectionNotice(States.Move);
+
+        for (int i = 0; i < BoardManager.Instance.BoardSize; i++)
+        {
+            for (int j = 0; j < BoardManager.Instance.BoardSize; j++)
+            {
+                BoardManager.Instance.GameBoard[i][j].SetHighlight(BoardSituation.None); 
+
+                if(this.movableSpace[i, j])
+                    BoardManager.Instance.GameBoard[i][j].SetHighlight(BoardSituation.WillMove); 
+            }
+        }
     }
 
     public override void Update()
@@ -450,9 +457,6 @@ public class MoveState : BaseState
 
     public override void MouseEvent()
     {
-        //안내문 비활성화
-        PanelManager.Instance.DirectionNotice.SetActive(false);
-
         // 이동 가능한 곳을 클릭할 시 진행.
         Camera camera = Camera.main;
         Vector3 mousePos = Input.mousePosition;
@@ -474,6 +478,13 @@ public class MoveState : BaseState
                     this.moveRow = row;
                     this.moveCol = col;
                     //Debug.Log($"Move to R{this.moveRow}, C{this.moveCol}");
+                    PlayerManager.Instance.EndCurrentState();
+                }
+                else if (this.movableSpace[row, col] && BoardManager.Instance.BoardObjects[row][col] == BoardObject.Player && card.triggerCondition == TriggerCondition.ColoredSpaceExists)
+                {
+                    // TODO: 이건 "이동 마법진"을 위한 임시조치. 나중에 이 코드는 없애고, 아예 전용 triggerCondition(ex. ColoredSpaceExceptPlayerExists)을 만들어야 할 듯.
+                    this.moveRow = row;
+                    this.moveCol = col;
                     PlayerManager.Instance.EndCurrentState();
                 }
             }
@@ -672,20 +683,11 @@ public class AttackState : BaseState
             {
                 attackable.gameObject.GetComponent<Enemy>().EnemyOutlineEffect();
             }
-            attackable.gameObject.GetComponent<Outlinable>().enabled = true;
-            attackable.gameObject.GetComponent<Outlinable>().OutlineParameters.Color = Color.blue;
         }
-
-        //안내문 활성화
-        PanelManager.Instance.DirectionNotice.SetActive(true);
-        PanelManager.Instance.SetDirectionNotice(States.Attack); 
 
         //targetCount가 1이 아닌 경우, 바로 처리(0: 전체 공격/2 이상: 랜덤 공격)
         if (card.TargetCount == 0)
         {
-            //안내문 비활성화
-            PanelManager.Instance.DirectionNotice.SetActive(false);
-
             //전부 공격
             for (int i = 0; i < attackableList.Count; i++)
             {
@@ -743,9 +745,6 @@ public class AttackState : BaseState
 
     public override void MouseEvent()
     {
-        //안내문 비활성화
-        PanelManager.Instance.DirectionNotice.SetActive(false);
-
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hitData;
         if (Physics.Raycast(ray, out hitData))
@@ -800,7 +799,11 @@ public class AttackState : BaseState
             }
             case AdditionalEffectCondition.DeckTopIsAttackCard: // 덱 맨 위의 카드가 공격 카드였을 때
             {
-                if (CardManager.Instance.DeckList.Peek().Card is AttackCard)
+                if (CardManager.Instance.DeckList.Count == 0)
+                    break;
+                CardUI topCard = CardManager.Instance.DeckList.Peek();
+                CardManager.Instance.PeekAndReturn();
+                if (topCard.Card is AttackCard)
                     proceed = true;
                 additionalEffectParam = new List<IAttackable>(this.selectedAttackableList);
                 break;
@@ -1049,7 +1052,6 @@ public class AttackState : BaseState
             {
                 attackable.gameObject.GetComponent<Enemy>().StopEnemyOutlineEffect();
             }
-            attackable.gameObject.GetComponent<Outlinable>().enabled = false;
         }
 
         PlayerManager.Instance.EndCurrentState();
@@ -1185,10 +1187,6 @@ public class ColorState : BaseState
         }
         else
         {
-            //안내문 활성화
-            PanelManager.Instance.DirectionNotice.SetActive(true);
-            PanelManager.Instance.SetDirectionNotice(States.Color);
-
             //선택할 필요가 있는 경우 highlight enable
             foreach ((int row, int col) in colorables)
             {
@@ -1203,9 +1201,6 @@ public class ColorState : BaseState
 
     public override void MouseEvent()
     {
-        //안내문 비활성화
-        PanelManager.Instance.DirectionNotice.SetActive(false);
-
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit[] hitData;
         hitData = Physics.RaycastAll(ray);
@@ -1408,7 +1403,7 @@ public class DumpState : BaseState
             if (cardui.Card.CardType == dumpCardType)
             {
                 dumpableCardUIs.Add(cardui);
-                cardui.GetComponent<Outlinable>().enabled = true;
+                cardui.HightLightCard(true);
             }
         }
         
@@ -1434,7 +1429,7 @@ public class DumpState : BaseState
             if (cardui != null && dumpableCardUIs.Contains(cardui))
             {
                 // 카드 클릭 시 카드 버리기
-                cardui.GetComponent<Outlinable>().enabled = false;
+                cardui.HightLightCard(false);
                 CardManager.Instance.HandtoGrave(CardManager.Instance.HandCardList.IndexOf(cardui));
                 PlayerManager.Instance.EndCurrentState();
             }
@@ -1445,7 +1440,7 @@ public class DumpState : BaseState
     {
         // 카드 Outline 해제
         foreach (CardUI cardui in CardManager.Instance.HandCardList)
-            cardui.GetComponent<Outlinable>().enabled = false;
+            cardui.HightLightCard(false);
         return;
     }
 }

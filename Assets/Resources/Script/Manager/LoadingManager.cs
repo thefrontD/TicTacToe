@@ -22,6 +22,8 @@ public class LoadingManager : Singleton<LoadingManager>
 
     private Dictionary<string, int> sceneDictionary = new Dictionary<string, int>();
 
+    private bool _lockButton = false;
+
     private void Awake()
     {
         if (LoadingManager.Instance != this)
@@ -72,20 +74,27 @@ public class LoadingManager : Singleton<LoadingManager>
 
     private IEnumerator SavingSequence(string sceneName, bool isStart = false)
     {
-        if(!isStart)
+        if (!_lockButton)
         {
-            Debug.Log("Yes!");
-            GameManager.Instance.CurrentStage++;
+            _lockButton = true;
+            
+            if(!isStart)
+            {
+                Debug.Log("Yes!");
+                GameManager.Instance.CurrentStage++;
         
-            PlayerManager.Instance.SavePlayerData();
+                PlayerManager.Instance.SavePlayerData();
+            }
+        
+            yield return new WaitForSeconds(0.5f);
+        
+            _lockButton = false;
+            
+            if(GameManager.Instance.CurrentStage == 111)
+                SceneManager.LoadScene("TitleScreen");
+            else
+                SceneManager.LoadScene("WorldMap");
         }
-        
-        yield return new WaitForSeconds(0.5f);
-        
-        if(GameManager.Instance.CurrentStage == 111)
-            SceneManager.LoadScene("TitleScreen");
-        else
-            SceneManager.LoadScene("WorldMap");
     }
     
     

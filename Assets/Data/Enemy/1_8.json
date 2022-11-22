@@ -1,12 +1,10 @@
 [
     {
       "EnemyName" : "Adrya",
-      "EnemyHP": 3,
-      "EnemyShield": 50,
+      "EnemyHP": 4,
+      "EnemyShield": 60,
       "EnemyPower" : 10,
       "EnemyAction": [
-        {"Item1": "PowerIncrease", "Item2": 20},
-        {"Item1": "PowerIncrease", "Item2": 20},
         {"Item1": "PowerIncrease", "Item2": 20},
         {"Item1": "PowerIncrease", "Item2": 20},
         {"Item1": "PowerIncrease", "Item2": 20},

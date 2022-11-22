@@ -1,14 +1,14 @@
 [
     {
       "EnemyName" : "Grizzle",
-      "EnemyHP": 3,
-      "EnemyShield": 50,
+      "EnemyHP": 4,
+      "EnemyShield": 60,
       "EnemyPower" : 10,
       "EnemyAction": [
         {"Item1": "V2Attack", "Item2": 10},
-        {"Item1": "H1Attack", "Item2": 10},
+        {"Item1": "H2Attack", "Item2": 10},
         {"Item1": "WallsSummon", "Item2": 10},
-        {"Item1": "ShieldHealing", "Item2": 40}
+        {"Item1": "ShieldHealing", "Item2": 50}
       ]
     }
   ]
