@@ -12,8 +12,6 @@ public class LoadingManager : Singleton<LoadingManager>
     private const float minimumLoadingTime = 2f;
     private const float loadingStartDuration = 0.7f;
 
-    private bool processed = false;
-
     private int currentLevel = 0;
 
     private Canvas canvas;
@@ -54,7 +52,6 @@ public class LoadingManager : Singleton<LoadingManager>
 
     public void LoadBattleScene()
     {
-        processed = false;
         SceneManager.LoadScene("BattleScene");
     }
 
@@ -75,11 +72,10 @@ public class LoadingManager : Singleton<LoadingManager>
 
     private IEnumerator SavingSequence(string sceneName, bool isStart = false)
     {
-        if(!isStart && !processed)
+        if(!isStart)
         {
             Debug.Log("Yes!");
             GameManager.Instance.CurrentStage++;
-            processed = true;
         
             PlayerManager.Instance.SavePlayerData();
         }
