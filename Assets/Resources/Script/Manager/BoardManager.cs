@@ -343,7 +343,6 @@ public class BoardManager : Singleton<BoardManager>
             for (int i = 0; i < _boardSize; i++)
                 GameBoard[i][_boardSize - 1 - i].GetComponent<Board>().ActivateBingoEffect(true, color);
         }
-        Debug.Log("Total Bingo is why not changing: "+ret.ToString());
 
         return ret;
     }
@@ -351,11 +350,16 @@ public class BoardManager : Singleton<BoardManager>
     public void SetPlayerDebuffEffect(Debuff debuff){
         if(debuff == Debuff.PowerIncrease || debuff == Debuff.DamageIncrease){
             PlayerObject.transform.Find("BuffEffect").gameObject.SetActive(true);
+            SoundManager.Instance.PlaySE("Buff", 0.5f);
+            Debug.Log("BuffSE should be played");
         }else if(debuff == Debuff.Heal){
             PlayerObject.transform.Find("HealEffect").gameObject.SetActive(true);
-            SoundManager.Instance.PlaySE("HealHP");
+            SoundManager.Instance.PlaySE("HealHP", 0.5f);
+            Debug.Log("HealHP should be played");
         }else{
             PlayerObject.transform.Find("DebuffEffect").gameObject.SetActive(true);
+            SoundManager.Instance.PlaySE("Debuff", 1.0f);
+            Debug.Log("DebuffSE should be played");
         }
     }
 }

@@ -1,20 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d3529374-01b1-433a-a73a-241952c1c846" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.TicTacToe/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TicTacToe/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/DOTweenSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/DOTweenSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Font/SCDream4 SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Font/SCDream4 SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Material/CardBoard.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Material/CardBoard.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Material/EnemySpriteOutline.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Material/EnemySpriteOutline.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Board_Panel(0_0).prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Board_Panel(0_0).prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Script/Manager/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Script/Manager/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Script/Manager/LoadingManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Script/Manager/LoadingManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Script/Manager/PlayerManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Script/Manager/PlayerManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Script/Manager/TutorialManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Script/Manager/TutorialManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Script/UI/CardAcquiringPanel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Script/UI/CardAcquiringPanel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/BattleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/BattleScene.unity" afterDir="false" />
-    </list>
+    <list default="true" id="d3529374-01b1-433a-a73a-241952c1c846" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -125,7 +112,7 @@
       <workItem from="1660884540918" duration="9852000" />
       <workItem from="1660908504850" duration="1527000" />
       <workItem from="1661053387706" duration="21661000" />
-      <workItem from="1661855380972" duration="1976000" />
+      <workItem from="1661855380972" duration="2427000" />
     </task>
     <servers />
   </component>

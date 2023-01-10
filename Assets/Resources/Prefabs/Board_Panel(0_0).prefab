@@ -430,7 +430,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveTime: 1
   tweenDelay: 0.1
-  maxHeight: 0.5
+  maxHeight: 0.55
   minHeight: 0.6
   spriteDictionary:
     m_keys: 00000000010000000200000003000000
@@ -532,7 +532,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4757346141764531760, guid: da455595dc5e8d9429184e8f19cc546c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.52
+      value: 0.499
       objectReference: {fileID: 0}
     - target: {fileID: 4757346141764531760, guid: da455595dc5e8d9429184e8f19cc546c, type: 3}
       propertyPath: m_LocalPosition.z
