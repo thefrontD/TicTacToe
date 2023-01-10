@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Data;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
@@ -8,7 +9,7 @@ using UnityEngine.UI;
 
 public class GameManager : Singleton<GameManager>
 {
-
+    public DataTable StageTable { get; private set; }
     private int _playerNum = 1;
     public int PlayerNum
     {
@@ -28,6 +29,7 @@ public class GameManager : Singleton<GameManager>
         if (GameManager.Instance != this)
             Destroy(gameObject);
         DontDestroyOnLoad(this.gameObject);
+        SetDataTable();
     }
 
     void Start()
@@ -109,5 +111,11 @@ public class GameManager : Singleton<GameManager>
     {
         PanelManager.Instance.GameClearPanel.SetActive(true);
         PanelManager.Instance.GameClearPanel.transform.DOLocalMoveY(100, 1.0f);
+    }
+
+    private void SetDataTable()
+    {
+
+        // StageTable
     }
 }

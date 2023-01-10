@@ -212,6 +212,7 @@ public class CardManager : Singleton<CardManager>
     {
         StartCoroutine(PeekAndReturnCoroutine());
     }
+    
     public IEnumerator PeekAndReturnCoroutine()
     {
         yield return new WaitWhile(() => cardMovementLock);
