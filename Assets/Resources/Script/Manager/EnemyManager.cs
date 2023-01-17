@@ -124,6 +124,8 @@ public class EnemyManager : Singleton<EnemyManager>
     /// <param name="EnemyNameList"></param>
     private void EnemyDataLoading(string enemyDataName)
     {
+        // CSV loading
+        // GameManager.Instance.StageTable
         List<EnemyDataHolder> enemyDataHolders = EnemyData.Instance._load(enemyDataName);
 
         foreach (EnemyDataHolder enemyData in enemyDataHolders)
