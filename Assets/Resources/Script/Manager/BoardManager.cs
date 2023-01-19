@@ -60,9 +60,9 @@ public class BoardManager : Singleton<BoardManager>
     /// <summary>
     /// Board 기획이 나오면 Json 파일로 저장해서 로딩해서 사용할 예정
     /// </summary>
-    public void BoardLoading(string dataName)
+    public void BoardLoading(string stageID)
     {
-        Holder holder = BoardData.Instance._load(dataName);
+        Holder holder = BoardData.Instance._load(stageID);
         
         _boardSize = holder._boardSize;
         PlayerManager.Instance.Row = holder._playerRow;

@@ -23,9 +23,9 @@ public class EnemyManager : Singleton<EnemyManager>
     }
 
 
-    public void EnemyLoading(string dataName)
+    public void EnemyLoading(string stageID)
     {
-        EnemyDataLoading(dataName);
+        EnemyDataLoading(stageID);
         
         for (int i = 0; i < BoardManager.Instance.BoardSize; i++)
         {
@@ -122,15 +122,27 @@ public class EnemyManager : Singleton<EnemyManager>
     /// Data로 부터 이름을 받아와서 Dictionary에서 서칭한 후 Instantiate
     /// </summary>
     /// <param name="EnemyNameList"></param>
-    private void EnemyDataLoading(string enemyDataName)
+    private void EnemyDataLoading(string stageID)
     {
-        // CSV loading
-        // GameManager.Instance.StageTable
-        List<EnemyDataHolder> enemyDataHolders = EnemyData.Instance._load(enemyDataName);
+        var row = GameManager.Instance.StageTable
+            .Select($"StageID = '{stageID}'")[0];
+        string[] monsterIDs = { row["MonsterID1"].ToString(), row["MonsterID2"].ToString(), row["MonsterID3"].ToString() };
 
-        foreach (EnemyDataHolder enemyData in enemyDataHolders)
+        List<EnemyDataHolder> enemyDataHolders = new List<EnemyDataHolder>();
+        foreach (string monsterID in monsterIDs)
         {
-            GameObject enemyObject = Instantiate(EnemyPrefab[enemyData.EnemyName], new Vector3(0, 17.5f, 0), Quaternion.Euler(-90, 0, 0));
+            if (monsterID != "")
+                enemyDataHolders.AddRange(EnemyData.Instance._load(monsterID));
+        }
+
+        //foreach (EnemyDataHolder enemyData in enemyDataHolders)
+        for (int i = 0; i < enemyDataHolders.Count; i++)
+        {
+            EnemyDataHolder enemyData = enemyDataHolders[i];
+            float x = (i - 0.5f * (enemyDataHolders.Count - 1)) * 40f;
+            Vector3 enemyPos = new Vector3(x, 17.5f, 0);
+
+            GameObject enemyObject = Instantiate(EnemyPrefab[enemyData.EnemyName], enemyPos, Quaternion.Euler(-90, 0, 0));
             Enemy enemy = enemyObject.transform.GetChild(0).GetComponent<Enemy>();
             enemy.InitEnemyData(enemyData);
             EnemyList.Add(enemy);

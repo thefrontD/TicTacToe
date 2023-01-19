@@ -1,0 +1,14 @@
+StageID,EnemyType,EnemyDifficulty,MonsterID1,MonsterID2,MonsterID3
+100,Normal,1,0,0,1
+101,Elite,2,1,2,2
+102,Boss,3,0,3,4
+1_1,Normal,1,1_1,1_2,
+1_2,Normal,1,1_2,,
+1_3,Normal,1,1_3,,
+1_4,Normal,1,1_4,,
+1_5,Normal,1,1_5,,
+1_6,Normal,1,1_6,,
+1_7,Normal,1,1_7,,
+1_8,Normal,1,1_8,,
+1_9,Normal,1,1_9,,
+1_10,Boss,1,1_10,,
