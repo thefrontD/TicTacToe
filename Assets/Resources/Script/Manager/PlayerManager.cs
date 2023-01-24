@@ -193,7 +193,7 @@ public class PlayerManager : Singleton<PlayerManager>
     public void SavePlayerData()
     {
         PlayerData.Instance.saveData(new PlayerDataHolder(GameManager.Instance.CurrentStage,
-            _maxHp, _hp, _maxMana, _mana), string.Format("PlayerData{0}", GameManager.Instance.PlayerNum));
+            _maxHp, _hp, _maxMana, _mana, _baseAp), string.Format("PlayerData{0}", GameManager.Instance.PlayerNum));
         if(!_tutorialTrigger)
             CardData.Instance.saveData(PlayerCard, string.Format("PlayerCard{0}", GameManager.Instance.PlayerNum));
         else
