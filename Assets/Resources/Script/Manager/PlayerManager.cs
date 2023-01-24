@@ -30,6 +30,9 @@ public class PlayerManager : Singleton<PlayerManager>
     public int MaxMana => _maxMana;
     private int _mana = 10;
     public int Mana => _mana;
+
+    private int _ap;
+    public int Ap => _ap;
     
     private int _shield;
     public int Shield => _shield;

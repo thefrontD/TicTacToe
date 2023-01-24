@@ -253,7 +253,7 @@ public abstract class Card
             case TriggerCondition.Bingo1:
             case TriggerCondition.Bingo2:
             case TriggerCondition.Bingo3:
-                if (BoardManager.Instance.CheckBingo(BoardColor.Player) >=
+                if (BoardManager.Instance.CountBingo(BoardColor.Player) >=
                     ((int) _triggerCondition - 30))
                     proceed = true;
                 break;
@@ -469,7 +469,7 @@ public class ColorCard : Card
 
         switch(this.costChangeCondition){
             case TriggerCondition.Bingo1:
-                int BingoNum = BoardManager.Instance.CheckBingo(BoardColor.Player);
+                int BingoNum = BoardManager.Instance.CountBingo(BoardColor.Player);
                 CardCost = CardCost - BingoNum;
                 if(CardCost < 0)
                     CardCost = 0;

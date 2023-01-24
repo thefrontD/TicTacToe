@@ -1082,7 +1082,7 @@ public class ColorState : BaseState
         boardsize = BoardManager.Instance.BoardSize;
         int Row = PlayerManager.Instance.Row;
         int Col = PlayerManager.Instance.Col;
-        prevBingoCount = BoardManager.Instance.CheckBingo(BoardColor.Player);
+        prevBingoCount = BoardManager.Instance.CountBingo(BoardColor.Player);
 
         switch (card.colorTargetPosition)
         {
@@ -1251,7 +1251,7 @@ public class ColorState : BaseState
         {
             case AdditionalEffectCondition.MakeBingo: // 빙고를 완성했을 때. 이 카드를 냈을 때 BingoCount가 더 커지면 됨.
             {
-                if (BoardManager.Instance.CheckBingo(BoardColor.Player) > this.prevBingoCount)
+                if (BoardManager.Instance.CountBingo(BoardColor.Player) > this.prevBingoCount)
                     proceed = true;
                 break;
             }

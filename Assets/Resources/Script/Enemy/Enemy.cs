@@ -89,9 +89,9 @@ public class Enemy : MonoBehaviour, IAttackable
 
             if (EnemyShield == 0)
             {
-                int bingoCount = BoardManager.Instance.CheckBingo(BoardColor.Player);
+                int bingoCount = BoardManager.Instance.CountBingo(BoardColor.Player);   //빙고 카운트 체크(삭제 필요) -> 빙고 카운트 체크는 
                 
-                if (bingoCount > 0)
+                if (bingoCount > 0)     //빙고 완성된 부분의 빙고만 삭제되어야 함
                 {
                     for (int ii = 0; ii < BoardManager.Instance.BoardSize; ii++)
                     {
@@ -104,10 +104,6 @@ public class Enemy : MonoBehaviour, IAttackable
 
                     _enemyHp -= (int) Math.Pow(2, bingoCount - 1);
                     PlayerManager.Instance.BingoAttack = true;
-                }
-                else
-                {
-                    // if (PlayerManager.Instance.TutorialPhase == 4)
                 }
                 if (EnemyHP <= 0)
                 {
