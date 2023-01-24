@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using System.Data;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
@@ -9,7 +8,7 @@ using UnityEngine.UI;
 
 public class GameManager : Singleton<GameManager>
 {
-    public DataTable StageTable { get; private set; }
+    public DataTableBase StageTable { get; private set; }
     private int _playerNum = 1;
     public int PlayerNum
     {
@@ -115,7 +114,7 @@ public class GameManager : Singleton<GameManager>
 
     private void SetDataTable()
     {
-
-        // StageTable
+        StageTable = new StageDataTable("StageTable");  // table 이름 초기화, 중요하진 않음
+        StageTable.LoadCsv("stage.csv");
     }
 }

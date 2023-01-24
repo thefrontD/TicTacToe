@@ -39,6 +39,7 @@ public class StartMenuScript : MonoBehaviour
         }
 
         GameManager.Instance.CurrentStage = 101;
+        GameManager.Instance.CurrentStage = 102;  // for debugging purpose
 
         await CopyAsync(Application.streamingAssetsPath + "/Data/Player/PlayerData.json", _path);
         await CopyAsync(Application.streamingAssetsPath + "/Data/Card/PlayerCard.json", 

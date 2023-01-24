@@ -112,16 +112,16 @@ public class PlayerManager : Singleton<PlayerManager>
     {
         int floor = GameManager.Instance.CurrentStage/100;
         int stage = GameManager.Instance.CurrentStage%100;
-        string stageData = floor.ToString() + "_" + stage.ToString();
+        string stageID = floor.ToString() + "_" + stage.ToString();
 
         if (stage == 1)
             _tutorialTrigger = true;
         else
             _tutorialTrigger = false;
         
-        BoardManager.Instance.BoardLoading(stageData);
+        BoardManager.Instance.BoardLoading(stageID);
         PlayerLoading();
-        EnemyManager.Instance.EnemyLoading(stageData);
+        EnemyManager.Instance.EnemyLoading(stageID);
         cardAqr.Init();
         playerUI.UpdatePlayerUI();
     }
@@ -130,11 +130,11 @@ public class PlayerManager : Singleton<PlayerManager>
     {
         int floor = GameManager.Instance.CurrentStage/100;
         int stage = GameManager.Instance.CurrentStage%100;
-        string stageData = floor.ToString() + "_" + stage.ToString();
+        string stageID = floor.ToString() + "_" + stage.ToString();
 
-        BoardManager.Instance.BoardLoading(stageData);
+        BoardManager.Instance.BoardLoading(stageID);
         PlayerLoading();
-        EnemyManager.Instance.EnemyLoading(stageData);
+        EnemyManager.Instance.EnemyLoading(stageID);
         cardAqr.Init();
         playerUI.UpdatePlayerUI();
     }
