@@ -43,7 +43,7 @@ public class NormalState : BaseState
     private int DrawNum;
     private bool isNewPlayerTurn;
 
-    public NormalState(int DrawNum = 6, bool isNewPlayerTurn = false)
+    public NormalState(int DrawNum = 5, bool isNewPlayerTurn = false)
     {
         this.isNewPlayerTurn = isNewPlayerTurn;
 

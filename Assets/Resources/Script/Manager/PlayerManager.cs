@@ -179,7 +179,7 @@ public class PlayerManager : Singleton<PlayerManager>
         if (_tutorialTrigger)
             state = new NormalState(3, true);
         else
-            state = new NormalState(6, true);
+            state = new NormalState(5, true);
         state.Enter();
         
         if(GameManager.Instance.CurrentStage%100 == 10)
