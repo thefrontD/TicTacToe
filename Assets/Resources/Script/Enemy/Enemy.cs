@@ -77,8 +77,7 @@ public class Enemy : MonoBehaviour, IAttackable
     {
         for (int i = 0; i < attackCount; i++)
         {
-            EnemyShield = EnemyShield > damage ? EnemyShield - damage : 0;
-
+            DamageEnemyShield(damage);
             PlayAttackFromPlayerEffect();
 
             if(PlayerManager.Instance.GOD)
@@ -89,7 +88,7 @@ public class Enemy : MonoBehaviour, IAttackable
 
             if (EnemyShield == 0)
             {
-                _enemyHp -= (PlayerManager.Instance.BaseAp + PlayerManager.Instance.Ap);
+                DamageEnemyHp(PlayerManager.Instance.BaseAp + PlayerManager.Instance.Ap);
                 /*
                 int bingoCount = BoardManager.Instance.CountBingo(BoardColor.Player);  
                 
@@ -313,6 +312,15 @@ public class Enemy : MonoBehaviour, IAttackable
         StartCoroutine(PlayEnemyAttackEffect(temp2, _isGameOver));
 
         return _isGameOver;
+    }
+
+    private void DamageEnemyHp(int damage)
+    {
+        _enemyHp -= damage;
+    }
+    private void DamageEnemyShield(int damage)
+    {
+        EnemyShield = EnemyShield > damage ? EnemyShield - damage : 0;
     }
 
     private IEnumerator PlayEnemyAttackEffect(List<(int, int)> attackedSpaces, bool isGameOver)

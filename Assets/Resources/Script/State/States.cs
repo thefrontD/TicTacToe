@@ -128,6 +128,7 @@ public class NormalState : BaseState
 
     public override void Exit()
     {
+        /*
         if (PlayerManager.Instance.BingoAttack)
         {
             for (int i = 0; i < BoardManager.Instance.BoardSize; i++)
@@ -140,6 +141,7 @@ public class NormalState : BaseState
             }
             PlayerManager.Instance.BingoAttack = false;
         }
+        */
         foreach (CardUI cardui in CardManager.Instance.HandCardList)
             cardui.HightLightCard(false);
         return;
@@ -1237,6 +1239,8 @@ public class ColorState : BaseState
 
     public override void Exit()
     {
+        //빙고 확인 후 Ap 증가
+        PlayerManager.Instance.GainAp(PlayerManager.Instance.GetAdditionalApByBingo(BoardManager.Instance.CheckBingo(BoardColor.Player)));
         Debug.Log("AdditionalEffectCondition: " + card.AdditionalEffectCondition);
         Debug.Log("AdditionalEffect: " + card.AdditionalEffect);
         EnemyManager.Instance.HightLightBoard();
