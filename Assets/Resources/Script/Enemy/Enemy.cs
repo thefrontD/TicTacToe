@@ -89,9 +89,11 @@ public class Enemy : MonoBehaviour, IAttackable
 
             if (EnemyShield == 0)
             {
-                int bingoCount = BoardManager.Instance.CountBingo(BoardColor.Player);   //빙고 카운트 체크(삭제 필요) -> 빙고 카운트 체크는 
+                _enemyHp -= (PlayerManager.Instance.Atk + PlayerManager.Instance.Ap);
+                /*
+                int bingoCount = BoardManager.Instance.CountBingo(BoardColor.Player);  
                 
-                if (bingoCount > 0)     //빙고 완성된 부분의 빙고만 삭제되어야 함
+                if (bingoCount > 0)
                 {
                     for (int ii = 0; ii < BoardManager.Instance.BoardSize; ii++)
                     {
@@ -105,13 +107,13 @@ public class Enemy : MonoBehaviour, IAttackable
                     _enemyHp -= (int) Math.Pow(2, bingoCount - 1);
                     PlayerManager.Instance.BingoAttack = true;
                 }
+                */
                 if (EnemyHP <= 0)
                 {
                     EnemyManager.Instance.EnemyList.Remove(this);
                     StartCoroutine(EnemyDeathCoroutine());
                 }
             }
-            
             EnemyUI.ShieldUIUpdate();
             EnemyUI.HPUIUpdate();
             yield return new WaitForSeconds(0.3f);
@@ -462,7 +464,7 @@ public class Enemy : MonoBehaviour, IAttackable
 
     public void EnemyHealShield(int num)
     {
-        Debug.Log("EnemyHPHeal!");
+        Debug.Log("EnemyShieldHeal!");
         SoundManager.Instance.PlaySE("HealHP");
         _enemyShield = _enemyShield + num > _enemyMaxShield ? _enemyMaxShield : _enemyShield + num;
         EnemyUI.ShieldUIUpdate();
