@@ -31,8 +31,8 @@ public class PlayerManager : Singleton<PlayerManager>
     private int _mana = 10;
     public int Mana => _mana;
 
-    private int _atk = 1;
-    public int Atk => _atk;
+    private int _baseAp = 1;
+    public int BaseAp => _baseAp;
     private int _ap;
     public int Ap => _ap;
     
