@@ -40,8 +40,8 @@ public class PlayerManager : Singleton<PlayerManager>
     private int col;
     public int Col { get => col; set => col = value; }
 
-    private bool attacked = false;
-    public bool Attacked { get => attacked; set => attacked = value; }
+    /*private bool attacked = false;
+    public bool Attacked { get => attacked; set => attacked = value; }*/
     
     private int _nextTurnDrawNum = 5;
     public int NextTrunDrawNum => _nextTurnDrawNum;
@@ -299,7 +299,7 @@ public class PlayerManager : Singleton<PlayerManager>
         if (value < 0)  // 대미지를 입었음
         {
             StartCoroutine(DamageBlink());
-            attacked = true;
+            /*attacked = true;*/
         }
         if(_shield != 0){
             if(_shield + value < 0)
@@ -353,7 +353,7 @@ public class PlayerManager : Singleton<PlayerManager>
     public void ToEnemyTurn()
     {
         //Attacked(이전 턴에 공격을 받았는지의 변수) 관리
-        attacked = false;
+        /*attacked = false;*/
 
         if(!_tutorialTrigger){
             if(!_lockTurn && state.GetType() == typeof(NormalState))

@@ -366,7 +366,7 @@ public class MoveState : BaseState
                 break;
             }
 
-            case MoveDirection.Dangerous:
+            /*case MoveDirection.Dangerous:
                 // 적이 이번 턴에 공격할 칸으로 이동
             {
                 List<Enemy> enemyList = EnemyManager.Instance.EnemyList;
@@ -435,7 +435,7 @@ public class MoveState : BaseState
                 }
 
                 break;
-            }
+            }*/
         }
 
         for (int i = 0; i < BoardManager.Instance.BoardSize; i++)
@@ -835,7 +835,7 @@ public class AttackState : BaseState
 
                 break;
             }
-            case AdditionalEffectCondition.MonsterWillAttack: // 그 몬스터의 의도가 공격일 때
+            /*case AdditionalEffectCondition.MonsterWillAttack: // 그 몬스터의 의도가 공격일 때
             {
                 foreach (IAttackable attackable in this.selectedAttackableList)
                 {
@@ -860,7 +860,7 @@ public class AttackState : BaseState
                 }
 
                 break;
-            }
+            }*/
             case AdditionalEffectCondition.DestroyShield: // 그 몬스터의 방어도를 방금 파괴했을 때
             {
                 for (int i = 0; i < this.prevEnemyShield.Count; i++)
@@ -912,7 +912,7 @@ public class AttackState : BaseState
                 PlayerManager.Instance.SetDebuff(Debuff.PowerIncrease, 1);
                 break;
             }
-            case AdditionalEffect.Move: // 그 칸으로 이동
+            /*case AdditionalEffect.Move: // 그 칸으로 이동
             {
                 foreach (IAttackable attackable in additionalEffectParam)
                 {
@@ -929,8 +929,8 @@ public class AttackState : BaseState
                 }
 
                 break;
-            }
-            case AdditionalEffect.Color: // 그 칸을 색칠
+            }*/
+            /*case AdditionalEffect.Color: // 그 칸을 색칠
             {
                 foreach (IAttackable attackable in additionalEffectParam)
                 {
@@ -947,7 +947,7 @@ public class AttackState : BaseState
                 }
 
                 break;
-            }
+            }*/
             case AdditionalEffect.MaxMonsterShieldMinus10: // 그 몬스터의 최대실드 -10
             {
                 foreach (IAttackable attackable in additionalEffectParam)
@@ -1132,20 +1132,20 @@ public class ColorState : BaseState
                     }
                 }
                 break;
-            case ColorTargetPosition.Vertical:
+            /*case ColorTargetPosition.Vertical:
                 for (int i = 0; i < boardsize; i++)
                 {
                     IfColorableAddToList(i, Col);
                 }
 
-                break;
-            case ColorTargetPosition.Horizontal:
+                break;*/
+            /*case ColorTargetPosition.Horizontal:
                 for (int i = 0; i < boardsize; i++)
                 {
                     IfColorableAddToList(Row, i);
                 }
 
-                break;
+                break;*/
             case ColorTargetPosition.P3V:
                 if (Row + 1 < boardsize)
                     IfColorableAddToList(Row + 1, Col);
@@ -1299,7 +1299,7 @@ public class ColorState : BaseState
                     PlayerManager.Instance.StatesQueue.Enqueue(state);
                 break;
             }
-            case AdditionalEffect.Move: // 그 칸으로 이동
+            /*case AdditionalEffect.Move: // 그 칸으로 이동
             {
                 if (this.clickedCoord.row >= 0 && this.clickedCoord.col >= 0)
                 {
@@ -1307,7 +1307,7 @@ public class ColorState : BaseState
                 }
 
                 break;
-            }
+            }*/
             case AdditionalEffect.MonsterShieldMinus20: // 그 몬스터의 실드 -20
             {
                 foreach (Enemy enemy in EnemyManager.Instance.EnemyList)
