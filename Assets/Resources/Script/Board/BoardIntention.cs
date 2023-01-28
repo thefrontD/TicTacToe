@@ -8,8 +8,8 @@ public class BoardIntention : MonoBehaviour
 {
     [SerializeField] private float moveTime;
     [SerializeField] private float tweenDelay;
-    [SerializeField] private float maxHeight;
-    [SerializeField] private float minHeight;
+    [SerializeField] private float maxScale;
+    [SerializeField] private float minScale;
     [SerializeField] private BoardSituationSpriteDictionary spriteDictionary;
     private Sequence _sequence;
     
@@ -18,9 +18,9 @@ public class BoardIntention : MonoBehaviour
         _sequence = DOTween.Sequence();
 
         _sequence
-            .Append(transform.DOLocalMoveY(maxHeight, moveTime, false).SetEase(Ease.InOutQuad))
+            .Append(transform.DOScale(Vector3.one * maxScale, moveTime).SetEase(Ease.InOutQuad))
             .AppendInterval(tweenDelay)
-            .Append(transform.DOLocalMoveY(minHeight, moveTime, false).SetEase(Ease.InOutQuad))
+            .Append(transform.DOScale(Vector3.one * minScale, moveTime).SetEase(Ease.InOutQuad))
             .AppendInterval(tweenDelay)
             .SetLoops(-1, LoopType.Restart);
         

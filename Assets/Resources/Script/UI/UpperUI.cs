@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using DG.Tweening;
 public class UpperUI : MonoBehaviour
 {
     public int clearedStage = 0;
@@ -12,8 +13,12 @@ public class UpperUI : MonoBehaviour
     public GameObject StageIdentifier;
     public GameObject PlayerProfile;
     // Start is called before the first frame update
+    private RectTransform _rectTransform;
+    private bool _cardListOnOpen = false;
+    private bool _cardListOnWorking;
     void Start()
     {
+        _rectTransform = CardListPanel.GetComponent<RectTransform>();
         clearedStage = (GameManager.Instance.CurrentStage % 100) - 1;
         
         //stage 표기 변경
@@ -29,11 +34,37 @@ public class UpperUI : MonoBehaviour
         
     }
 
-    public void ToggleCardListPanel(){
-        if(CardListPanel.activeSelf)
-            CardListPanel.SetActive(false);
+    public void ToggleCardListPanel()
+    {
+        ShowCardList(PlayerManager.Instance.PlayerCard);
+    }
+
+    public void ToggleDeckCardList()
+    {
+        //ShowCardList(CardManager.Instance.DeckList);
+    }
+
+    public void ToggleGraveCardList()
+    {
+        //ShowCardList(CardManager.Instance.GraveList);
+    }
+
+    private void ShowCardList(List<Card> CardList)
+    {
+        if (CardListPanel.activeSelf)
+        {
+            CardListPanel.GetComponent<RectTransform>().DOAnchorPos(new Vector2(0f, -1055f), 1f)
+                .SetEase(Ease.InQuad)
+                .OnComplete(() => { CardListPanel.GetComponent<CardListPanel>().DeleteCard();
+                    CardListPanel.SetActive(false); });
+        }
         else
-            CardListPanel.SetActive(true);
+        {
+            CardListPanel.GetComponent<RectTransform>().DOAnchorPos(new Vector2(0f, -25f), 1f)
+                .SetEase(Ease.OutQuad)
+                .OnStart(() => { CardListPanel.GetComponent<CardListPanel>().PrintCard(CardList);
+                    CardListPanel.SetActive(true); });
+        }
     }
 
     public void ToggleSettingPanel(){

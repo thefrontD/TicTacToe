@@ -16,6 +16,7 @@ public class CardUI : MonoBehaviour
     [SerializeField] private Vector3 MouseOnPos;
     [SerializeField] private float MouseOnScale;
     private Vector3 originPos;
+    private Vector3 originRot;
     private Vector3 originScale;
     [SerializeField] private SpriteRenderer CardBackground;
     [SerializeField] private SpriteRenderer CardManaImage;
@@ -35,18 +36,18 @@ public class CardUI : MonoBehaviour
         setPos();
     }
 
+    void Update()
+    {
+        if (isDrag)
+        {
+            transform.position = Utils.CardMousePos;
+        }
+    }
+
     public void init(Card card)
     {
         this.Card = card;
-
-        /* ���ǻ���:
-         * ī�� �̸����� ��η� ����� �� ���� Ư�����ڵ��� �� �ֽ��ϴ�.
-         * ���� ī�� sprite�� ���ϸ��� ������ ���� �����߽��ϴ�.
-         * ':' -> '-'  ex) "��ĥ : ���ڰ�" -> "��ĥ - ���ڰ�"
-         * '/' -> '_'  ex) "��ĥ/�̵�" -> "��ĥ_�̵�"
-         */
-        // TODO: ����/�̵�, ����/��ĥ, ���� : ����, ���� : ī��, ���� : ��ȭ, ����� ����, ����, �̵�, �밢�� �̵�, ���� : ȸ�� ��Ʈ�� ����!!
-        // TODO: ��Ʈ ���� �ذ� (SF �Թڴ� / �ȴϰ���), ī�� �޸� �����?
+        
         CardBackground.sprite = Resources.Load<Sprite>($"Images/Cards/{card.CardType}/BackGround");
         string cardPathName = card.CardName.Replace(':', '-').Replace('/', '_');
         print(cardPathName);
@@ -61,44 +62,92 @@ public class CardUI : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        if(isHand)
+        if(isHand && !isDrag && !CardManager.Instance.isDrag)
         {
-            transform.DOMove(originPos + MouseOnPos, animationDuration);
-            transform.DOScale(originScale * MouseOnScale, animationDuration);
+            DOTween.Kill(this.transform);
+            
+            transform.DOMove(originPos + MouseOnPos, animationDuration).SetEase(Ease.OutQuart);
+            transform.DOScale(originScale * MouseOnScale, animationDuration).SetEase(Ease.OutQuart);
+            transform.DORotate(new Vector3(0, 0, 0), animationDuration).SetEase(Ease.OutQuart);
+            CardManager.Instance.mouseEnterAnimation(Idx);
             SetSortingOrder(50);
         }
     }
     
     private void OnMouseExit()
     {
-        if(isHand)
+        if(isHand && !isDrag && !CardManager.Instance.isDrag)
         {
-            transform.DOMove(originPos, animationDuration);
-            transform.DOScale(originScale, animationDuration);
+            transform.DOMove(originPos, animationDuration).SetEase(Ease.OutQuart);
+            transform.DORotate(originRot, animationDuration).SetEase(Ease.OutQuart);
+            transform.DOScale(originScale, animationDuration).SetEase(Ease.OutQuart);
+            CardManager.Instance.mouseExitAnimation(Idx);
             SetSortingOrder(_originIdx);
+        }
+    }
+    
+    void OnMouseDown()
+    {
+        if(PlayerManager.Instance.state.GetType() == typeof(NormalState) && isHand && PlayerManager.Instance.Clickable)
+        {
+            isDrag = true;
+            CardManager.Instance.isDrag = true;
+            transform.DOScale(originScale, animationDuration).SetEase(Ease.OutQuart);
+        }
+    }
+    void OnMouseUp()
+    {
+        LayerMask mask = LayerMask.GetMask("CardUsable");
+        if(isDrag && Physics2D.Raycast(Utils.MousePos, Vector3.forward, 50, mask))
+        {
+            if(Card.usingCard())
+            {
+                isDrag = false;
+                CardManager.Instance.isDrag = false;
+                SoundManager.Instance.PlaySE("UsingCard");
+                HightLightCard(false);
+                CardManager.Instance.HandtoGrave(idx);
+            }
+            else if(PlayerManager.Instance.TutorialPhase == 16)
+            {
+                isDrag = false;
+                CardManager.Instance.isDrag = false;
+                transform.DOMove(originPos, animationDuration).SetEase(Ease.OutQuart);
+                transform.DORotate(originRot, animationDuration).SetEase(Ease.OutQuart);
+                TutorialManager.Instance.toNextTutorial(PlayerManager.Instance.TutorialPhase);
+            }
+        }
+        else
+        {
+            isDrag = false;
+            CardManager.Instance.isDrag = false;
+            transform.DOMove(originPos, animationDuration).SetEase(Ease.OutQuart);
+            transform.DORotate(originRot, animationDuration).SetEase(Ease.OutQuart);
         }
     }
 
     public void setPos()
     {
+        originScale = Utils.cardScaleOnHand;
         originPos = transform.position;
+        originRot = transform.rotation.eulerAngles;
     }
     
-    public void setPos(Vector3 pos, int idx)
+    public void setPos(Vector3 pos, Vector3 rot, int idx)
     {
         originPos = pos;
+        originRot = rot;
         SetSortingOrder(idx);
         _originIdx = idx;
     }
-
 
     public void SetSortingOrder(int idx)
     {
         CardBackground.sprite = Resources.Load<Sprite>($"Images/Cards/"+ Card.CardType.ToString() +"/BackGround");
         CardManaImage.gameObject.SetActive(true);
         CardBackground.sortingOrder = idx;
-        CardManaImage.sortingOrder = idx;
-        CardImage.sortingOrder = idx;
+        CardManaImage.sortingOrder = idx+1;
+        CardImage.sortingOrder = idx+1;
         CardCostText.sortingOrder = idx+1;
         CardNameText.sortingOrder = idx+1;
         CardDescText.sortingOrder = idx+1;
@@ -118,23 +167,6 @@ public class CardUI : MonoBehaviour
     {
         SetBackOrder(0);
         _originIdx = idx;
-    }
-
-    void OnMouseDown()
-    {
-        if (PlayerManager.Instance.state.GetType() == typeof(NormalState) && isHand && PlayerManager.Instance.Clickable)
-        {
-            if(Card.usingCard())
-            {
-                SoundManager.Instance.PlaySE("UsingCard");
-                HightLightCard(false);
-                CardManager.Instance.HandtoGrave(idx);
-            }
-            else if(PlayerManager.Instance.TutorialPhase == 16)
-            {
-                TutorialManager.Instance.toNextTutorial(PlayerManager.Instance.TutorialPhase);
-            }
-        }
     }
 
     public void HightLightCard(bool isOn)

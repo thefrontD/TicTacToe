@@ -142,7 +142,7 @@ public class EnemyManager : Singleton<EnemyManager>
             float x = (i - 0.5f * (enemyDataHolders.Count - 1)) * 40f;
             Vector3 enemyPos = new Vector3(x, 17.5f, 0);
 
-            GameObject enemyObject = Instantiate(EnemyPrefab[enemyData.EnemyName], enemyPos, Quaternion.Euler(-90, 0, 0));
+            GameObject enemyObject = Instantiate(EnemyPrefab[enemyData.EnemyName], enemyPos, Quaternion.Euler(0, 0, 0));
             Enemy enemy = enemyObject.transform.GetChild(0).GetComponent<Enemy>();
             enemy.InitEnemyData(enemyData);
             EnemyList.Add(enemy);

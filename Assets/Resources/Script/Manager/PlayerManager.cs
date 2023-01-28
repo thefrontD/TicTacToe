@@ -87,7 +87,7 @@ public class PlayerManager : Singleton<PlayerManager>
         
         state = new NormalState();
         if(!_tutorialTrigger)
-            DialogueManager.Instance.StartDialogue(string.Format("Enemy{0}", GameManager.Instance.CurrentStage%100));
+            Init();
         else
         {
             DialogueManager.Instance.dialogueCallBack.DialogueCallBack += NextTutorialNum;

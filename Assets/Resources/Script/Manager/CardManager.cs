@@ -14,10 +14,10 @@ public class CardManager : Singleton<CardManager>
     [SerializeField] private GameObject cardPrefab;
     [SerializeField] private Vector3 deckPos;
     [SerializeField] private Vector3 gravePos;
-    [SerializeField] private Vector3 originHandPos;
-    [SerializeField] private List<Vector3> cardPositionList;
-    private Quaternion _backQuaternion;
-    private Quaternion _fronQuaternion;
+    [SerializeField] private Vector3 cardHandPos;
+    private bool cardMovementLock = false;
+    private List<Vector3> cardPositionList;
+    private List<Vector3> cardRotationList;
 
     private List<CardUI> _handCardList = new List<CardUI>();
     private Queue<CardUI> _deckList = new Queue<CardUI>();
@@ -26,13 +26,18 @@ public class CardManager : Singleton<CardManager>
     public List<CardUI> HandCardList => _handCardList;
     public Queue<CardUI> DeckList => _deckList;
     public List<CardUI> GraveList => _graveList;
-    private bool cardMovementLock = false;
 
+    public bool isDrag = false;
     void Start()
     {
-        _backQuaternion = Quaternion.Euler(0f, 180f, 0f);
-        _fronQuaternion = Quaternion.identity;
-        Debug.Log(_backQuaternion);
+        cardPositionList = new List<Vector3>();
+        cardRotationList = new List<Vector3>();
+        for (int i = 0; i < 21; i++)
+        {
+            cardPositionList.Add(cardHandPos + 
+                new Vector3((10 - i) * 5f, - Math.Abs((10 - i) * 0.5f), -5));
+            cardRotationList.Add(new Vector3(0, 0, (i - 10) * 2f));
+        }
     }
 
     void Update()
@@ -44,7 +49,7 @@ public class CardManager : Singleton<CardManager>
     {
         foreach (Card card in PlayerManager.Instance.PlayerCard)
         {
-            GameObject newCard = Instantiate(cardPrefab, deckPos, _backQuaternion);
+            GameObject newCard = Instantiate(cardPrefab, deckPos, Utils.QB);
             newCard.transform.eulerAngles =  Vector3.up * 180;
             CardUI cardui = newCard.GetComponent<CardUI>();
             cardui.init(card);
@@ -121,12 +126,42 @@ public class CardManager : Singleton<CardManager>
 
         foreach (CardUI card in _handCardList)
         {
-            Vector3 cardPosition = cardPositionList[idx];
-            card.transform.DOMove(cardPosition, 0.1f, false);
+            card.transform.DOMove(cardPositionList[idx], 0.1f, false);
+            card.transform.DORotate(cardRotationList[idx], 0.1f, RotateMode.Fast);
             card.Idx = cardNum;
-            card.setPos(cardPosition, idx);
+            card.setPos(cardPositionList[idx], cardRotationList[idx], idx);
             idx += 2;
             cardNum++;
+        }
+    }
+
+    public void mouseEnterAnimation(int idx)
+    {
+        if (idx + 1 != _handCardList.Count)
+        {
+            _handCardList[idx+1].transform.DOMove(cardPositionList[11 - _handCardList.Count + (idx+1) * 2] - 
+                new Vector3(3, 0, 0), 0.2f, false).SetEase(Ease.OutQuart);
+        }
+
+        if (idx != 0)
+        {
+            _handCardList[idx-1].transform.DOMove(cardPositionList[11 - _handCardList.Count + (idx-1) * 2] + 
+                new Vector3(3, 0, 0), 0.2f, false).SetEase(Ease.OutQuart);
+        }
+    }
+    
+    public void mouseExitAnimation(int idx)
+    {
+        if (idx + 1 != _handCardList.Count)
+        {
+            _handCardList[idx+1].transform.DOMove(cardPositionList[11 - _handCardList.Count + (idx+1) * 2],
+                0.2f, false).SetEase(Ease.OutQuart);
+        }
+
+        if (idx != 0)
+        {
+            _handCardList[idx-1].transform.DOMove(cardPositionList[11 - _handCardList.Count + (idx-1) * 2],
+                0.2f, false).SetEase(Ease.OutQuart);
         }
     }
 
@@ -134,8 +169,9 @@ public class CardManager : Singleton<CardManager>
     {
         CardPositionAdjust();
         SoundManager.Instance.PlaySE("Draw");
+        card.transform.localScale = Utils.cardScaleOnHand;
         card.transform.DOMove(cardPositionList[9 + _handCardList.Count], 0.2f, false);
-        card.transform.DORotate(new Vector3(-30, 0, 0), 0.2f, RotateMode.Fast);
+        card.transform.DORotate(cardRotationList[9 + _handCardList.Count], 0.2f, RotateMode.Fast);
     }
 
     public void AllHandCardtoGrave()
@@ -149,6 +185,7 @@ public class CardManager : Singleton<CardManager>
         CardUI card = _handCardList[idx];
         card.ToGrave();
         card.isHand = false;
+        card.transform.localScale = Utils.cardScaleOnField;;
         card.transform.DOMove(gravePos, 0.2f, false);
         card.transform.DORotate(new Vector3(0, 180, 0), 0.2f, RotateMode.Fast);
         

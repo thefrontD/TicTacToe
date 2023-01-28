@@ -14,15 +14,16 @@ public class BoardManager : Singleton<BoardManager>
     /// 일단은 간편하게 3 by 3 배열 사용중이지만 범용을 위해 List<List<>>로 전환예정
     /// -> Board 기획이 나와서 Json 파일이 나오면 전환 예정
     /// </summary>
-    [SerializeField] private GameObject BoardPrefab;
+    [SerializeField] private List<GameObject> BoardPrefabs;
     //Board State Array
     [SerializeField] private GameObject PlayerPrefab;
     [SerializeField] private GameObject WallPrefabs;
     [SerializeField] private GameObject ColorEffect;
     [SerializeField] private GameObject MoveWindEffect;
-    [SerializeField] private GameObject MainBoard;
     [SerializeField] private Vector3 bias;
 
+    private GameObject MainBoard;
+    
     private GameObject _playerObject;
     public GameObject PlayerObject => _playerObject;
 
@@ -69,6 +70,8 @@ public class BoardManager : Singleton<BoardManager>
         PlayerManager.Instance.Col = holder._playerCol;
         _boardObjects = holder._boardObjects;
         _boardColors = holder._boardColors;
+
+        MainBoard = Instantiate(BoardPrefabs[_boardSize - 3], Vector3.zero, Utils.QS);
         
         for (int i = 0; i < _boardSize; i++)
         {
@@ -76,8 +79,6 @@ public class BoardManager : Singleton<BoardManager>
             _boardAttackables.Add(new List<IAttackable>());
             for (int j = 0; j < _boardSize; j++)
             {
-                float size = BoardPrefab.transform.localScale.x;
-                Vector3 pos = new Vector3(-size + size * j, size - size * i + 4, 0);
                 //_gameBoard[i].Add(Instantiate(BoardPrefab, pos, Quaternion.identity).GetComponent<Board>());
                 _gameBoard[i].Add(MainBoard.transform.GetChild(i*3+j).GetComponent<Board>());
                 _gameBoard[i][j].Init(_boardColors[i][j], i, j);

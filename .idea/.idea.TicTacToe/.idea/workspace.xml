@@ -1,7 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="d3529374-01b1-433a-a73a-241952c1c846" name="Changes" comment="" />
+    <list default="true" id="d3529374-01b1-433a-a73a-241952c1c846" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/UI/DialogueCanvas.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/UI/DialogueCanvas.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Script/Util/Utils.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Script/Util/Utils.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scenes/BattleScene 1.unity" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scenes/BattleScene 1.unity.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.TicTacToe/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TicTacToe/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.TicTacToe/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TicTacToe/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Font/210 OmniGothicOTF 020 SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Font/210 OmniGothicOTF 020 SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Font/SFHamBakNun SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Font/SFHamBakNun SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Material/CardBoard.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Material/CardBoard.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Board.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Board.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Board_Panel(0_0).prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Board_Panel(0_0).prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Card.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Card.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/DialogueCanvas.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/DialogueCanvas.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/UI/BattleSceneCanvas.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/UI/BattleSceneCanvas.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/UI/CardAquiringImage.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/UI/CardAquiringImage.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/UI/UpperUICanvas.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/UI/UpperUICanvas.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Script/Board/BoardIntention.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Script/Board/BoardIntention.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Script/Card/CardUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Script/Card/CardUI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Script/Manager/BoardManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Script/Manager/BoardManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Script/Manager/CardManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Script/Manager/CardManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Script/Manager/EnemyManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Script/Manager/EnemyManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Script/Manager/PlayerManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Script/Manager/PlayerManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Script/UI/CardListPanel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Script/UI/CardListPanel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Script/UI/NextTurnButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Script/UI/NextTurnButton.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Script/UI/UpperUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Script/UI/UpperUI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/BattleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/BattleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -17,6 +51,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/3be1a7ff939c43f181c0a10b5a0189ac13c800/ea/f25c20ab/SceneManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6b1444477c1d41c692ef6c02a838308529ac30/8d/5fce19b3/Void.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/de1f8ef4975b4eacbeb0accc1b22c9b02a000/88/a32bbe73/ShortcutExtensions.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Resources/Script/Board/BoardIntention.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Resources/Script/Manager/SoundManager.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -36,6 +71,10 @@
     &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
     &quot;Discover.Launch.Via.Unity&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;rider.run.widget.enabled.cache&quot;: &quot;false&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;settings.json.schema&quot;,
@@ -113,6 +152,9 @@
       <workItem from="1660908504850" duration="1527000" />
       <workItem from="1661053387706" duration="21661000" />
       <workItem from="1661855380972" duration="2427000" />
+      <workItem from="1674576703883" duration="6619000" />
+      <workItem from="1674840664865" duration="5170000" />
+      <workItem from="1674921752990" duration="10014000" />
     </task>
     <servers />
   </component>
