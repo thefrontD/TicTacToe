@@ -135,9 +135,9 @@ public abstract class Card
 
         switch (this._triggerCondition)
         {
-            case TriggerCondition.Attacked:
+            /*case TriggerCondition.Attacked:
                 proceed = PlayerManager.Instance.Attacked;
-                break;
+                break;*/
 
             case TriggerCondition.PlayerInColoredSpace:
                 if (BoardManager.Instance.BoardColors[PlayerManager.Instance.Row][PlayerManager.Instance.Col]
