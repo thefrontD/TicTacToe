@@ -77,8 +77,7 @@ public class Enemy : MonoBehaviour, IAttackable
     {
         for (int i = 0; i < attackCount; i++)
         {
-            EnemyShield = EnemyShield > damage ? EnemyShield - damage : 0;
-
+            DamageEnemyShield(damage);
             PlayAttackFromPlayerEffect();
 
             if(PlayerManager.Instance.GOD)
@@ -89,7 +88,9 @@ public class Enemy : MonoBehaviour, IAttackable
 
             if (EnemyShield == 0)
             {
-                int bingoCount = BoardManager.Instance.CheckBingo(BoardColor.Player);
+                DamageEnemyHp(PlayerManager.Instance.BaseAp + PlayerManager.Instance.Ap);
+                /*
+                int bingoCount = BoardManager.Instance.CountBingo(BoardColor.Player);  
                 
                 if (bingoCount > 0)
                 {
@@ -105,17 +106,13 @@ public class Enemy : MonoBehaviour, IAttackable
                     _enemyHp -= (int) Math.Pow(2, bingoCount - 1);
                     PlayerManager.Instance.BingoAttack = true;
                 }
-                else
-                {
-                    // if (PlayerManager.Instance.TutorialPhase == 4)
-                }
+                */
                 if (EnemyHP <= 0)
                 {
                     EnemyManager.Instance.EnemyList.Remove(this);
                     StartCoroutine(EnemyDeathCoroutine());
                 }
             }
-            
             EnemyUI.ShieldUIUpdate();
             EnemyUI.HPUIUpdate();
             yield return new WaitForSeconds(0.3f);
@@ -317,6 +314,15 @@ public class Enemy : MonoBehaviour, IAttackable
         return _isGameOver;
     }
 
+    private void DamageEnemyHp(int damage)
+    {
+        _enemyHp -= damage;
+    }
+    private void DamageEnemyShield(int damage)
+    {
+        EnemyShield = EnemyShield > damage ? EnemyShield - damage : 0;
+    }
+
     private IEnumerator PlayEnemyAttackEffect(List<(int, int)> attackedSpaces, bool isGameOver)
     {
         int boardSize = BoardManager.Instance.BoardSize;
@@ -466,7 +472,7 @@ public class Enemy : MonoBehaviour, IAttackable
 
     public void EnemyHealShield(int num)
     {
-        Debug.Log("EnemyHPHeal!");
+        Debug.Log("EnemyShieldHeal!");
         SoundManager.Instance.PlaySE("HealHP");
         _enemyShield = _enemyShield + num > _enemyMaxShield ? _enemyMaxShield : _enemyShield + num;
         EnemyUI.ShieldUIUpdate();

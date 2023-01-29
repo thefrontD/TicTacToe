@@ -21,6 +21,9 @@ public class PlayerDataHolder
     
     private int _mana;
     public int Mana => _mana;
+
+    private int _baseAp;
+    public int BaseAp => _baseAp;
     
     //private int _col;
     //public int Col => _col;
@@ -28,13 +31,14 @@ public class PlayerDataHolder
     //private int _row;
     //public int Row => _row;
 
-    public PlayerDataHolder(int currentStage, int maxHp, int hp, int maxMana, int mana)//, int col, int row)
+    public PlayerDataHolder(int currentStage, int maxHp, int hp, int maxMana, int mana, int baseAp)//, int col, int row)
     {
         this._currentStage = currentStage;
         this._maxHp = maxHp;
         this._maxMana = maxMana;
         this._hp = hp;
         this._mana = mana;
+        this._baseAp = baseAp;
         //this._col = col;
         //this._row = row;
     }

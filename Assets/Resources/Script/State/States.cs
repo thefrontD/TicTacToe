@@ -43,7 +43,7 @@ public class NormalState : BaseState
     private int DrawNum;
     private bool isNewPlayerTurn;
 
-    public NormalState(int DrawNum = 6, bool isNewPlayerTurn = false)
+    public NormalState(int DrawNum = 5, bool isNewPlayerTurn = false)
     {
         this.isNewPlayerTurn = isNewPlayerTurn;
 
@@ -128,6 +128,7 @@ public class NormalState : BaseState
 
     public override void Exit()
     {
+        /*
         if (PlayerManager.Instance.BingoAttack)
         {
             for (int i = 0; i < BoardManager.Instance.BoardSize; i++)
@@ -140,6 +141,7 @@ public class NormalState : BaseState
             }
             PlayerManager.Instance.BingoAttack = false;
         }
+        */
         foreach (CardUI cardui in CardManager.Instance.HandCardList)
             cardui.HightLightCard(false);
         return;
@@ -1082,7 +1084,7 @@ public class ColorState : BaseState
         boardsize = BoardManager.Instance.BoardSize;
         int Row = PlayerManager.Instance.Row;
         int Col = PlayerManager.Instance.Col;
-        prevBingoCount = BoardManager.Instance.CheckBingo(BoardColor.Player);
+        prevBingoCount = BoardManager.Instance.CountBingo(BoardColor.Player);
 
         switch (card.colorTargetPosition)
         {
@@ -1237,6 +1239,8 @@ public class ColorState : BaseState
 
     public override void Exit()
     {
+        //빙고 확인 후 Ap 증가
+        PlayerManager.Instance.GainAp(PlayerManager.Instance.GetAdditionalApByBingo(BoardManager.Instance.CheckBingo(BoardColor.Player)));
         Debug.Log("AdditionalEffectCondition: " + card.AdditionalEffectCondition);
         Debug.Log("AdditionalEffect: " + card.AdditionalEffect);
         EnemyManager.Instance.HightLightBoard();
@@ -1251,7 +1255,7 @@ public class ColorState : BaseState
         {
             case AdditionalEffectCondition.MakeBingo: // 빙고를 완성했을 때. 이 카드를 냈을 때 BingoCount가 더 커지면 됨.
             {
-                if (BoardManager.Instance.CheckBingo(BoardColor.Player) > this.prevBingoCount)
+                if (BoardManager.Instance.CountBingo(BoardColor.Player) > this.prevBingoCount)
                     proceed = true;
                 break;
             }

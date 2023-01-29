@@ -202,11 +202,85 @@ public class BoardManager : Singleton<BoardManager>
     }
 
     /// <summary>
-    /// 보드판 전체에서 color로 색칠된 빙고의 개수를 리턴한다.
+    /// 보드판 전체에서 color로 색칠된 빙고의 개수를 리턴하고, 빙고 색칠을 지운다.
     /// </summary>
     /// <param name="color"></param>
     /// <returns></returns>
     public int CheckBingo(BoardColor color)
+    {
+        bool[] horizontalBingo = new bool[_boardSize];
+        bool[] verticalBingo = new bool[_boardSize];
+        bool[] diagonalbingo = new bool[2];
+        int ret = 0;
+
+        //빙고 개수 세기, 빙고 위치 저장
+        for (int i = 0; i < _boardSize; i++)
+        {
+            horizontalBingo[i] = verticalBingo[i] = true;            
+            for (int j = 0; j < _boardSize; j++)
+            {
+                if (_boardColors[i][j] != color)
+                    horizontalBingo[i] = false;
+
+                if (_boardColors[j][i] != color)
+                    verticalBingo[i] = false;
+            } 
+            if (horizontalBingo[i])
+                ret ++;
+            if (verticalBingo[i])
+                ret++;
+        }
+
+        diagonalbingo[0] = diagonalbingo[1] = true;
+        for (int i = 0; i < _boardSize; i++)
+        {
+            if (_boardColors[i][i] != color)
+                diagonalbingo[0] = false;
+            if (_boardColors[i][_boardSize - 1 - i] != color)
+                diagonalbingo[1] = false;
+        }
+        if (diagonalbingo[0])
+            ret++;
+        if (diagonalbingo[1])
+            ret++;
+
+        //보드판 색칠 지우기
+        for (int i = 0; i < _boardSize; i++)
+        {
+            if(horizontalBingo[i])
+            {
+                for (int j = 0; j < _boardSize; j++)
+                {
+                    _boardColors[i][j] = BoardColor.None;
+                }
+            }
+            if(verticalBingo[i])
+            {
+                for (int j = 0; j < _boardSize; j++)
+                {
+                    _boardColors[j][i] = BoardColor.None;
+                }
+            }
+            if(diagonalbingo[0])
+            {
+                _boardColors[i][i] = BoardColor.None;
+            }
+            if(diagonalbingo[1])
+            {
+                _boardColors[i][_boardSize - 1 - i] = BoardColor.None;
+            }
+        }
+
+        
+        return ret;
+    }
+
+    /// <summary>
+    /// 보드판 전체에서 color로 색칠된 빙고의 개수를 리턴한다.
+    /// </summary>
+    /// <param name="color"></param>
+    /// <returns></returns>
+    public int CountBingo(BoardColor color)
     {
         int ret = 0;
         bool check1, check2;

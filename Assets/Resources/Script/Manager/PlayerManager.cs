@@ -30,6 +30,17 @@ public class PlayerManager : Singleton<PlayerManager>
     public int MaxMana => _maxMana;
     private int _mana = 10;
     public int Mana => _mana;
+
+    private int _baseAp = 1;
+    public int BaseAp => _baseAp;
+    private int _ap;
+    public int Ap => _ap;
+
+    private int[] AdditionalApByBingo = new int[]{0, 1, 3, 5}; //빙고 수에 따른 추가 AP 값
+    public int GetAdditionalApByBingo(int bingoCount)
+    {
+        return AdditionalApByBingo[bingoCount];
+    }
     
     private int _shield;
     public int Shield => _shield;
@@ -49,8 +60,8 @@ public class PlayerManager : Singleton<PlayerManager>
     private Dictionary<Debuff,  int> _debuffDictionary;
     public Dictionary<Debuff, int> DebuffDictionary => _debuffDictionary;
 
-    private bool _bingoAttack = false;
-    public bool BingoAttack { get => _bingoAttack; set => _bingoAttack = value; }
+    private bool _bingoAttack = false;                                              //사용 안 함
+    public bool BingoAttack { get => _bingoAttack; set => _bingoAttack = value; }   //사용 안 함
 
     private bool _tutorialTrigger = false;
     public bool TutorialTrigger => _tutorialTrigger;
@@ -168,7 +179,7 @@ public class PlayerManager : Singleton<PlayerManager>
         if (_tutorialTrigger)
             state = new NormalState(3, true);
         else
-            state = new NormalState(6, true);
+            state = new NormalState(5, true);
         state.Enter();
         
         if(GameManager.Instance.CurrentStage%100 == 10)
@@ -182,7 +193,7 @@ public class PlayerManager : Singleton<PlayerManager>
     public void SavePlayerData()
     {
         PlayerData.Instance.saveData(new PlayerDataHolder(GameManager.Instance.CurrentStage,
-            _maxHp, _hp, _maxMana, _mana), string.Format("PlayerData{0}", GameManager.Instance.PlayerNum));
+            _maxHp, _hp, _maxMana, _mana, _baseAp), string.Format("PlayerData{0}", GameManager.Instance.PlayerNum));
         if(!_tutorialTrigger)
             CardData.Instance.saveData(PlayerCard, string.Format("PlayerCard{0}", GameManager.Instance.PlayerNum));
         else
@@ -391,5 +402,15 @@ public class PlayerManager : Singleton<PlayerManager>
     {
         _tutorialPhase++;
         _cardUsable = true;
+    }
+
+    /// <summary>
+    /// 플레이어 AP를 value만큼 증가시킨다.
+    /// </summary>
+    /// <param name="value"></param>
+    /// <returns></returns>
+    public void GainAp(int value)
+    {
+        _ap += value;
     }
 }
