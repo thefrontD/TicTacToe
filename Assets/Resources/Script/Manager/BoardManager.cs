@@ -21,6 +21,7 @@ public class BoardManager : Singleton<BoardManager>
     [SerializeField] private GameObject ColorEffect;
     [SerializeField] private GameObject MoveWindEffect;
     [SerializeField] private Vector3 bias;
+    [SerializeField] private Vector3 BoardPos;
 
     private GameObject MainBoard;
     
@@ -71,7 +72,7 @@ public class BoardManager : Singleton<BoardManager>
         _boardObjects = holder._boardObjects;
         _boardColors = holder._boardColors;
 
-        MainBoard = Instantiate(BoardPrefabs[_boardSize - 3], Vector3.zero, Utils.QS);
+        MainBoard = Instantiate(BoardPrefabs[_boardSize - 3], BoardPos, Utils.QS);
         
         for (int i = 0; i < _boardSize; i++)
         {
@@ -80,9 +81,10 @@ public class BoardManager : Singleton<BoardManager>
             for (int j = 0; j < _boardSize; j++)
             {
                 //_gameBoard[i].Add(Instantiate(BoardPrefab, pos, Quaternion.identity).GetComponent<Board>());
-                _gameBoard[i].Add(MainBoard.transform.GetChild(i*3+j).GetComponent<Board>());
+                _gameBoard[i].Add(MainBoard.transform.GetChild(i*_boardSize+j).GetComponent<Board>());
                 _gameBoard[i][j].Init(_boardColors[i][j], i, j);
                 _boardAttackables[i].Add(null);
+                Debug.Log(_gameBoard[i].Count);
             }
         }
 

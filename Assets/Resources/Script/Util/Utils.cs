@@ -49,7 +49,7 @@ public class Utils
     {
         get
         {
-            return Camera.main.ScreenToWorldPoint(Input.mousePosition) + Vector3.back * 30;
+            return Camera.main.ScreenToWorldPoint(Input.mousePosition);
         }
     }
 
@@ -58,7 +58,7 @@ public class Utils
         get
         {
             Vector3 result = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            result.z = -5;
+            result.z = -20;
             return result;
         }
     }

@@ -5,35 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d3529374-01b1-433a-a73a-241952c1c846" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/UI/DialogueCanvas.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/UI/DialogueCanvas.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Script/Util/Utils.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Script/Util/Utils.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scenes/BattleScene 1.unity" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scenes/BattleScene 1.unity.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TicTacToe/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TicTacToe/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TicTacToe/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TicTacToe/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Font/210 OmniGothicOTF 020 SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Font/210 OmniGothicOTF 020 SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Font/SFHamBakNun SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Font/SFHamBakNun SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Material/CardBoard.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Material/CardBoard.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Board.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Board.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Board_Panel(0_0).prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Board_Panel(0_0).prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Card.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Card.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/DialogueCanvas.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/DialogueCanvas.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/UI/BattleSceneCanvas.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/UI/BattleSceneCanvas.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/UI/CardAquiringImage.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/UI/CardAquiringImage.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/UI/UpperUICanvas.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/UI/UpperUICanvas.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Script/Board/BoardIntention.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Script/Board/BoardIntention.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/Board/1_1.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/Board/1_1.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/Board/1_2.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/Board/1_2.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/BoardData.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/BoardData.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Board 1.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Board 1.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Board 2.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Board 2.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Board.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Board.prefab.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resources/Script/Card/CardUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Script/Card/CardUI.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resources/Script/Manager/BoardManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Script/Manager/BoardManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Script/Manager/CardManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Script/Manager/CardManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Script/Manager/EnemyManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Script/Manager/EnemyManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Script/Manager/PlayerManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Script/Manager/PlayerManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Script/UI/CardListPanel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Script/UI/CardListPanel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Script/UI/NextTurnButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Script/UI/NextTurnButton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Script/UI/UpperUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Script/UI/UpperUI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Script/Manager/SoundManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Script/Manager/SoundManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Script/State/States.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Script/State/States.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Script/Util/Utils.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Script/Util/Utils.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/BattleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/BattleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Data/Board/1_2.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/Data/Board/1_2.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -155,6 +144,7 @@
       <workItem from="1674576703883" duration="6619000" />
       <workItem from="1674840664865" duration="5170000" />
       <workItem from="1674921752990" duration="10014000" />
+      <workItem from="1674951489501" duration="2341000" />
     </task>
     <servers />
   </component>
@@ -178,6 +168,25 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Resources/Script/Manager/BoardManager.cs</url>
+          <line>113</line>
+          <properties documentPath="D:\Github\TicTacToe\Assets\Resources\Script\Manager\BoardManager.cs" initialLine="113" containingFunctionPresentation="method 'ColoringBoard'">
+            <startOffsets>
+              <option value="3795" />
+            </startOffsets>
+            <endOffsets>
+              <option value="3838" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

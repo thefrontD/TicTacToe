@@ -116,6 +116,13 @@ public class CardUI : MonoBehaviour
                 transform.DORotate(originRot, animationDuration).SetEase(Ease.OutQuart);
                 TutorialManager.Instance.toNextTutorial(PlayerManager.Instance.TutorialPhase);
             }
+            else
+            {
+                isDrag = false;
+                CardManager.Instance.isDrag = false;
+                transform.DOMove(originPos, animationDuration).SetEase(Ease.OutQuart);
+                transform.DORotate(originRot, animationDuration).SetEase(Ease.OutQuart);
+            }
         }
         else
         {

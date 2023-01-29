@@ -11,10 +11,10 @@ public class SoundManager : Singleton<SoundManager>
     public float masterVolumeSFX = 1f;
     public float masterVolumeBGM = 1f;
 
-    [SerializeField] private StringSoundDictionary seDictionary; //효과음 딕셔너리
-    [SerializeField] private StringSoundDictionary bgmDictionary; //배경음 딕셔너리
+    [SerializeField] private StringSoundDictionary seDictionary; //SoundEffect Dictionary
+    [SerializeField] private StringSoundDictionary bgmDictionary; //BGM Dictionary
 
-    // 효과 사운드 재생
+    // SE Playing
     public void PlaySE(string name, float volume = 1f)
     {
         if (seDictionary.ContainsKey(name) == false)
@@ -35,7 +35,7 @@ public class SoundManager : Singleton<SoundManager>
         Debug.Log("All Source is Playing Now");
     }
 
-    //BGM 사운드 재생, BGM 이름은 일단
+    //BGM Playing
     public void PlayBGM(string name, float volume = 1f)
     {
         bgmPlayer.loop = true; //BGM 사운드이므로 루프설정

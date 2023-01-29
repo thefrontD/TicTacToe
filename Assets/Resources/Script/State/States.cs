@@ -460,16 +460,14 @@ public class MoveState : BaseState
     public override void MouseEvent()
     {
         // 이동 가능한 곳을 클릭할 시 진행.
-        Camera camera = Camera.main;
-        Vector3 mousePos = Input.mousePosition;
-        mousePos.z = camera.farClipPlane;
-
-        Vector3 dir = camera.ScreenToWorldPoint(mousePos);
-
-        if (Physics.Raycast(camera.transform.position, dir, out RaycastHit hit, mousePos.z)) // 맞췄다!
+        LayerMask mask = LayerMask.GetMask("Board");
+        
+        Debug.Log(Utils.MousePos);
+        
+        if (Physics.Raycast(Utils.MousePos, Vector3.forward, out RaycastHit hit,50f, mask)) // 맞췄다!
         {
-            GameObject gameObject = hit.transform.gameObject;
-            Board board = gameObject.GetComponent<Board>();
+            Debug.Log("Laycast Work");
+            Board board =  hit.collider.gameObject.GetComponent<Board>();
             if (board != null) // 클릭한 물체가 Board 칸 중 하나일 경우
             {
                 int row = board.Row;

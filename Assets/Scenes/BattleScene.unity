@@ -312,7 +312,7 @@ MonoBehaviour:
   cardPrefab: {fileID: 225837845259513303, guid: 6bfe4312c6b5980499597a8dda3d921b, type: 3}
   deckPos: {x: -25, y: -7, z: 0}
   gravePos: {x: 25, y: -7, z: 0}
-  cardHandPos: {x: 5, y: -30, z: -5}
+  cardHandPos: {x: 5, y: -30, z: -15}
   isDrag: 0
 --- !u!1 &90283077
 GameObject:
@@ -3164,12 +3164,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BoardPrefabs:
   - {fileID: 6662316927096818337, guid: b525f0fd36dd1e2428609d6633e3e705, type: 3}
-  - {fileID: 6662316927096818337, guid: b525f0fd36dd1e2428609d6633e3e705, type: 3}
+  - {fileID: 6662316927096818337, guid: 93d2df3e8bfee3d4387f997c4b7f2f7e, type: 3}
   PlayerPrefab: {fileID: 350642886088647637, guid: 4cccfa2c541f28544924be8f65c95400, type: 3}
   WallPrefabs: {fileID: 7995517874831428577, guid: 13fe3b71b134329488051397afb33d65, type: 3}
   ColorEffect: {fileID: 1684374799952259555, guid: 8e3dd0053a6b49d40920cf71ed4fd869, type: 3}
   MoveWindEffect: {fileID: 1216866934488732980, guid: 67c7afdcd4eec7642aded2bfb617e118, type: 3}
   bias: {x: 0, y: 0, z: -4}
+  BoardPos: {x: 0, y: -2, z: 0}
 --- !u!1001 &2102347175
 PrefabInstance:
   m_ObjectHideFlags: 0
