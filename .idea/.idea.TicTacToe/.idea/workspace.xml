@@ -5,25 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d3529374-01b1-433a-a73a-241952c1c846" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.TicTacToe/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TicTacToe/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Script/Card/AttackCard.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Script/Card/AttackCard.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Script/Card/ColorCard.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Script/Card/ColorCard.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Script/Card/MoveCard.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Script/Card/MoveCard.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Script/State/AttackState.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Script/State/AttackState.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Script/State/ColorState.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Script/State/ColorState.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Script/State/DumpState.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Script/State/DumpState.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Script/State/EnemyState.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Script/State/EnemyState.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Script/State/MoveState.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Script/State/MoveState.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TicTacToe/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TicTacToe/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Board/1_1.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/Board/1_1.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Board/1_2.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/Board/1_2.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/BoardData.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/BoardData.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Board 1.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Board 1.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Board 2.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Board 2.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Board.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Board.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Script/Card/CardUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Script/Card/CardUI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Script/Manager/BoardManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Script/Manager/BoardManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Script/Manager/SoundManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Script/Manager/SoundManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Script/Card/Card.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Script/Card/Card.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resources/Script/State/States.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Script/State/States.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Script/Util/Utils.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Script/Util/Utils.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/BattleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/BattleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Data/Board/1_2.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/Data/Board/1_2.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Script/Util/Interface.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Script/Util/Interface.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -145,6 +146,7 @@
       <workItem from="1674840664865" duration="5170000" />
       <workItem from="1674921752990" duration="10014000" />
       <workItem from="1674951489501" duration="2341000" />
+      <workItem from="1674956055532" duration="336000" />
     </task>
     <servers />
   </component>
