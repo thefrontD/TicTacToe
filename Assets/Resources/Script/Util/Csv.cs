@@ -8,9 +8,9 @@ using System.Linq;
  * StageDataTable sdt = new StageDataTable("ppap");
  * sdt.LoadCsv("stage.csv");
  * sdt.print();
- * sdt["StageID", 0] = "W1-1";
- * Console.WriteLine(sdt["StageID", 0]);  // output: W1-1
- * sdt["EnemyDifficulty", 2] = 99;
+ * sdt["MapID", 0] = "W1-1";
+ * Console.WriteLine(sdt["MapID", 0]);  // output: W1-1
+ * sdt["Difficulty", 2] = 99;
  * sdt.SaveCsv("stage1.csv");
  */
 public abstract class DataTableBase : DataTable
@@ -113,7 +113,7 @@ public abstract class DataTableBase : DataTable
     /// <summary>
     /// 주어진 열과 행의 원소를 pandas style로 get 또는 set한다.
     /// </summary>
-    /// <param name="col">ex) "EnemyType"</param>
+    /// <param name="col">ex) "Type"</param>
     /// <param name="row">ex) "Elite"</param>
     /// <returns></returns>
     public object this[string col, int row]
@@ -134,12 +134,13 @@ public class StageDataTable : DataTableBase
     override public IReadOnlyDictionary<string, string> ColumnTypeMapping => _columnTypeMapping;
     private static IReadOnlyDictionary<string, string> _columnTypeMapping = new Dictionary<string, string>()
     {
-        { "StageID", "System.String" },
-        { "EnemyType", "System.String" },
-        { "EnemyDifficulty", "System.Int32" },
+        { "MapID", "System.String" },
+        { "Type", "System.String" },
+        { "Difficulty", "System.Int32" },
         { "MonsterID1", "System.String" },
         { "MonsterID2", "System.String" },
         { "MonsterID3", "System.String" },
+        { "MonsterID4", "System.String" },
     };
 
     public StageDataTable(string name) : base(name) { }
