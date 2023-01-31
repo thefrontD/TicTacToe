@@ -26,6 +26,7 @@ public class CardUI : MonoBehaviour
     [SerializeField] private TextMeshPro CardDescText;
     //[SerializeField] private TextMeshPro CardEffectExplanation;
     [SerializeField] private ParticleSystem HightLightParticle;
+    [SerializeField] private Sprite CardBackImage;
     private bool isDrag = false;
     private int _originIdx = 0;
     public bool isHand = false;
@@ -163,7 +164,7 @@ public class CardUI : MonoBehaviour
         CardManaImage.gameObject.SetActive(false);
         CardBackground.sortingOrder = idx+1;
         CardManaImage.sortingOrder = idx;
-        CardBackground.sprite = Resources.Load<Sprite>($"Images/Cards/Common/카드 뒷면");
+        CardBackground.sprite = CardBackImage;
         CardImage.sortingOrder = idx;
         CardCostText.sortingOrder = idx;
         CardNameText.sortingOrder = idx;

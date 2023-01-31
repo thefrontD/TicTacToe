@@ -80,7 +80,7 @@ public class PlayerManager : Singleton<PlayerManager>
     private bool _lockTurn = true;
     public bool LockTurn { get => _lockTurn; set => _lockTurn = value; }
     
-    public event Action OnPlayerDataUpdate;
+    public event Action OnPlayerHpManaUpdate;
 
     public BaseState state;
     public Queue<BaseState> StatesQueue;
@@ -134,7 +134,7 @@ public class PlayerManager : Singleton<PlayerManager>
         PlayerLoading();
         EnemyManager.Instance.EnemyLoading(stageID);
         cardAqr.Init();
-        playerUI.UpdatePlayerUI();
+        playerUI.UpdatePlayerHPManaUI();
     }
     
     public void Init(object sender, EventArgs arg)
@@ -147,7 +147,7 @@ public class PlayerManager : Singleton<PlayerManager>
         PlayerLoading();
         EnemyManager.Instance.EnemyLoading(stageID);
         cardAqr.Init();
-        playerUI.UpdatePlayerUI();
+        playerUI.UpdatePlayerHPManaUI();
     }
 
     public void PlayerLoading()
@@ -208,12 +208,20 @@ public class PlayerManager : Singleton<PlayerManager>
 
     public void SetDebuff(Debuff debuff, int value)
     {
+        bool isNew = false;
+
+        if(_debuffDictionary[debuff] == 0 && value > 0)
+            isNew = true;
+
         if(_debuffDictionary[debuff] + value < 0)
             _debuffDictionary[debuff] = 0;
-        else
+        else{
             _debuffDictionary[debuff] += value;
+        }
+
         BoardManager.Instance.SetPlayerDebuffEffect(debuff);
-        OnPlayerDataUpdate?.Invoke();
+        
+        playerUI.UpdatePlayerBuffUI(debuff, isNew);
     }
     
     public void ChangeStates(BaseState newState)
@@ -282,7 +290,7 @@ public class PlayerManager : Singleton<PlayerManager>
         else if(_mana + value > MaxMana) _mana = MaxMana;
         else _mana += value;
 
-        OnPlayerDataUpdate?.Invoke();
+        OnPlayerHpManaUpdate?.Invoke();
         return true;
     }
     
@@ -301,7 +309,7 @@ public class PlayerManager : Singleton<PlayerManager>
         if (_hp + value <= 0) return false;
         else if(_hp + value > MaxHp) _hp = MaxHp;
         else _hp += value;
-        OnPlayerDataUpdate?.Invoke();
+        OnPlayerHpManaUpdate?.Invoke();
         return true;
     }
     
@@ -337,7 +345,7 @@ public class PlayerManager : Singleton<PlayerManager>
             else _hp += value;
         }
 
-        OnPlayerDataUpdate?.Invoke();
+        OnPlayerHpManaUpdate?.Invoke();
         return false;
     }
 

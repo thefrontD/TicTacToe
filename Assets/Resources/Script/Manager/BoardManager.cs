@@ -95,8 +95,7 @@ public class BoardManager : Singleton<BoardManager>
     {
         Vector3 initPos = _gameBoard[PlayerManager.Instance.Row][PlayerManager.Instance.Col].transform.position  + bias;
         _boardObjects[PlayerManager.Instance.Row][PlayerManager.Instance.Col] = BoardObject.Player;
-        Quaternion rotation = Quaternion.Euler(-90, -90, 90);
-        _playerObject = Instantiate(PlayerPrefab, initPos, rotation);
+        _playerObject = Instantiate(PlayerPrefab, initPos, Utils.QI);
         //_playerObject.transform.localScale = new Vector3(12, 12, 12);
     }
 

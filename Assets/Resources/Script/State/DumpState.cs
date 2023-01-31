@@ -36,7 +36,8 @@ public class DumpState : BaseState
         
         //안내문 활성화
         PanelManager.Instance.DirectionNotice.SetActive(true);
-        PanelManager.Instance.SetDirectionNotice(States.Dump); 
+        PanelManager.Instance.
+        SetDirectionNotice(States.Dump); 
     }
 
     public override void Update()
