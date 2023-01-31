@@ -44,20 +44,6 @@
   {
     "TriggerCondition": "None",
     "AdditionalEffectCondition": "None",
-    "AdditionalEffect": "Move",
-    "ColorCardEffect": "ColorAnyAndMove",
-    "CardType": "Color",
-    "cardName": "색칠/이동",
-    "cardDesc": "원하는 칸을 1칸 <b>색칠</b>한다, 그 칸으로 <b>이동</b>한다",
-    "cardCost": 2,
-    "CardPoolAttributes": ["Public"],
-    "costChangeCondition": "None",
-    "colorTargetPosition": "All",
-    "colorTargetNum": "One"
-  },
-  {
-    "TriggerCondition": "None",
-    "AdditionalEffectCondition": "None",
     "AdditionalEffect": "None",
     "AttackCardEffect": "Alpha",
     "TargetType": 111,

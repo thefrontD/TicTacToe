@@ -39,7 +39,7 @@ public class Board : MonoBehaviour
     {
         _row = row;
         _col = col;
-        SetBoardColor(currentBoardColor);
+        SetBoardColor(boardColor);
         SetHighlight(BoardSituation.None);
         GetComponent<Outlinable>().enabled = false;
     }

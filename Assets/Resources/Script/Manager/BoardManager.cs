@@ -82,9 +82,11 @@ public class BoardManager : Singleton<BoardManager>
             {
                 //_gameBoard[i].Add(Instantiate(BoardPrefab, pos, Quaternion.identity).GetComponent<Board>());
                 _gameBoard[i].Add(MainBoard.transform.GetChild(i*_boardSize+j).GetComponent<Board>());
+                Debug.Log(_boardObjects[i][j]);
                 _gameBoard[i][j].Init(_boardColors[i][j], i, j);
                 _boardAttackables[i].Add(null);
-                Debug.Log(_gameBoard[i].Count);
+
+                //if(_boardObjects[i][j] == BoardObject.Wall) SummonWalls(i, j); 
             }
         }
 
@@ -153,6 +155,17 @@ public class BoardManager : Singleton<BoardManager>
             _isGameOver = PlayerManager.Instance.DamageToPlayer(-damage);
         
         return _isGameOver;
+    }
+
+    public void SummonWalls(int row, int col)
+    {
+        
+        _boardObjects[row][col] = BoardObject.Wall;
+        ColoringBoard(row, col, BoardColor.None);
+        GameObject wall = Instantiate(WallPrefabs, _gameBoard[row][col].transform.position, Quaternion.Euler(-90, 0, 0));
+        wall.GetComponent<Wall>().Init(row, col);
+        wall.transform.DOMoveZ(-4, 1).SetEase(Ease.OutQuart);
+        wall.transform.GetChild(0).GetComponent<ParticleSystem>().Play();
     }
 
     public bool MovePlayer(int row, int col, MoveCardEffect effect)
