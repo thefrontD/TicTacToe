@@ -29,7 +29,7 @@ public enum AttackCardEffect { Alpha, Bravo, Charlie, Delta, Echo, None }
 public enum MoveCardEffect { None, Run, Slide, Flash }
 
 [JsonConverter(typeof(StringEnumConverter)), Flags]
-public enum MoveDirection { All, UDLR, Diagonal, Colored, Dangerous }
+public enum MoveDirection { All, UDLR, Diagonal, Colored, Dangerous, ColoredSpace, RedColoredSpace, BlueColoredSpace }
 
 [JsonConverter(typeof(StringEnumConverter))]
 public enum ColorCardEffect 
@@ -54,12 +54,16 @@ public enum TriggerCondition
     None, 
     Attacked,
     PlayerInColoredSpace,
+    PlayerInRedColoredSpace,
+    PlayerInBlueColoredSpace,
     PlayerNotInColoredSpace,
     MonsterWillAttack, MonsterWillWall, MonsterWillMinion, MonsterWillShield,
     PlayerWall, PlayerNotWall,
     OnlyAttackCardInHand, OnlyMoveCardInHand, OnlyColorCardInHand,
     ColoredSpaceExists,
-    Bingo1=31, Bingo2=32, Bingo3=33,
+    RedColoredSpaceExists,
+    BlueColoredSpaceExists,
+    Bingo1 =31, Bingo2=32, Bingo3=33,
     CardInHand1=41, CardInHand2=42, CardInHand3=43, CardInHand4=44, CardInHand5=45,
     AttackCardInHand1=51, AttackCardInHand2=52, AttackCardInHand3=53, AttackCardInHand4=54, AttackCardInHand5=55,
     ColorCardInHand1=61, ColorCardInHand2=62, ColorCardInHand3=63, ColorCardInHand4=64, ColorCardInHand5=65,
@@ -80,6 +84,13 @@ public enum AdditionalEffectCondition
     MakeBingo,
     PlayerHealthUnder50Percent,
     DeckTopIsAttackCard,
+
+    PlayerInRedColoredSpace, PlayerInBlueColoredSpace, PlayerInNotColoredSpace,
+    UsedAttackCard,
+    EnemyShieldHarmed,
+    EnemyShieldUnHarmed,
+    EnemyFallen,
+
 }
 
 [JsonConverter(typeof(StringEnumConverter))]
@@ -101,12 +112,20 @@ public enum AdditionalEffect
     Draw1, 
     Mana1Draw1,
     Dump1, DumpALL, DumpAttackCard1, DumpMoveCard1, DumpColorCard1,
-    Delete
+    Delete,
+
+    CreateDisposableColorCard,
+}
+
+[JsonConverter(typeof(StringEnumConverter))]
+public enum EffectingEffects
+{
+
 }
 
 
 [JsonConverter(typeof(StringEnumConverter))]
-public enum ColorTargetPosition {All, P1, P4, P5, Color, Vertical, Horizontal, P3V, P3H}
+public enum ColorTargetPosition {All, P1, P4, P5, Color, Vertical, Horizontal, P3V, P3H, RedColoredSpace }
 [JsonConverter(typeof(StringEnumConverter))]
 public enum ColorTargetNum {One, Two, Three, Four, Five, T, Hand}
 

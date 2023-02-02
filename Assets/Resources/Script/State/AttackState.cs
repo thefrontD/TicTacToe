@@ -203,11 +203,38 @@ public class AttackState : BaseState
                 additionalEffectParam = new List<IAttackable>(this.selectedAttackableList);
                 break;
             }
-            case AdditionalEffectCondition.PlayerInColoredSpace: // 현재 플레이어가 있는 칸이 색칠(아군)된 칸일 때
+            case AdditionalEffectCondition.PlayerInColoredSpace: // 현재 플레이어가 있는 칸이 색칠된 칸일 때
+            {
+                (int r, int c) = (PlayerManager.Instance.Row, PlayerManager.Instance.Col);
+                Debug.Log(BoardManager.Instance.BoardColors[r][c]);
+                if (BoardManager.Instance.BoardColors[r][c] != BoardColor.None)
+                    proceed = true;
+                additionalEffectParam = new List<IAttackable>(this.selectedAttackableList);
+                break;
+            }
+            case AdditionalEffectCondition.PlayerInRedColoredSpace: // 현재 플레이어가 있는 칸이 색칠(적)된 칸일 때
+            {
+                (int r, int c) = (PlayerManager.Instance.Row, PlayerManager.Instance.Col);
+                Debug.Log(BoardManager.Instance.BoardColors[r][c]);
+                if (BoardManager.Instance.BoardColors[r][c] == BoardColor.Enemy)
+                    proceed = true;
+                additionalEffectParam = new List<IAttackable>(this.selectedAttackableList);
+                break;
+            }
+            case AdditionalEffectCondition.PlayerInBlueColoredSpace: // 현재 플레이어가 있는 칸이 색칠(적)된 칸일 때
             {
                 (int r, int c) = (PlayerManager.Instance.Row, PlayerManager.Instance.Col);
                 Debug.Log(BoardManager.Instance.BoardColors[r][c]);
                 if (BoardManager.Instance.BoardColors[r][c] == BoardColor.Player)
+                    proceed = true;
+                additionalEffectParam = new List<IAttackable>(this.selectedAttackableList);
+                break;
+            }
+            case AdditionalEffectCondition.PlayerInNotColoredSpace: // 현재 플레이어가 있는 칸이 색칠되지 않은 칸일 때
+            {
+                (int r, int c) = (PlayerManager.Instance.Row, PlayerManager.Instance.Col);
+                Debug.Log(BoardManager.Instance.BoardColors[r][c]);
+                if (BoardManager.Instance.BoardColors[r][c] == BoardColor.None)
                     proceed = true;
                 additionalEffectParam = new List<IAttackable>(this.selectedAttackableList);
                 break;

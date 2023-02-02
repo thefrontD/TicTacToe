@@ -141,6 +141,16 @@ public abstract class Card
 
             case TriggerCondition.PlayerInColoredSpace:
                 if (BoardManager.Instance.BoardColors[PlayerManager.Instance.Row][PlayerManager.Instance.Col]
+                    != BoardColor.None)
+                    proceed = true;
+                break;
+            case TriggerCondition.PlayerInRedColoredSpace:
+                if (BoardManager.Instance.BoardColors[PlayerManager.Instance.Row][PlayerManager.Instance.Col]
+                    == BoardColor.Enemy)
+                    proceed = true;
+                break;
+            case TriggerCondition.PlayerInBlueColoredSpace:
+                if (BoardManager.Instance.BoardColors[PlayerManager.Instance.Row][PlayerManager.Instance.Col]
                     == BoardColor.Player)
                     proceed = true;
                 break;
@@ -152,6 +162,38 @@ public abstract class Card
                 break;
 
             case TriggerCondition.ColoredSpaceExists:
+                for (int i = 0; i < BoardManager.Instance.BoardColors.Count; i++) // row
+                {
+                    for (int j = 0; j < BoardManager.Instance.BoardColors[0].Count; j++) // col
+                    {
+                        if (BoardManager.Instance.BoardColors[i][j] != BoardColor.None)
+                        {
+                            proceed = true;
+                            break;
+                        }
+                    }
+
+                    if (proceed) break;
+                }
+
+                break;
+            case TriggerCondition.RedColoredSpaceExists:
+                for (int i = 0; i < BoardManager.Instance.BoardColors.Count; i++) // row
+                {
+                    for (int j = 0; j < BoardManager.Instance.BoardColors[0].Count; j++) // col
+                    {
+                        if (BoardManager.Instance.BoardColors[i][j] == BoardColor.Enemy)
+                        {
+                            proceed = true;
+                            break;
+                        }
+                    }
+
+                    if (proceed) break;
+                }
+
+                break;
+            case TriggerCondition.BlueColoredSpaceExists:
                 for (int i = 0; i < BoardManager.Instance.BoardColors.Count; i++) // row
                 {
                     for (int j = 0; j < BoardManager.Instance.BoardColors[0].Count; j++) // col

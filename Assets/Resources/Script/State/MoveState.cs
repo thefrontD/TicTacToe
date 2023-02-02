@@ -157,7 +157,27 @@ public class MoveState : BaseState
                 break;
             }
 
-            case MoveDirection.Colored:
+            case MoveDirection.ColoredSpace:
+                // 무슨색이든 색칠되어있는 칸으로 이동
+            {
+                List<List<BoardColor>> boardColors = BoardManager.Instance.BoardColors;
+                for (int i = 0; i < boardSize; i++) // row
+                    for (int j = 0; j < boardSize; j++) // col
+                        if (boardColors[i][j] != BoardColor.None)
+                            this.movableSpace[i, j] = true;
+                break;
+            }
+            case MoveDirection.RedColoredSpace:
+                // 적이 색칠한 칸으로 이동
+            {
+                List<List<BoardColor>> boardColors = BoardManager.Instance.BoardColors;
+                for (int i = 0; i < boardSize; i++) // row
+                    for (int j = 0; j < boardSize; j++) // col
+                        if (boardColors[i][j] == BoardColor.Enemy)
+                            this.movableSpace[i, j] = true;
+                break;
+            }
+            case MoveDirection.BlueColoredSpace:
                 // 내가 색칠해 뒀던 칸으로 이동
             {
                 List<List<BoardColor>> boardColors = BoardManager.Instance.BoardColors;
@@ -167,77 +187,6 @@ public class MoveState : BaseState
                             this.movableSpace[i, j] = true;
                 break;
             }
-
-            /*case MoveDirection.Dangerous:
-                // 적이 이번 턴에 공격할 칸으로 이동
-            {
-                List<Enemy> enemyList = EnemyManager.Instance.EnemyList;
-                int playerRow = PlayerManager.Instance.Row;
-                int playerCol = PlayerManager.Instance.Col;
-
-                foreach (Enemy enemy in enemyList)
-                {
-                    EnemyAction enemyAction = enemy.EnemyActions.Peek().Item1;
-                    switch (enemyAction)
-                    {
-                        case EnemyAction.H1Attack:
-                            for (int j = 0; j < boardSize; j++)
-                                this.movableSpace[playerRow, j] = true;
-                            break;
-                        case EnemyAction.V1Attack:
-                            for (int i = 0; i < boardSize; i++)
-                                this.movableSpace[i, playerCol] = true;
-                            break;
-                        case EnemyAction.H2Attack:
-                            for (int j = 0; j < boardSize; j++)
-                            {
-                                for (int i = 0; i < boardSize; i++)
-                                {
-                                    if (i == playerRow)
-                                        continue;
-                                    this.movableSpace[i, j] = true;
-                                }
-                            }
-                            break;
-                        case EnemyAction.V2Attack:
-                            for (int i = 0; i < boardSize; i++)
-                            {
-                                for (int j = 0; j < boardSize; j++)
-                                {
-                                    if (j == playerCol)
-                                        continue;
-                                    this.movableSpace[i, j] = true;
-                                }
-                            }
-                            break;
-                        case EnemyAction.AllAttack:
-                            for (int i = 0; i < boardSize; i++)
-                                for (int j = 0; j < boardSize; j++)
-                                    this.movableSpace[i, j] = true;
-                            break;
-                        case EnemyAction.ColoredAttack:
-                        {
-                            List<List<BoardColor>> boardColors = BoardManager.Instance.BoardColors;
-                            for (int i = 0; i < boardSize; i++) // row
-                                for (int j = 0; j < boardSize; j++) // col
-                                    if (boardColors[i][j] == BoardColor.Player)
-                                        this.movableSpace[i, j] = true;
-                            break;
-                        }
-                        case EnemyAction.NoColoredAttack:
-                        {
-                            List<List<BoardColor>> boardColors = BoardManager.Instance.BoardColors;
-                            for (int i = 0; i < boardSize; i++) // row
-                                for (int j = 0; j < boardSize; j++) // col
-                                    if (boardColors[i][j] != BoardColor.Player)
-                                        this.movableSpace[i, j] = true;
-                            break;
-                        }
-                    }
-                }
-
-                break;
-            }*/
         }
 
         for (int i = 0; i < BoardManager.Instance.BoardSize; i++)
