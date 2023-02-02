@@ -40,7 +40,7 @@ public abstract class BaseState
 
 public class NormalState : BaseState
 {
-    private int DrawNum;
+    private int DrawNum = 5;
     private bool isNewPlayerTurn;
 
     public NormalState(int DrawNum = 5, bool isNewPlayerTurn = false)

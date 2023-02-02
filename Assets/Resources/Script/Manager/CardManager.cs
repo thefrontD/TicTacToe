@@ -189,6 +189,7 @@ public class CardManager : Singleton<CardManager>
         card.transform.localScale = Utils.cardScaleOnField;;
         card.transform.DOMove(gravePos, 0.2f, false);
         card.transform.DORotate(new Vector3(0, 180, 0), 0.2f, RotateMode.Fast);
+        card.HightLightCard(false);
         
         _graveList.Add(card);
         _handCardList.RemoveAt(idx);

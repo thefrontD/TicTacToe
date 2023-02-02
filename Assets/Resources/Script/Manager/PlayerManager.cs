@@ -119,10 +119,13 @@ public class PlayerManager : Singleton<PlayerManager>
         state.Update();
     }
     
+    /// <summary>
+    /// Stage calling system components are organized with col, row of worldMap and level
+    /// </summary>
     private void Init()
     {
-        int floor = GameManager.Instance.CurrentStage/100;
-        int stage = GameManager.Instance.CurrentStage%100;
+        int floor = GameManager.Instance.CurrentCol + 1;
+        int stage = GameManager.Instance.CurrentRow + 2;
         string stageID = floor.ToString() + "_" + stage.ToString();
 
         if (stage == 1)
@@ -139,8 +142,8 @@ public class PlayerManager : Singleton<PlayerManager>
     
     public void Init(object sender, EventArgs arg)
     {
-        int floor = GameManager.Instance.CurrentStage/100;
-        int stage = GameManager.Instance.CurrentStage%100;
+        int floor = GameManager.Instance.CurrentCol + 1;
+        int stage = GameManager.Instance.CurrentRow + 2;
         string stageID = floor.ToString() + "_" + stage.ToString();
 
         BoardManager.Instance.BoardLoading(stageID);
@@ -166,6 +169,7 @@ public class PlayerManager : Singleton<PlayerManager>
         _hp = _holder.Hp;
         _maxMana = _holder.MaxMana;
         _mana = _holder.Mana;
+        _baseAp = _holder.BaseAp;
 
         if (!_tutorialTrigger)
             PlayerCard.Shuffle();
@@ -192,8 +196,9 @@ public class PlayerManager : Singleton<PlayerManager>
 
     public void SavePlayerData()
     {
-        PlayerData.Instance.saveData(new PlayerDataHolder(GameManager.Instance.CurrentStage,
-            _maxHp, _hp, _maxMana, _mana, _baseAp), string.Format("PlayerData{0}", GameManager.Instance.PlayerNum));
+        PlayerData.Instance.saveData(new PlayerDataHolder(GameManager.Instance.CurrentStage, _maxHp, _hp, _maxMana, _mana, _baseAp, 
+        GameManager.Instance.CurrentCol, GameManager.Instance.CurrentRow, GameManager.Instance.CurrentLevel),
+             string.Format("PlayerData{0}", GameManager.Instance.PlayerNum));
         if(!_tutorialTrigger)
             CardData.Instance.saveData(PlayerCard, string.Format("PlayerCard{0}", GameManager.Instance.PlayerNum));
         else
