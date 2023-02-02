@@ -730,5 +730,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: UpperUICanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 6055375066009136483, guid: d4e697cc2bcbf4e40a228c3c2505995c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d4e697cc2bcbf4e40a228c3c2505995c, type: 3}

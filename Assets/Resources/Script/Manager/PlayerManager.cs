@@ -90,11 +90,11 @@ public class PlayerManager : Singleton<PlayerManager>
     {
         Screen.SetResolution(1920, 1080, true);
 
-        if (GameManager.Instance.CurrentStage == 101)
-        {
-            _tutorialPhase = 1;
-            _tutorialTrigger = true;
-        }
+        // if (GameManager.Instance.CurrentStage == 101)
+        // {
+        //     _tutorialPhase = 1;
+        //     _tutorialTrigger = true;
+        // }
         
         state = new NormalState();
         if(!_tutorialTrigger)
