@@ -64,7 +64,6 @@ public class CardManager : Singleton<CardManager>
     
     public void DrawCard(int drawNum)
     {
-        Debug.Log(" 드로우!");
         if (drawNum > _deckList.Count + _graveList.Count)
             StartCoroutine(DrawCardCoroutine(_deckList.Count + _graveList.Count));
         else

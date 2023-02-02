@@ -28,7 +28,7 @@ public class AttackCard : Card
     //카드 이름, 카드 설명, 카드 코스트, StatesList,
     //공격 가능한 대상의 종류, 공격 가능한 대상의 수, 공격 횟수, 공격의 피해량
     {
-        Debug.Log(this.CardName);
+        //Debug.Log(this.CardName);
         this.cardType = CardType.Attack;
         this.AttackCardEffect = attackCardEffect;
         this._targetType = targetType;
@@ -45,7 +45,15 @@ public class AttackCard : Card
         NormalState normal = new NormalState();  // 다 끝나고 다시 normal state로 돌아온다.
 
         // State를 Enqueue하는 부분
-        PlayerManager.Instance.StatesQueue.Enqueue(state);
-        PlayerManager.Instance.StatesQueue.Enqueue(normal);
+        if(GameManager.Instance.IsPuzzleMode) 
+        {
+            PlayerManager.Instance.StatesQueue.Enqueue(state);
+            PlayerManager.Instance.StatesQueue.Enqueue(new EnemyState());
+        }
+        else 
+        {
+            PlayerManager.Instance.StatesQueue.Enqueue(state);
+            PlayerManager.Instance.StatesQueue.Enqueue(normal);
+        }
     }
 }

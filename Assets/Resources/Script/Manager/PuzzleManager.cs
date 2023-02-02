@@ -4,8 +4,18 @@ using UnityEngine;
 
 public class PuzzleManager : Singleton<PuzzleManager>
 {
+    [SerializeField] List<GameObject> TargetBoardUIPrefab;
+    [SerializeField] GameObject _targetBoard;
+    [SerializeField] Sprite DefaultSprite;
+    [SerializeField] Sprite EnemySprite;
+    [SerializeField] Sprite PlayerSprite;
+    [SerializeField] Sprite BlackSprite;
+
     private List<List<BoardColor>> _targetColors = new List<List<BoardColor>>();
+    private List<List<SpriteRenderer>> _targetUI = new List<List<SpriteRenderer>>();
     private int _bingoCount;
+    private GameObject _targetBoardUI;
+    
 
     void Start() {
         
@@ -39,7 +49,31 @@ public class PuzzleManager : Singleton<PuzzleManager>
     }
 
     private void TargetUIInit() {
+        _targetBoard.SetActive(true);
+        _targetBoardUI = Instantiate(TargetBoardUIPrefab[BoardManager.Instance.BoardSize-3], _targetBoard.transform);
 
+        for (int i = 0; i < BoardManager.Instance.BoardSize; i++)
+        {
+            _targetUI.Add(new List<SpriteRenderer>());
+            for (int j = 0; j < BoardManager.Instance.BoardSize; j++) 
+            {
+                _targetUI[i].Add(_targetBoardUI.transform.GetChild(i*BoardManager.Instance.BoardSize+j).GetComponent<SpriteRenderer>());
+                switch(_targetColors[i][j]) {
+                    case BoardColor.None:
+                        _targetUI[i][j].sprite = DefaultSprite;
+                    break;
+                    case BoardColor.Player:
+                        _targetUI[i][j].sprite = PlayerSprite;
+                    break;
+                    case BoardColor.Enemy:
+                        _targetUI[i][j].sprite = EnemySprite;
+                    break;
+                    case BoardColor.Black:
+                        _targetUI[i][j].sprite = BlackSprite;
+                    break;
+                }
+            }
+        }
     }
     
     public bool checkClear() {

@@ -8,7 +8,8 @@ using UnityEngine.UI;
 
 public class GameManager : Singleton<GameManager>
 {
-    [SerializeField] bool isPuzzleMode;
+    [SerializeField] private bool isPuzzleMode = false;
+    public bool IsPuzzleMode => isPuzzleMode;
 
     public DataTableBase StageTable { get; private set; }
     private int _playerNum = 1;
@@ -51,8 +52,6 @@ public class GameManager : Singleton<GameManager>
         PlayerDataHolder _holder = PlayerData.Instance._load(string.Format("PlayerData{0}", GameManager.Instance.PlayerNum));
         _currentCol = _holder.Col;
         _currentRow = _holder.Row;
-        Debug.Log(_currentCol);
-        Debug.Log(_currentRow);
         if (GameManager.Instance != this)
             Destroy(gameObject);
         DontDestroyOnLoad(this.gameObject);

@@ -171,9 +171,18 @@ public class EnemyManager : Singleton<EnemyManager>
         }
         
         yield return new WaitForSeconds(0.5f);
-        if (_isGameOver)
-            PlayerManager.Instance.ChangeStates(new NormalState(6, false));
-        else
-            PlayerManager.Instance.ChangeStates(new NormalState(6, true));
+
+        if(GameManager.Instance.IsPuzzleMode) {
+            if (_isGameOver)
+                PlayerManager.Instance.ChangeStates(new NormalState(0, false));
+            else
+                PlayerManager.Instance.ChangeStates(new NormalState(0, true));
+        }
+        else {
+            if (_isGameOver)
+                PlayerManager.Instance.ChangeStates(new NormalState(5, false));
+            else
+                PlayerManager.Instance.ChangeStates(new NormalState(5, true));
+        }
     }
 }

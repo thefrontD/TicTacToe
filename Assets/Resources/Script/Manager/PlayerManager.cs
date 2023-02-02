@@ -180,10 +180,15 @@ public class PlayerManager : Singleton<PlayerManager>
         DamageToPlayer();
         
         StatesQueue = new Queue<BaseState>();
+
         if (_tutorialTrigger)
             state = new NormalState(3, true);
         else
             state = new NormalState(5, true);
+        if(GameManager.Instance.IsPuzzleMode) {
+            state = new NormalState(PlayerCard.Count, true, true);
+        }
+
         state.Enter();
         
         if(GameManager.Instance.CurrentStage%100 == 10)

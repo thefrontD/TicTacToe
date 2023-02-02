@@ -14,7 +14,7 @@ public enum CardType { Attack, Move, Color, None }
 public enum BoardObject { None, Player, Wall, Minion }
 
 [JsonConverter(typeof(StringEnumConverter))]
-public enum BoardColor { None, Player, Enemy }
+public enum BoardColor { None, Player, Enemy, Black }
 
 [JsonConverter(typeof(StringEnumConverter))]
 public enum States{ Normal, Attack, Move, Color, Dump }

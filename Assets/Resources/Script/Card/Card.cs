@@ -74,9 +74,6 @@ public abstract class Card
 
     public bool usingCard()
     {
-        /*foreach(CardPoolAttribute pool in CardPoolAttributes){
-            Debug.Log("(usingCard) CardPool is " + pool.ToString());
-        }*/
         if (!PlayerManager.Instance.CardUsable)
             return false;
 

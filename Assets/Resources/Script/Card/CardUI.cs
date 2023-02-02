@@ -51,7 +51,7 @@ public class CardUI : MonoBehaviour
         
         CardBackground.sprite = Resources.Load<Sprite>($"Images/Cards/{card.CardType}/BackGround");
         string cardPathName = card.CardName.Replace(':', '-').Replace('/', '_');
-        print(cardPathName);
+        //print(cardPathName);
         CardImage.sprite = Resources.Load<Sprite>($"Images/Cards/{card.CardType}/{cardPathName}");
 
         SetBackOrder(0);

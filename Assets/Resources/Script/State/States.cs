@@ -42,10 +42,12 @@ public class NormalState : BaseState
 {
     private int DrawNum = 5;
     private bool isNewPlayerTurn;
+    private bool evenPuzzleDraw;
 
-    public NormalState(int DrawNum = 5, bool isNewPlayerTurn = false)
+    public NormalState(int DrawNum = 5, bool isNewPlayerTurn = false, bool evenPuzzleDraw = false)
     {
         this.isNewPlayerTurn = isNewPlayerTurn;
+        this.evenPuzzleDraw = evenPuzzleDraw;
 
         if(isNewPlayerTurn){
             if (PlayerManager.Instance.DebuffDictionary[Debuff.DrawCardDecrease] != 0)
@@ -100,7 +102,10 @@ public class NormalState : BaseState
             PlayerManager.Instance.SetMana(1000);
             if (PlayerManager.Instance.DebuffDictionary[Debuff.Heal] > 0)
                 PlayerManager.Instance.DamageToPlayer((int) (PlayerManager.Instance.MaxHp * 0.1));
-            CardManager.Instance.DrawCard(DrawNum);
+            
+            if(!GameManager.Instance.IsPuzzleMode || evenPuzzleDraw){
+                CardManager.Instance.DrawCard(DrawNum);
+            }
             /*
             foreach (Debuff debuff in Enum.GetValues(typeof(Debuff)))
                 PlayerManager.Instance.SetDebuff(debuff, -1);

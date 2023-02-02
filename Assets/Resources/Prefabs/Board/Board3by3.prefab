@@ -638,6 +638,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6286635160232120347}
     m_Modifications:
+    - target: {fileID: 248517774300708224, guid: ba764f3f4bc2d3444bc5e9f3be04d5ff, type: 3}
+      propertyPath: BlackSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9f1d965e12c2b1843826575579161c33, type: 3}
     - target: {fileID: 248517774300708225, guid: ba764f3f4bc2d3444bc5e9f3be04d5ff, type: 3}
       propertyPath: m_Name
       value: Board_Panel(0_0)
@@ -646,6 +650,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 3144787857719460434, guid: ba764f3f4bc2d3444bc5e9f3be04d5ff, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 2c8ab35921ac86a449297f07bba0ae2e, type: 3}
     - target: {fileID: 3641571945615409430, guid: ba764f3f4bc2d3444bc5e9f3be04d5ff, type: 3}
       propertyPath: ColorModule.enabled
       value: 0
@@ -693,6 +701,14 @@ PrefabInstance:
     - target: {fileID: 4180013918114273247, guid: ba764f3f4bc2d3444bc5e9f3be04d5ff, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6152300660765096641, guid: ba764f3f4bc2d3444bc5e9f3be04d5ff, type: 3}
+      propertyPath: outlineTargets.Array.data[0].IsVisible
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6152300660765096641, guid: ba764f3f4bc2d3444bc5e9f3be04d5ff, type: 3}
+      propertyPath: outlineTargets.Array.data[1].IsVisible
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8685580537594788983, guid: ba764f3f4bc2d3444bc5e9f3be04d5ff, type: 3}
       propertyPath: m_Size.z
