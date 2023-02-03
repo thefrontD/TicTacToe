@@ -9,6 +9,7 @@ public class Board : MonoBehaviour
     [SerializeField] private Sprite NoneSprite;
     [SerializeField] private Sprite EnemySprite;
     [SerializeField] private Sprite PlayerSprite;
+    [SerializeField] private Sprite BlackSprite;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private BoardIntention boardIntention;
     [SerializeField] private List<Color> colors;
@@ -57,6 +58,9 @@ public class Board : MonoBehaviour
             break;
             case BoardColor.Player:
                 spriteRenderer.sprite = PlayerSprite;
+            break;
+            case BoardColor.Black:
+                spriteRenderer.sprite = BlackSprite;
             break;
         }
 

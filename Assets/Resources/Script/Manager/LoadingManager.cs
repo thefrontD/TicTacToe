@@ -80,9 +80,6 @@ public class LoadingManager : Singleton<LoadingManager>
             
             if(!isStart)
             {
-                Debug.Log("Yes!");
-                GameManager.Instance.CurrentStage++;
-        
                 PlayerManager.Instance.SavePlayerData();
             }
         

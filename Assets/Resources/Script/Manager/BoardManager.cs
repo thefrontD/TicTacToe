@@ -82,7 +82,6 @@ public class BoardManager : Singleton<BoardManager>
             {
                 //_gameBoard[i].Add(Instantiate(BoardPrefab, pos, Quaternion.identity).GetComponent<Board>());
                 _gameBoard[i].Add(MainBoard.transform.GetChild(i*_boardSize+j).GetComponent<Board>());
-                Debug.Log(_boardObjects[i][j]);
                 _gameBoard[i][j].Init(_boardColors[i][j], i, j);
                 _boardAttackables[i].Add(null);
 

@@ -304,7 +304,7 @@ public class ColorState : BaseState
         //미니언이 있는 곳은 선택 불가능
         //비어있는 곳은 색칠 가능
         //플레이어가 있는 곳은 색칠 가능
-        if(BoardManager.Instance.BoardColors[i][j] == BoardColor.Player){
+        if(BoardManager.Instance.BoardColors[i][j] == BoardColor.Player && BoardManager.Instance.BoardColors[i][j] == BoardColor.Black){
             //Debug.Log("(IfColorableAddToList) " + i.ToString() + j.ToString() + " block is already colored");
             return;
         }

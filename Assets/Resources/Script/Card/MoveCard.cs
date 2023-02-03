@@ -22,7 +22,7 @@ public class MoveCard : Card
         this.MoveCardEffect = moveCardEffect;
         this.triggerCondition = triggerCondition;
         this.moveDirection = moveDirection;
-        Debug.Log(this.CardName);
+        //Debug.Log(this.CardName);
     }
 
     public override void usingCardSpecific()
@@ -40,7 +40,15 @@ public class MoveCard : Card
         NormalState normal = new NormalState();  // 다 끝나고 다시 normal state로 돌아온다.
 
         // State를 Enqueue하는 부분
-        PlayerManager.Instance.StatesQueue.Enqueue(state);
-        PlayerManager.Instance.StatesQueue.Enqueue(normal);
+        if(GameManager.Instance.IsPuzzleMode) 
+        {
+            PlayerManager.Instance.StatesQueue.Enqueue(state);
+            PlayerManager.Instance.StatesQueue.Enqueue(new EnemyState());
+        }
+        else 
+        {
+            PlayerManager.Instance.StatesQueue.Enqueue(state);
+            PlayerManager.Instance.StatesQueue.Enqueue(normal);
+        }
     }
 }
