@@ -64,13 +64,13 @@ public class BoardManager : Singleton<BoardManager>
     /// </summary>
     public void BoardLoading(string stageID)
     {
-        Holder holder = BoardData.Instance._load(stageID);
+        BoardDataHolder boardDataBoardDataHolder = BoardData.Instance._load(stageID);
         
-        _boardSize = holder._boardSize;
-        PlayerManager.Instance.Row = holder._playerRow;
-        PlayerManager.Instance.Col = holder._playerCol;
-        _boardObjects = holder._boardObjects;
-        _boardColors = holder._boardColors;
+        _boardSize = boardDataBoardDataHolder._boardSize;
+        PlayerManager.Instance.Row = boardDataBoardDataHolder._playerRow;
+        PlayerManager.Instance.Col = boardDataBoardDataHolder._playerCol;
+        _boardObjects = boardDataBoardDataHolder._boardObjects;
+        _boardColors = boardDataBoardDataHolder._boardColors;
 
         MainBoard = Instantiate(BoardPrefabs[_boardSize - 3], BoardPos, Utils.QS);
         
@@ -86,7 +86,7 @@ public class BoardManager : Singleton<BoardManager>
                 _gameBoard[i][j].Init(_boardColors[i][j], i, j);
                 _boardAttackables[i].Add(null);
 
-                //if(_boardObjects[i][j] == BoardObject.Wall) SummonWalls(i, j); 
+                if(_boardObjects[i][j] == BoardObject.Wall) SummonWalls(i, j); 
             }
         }
 
