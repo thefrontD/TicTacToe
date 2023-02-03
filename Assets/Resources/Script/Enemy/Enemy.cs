@@ -89,6 +89,7 @@ public class Enemy : MonoBehaviour, IAttackable
             if (EnemyShield == 0)
             {
                 DamageEnemyHp(PlayerManager.Instance.BaseAp + PlayerManager.Instance.Ap);
+                PlayerManager.Instance.playerUI.UpdatePlayerAPUI();
                 /*
                 int bingoCount = BoardManager.Instance.CountBingo(BoardColor.Player);  
                 

@@ -8,6 +8,7 @@ public class PlayerUI : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI hpText;
     [SerializeField] private TextMeshProUGUI manaText;
+    [SerializeField] private TextMeshProUGUI apText;
     [SerializeField] private DebuffGameObjectDictionary _iconPrefabDic;
     [SerializeField] private Transform buffDebuffBar;
 
@@ -45,4 +46,10 @@ public class PlayerUI : MonoBehaviour
             _iconObjectDic[debuff].GetComponentInChildren<TextMeshProUGUI>().text = String.Format("{0}", PlayerManager.Instance.DebuffDictionary[Debuff.PowerIncrease]);
         }
     }
+    
+    public void UpdatePlayerAPUI()
+    {
+        apText.text = String.Format("Next Attack\n{0}", PlayerManager.Instance.BaseAp + PlayerManager.Instance.Ap);
+    }
+
 }
