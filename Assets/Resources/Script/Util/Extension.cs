@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 /// <summary>
 /// C# 체계에서 더 필요한 요소가 존재하는 경우 여기에 구현바람
 /// </summary>
@@ -15,5 +16,18 @@ public static class Extensions
             values[k] = values[i];
             values[i] = value;
         }
+    }
+
+    public static List<T> ChooseDifferentRandomElements<T>(IEnumerable<T> list, int count)
+    {
+        List<T> pool = new List<T>(list);
+        pool.Shuffle();
+        return pool.Take(count).ToList();
+    }
+    public static List<int> ChooseDifferentRandomIntegers(int minInclusive, int maxExclusive, int count)
+    {
+        List<int> pool = Enumerable.Range(minInclusive, maxExclusive - minInclusive + 1).ToList();  // [ min, min+1, ..., max-1 ]
+        pool.Shuffle();
+        return pool.Take(count).ToList();
     }
 }

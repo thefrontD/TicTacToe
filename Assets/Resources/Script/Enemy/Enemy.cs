@@ -3,6 +3,7 @@ using EPOOutline;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -231,52 +232,53 @@ public class Enemy : MonoBehaviour, IAttackable
         switch (enemyAction.Item1)
         {
             case EnemyAction.H1Attack:
-                for (int i = 0; i < BoardManager.Instance.BoardSize; i++)
+                for (int c = 0; c < BoardManager.Instance.BoardSize; c++)
                 {
-                    temp2.Add((_previousPlayerRow, i));
-                    if(BoardManager.Instance.BoardObjects[_previousPlayerRow][i] == BoardObject.Player)
+                    temp2.Add((_previousPlayerRow, c));
+                    if(BoardManager.Instance.BoardObjects[_previousPlayerRow][c] == BoardObject.Player)
                         _isGameOver = PlayerManager.Instance.DamageToPlayer(-damage);
                 }
                 break;
             case EnemyAction.V1Attack:
-                for (int i = 0; i < BoardManager.Instance.BoardSize; i++)
+                for (int r = 0; r < BoardManager.Instance.BoardSize; r++)
                 {
-                    temp2.Add((i, _previousPlayerCol));
-                    Debug.Log(BoardManager.Instance.BoardObjects[i][_previousPlayerCol]);
-                    if(BoardManager.Instance.BoardObjects[i][_previousPlayerCol] == BoardObject.Player)
+                    temp2.Add((r, _previousPlayerCol));
+                    if(BoardManager.Instance.BoardObjects[r][_previousPlayerCol] == BoardObject.Player)
                         _isGameOver = PlayerManager.Instance.DamageToPlayer(-damage);
                 }
                 break;
             case EnemyAction.H2Attack:
-                for (int i = 0; i < BoardManager.Instance.BoardSize; i++)
+            {
+                List<int> pool = Enumerable.Range(0, BoardManager.Instance.BoardSize).ToList();  // [ 0, 1, 2, ..., boardSize-1 ]
+                pool.RemoveAt(_previousPlayerRow);
+                List<int> rows = Extensions.ChooseDifferentRandomElements(pool, 2);
+                foreach (int r in rows)
                 {
-                    if (i == _previousPlayerRow) continue;
-                    else
+                    for (int c = 0; c < BoardManager.Instance.BoardSize; c++)
                     {
-                        for (int j = 0; j < BoardManager.Instance.BoardSize; j++)
-                        {
-                            temp2.Add((i, j));
-                            if(BoardManager.Instance.BoardObjects[i][j] == BoardObject.Player)
-                                _isGameOver = PlayerManager.Instance.DamageToPlayer(-damage);
-                        }
+                        temp2.Add((r, c));
+                        if (BoardManager.Instance.BoardObjects[r][c] == BoardObject.Player)
+                            _isGameOver = PlayerManager.Instance.DamageToPlayer(-damage);
                     }
                 }
                 break;
+            }
             case EnemyAction.V2Attack:
-                for (int i = 0; i < BoardManager.Instance.BoardSize; i++)
+            {
+                List<int> pool = Enumerable.Range(0, BoardManager.Instance.BoardSize).ToList();  // [ 0, 1, 2, ..., boardSize-1 ]
+                pool.RemoveAt(_previousPlayerCol);
+                List<int> cols = Extensions.ChooseDifferentRandomElements(pool, 2);
+                foreach (int c in cols)
                 {
-                    if (i == _previousPlayerCol) continue;
-                    else
+                    for (int r = 0; r < BoardManager.Instance.BoardSize; r++)
                     {
-                        for (int j = 0; j < BoardManager.Instance.BoardSize; j++)
-                        {
-                            temp2.Add((j, i));
-                            if(BoardManager.Instance.BoardObjects[j][i] == BoardObject.Player)
-                                _isGameOver = PlayerManager.Instance.DamageToPlayer(-damage);
-                        }
+                        temp2.Add((r, c));
+                        if (BoardManager.Instance.BoardObjects[r][c] == BoardObject.Player)
+                            _isGameOver = PlayerManager.Instance.DamageToPlayer(-damage);
                     }
                 }
                 break;
+            }
             case EnemyAction.ColoredAttack:
                 for (int i = 0; i < BoardManager.Instance.BoardSize; i++){
                     for (int j = 0; j < BoardManager.Instance.BoardSize; j++){
