@@ -26,7 +26,7 @@ public class PuzzleManager : Singleton<PuzzleManager>
     }
 
     public void LoadingTarget(string stageID) {
-        Holder holder = BoardData.Instance._load(stageID);
+        TargetBoardDataHolder holder = TargetBoardData.Instance._load(stageID);
         
         // _boardSize = holder._boardSize;
         // _boardColors = holder._boardColors;

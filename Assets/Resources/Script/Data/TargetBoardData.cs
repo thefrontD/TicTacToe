@@ -17,7 +17,7 @@ public class TargetBoardDataHolder
     }
 }
 
-public class TargetBoardData : Singleton<BoardData>
+public class TargetBoardData : Singleton<TargetBoardData>
 {
     public TargetBoardDataHolder _load(string dataName)
     {

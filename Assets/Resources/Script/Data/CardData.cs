@@ -26,12 +26,9 @@ public class CardData : Singleton<CardData>
     {
         string path = Application.streamingAssetsPath;
         path += $"/Data/Card/{dataName}.json";
-        print(path);
         
         var converter = new StringEnumConverter();
         var pDataStringLoad = File.ReadAllText(path);
-
-        Debug.Log(pDataStringLoad);
 
         List<Card> cardData = JsonConvert.DeserializeObject<List<Card>>(pDataStringLoad, converter);
 
