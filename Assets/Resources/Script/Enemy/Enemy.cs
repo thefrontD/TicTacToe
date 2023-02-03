@@ -129,7 +129,7 @@ public class Enemy : MonoBehaviour, IAttackable
         deathParticle.Play();
 
         yield return new WaitForSeconds(1.0f);
-
+        
         GameManager.Instance.GameClear();
         Destroy(this.gameObject);
     }

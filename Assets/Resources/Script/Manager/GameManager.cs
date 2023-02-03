@@ -149,7 +149,7 @@ public class GameManager : Singleton<GameManager>
     private void gameClearPanelActivation()
     {
         PanelManager.Instance.GameClearPanel.SetActive(true);
-        PanelManager.Instance.GameClearPanel.transform.DOLocalMoveY(100, 1.0f);
+        PanelManager.Instance.GameClearPanel.GetComponent<RectTransform>().DOAnchorPosY(0, 0.75f).SetEase(Ease.InQuad);
     }
 
     private void SetDataTable()

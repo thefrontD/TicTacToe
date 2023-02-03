@@ -5,11 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d3529374-01b1-433a-a73a-241952c1c846" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Script/Data/TargetBoardData.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Script/Data/TargetBoardData.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TicTacToe/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TicTacToe/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Script/Data/BoardData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Script/Data/BoardData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Script/Manager/BoardManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Script/Manager/BoardManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Material/CardBoard.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Material/CardBoard.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Script/Card/ColorCard.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Script/Card/ColorCard.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Script/Enemy/Enemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Script/Enemy/Enemy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Script/Manager/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Script/Manager/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/BattleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/BattleScene.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -133,6 +134,7 @@
       <workItem from="1674951489501" duration="2341000" />
       <workItem from="1674956055532" duration="336000" />
       <workItem from="1675189054760" duration="344000" />
+      <workItem from="1675430520512" duration="993000" />
     </task>
     <servers />
   </component>
