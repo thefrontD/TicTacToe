@@ -264,23 +264,23 @@ public class BoardManager : Singleton<BoardManager>
             {
                 for (int j = 0; j < _boardSize; j++)
                 {
-                    _boardColors[i][j] = BoardColor.None;
+                    ColoringBoard(i, j, BoardColor.None);
                 }
             }
             if(verticalBingo[i])
             {
                 for (int j = 0; j < _boardSize; j++)
                 {
-                    _boardColors[j][i] = BoardColor.None;
+                    ColoringBoard(j, i, BoardColor.None);
                 }
             }
             if(diagonalbingo[0])
             {
-                _boardColors[i][i] = BoardColor.None;
+                ColoringBoard(i, i, BoardColor.None);
             }
             if(diagonalbingo[1])
             {
-                _boardColors[i][_boardSize - 1 - i] = BoardColor.None;
+                ColoringBoard(i, _boardSize - 1 - i, BoardColor.None);
             }
         }
 
