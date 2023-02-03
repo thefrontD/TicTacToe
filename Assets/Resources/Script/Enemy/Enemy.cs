@@ -63,8 +63,8 @@ public class Enemy : MonoBehaviour, IAttackable
 
     private (EnemyAction, EnemyAction) _previousAttack = (EnemyAction.None, EnemyAction.None);
 
-    private List<(int, int)> temp1;
-    private List<(int, int)> temp2;
+    private List<(int, int)> _previousAttackTargetSpaces;
+    private List<(int, int)> _currentAttackTargetSpaces;
     private List<(int, int)> overlapPoint;
 
     public Queue<(EnemyAction, int)> EnemyActions;
@@ -90,24 +90,6 @@ public class Enemy : MonoBehaviour, IAttackable
             if (EnemyShield == 0)
             {
                 DamageEnemyHp(PlayerManager.Instance.BaseAp + PlayerManager.Instance.Ap);
-                /*
-                int bingoCount = BoardManager.Instance.CountBingo(BoardColor.Player);  
-                
-                if (bingoCount > 0)
-                {
-                    for (int ii = 0; ii < BoardManager.Instance.BoardSize; ii++)
-                    {
-                        for (int j = 0; j < BoardManager.Instance.BoardSize; j++)
-                        {
-                            BoardManager.Instance.GameBoard[ii][j].SetBoardColor(BoardColor.None);
-                            BoardManager.Instance.GameBoard[ii][j].ActivateBingoEffect(false);
-                        }
-                    }
-
-                    _enemyHp -= (int) Math.Pow(2, bingoCount - 1);
-                    PlayerManager.Instance.BingoAttack = true;
-                }
-                */
                 if (EnemyHP <= 0)
                 {
                     EnemyManager.Instance.EnemyList.Remove(this);
@@ -158,8 +140,8 @@ public class Enemy : MonoBehaviour, IAttackable
 
     public void InitEnemyData(EnemyDataHolder enemyDataHolder)
     {
-        temp1 = new List<(int, int)>();
-        temp2 = new List<(int, int)>();
+        _previousAttackTargetSpaces = new List<(int, int)>();
+        _currentAttackTargetSpaces = new List<(int, int)>();
         _previousAttack = (EnemyAction.None, EnemyAction.None);
         _enemyName = enemyDataHolder.EnemyName;
         _enemyMaxHp = enemyDataHolder.EnemyHP;
@@ -185,7 +167,7 @@ public class Enemy : MonoBehaviour, IAttackable
         
         Debug.Log(enemyAction.Item1);
 
-        switch ((int)enemyAction.Item1 / 10)
+        switch ((int)enemyAction.Item1 / 100)
         {
             case 0:
                 _isGameOver = EnemyAttack(enemyAction);
@@ -194,14 +176,17 @@ public class Enemy : MonoBehaviour, IAttackable
                 _isGameOver = EnemySummon(enemyAction);
                 break;
             case 2:
-                EnemyBuff(enemyAction);
+                EnemyColor(enemyAction);
                 break;
             case 3:
+                EnemyBuff(enemyAction);
+                break;
+            case 4:
                 EnemyDebuff(enemyAction);
                 break;
         }
 
-        EnemyActions.Enqueue(enemyAction);
+        EnemyActions.Enqueue(enemyAction);  // 다시 넣는다
 
         EnemyUI.IntentionUpdate();
 
@@ -222,19 +207,18 @@ public class Enemy : MonoBehaviour, IAttackable
         _previousAttack.Item2 = _previousAttack.Item1;
         _previousAttack.Item1 = enemyAction.Item1;
         
-        temp1.Clear();
-        
-        foreach (var elem in temp2)
-            temp1.Add(elem);
-            
-        temp2.Clear();
+        // 직전에 action을 수행한 space들을 저장한다.
+        _previousAttackTargetSpaces.Clear();
+        foreach (var elem in _currentAttackTargetSpaces)
+            _previousAttackTargetSpaces.Add(elem);
+        _currentAttackTargetSpaces.Clear();
 
         switch (enemyAction.Item1)
         {
             case EnemyAction.H1Attack:
                 for (int c = 0; c < BoardManager.Instance.BoardSize; c++)
                 {
-                    temp2.Add((_previousPlayerRow, c));
+                    _currentAttackTargetSpaces.Add((_previousPlayerRow, c));
                     if(BoardManager.Instance.BoardObjects[_previousPlayerRow][c] == BoardObject.Player)
                         _isGameOver = PlayerManager.Instance.DamageToPlayer(-damage);
                 }
@@ -242,7 +226,7 @@ public class Enemy : MonoBehaviour, IAttackable
             case EnemyAction.V1Attack:
                 for (int r = 0; r < BoardManager.Instance.BoardSize; r++)
                 {
-                    temp2.Add((r, _previousPlayerCol));
+                    _currentAttackTargetSpaces.Add((r, _previousPlayerCol));
                     if(BoardManager.Instance.BoardObjects[r][_previousPlayerCol] == BoardObject.Player)
                         _isGameOver = PlayerManager.Instance.DamageToPlayer(-damage);
                 }
@@ -256,7 +240,7 @@ public class Enemy : MonoBehaviour, IAttackable
                 {
                     for (int c = 0; c < BoardManager.Instance.BoardSize; c++)
                     {
-                        temp2.Add((r, c));
+                        _currentAttackTargetSpaces.Add((r, c));
                         if (BoardManager.Instance.BoardObjects[r][c] == BoardObject.Player)
                             _isGameOver = PlayerManager.Instance.DamageToPlayer(-damage);
                     }
@@ -272,7 +256,7 @@ public class Enemy : MonoBehaviour, IAttackable
                 {
                     for (int r = 0; r < BoardManager.Instance.BoardSize; r++)
                     {
-                        temp2.Add((r, c));
+                        _currentAttackTargetSpaces.Add((r, c));
                         if (BoardManager.Instance.BoardObjects[r][c] == BoardObject.Player)
                             _isGameOver = PlayerManager.Instance.DamageToPlayer(-damage);
                     }
@@ -286,7 +270,7 @@ public class Enemy : MonoBehaviour, IAttackable
                         else{
                             if(BoardManager.Instance.BoardObjects[i][j] == BoardObject.Player)
                                 _isGameOver = PlayerManager.Instance.DamageToPlayer(-damage);
-                            temp2.Add((i, j));
+                            _currentAttackTargetSpaces.Add((i, j));
                         }
                     }
                 }
@@ -298,7 +282,7 @@ public class Enemy : MonoBehaviour, IAttackable
                         else{
                             if(BoardManager.Instance.BoardObjects[i][j] == BoardObject.Player)
                                 _isGameOver = PlayerManager.Instance.DamageToPlayer(-damage);
-                            temp2.Add((i, j));
+                            _currentAttackTargetSpaces.Add((i, j));
                         }
                     }
                 }
@@ -306,12 +290,12 @@ public class Enemy : MonoBehaviour, IAttackable
             case EnemyAction.AllAttack:
                 for (int i = 0; i < BoardManager.Instance.BoardSize; i++)
                     for (int j = 0; j < BoardManager.Instance.BoardSize; j++)
-                        temp2.Add((i, j));
+                        _currentAttackTargetSpaces.Add((i, j));
                 _isGameOver = PlayerManager.Instance.DamageToPlayer(-damage);
                 break;
         }
 
-        StartCoroutine(PlayEnemyAttackEffect(temp2, _isGameOver));
+        StartCoroutine(PlayEnemyAttackEffect(_currentAttackTargetSpaces, _isGameOver));
 
         return _isGameOver;
     }
@@ -375,9 +359,9 @@ public class Enemy : MonoBehaviour, IAttackable
     {
         overlapPoint.Clear();
 
-        if(temp1.Count == 0 || temp2.Count == 0) return;
-        foreach ((int, int) item in temp1)
-            if(temp2.Contains(item)) overlapPoint.Add(item);
+        if(_previousAttackTargetSpaces.Count == 0 || _currentAttackTargetSpaces.Count == 0) return;
+        foreach ((int, int) item in _previousAttackTargetSpaces)
+            if(_currentAttackTargetSpaces.Contains(item)) overlapPoint.Add(item);
         if (enemyAction.Item1 == EnemyAction.WallSummon && overlapPoint.Count != 0)
         {
             overlapPoint.Shuffle();
@@ -393,6 +377,119 @@ public class Enemy : MonoBehaviour, IAttackable
         {
             foreach ((int, int) p in overlapPoint)
                 BoardManager.Instance.GameBoard[p.Item1][p.Item2].SetHighlight(BoardSituation.WillSummon);
+        }
+    }
+
+    private void EnemyColor((EnemyAction, int) enemyAction)
+    {
+        EnemyAction action = enemyAction.Item1;
+        List<(int, int)> colorTargetSpaces = new List<(int, int)>();
+        switch (action)
+        {
+            /// 플레이어가 위치한 가로줄 1줄에 적의 색을 칠한다
+            case EnemyAction.ColorPlayerH1:
+                for (int c = 0; c < BoardManager.Instance.BoardSize; c++)
+                    colorTargetSpaces.Add((_previousPlayerRow, c));
+                break;
+
+            /// 플레이어가 위치한 세로줄 1줄에 적의 색을 칠한다
+            case EnemyAction.ColorPlayerV1:
+                for (int r = 0; r < BoardManager.Instance.BoardSize; r++)
+                    colorTargetSpaces.Add((r, _previousPlayerCol));
+                break;
+
+            /// 랜덤한 칸(이미 적의 색이 있는 칸은 제외)에 적의 색을 칠한다
+            case EnemyAction.ColorRandom:
+            {
+                List<(int, int)> notEnemyColorSpaces = new List<(int, int)>();
+                for (int r = 0; r < BoardManager.Instance.BoardSize; r++)
+                    for (int c = 0; c < BoardManager.Instance.BoardSize; c++)
+                        if (BoardManager.Instance.BoardColors[r][c] != BoardColor.Enemy)
+                            notEnemyColorSpaces.Add((r, c));
+                (int row, int col) targetSpace = Extensions.ChooseDifferentRandomElements(notEnemyColorSpaces, 1)[0];
+                colorTargetSpaces.Add(targetSpace);
+                break;
+            }
+
+            /// 플레이어의 색칠된 칸 중 랜덤한 1 칸에 적의 색을 칠한다
+            case EnemyAction.Color1BlueColored:
+            {
+                List<(int, int)> playerColorSpaces = new List<(int, int)>();
+                for (int r = 0; r < BoardManager.Instance.BoardSize; r++)
+                    for (int c = 0; c < BoardManager.Instance.BoardSize; c++)
+                        if (BoardManager.Instance.BoardColors[r][c] == BoardColor.Player)
+                            playerColorSpaces.Add((r, c));
+                (int row, int col) targetSpace = Extensions.ChooseDifferentRandomElements(playerColorSpaces, 1)[0];
+                colorTargetSpaces.Add(targetSpace);
+                break;
+            }
+
+            /// 플레이어의 색칠된 칸 중 랜덤한 2 칸에 적의 색을 칠한다
+            case EnemyAction.Color2BlueColored:
+            {
+                List<(int, int)> playerColorSpaces = new List<(int, int)>();
+                for (int r = 0; r < BoardManager.Instance.BoardSize; r++)
+                    for (int c = 0; c < BoardManager.Instance.BoardSize; c++)
+                        if (BoardManager.Instance.BoardColors[r][c] == BoardColor.Player)
+                            playerColorSpaces.Add((r, c));
+                List<(int, int)> targetSpaces = Extensions.ChooseDifferentRandomElements(playerColorSpaces, 2);
+                colorTargetSpaces.AddRange(targetSpaces);
+                break;
+            }
+
+            /// 플레이어의 색칠된 칸 모두에 적의 색을 칠한다
+            case EnemyAction.ColorAllBlueColored:
+            {
+                for (int r = 0; r < BoardManager.Instance.BoardSize; r++)
+                    for (int c = 0; c < BoardManager.Instance.BoardSize; c++)
+                        if (BoardManager.Instance.BoardColors[r][c] == BoardColor.Player)
+                            colorTargetSpaces.Add((r, c));
+                break;
+            }
+
+            /// 랜덤한 가로줄 1줄에 적의 색을 칠한다
+            case EnemyAction.ColorH1:
+            {
+                int row = Random.Range(0, BoardManager.Instance.BoardSize);
+                for (int c = 0; c < BoardManager.Instance.BoardSize; c++)
+                    colorTargetSpaces.Add((row, c));
+                break;
+            }
+
+            /// 랜덤한 세로줄 1줄에 적의 색을 칠한다
+            case EnemyAction.ColorV1:
+            {
+                int col = Random.Range(0, BoardManager.Instance.BoardSize);
+                for (int r = 0; r < BoardManager.Instance.BoardSize; r++)
+                    colorTargetSpaces.Add((r, col));
+                break;
+            }
+
+            /// 랜덤한 2*2 칸에 적의 색을 칠한다(좌상,좌하,우상,우하 4곳 중 랜덤 1곳)
+            case EnemyAction.Color2x2:
+                // TODO: 그럼 4x4 칸에서 가운데 또는 변을 칠하는 건 없나?
+                break;
+
+            /// 틱택토 판의 4꼭짓점에 적의 색을 칠한다(1,3,7,9번 칸)
+            case EnemyAction.ColorCorner:
+            {
+                int boardSize = BoardManager.Instance.BoardSize;
+                colorTargetSpaces.Add((0, 0));
+                colorTargetSpaces.Add((0, boardSize - 1));
+                colorTargetSpaces.Add((boardSize - 1, 0));
+                colorTargetSpaces.Add((boardSize - 1, boardSize - 1));
+                break;
+            }
+
+            // 틱택토 판의 4변에 적의 색을 칠한다(2,4,6,8번 칸)
+            case EnemyAction.ColorSide:
+                // TODO: 그럼 4x4 칸에서는?
+                break;
+        }
+
+        foreach ((int row, int col) space in colorTargetSpaces)
+        {
+            print($"Enemy Color Target: ({space.row}, {space.col})");
         }
     }
     
@@ -425,12 +522,43 @@ public class Enemy : MonoBehaviour, IAttackable
             case EnemyAction.PlayerDamageIncrease:
                 PlayerManager.Instance.SetDebuff(Debuff.DamageIncrease, enemyAction.Item2);
                 break;
+
+            /// 드로우 수 1 감소
             case EnemyAction.DrawCardDecrease:
                 PlayerManager.Instance.SetDebuff(Debuff.DrawCardDecrease, enemyAction.Item2);
                 break;
-            case EnemyAction.CardCostIncrease:
-                PlayerManager.Instance.SetDebuff(Debuff.CardCostIncrease, enemyAction.Item2);
+
+            /// 다음 턴 이동 카드를 사용할 수 없음
+            case EnemyAction.BanMoveCard:
                 break;
+
+            /// 다음 턴 공격 카드를 사용할 수 없음
+            case EnemyAction.BanAttackCard:
+                break;
+
+            /// 다음 턴 색칠 카드를 사용할 수 없음
+            case EnemyAction.BanColorCard:
+                break;
+
+            /// 다음 턴 시작 마나가 1 감소한다
+            case EnemyAction.ManaReave:
+                break;
+
+            /// 다음 턴 이동 카드의 소비 마나가 1 증가한다
+            case EnemyAction.MoveCardCostIncrease1:
+                break;
+
+            /// 다음 턴 공격 카드의 소비 마나가 1 증가한다
+            case EnemyAction.AttackCardCostIncrease1:
+                break;
+
+            /// 다음 턴 색칠 카드의 소비 마나가 1 증가한다
+            case EnemyAction.ColorCardCostIncrease1:
+                break;
+
+            //case EnemyAction.CardCostIncrease:
+            //    PlayerManager.Instance.SetDebuff(Debuff.CardCostIncrease, enemyAction.Item2);
+            //    break;
         }
         EnemyUI.BuffDebuffUpdate();
     }

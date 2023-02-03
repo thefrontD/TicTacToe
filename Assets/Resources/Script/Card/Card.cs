@@ -167,7 +167,7 @@ public abstract class Card
 
             case TriggerCondition.MonsterWillAttack:
                 foreach (Enemy enemy in EnemyManager.Instance.EnemyList)
-                    if ((int) enemy.EnemyActions.Peek().Item1 / 10 == 0)
+                    if ((int) enemy.EnemyActions.Peek().Item1 / 100 == 0)
                         proceed = true;
                 break;
             case TriggerCondition.MonsterWillWall:

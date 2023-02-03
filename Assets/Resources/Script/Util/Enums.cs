@@ -115,11 +115,17 @@ public enum ColorTargetNum {One, Two, Three, Four, Five, T, Hand}
 [JsonConverter(typeof(StringEnumConverter))]
 public enum EnemyAction
 {
-    H1Attack, V1Attack, H2Attack, V2Attack, AllAttack, ColoredAttack, NoColoredAttack,
-    WallSummon=10, WallsSummon, MobSummon,
-    PowerIncrease=20, DamageDecrease, HpHealing, ShieldHealing,
-    PlayerPowerDecrease=30, PlayerDamageIncrease, DrawCardDecrease, CardCostIncrease,
-    None=200
+    H1Attack=0, V1Attack, H2Attack, V2Attack, AllAttack, ColoredAttack, NoColoredAttack,  // Deprecated
+    WallSummon=100, WallsSummon, MobSummon,  // Deprecated
+    ColorPlayerH1=200, ColorPlayerV1, ColorRandom, Color1BlueColored, Color2BlueColored, ColorAllBlueColored,
+    ColorH1=210, ColorV1, Color2x2, ColorCorner, ColorSide,
+    PowerIncrease=300, DamageDecrease, HpHealing, ShieldHealing,
+    PlayerPowerDecrease=400, PlayerDamageIncrease,
+    DrawCardDecrease,
+    BanMoveCard, BanAttackCard, BanColorCard,
+    ManaReave, MoveCardCostIncrease1, AttackCardCostIncrease1, ColorCardCostIncrease1,
+    CardCostIncrease,
+    None=2023
 }
 public enum Debuff 
 { 
