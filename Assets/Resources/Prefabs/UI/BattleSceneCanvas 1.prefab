@@ -3766,7 +3766,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hpText: {fileID: 1616819750961869058}
   manaText: {fileID: 1616819750153516646}
-  apText: {fileID: 1616819750153516646}
+  apText: {fileID: 8164852710807572658}
   _iconPrefabDic:
     m_keys: 
     m_values: []

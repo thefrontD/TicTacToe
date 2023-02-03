@@ -434,4 +434,9 @@ public class PlayerManager : Singleton<PlayerManager>
         _ap += value;
         playerUI.UpdatePlayerAPUI();
     }
+
+    public void ResetAp(){
+        _ap = 0;
+        playerUI.UpdatePlayerAPUI();
+    }
 }
