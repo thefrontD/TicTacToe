@@ -5,26 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d3529374-01b1-433a-a73a-241952c1c846" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Script/Card/AttackCard.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Script/Card/AttackCard.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Script/Card/ColorCard.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Script/Card/ColorCard.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Script/Card/MoveCard.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Script/Card/MoveCard.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Script/State/AttackState.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Script/State/AttackState.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Script/State/ColorState.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Script/State/ColorState.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Script/State/DumpState.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Script/State/DumpState.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Script/State/EnemyState.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Script/State/EnemyState.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Script/State/MoveState.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Script/State/MoveState.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TicTacToe/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TicTacToe/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Script/Card/Card.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Script/Card/Card.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Script/State/States.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Script/State/States.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Script/Util/Interface.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Script/Util/Interface.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Material/CardBoard.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Material/CardBoard.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Script/Card/ColorCard.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Script/Card/ColorCard.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Script/Enemy/Enemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Script/Enemy/Enemy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Script/Manager/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Script/Manager/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/BattleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/BattleScene.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -147,6 +133,8 @@
       <workItem from="1674921752990" duration="10014000" />
       <workItem from="1674951489501" duration="2341000" />
       <workItem from="1674956055532" duration="336000" />
+      <workItem from="1675189054760" duration="344000" />
+      <workItem from="1675430520512" duration="993000" />
     </task>
     <servers />
   </component>
@@ -170,25 +158,6 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Resources/Script/Manager/BoardManager.cs</url>
-          <line>113</line>
-          <properties documentPath="D:\Github\TicTacToe\Assets\Resources\Script\Manager\BoardManager.cs" initialLine="113" containingFunctionPresentation="method 'ColoringBoard'">
-            <startOffsets>
-              <option value="3795" />
-            </startOffsets>
-            <endOffsets>
-              <option value="3838" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

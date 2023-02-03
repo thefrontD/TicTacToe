@@ -56,7 +56,7 @@ public class CardAcquiringPanel : MonoBehaviour
                 }
             }
         }
-        Debug.Log("BasicCardPoolCount: " + Count[0].ToString());
+        //Debug.Log("BasicCardPoolCount: " + Count[0].ToString());
         
         //가장 많은 pool, 다음으로 많은 pool 선정
         int first;
@@ -73,8 +73,8 @@ public class CardAcquiringPanel : MonoBehaviour
             else if(Count[i] > Count[second])
                 second = i;
         }
-        Debug.Log($"biggest pool count is index : {first.ToString()} count : {Count[first].ToString()} ");
-        Debug.Log($"second biggest pool count is index : {second.ToString()} count : {Count[second].ToString()} ");
+        //Debug.Log($"biggest pool count is index : {first.ToString()} count : {Count[first].ToString()} ");
+        //Debug.Log($"second biggest pool count is index : {second.ToString()} count : {Count[second].ToString()} ");
 
         //Cardpool 구성
         foreach(var card in TotalCardList.Select((value, index) => new {value, index})){
@@ -92,20 +92,20 @@ public class CardAcquiringPanel : MonoBehaviour
         int newcard;
         newcard = Random.Range(0,CardPool1.Count);
         CardChosen.Add(CardPool1[newcard]);
-        Debug.Log("first chosen card is " + CardPool1[newcard].ToString());
+        //Debug.Log("first chosen card is " + CardPool1[newcard].ToString());
         while(CardChosen.Count < 2)
         {
             newcard = Random.Range(0,CardPool2.Count);
             if(!CardChosen.Contains(CardPool2[newcard]))
                 CardChosen.Add(CardPool2[newcard]);
-            Debug.Log("second chosen card is " + CardPool2[newcard].ToString());
+            //Debug.Log("second chosen card is " + CardPool2[newcard].ToString());
         }
         while(CardChosen.Count < 3)
         {
             newcard = Random.Range(0,CardPool3.Count);
             if(!CardChosen.Contains(CardPool3[newcard]))
                 CardChosen.Add(CardPool3[newcard]);
-            Debug.Log("third chosen card is " + CardPool3[newcard].ToString());
+            //Debug.Log("third chosen card is " + CardPool3[newcard].ToString());
         }
 
         //initialize 3개
@@ -114,7 +114,7 @@ public class CardAcquiringPanel : MonoBehaviour
     }
 
     void InitCard(Vector3 position, Card card){
-        Debug.Log("InitCard");
+        //Debug.Log("InitCard");
         GameObject CardImage = Instantiate(NewCardPrefab, position, Quaternion.identity);
         CardImage.GetComponent<Transform>().SetParent(transform);
         CardImage.GetComponent<RectTransform>().anchoredPosition = position;
@@ -125,7 +125,7 @@ public class CardAcquiringPanel : MonoBehaviour
 
     public void EndCardAcquiring()
     {
-        transform.parent.DOMoveX(-960, 1, false).SetEase(Ease.OutQuad);
+        transform.parent.DOMoveX(-1920, 1, false).SetEase(Ease.OutQuad);
     }
 
     void Update()

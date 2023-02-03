@@ -91,6 +91,7 @@ public class ColorCard : Card
         //}
         // State를 만드는 부분
         ColorState newState = new ColorState(this);
+        // State를 Enqueue하는 부분
 
         if(GameManager.Instance.IsPuzzleMode) 
         {
