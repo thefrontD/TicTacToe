@@ -509,7 +509,9 @@ public class Enemy : MonoBehaviour, IAttackable
 
         foreach ((int row, int col) space in colorTargetSpaces)
         {
-            print($"Enemy Color Target: ({space.row}, {space.col})");
+            //print($"Enemy Color Target: ({space.row}, {space.col})");
+            //Temporary
+            BoardManager.Instance.ColoringBoard(space.row, space.col, BoardColor.Enemy);
         }
     }
     

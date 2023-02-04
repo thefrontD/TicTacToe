@@ -107,7 +107,13 @@ public class BoardManager : Singleton<BoardManager>
     public bool ColoringBoard(int row, int col, BoardColor boardColor)
     {
         if (row >= _boardSize || col >= _boardSize || row < 0 || col < 0)
+        {
             return false;
+        }
+        else if(boardColor == BoardColor.Enemy && _boardObjects[row][col] == BoardObject.Player)
+        {
+            return false;
+        }
         else
         {
             if(boardColor == BoardColor.Player){

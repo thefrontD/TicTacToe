@@ -5,9 +5,9 @@
       "EnemyShield": 40,
       "EnemyPower" : 10,
       "EnemyAction": [
-        {"Item1": "V2Attack", "Item2": 10},
-        {"Item1": "H2Attack", "Item2": 10},
-        {"Item1": "WallSummon", "Item2": 10}
+        {"Item1": "ColorPlayerH1", "Item2": 0},
+        {"Item1": "ColorPlayerV1", "Item2": 0},
+        {"Item1": "ColorRandom", "Item2": 0}
       ]
     }
   ]
