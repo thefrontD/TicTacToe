@@ -485,10 +485,17 @@ public class Enemy : MonoBehaviour, IAttackable
                 break;
             }
 
-            /// 랜덤한 2*2 칸에 적의 색을 칠한다(좌상,좌하,우상,우하 4곳 중 랜덤 1곳)
+            /// 랜덤한 2*2 칸에 적의 색을 칠한다
             case EnemyAction.Color2x2:
-                // TODO: 그럼 4x4 칸에서 가운데 또는 변을 칠하는 건 없나?
+            {
+                int row = Random.Range(0, BoardManager.Instance.BoardSize - 1);
+                int col = Random.Range(0, BoardManager.Instance.BoardSize - 1);
+                colorTargetSpaces.Add((row, col));
+                colorTargetSpaces.Add((row, col + 1));
+                colorTargetSpaces.Add((row + 1, col));
+                colorTargetSpaces.Add((row + 1, col + 1));
                 break;
+            }
 
             /// 틱택토 판의 4꼭짓점에 적의 색을 칠한다(1,3,7,9번 칸)
             case EnemyAction.ColorCorner:
@@ -501,10 +508,21 @@ public class Enemy : MonoBehaviour, IAttackable
                 break;
             }
 
-            // 틱택토 판의 4변에 적의 색을 칠한다(2,4,6,8번 칸)
+            /// 틱택토 판의 4변에 적의 색을 칠한다
             case EnemyAction.ColorSide:
-                // TODO: 그럼 4x4 칸에서는?
+            {
+                for (int c = 1; c < BoardManager.Instance.BoardSize - 1; c++)
+                {
+                    colorTargetSpaces.Add((0, c));
+                    colorTargetSpaces.Add((BoardManager.Instance.BoardSize - 1, c));
+                }
+                for (int r = 1; r < BoardManager.Instance.BoardSize - 1; r++)
+                {
+                    colorTargetSpaces.Add((r, 0));
+                    colorTargetSpaces.Add((r, BoardManager.Instance.BoardSize - 1));
+                }
                 break;
+            }
         }
 
         foreach ((int row, int col) space in colorTargetSpaces)

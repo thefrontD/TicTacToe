@@ -125,7 +125,7 @@ public class EnemyManager : Singleton<EnemyManager>
     private void EnemyDataLoading(string stageID)
     {
         var row = GameManager.Instance.StageTable
-            .Select($"MapID = '{stageID}'")[0];
+            .Select($"StageID = '{stageID}'")[0];
         string[] monsterIDs = { row["MonsterID1"].ToString(), row["MonsterID2"].ToString(), row["MonsterID3"].ToString() };
 
         List<EnemyDataHolder> enemyDataHolders = new List<EnemyDataHolder>();

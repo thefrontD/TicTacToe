@@ -1,4 +1,4 @@
-MapID,Type,Difficulty,MonsterID1,MonsterID2,MonsterID3,MonsterID4
+StageID,Type,Difficulty,MonsterID1,MonsterID2,MonsterID3,MonsterID4
 1_1,Normal,1,1_1,1_2,,
 1_2,Normal,1,1_2,,,
 1_3,Normal,1,1_3,,,
