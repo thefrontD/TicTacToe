@@ -107,6 +107,13 @@ public class ColorState : BaseState
                     IfColorableAddToList(Row, Col - 1);
                 IfColorableAddToList(Row, Col);
                 break;
+            case ColorTargetPosition.RedColoredSpace:
+                List<List<BoardColor>> boardColors = BoardManager.Instance.BoardColors;
+                for (int i = 0; i < boardsize; i++) // row
+                    for (int j = 0; j < boardsize; j++) // col
+                        if (boardColors[i][j] == BoardColor.Enemy)
+                            IfColorableAddToList(i, j);
+                break;
         }
         //Colorable 리스트 colorables 에 튜플로 다 저장됨 
 
