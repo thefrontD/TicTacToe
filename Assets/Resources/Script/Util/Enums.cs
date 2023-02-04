@@ -182,11 +182,3 @@ public enum CardPoolAttribute{
     DrawMana = 5,
     ShieldDestroy =6
 }
-
-[JsonConverter(typeof(StringEnumConverter))]
-public enum Border
-{ 
-    None = 0,
-    Wall = 1,
-    Bush = 2,
-}
