@@ -2,6 +2,10 @@
     "CurrentStage": 101,
     "MaxHp": 90,
     "Hp": 90,
-    "MaxMana": 4,
-    "Mana": 4
+    "MaxMana": 3,
+    "Mana": 3,
+    "BaseAP": 1,
+    "Col": 0,
+    "Row": 0,
+    "CurrentLevel": 0
 }

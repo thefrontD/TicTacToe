@@ -80,7 +80,7 @@ public class PlayerManager : Singleton<PlayerManager>
     private bool _lockTurn = true;
     public bool LockTurn { get => _lockTurn; set => _lockTurn = value; }
     
-    public event Action OnPlayerDataUpdate;
+    public event Action OnPlayerHpManaUpdate;
 
     public BaseState state;
     public Queue<BaseState> StatesQueue;
@@ -90,11 +90,11 @@ public class PlayerManager : Singleton<PlayerManager>
     {
         Screen.SetResolution(1920, 1080, true);
 
-        if (GameManager.Instance.CurrentStage == 101)
-        {
-            _tutorialPhase = 1;
-            _tutorialTrigger = true;
-        }
+        // if (GameManager.Instance.CurrentStage == 101)
+        // {
+        //     _tutorialPhase = 1;
+        //     _tutorialTrigger = true;
+        // }
         
         state = new NormalState();
         if(!_tutorialTrigger)
@@ -119,10 +119,13 @@ public class PlayerManager : Singleton<PlayerManager>
         state.Update();
     }
     
+    /// <summary>
+    /// Stage calling system components are organized with col, row of worldMap and level
+    /// </summary>
     private void Init()
     {
-        int floor = GameManager.Instance.CurrentStage/100;
-        int stage = GameManager.Instance.CurrentStage%100;
+        int floor = GameManager.Instance.CurrentCol + 1;
+        int stage = GameManager.Instance.CurrentRow + 2;
         string stageID = floor.ToString() + "_" + stage.ToString();
 
         if (stage == 1)
@@ -134,20 +137,22 @@ public class PlayerManager : Singleton<PlayerManager>
         PlayerLoading();
         EnemyManager.Instance.EnemyLoading(stageID);
         cardAqr.Init();
-        playerUI.UpdatePlayerUI();
+        playerUI.UpdatePlayerHPManaUI();
+        playerUI.UpdatePlayerAPUI();
     }
     
     public void Init(object sender, EventArgs arg)
     {
-        int floor = GameManager.Instance.CurrentStage/100;
-        int stage = GameManager.Instance.CurrentStage%100;
+        int floor = GameManager.Instance.CurrentCol + 1;
+        int stage = GameManager.Instance.CurrentRow + 2;
         string stageID = floor.ToString() + "_" + stage.ToString();
 
         BoardManager.Instance.BoardLoading(stageID);
         PlayerLoading();
         EnemyManager.Instance.EnemyLoading(stageID);
         cardAqr.Init();
-        playerUI.UpdatePlayerUI();
+        playerUI.UpdatePlayerHPManaUI();
+        playerUI.UpdatePlayerAPUI();
     }
 
     public void PlayerLoading()
@@ -166,6 +171,7 @@ public class PlayerManager : Singleton<PlayerManager>
         _hp = _holder.Hp;
         _maxMana = _holder.MaxMana;
         _mana = _holder.Mana;
+        _baseAp = _holder.BaseAp;
 
         if (!_tutorialTrigger)
             PlayerCard.Shuffle();
@@ -176,10 +182,15 @@ public class PlayerManager : Singleton<PlayerManager>
         DamageToPlayer();
         
         StatesQueue = new Queue<BaseState>();
+
         if (_tutorialTrigger)
             state = new NormalState(3, true);
         else
             state = new NormalState(5, true);
+        if(GameManager.Instance.IsPuzzleMode) {
+            state = new NormalState(PlayerCard.Count, true, true);
+        }
+
         state.Enter();
         
         if(GameManager.Instance.CurrentStage%100 == 10)
@@ -192,8 +203,9 @@ public class PlayerManager : Singleton<PlayerManager>
 
     public void SavePlayerData()
     {
-        PlayerData.Instance.saveData(new PlayerDataHolder(GameManager.Instance.CurrentStage,
-            _maxHp, _hp, _maxMana, _mana, _baseAp), string.Format("PlayerData{0}", GameManager.Instance.PlayerNum));
+        PlayerData.Instance.saveData(new PlayerDataHolder(GameManager.Instance.CurrentStage, _maxHp, _hp, _maxMana, _mana, _baseAp, 
+        GameManager.Instance.CurrentCol, GameManager.Instance.CurrentRow, GameManager.Instance.CurrentLevel),
+             string.Format("PlayerData{0}", GameManager.Instance.PlayerNum));
         if(!_tutorialTrigger)
             CardData.Instance.saveData(PlayerCard, string.Format("PlayerCard{0}", GameManager.Instance.PlayerNum));
         else
@@ -208,12 +220,20 @@ public class PlayerManager : Singleton<PlayerManager>
 
     public void SetDebuff(Debuff debuff, int value)
     {
+        bool isNew = false;
+
+        if(_debuffDictionary[debuff] == 0 && value > 0)
+            isNew = true;
+
         if(_debuffDictionary[debuff] + value < 0)
             _debuffDictionary[debuff] = 0;
-        else
+        else{
             _debuffDictionary[debuff] += value;
+        }
+
         BoardManager.Instance.SetPlayerDebuffEffect(debuff);
-        OnPlayerDataUpdate?.Invoke();
+        
+        playerUI.UpdatePlayerBuffUI(debuff, isNew);
     }
     
     public void ChangeStates(BaseState newState)
@@ -282,7 +302,7 @@ public class PlayerManager : Singleton<PlayerManager>
         else if(_mana + value > MaxMana) _mana = MaxMana;
         else _mana += value;
 
-        OnPlayerDataUpdate?.Invoke();
+        OnPlayerHpManaUpdate?.Invoke();
         return true;
     }
     
@@ -301,7 +321,7 @@ public class PlayerManager : Singleton<PlayerManager>
         if (_hp + value <= 0) return false;
         else if(_hp + value > MaxHp) _hp = MaxHp;
         else _hp += value;
-        OnPlayerDataUpdate?.Invoke();
+        OnPlayerHpManaUpdate?.Invoke();
         return true;
     }
     
@@ -337,7 +357,7 @@ public class PlayerManager : Singleton<PlayerManager>
             else _hp += value;
         }
 
-        OnPlayerDataUpdate?.Invoke();
+        OnPlayerHpManaUpdate?.Invoke();
         return false;
     }
 
@@ -412,5 +432,11 @@ public class PlayerManager : Singleton<PlayerManager>
     public void GainAp(int value)
     {
         _ap += value;
+        playerUI.UpdatePlayerAPUI();
+    }
+
+    public void ResetAp(){
+        _ap = 0;
+        playerUI.UpdatePlayerAPUI();
     }
 }

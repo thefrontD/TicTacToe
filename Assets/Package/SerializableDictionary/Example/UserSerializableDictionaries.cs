@@ -37,3 +37,5 @@ public class QuaternionMyClassDictionary : SerializableDictionary<Quaternion, My
 
 [Serializable]
 public class StringGameObjectDictionary : SerializableDictionary<string, GameObject> {}
+[Serializable]
+public class DebuffGameObjectDictionary : SerializableDictionary<Debuff, GameObject> {}

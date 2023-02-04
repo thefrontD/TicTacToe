@@ -64,13 +64,13 @@ public class BoardManager : Singleton<BoardManager>
     /// </summary>
     public void BoardLoading(string stageID)
     {
-        Holder holder = BoardData.Instance._load(stageID);
+        BoardDataHolder boardDataBoardDataHolder = BoardData.Instance._load(stageID);
         
-        _boardSize = holder._boardSize;
-        PlayerManager.Instance.Row = holder._playerRow;
-        PlayerManager.Instance.Col = holder._playerCol;
-        _boardObjects = holder._boardObjects;
-        _boardColors = holder._boardColors;
+        _boardSize = boardDataBoardDataHolder._boardSize;
+        PlayerManager.Instance.Row = boardDataBoardDataHolder._playerRow;
+        PlayerManager.Instance.Col = boardDataBoardDataHolder._playerCol;
+        _boardObjects = boardDataBoardDataHolder._boardObjects;
+        _boardColors = boardDataBoardDataHolder._boardColors;
 
         MainBoard = Instantiate(BoardPrefabs[_boardSize - 3], BoardPos, Utils.QS);
         
@@ -84,7 +84,8 @@ public class BoardManager : Singleton<BoardManager>
                 _gameBoard[i].Add(MainBoard.transform.GetChild(i*_boardSize+j).GetComponent<Board>());
                 _gameBoard[i][j].Init(_boardColors[i][j], i, j);
                 _boardAttackables[i].Add(null);
-                Debug.Log(_gameBoard[i].Count);
+
+                if(_boardObjects[i][j] == BoardObject.Wall) SummonWalls(i, j); 
             }
         }
 
@@ -95,8 +96,7 @@ public class BoardManager : Singleton<BoardManager>
     {
         Vector3 initPos = _gameBoard[PlayerManager.Instance.Row][PlayerManager.Instance.Col].transform.position  + bias;
         _boardObjects[PlayerManager.Instance.Row][PlayerManager.Instance.Col] = BoardObject.Player;
-        Quaternion rotation = Quaternion.Euler(-90, -90, 90);
-        _playerObject = Instantiate(PlayerPrefab, initPos, rotation);
+        _playerObject = Instantiate(PlayerPrefab, initPos, Utils.QI);
         //_playerObject.transform.localScale = new Vector3(12, 12, 12);
     }
 
@@ -154,6 +154,17 @@ public class BoardManager : Singleton<BoardManager>
             _isGameOver = PlayerManager.Instance.DamageToPlayer(-damage);
         
         return _isGameOver;
+    }
+
+    public void SummonWalls(int row, int col)
+    {
+        
+        _boardObjects[row][col] = BoardObject.Wall;
+        ColoringBoard(row, col, BoardColor.None);
+        GameObject wall = Instantiate(WallPrefabs, _gameBoard[row][col].transform.position, Quaternion.Euler(-90, 0, 0));
+        wall.GetComponent<Wall>().Init(row, col);
+        wall.transform.DOMoveZ(-4, 1).SetEase(Ease.OutQuart);
+        wall.transform.GetChild(0).GetComponent<ParticleSystem>().Play();
     }
 
     public bool MovePlayer(int row, int col, MoveCardEffect effect)
@@ -253,23 +264,23 @@ public class BoardManager : Singleton<BoardManager>
             {
                 for (int j = 0; j < _boardSize; j++)
                 {
-                    _boardColors[i][j] = BoardColor.None;
+                    ColoringBoard(i, j, BoardColor.None);
                 }
             }
             if(verticalBingo[i])
             {
                 for (int j = 0; j < _boardSize; j++)
                 {
-                    _boardColors[j][i] = BoardColor.None;
+                    ColoringBoard(j, i, BoardColor.None);
                 }
             }
             if(diagonalbingo[0])
             {
-                _boardColors[i][i] = BoardColor.None;
+                ColoringBoard(i, i, BoardColor.None);
             }
             if(diagonalbingo[1])
             {
-                _boardColors[i][_boardSize - 1 - i] = BoardColor.None;
+                ColoringBoard(i, _boardSize - 1 - i, BoardColor.None);
             }
         }
 

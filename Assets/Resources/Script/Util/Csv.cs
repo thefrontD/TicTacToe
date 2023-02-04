@@ -21,7 +21,7 @@ public abstract class DataTableBase : DataTable
     public DataTableBase(string name) : base(name) { }
 
     /// <summary>
-    /// Resources 폴더에서 읽고자 하는 csv 형식의 파일을 가져온다.
+    /// Get needed CSV files from Resources folder
     /// </summary>
     /// <param name="filename">ex) "table.csv"</param>
     /// <returns></returns>

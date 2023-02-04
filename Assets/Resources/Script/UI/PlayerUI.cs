@@ -8,13 +8,15 @@ public class PlayerUI : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI hpText;
     [SerializeField] private TextMeshProUGUI manaText;
-    [SerializeField] private GameObject buffIcon;
-    [SerializeField] private GameObject debuffIcon;
-    [SerializeField] private TextMeshProUGUI buffDebuffText;
+    [SerializeField] private TextMeshProUGUI apText;
+    [SerializeField] private DebuffGameObjectDictionary _iconPrefabDic;
+    [SerializeField] private Transform buffDebuffBar;
+
+    private Dictionary<Debuff, GameObject> _iconObjectDic;
 
     void Start()
     {
-        PlayerManager.Instance.OnPlayerDataUpdate += UpdatePlayerUI;
+        PlayerManager.Instance.OnPlayerHpManaUpdate += UpdatePlayerHPManaUI;
     }
     
     void Update()
@@ -22,27 +24,32 @@ public class PlayerUI : MonoBehaviour
         
     }
     
-    public void UpdatePlayerUI()
+    public void UpdatePlayerHPManaUI()
     {
         hpText.text = String.Format("{0}/{1}", PlayerManager.Instance.Hp, PlayerManager.Instance.MaxHp);
         manaText.text = String.Format("{0}/{1}", PlayerManager.Instance.Mana, PlayerManager.Instance.MaxMana);
-        if (PlayerManager.Instance.DebuffDictionary[Debuff.PowerIncrease] != 0)
-        {
-            buffIcon.SetActive(true);
-            debuffIcon.SetActive(false);
-            buffDebuffText.text = String.Format("{0}", PlayerManager.Instance.DebuffDictionary[Debuff.PowerIncrease]);
+    }
+
+    public void UpdatePlayerBuffUI(Debuff debuff, bool newBuff) {
+        if (PlayerManager.Instance.DebuffDictionary[debuff] == 0) {
+            if(_iconObjectDic.ContainsKey(debuff)){
+                Destroy(_iconObjectDic[debuff]);
+                _iconObjectDic.Remove(debuff);
+            }
         }
-        else if (PlayerManager.Instance.DebuffDictionary[Debuff.PowerDecrease] != 0)
-        {
-            buffIcon.SetActive(false);
-            debuffIcon.SetActive(true);
-            buffDebuffText.text = String.Format("{0}", PlayerManager.Instance.DebuffDictionary[Debuff.PowerDecrease]);
-        }
-        else
-        {
-            buffIcon.SetActive(false);
-            debuffIcon.SetActive(false);
-            buffDebuffText.text = String.Format("");
+        else{
+            if(newBuff){
+                GameObject newIcon = Instantiate(_iconPrefabDic[debuff], buffDebuffBar);
+                _iconObjectDic.Add(debuff, newIcon);
+            }
+
+            _iconObjectDic[debuff].GetComponentInChildren<TextMeshProUGUI>().text = String.Format("{0}", PlayerManager.Instance.DebuffDictionary[Debuff.PowerIncrease]);
         }
     }
+    
+    public void UpdatePlayerAPUI()
+    {
+        apText.text = String.Format("Next Attack\n{0}", PlayerManager.Instance.BaseAp + PlayerManager.Instance.Ap);
+    }
+
 }

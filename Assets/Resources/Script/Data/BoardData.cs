@@ -5,13 +5,13 @@ using UnityEngine;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-public class Holder
+public class BoardDataHolder
 {
     public int _boardSize, _playerRow, _playerCol;
     public List<List<BoardObject>> _boardObjects = new List<List<BoardObject>>();
     public List<List<BoardColor>> _boardColors = new List<List<BoardColor>>();
 
-    public Holder(int boardSize, int playerRow, int playerCol,
+    public BoardDataHolder(int boardSize, int playerRow, int playerCol,
         List<List<BoardObject>> boardObjects, List<List<BoardColor>> boardColors)
     {
         _boardSize = boardSize;
@@ -24,15 +24,15 @@ public class Holder
 
 public class BoardData : Singleton<BoardData>
 {
-    public Holder _load(string dataName)
+    public BoardDataHolder _load(string dataName)
     {
         string path = Application.streamingAssetsPath;
         path += $"/Data/Board/{dataName}.json";
 
         var converter = new StringEnumConverter();
         var pDataStringLoad = File.ReadAllText(path);
-        Holder holder = JsonConvert.DeserializeObject<Holder>(pDataStringLoad, converter);
+        BoardDataHolder boardDataHolder = JsonConvert.DeserializeObject<BoardDataHolder>(pDataStringLoad, converter);
 
-        return holder;
+        return boardDataHolder;
     }
 }

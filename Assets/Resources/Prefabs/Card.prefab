@@ -500,6 +500,7 @@ MonoBehaviour:
   CardNameText: {fileID: 225837844855087852}
   CardDescText: {fileID: 225837845479047770}
   HightLightParticle: {fileID: 3924206600535081539}
+  CardBackImage: {fileID: 21300000, guid: e28ea93204031b84ba562004a613864a, type: 3}
   isHand: 0
 --- !u!114 &5838171324056228571
 MonoBehaviour:

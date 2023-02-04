@@ -91,8 +91,18 @@ public class ColorCard : Card
         //}
         // State를 만드는 부분
         ColorState newState = new ColorState(this);
-        PlayerManager.Instance.StatesQueue.Enqueue(newState);
         // State를 Enqueue하는 부분
-        PlayerManager.Instance.StatesQueue.Enqueue(new NormalState());
+
+        if(GameManager.Instance.IsPuzzleMode) 
+        {
+            PlayerManager.Instance.StatesQueue.Enqueue(newState);
+            PlayerManager.Instance.StatesQueue.Enqueue(new EnemyState());
+        }
+        else 
+        {
+            PlayerManager.Instance.StatesQueue.Enqueue(newState);
+        // State를 Enqueue하는 부분
+            PlayerManager.Instance.StatesQueue.Enqueue(new NormalState());
+        }
     }
 }

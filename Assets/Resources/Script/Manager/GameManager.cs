@@ -8,6 +8,9 @@ using UnityEngine.UI;
 
 public class GameManager : Singleton<GameManager>
 {
+    [SerializeField] private bool isPuzzleMode = false;
+    public bool IsPuzzleMode => isPuzzleMode;
+
     public DataTableBase StageTable { get; private set; }
     private int _playerNum = 1;
     public int PlayerNum
@@ -22,9 +25,33 @@ public class GameManager : Singleton<GameManager>
         get => _currentStage;
         set => _currentStage = value;
     }
+
+    [SerializeField] private int _currentCol;
+    public int CurrentCol
+    {
+        get => _currentCol;
+        set => _currentCol = value;
+    }
+
+    [SerializeField] private int _currentRow;
+    public int CurrentRow
+    {
+        get => _currentRow;
+        set => _currentRow = value;
+    }
+
+    [SerializeField] private int _currentLevel;
+    public int CurrentLevel
+    {
+        get => _currentLevel;
+        set => _currentLevel = value;
+    }
     
     void Awake()
     {
+        PlayerDataHolder _holder = PlayerData.Instance._load(string.Format("PlayerData{0}", GameManager.Instance.PlayerNum));
+        _currentCol = _holder.Col;
+        _currentRow = _holder.Row;
         if (GameManager.Instance != this)
             Destroy(gameObject);
         DontDestroyOnLoad(this.gameObject);
@@ -55,8 +82,6 @@ public class GameManager : Singleton<GameManager>
         }
         
         PlayerManager.Instance.CardUsable = false;
-        DialogueManager.Instance.dialogueCallBack.DialogueCallBack -= PlayerManager.Instance.Init;
-        DialogueManager.Instance.dialogueCallBack.DialogueCallBack += gameOverPanelActivation;
         
         BoardManager.Instance.PlayerObject.transform.DORotate(new Vector3(-180, 0, 0), 0.6f, RotateMode.Fast)
         .SetEase(Ease.InQuart);
@@ -69,47 +94,62 @@ public class GameManager : Singleton<GameManager>
 
         yield return new WaitForSeconds(1.0f);
 
-        DialogueManager.Instance.StartDialogue(string.Format("Enemy{0}_defeat", _currentStage%100));
+        gameOverPanelActivation();
     }
 
     public void GameClear()
     {
-        if (EnemyManager.Instance.EnemyList.Count == 0)
-        {
-            foreach (CardUI card in CardManager.Instance.HandCardList)
+        if(isPuzzleMode){
+            if(PuzzleManager.Instance.checkClear())
             {
-                card.isHand = false;
-            }
-            
-            PlayerManager.Instance.CardUsable = false;
+                foreach (CardUI card in CardManager.Instance.HandCardList)
+                {
+                    card.isHand = false;
+                }
+                
+                PlayerManager.Instance.CardUsable = false;
 
-            DialogueManager.Instance.dialogueCallBack.DialogueCallBack -= PlayerManager.Instance.Init;
-            DialogueManager.Instance.dialogueCallBack.DialogueCallBack += gameClearPanelActivation;
-            
-            if(PlayerManager.Instance.TutorialTrigger)
-            {
-                DialogueManager.Instance.dialogueCallBack.DialogueCallBack -= PlayerManager.Instance.NextTutorialNum;
-                TutorialManager.Instance.toNextTutorial(PlayerManager.Instance.TutorialPhase);
+                gameClearPanelActivation();
             }
-            else
-            {
-                DialogueManager.Instance.StartDialogue(string.Format("Enemy{0}_victory", _currentStage % 100));
-            }
-            return;
         }
-        else
-            return;
+        else {
+            if (EnemyManager.Instance.EnemyList.Count == 0)
+            {
+                foreach (CardUI card in CardManager.Instance.HandCardList)
+                {
+                    card.isHand = false;
+                }
+                
+                PlayerManager.Instance.CardUsable = false;
+
+                // DialogueManager.Instance.dialogueCallBack.DialogueCallBack -= PlayerManager.Instance.Init;
+                // DialogueManager.Instance.dialogueCallBack.DialogueCallBack += gameClearPanelActivation;
+                
+                // if(PlayerManager.Instance.TutorialTrigger)
+                // {
+                //     DialogueManager.Instance.dialogueCallBack.DialogueCallBack -= PlayerManager.Instance.NextTutorialNum;
+                //     TutorialManager.Instance.toNextTutorial(PlayerManager.Instance.TutorialPhase);
+                // }
+                // else
+                // {
+                //     DialogueManager.Instance.StartDialogue(string.Format("Enemy{0}_victory", _currentStage % 100));
+                // }
+                // return;
+
+                gameClearPanelActivation();
+            }
+        }
     }
 
-    private void gameOverPanelActivation(object sender, EventArgs eventArgs)
+    private void gameOverPanelActivation()
     {
         PanelManager.Instance.GameOverPanel.SetActive(true);
     }
 
-    private void gameClearPanelActivation(object sender, EventArgs eventArgs)
+    private void gameClearPanelActivation()
     {
         PanelManager.Instance.GameClearPanel.SetActive(true);
-        PanelManager.Instance.GameClearPanel.transform.DOLocalMoveY(100, 1.0f);
+        PanelManager.Instance.GameClearPanel.GetComponent<RectTransform>().DOAnchorPosY(0, 0.75f).SetEase(Ease.InQuad);
     }
 
     private void SetDataTable()
