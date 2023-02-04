@@ -90,6 +90,26 @@ public class Enemy : MonoBehaviour, IAttackable
             if (EnemyShield == 0)
             {
                 DamageEnemyHp(PlayerManager.Instance.BaseAp + PlayerManager.Instance.Ap);
+                
+                PlayerManager.Instance.ResetAp();
+                /*
+                int bingoCount = BoardManager.Instance.CountBingo(BoardColor.Player);  
+                
+                if (bingoCount > 0)
+                {
+                    for (int ii = 0; ii < BoardManager.Instance.BoardSize; ii++)
+                    {
+                        for (int j = 0; j < BoardManager.Instance.BoardSize; j++)
+                        {
+                            BoardManager.Instance.GameBoard[ii][j].SetBoardColor(BoardColor.None);
+                            BoardManager.Instance.GameBoard[ii][j].ActivateBingoEffect(false);
+                        }
+                    }
+
+                    _enemyHp -= (int) Math.Pow(2, bingoCount - 1);
+                    PlayerManager.Instance.BingoAttack = true;
+                }
+                */
                 if (EnemyHP <= 0)
                 {
                     EnemyManager.Instance.EnemyList.Remove(this);

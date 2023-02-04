@@ -138,6 +138,7 @@ public class PlayerManager : Singleton<PlayerManager>
         EnemyManager.Instance.EnemyLoading(stageID);
         cardAqr.Init();
         playerUI.UpdatePlayerHPManaUI();
+        playerUI.UpdatePlayerAPUI();
     }
     
     public void Init(object sender, EventArgs arg)
@@ -151,6 +152,7 @@ public class PlayerManager : Singleton<PlayerManager>
         EnemyManager.Instance.EnemyLoading(stageID);
         cardAqr.Init();
         playerUI.UpdatePlayerHPManaUI();
+        playerUI.UpdatePlayerAPUI();
     }
 
     public void PlayerLoading()
@@ -430,5 +432,11 @@ public class PlayerManager : Singleton<PlayerManager>
     public void GainAp(int value)
     {
         _ap += value;
+        playerUI.UpdatePlayerAPUI();
+    }
+
+    public void ResetAp(){
+        _ap = 0;
+        playerUI.UpdatePlayerAPUI();
     }
 }
