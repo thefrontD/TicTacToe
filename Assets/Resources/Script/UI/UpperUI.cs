@@ -46,7 +46,7 @@ public class UpperUI : MonoBehaviour
 
     private void ShowCardList(List<Card> CardList)
     {
-        if (CardListPanel.active)
+        if (CardListPanel.activeSelf)
         {
             CardListPanel.GetComponent<RectTransform>().DOAnchorPos(new Vector2(0f, -1055f), 1f)
                 .SetEase(Ease.InQuad)
