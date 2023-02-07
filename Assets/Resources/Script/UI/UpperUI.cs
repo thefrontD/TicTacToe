@@ -1,3 +1,4 @@
+using System.Runtime.InteropServices.ComTypes;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -28,12 +29,6 @@ public class UpperUI : MonoBehaviour
                                                              + "\n현재 스테이지: " +(clearedStage+1).ToString();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void ToggleCardListPanel()
     {
         ShowCardList(PlayerManager.Instance.PlayerCard);
@@ -41,17 +36,17 @@ public class UpperUI : MonoBehaviour
 
     public void ToggleDeckCardList()
     {
-        //ShowCardList(CardManager.Instance.DeckList);
+        ShowCardList(ToCardList(CardManager.Instance.DeckList));
     }
 
     public void ToggleGraveCardList()
     {
-        //ShowCardList(CardManager.Instance.GraveList);
+        ShowCardList(ToCardList(CardManager.Instance.GraveList));
     }
 
     private void ShowCardList(List<Card> CardList)
     {
-        if (CardListPanel.activeSelf)
+        if (CardListPanel.active)
         {
             CardListPanel.GetComponent<RectTransform>().DOAnchorPos(new Vector2(0f, -1055f), 1f)
                 .SetEase(Ease.InQuad)
@@ -65,6 +60,15 @@ public class UpperUI : MonoBehaviour
                 .OnStart(() => { CardListPanel.GetComponent<CardListPanel>().PrintCard(CardList);
                     CardListPanel.SetActive(true); });
         }
+    }
+
+    private List<Card> ToCardList(IEnumerable<CardUI> CardList) {
+        List<Card> cards = new List<Card>();
+
+        foreach(CardUI elem in CardList) {
+            cards.Add(elem.Card);
+        }   
+        return cards;
     }
 
     public void ToggleSettingPanel(){
