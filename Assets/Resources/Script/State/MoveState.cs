@@ -329,6 +329,11 @@ public class MoveState : BaseState
                 CardManager.Instance.DrawFromGrave();
                 break;
             }
+            case AdditionalEffect.Color:
+            {
+                BoardManager.Instance.ColoringBoard(PlayerManager.Instance.Row, PlayerManager.Instance.Col, BoardColor.Player);
+                break;
+            }
         }
     }
 }
