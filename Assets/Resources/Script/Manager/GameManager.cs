@@ -11,7 +11,7 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private bool isPuzzleMode = false;
     public bool IsPuzzleMode => isPuzzleMode;
 
-    public DataTableBase StageTable { get; private set; }
+    public StageDataTable StageTable { get; private set; }
     private int _playerNum = 1;
     public int PlayerNum
     {

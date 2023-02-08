@@ -18,7 +18,6 @@ public class MouseOverUIManager : Singleton<MouseOverUIManager>
 
     public void DisplayUI(MouseOverUIType UIType, Vector3 pos)
     {
-        Debug.Log(UITypeToText(UIType));
         MouseOverUIPanel.SetActive(true);
         MouseOverText.text = UITypeToText(UIType);
         MouseOverUIPanel.transform.position = pos + new Vector3(MouseOverUIPanel.GetComponent<RectTransform>().sizeDelta.x/2 + 40,

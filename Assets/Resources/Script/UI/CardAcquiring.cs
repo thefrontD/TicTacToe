@@ -11,6 +11,11 @@ public class CardAcquiring : MonoBehaviour, IPointerClickHandler
 {
     Card card;
     private bool Clickable = true;
+    [SerializeField] private Image cardImage;
+    [SerializeField] private TextMeshProUGUI cardCost;
+    [SerializeField] private TextMeshProUGUI cardName;
+    [SerializeField] private TextMeshProUGUI cardDesc;
+
     void Start()
     {
         
@@ -20,8 +25,6 @@ public class CardAcquiring : MonoBehaviour, IPointerClickHandler
     {
         if(Clickable == true)
         {
-            Debug.Log("Card Selected");
-            Debug.Log(card);
             if(!PlayerManager.Instance.TutorialTrigger)
                 PlayerManager.Instance.PlayerCard.Add(card);
             else
@@ -39,27 +42,26 @@ public class CardAcquiring : MonoBehaviour, IPointerClickHandler
     public void SetImage()
     {
         //set bg
-        Debug.Log(card.CardType.ToString());
-        Sprite ImageTo = LoadImage(Application.dataPath +"/Resources/Images/Cards/"+ card.CardType.ToString() +"/BackGround.png");
+        Sprite ImageTo = Resources.Load<Sprite>($"Images/Cards/{card.CardType}/BackGround");
         transform.GetComponent<Image>().sprite = ImageTo;
         //set mana
-        transform.Find("CostText").GetComponent<TextMeshProUGUI>().text = card.CardCost.ToString();
+        cardCost.text = card.CardCost.ToString();
         
         string cardImagePath = card.CardName.Replace(':', '-').Replace('/', '_');
         //set cotent
         try{
-            ImageTo = LoadImage(Application.dataPath +"/Resources/Images/Cards/"+ card.CardType.ToString() + "/" + cardImagePath + ".png");
+            ImageTo = Resources.Load<Sprite>($"Images/Cards/{card.CardType}/" + cardImagePath);
         }
         catch(Exception e){
             Debug.Log("Image Not Found: card name: " +  card.CardName.ToString());
         }
         if(ImageTo != null)
-            transform.Find("Object").GetComponent<Image>().sprite = ImageTo;
+            cardImage.sprite = ImageTo;
 
         //set title
-        transform.Find("CardName").GetComponent<TextMeshProUGUI>().text = card.CardName.ToString();
+        cardName.text = card.CardName.ToString();
         //set desc
-        transform.Find("CardDesc").GetComponent<TextMeshProUGUI>().text = card.CardDesc.ToString();
+        cardDesc.text = card.CardDesc.ToString();
     }
 
     Sprite LoadImage(string path)

@@ -436,6 +436,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ff2c5c967e0767479e827ae77669842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cardImage: {fileID: 804819684341753190}
+  cardCost: {fileID: 880282091791250811}
+  cardName: {fileID: 3293746874653336001}
+  cardDesc: {fileID: 3293746874614683722}
 --- !u!1 &3293746875001200914
 GameObject:
   m_ObjectHideFlags: 0
