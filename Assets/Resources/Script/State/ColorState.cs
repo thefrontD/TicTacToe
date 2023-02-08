@@ -287,11 +287,6 @@ public class ColorState : BaseState
                 CardManager.Instance.DrawFromGrave();
                 break;
             }
-            case AdditionalEffect.Test:
-            {
-                Debug.Log("AdditionalEffect.Test");
-                break;
-            }
         }
     }
 
