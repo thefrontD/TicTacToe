@@ -22,8 +22,8 @@
   "_boardColors": [
     [
       "None",
-      "None",
-      "None"
+      "Enemy",
+      "Player"
     ],
     [
       "None",

@@ -113,6 +113,7 @@ public enum AdditionalEffect
     Mana1Draw1,
     Dump1, DumpALL, DumpAttackCard1, DumpMoveCard1, DumpColorCard1,
     Delete,
+    Test,
 
     CreateDisposableColorCard,
 }
